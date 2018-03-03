@@ -17,7 +17,10 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->integer('vendor_id');
             $table->integer('user_id');
-            $table->integer('name');
+            $table->string('name');
+            $table->string('status');
+            $table->string('location');
+            $table->string('description');
             $table->timestamps();
         });
           Schema::table('services', function($table) {
