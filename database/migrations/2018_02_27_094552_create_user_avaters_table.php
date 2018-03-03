@@ -12,11 +12,11 @@ class CreateUserAvatersTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::defaultStringLength(191);
         Schema::create('user_avaters', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vendor_id');
-            $table->integer('user_id');
+            $table->integer('vendor_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('avater');
             $table->timestamps();
         });

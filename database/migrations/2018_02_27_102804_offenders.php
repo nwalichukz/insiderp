@@ -12,11 +12,11 @@ class Offenders extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('additional_services', function (Blueprint $table) {
+    {   Schema::defaultStringLength(191);
+        Schema::create('offenders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vendor_id');
-            $table->integer('user_id');
+            $table->integer('vendor_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('offense');
             $table->string('punishment');
             $table->string('period');

@@ -12,10 +12,14 @@ class CreateViewsTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::defaultStringLength(191);
         Schema::create('views', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('service_id')->unsigned();
+            $table->string('view');
             $table->timestamps();
+            $table->foreign('service_id')->references('id')->on('services')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

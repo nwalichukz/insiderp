@@ -12,12 +12,11 @@ class CreateAdditionalServicesTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::defaultStringLength(191);
         Schema::create('additional_services', function (Blueprint $table) {
             $table->increments('id');
-             $table->integer('vendor_id');
-            $table->integer('user_id');
-            $table->integer('service_id');
+            $table->integer('vendor_id')->unsigned();
+            $table->integer('service_id')->unsigned();
             $table->string('service');
             $table->string('description');
             $table->timestamps();
@@ -25,8 +24,6 @@ class CreateAdditionalServicesTable extends Migration
 
          Schema::table('additional_services', function($table) {
             $table->foreign('vendor_id')->references('id')->on('vendors')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')
                 ->onUpdate('cascade')->onDelete('cascade');

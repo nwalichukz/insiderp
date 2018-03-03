@@ -12,10 +12,10 @@ class CreateVendorLogosTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {  Schema::defaultStringLength(191);
         Schema::create('vendor_logos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vendor_id');
+            $table->integer('vendor_id')->unsigned();
             $table->string('logo')->nullable();
             $table->timestamps();
         });
