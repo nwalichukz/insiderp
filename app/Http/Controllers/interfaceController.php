@@ -33,7 +33,7 @@ class interfaceController extends Controller
             return view('pages.suspended-banned')->with(['message'=>$msg]);
         }else{
         	Auth::logout();
-        return redirect('/')->with('status','invalid login details');
+        return redirect()->back()->with('status','invalid login details');
         }
     }
 
@@ -46,6 +46,24 @@ class interfaceController extends Controller
     	$ads = new AdsController;
         // return $ads->getHomePageAds();
     	return view('index');
+    }
+
+    /**
+     * @method login
+     * returns login page
+     */
+    public function login()
+    {
+        return view('auth.login');
+    }
+
+    /**
+     * @method register
+     * returns register page
+     */
+    public function register()
+    {
+        return view('auth.register');
     }
 
  

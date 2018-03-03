@@ -1,13 +1,12 @@
-
 <!-- Header
 ================================================== -->
-<header class="transparent sticky-header">
+<header class="sticky-header">
 <div class="container">
 	<div class="sixteen columns">
-	
+
 		<!-- Logo -->
 		<div id="logo">
-			<h1><a href="{{ url('/') }}"><img src="images/logo2k.png" alt="Biddo" /></a></h1>
+			<h1><a href="{{ url('/') }}"><img src="images/logo.png" alt="Biddo" /></a></h1>
 		</div>
 
 		<!-- Menu -->
@@ -55,3 +54,4 @@
 	</div>
 </div>
 </header>
+<div class="clearfix"></div>

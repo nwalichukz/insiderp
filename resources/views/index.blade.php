@@ -42,7 +42,7 @@ Biddo
 <!-- Infobox -->
 <div class="infobox">
     <div class="container">
-        <div class="sixteen columns">Start Building Your Own Job Board Now <a href="my-account.html">Get Started</a></div>
+        <div class="sixteen columns">Start Building Your Own Job Board Now <a href="{{ url('register') }}">Get Started</a></div>
     </div>
 </div>
 
