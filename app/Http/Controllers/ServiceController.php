@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\ViewController;
 use App\Service;
 use App\Vendor;
 use App\User;
@@ -22,6 +23,7 @@ class ServiceController extends Controller
     	$service->user_id = $request('user_id');
     	$service->vendor_id = $request('vendor_id');
     	$service->name = $request('name');
+      $service->status = 'active';
     	$service->location = $request('location');
     	$service->description = $request('description');
     	$service->save();
