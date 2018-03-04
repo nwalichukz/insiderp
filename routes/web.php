@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 Route::get('/', 'interfaceController@index');
-Route::get('/about', 'interfaceController@about');
-Route::get('/terms', 'interfaceController@terms');
-Route::get('/contact', 'interfaceController@contact');
+Route::get('/about', 'interfaceController@about')->name('about');
+Route::get('/terms', 'interfaceController@terms')->name('terms');
+Route::get('/contact', 'interfaceController@contact')->name('contact');
+Route::get('/login', 'interfaceController@login')->name('login');
+Route::get('/register', 'interfaceController@register')->name('register');
+Route::post('/login', 'interfaceController@postLogin')->name('login');
