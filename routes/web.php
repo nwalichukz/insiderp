@@ -20,4 +20,7 @@ Route::get('/terms', 'interfaceController@terms')->name('terms');
 Route::get('/contact', 'interfaceController@contact')->name('contact');
 Route::get('/login', 'interfaceController@login')->name('login');
 Route::get('/register', 'interfaceController@register')->name('register');
+Route::get('/suspended-banned', 'interfaceController@suspendedBanned');
+Route::get('/user/{user}', 'interfaceController@userDashboard');
+Route::get('/admin/{user}', 'interfaceController@adminDashboard');
 Route::post('/login', 'interfaceController@postLogin')->name('login');

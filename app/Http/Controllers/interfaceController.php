@@ -27,10 +27,10 @@ class interfaceController extends Controller
             return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
         }elseif ($auth == 'suspended') {
         	$msg = OffenderController::getMessage(Auth::user()->vendor_id);
-            return view('pages.suspended-banned')->with(['message'=>$msg]);
+            return redirect('suspended-banned');
         }elseif ($auth == 'banned') {
         	$msg = OffenderController::getMessage(Auth::user()->vendor_id);
-            return view('pages.suspended-banned')->with(['message'=>$msg]);
+            return redirect('suspended-banned');
         }else{
         	Auth::logout();
         return redirect()->back()->with('status','invalid login details');
@@ -93,6 +93,32 @@ class interfaceController extends Controller
     {
     	return view('pages.terms')->with(['title' => 'Terms and Conditions']);
     }
+ /**
+ * This method
+ *
+ * returns collecion
+ */
+ public function suspendedBanned($id)
+ {  $msg = Offender::where('service_id', $id)->get();
+    return view('pages.suspended-banned')->with(['message'=>$msg]);
+ }
+ /**
+ * This method
+ *
+ * returns collecion
+ */
+ public function userDashboard()
+ {
 
+ }
+/**
+ * This method returns the admin page
+ *
+ * returns collecion
+ */
+ public function adminDashboard()
+ {
+    
+ }
 
 }
