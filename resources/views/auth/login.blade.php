@@ -6,71 +6,88 @@ Login | Sign up
 @section('content')
 	@include('partials.header2')
 
-	<!-- Titlebar
-================================================== -->
-<div id="titlebar" class="single">
+	<div class="page-header" style="background: url(assets/img/banner1.jpg);">
 	<div class="container">
-
-		<div class="sixteen columns">
-			<h2>Login</h2>
-			<nav id="breadcrumbs">
-				<ul>
-					<li>You are here:</li>
-					<li><a href="{{ url('/') }}">Home</a></li>
-					<li>Login</li>
-				</ul>
-			</nav>
-		</div>
-
-	</div>
-</div>
-
-<!-- Content
-================================================== -->
-
-<!-- Container -->
-<div class="container">
-
-	<div class="my-account">
-
-
-		<div class="tabs-container">
-			<!-- Login -->
-			<div class="tab-content" id="tab1" style="display: none;">
-				<form action="{{ route('login') }}" method="post" class="login">
-					{{ csrf_field() }}
-					<p class="form-row form-row-wide">
-						<label for="username">Email Address:
-							<i class="ln ln-icon-Male"></i>
-							<input type="text" class="input-text" name="email" placeholder="Email Address" id="email" value="" />
-						</label>
-					</p>
-
-					<p class="form-row form-row-wide">
-						<label for="password">Password:
-							<i class="ln ln-icon-Lock-2"></i>
-							<input class="input-text" type="password" name="password" placeholder="Password" id="password"/>
-						</label>
-					</p>
-
-					<p class="form-row">
-						<input type="submit" class="button border fw margin-top-10" name="login" value="Login" />
-
-						<label for="rememberme" class="rememberme">
-						<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember Me</label>
-					</p>
-
-					<p class="lost_password">
-						<a href="#" >Lost Your Password?</a>
-					</p>
-					
-				</form>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="breadcrumb-wrapper">
+					<h2 class="product-title">Login</h2>
+					<ol class="breadcrumb">
+						<li><a href="{{ url('/') }}"><i class="ti-home"></i> Home</a></li>
+						<li class="current">Login</li>
+					</ol>
+				</div>
 			</div>
-
-			
 		</div>
 	</div>
 </div>
+<div id="content" class="my-account">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-6 cd-user-modal">
+				<div class="my-account-form">
+					<h1><a href="#">Login</a></h1>
+					<hr>
+					<div id="cd-login" class="is-selected">
+						<div class="page-login-form">
+							<form role="form" class="login-form" action="{{ route('login') }}" method="post">
+								{{ csrf_field() }}
+								<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+									<div class="input-icon">
+										<i class="ti-user"></i>
+										<input type="text" id="email" class="form-control" name="email" placeholder="Email Address">
+										@if ($errors->has('email'))
+				                            <span class="help-block">
+				                                <strong>{{ $errors->first('email') }}</strong>
+				                            </span>
+				                        @endif
+									</div>
+								</div>
+								<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+									<div class="input-icon">
+										<i class="ti-lock"></i>
+										<input type="password" name="password" class="form-control" placeholder="Password">
+										@if ($errors->has('password'))
+				                            <span class="help-block">
+				                                <strong>{{ $errors->first('password') }}</strong>
+				                            </span>
+				                        @endif
+									</div>
+								</div>
+								<button class="btn btn-common log-btn">Login</button>
+								<div class="checkbox-item">
+									<div class="checkbox">
+										<label for="rememberme" class="rememberme">
+											<input name="rememberme" id="rememberme" value="forever" type="checkbox" {{ old('remember') ? 'checked' : '' }}> Remember Me
+										</label>
+									</div>
+									<p class="cd-form-bottom-message"><a href="#0">Lost your password?</a></p>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="page-login-form" id="cd-reset-password"> 
+						<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+						<form class="cd-form">
+							<div class="form-group">
+								<div class="input-icon">
+									<i class="ti-email"></i>
+									<input type="text" id="sender-email" class="form-control" name="email" placeholder="Email">
+								</div>
+							</div>
+							<p class="fieldset">
+								<button class="btn btn-common log-btn" type="submit">Reset password</button>
+							</p>
+						</form>
+						<p class="cd-form-bottom-message"><a href="#">Back to log-in</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 
 @include('partials.footer')
 

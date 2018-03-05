@@ -66,6 +66,15 @@ class interfaceController extends Controller
         return view('auth.register');
     }
 
+    /**
+     * @method dashboard
+     * returns user dashboard page
+     */
+    public function dashboard()
+    {
+        return view('dashboard.index');
+    }
+
  
     /**
      * @method aboutLetnote

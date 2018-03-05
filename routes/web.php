@@ -21,3 +21,4 @@ Route::get('/contact', 'interfaceController@contact')->name('contact');
 Route::get('/login', 'interfaceController@login')->name('login');
 Route::get('/register', 'interfaceController@register')->name('register');
 Route::post('/login', 'interfaceController@postLogin')->name('login');
+Route::get('/dashboard', 'interfaceController@dashboard')->name('dashboard');
