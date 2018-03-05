@@ -21,6 +21,7 @@ class CreateVendorsTable extends Migration
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
             $table->string('youtube')->nullable();
+            $table->string('website')->nullable();
             $table->string('state');
             $table->string('description');
             $table->timestamps();

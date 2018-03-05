@@ -9,7 +9,7 @@ use Validator;
 class VendorController extends Controller
 {
     /**
-    * This method create vendor
+    * This method creates a vendor
     *
     *
     */
@@ -62,6 +62,10 @@ class VendorController extends Controller
       if(!empty($request('youtube')))
      {
      	$update->youtube = $request('youtube');
+     }
+     if(!empty($request('website')))
+     {
+        $update->website = $request('website');
      }
      $update->save();
      }
