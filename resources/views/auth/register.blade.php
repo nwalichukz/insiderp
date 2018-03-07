@@ -69,6 +69,17 @@ Login | Sign up
 										@endif
 									</div>
 								</div>
+								<div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
+									<div class="input-icon">
+										<i class="ti-mobile"></i>
+										<input type="text" id="state" class="form-control" name="state" placeholder="State">
+										@if ($errors->has('state'))
+											<span class="help-block">
+												<strong>{{ $errors->first('state') }}</strong>
+											</span>
+										@endif
+									</div>
+								</div>
 								<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-lock"></i>
