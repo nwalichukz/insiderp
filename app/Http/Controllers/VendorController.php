@@ -17,8 +17,6 @@ class VendorController extends Controller
     { 
     	$service = new Vendor;
     	$service->tradename = $request('tradename');
-    	$service->address = $request('address');
-    	$service->state = $request('state');
     	$service->description = $request('description');
     	$service->facebook = $request('facebook');
     	$service->save();
@@ -33,12 +31,9 @@ class VendorController extends Controller
      { $update = Vendor::find($request('vendor_id'));
      if(!empty($request('tradename')))
      {
-     	$update->tradename = $request('tradename');
+     $update->tradename = $request('tradename');
      }
-      if(!empty($request('address')))
-     {
-     	$update->address = $request('address');
-     }
+     
       if(!empty($request('state')))
      {
      	$update->state = $request('state');

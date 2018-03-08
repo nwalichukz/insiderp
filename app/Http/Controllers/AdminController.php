@@ -11,11 +11,11 @@ class AdminController extends Controller
     * This method returns a certian service
     * @return collection
     */
-     public static function getAll(){
-     	return Service::where('*')
-     					->with('vendor')
+     public static function get(){
+     	return Service::with('vendor')
      					->with('user')
-     					->with('view')->get();
+     					->with('view')
+                        ->paginate(10);
      }
 
 }
