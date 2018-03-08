@@ -23,6 +23,7 @@ Route::get('/terms', 'interfaceController@terms')->name('terms');
 Route::get('/contact', 'interfaceController@contact')->name('contact');
 Route::get('/login', 'interfaceController@login')->name('login');
 Route::get('/register', 'interfaceController@register')->name('register');
+Route::post('/register-vendor', 'interfaceController@registerVendor')->name('register-vendor');
 Route::get('/suspended-banned', 'interfaceController@suspendedBanned');
 Route::get('/user/{user}', 'interfaceController@userDashboard');
 Route::get('/admin/{user}', 'interfaceController@adminDashboard');

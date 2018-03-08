@@ -18,6 +18,9 @@ class CreateUsersTable extends Migration
             $table->integer('vendor_id')->unsigned();
             $table->string('name');
             $table->string('phone_no');
+            $table->string('state');
+            $table->string('location');
+            $table->string('address')->nullable();
             $table->string('gender');
             $table->string('email')->unique();
             $table->string('state');

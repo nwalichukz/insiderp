@@ -22,6 +22,7 @@ class interfaceController extends Controller
         ])->validate();
     
         $auth = AuthController::authenticate($request);
+
         if($auth == 'admin'){
         	$vendor = UserController::get(Auth::user()->id);
             return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
@@ -29,10 +30,8 @@ class interfaceController extends Controller
          $user = UserController::get(Auth::user()->id);
             return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
         }elseif ($auth == 'suspended') {
-        	$msg = OffenderController::getMessage(Auth::user()->vendor_id);
             return redirect('suspended-banned');
         }elseif ($auth == 'banned') {
-        	$msg = OffenderController::getMessage(Auth::user()->vendor_id);
             return redirect('suspended-banned');
         }else{
         	Auth::logout();
@@ -143,7 +142,7 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function suspendedBanned($id)
- {  $msg = Offender::where('service_id', $id)->get();
+ {  $msg = Offender::where('service_id', $id)->first();
     return view('pages.suspended-banned')->with(['message'=>$msg]);
  }
  /**
@@ -152,7 +151,8 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function userDashboard()
- {
+ { $user = UserController::get(Auth::user()->id);
+    return view('user.dashboard')->with(['user'=>$user]);
 
  }
 /**
@@ -161,8 +161,40 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function adminDashboard()
- {
+ { $admin = AdminController::get(Auth::user()->id);
+    return view('admin.dashboard')->with(['admin'=>$admin]);
     
+ }
+ /**
+ * This method returns the admin page
+ *
+ * returns collecion
+ */
+ public function registerVendor(Request $request)
+ {    $validator = validator::make($request,
+        [  'email'=>'required|unique::users',
+           'name'=>'required',
+           'location'=>'required',
+           'state'=>'required',
+           'address'=>'required',
+           'phone_no'=>'required',
+           ]);
+          if($validator->fails())
+        {
+          return redirect()->back()->withErrors($validator);
+        }
+        $service = new Vendor;
+        $service->tradename = $request('tradename');
+        $service->description = $request('description');
+        $service->facebook = $request('facebook');
+        $service->save();
+    $user = UserController::create($request, $service->id);
+    if($user)
+    {
+        return redirect::back()->with('status', 'User created successfully');
+    }else{
+        return redirect::back()->with('status', 'Something went wrong user could not be created');
+    }
  }
 
 }
