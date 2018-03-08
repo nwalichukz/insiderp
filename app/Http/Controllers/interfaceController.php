@@ -146,8 +146,8 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function userDashboard()
- { $user = UserController::get(Auth::User()->id);
-    return view('user.dashboard')->with('user'=>$user);
+ { $user = UserController::get(Auth::user()->id);
+    return view('user.dashboard')->with(['user'=>$user]);
 
  }
 /**
@@ -156,8 +156,8 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function adminDashboard()
- { $admin = AdminController::get(Auth::User()->id);
-    return view('admin.dashboard')->with('admin'=>$admin);
+ { $admin = AdminController::get(Auth::user()->id);
+    return view('admin.dashboard')->with(['admin'=>$admin]);
     
  }
  /**
@@ -165,9 +165,9 @@ class interfaceController extends Controller
  *
  * returns collecion
  */
- public function register(Request $request)
- {    $validator = validator::make($data,
-        [  'email'=>'required|unique',
+ public function registerVendor(Request $request)
+ {    $validator = validator::make($request,
+        [  'email'=>'required|unique::users',
            'name'=>'required',
            'location'=>'required',
            'state'=>'required',
@@ -186,9 +186,9 @@ class interfaceController extends Controller
     $user = UserController::create($request, $service->id);
     if($user)
     {
-        return redirect::back()->with('status', 'User created successfully')
+        return redirect::back()->with('status', 'User created successfully');
     }else{
-        return redirect::back()->with('status', 'Something went wrong user could not be created') 
+        return redirect::back()->with('status', 'Something went wrong user could not be created');
     }
  }
 
