@@ -1,22 +1,82 @@
 <!-- Categories -->
-<div class="container">
-	<div class="sixteen columns">
-		<h3 class="margin-bottom-25">Popular Categories</h3>
-		<ul id="popular-categories">
-			<li><a href="#"><i class="ln  ln-icon-Bar-Chart"></i> Accounting / Finance</a></li>
-			<li><a href="#"><i class="ln ln-icon-Car"></i> Automotive Jobs</a></li>
-			<li><a href="#"><i class="ln ln-icon-Worker"></i> Construction / Facilities</a></li>
-			<li><a href="#"><i class="ln ln-icon-Student-Female"></i> Education Training</a></li>
-			<li><a href="#"><i class="ln  ln-icon-Medical-Sign"></i> Healthcare</a></li>
-			<li><a href="#"><i class="ln  ln-icon-Plates"></i> Restaurant / Food Service</a></li>
-			<li><a href="#"><i class="ln  ln-icon-Globe"></i> Transportation / Logistics</a></li>
-			<li><a href="#"><i class="ln  ln-icon-Laptop-3"></i> Telecommunications</a></li>
-		</ul>
-
-		<div class="clearfix"></div>
-		<div class="margin-top-30"></div>
-
-		<a href="browse-categories.html" class="button centered">Browse All Categories</a>
-		<div class="margin-bottom-50"></div>
+<section class="category section">
+	<div class="container">
+		<h2 class="section-title">Categories</h2>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
+					<a href="browse-jobs.html">
+						<div class="icon">
+							<i class="ti-home"></i>
+						</div>
+						<h3>Finance</h3>
+						<p>4286 jobs</p>
+					</a>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
+					<a href="browse-jobs.html">
+						<div class="icon">
+							<i class="ti-world"></i>
+						</div>
+						<h3>Sale/Markting</h3>
+						<p>2000 jobs</p>
+					</a>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
+					<a href="browse-jobs.html">
+						 <div class="icon">
+							<i class="ti-book"></i>
+						</div>
+						<h3>Education/Training</h3>
+						<p>1450 jobs</p>
+					</a>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
+					<a href="browse-jobs.html">
+						<div class="icon">
+							<i class="ti-desktop"></i>
+						</div>
+						<h3>Technologies</h3>
+						<p>5100 jobs</p>
+					</a>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
+					<a href="browse-jobs.html">
+						<div class="icon">
+							<i class="ti-brush"></i>
+						</div>
+						<h3>Art/Design</h3>
+						<p>5079 jobs</p>
+					</a>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
+					<a href="browse-jobs.html">
+						<div class="icon">
+							<i class="ti-heart"></i>
+						</div>
+						<h3>Healthcare</h3>
+						<p>3235 jobs</p>
+						</a>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
+					<a href="browse-jobs.html">
+						<div class="icon">
+							<i class="ti-filter"></i>
+						</div>
+						<h3>Science</h3>
+						<p>1800 jobs</p>
+					</a>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
+					<a href="browse-jobs.html">
+						<div class="icon">
+							<i class="ti-cup"></i>
+						</div>
+						<h3>Food Services</h3>
+						<p>4286 jobs</p>
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
+</section>

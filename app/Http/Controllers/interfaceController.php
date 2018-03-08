@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\UserController;
+use Validator;
+use Auth;
 class interfaceController extends Controller
 {	/**
 	* This method checks
@@ -65,10 +67,47 @@ class interfaceController extends Controller
         return view('auth.register');
     }
 
+    /**
+     * @method dashboard
+     * returns user dashboard page
+     */
+    public function dashboard()
+    {
+        return view('dashboard.index');
+    }
+
+    /**
+     * @method jobDetail 
+     * returns job detail page
+     */
+    public function jobDetail()
+    {
+        return view('dashboard.job-detail');
+    }
+
+    /**
+     * @method jobOffers 
+     * returns job offers page
+     */
+    public function offers()
+    {
+        return view('dashboard.offers');
+    }
+
+    /**
+     * @method manageApplications
+     * returns manage applications page
+     */
+    public function manageApplications()
+    {
+        return view('dashboard.applications');
+    }
+
+
  
     /**
-     * @method aboutLetnote
-     * returns aboutLetnote page
+     * @method about
+     * returns about Biddo page
      */
     public function about()
     {

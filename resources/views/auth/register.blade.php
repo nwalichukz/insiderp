@@ -6,84 +6,108 @@ Login | Sign up
 @section('content')
 	@include('partials.header2')
 
-	<!-- Titlebar
-================================================== -->
-<div id="titlebar" class="single">
-	<div class="container">
 
-		<div class="sixteen columns">
-			<h2>Register</h2>
-			<nav id="breadcrumbs">
-				<ul>
-					<li>You are here:</li>
-					<li><a href="{{ url('/') }}">Home</a></li>
-					<li>Register</li>
-				</ul>
-			</nav>
-		</div>
-
-	</div>
-</div>
 
 <!-- Content
 ================================================== -->
-
-<!-- Container -->
-<div class="container">
-
-	<div class="my-account">
-
-		<div class="tabs-container">
-
-			<!-- Register -->
-			<div class="tab-content" id="tab2" style="display: none;">
-
-				<form method="post" class="register" action="{{ url('account/register') }}">
-					{{ csrf_field() }}
-				<p class="form-row form-row-wide">
-					<label for="username2">Full Name:
-						<i class="ln ln-icon-Male"></i>
-						<input type="text" class="input-text" name="name" placeholder="Full Name" id="name" value="" />
-					</label>
-				</p>
-					
-				<p class="form-row form-row-wide">
-					<label for="email2">Email Address:
-						<i class="ln ln-icon-Mail"></i>
-						<input type="text" class="input-text" name="email" placeholder="Email Address" id="email2" value="" />
-					</label>
-				</p>
-
-				<p class="form-row form-row-wide">
-					<label for="password1">Password:
-						<i class="ln ln-icon-Lock-2"></i>
-						<input class="input-text" type="password" name="password" placeholder="Password" id="password1"/>
-					</label>
-				</p>
-
-				<p class="form-row form-row-wide">
-					<label for="password1">Phone:
-						<i class="ln ln-icon-Phone-2"></i>
-						<input class="input-text" type="text" name="Phone_no" placeholder="Phone Number" id="phone"/>
-					</label>
-				</p>
-
-				<p class="form-row">
-					<label for="Gender">Gender:
-						<input type="radio" name="gender" value="male"> Male
-						<input type="radio" name="gender" value="female"> Female
-						<input type="radio" name="gender" value="other"> Other
-					</label>
-				</p>
-
-				<p class="form-row">
-					<input type="submit" class="button border fw margin-top-10" name="register" value="Register" />
-				</p>
-
-				</form>
+<div class="page-header" style="background: url(assets/img/banner1.jpg);">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="breadcrumb-wrapper">
+					<h2 class="product-title">Register</h2>
+					<ol class="breadcrumb">
+						<li><a href="{{ url('/') }}"><i class="ti-home"></i> Home</a></li>
+						<li class="current">Register</li>
+					</ol>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<div id="content" class="my-account">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-6 cd-user-modal">
+				<div class="my-account-form">
+					<h1><a href="#">Register Here!</a></h1>
+					<hr>
 
+					<div id="cd-signup">
+						<div class="page-login-form register">
+							<form role="form" class="login-form">
+								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+									<div class="input-icon">
+										<i class="ti-user"></i>
+										<input type="text" id="name" class="form-control" name="name" placeholder="Full Name">
+										@if ($errors->has('name'))
+											<span class="help-block">
+												<strong>{{ $errors->first('name') }}</strong>
+											</span>
+										@endif
+									</div>
+								</div>
+								<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+									<div class="input-icon">
+										<i class="ti-email"></i>
+										<input type="text" id="email" class="form-control" name="email" placeholder="Email Address">
+										@if ($errors->has('email'))
+											<span class="help-block">
+												<strong>{{ $errors->first('email') }}</strong>
+											</span>
+										@endif
+									</div>
+								</div>
+								<div class="form-group{{ $errors->has('phone_no') ? ' has-error' : '' }}">
+									<div class="input-icon">
+										<i class="ti-mobile"></i>
+										<input type="text" id="phone_no" class="form-control" name="phone_no" placeholder="Phone Number">
+										@if ($errors->has('phone_no'))
+											<span class="help-block">
+												<strong>{{ $errors->first('phone_no') }}</strong>
+											</span>
+										@endif
+									</div>
+								</div>
+								<div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
+									<div class="input-icon">
+										<i class="ti-mobile"></i>
+										<input type="text" id="state" class="form-control" name="state" placeholder="State">
+										@if ($errors->has('state'))
+											<span class="help-block">
+												<strong>{{ $errors->first('state') }}</strong>
+											</span>
+										@endif
+									</div>
+								</div>
+								<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+									<div class="input-icon">
+										<i class="ti-lock"></i>
+										<input type="password" id="password" class="form-control" name="password" placeholder="Password">
+										@if ($errors->has('password'))
+											<span class="help-block">
+												<strong>{{ $errors->first('password') }}</strong>
+											</span>
+										@endif
+									</div>
+								</div>
+								<div class="form-group">
+									<select class="form-control">
+										<option disabled selected><b>Gender</b></option>
+										<option value="male"><b>Male</b></option>
+										<option value="female"><b>Female</b></option>
+									</select>
+									</div>
+									<button class="btn btn-common log-btn">Register</button>
+								</div>	
+							</form>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 @include('partials.footer')
+
+@endsection

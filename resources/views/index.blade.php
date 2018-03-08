@@ -4,49 +4,29 @@ Biddo
 @endsection
 
 @section('content')
-    @include('partials.header')
-    <div class="clearfix"></div>
+  @include('partials.header')
 
-    @include('partials.banner')
-    @include('partials.category')
+  @include('partials.category')
 
-    <!-- Testimonials -->
-<div id="testimonials">
-    <!-- Slider -->
-    <div class="container">
-        <div class="sixteen columns">
-            <div class="testimonials-slider">
-                  <ul class="slides">
-                    <li>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut soluta rem accusamus nostrum laborum placeat molestiae officia inventore quidem!
-                      <span>Collis Ta’eed, Envato</span></p>
-                    </li>
+  @include('partials.featured')
 
-                    <li>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo reiciendis consequatur nostrum, optio ullam eius inventore iste, esse dolorum? Ullam.
-                      <span>John Doe</span></p>
-                    </li>
-                    
-                    <li>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quod inventore voluptatem nisi sunt dicta, vel velit! Maiores, voluptatum, laudantium!
-                      <span>Tom Smith</span></p>
-                    </li>
 
-                  </ul>
-            </div>
-        </div>
+<section class="section purchase" data-stellar-background-ratio="0.5">
+  <div class="container">
+    <div class="row">
+      <div class="section-content text-center">
+        <h1 class="title-text">
+          Looking for a Job
+        </h1>
+        <p>Join thousand of employers and earn what you deserve!</p>
+        <a href="{{ url('/register') }}" class="btn btn-common">Get Started Now</a>
+      </div>
     </div>
-</div>
+  </div>
+</section>
 
-
-<!-- Infobox -->
-<div class="infobox">
-    <div class="container">
-        <div class="sixteen columns">Start Building Your Own Job Board Now <a href="{{ url('register') }}">Get Started</a></div>
-    </div>
-</div>
-
-@include('partials.footer')
+    
+ @include('partials.footer')
 
 
 @endsection
