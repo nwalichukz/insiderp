@@ -165,11 +165,14 @@ class interfaceController extends Controller
     return view('admin.dashboard')->with(['admin'=>$admin]);
     
  }
- /**
- * This method returns the admin page
- *
- * returns collecion
- */
+
+    /**
+     * This method returns the admin page
+     *
+     * returns collecion
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
  public function registerVendor(Request $request)
  {    $validator = validator::make($request,
         [  'email'=>'required|unique::users',

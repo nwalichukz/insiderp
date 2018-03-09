@@ -35,7 +35,8 @@ Login | Sign up
 
 					<div id="cd-signup">
 						<div class="page-login-form register">
-							<form role="form" class="login-form">
+							<form role="form" class="login-form" action="{{ route('register-vendor') }}" method="post">
+                                {{ csrf_field() }}
 								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-user"></i>
@@ -71,7 +72,7 @@ Login | Sign up
 								</div>
 								<div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
 									<div class="input-icon">
-										<i class="ti-mobile"></i>
+										<i class="ti-world"></i>
 										<input type="text" id="state" class="form-control" name="state" placeholder="State">
 										@if ($errors->has('state'))
 											<span class="help-block">
@@ -80,10 +81,21 @@ Login | Sign up
 										@endif
 									</div>
 								</div>
+								<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+									<div class="input-icon">
+										<i class="ti-map"></i>
+										<input type="text" id="location" class="form-control" name="location" placeholder="Location">
+										@if ($errors->has('location'))
+											<span class="help-block">
+												<strong>{{ $errors->first('location') }}</strong>
+											</span>
+										@endif
+									</div>
+								</div>
 								<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-lock"></i>
-										<input type="password" id="password" class="form-control" name="password" placeholder="Password">
+										<input type="password" id="password" class="form-control" name="password" placeholder="Password" autocomplete="false">
 										@if ($errors->has('password'))
 											<span class="help-block">
 												<strong>{{ $errors->first('password') }}</strong>
