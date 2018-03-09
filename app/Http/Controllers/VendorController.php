@@ -16,9 +16,9 @@ class VendorController extends Controller
     public static function create(Request $request)
     { 
     	$service = new Vendor;
-    	$service->tradename = $request('tradename');
-    	$service->description = $request('description');
-    	$service->facebook = $request('facebook');
+    	$service->tradename = $request['tradename'];
+    	$service->description = $request['description'];
+    	$service->facebook = $request['facebook'];
     	$service->save();
     }
 
@@ -28,39 +28,39 @@ class VendorController extends Controller
     *
     */
      public static function update(Request $request)
-     { $update = Vendor::find($request('vendor_id'));
-     if(!empty($request('tradename')))
+     { $update = Vendor::find($request['vendor_id']);
+     if(!empty($request['tradename']))
      {
-     $update->tradename = $request('tradename');
+     $update->tradename = $request['tradename'];
      }
      
-      if(!empty($request('state')))
+      if(!empty($request['state']))
      {
-     	$update->state = $request('state');
+     	$update->state = $request['state'];
      }
-      if(!empty($request('description')))
+      if(!empty($request['description']))
      {
-     	$update->description = $request('description');
+     	$update->description = $request['description'];
      }
-      if(!empty($request('facebook')))
+      if(!empty($request['facebook']))
      {
-     	$update->facebook = $request('facebook');
+     	$update->facebook = $request['facebook'];
      }
-      if(!empty($request('twitter')))
+      if(!empty($request['twitter']))
      {
-     	$update->twitter = $request('twitter');
+     	$update->twitter = $request['twitter'];
      }
-      if(!empty($request('instagram')))
+      if(!empty($request['instagram']))
      {
-     	$update->instagram = $request('instagram');
+     	$update->instagram = $request['instagram'];
      }
-      if(!empty($request('youtube')))
+      if(!empty($request['youtube']))
      {
-     	$update->youtube = $request('youtube');
+     	$update->youtube = $request['youtube'];
      }
-     if(!empty($request('website')))
+     if(!empty($request['website']))
      {
-        $update->website = $request('website');
+        $update->website = $request['website'];
      }
      $update->save();
      }
