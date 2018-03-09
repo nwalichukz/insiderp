@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\view;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -103,8 +104,12 @@ class interfaceController extends Controller
         return view('dashboard.applications');
     }
 
+    public function search()
+    {
+        return view('pages.search-results');
+    }
 
- 
+
     /**
      * @method about
      * returns about Biddo page
