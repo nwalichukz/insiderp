@@ -15,16 +15,16 @@ class UserController extends Controller
      public static function create(Request $request, $vendor_id=null)
      {  $user = new User;
      	$user->vendor_id = $vendor_id;
-     	$user->name = $request('name');
-     	$user->gender = $request('gender');
-     	$user->phone_no = $request('phone_no');
-     	$service->address = $request('address');
-     	$user->email = $request('email');
-     	$user->location = $request('location');
-     	$service->state = $request('state');
-     	$user->password = $request('password');
+     	$user->name = $request['name'];
+     	$user->gender = $request['gender'];
+     	$user->phone_no = $request['phone_no'];
+     	$service->address = $request['address'];
+     	$user->email = $request['email'];
+     	$user->location = $request['location'];
+     	$service->state = $request['state'];
+     	$user->password = $request['password'];
      	$user->user_level = 'user';
-     	$user->status = $request('status');
+     	$user->status = $request['status'];
      	$user->save();
      }
 
@@ -34,33 +34,33 @@ class UserController extends Controller
     */
      public static function update(Request $request)
      { $update = User::find($id);
-     	if(!empty($request('name')))
+     	if(!empty($request['name']))
      	{
-     	$update->name = $request('name');
+     	$update->name = $request['name'];
      	}
-     	 if(!empty($request('address')))
+     	 if(!empty($request['address']))
      	{
-     	$update->address = $request('address');
+     	$update->address = $request['address'];
      	}
-     	if(!empty($request('gender')))
+     	if(!empty($request['gender']))
      	{
-     		$update->gender = $request('gender');
+     		$update->gender = $request['gender'];
      	}
-     	if(!empty($request('location')))
+     	if(!empty($request['location']))
      	{
-     		$update->location = $request('location');
+     		$update->location = $request['location'];
      	}
-     	if(!empty($request('phone_no')))
+     	if(!empty($request['phone_no']))
      	{
-     		$update->phone_no = $request('phone_no');
+     		$update->phone_no = $request['phone_no'];
      	}
-     	if(!empty($request('state')))
+     	if(!empty($request['state']))
      	{
-     		$update->state = $request('state');
+     		$update->state = $request['state'];
      	}
-     	if(!empty($request('email')))
+     	if(!empty($request['email']))
      	{
-     		$update->email = $request('email');
+     		$update->email = $request['email'];
      	}
      	$update->save();
 

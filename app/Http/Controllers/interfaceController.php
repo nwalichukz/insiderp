@@ -174,7 +174,7 @@ class interfaceController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
  public function registerVendor(Request $request)
- {    $validator = validator::make($request,
+ {    $validator = validator::make($request->all(),
         [  'email'=>'required|unique::users',
            'name'=>'required',
            'location'=>'required',
@@ -187,9 +187,9 @@ class interfaceController extends Controller
           return redirect()->back()->withErrors($validator);
         }
         $service = new Vendor;
-        $service->tradename = $request('tradename');
-        $service->description = $request('description');
-        $service->facebook = $request('facebook');
+        $service->tradename = $request['tradename'];
+        $service->description = $request['description'];
+        $service->facebook = $request['facebook'];
         $service->save();
     $user = UserController::create($request, $service->id);
     if($user)
