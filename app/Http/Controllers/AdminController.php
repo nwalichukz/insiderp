@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ServiceController;
 use App\Vendor;
+use App\Service;
 class AdminController extends Controller
 {
      /**

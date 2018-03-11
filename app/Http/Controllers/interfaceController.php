@@ -20,26 +20,26 @@ class interfaceController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
       protected function postLogin(Request $request)
-    {   $validator = $this->validate($request, [
+    {   $validator = Validator::make($request->all(), [
         'email' => 'required|max:255',
         'password' => 'required|max:255'
         ]);
         if(!$validator->fails())
         {
         $auth = AuthController::authenticate($request);
-        if($auth == 'admin'){
-            $vendor = UserController::get(Auth::user()->id);
+        if($auth === 'admin'){
+            $vendor =  Auth::user();
           return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
-        }elseif ($auth == 'user') {
-         $user = UserController::get(Auth::user()->id);
+        }elseif ($auth === 'user') {
+         $user = Auth::user();
             return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
-        }elseif ($auth == 'suspended') {
+        }elseif ($auth === 'suspended') {
             return redirect('suspended-banned');
-        }elseif ($auth == 'banned') {
+        }elseif ($auth === 'banned') {
             return redirect('suspended-banned');
         }else{
         	Auth::logout();
-            return redirect()->back()->with('status','invalid login details');
+            return redirect()->back()->with('status','Invalid login details');
         }
     }
     else
@@ -209,6 +209,16 @@ class interfaceController extends Controller
         {
             return redirect()->back()->withErrors($validator);
         }
+ }
+ /**
+ * This method is for logout
+ * 
+ *
+ */
+ public static function logout()
+ {
+    Auth::logout();
+    return redirect('/');
  }
 
 }

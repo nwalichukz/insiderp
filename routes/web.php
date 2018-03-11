@@ -33,3 +33,4 @@ Route::get('/job-detail', 'interfaceController@jobDetail')->name('job');
 Route::get('/offers', 'interfaceController@offers')->name('offer');
 Route::get('/manage-applications', 'interfaceController@manageApplications')->name('manage-applications');
 Route::get('/search', 'interfaceController@search')->name('search');
+Route::get('/logout', 'interfaceController@logout');
