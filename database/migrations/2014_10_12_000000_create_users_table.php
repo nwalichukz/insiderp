@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('state');
             $table->string('password');
-            $table->string('user_level');
-            $table->string('status');
+            $table->string('user_level')->default('user');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
         Schema::table('users', function($table) {

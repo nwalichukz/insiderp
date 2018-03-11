@@ -24,7 +24,7 @@ class interfaceController extends Controller
         'email' => 'required|max:255',
         'password' => 'required|max:255'
         ]);
-        if(!$validator->fails())
+        if(!$validator)
         {
         $auth = AuthController::authenticate($request);
         if($auth == 'admin'){
