@@ -14,7 +14,6 @@ class UserController extends Controller
     */
      public static function create(Request $request, $vendor_id=null)
      {  $user = new User;
-        $active = 'active';
      	$user->vendor_id = $vendor_id;
      	$user->name = $request['name'];
      	$user->gender = $request['gender'];
@@ -24,8 +23,6 @@ class UserController extends Controller
      	$user->location = $request['location'];
      	$user->state = $request['state'];
      	$user->password = bcrypt($request['password']);
-     	$user->user_level = 'user';
-     	$user->status = $active;
      	$user->gender = $request['gender'];
      	$user->save();
      }
@@ -34,7 +31,7 @@ class UserController extends Controller
     * This method updates user
     *
     */
-     public static function update(Request $request)
+     public static function update(Request $request, $id)
      { $update = User::find($id);
      	if(!empty($request['name']))
      	{

@@ -22,9 +22,11 @@
 						<li>
 							<a class="active" href="{{ url('/') }}">Home </i></a>	
 						</li>
-						<li>
-							<a href="{{ url('/about') }}">About Us </i></a>
-						</li>
+						@if(Auth::check())
+							<li>
+								<a href="{{ url('/about') }}">About Us </i></a>
+							</li>
+						@endif
 						<li>
 							<a href="{{ url('/contact') }}">Contact Us </a>
 						</li>
