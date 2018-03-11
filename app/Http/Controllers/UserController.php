@@ -14,17 +14,19 @@ class UserController extends Controller
     */
      public static function create(Request $request, $vendor_id=null)
      {  $user = new User;
+        $active = 'active';
      	$user->vendor_id = $vendor_id;
      	$user->name = $request['name'];
      	$user->gender = $request['gender'];
      	$user->phone_no = $request['phone_no'];
-     	$service->address = $request['address'];
+     	$user->address = $request['address'];
      	$user->email = $request['email'];
      	$user->location = $request['location'];
      	$user->state = $request['state'];
-     	$user->password = $request['password'];
+     	$user->password = bcrypt($request['password']);
      	$user->user_level = 'user';
-     	$user->status = $request['status'];
+     	$user->status = $active;
+     	$user->gender = $request['gender'];
      	$user->save();
      }
 

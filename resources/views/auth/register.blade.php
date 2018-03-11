@@ -6,11 +6,9 @@ Login | Sign up
 @section('content')
 	@include('partials.header2')
 
-
-
 <!-- Content
 ================================================== -->
-<div class="page-header" style="background: url(assets/img/banner1.jpg);">
+<div class="page-header" style="background: url('assets/img/banner1.jpg');">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -35,14 +33,19 @@ Login | Sign up
 
 					<div id="cd-signup">
 						<div class="page-login-form register">
+<<<<<<< HEAD
 
 							<form role="form" method="POST" class="login-form" action="{{url('/register-vendor')}}">
 								{{csrf_field()}}
 
+=======
+							<form role="form" method="POST" class="login-form" action="{{ route('signup') }}">
+								{{csrf_field()}}
+>>>>>>> bb2de2652921bbf3b1b7d3751e799240b26a66fe
 								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-user"></i>
-										<input type="text" id="name" class="form-control" name="name" placeholder="Full Name">
+										<input type="text" id="name" class="form-control" name="name" placeholder="Full Name" value="{{ old('name') }}">
 										@if ($errors->has('name'))
 											<span class="help-block">
 												<strong>{{ $errors->first('name') }}</strong>
@@ -53,7 +56,7 @@ Login | Sign up
 								<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-email"></i>
-										<input type="text" id="email" class="form-control" name="email" placeholder="Email Address">
+										<input type="text" id="email" class="form-control" name="email" placeholder="Email Address" value="{{ old('email') }}">
 										@if ($errors->has('email'))
 											<span class="help-block">
 												<strong>{{ $errors->first('email') }}</strong>
@@ -61,11 +64,21 @@ Login | Sign up
 										@endif
 									</div>
 								</div>
-
+                                <div class="form-group{{ $errors->has('tradename') ? ' has-error' : '' }}">
+                                    <div class="input-icon">
+                                        <i class="ti-tag"></i>
+                                        <input type="text" id="email" class="form-control" name="tradename" placeholder="Trade Name" value="{{ old('tradename') }}">
+                                        @if ($errors->has('tradename'))
+                                            <span class="help-block">
+												<strong>{{ $errors->first('tradename') }}</strong>
+											</span>
+                                        @endif
+                                    </div>
+                                </div>
 								<div class="form-group{{ $errors->has('phone_no') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-mobile"></i>
-										<input type="text" id="phone_no" class="form-control" name="phone_no" placeholder="Phone Number">
+										<input type="text" id="phone_no" class="form-control" name="phone_no" placeholder="Phone Number" value="{{ old('phone_no') }}">
 										@if ($errors->has('phone_no'))
 											<span class="help-block">
 												<strong>{{ $errors->first('phone_no') }}</strong>
@@ -77,7 +90,7 @@ Login | Sign up
 								<div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-world"></i>
-										<input type="text" id="state" class="form-control" name="state" placeholder="State">
+										<input type="text" id="state" class="form-control" name="state" placeholder="State" value="{{ old('state') }}">
 										@if ($errors->has('state'))
 											<span class="help-block">
 												<strong>{{ $errors->first('state') }}</strong>
@@ -88,7 +101,7 @@ Login | Sign up
 								<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-map"></i>
-										<input type="text" id="location" class="form-control" name="location" placeholder="Location">
+										<input type="text" id="location" class="form-control" name="location" placeholder="Location" value="{{ old('location') }}">
 										@if ($errors->has('location'))
 											<span class="help-block">
 												<strong>{{ $errors->first('location') }}</strong>
@@ -99,7 +112,7 @@ Login | Sign up
 								<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-lock"></i>
-										<input type="password" id="password" class="form-control" name="password" placeholder="Password" autocomplete="false">
+										<input type="password" id="password" class="form-control" name="password" placeholder="Password" autocomplete="false" value="">
 										@if ($errors->has('password'))
 											<span class="help-block">
 												<strong>{{ $errors->first('password') }}</strong>
@@ -108,14 +121,14 @@ Login | Sign up
 									</div>
 								</div>
 								<div class="form-group">
-									<select class="form-control">
+									<select class="form-control" name="gender">
 										<option disabled selected><b>Gender</b></option>
 										<option value="male"><b>Male</b></option>
 										<option value="female"><b>Female</b></option>
 									</select>
 									</div>
 									<button class="btn btn-common log-btn">Register</button>
-								</div>	
+								</div>
 							</form>
 						</div>
 					</div> 

@@ -8,36 +8,45 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Validator;
 use Auth;
-use App\User;
 use App\Vendor;
+
 class interfaceController extends Controller
-{	/**
-	* This method checks
-	*
-	*
-	*
-	*/
+{
+    /**
+     * This method checks
+     *
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
       protected function postLogin(Request $request)
-    {   Validator::make($request->all(), [
-            'email' => 'required|max:255',
-            'password' => 'required|max:255'
-        ])->validate();
-    
+    {   $validator = $this->validate($request, [
+        'email' => 'required|max:255',
+        'password' => 'required|max:255'
+        ]);
+        if ($validator)
+        {
+
         $auth = AuthController::authenticate($request);
 
         if($auth == 'admin'){
           return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
         }elseif ($auth == 'user') {
          $user = UserController::get(Auth::user()->id);
-            return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
+            return redirect('/dashboard');
         }elseif ($auth == 'suspended') {
             return redirect('suspended-banned');
         }elseif ($auth == 'banned') {
             return redirect('suspended-banned');
         }else{
         	Auth::logout();
-        return redirect()->back()->with('status','invalid login details');
+            return redirect()->back()->with('status','invalid login details');
         }
+    }
+    else
+    {
+        return redirect()->back()->withErrors($validator);
+    }
     }
 
     /**
@@ -182,23 +191,25 @@ class interfaceController extends Controller
            'location'=>'required',
            'state'=>'required',
            'phone_no'=>'required',
-           'tradename'=>'required',
+           'tradename' => 'required',
            ]);
-
-          if($validator->fails())
+          if($validator)
         {
-          return redirect()->back()->withErrors($validator)->withInput();
+            $service = new Vendor;
+            $service->tradename = $request['tradename'];
+            $service->save();
+            $user = UserController::create($request, $service->id);
+            if($user)
+            {
+                return redirect('dashboard');
+            }else{
+                return redirect()->back()->with('status', 'Something went wrong user could not be created');
+            }
         }
-        $service = new Vendor;
-        $service->tradename = $request['tradename'];
-        $service->save();
-         $user = UserController::create($request, $service->id);
-    if($user)
-    {
-        return redirect::back()->with('status', 'User created successfully');
-    }else{
-        return redirect::back()->with('status', 'Something went wrong user could not be created');
-    }
+        else
+        {
+            return redirect()->back()->withErrors($validator);
+        }
  }
 
 }

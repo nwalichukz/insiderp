@@ -10,8 +10,8 @@ class AuthController extends Controller
      /**
      * Handles an authentication attempt.
      *
-     * @return Response
-     */
+     * @return string
+      */
 
      public static function authenticate(Request $request)
     {
@@ -23,18 +23,19 @@ class AuthController extends Controller
 
         if (Auth::attempt($adminCredentials))
         {
-       return 'admin';
-
-        }elseif(Auth::attempt($normalUserCredentials)){
-      return 'user';
-
-        }elseif(Auth::attempt($suspended)){
+            return 'admin';
+        }
+        elseif(Auth::attempt($normalUserCredentials)){
+            return 'user';
+        }
+        elseif(Auth::attempt($suspended)){
             return 'suspended';
-
-        }elseif(Auth::attempt($banned)){
+        }
+        elseif(Auth::attempt($banned)){
         	return 'banned';
-        }else{
-        	return 0;
+        }
+        else{
+            return 0;
         }
        
     }
