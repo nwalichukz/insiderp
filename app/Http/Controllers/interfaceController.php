@@ -28,7 +28,7 @@ class interfaceController extends Controller
         {
         $auth = AuthController::authenticate($request);
         if($auth == 'admin'){
-            $vendor = UserController::get(Auth::user()->id)
+            $vendor = UserController::get(Auth::user()->id);
           return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
         }elseif ($auth == 'user') {
          $user = UserController::get(Auth::user()->id);
