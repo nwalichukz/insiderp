@@ -33,15 +33,8 @@ Login | Sign up
 
 					<div id="cd-signup">
 						<div class="page-login-form register">
-<<<<<<< HEAD
-
-							<form role="form" method="POST" class="login-form" action="{{url('/register-vendor')}}">
-								{{csrf_field()}}
-
-=======
 							<form role="form" method="POST" class="login-form" action="{{ route('signup') }}">
 								{{csrf_field()}}
->>>>>>> bb2de2652921bbf3b1b7d3751e799240b26a66fe
 								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-user"></i>
