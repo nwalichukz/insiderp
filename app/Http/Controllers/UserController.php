@@ -21,7 +21,7 @@ class UserController extends Controller
      	$service->address = $request['address'];
      	$user->email = $request['email'];
      	$user->location = $request['location'];
-     	$service->state = $request['state'];
+     	$user->state = $request['state'];
      	$user->password = $request['password'];
      	$user->user_level = 'user';
      	$user->status = $request['status'];

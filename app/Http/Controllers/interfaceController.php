@@ -8,6 +8,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Validator;
 use Auth;
+use App\User;
+use App\Vendor;
 class interfaceController extends Controller
 {	/**
 	* This method checks
@@ -24,8 +26,7 @@ class interfaceController extends Controller
         $auth = AuthController::authenticate($request);
 
         if($auth == 'admin'){
-        	$vendor = UserController::get(Auth::user()->id);
-            return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
+          return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
         }elseif ($auth == 'user') {
          $user = UserController::get(Auth::user()->id);
             return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
@@ -174,24 +175,24 @@ class interfaceController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
  public function registerVendor(Request $request)
- {    $validator = validator::make($request->all(),
+ {   
+     $validator = validator::make($request->all(),
         [  'email'=>'required|unique::users',
            'name'=>'required',
            'location'=>'required',
            'state'=>'required',
-           'address'=>'required',
            'phone_no'=>'required',
+           'tradename'=>'required',
            ]);
+
           if($validator->fails())
         {
-          return redirect()->back()->withErrors($validator);
+          return redirect()->back()->withErrors($validator)->withInput();
         }
         $service = new Vendor;
         $service->tradename = $request['tradename'];
-        $service->description = $request['description'];
-        $service->facebook = $request['facebook'];
         $service->save();
-    $user = UserController::create($request, $service->id);
+         $user = UserController::create($request, $service->id);
     if($user)
     {
         return redirect::back()->with('status', 'User created successfully');

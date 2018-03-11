@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('user_level');
             $table->string('status');
-            $table->rememberToken();
             $table->timestamps();
         });
         Schema::table('users', function($table) {
