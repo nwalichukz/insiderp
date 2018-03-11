@@ -28,7 +28,7 @@ Route::get('/suspended-banned', 'interfaceController@suspendedBanned');
 Route::get('/user/{user}', 'interfaceController@userDashboard');
 Route::get('/admin/{user}', 'interfaceController@adminDashboard');
 Route::post('/login', 'interfaceController@postLogin')->name('login');
-Route::get('/dashboard', 'interfaceController@dashboard')->name('dashboard');
+//Route::get('/dashboard', 'interfaceController@dashboard')->name('dashboard');
 Route::get('/job-detail', 'interfaceController@jobDetail')->name('job');
 Route::get('/offers', 'interfaceController@offers')->name('offer');
 Route::get('/manage-applications', 'interfaceController@manageApplications')->name('manage-applications');

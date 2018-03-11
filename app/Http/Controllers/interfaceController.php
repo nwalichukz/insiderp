@@ -24,16 +24,15 @@ class interfaceController extends Controller
         'email' => 'required|max:255',
         'password' => 'required|max:255'
         ]);
-        if ($validator)
+        if(!$validator->fails())
         {
-
         $auth = AuthController::authenticate($request);
-
         if($auth == 'admin'){
+            $vendor = UserController::get(Auth::user()->id)
           return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
         }elseif ($auth == 'user') {
          $user = UserController::get(Auth::user()->id);
-            return redirect('/dashboard');
+            return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
         }elseif ($auth == 'suspended') {
             return redirect('suspended-banned');
         }elseif ($auth == 'banned') {
@@ -162,7 +161,7 @@ class interfaceController extends Controller
  */
  public function userDashboard()
  { $user = UserController::get(Auth::user()->id);
-    return view('user.dashboard')->with(['user'=>$user]);
+    return view('dashboard.index')->with(['user'=>$user]);
 
  }
 /**
@@ -201,7 +200,7 @@ class interfaceController extends Controller
             $user = UserController::create($request, $service->id);
             if($user)
             {
-                return redirect('dashboard');
+                return redirect('user/{user}');
             }else{
                 return redirect()->back()->with('status', 'Something went wrong user could not be created');
             }
