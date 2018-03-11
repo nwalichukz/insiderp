@@ -17,8 +17,6 @@ class VendorController extends Controller
     { 
     	$service = new Vendor;
     	$service->tradename = $request['tradename'];
-    	$service->description = $request['description'];
-    	$service->facebook = $request['facebook'];
     	$service->save();
     }
 
