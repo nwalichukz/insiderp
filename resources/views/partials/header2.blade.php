@@ -19,28 +19,52 @@
 				<div class="collapse navbar-collapse" id="navbar">
 
 					<ul class="nav navbar-nav">
-						<li>
-							<a class="active" href="{{ url('/') }}">Home </i></a>	
-						</li>
-						@if(Auth::check())
-							<li>
-								<a href="{{ url('/about') }}">About Us </i></a>
-							</li>
-						@endif
-						<li>
-							<a href="{{ url('/contact') }}">Contact Us </a>
-						</li>
-						<li>
-							<a href="{{ url('/faqs') }}">FAQs </a>
-						</li>
-						<li>
-							<a href="{{ url('/blog') }}">Blog</i></a>
-						</li>
+						@if(Auth::guest())
+                            <li>
+                                <a class="active" href="{{ url('/') }}">Home </i></a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/about') }}">About Us </i></a></li>
+                            <li>
+                                <a href="{{ url('/contact') }}">Contact Us </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/faqs') }}">FAQs </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/blog') }}">Blog</a>
+                            </li>
+
+                        @endif
 					</ul>
 					<ul class="nav navbar-nav navbar-right float-right">
-						<li class="left"><a href="{{ url('/register') }}"><i class="ti-user"></i> Register</a></li>
-						<li class="right"><a href="{{ url('/login') }}"><i class="ti-lock"></i> Log In</a></li>
+						@if(Auth::guest())
+                            <li class="left"><a href="{{ url('/register') }}"><i class="ti-user"></i> Register</a></li>
+                            <li class="right"><a href="{{ url('/login') }}"><i class="ti-lock"></i> Log In</a></li>
+                        @endif
 					</ul>
+                    @if(Auth::check())
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-angle-down"></i> {{ Auth::user()->name }}
+                                    <ul class="dropdown">
+                                        <li>
+                                            <a href=""> Profile <i class="fa fa-user-circle"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href=""> Settings <i class="fa fa-gear"></i></a>
+                                        </li>
+                                    </ul>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('logout') }}">
+                                    <i class="fa fa-user-times"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
 				</div>
 			</div>
 

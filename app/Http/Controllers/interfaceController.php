@@ -24,7 +24,7 @@ class interfaceController extends Controller
         'email' => 'required|max:255',
         'password' => 'required|max:255'
         ]);
-        if(!$validator)
+        if($validator)
         {
         $auth = AuthController::authenticate($request);
         if($auth === 'admin'){
@@ -65,6 +65,10 @@ class interfaceController extends Controller
      */
     public function login()
     {
+        if (Auth::check())
+        {
+            return redirect()->back();
+        }
         return view('auth.login');
     }
 
@@ -74,16 +78,11 @@ class interfaceController extends Controller
      */
     public function register()
     {
+        if (Auth::check())
+        {
+            return redirect()->back();
+        }
         return view('auth.register');
-    }
-
-    /**
-     * @method dashboard
-     * returns user dashboard page
-     */
-    public function dashboard()
-    {
-        return view('dashboard.index');
     }
 
     /**
@@ -160,8 +159,8 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function userDashboard()
- { $user = UserController::get(Auth::user()->id);
-    return view('dashboard.index')->with(['user'=>$user]);
+ { $user = Auth::user();
+    return view('dashboard.index', compact(['user']));
 
  }
 /**
@@ -174,7 +173,36 @@ class interfaceController extends Controller
     return view('admin.dashboard')->with(['admin'=>$admin]);
     
  }
+    /**
+     * This method returns the admin user detail page
+     *
+     * returns collection
+     */
+    public function adminUserDetails()
+    { $admin = AdminController::get(Auth::user()->id);
+        return view('admin.user-details')->with(['admin'=>$admin]);
 
+    }
+
+    /**
+     * This method returns the suspended users page
+     *
+     * returns collection
+     */
+     public function suspendedUsers()
+     {
+         return view('admin.suspended');
+     }
+
+    /**
+     * This method returns the admin users page
+     *
+     * returns collection
+     */
+    public function adminUsers()
+    {
+        return view('admin.admins');
+    }
     /**
      * This method returns the admin page
      *
@@ -200,7 +228,8 @@ class interfaceController extends Controller
             $user = UserController::create($request, $service->id);
             if($user)
             {
-                return redirect('user/{user}');
+
+                return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
             }else{
                 return redirect()->back()->with('status', 'Something went wrong user could not be created');
             }
