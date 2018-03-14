@@ -15,6 +15,7 @@ class CreateViewsTable extends Migration
     {   Schema::defaultStringLength(191);
         Schema::create('views', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->integer('service_id')->unsigned();
             $table->string('view');
             $table->timestamps();

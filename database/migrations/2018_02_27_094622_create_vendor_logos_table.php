@@ -13,14 +13,14 @@ class CreateVendorLogosTable extends Migration
      */
     public function up()
     {  Schema::defaultStringLength(191);
-        Schema::create('vendor_logos', function (Blueprint $table) {
+        Schema::create('user_logos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vendor_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('logo')->nullable();
             $table->timestamps();
         });
-        Schema::table('vendor_logos', function($table) {
-            $table->foreign('vendor_id')->references('id')->on('vendors')
+        Schema::table('user_logos', function($table) {
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }
@@ -32,6 +32,6 @@ class CreateVendorLogosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendor_logos');
+        Schema::dropIfExists('user_logos');
     }
 }

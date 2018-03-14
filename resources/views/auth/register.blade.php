@@ -57,17 +57,7 @@ Login | Sign up
 										@endif
 									</div>
 								</div>
-                                <div class="form-group{{ $errors->has('tradename') ? ' has-error' : '' }}">
-                                    <div class="input-icon">
-                                        <i class="ti-tag"></i>
-                                        <input type="text" id="email" class="form-control" name="tradename" placeholder="Trade Name" value="{{ old('tradename') }}">
-                                        @if ($errors->has('tradename'))
-                                            <span class="help-block">
-												<strong>{{ $errors->first('tradename') }}</strong>
-											</span>
-                                        @endif
-                                    </div>
-                                </div>
+                          
 								<div class="form-group{{ $errors->has('phone_no') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-mobile"></i>

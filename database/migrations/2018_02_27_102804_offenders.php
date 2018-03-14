@@ -15,7 +15,6 @@ class Offenders extends Migration
     {   Schema::defaultStringLength(191);
         Schema::create('offenders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vendor_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('offense');
             $table->string('punishment');
@@ -24,8 +23,6 @@ class Offenders extends Migration
         });
 
         Schema::table('offenders', function($table) {
-            $table->foreign('vendor_id')->references('id')->on('vendors')
-                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
         });

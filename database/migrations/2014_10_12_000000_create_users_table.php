@@ -15,10 +15,9 @@ class CreateUsersTable extends Migration
     {   Schema::defaultStringLength(191);
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vendor_id')->unsigned();
             $table->string('name');
             $table->string('phone_no');
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->string('address')->nullable();
             $table->string('gender');
             $table->string('email')->unique();
@@ -26,13 +25,16 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('user_level')->default('user');
             $table->string('status')->default('active');
-            $table->string('description');
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('website')->nullable();
+            $table->string('description')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
-        Schema::table('users', function($table) {
-            $table->foreign('vendor_id')->references('id')->on('vendors')
-                ->onUpdate('cascade')->onDelete('cascade');
-        });
+       
     }
 
     /**

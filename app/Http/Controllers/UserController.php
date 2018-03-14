@@ -12,18 +12,15 @@ class UserController extends Controller
     * This method creates user
     *
     */
-     public static function create(Request $request, $vendor_id=null)
+     public static function create(Request $request)
      {  $user = new User;
-     	$user->vendor_id = $vendor_id;
      	$user->name = $request['name'];
-     	$user->gender = $request['gender'];
+       	$user->gender = $request['gender'];
      	$user->phone_no = $request['phone_no'];
-     	$user->address = $request['address'];
      	$user->email = $request['email'];
      	$user->location = $request['location'];
      	$user->state = $request['state'];
      	$user->password = bcrypt($request['password']);
-     	$user->gender = $request['gender'];
      	$user->save();
      }
 

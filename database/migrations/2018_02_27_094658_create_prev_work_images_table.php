@@ -15,18 +15,15 @@ class CreatePrevWorkImagesTable extends Migration
     {   Schema::defaultStringLength(191);
         Schema::create('prev_work_images', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vendor_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('service_id')->unsigned();
             $table->string('name');
-            $table->string('description');
-            $table->string('caption');
+            $table->string('description')->nullable();
+            $table->string('caption')->nullable();
             $table->timestamps();
         });
 
         Schema::table('prev_work_images', function($table) {
-            $table->foreign('vendor_id')->references('id')->on('vendors')
-                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')

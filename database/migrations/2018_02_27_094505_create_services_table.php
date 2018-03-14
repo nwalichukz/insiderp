@@ -15,9 +15,9 @@ class CreateServicesTable extends Migration
     {  Schema::defaultStringLength(191);
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vendor_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('name');
+            $table->string('tradename')->nullable();
             $table->string('status')->default('active');
             $table->string('location');
             $table->string('description')->nullable();
@@ -25,8 +25,6 @@ class CreateServicesTable extends Migration
             $table->timestamps();
         });
           Schema::table('services', function($table) {
-            $table->foreign('vendor_id')->references('id')->on('vendors')
-                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
         });

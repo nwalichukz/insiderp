@@ -218,17 +218,12 @@ class interfaceController extends Controller
      $validator = validator::make($request->all(),
         [  'email'=>'required|unique::users',
            'name'=>'required',
-           'location'=>'required',
            'state'=>'required',
            'phone_no'=>'required',
-           'tradename' => 'required',
            ]);
           if($validator)
         {
-            $service = new Vendor;
-            $service->tradename = $request['tradename'];
-            $service->save();
-            $user = UserController::create($request, $service->id);
+            $user = UserController::create($request);
             if($user)
             {
                 return redirect()->back()->with('status', 'Account created successfully, thanks for joining us');
@@ -262,7 +257,6 @@ class interfaceController extends Controller
         [  'name'=>'required',
            'location'=>'required',
            'user_id' => 'required',
-           'vendor_id' => 'required',
            ]);
  if($Validator->passes()){
      $service = ServiceController::create($request);
