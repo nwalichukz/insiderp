@@ -18,9 +18,10 @@ class CreateServicesTable extends Migration
             $table->integer('vendor_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('name');
-            $table->string('status');
+            $table->string('status')->default('active');
             $table->string('location');
-            $table->string('description');
+            $table->string('description')->nullable();
+            $table->string('service_category');
             $table->timestamps();
         });
           Schema::table('services', function($table) {

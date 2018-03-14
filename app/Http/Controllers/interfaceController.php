@@ -6,9 +6,12 @@ use App\view;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ViewController;
+use App\Http\Controllers\ServiceController;
 use Validator;
 use Auth;
 use App\Vendor;
+use App\Service;
 
 class interfaceController extends Controller
 {
@@ -24,7 +27,7 @@ class interfaceController extends Controller
         'email' => 'required|max:255',
         'password' => 'required|max:255'
         ]);
-        if(!$validator)
+        if($validator->passes())
         {
         $auth = AuthController::authenticate($request);
         if($auth === 'admin'){
@@ -200,7 +203,7 @@ class interfaceController extends Controller
             $user = UserController::create($request, $service->id);
             if($user)
             {
-                return redirect('user/{user}');
+                return redirect()->back()->with('status', 'Account created successfully, thanks for joining us');
             }else{
                 return redirect()->back()->with('status', 'Something went wrong user could not be created');
             }
@@ -219,6 +222,29 @@ class interfaceController extends Controller
  {
     Auth::logout();
     return redirect('/');
+ }
+/**
+ * This method creates a service
+ * 
+ *
+ */
+ public static function createService(Request $request)
+ {   $validator = validator::make($request->all(),
+        [  'name'=>'required',
+           'location'=>'required',
+           'user_id' => 'required',
+           'vendor_id' => 'required',
+           ]);
+ if($Validator->passes()){
+     $service = ServiceController::create($request);
+   }
+   if($service)
+   {
+    return redirect()->back()->with('status', 'Service created successfully');
+   }else{
+    return redirect()->back()->with('status', 'Something went wrong, Service could not be created');
+   }
+      
  }
 
 }

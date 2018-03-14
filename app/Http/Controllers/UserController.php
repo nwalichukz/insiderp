@@ -61,6 +61,10 @@ class UserController extends Controller
      	{
      		$update->email = $request['email'];
      	}
+        if(!empty($request['description']))
+        {
+            $update->description = $request['description'];
+        }
      	$update->save();
 
      }
