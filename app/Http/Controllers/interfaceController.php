@@ -231,12 +231,8 @@ class interfaceController extends Controller
             $user = UserController::create($request, $service->id);
             if($user)
             {
-<<<<<<< HEAD
                 return redirect()->back()->with('status', 'Account created successfully, thanks for joining us');
-=======
 
-                return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
->>>>>>> 6716e152584816c65807e69b30530c0a4c8f5a2a
             }else{
                 return redirect()->back()->with('status', 'Something went wrong user could not be created');
             }
