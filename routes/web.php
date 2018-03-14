@@ -15,20 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
-use Illuminate\Support\Facades\Route;
-
 Route::get('/', 'interfaceController@index');
 Route::get('/about', 'interfaceController@about')->name('about');
 Route::get('/terms', 'interfaceController@terms')->name('terms');
 Route::get('/contact', 'interfaceController@contact')->name('contact');
-Route::get('/login', 'interfaceController@login')->name('login');
+Route::get('/signin', 'interfaceController@login')->name('signin');
 Route::get('/register', 'interfaceController@register')->name('register');
 Route::post('/register-vendor', 'interfaceController@registerVendor')->name('signup');
 Route::get('/suspended-banned', 'interfaceController@suspendedBanned');
 Route::get('/user/{user}', 'interfaceController@userDashboard');
+Route::get('/admin/{user}/details', 'interfaceController@adminUserDetails');
+Route::get('/admin/suspended-users', 'interfaceController@suspendedUsers')->name('suspended');
+Route::get('/admin/administrators', 'interfaceController@adminUsers')->name('administrators');
 Route::get('/admin/{user}', 'interfaceController@adminDashboard');
 Route::post('/login', 'interfaceController@postLogin')->name('login');
-//Route::get('/dashboard', 'interfaceController@dashboard')->name('dashboard');
 Route::get('/job-detail', 'interfaceController@jobDetail')->name('job');
 Route::get('/offers', 'interfaceController@offers')->name('offer');
 Route::get('/manage-applications', 'interfaceController@manageApplications')->name('manage-applications');

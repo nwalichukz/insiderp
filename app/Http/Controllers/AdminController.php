@@ -10,8 +10,8 @@ class AdminController extends Controller
 {
      /**
     * This method returns a certian service
-    * @return collection
-    */
+    * @return collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+      */
      public static function get(){
      	return Service::with('vendor')
      					->with('user')

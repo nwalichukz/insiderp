@@ -9,7 +9,7 @@ Dashboard | welcome
 
 <!-- Titlebar
 ================================================== -->
-<div class="page-header" style="background: url(assets/img/banner1.jpg);">
+<div class="page-header" style="background: url({{ asset('assets/img/banner1.jpg') }});">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -38,7 +38,7 @@ Dashboard | welcome
 							<img src="assets/img/resume/img-1.jpg" alt="">
 						</div>
 						<div class="author-info">
-							 <h3>Mark Anderson</h3>
+							 <h3>{{ ucfirst($user->name) }}</h3>
 							<p class="sub-title">UI/UX Designer</p>
 							<p><span class="address"><i class="ti-location-pin"></i>Mahattan, NYC, USA</span> <span><i class="ti-phone"></i>(+01) 211-123-5678</span></p>
 							<div class="social-link">
