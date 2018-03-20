@@ -50,6 +50,7 @@
 <body>
 <div id="wrapper">
 	@yield('content')
+    
 
 <!-- Back To Top Button -->
 <a href="#" class="back-to-top">
@@ -92,11 +93,8 @@
 <script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.revolution.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.tools.min.js') }}"></script>
 
- @if ($message = Session::get('status'))
-                <div class="alert alert-success alert-block">
-                    <button type="button" class="close" data-dismiss="alert">×</button> 
-                        <strong>{{ $message }}</strong>
-                </div>
-                @endif
+<script>
+    $('#flash-overlay-modal').modal();
+</script>
 </body>
 </html>

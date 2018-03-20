@@ -37,7 +37,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right float-right">
 						<li class="left"><a href="{{ url('/register') }}"><i class="ti-user"></i> Register</a></li>
-						<li class="right"><a href="{{ url('/login') }}"><i class="ti-lock"></i> Log In</a></li>
+						<li class="right"><a href="{{ url('/signin') }}"><i class="ti-lock"></i> Log In</a></li>
 					</ul>
 				</div>
 			</div>

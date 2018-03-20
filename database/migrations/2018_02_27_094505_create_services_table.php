@@ -22,6 +22,7 @@ class CreateServicesTable extends Migration
             $table->string('location');
             $table->string('description')->nullable();
             $table->string('service_category');
+
             $table->timestamps();
         });
           Schema::table('services', function($table) {
