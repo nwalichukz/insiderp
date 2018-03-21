@@ -11,12 +11,22 @@ class AdminController extends Controller
      /**
     * This method returns a certian service
     * @return collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
-      */
+    */
      public static function get(){
-     	return Service::with('vendor')
-     					->with('user')
+     	return Service::with('user')
      					->with('view')
-                        ->paginate(10);
+                        ->paginate(9);
+     }
+
+      /**
+    * This method returns a certian service
+    * @return collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+    */
+     public static function getActive(){
+        return Service::where('status', 'active')
+                        ->with('user')
+                        ->with('view')
+                        ->paginate(9);
      }
 
 }

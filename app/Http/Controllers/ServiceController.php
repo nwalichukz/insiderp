@@ -22,7 +22,6 @@ class ServiceController extends Controller
     { 
     	$service = new Service;
     	$service->user_id = $request('user_id');
-    	$service->vendor_id = $request('vendor_id');
     	$service->name = $request('name');
     	$service->location = $request('location');
       $service->service_category = $request('service_category');
@@ -38,7 +37,6 @@ class ServiceController extends Controller
     */
      public static function get($id){
      	return Service::where('id', $id)
-     					->with('vendor')
      					->with('user')
      					->with('view')->first();
      }
