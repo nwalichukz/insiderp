@@ -34,7 +34,8 @@ class interfaceController extends Controller
             $vendor =  Auth::user();
           return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
         }elseif ($auth === 'user') {
-         $user = Auth::user();
+            $user = Auth::user();
+            flash('Login Successful')->success();
             return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
         }elseif ($auth === 'suspended') {
             return redirect('suspended-banned');
@@ -42,7 +43,8 @@ class interfaceController extends Controller
             return redirect('suspended-banned');
         }else{
         	Auth::logout();
-            return redirect()->back()->with('status','Invalid login details');
+        	flash("Email or Password Incorrect")->error();
+            return redirect()->back();
         }
     }
     else
@@ -226,7 +228,8 @@ class interfaceController extends Controller
             $user = UserController::create($request);
             if($user)
             {
-                return redirect()->back()->with('status', 'Account created successfully, thanks for joining us');
+                flash()->overlay("Account created successfully", "Biddo");
+                return redirect('/signin');
 
             }else{
                 return redirect()->back()->with('status', 'Something went wrong user could not be created');
@@ -247,6 +250,11 @@ class interfaceController extends Controller
     Auth::logout();
     return redirect('/');
  }
+
+    public function service()
+    {
+        return view('dashboard.service');
+    }
 /**
  * This method creates a service
  * 
@@ -258,15 +266,15 @@ class interfaceController extends Controller
            'location'=>'required',
            'user_id' => 'required',
            ]);
- if($Validator->passes()){
+ if($validator->passes()) {
      $service = ServiceController::create($request);
-   }
-   if($service)
-   {
-    return redirect()->back()->with('status', 'Service created successfully');
-   }else{
-    return redirect()->back()->with('status', 'Something went wrong, Service could not be created');
-   }
+
+     if ($service) {
+         return redirect()->back()->with('status', 'Service created successfully');
+     } else {
+         return redirect()->back()->with('status', 'Something went wrong, Service could not be created');
+     }
+ }
       
  }
 

@@ -10,6 +10,7 @@
 		</ul>
 		<h4>Job</h4>
 		<ul class="lest item">
+			<li><a href="{{ url('service') }}">My Service</a></li>
 			<li><a href="{{ url('manage-applications') }}">Manage Applications</a></li>
 		</ul>
 		<ul class="lest">
