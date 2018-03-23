@@ -19,7 +19,6 @@ class CreatePrevWorkImagesTable extends Migration
             $table->integer('service_id')->unsigned();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->string('caption')->nullable();
             $table->timestamps();
         });
 

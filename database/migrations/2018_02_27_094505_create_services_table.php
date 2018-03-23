@@ -18,6 +18,9 @@ class CreateServicesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('tradename')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('skills')->nullable();
+            $table->string('proficiency')->nullable();
             $table->string('status')->default('active');
             $table->string('location');
             $table->string('description')->nullable();

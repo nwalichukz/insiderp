@@ -19,7 +19,7 @@ Route::get('/', 'interfaceController@index');
 Route::get('/about', 'interfaceController@about')->name('about');
 Route::get('/terms', 'interfaceController@terms')->name('terms');
 Route::get('/contact', 'interfaceController@contact')->name('contact');
-Route::get('/login', 'interfaceController@login')->name('signin');
+Route::get('/signin', 'interfaceController@login')->name('signin');
 Route::get('/register', 'interfaceController@register')->name('register');
 Route::post('/register-vendor', 'interfaceController@registerVendor')->name('signup');
 Route::get('/suspended-banned', 'interfaceController@suspendedBanned');
