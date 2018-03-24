@@ -33,7 +33,7 @@ class ServiceController extends Controller
     	$service->save();
       $view = ViewController::create($service->id);
       if(!empty($request->file('images'))){
-      $image = ImageController::userImageUpload($request->file('images'););
+      $image = ImageController::userImageUpload($request->file('images'));
       $save = new UserAvater;
       $save->user_id = $service->id;
       $save->name = $image;
