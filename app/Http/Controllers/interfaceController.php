@@ -277,5 +277,38 @@ class interfaceController extends Controller
  }
       
  }
+ /**
+ * This method creates a search
+ * 
+ *
+ */
+ public static function search(Request $request)
+ {
+    $validator = validator::make($request->all(),
+        [  'name'=>'required',
+           ]);
+    if($validator->fails()) {
+        return redirect()->back()->with('status', 'Please enter service name you want to find');
+    }
+    $search = searchController::search($request);
+    if($search)
+    {
+        return view('pages.search-results')->with(['search'=> $search['search'],
+                    'total_search'=>$search['total_search']]);
+    }
+ }
+  /**
+ * This method creates a search
+ * 
+ *
+ */
+  public static function fullview($id)
+  {
+    $fullview = searchController::fullview($id);
+    if(!empty($fullview))
+    {
+        return view('pages.full-view')->with(['fullview' => $fullview]);
+    }
+  }
 
 }
