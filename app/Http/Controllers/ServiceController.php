@@ -30,6 +30,7 @@ class ServiceController extends Controller
     	$service->location = $request['location'];
       $service->service_category = $request['service_category'];
     	$service->description = $request['description'];
+      $service->additional_service = $request['additional_service'];
     	$service->save();
       $view = ViewController::create($service->id);
       if(!empty($request->file('images'))){
