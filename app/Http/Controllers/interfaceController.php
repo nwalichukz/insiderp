@@ -117,7 +117,7 @@ class interfaceController extends Controller
         return view('dashboard.applications');
     }
 
-    public function search()
+    public function searchpage()
     {
         return view('pages.search-results');
     }

@@ -69,7 +69,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="control-label" for="textarea">Skill Name</label>
-                                    <input class="form-control" name="skills[]" placeholder="Skill name, e.g. HTML" type="text">
+                                    <input class="form-control" name="skills[]" placeholder="Skill name, e.g. Design" type="text">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label" for="textarea">% (1-100)</label>
