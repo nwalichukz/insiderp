@@ -24,6 +24,7 @@ class CreateServicesTable extends Migration
             $table->string('status')->default('active');
             $table->string('location');
             $table->string('description')->nullable();
+            $table->string('additional_service')->nullable();
             $table->string('service_category');
 
             $table->timestamps();

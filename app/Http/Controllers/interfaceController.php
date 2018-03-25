@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\searchController;
 use Validator;
 use Auth;
 use App\Vendor;
@@ -24,7 +25,7 @@ class interfaceController extends Controller
      */
       protected function postLogin(Request $request)
     {   $validator = Validator::make($request->all(), [
-        'email' => 'required|max:255',
+        'phone_no' => 'required|min:11',
         'password' => 'required|max:255'
         ]);
         if($validator->passes())
@@ -43,7 +44,7 @@ class interfaceController extends Controller
             return redirect('suspended-banned');
         }else{
         	Auth::logout();
-        	flash("Email or Password Incorrect")->error();
+        	flash("Phone number or Password Incorrect")->error();
             return redirect()->back();
         }
     }
@@ -218,7 +219,7 @@ class interfaceController extends Controller
  public function registerVendor(Request $request)
  {   
      $validator = validator::make($request->all(),
-        [  'email'=>'required|unique::users',
+        [  'email'=>'unique::users',
            'name'=>'required',
            'state'=>'required',
            'phone_no'=>'required',
@@ -282,7 +283,7 @@ class interfaceController extends Controller
  * 
  *
  */
- public static function search(Request $request)
+ public function postSearch(Request $request)
  {
     $validator = validator::make($request->all(),
         [  'name'=>'required',
@@ -302,7 +303,7 @@ class interfaceController extends Controller
  * 
  *
  */
-  public static function fullview($id)
+  public function fullview($id)
   {
     $fullview = searchController::fullview($id);
     if(!empty($fullview))

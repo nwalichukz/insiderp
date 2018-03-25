@@ -20,10 +20,10 @@ Login | Sign up
 								<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-user"></i>
-										<input type="text" id="email" class="form-control" name="email" placeholder="Email Address">
-										@if ($errors->has('email'))
+										<input type="text" id="phone_no" class="form-control" name="phone_no" placeholder="Enter Phone number">
+										@if ($errors->has('phone_no'))
 				                            <span class="help-block">
-				                                <strong>{{ $errors->first('email') }}</strong>
+				                                <strong>{{ $errors->first('phone_no') }}</strong>
 				                            </span>
 				                        @endif
 									</div>
