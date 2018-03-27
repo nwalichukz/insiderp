@@ -30,7 +30,7 @@ class searchController extends Controller
      {
      	$query->where('service_category', $data['service_category']);
      }
-     $query->orderBy('created_at','DESC')->with('logo')->with('view');
+     $query->orderBy('created_at','DESC');
      return ['search' => $query->paginate(12), 'total_search' => $query->count()];
 
     }
