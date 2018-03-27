@@ -289,6 +289,7 @@ class interfaceController extends Controller
         [  'profession_title'=>'required',
            ]);
     if($validator->fails()) {
+        return "Ya, validation failed";
         return redirect()->back()->with('status', 'Please enter service name you want to find');
     }
     $search = searchController::search($request);
