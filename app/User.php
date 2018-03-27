@@ -47,5 +47,6 @@ class User extends Authenticatable
      public function avater() {
       return $this->belongsTo(UserAvater::class, 'user_id');
     }
+
     
 }
