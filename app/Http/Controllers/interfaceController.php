@@ -286,9 +286,10 @@ class interfaceController extends Controller
  public function postSearch(Request $request)
  {
     $validator = validator::make($request->all(),
-        [  'professional_title'=>'required',
+        [  'profession_title'=>'required',
            ]);
     if($validator->fails()) {
+        return "Ya, validation failed";
         return redirect()->back()->with('status', 'Please enter service name you want to find');
     }
     $search = searchController::search($request);
