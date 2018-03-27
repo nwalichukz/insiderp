@@ -24,7 +24,7 @@ class ServiceController extends Controller
     	$service = new Service;
     	$service->user_id = Auth::user()->id;
     	$service->name = $request['service_name'];
-    	$service->professional_title = $request['professional_title'];
+    	$service->profession_title = $request['profession_title'];
         $service->location = $request['location'];
         $service->service_category = $request['service_category'];
         $service->amount = $request['amount'];

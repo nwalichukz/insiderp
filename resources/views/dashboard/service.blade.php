@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="textarea">Profession Title</label>
-                            <input type="text" name="professional_title" class="form-control" placeholder="Headline (e.g. Graphic Designer)">
+                            <input type="text" name="profession_title" class="form-control" placeholder="Headline (e.g. Graphic Designer)">
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="textarea">Location</label>

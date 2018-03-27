@@ -264,7 +264,7 @@ class interfaceController extends Controller
  public static function createService(Request $request)
  {   $validator = validator::make($request->all(),
         [  'service_name'=>'required',
-           'professional_title' => 'required',
+           'profession_title' => 'required',
            'location'=>'required',
            ]);
  if($validator->passes()) {
