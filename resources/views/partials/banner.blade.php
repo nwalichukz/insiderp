@@ -9,6 +9,7 @@
 				<h2>More than <strong>12,000</strong> people are waiting to get your job jone!</h2>
 				<div class="content">
 					<form method="post" action="{{ route('search') }}">
+						{{ csrf_field() }}
 						<div class="row">
 							<div class="col-md-4 col-sm-6">
 								<div class="form-group">
@@ -26,15 +27,14 @@
 								<div class="search-category-container">
 									<label class="styled-select">
 									<select class="dropdown-product selectpicker" name="service_category">
-										<option>All Categories</option>
-										<option>Finance</option>
-										<option>IT & Engineering</option>
+										<option>Entertainment</option>
+										<option>Business</option>
 										<option>Education/Training</option>
 										<option>Art/Design</option>
-										<option>Sale/Marketing</option>
-										<option>Healthcare</option>
-										<option>Science</option>
-									<option>Food Services</option>
+										<option>Events and Lifestyle</option>
+										<option>Programming and IT</option>
+										<option>Sewing and Makeups</option>
+										<option>Repairs</option>
 									</select>
 									</label>
 								</div>

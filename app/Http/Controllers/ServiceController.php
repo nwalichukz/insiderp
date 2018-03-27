@@ -8,6 +8,7 @@ use App\Service;
 use App\Vendor;
 use App\User;
 use App\View;
+use Auth;
 
 
 class ServiceController extends Controller
