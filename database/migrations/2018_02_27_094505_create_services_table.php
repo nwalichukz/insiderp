@@ -22,11 +22,10 @@ class CreateServicesTable extends Migration
             $table->string('skills')->nullable();
             $table->string('proficiency')->nullable();
             $table->string('status')->default('active');
-            $table->string('location');
+            $table->string('location')->default('Anywhere');
             $table->string('description')->nullable();
             $table->string('additional_service')->nullable();
             $table->string('service_category');
-
             $table->timestamps();
         });
           Schema::table('services', function($table) {

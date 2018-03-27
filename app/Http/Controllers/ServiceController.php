@@ -25,13 +25,13 @@ class ServiceController extends Controller
     	$service->user_id = Auth::user()->id;
     	$service->name = $request['service_name'];
     	$service->profession_title = $request['profession_title'];
-        $service->location = $request['location'];
-        $service->service_category = $request['service_category'];
-        $service->amount = $request['amount'];
-        $service->skills = $request['skills'];
-        $service->proficiency = $request['proficiency'];
+      $service->location = $request['location'];
+      $service->service_category = $request['service_category'];
+      $service->amount = $request['charge'];
+      $service->skills = $request['skills'];
+      $service->proficiency = $request['proficiency'];
     	$service->description = $request['description'];
-        $service->additional_service = $request['additional_service'];
+      $service->additional_service = $request['additional_service'];
     	$service->save();
       $view = ViewController::create($service->id);
       if(!empty($request->file('images'))){
