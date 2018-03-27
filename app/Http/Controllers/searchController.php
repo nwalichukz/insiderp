@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Service;
+use App\Vendor;
 use DB;
 use Response;
 
@@ -30,7 +31,9 @@ class searchController extends Controller
      {
      	$query->where('service_category', $data['service_category']);
      }
+
      $query->orderBy('created_at','DESC')->with('user')->with('view');
+
      return ['search' => $query->paginate(12), 'total_search' => $query->count()];
 
     }

@@ -12,6 +12,7 @@ use App\Http\Controllers\searchController;
 use Validator;
 use Auth;
 use App\User;
+use App\vendor;
 use App\Service;
 
 class interfaceController extends Controller
