@@ -36,7 +36,8 @@
 <link rel="stylesheet" href="{{ asset('assets/css/slicknav.css') }}" type="text/css">
 
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" type="text/css">
-
+<link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/select2-bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" type="text/css">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/colors/red.css') }}" media="screen" />
@@ -84,6 +85,7 @@
 <script type="text/javascript" src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/waypoints.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jasny-bootstrap.min.js') }}"></script>

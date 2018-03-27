@@ -33,5 +33,6 @@ Route::get('/job-detail', 'interfaceController@jobDetail')->name('job');
 Route::get('/offers', 'interfaceController@offers')->name('offer');
 Route::get('/manage-applications', 'interfaceController@manageApplications')->name('manage-applications');
 Route::get('/service', 'interfaceController@service')->name('service');
-Route::get('/search', 'interfaceController@search')->name('search');
+Route::post('/service/add', 'interfaceController@createService')->name('addService');
+Route::post('/search', 'interfaceController@postSearch')->name('search');
 Route::get('/logout', 'interfaceController@logout');

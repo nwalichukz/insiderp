@@ -7,19 +7,17 @@
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
 					<a href="browse-jobs.html">
 						<div class="icon">
-							<i class="ti-home"></i>
+							<i class="fa fa-microphone"></i>
 						</div>
 						<h3>Entertainment</h3>
-						<p>4286 jobs</p>
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
 					<a href="browse-jobs.html">
 						<div class="icon">
-							<i class="ti-world"></i>
+							<i class="fa fa-money"></i>
 						</div>
 						<h3>Business</h3>
-						<p>2000 jobs</p>
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
@@ -28,52 +26,46 @@
 							<i class="ti-book"></i>
 						</div>
 						<h3>Education/Training</h3>
-						<p>1450 jobs</p>
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
 					<a href="browse-jobs.html">
 						<div class="icon">
-							<i class="ti-desktop"></i>
+							<i class="fa fa-paint-brush"></i>
 						</div>
 						<h3>Art/Design</h3>
-						<p>5100 jobs</p>
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
 					<a href="browse-jobs.html">
 						<div class="icon">
-							<i class="ti-brush"></i>
+							<i class="fa fa-chevron-right"></i>
 						</div>
 						<h3>Events and Lifestyle</h3>
-						<p>5079 jobs</p>
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
 					<a href="browse-jobs.html">
 						<div class="icon">
-							<i class="ti-heart"></i>
+							<i class="fa fa-laptop"></i>
 						</div>
 						<h3>Programming and IT</h3>
-						<p>3235 jobs</p>
 						</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
 					<a href="browse-jobs.html">
 						<div class="icon">
-							<i class="ti-filter"></i>
+							<i class="fa fa-heart"></i>
 						</div>
 						<h3>Sewing and Makeups</h3>
-						<p>1800 jobs</p>
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
 					<a href="browse-jobs.html">
 						<div class="icon">
-							<i class="ti-cup"></i>
+							<i class="fa fa-gear"></i>
 						</div>
 						<h3>Repairs</h3>
-						<p>4286 jobs</p>
 					</a>
 				</div>
 			</div>

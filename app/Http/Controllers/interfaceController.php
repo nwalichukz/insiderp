@@ -265,7 +265,6 @@ class interfaceController extends Controller
  {   $validator = validator::make($request->all(),
         [  'name'=>'required',
            'location'=>'required',
-           'user_id' => 'required',
            ]);
  if($validator->passes()) {
      $service = ServiceController::create($request);
@@ -286,7 +285,7 @@ class interfaceController extends Controller
  public function postSearch(Request $request)
  {
     $validator = validator::make($request->all(),
-        [  'name'=>'required',
+        [  'professional_title'=>'required',
            ]);
     if($validator->fails()) {
         return redirect()->back()->with('status', 'Please enter service name you want to find');
