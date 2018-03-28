@@ -131,7 +131,7 @@ class interfaceController extends Controller
      */
     public function about()
     {
-    	return view('pages.about')->with(['title' => 'About Biddo']);
+    	return view('pages.about')->with(['title' => 'About Bido']);
     }
 
     /**
@@ -269,6 +269,7 @@ class interfaceController extends Controller
            'location'=>'required',
            ]);
  if($validator->passes()) {
+
      $service = ServiceController::create($request);
 
      if ($service) {
@@ -276,7 +277,7 @@ class interfaceController extends Controller
      } else {
          return redirect()->back()->with('status', 'Something went wrong, Service could not be created');
      }
- }
+     }
       
  }
  /**
@@ -290,7 +291,7 @@ class interfaceController extends Controller
         [  'profession_title'=>'required',
            ]);
     if($validator->fails()) {
-        return "Ya, validation failed";
+    
         return redirect()->back()->with('status', 'Please enter service name you want to find');
     }
     $search = searchController::search($request);

@@ -16,7 +16,7 @@ class Vendor extends Model
     }
 
      public function view() {
-      return $this->belongsTo(View::class, 'id', 'service_id');
+      return $this->belongsTo(view::class, 'id', 'service_id');
     }
 
      public function logo() {

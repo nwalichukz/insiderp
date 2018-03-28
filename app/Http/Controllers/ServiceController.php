@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\ImageController;
 use App\Service;
 use App\Vendor;
 use App\User;
 use App\View;
+use App\UserAvater;
 use Auth;
 
 
@@ -43,7 +45,7 @@ class ServiceController extends Controller
     }
 
     }
-
+  
     /**
     * This method returns a certian service
     *
@@ -68,14 +70,14 @@ class ServiceController extends Controller
     */
        public static function update(Request $request){
        	$update = Service::find($request['id']);
-       	if(!empty($request['name'])){
-       		$update->name = $request['name'];
+       	if(!empty($request['service_name'])){
+       		$update->name = $request['service_name'];
        	}
-          if(!empty($request['tradename'])){
-        $update->tradename = $request['tradename'];
+          if(!empty($request['profession_title'])){
+        $update->profession_title = $request['profession_title'];
         }
-          if(!empty($request['amount'])){
-        $update->amount = $request['amount'];
+          if(!empty($request['charge'])){
+        $update->amount = $request['charge'];
         }
           if(!empty($request['skills'])){
         $update->skills = $request['skills'];
@@ -91,6 +93,9 @@ class ServiceController extends Controller
        	}
           if(!empty($request['service_category'])){
         $update->service_category =$request['service_category'];
+        }
+           if(!empty($request['additional_service'])){
+        $update->additional_service =$request['additional_service'];
         }
        	$update->save();
        	

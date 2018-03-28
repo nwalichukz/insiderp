@@ -98,5 +98,12 @@
 <script>
     $('#flash-overlay-modal').modal();
 </script>
+
+ @if ($message = Session::get('status'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button> 
+                        <strong>{{ $message }}</strong>
+                </div>
+                @endif
 </body>
 </html>
