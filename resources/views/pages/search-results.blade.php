@@ -14,10 +14,10 @@ Job Offers | Biddo
                     @foreach($search as $search_result)
                         <div class="job-list">
                             <div class="thumb">
-                                <a href="job-details.html"><img src="assets/img/jobs/img-1.jpg" alt=""></a>
+                                <a href="{{ action('interfaceController@fullView',['id'=> $search_result->user->id]) }}"><img src="assets/img/jobs/img-1.jpg" alt=""></a>
                             </div>
                             <div class="job-list-content">
-                                <h4><a href="job-details.html">{{ ucfirst($search_result->user->name) }}</a></h4>
+                                <h4><a href="{{ action('interfaceController@fullView',['id'=> $search_result->user->id]) }}">{{ ucfirst($search_result->user->name) }}</a></h4>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <p>{{ ucfirst($search_result->name) }}</p>

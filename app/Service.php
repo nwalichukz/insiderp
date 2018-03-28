@@ -4,7 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class service extends Model
+/**
+ * @property mixed $view
+ * @property mixed $user
+ * @property mixed $images
+ */
+class Service extends Model
 {
    public function user()
     {
@@ -26,5 +31,6 @@ class service extends Model
      public function avater() {
       return $this->belongsTo(UserAvater::class, 'id', 'user_id');
     }
+
 
 }
