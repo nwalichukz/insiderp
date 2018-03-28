@@ -35,4 +35,5 @@ Route::get('/manage-applications', 'interfaceController@manageApplications')->na
 Route::get('/service', 'interfaceController@service')->name('service');
 Route::post('/service/add', 'interfaceController@createService')->name('addService');
 Route::post('/search', 'interfaceController@postSearch')->name('search');
+Route::get('/view/{id}', 'interfaceController@fullView')->name('fullView');
 Route::get('/logout', 'interfaceController@logout');

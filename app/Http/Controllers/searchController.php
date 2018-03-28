@@ -8,6 +8,7 @@ use App\Service;
 use App\Vendor;
 use DB;
 use Response;
+use App\View;
 
 class searchController extends Controller
 {

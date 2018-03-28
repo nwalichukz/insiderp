@@ -305,12 +305,12 @@ class interfaceController extends Controller
  * 
  *
  */
-  public function fullview($id)
+  public function fullView($id)
   {
     $fullview = searchController::fullview($id);
     if(!empty($fullview))
     {
-        return view('pages.full-view')->with(['fullview' => $fullview]);
+        return view('pages.full-view')->with(['fullview' => $fullview,]);
     }
   }
 
