@@ -16,7 +16,14 @@ use App\vendor;
 use App\Service;
 
 class interfaceController extends Controller
-{
+{   
+    public function _construct()
+    {
+        if(!Auth::check())
+        {   self::logout();
+            return redirect('/');
+        }
+    }
     /**
      * This method checks
      *
@@ -312,9 +319,88 @@ class interfaceController extends Controller
   {
     $fullview = searchController::fullview($id);
     if(!empty($fullview))
-    {
-        return view('pages.full-view')->with(['fullview' => $fullview,]);
+    {   ViewController::add($id);
+        return view('pages.full-view')->with(['fullview' => $fullview]);
     }
   }
+   /**
+ * This method adds avater to the
+ * @var request
+ *
+ */
+   public function addAvater(Request $request)
+   { $img = ImageController::userImageUpload($request['image']);
+   if($img)
+   {
+     $avater = new UserAvater;
+     $avater->user_id = Auth::user()->id;
+     $avater->name = $img;
+     $save = $avater->save();
+     if($save)
+     {
+        return redirect()->back();
+     }else{
+        return redirect()->back()->with('status', 'Something went wrong, image could not be uploaded');
+     }
+
+   }
+
+   }
+     /**
+ * This method adds logo to the
+ * @var request
+ *
+ */
+   public function addLogo(Request $request)
+   {  $img = ImageController::userImageUpload($request['image']);
+   if($img)
+   {
+     $avater = new VendorLogo;
+     $avater->user_id = Auth::user()->id;
+     $avater->name = $img;
+     $avater->save();
+     return redirect()->back();
+   }else{
+        return redirect()->back()->with('status', 'Something went wrong, image could not be uploaded');
+    }
+    
+   }
+
+/**
+ * This method adds prev work images to the
+ * @var request
+ *
+ */
+   public function addPrevWorkImg(Request $request)
+   { $img = ImageController::prevWorkImg($request['images']);
+     if($img){
+             $save = new prevWorkImg;
+             $save->user_id = $user_id;
+             $save->service_id = $request['service_id'];
+             $save->name = $img;
+             $save->description = $request['description'];
+             $save->save();
+             return redirect()->back();
+         }else{
+        return redirect()->back()->with('status', 'Something went wrong, image could not be uploaded');
+    }
+   }
+/**
+ * This method adds prev work images to the
+ * @var request
+ *
+ */
+   public static function changePassword(Request $request)
+   { $validator = validator::make($request->all(),
+        [  'phone_no'=>'required',
+           'old_password'=>'required',
+           'new_password'=>'required',
+           ]);
+ if($validator->passes())
+ {
+   $changepswd = UserController::changePassword($request);
+ }
+   }
+
 
 }
