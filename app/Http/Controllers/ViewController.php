@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\View;
+use App\view;
+use Auth;
 class ViewController extends Controller
 {
      /**
@@ -17,7 +18,8 @@ class ViewController extends Controller
     */
     public static function create($service_id)
     {
-    	$create = new View;
+    	$create = new view;
+    	$create->user_id = Auth::user()->id;
     	$create->service_id = $service_id;
     	$create->view = 0;
     	$create->save();

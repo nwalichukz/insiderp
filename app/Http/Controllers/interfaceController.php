@@ -273,9 +273,11 @@ class interfaceController extends Controller
      $service = ServiceController::create($request);
 
      if ($service) {
-         return redirect()->back()->with('status', 'Service created successfully');
+         flash()->overlay('Service created successfully', 'All good');
+         return redirect()->back();
      } else {
-         return redirect()->back()->with('status', 'Something went wrong, Service could not be created');
+         flash()->overlay('something went wrong', 'oops!');
+         return redirect()->back();
      }
      }
       
