@@ -28,8 +28,8 @@ class UserController extends Controller
     * This method updates user
     *
     */
-     public static function update(Request $request, $id)
-     { $update = User::find($id);
+     public static function update(Request $request)
+     { $update = User::find($request['id']);
      	if(!empty($request['name']))
      	{
      	$update->name = $request['name'];
@@ -68,18 +68,33 @@ class UserController extends Controller
 
       /**
     * This method retuens a user
-    *
+    * @var id
     */
      public static function get($id)
      {
      	return User::where('id', $id)->get();
      }
-      /**
+    /**
     * This method deletes a user
-    *
+    * @var id
     */
      public static function delete($id)
      {
      	return User::where('id', $id)->delete();
      }
+      /**
+    * This method change a user password
+    * @var id
+    */
+      public static function changePassword(Request $request)
+      {
+        
+            $user = User::where('phone_no', $request['phone_no'])
+                        ->where('password', bcrypt($request['old_password']))->first();
+            if($user)
+            {
+                $user->password = $request['new_password'];
+                $user->save();
+            }
+      }
 }

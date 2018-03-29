@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Vendor;y
+use App\Vendor;
+use App\prevWorkImage;
 
 class ImageController extends Controller
 {
@@ -39,22 +40,16 @@ class ImageController extends Controller
      * 
      * @return image name
      */
-    public static function prevWorkImg(Request $request, $file, $user_id, $service_id)
-    {   foreach ($file as $files) {
+    public static function prevWorkImg($file)
+    {  
+    	foreach ($file as $files) {
            $UniqueNoGen = time().mt_rand();
-         //$file = Image::make($file)->fit(250);
-        //$file = $request->file('images');
             $destinationPath = 'images/prevwork';
             $fileName = $files->getClientOriginalName();
             $fileExte = $files->getClientOriginalExtension();
             $newFileName = $UniqueNoGen.'.'.$fileExte;
             $uploadSuccess = $files->move($destinationPath, $newFileName);
-             $save = new prevWorkImage;
-     		 $save->user_id = $user_id;
-     		 $save->service_id = $service_id;
-     		 $save->name = $newFileName;
-     		 $save->description = $request['description'];
-     		 $save->save();
+            return $newFileName;
         }
     }
 }
