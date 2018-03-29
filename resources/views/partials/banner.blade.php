@@ -13,7 +13,7 @@
 						<div class="row">
 							<div class="col-md-4 col-sm-6">
 								<div class="form-group">
-									<input class="form-control" type="text" name="profession_title" placeholder="Who are you looking for?">
+									<input class="form-control" type="text" name="profession_title" placeholder="Profession you are looking for">
 									<i class="ti-time"></i>
 								</div>
 							</div>
