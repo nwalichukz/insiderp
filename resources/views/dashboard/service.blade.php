@@ -19,6 +19,12 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     @include('partials.sidebar')
                 </div>
+                 @if ($message = Session::get('status'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button> 
+                        <strong>{{ $message }}</strong>
+                </div>
+                @endif
                 <div class="col-md-8 col-sm-8 col-xs-12">
 
                     <form action="{{ route('addService') }}" method="post" class="form-ad">
@@ -50,7 +56,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="textarea">Charge Pre-Hour</label>
+                            <label class="control-label" for="textarea">Charge Per-Hour</label>
                             <select name="charge" class="form-control select">
                                 <option >1000 - 5000</option>
                                 <option >5000 - 10000</option>
@@ -66,7 +72,7 @@
                                 <div class="action-buttons">
                                     <div class="upload-button">
                                         <button class="btn btn-common">Choose a service logo</button>
-                                        <input id="cover_img_file" type="file">
+                                        <input id="cover_img_file" type="file" name="images">
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +88,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="control-label" for="textarea">Skill Name</label>
-                                    <input class="form-control" name="skills[]" placeholder="Skill name, e.g. Design" type="text">
+                                    <input class="form-control" name="skills" placeholder="Skill name, e.g. Design" type="text">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label" for="textarea">% (1-100)</label>
@@ -95,7 +101,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="textarea">Featured services</label>
-                            <input class="form-control" name="additional_service[]" placeholder="Feature name, e.g. Home Service" type="text">
+                            <input class="form-control" name="additional_service" placeholder="Feature name, e.g. Home Service" type="text">
                         </div>
                         <input type="submit"class="btn btn-common" value="Add Service">
                     </form>

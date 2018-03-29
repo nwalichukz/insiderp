@@ -27,6 +27,7 @@
 								<div class="search-category-container">
 									<label class="styled-select">
 									<select class="dropdown-product selectpicker" name="service_category">
+										<option value="">Select Service Category</option>
 										<option>Entertainment</option>
 										<option>Business</option>
 										<option>Education/Training</option>
