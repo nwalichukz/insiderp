@@ -17,7 +17,7 @@ use App\Service;
 
 class interfaceController extends Controller
 {   
-    public function _construct()
+    public static function checkSession()
     {
         if(!Auth::check())
         {   self::logout();
@@ -289,7 +289,7 @@ class interfaceController extends Controller
  }
  /**
  * This method creates a search
- * 
+ * @var $request
  *
  */
  public function postSearch(Request $request)
@@ -308,9 +308,25 @@ class interfaceController extends Controller
                     'total_search'=>$search['total_search']]);
     }
  }
+
   /**
  * This method creates a search
- * 
+ * @var $request
+ *
+ */
+
+  public function searchCategory($category)
+  {
+       $search = searchController::searchCategory($category);
+    if($search)
+    {
+        return view('pages.search-results')->with(['search'=> $search['search'],
+                    'total_search'=>$search['total_search']]);
+    }
+  }
+  /**
+ * This method creates a search
+ * @var id
  *
  */
   public function fullView($id)

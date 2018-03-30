@@ -47,8 +47,8 @@
                             <select name="service_category" class="form-control select">
                                 <option>Entertainment</option>
                                 <option>Business</option>
-                                <option>Education/Training</option>
-                                <option>Art/Design</option>
+                                <option>Education and Training</option>
+                                <option>Art and Design</option>
                                 <option>Events and Lifestyle</option>
                                 <option>Programming and IT</option>
                                 <option>Sewing and Makeups</option>

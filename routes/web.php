@@ -37,3 +37,4 @@ Route::post('/service/add', 'interfaceController@createService')->name('addServi
 Route::post('/search', 'interfaceController@postSearch')->name('search');
 Route::get('/view/{id}', 'interfaceController@fullView')->name('fullView');
 Route::get('/logout', 'interfaceController@logout');
+Route::get('search-category/{caategory}', 'interfaceController@searchCategory')->name('search-category');
