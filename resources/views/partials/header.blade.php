@@ -14,7 +14,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand logo" href="{{ url('/') }}"><img src="assets/img/logo99.png" alt="Biddo"></a>
+					<a class="navbar-brand logo" href="{{ url('/') }}"><img src="assets/img/logo99.png" alt="Bido"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="navbar">
 
@@ -37,7 +37,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right float-right">
 						<li class="left"><a href="{{ url('/register') }}"><i class="ti-user"></i> Register</a></li>
-						<li class="right"><a href="{{ url('/signin') }}"><i class="ti-lock"></i> Log In</a></li>
+						<li class="right"><a href="{{ url('/signin') }}"><i class="ti-lock"></i> Login</a></li>
 					</ul>
 				</div>
 			</div>
@@ -62,7 +62,7 @@
 					<a href="{{ url('/register') }}"><i class="ti-user"></i> Sign up</a>
 				</li>
 				<li>
-					<a href="{{ url('/about') }}"><i class="ti-lock"></i> Login</a>
+					<a href="{{ url('/signin') }}"><i class="ti-lock"></i> Login</a>
 				</li>
 			</ul>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\mailer;
 use App\Vendor;
 use App\User;
 
@@ -13,7 +14,8 @@ class UserController extends Controller
     *
     */
      public static function create(Request $request)
-     {  $user = new User;
+     {  
+        $user = new User;
      	$user->name = $request['name'];
        	$user->gender = $request['gender'];
      	$user->phone_no = $request['phone_no'];
@@ -22,6 +24,15 @@ class UserController extends Controller
      	$user->state = $request['state'];
      	$user->password = bcrypt($request['password']);
      	$user->save();
+        $emaildata = ['password'=> $request['password'],
+                    'phone_no' => $request['phone_no'],
+                    'name' => $request['name'],
+                    ];
+        if(!empty($request['email']))
+        {
+            mailer::emailNotification($request['email'], $emaildata);
+        }
+        return 1;
      }
 
      /**
@@ -61,6 +72,22 @@ class UserController extends Controller
         if(!empty($request['description']))
         {
             $update->description = $request['description'];
+        }
+         if(!empty($request['facebook']))
+        {
+            $update->facebook = $request['facebook'];
+        }
+         if(!empty($request['twitter']))
+        {
+            $update->twitter = $request['twitter'];
+        }
+         if(!empty($request['youtube']))
+        {
+            $update->youtube = $request['youtube'];
+        }
+         if(!empty($request['instagram']))
+        {
+            $update->instagram = $request['instagram'];
         }
      	$update->save();
 

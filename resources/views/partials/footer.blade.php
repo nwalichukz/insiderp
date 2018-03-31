@@ -7,9 +7,10 @@
 			<div class="row">
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="widget">
-						<h3 class="block-title"><img src="assets/img/logojj.png" class="img-responsive" alt="Biddo"></h3>
+						<h3 class="block-title"><img src="" class="img-responsive" alt="Bido"></h3>
 						<div class="textwidget">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tincidunt est, et euismod purus suscipit quis. Etiam euismod ornare elementum. Sed ex est, consectetur eget facilisis sed.</p>
+							<p>Bido is a skill portal, where you can find the best 
+								skill that suits your demand from the very best availble...</p>
 						</div>
 					</div>
 				</div>
@@ -19,7 +20,6 @@
 						<ul class="menu">
 							<li><a href="#">About Us</a></li>
 							<li><a href="#">Support</a></li>
-							<li><a href="#">License</a></li>
 							<li><a href="#">Terms & Conditions</a></li>
 							<li><a href="#">Contact</a></li>
 						</ul>
@@ -27,13 +27,13 @@
 				</div>
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="widget">
-						<h3 class="block-title">Trending Jobs</h3>
+						<h3 class="block-title">Trending Skills</h3>
 						<ul class="menu">
-							<li><a href="#">Android Developer</a></li>
-							<li><a href="#">Senior Accountant</a></li>
-							<li><a href="#">Frontend Developer</a></li>
-							<li><a href="#">Junior Tester</a></li>
-							<li><a href="#">Project Manager</a></li>
+							<li><a href="search-category/Programming and IT">Android Developer</a></li>
+							<li><a href="search-category/Art and Design">Graphic Designer</a></li>
+							<li><a href="search-category/Programming and IT">Frontend Developer</a></li>
+							<li><a href="search-category/Entertainment">MC</a></li>
+							<li><a href="search-category/Sewing and Makeups">Makeup Artist</a></li>
 						</ul>
 					</div>
 				</div>
@@ -41,11 +41,9 @@
 					<div class="widget">
 						<h3 class="block-title">Follow Us</h3>
 						<div class="bottom-social-icons social-icon">
-							<a class="twitter" href="../../../external.html?link=https://twitter.com/GrayGrids"><i class="ti-twitter-alt"></i></a>
-							<a class="facebook" href="../../../external.html?link=https://web.facebook.com/GrayGrids"><i class="ti-facebook"></i></a>
+							<a class="twitter" href="../../../external.html?link=https://twitter.com/bidong"><i class="ti-twitter-alt"></i></a>
+							<a class="facebook" href="../../../external.html?link=https://web.facebook.com/bidong"><i class="ti-facebook"></i></a>
 							<a class="youtube" href="../../../external.html?link=https://youtube.com/"><i class="ti-youtube"></i></a>
-							<a class="dribble" href="../../../external.html?link=https://dribbble.com/GrayGrids"><i class="ti-dribbble"></i></a>
-							<a class="linkedin" href="../../../external.html?link=https://www.linkedin.com/GrayGrids"><i class="ti-linkedin"></i></a>
 						</div>
 						<p>Join our mailing list to stay up to date and get notices about our new releases!</p>
 						<form class="subscribe-box">
@@ -64,7 +62,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="site-info text-center">
-					<p>All Rights reserved &copy; 2017 - Biddo</p>
+					<p>All Rights reserved &copy; 2018 - Bido</p>
 				</div>
 			</div>
 			</div>
