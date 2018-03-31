@@ -55,4 +55,19 @@ class searchController extends Controller
     						->with('images')
     						->first();
     }
+
+     /**
+    * This method searches for
+    *
+    * services entered by the user
+    *
+    * @return collection
+    * @var request
+    */
+     public static function searchCategory($category)
+     {
+     	 $query = Service::where('service_category', $category)
+     			 ->orderBy('created_at','DESC')->with('user')->with('view')->with('avater');
+     	return ['search' => $query->paginate(12), 'total_search' => $query->count()];
+     }
 }

@@ -6,7 +6,7 @@
 			<div class="col-md-12">
 				<h1>Find the person that fits your taste</h1>
 				<br>
-				<h2>More than <strong>12,000</strong> people are waiting to get your job jone!</h2>
+				<h2>More than <strong>12,000</strong> people are waiting to get your job done!</h2>
 				<div class="content">
 					<form method="post" action="{{ route('search') }}">
 						{{ csrf_field() }}
@@ -30,8 +30,8 @@
 										<option value="">Select Service Category</option>
 										<option>Entertainment</option>
 										<option>Business</option>
-										<option>Education/Training</option>
-										<option>Art/Design</option>
+										<option>Education and Training</option>
+										<option>Art and Design</option>
 										<option>Events and Lifestyle</option>
 										<option>Programming and IT</option>
 										<option>Sewing and Makeups</option>
