@@ -10,7 +10,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand logo" href="index-2.html"><img src="assets/img/logoc.png" alt="Biddo"></a>
+                    <a class="navbar-brand logo" href="{{ url('/') }}"><img src="assets/img/logoc.png" alt="Biddo"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar">
 
@@ -41,7 +41,12 @@
                             <li class="left">
                                 <a href="{{ url('') }}"><i class="ti-angle-down"></i> {{ Auth::user()->name }}</a>
                                 <ul class="dropdown">
-                                    <a href="{{ url('dashboard') }}">Dashboard</a>
+                                    <li>
+                                        <a href="{{ url('dashboard') }}">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('editProfile') }}">Edit Profile</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="right">

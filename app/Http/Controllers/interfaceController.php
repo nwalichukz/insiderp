@@ -17,13 +17,7 @@ use App\Service;
 
 class interfaceController extends Controller
 {   
-    public function _construct()
-    {
-        if(!Auth::check())
-        {   self::logout();
-            return redirect('/');
-        }
-    }
+
     /**
      * This method checks
      *

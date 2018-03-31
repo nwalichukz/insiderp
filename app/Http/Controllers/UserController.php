@@ -93,7 +93,7 @@ class UserController extends Controller
                         ->where('password', bcrypt($request['old_password']))->first();
             if($user)
             {
-                $user->password = $request['new_password'];
+                $user->password = bcrypt($request['new_password']);
                 $user->save();
             }
       }
