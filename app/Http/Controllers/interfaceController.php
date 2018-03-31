@@ -235,13 +235,15 @@ class interfaceController extends Controller
           if($validator)
         {
             $user = UserController::create($request);
+            
             if($user)
             {
-                flash()->overlay("Account created successfully", "Biddo");
+                flash()->overlay("Account created successfully, login with the password and phone no", "Bido");
                 return redirect('/signin');
 
             }else{
-                return redirect()->back()->with('status', 'Something went wrong user could not be created');
+                flash()->overlay('Something went wrong user could not be created');
+                return redirect()->back();
             }
         }
         else
@@ -283,7 +285,7 @@ class interfaceController extends Controller
          flash()->overlay('Service created successfully', 'All good');
          return redirect()->back();
      } else {
-         flash()->overlay('something went wrong', 'oops!');
+         flash()->overlay('something went wrong, service could not be created');
          return redirect()->back();
      }
      }
@@ -300,8 +302,8 @@ class interfaceController extends Controller
         [  'profession_title'=>'required',
            ]);
     if($validator->fails()) {
-    
-        return redirect()->back()->with('status', 'Please enter service name you want to find');
+        flash()->overlay('Please enter service name you want to find');
+        return redirect()->back();
     }
     $search = searchController::search($request);
     if($search)
@@ -324,6 +326,9 @@ class interfaceController extends Controller
     {
         return view('pages.search-results')->with(['search'=> $search['search'],
                     'total_search'=>$search['total_search']]);
+    }else{
+        flash()->overlay('Something went wrong, the system could respond as expected');
+        return redirect()->back();
     }
   }
   /**
@@ -337,6 +342,9 @@ class interfaceController extends Controller
     if(!empty($fullview))
     {   ViewController::add($id);
         return view('pages.full-view')->with(['fullview' => $fullview]);
+    }else{
+         flash()->overlay('Something went wrong, the system could respond as expected');
+        return redirect()->back();
     }
   }
    /**
@@ -353,10 +361,12 @@ class interfaceController extends Controller
      $avater->name = $img;
      $save = $avater->save();
      if($save)
-     {
+     {  
         return redirect()->back();
      }else{
-        return redirect()->back()->with('status', 'Something went wrong, image could not be uploaded');
+         flash()->overlay('Something went wrong, image could not be uploaded');
+        return redirect()->back();
+       
      }
 
    }
@@ -377,7 +387,8 @@ class interfaceController extends Controller
      $avater->save();
      return redirect()->back();
    }else{
-        return redirect()->back()->with('status', 'Something went wrong, image could not be uploaded');
+        flash()->overlay('Something went wrong, image could not be uploaded');
+        return redirect()->back();
     }
     
    }
@@ -398,7 +409,8 @@ class interfaceController extends Controller
              $save->save();
              return redirect()->back();
          }else{
-        return redirect()->back()->with('status', 'Something went wrong, image could not be uploaded');
+        flash()->overlay('Something went wrong, image could not be uploaded');
+        return redirect()->back();
     }
    }
 /**
@@ -415,6 +427,14 @@ class interfaceController extends Controller
  if($validator->passes())
  {
    $changepswd = UserController::changePassword($request);
+   if($changepswd)
+   {
+    flash()->overlay('Password changed successfully');
+    return redirect()->back();
+   }else{
+    flash()->overlay('Something went wrong, password could noe be changed, ple try again');
+    return redirect()->back();
+   }
  }
    }
 

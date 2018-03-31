@@ -9,6 +9,12 @@
 
 <!-- Mobile Specific Metas
 ================================================== -->
+<meta name="description" content="What do you want done? Find the skill that best suits your demand from the very
+ selected best here!!!">
+<meta name="keywords" content="web developer, graphic designer, tailors, dj, mc, dancers, writers, authors,
+cooks, entrepreneur, programmer, logo designer, makeup artist, artists, plumbers, gen man,
+ mechanic, electrician, technician, architects,
+">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="shortcut icon" href="assets/img/favicon.png">
 
@@ -18,41 +24,29 @@
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/css/jasny-bootstrap.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}" type="text/css">
-
 <link rel="stylesheet" href="{{ asset('assets/css/material-kit.css') }}" type="text/css">
-
 <link rel="stylesheet" href="{{ asset('assets/fonts/font-awesome.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/fonts/themify-icons.css') }}">
-
 <link rel="stylesheet" href="{{ asset('assets/css/color-switcher.css') }}" type="text/css">
-
 <link rel="stylesheet" href="{{ asset('assets/extras/animate.css') }}" type="text/css">
-
 <link rel="stylesheet" href="{{ asset('assets/extras/owl.carousel.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/extras/owl.theme.css') }}" type="text/css">
-
 <link rel="stylesheet" href="{{ asset('assets/extras/settings.css') }}" type="text/css">
-
 <link rel="stylesheet" href="{{ asset('assets/css/slicknav.css') }}" type="text/css">
-
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/select2-bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" type="text/css">
-
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/colors/red.css') }}" media="screen" />
-
 <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 
 </head>
-
 <body>
 <div id="wrapper">
 	@yield('content')
     
-
 <!-- Back To Top Button -->
 <a href="#" class="back-to-top">
 	<i class="ti-arrow-up"></i>

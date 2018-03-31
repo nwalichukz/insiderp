@@ -19,7 +19,6 @@ class ViewController extends Controller
     public static function create($service_id)
     {
     	$create = new view;
-    	$create->user_id = Auth::user()->id;
     	$create->service_id = $service_id;
     	$create->view = 0;
     	$create->save();
