@@ -39,58 +39,12 @@ class UserController extends Controller
     * This method updates user
     *
     */
-     public static function update(Request $request)
-     { $update = User::find($request['id']);
-     	if(!empty($request['name']))
-     	{
-     	$update->name = $request['name'];
-     	}
-     	 if(!empty($request['address']))
-     	{
-     	$update->address = $request['address'];
-     	}
-     	if(!empty($request['gender']))
-     	{
-     		$update->gender = $request['gender'];
-     	}
-     	if(!empty($request['location']))
-     	{
-     		$update->location = $request['location'];
-     	}
-     	if(!empty($request['phone_no']))
-     	{
-     		$update->phone_no = $request['phone_no'];
-     	}
-     	if(!empty($request['state']))
-     	{
-     		$update->state = $request['state'];
-     	}
-     	if(!empty($request['email']))
-     	{
-     		$update->email = $request['email'];
-     	}
-        if(!empty($request['description']))
-        {
-            $update->description = $request['description'];
-        }
-         if(!empty($request['facebook']))
-        {
-            $update->facebook = $request['facebook'];
-        }
-         if(!empty($request['twitter']))
-        {
-            $update->twitter = $request['twitter'];
-        }
-         if(!empty($request['youtube']))
-        {
-            $update->youtube = $request['youtube'];
-        }
-         if(!empty($request['instagram']))
-        {
-            $update->instagram = $request['instagram'];
-        }
-     	$update->save();
+     public static function update(Request $request, $user_id)
+     { $user = User::find($user_id);
+     	$user->update($request->all());
+     	$user->save();
 
+     	return true;
      }
 
       /**

@@ -22,7 +22,7 @@ class ImageController extends Controller
         $UniqueNoGen = time().mt_rand();
          //$file = Image::make($file)->fit(250);
         	
-            $destinationPath = 'images/user';
+            $destinationPath = 'userfiles/user';
             $fileName = $file->getClientOriginalName();
             $fileExte = $file->getClientOriginalExtension();
             $newFileName = $UniqueNoGen.'.'.$fileExte;

@@ -354,8 +354,8 @@ class interfaceController extends Controller
  * @var request
  *
  */
-   public function addAvater(Request $request)
-   { $img = ImageController::userImageUpload($request['image']);
+   public function addAvatar(Request $request)
+   { $img = ImageController::userImageUpload($request['avatar']);
    if($img)
    {
      $avater = new UserAvater;
@@ -363,10 +363,11 @@ class interfaceController extends Controller
      $avater->name = $img;
      $save = $avater->save();
      if($save)
-     {  
+     {
+         flash()->success('avatar uploaded successfully');
         return redirect()->back();
      }else{
-         flash()->overlay('Something went wrong, image could not be uploaded');
+         flash()->overlay('Something went wrong, image could not be uploaded', 'Try again');
         return redirect()->back();
        
      }
@@ -438,6 +439,43 @@ class interfaceController extends Controller
     return redirect()->back();
    }
  }
+   }
+
+    public function editProfile()
+    {
+        $user = Auth::user();
+        return view('dashboard.edit_profile')->with(['user' => $user]);
+   }
+
+    public function updateProfile(Request $request )
+    {
+        $validation = Validator::make($request->all(), [
+           'name' => 'required',
+           'location' => 'required',
+        ]);
+
+        if ($validation->passes())
+        {
+            $user_id = Auth::user()->id;
+
+            $update = UserController::update($request, $user_id);
+            if ($update)
+            {
+                flash()->overlay('Profile Updated Successfully', 'All good!');
+                return redirect()->back();
+            }
+            else
+            {
+                flash()->overlay('An error has occured', 'Try again');
+                return redirect()->back();
+            }
+
+        }
+        else
+        {
+            flash()->overlay("Invalid form", 'Error');
+            return redirect()->back();
+        }
    }
 
 
