@@ -13,12 +13,12 @@
                 <!-- left column -->
                 <div class="col-md-3">
                     <div class="text-center">
-                        <form action="{{ route('updateAvatar') }}" method="post">
+                        <form action="{{ route('updateAvatar') }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <img src="{{ asset('images/images.jpeg') }}" class="avatar img-circle img-responsive" alt="avatar">
                             <h6>Upload a different photo...</h6>
 
-                            <input type="file" class="btn btn-default" name="avatar">
+                            <input type="file" class="btn btn-default" name="avatar" required>
                             <button type="submit" class="btn btn-common">Save</button>
                         </form>
                     </div>

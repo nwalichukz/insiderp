@@ -17,13 +17,12 @@ class ImageController extends Controller
      * 
      * @return image name
      */
-    public static function userImageUpload($file)
-    {   
+    public static function userImageUpload(Request $request)
+    {   $file = $request->file('avatar');
         $UniqueNoGen = time().mt_rand();
-         //$file = Image::make($file)->fit(250);
         	
-            $destinationPath = 'userfiles/user';
-            $fileName = $file->getClientOriginalName();
+            $destinationPath = 'images/user';
+            //$fileName = $file->getClientOriginalName();
             $fileExte = $file->getClientOriginalExtension();
             $newFileName = $UniqueNoGen.'.'.$fileExte;
             $uploadSuccess = $file->move($destinationPath, $newFileName);
@@ -45,7 +44,7 @@ class ImageController extends Controller
     	foreach ($file as $files) {
            $UniqueNoGen = time().mt_rand();
             $destinationPath = 'images/prevwork';
-            $fileName = $files->getClientOriginalName();
+            //$fileName = $files->getClientOriginalName();
             $fileExte = $files->getClientOriginalExtension();
             $newFileName = $UniqueNoGen.'.'.$fileExte;
             $uploadSuccess = $files->move($destinationPath, $newFileName);

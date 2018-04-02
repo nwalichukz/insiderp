@@ -53,7 +53,9 @@ class UserController extends Controller
     */
      public static function get($id)
      {
-     	return User::where('id', $id)->get();
+     	return User::where('id', $id)
+                    ->with('avater')
+                    ->with('service')->get();
      }
     /**
     * This method deletes a user

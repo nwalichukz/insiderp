@@ -32,5 +32,8 @@ class Service extends Model
       return $this->belongsTo(UserAvater::class, 'id', 'user_id');
     }
 
-
+public function service()
+    {
+        return $this->hasMany(Service::class, 'user_id');
+    }
 }

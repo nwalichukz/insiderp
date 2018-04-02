@@ -16,6 +16,7 @@ Dashboard | welcome
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				@include('partials.sidebar')
 			</div>
+			@foreach($users as $user)
 			<div class="col-md-8 col-sm-8 col-xs-12">
 				<div class="inner-box my-resume">
 					<div class="author-resume">
@@ -24,7 +25,7 @@ Dashboard | welcome
 						</div>
 						<div class="author-info">
 							 <h3>{{ ucfirst($user->name) }}</h3>
-							<p class="sub-title">{ Profession_title }</p>
+							<p class="sub-title">{{ ucfirst($user->service) }}</p>
 							<p><span class="address"><i class="ti-location-pin"></i>{{ $user->state }}, {{ $user->location }},</span> <span><i class="ti-phone"></i>{{ $user->phone_no }}</span></p>
 							<div class="social-link">
 								<a class="twitter" target="_blank" data-original-title="twitter" href="#" data-toggle="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a>
@@ -89,6 +90,7 @@ Dashboard | welcome
 					</div>
 			</div>
 		</div>
+		@endforeach
 	</div>
 </div>
 @include('partials.footer')

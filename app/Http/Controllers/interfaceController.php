@@ -12,6 +12,7 @@ use App\Http\Controllers\searchController;
 use Validator;
 use Auth;
 use App\User;
+use App\UserAvater;
 use App\vendor;
 use App\Service;
 
@@ -175,8 +176,9 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function userDashboard()
- { $user = Auth::user();
-    return view('dashboard.index', compact(['user']));
+ {  self::checkSession();
+    return $users = UserController::get(Auth::user()->id);
+    return view('dashboard.index', compact(['users']));
 
  }
 /**
@@ -355,16 +357,16 @@ class interfaceController extends Controller
  *
  */
    public function addAvatar(Request $request)
-   { $img = ImageController::userImageUpload($request['avatar']);
+   { $img = ImageController::userImageUpload($request);
    if($img)
    {
      $avater = new UserAvater;
      $avater->user_id = Auth::user()->id;
-     $avater->name = $img;
+     $avater->avater = $img;
      $save = $avater->save();
      if($save)
      {
-         flash()->success('avatar uploaded successfully');
+         flash()->overlay('Avatar uploaded successfully');
         return redirect()->back();
      }else{
          flash()->overlay('Something went wrong, image could not be uploaded', 'Try again');
