@@ -54,7 +54,7 @@ class interfaceController extends Controller
             return redirect('suspended-banned');
         }else{
         	Auth::logout();
-        	flash("Phone number or Password Incorrect")->error();
+        	flash()->error("Phone number or Password Incorrect");
             return redirect()->back();
         }
     }
@@ -228,13 +228,13 @@ class interfaceController extends Controller
      */
  public function registerVendor(Request $request)
  {   
-     $validator = validator::make($request->all(),
+     $validator = Validator::make($request->all(),
         [  'email'=>'unique::users',
            'name'=>'required',
            'state'=>'required',
-           'phone_no'=>'required',
+           'phone_no'=>'required|max:11',
            ]);
-          if($validator)
+          if($validator->passes())
         {
             $user = UserController::create($request);
             
@@ -244,7 +244,7 @@ class interfaceController extends Controller
                 return redirect('/signin');
 
             }else{
-                flash()->overlay('Something went wrong user could not be created');
+                flash()->overlay('Something went wrong user could not be created', 'Bido');
                 return redirect()->back();
             }
         }
@@ -274,7 +274,7 @@ class interfaceController extends Controller
  *
  */
  public static function createService(Request $request)
- {   $validator = validator::make($request->all(),
+ {   $validator = Validator::make($request->all(),
         [  'service_name'=>'required',
            'profession_title' => 'required',
            'location'=>'required',

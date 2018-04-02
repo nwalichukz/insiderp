@@ -32,7 +32,7 @@ class UserController extends Controller
         {
             mailer::emailNotification($request['email'], $emaildata);
         }
-        return 1;
+        return true;
      }
 
      /**
