@@ -87,7 +87,7 @@ cooks, entrepreneur, programmer, logo designer, makeup artist, artists, plumbers
 <script type="text/javascript" src="{{ asset('assets/js/contact-form-script.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.revolution.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.tools.min.js') }}"></script>
-<script src="{{ asset('assets/js/selectb2.min.js') }}"></script>
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
 
 <script>
     $('#flash-overlay-modal').modal();
