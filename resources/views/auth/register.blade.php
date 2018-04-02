@@ -8,12 +8,6 @@ Login | Sign up
 
 <!-- Content
 ================================================== -->
- @if ($message = Session::get('status'))
-                <div class="alert alert-success alert-block">
-                    <button type="button" class="close" data-dismiss="alert">×</button> 
-                        <strong>{{ $message }}</strong>
-                </div>
-                @endif
 <div id="content" class="my-account">
 	<div class="container">
 		<div class="row">

@@ -175,7 +175,7 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function userDashboard()
- { $user = Auth::user();
+ { $user = UserController::get(Auth::user()->id);
     return view('dashboard.index', compact(['user']));
 
  }

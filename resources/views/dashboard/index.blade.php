@@ -24,7 +24,9 @@ Dashboard | welcome
 						</div>
 						<div class="author-info">
 							 <h3>{{ ucfirst($user->name) }}</h3>
-							<p class="sub-title">{ Profession_title }</p>
+							@if($user->service)
+								<p class="sub-title">{{ $user->service->profession_title }}</p>
+							@endif
 							<p><span class="address"><i class="ti-location-pin"></i>{{ $user->state }}, {{ $user->location }},</span> <span><i class="ti-phone"></i>{{ $user->phone_no }}</span></p>
 							<div class="social-link">
 								<a class="twitter" target="_blank" data-original-title="twitter" href="#" data-toggle="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a>
@@ -42,8 +44,7 @@ Dashboard | welcome
 								</div>
 								<a href="#">
 									<div class="dash-box-body">
-										<span class="dash-box-count">{ Count }</span>
-										<span class="dash-box-title">Number of services</span>
+										<span class="dash-box-title">My Service</span>
 									</div>
 								</a>
 

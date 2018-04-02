@@ -29,6 +29,11 @@ class User extends Authenticatable
 
     public function service()
     {
-        return $this->hasMany(Service::class);
+        return $this->hasone(Service::class);
+    }
+
+    public function avatar()
+    {
+        return $this->hasOne(UserAvater::class);
     }
 }
