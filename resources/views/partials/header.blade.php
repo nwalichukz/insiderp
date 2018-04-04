@@ -54,5 +54,4 @@
 
 		@include('partials.banner')
 	</section>
-
 </div>

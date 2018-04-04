@@ -2,6 +2,7 @@
 @section('title')
     Edit Profile | Bido
 @endsection
+
 @section('content')
     @include('partials.header2')
 

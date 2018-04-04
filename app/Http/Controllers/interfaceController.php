@@ -176,6 +176,7 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function userDashboard()
+
  {  if(Auth::check()){
     $users = UserController::getUser(Auth::user()->id);
     $service = ServiceController::getUserService(Auth::user()->id);

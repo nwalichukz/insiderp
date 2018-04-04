@@ -26,5 +26,6 @@ class UserAvater extends Model
     public function service()
     {
         return $this->hasMany(Service::class, 'id', 'user_id');
+
     }
 }

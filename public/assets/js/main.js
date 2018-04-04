@@ -4,10 +4,6 @@ jQuery(document).ready(function( $ ) {
     delay: 1,
     time: 800
   });
-
-  $('.select').select2({
-      theme: "bootstrap"
-  });
 });
 
 

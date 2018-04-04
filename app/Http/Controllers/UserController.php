@@ -54,6 +54,7 @@ class UserController extends Controller
     */
      public static function getUser($id)
      {
+
      	return User::where('id', $id)
                     ->with('avater')
                     ->get();

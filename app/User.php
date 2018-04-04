@@ -46,5 +46,6 @@ class User extends Authenticatable
 
      public function logo() {
       return $this->hasMany(VendorLogo::class, 'id', 'user_id');
+
     }
 }

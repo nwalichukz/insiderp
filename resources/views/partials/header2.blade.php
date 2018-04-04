@@ -53,7 +53,7 @@
             </div>
 
             <ul class="wpb-mobile-menu">
-                @if(Auth::guest())
+                @if(Auth::check())
                     <li>
                         <a class="active" href="{{ url('/') }}">Home</a>
                     </li>
@@ -71,6 +71,8 @@
             </ul>
 
         </nav>
+    </div>
+</div>
 
 <div class="col-md-6 col-md-offset-3">
     @include('flash::message')
