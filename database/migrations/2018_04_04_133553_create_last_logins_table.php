@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVendorLogosTable extends Migration
+class CreateLastLoginsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,12 @@ class CreateVendorLogosTable extends Migration
      * @return void
      */
     public function up()
-    {  Schema::defaultStringLength(191);
-        Schema::create('vendor_logos', function (Blueprint $table) {
+    {   Schema::defaultStringLength(191);
+        Schema::create('last_logins', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('service_id')->unsigned();
-            $table->string('logo')->nullable();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
-        });
-        Schema::table('vendor_logos', function($table) {
-            $table->foreign('service_id')->references('id')->on('services')
+             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }
@@ -32,6 +29,6 @@ class CreateVendorLogosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_logos');
+        Schema::dropIfExists('last_logins');
     }
 }

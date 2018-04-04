@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\mailer;
+use App\Http\Controllers\ServiceController;
 use App\Vendor;
 use App\User;
 
@@ -51,11 +52,11 @@ class UserController extends Controller
     * This method retuens a user
     * @var id
     */
-     public static function get($id)
+     public static function getUser($id)
      {
      	return User::where('id', $id)
                     ->with('avater')
-                    ->with('service')->get();
+                    ->get();
      }
     /**
     * This method deletes a user

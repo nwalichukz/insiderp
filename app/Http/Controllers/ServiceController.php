@@ -29,7 +29,6 @@ class ServiceController extends Controller
     	$service->profession_title = $request['profession_title'];
       $service->location = $request['location'];
       $service->service_category = $request['service_category'];
-      $service->amount = $request['charge'];
       $service->skills = $request['skills'];
       $service->proficiency = $request['proficiency'];
     	$service->description = $request['description'];
@@ -56,6 +55,17 @@ class ServiceController extends Controller
      					->with('view')->first();
      }
 
+      /**
+    * This method returns a certian service
+    *
+    */
+     public static function getUserService($user_id){
+      return Service::where('user_id', $user_id)
+              //->with('logo')
+              ->with('view')
+              ->with('images')->get();
+     }
+
     /**
     * This method a certian service
     *
@@ -76,9 +86,7 @@ class ServiceController extends Controller
           if(!empty($request['profession_title'])){
         $update->profession_title = $request['profession_title'];
         }
-          if(!empty($request['charge'])){
-        $update->amount = $request['charge'];
-        }
+       
           if(!empty($request['skills'])){
         $update->skills = $request['skills'];
         }

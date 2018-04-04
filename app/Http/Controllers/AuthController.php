@@ -20,14 +20,15 @@ class AuthController extends Controller
           $banned = ['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'), 'status'=>'banned', 'user_level' =>'user'];  
 
         if(Auth::attempt(['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'user']))
-        {
+        {   LastLoginController::login(Auth::user()->id);
             return 'user';
         }
         elseif(Auth::attempt(['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'admin']))
-        {
+        {   LastLoginController::login(Auth::user()->id);
             return 'admin';
         }
-        elseif(Auth::attempt($suspended)){
+        elseif(Auth::attempt($suspended))
+        {
             return 'suspended';
         }
         elseif(Auth::attempt($banned)){

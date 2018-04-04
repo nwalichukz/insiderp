@@ -25,15 +25,6 @@
 						<li>
 							<a href="{{ url('/about') }}">About Us </i></a>
 						</li>
-						<li>
-							<a href="{{ url('/contact') }}">Contact Us </a>
-						</li>
-						<li>
-							<a href="{{ url('/faqs') }}">FAQs </a>
-						</li>
-						<li>
-							<a href="{{ url('/blog') }}">Blog</i></a>
-						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right float-right">
 						<li class="left"><a href="{{ url('/register') }}"><i class="ti-user"></i> Register</a></li>
@@ -48,15 +39,6 @@
 				</li>
 				<li>
 					<a href="{{ url('/about') }}">About Us</a>
-				</li>
-				<li>
-					<a href="{{ url('/contact') }}">Contact Us</a>
-				</li>
-				<li>
-					<a href="{{ url('/faqs') }}">FAQs</a>
-				</li>
-				<li>
-					<a href="{{ url('/blog') }}">Blog</a>
 				</li>
 				<li>
 					<a href="{{ url('/register') }}"><i class="ti-user"></i> Sign up</a>

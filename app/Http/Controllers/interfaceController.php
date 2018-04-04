@@ -176,9 +176,14 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function userDashboard()
- {  self::checkSession();
-    return $users = UserController::get(Auth::user()->id);
-    return view('dashboard.index', compact(['users']));
+ {  if(Auth::check()){
+    $users = UserController::getUser(Auth::user()->id);
+    $service = ServiceController::getUserService(Auth::user()->id);
+    return view('dashboard.index')->with(['users' => $users, 'services' => $service, 'total'=> $service->count()]);
+}else{
+ Auth::logout();
+ return redirect('/');
+}
 
  }
 /**
@@ -383,12 +388,12 @@ class interfaceController extends Controller
  *
  */
    public function addLogo(Request $request)
-   {  $img = ImageController::userImageUpload($request['image']);
+   {  $img = ImageController::userImageUpload($request);
    if($img)
    {
      $avater = new VendorLogo;
      $avater->user_id = Auth::user()->id;
-     $avater->name = $img;
+     $avater->logo = $img;
      $avater->save();
      return redirect()->back();
    }else{
@@ -404,10 +409,10 @@ class interfaceController extends Controller
  *
  */
    public function addPrevWorkImg(Request $request)
-   { $img = ImageController::prevWorkImg($request['images']);
+   { $img = ImageController::prevWorkImg($request);
      if($img){
              $save = new prevWorkImg;
-             $save->user_id = $user_id;
+             $save->user_id = Auth::user()->id;
              $save->service_id = $request['service_id'];
              $save->name = $img;
              $save->description = $request['description'];
@@ -479,6 +484,22 @@ class interfaceController extends Controller
             return redirect()->back();
         }
    }
-
+/**
+*
+*
+*
+*/
+public function deleteService($id)
+{
+    $delete = ServiceController::delete($id);
+    if($delete)
+    {
+        flash()->overlay('Service deleted successfully');
+        return redirect()->back();
+    }else{
+        flash()->overlay('Something went wrong, service could not be deleted successfully, please try again');
+        return redirect()->back();
+    }
+}
 
 }

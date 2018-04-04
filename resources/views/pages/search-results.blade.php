@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @section('title')
-Search Results| Biddo
+Search Results| Bido
 @endsection
 
 @section('content')
 
 @include('partials.header2')
+<hr/>
 <section class="search-area">
     <div class="container">
         <form method="post" action="{{ route('search') }}">
@@ -14,18 +15,19 @@ Search Results| Biddo
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <div class="form-group">
-                            <input type="text" id="profession" name="profession_title" placeholder="Profession you are looking for" class="form-control">
+                            <input type="text" id="profession" name="profession_title" placeholder="Find Service  e.g Orange Lab" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="form-group">
-                            <input type="text" id="location" name="location" placeholder="state / city / province" class="form-control">
+                            <input type="text" id="location" name="location" placeholder="Enter location you want to find service" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="search-category-container">
                             <label class="styled-select">
-                                <select class="dropdown-product selectpicker" name="service_category">
+                                <select class="dropdown-product selectpicker" name="service_category" class="form-control">
+                                    <option value="">Select Service Category</option>
                                     <option>Entertainment</option>
                                     <option>Business</option>
                                     <option>Education/Training</option>
@@ -44,11 +46,8 @@ Search Results| Biddo
                 </div>
             </div>
         </form>
-        <div class="col-md-6">
-            <h1 class="heading">We found <b class="text-danger">{{ $total_search }}</b> person(s)</h1>
-            <hr>
-        </div>
     </div>
+    <hr/>
 </section>
 <section class="job-browse section">
     <div class="container">
@@ -57,19 +56,19 @@ Search Results| Biddo
                 @if($total_search > 0)
                     <div class="row">
                         @foreach($search as $search_result)
-                            <div class="col-md-6">
+                            <div class="col-md-8 col-xs-12">
                                 <div class="job-list">
                                     <div class="thumb">
                                         <a href="{{ action('interfaceController@fullView',['id'=> $search_result->user->id]) }}"><img src="assets/img/jobs/img-1.jpg" alt=""></a>
                                     </div>
                                     <div class="job-list-content">
-                                        <h4><a href="{{ action('interfaceController@fullView',['id'=> $search_result->user->id]) }}">{{ ucfirst($search_result->user->name) }}</a></h4>
+                                        <h4><a href="{{ action('interfaceController@fullView',['id'=> $search_result->user->id]) }}">{{ ucfirst($search_result->name) }}</a></h4>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <p>{{ ucfirst($search_result->name) }}</p>
+                                                <p>{{ ucfirst($search_result->user->name) }}</p>
                                             </div>
                                             <div class="col-md-4">
-                                                <p class="pull-right">N{{ $search_result->amount }}</p>
+                                                <p class="pull-right">{{ $search_result->user->phone_no }}</p>
                                             </div>
                                         </div>
                                         <div class="job-tag">

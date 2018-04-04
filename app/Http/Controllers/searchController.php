@@ -34,6 +34,7 @@ class searchController extends Controller
      }
 
      $query->orderBy('created_at','DESC')->with('user')->with('view');
+     DumpController::dumpSearch($request);
 
      return ['search' => $query->paginate(12), 'total_search' => $query->count()];
 

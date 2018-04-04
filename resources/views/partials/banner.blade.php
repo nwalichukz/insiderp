@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Find the person that fits your taste</h1>
+				<h1>Find the service that fits your taste</h1>
 				<br>
 				<h2>More than <strong>12,000</strong> people are waiting to get your job done!</h2>
 				<div class="content">
@@ -13,13 +13,13 @@
 						<div class="row">
 							<div class="col-md-4 col-sm-6">
 								<div class="form-group">
-									<input class="form-control" type="text" name="profession_title" placeholder="Profession you are looking for">
+									<input class="form-control" type="text" name="profession_title" placeholder="Find Services e.g. Orange Arts">
 									<i class="ti-time"></i>
 								</div>
 							</div>
 							<div class="col-md-4 col-sm-6">
 								<div class="form-group">
-									<input class="form-control" type="text" name="location" placeholder="state / city / province">
+									<input class="form-control" type="text" name="location" placeholder="Enter a location to find service">
 									<i class="ti-location-pin"></i>
 								</div>
 							</div>

@@ -29,7 +29,7 @@ class User extends Authenticatable
 
     public function service()
     {
-        return $this->hasMany(Service::class, 'id', 'user_id');
+        return $this->hasMany(Service::class, 'user_id');
     }
 
       public function avater() {
@@ -45,6 +45,6 @@ class User extends Authenticatable
     }
 
      public function logo() {
-      return $this->belongsTo(VendorLogo::class, 'id', 'user_id');
+      return $this->hasMany(VendorLogo::class, 'id', 'user_id');
     }
 }
