@@ -28,6 +28,10 @@ Dashboard | welcome
 
 						<div class="author-info">
 
+							 <h3>{{ ucfirst($service->name) }}</h3>
+							<p class="sub-title">{{ $service->profession_title }} </p>
+							<p><span class="address"><i class="ti-location-pin"></i>{{ $service->location }}</span> <span><i class="ti-phone"></i></span></p>
+
 							<div class="social-link">
 								<a href="{{ url('service/edit', $service->id) }}" data-toggle="tooltip" data-placement="top" title="Edit service"><i class="fa fa-edit"></i></a>
                                  
@@ -37,58 +41,6 @@ Dashboard | welcome
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-md-4">
-							<div class="dash-box dash-box-color-1">
-								<div class="dash-box-icon">
-									<i class="fa fa-briefcase"></i>
-								</div>
-								<a href="#">
-									<div class="dash-box-body">
-										<span class="dash-box-title">My Service</span>
-									</div>
-								</a>
-
-								<div class="dash-box-action">
-									<a href="#">More Info</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="dash-box dash-box-color-2">
-								<div class="dash-box-icon">
-									<i class="fa fa-handshake-o"></i>
-								</div>
-								<a href="#">
-									<div class="dash-box-body">
-										<span class="dash-box-count">{ Count }</span>
-										<span class="dash-box-title">Ongoing Jobs</span>
-									</div>
-								</a>
-
-								<div class="dash-box-action">
-									<a href="#">More Info</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="dash-box dash-box-color-3">
-								<div class="dash-box-icon">
-									<i class="fa fa-file-archive-o"></i>
-								</div>
-								<a href="#">
-									<div class="dash-box-body">
-										<span class="dash-box-count">{ Count }</span>
-										<span class="dash-box-title">Jobs Completed</span>
-									</div>
-								</a>
-
-								<div class="dash-box-action">
-									<a href="#">More Info</a>
-								</div>
-							</div>
-						</div>
->>>>>>> 01ab9e8bf8a6c97b71d9e9d2c44f9c3e64aabc23
 					</div>
 					@endforeach
 					

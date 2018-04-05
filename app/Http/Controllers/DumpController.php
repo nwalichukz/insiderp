@@ -34,7 +34,7 @@ class DumpController extends Controller
       	return dump::where('service_name', $search)->get();
       }else{
       	return dump::where('service_name', $search)
-      				 whereDate('created_at', $date)->get();
+      				       ->whereDate('created_at', $date)->get();
       }
     }
 }

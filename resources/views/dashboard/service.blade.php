@@ -7,7 +7,7 @@
  */ -->
 @extends('layouts.app')
 @section('title')
-    Job Offers | Biddo
+    Service | Bido
 @endsection
 
 @section('content')
@@ -55,24 +55,13 @@
                                 <option>Repairs</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="textarea">Charge Per-Hour</label>
-                            <select name="charge" class="form-control select">
-                                <option >1000 - 5000</option>
-                                <option >5000 - 10000</option>
-                                <option >10000 - 25000</option>
-                                <option >25000 - 50000</option>
-                                <option >50000 - 100000</option>
-                                <option >100000 - Above</option>
-
-                            </select>
-                        </div>
+    
                         <div class="form-group">
                             <div class="button-group">
                                 <div class="action-buttons">
                                     <div class="upload-button">
                                         <button class="btn btn-common">Choose a service logo</button>
-                                        <input id="cover_img_file" type="file" name="images">
+                                        <input id="cover_img_file" type="file" name="images[]">
                                     </div>
                                 </div>
                             </div>

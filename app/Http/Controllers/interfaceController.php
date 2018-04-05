@@ -47,7 +47,7 @@ class interfaceController extends Controller
           return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
         }elseif ($auth === 'user') {
             $user = Auth::user();
-            flash('Login Successful')->success();
+            //flash('Login Successful')->success();
             return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
         }elseif ($auth === 'suspended') {
             return redirect('suspended-banned');
@@ -237,13 +237,14 @@ class interfaceController extends Controller
  public function registerVendor(Request $request)
  {   
      $validator = Validator::make($request->all(),
-        [  'email'=>'unique::users',
+        [  'email'=>'unique:users',
            'name'=>'required',
            'state'=>'required',
-           'phone_no'=>'required|max:11',
+           'phone_no'=>'required|numeric',
            ]);
+
           if($validator->passes())
-        {
+        {  
             $user = UserController::create($request);
             
             if($user)
