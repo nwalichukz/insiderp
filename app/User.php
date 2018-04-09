@@ -5,6 +5,9 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @property mixed $service
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -29,7 +32,7 @@ class User extends Authenticatable
 
     public function service()
     {
-        return $this->hasMany(Service::class, 'user_id');
+        return $this->hasMany(Service::class);
     }
 
       public function avater() {

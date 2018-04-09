@@ -10,17 +10,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand logo" href="{{ url('/') }}"><img src="assets/img/logoc.png" alt="Biddo"></a>
+                    <a class="navbar-brand logo" href="{{ url('/') }}"><img src="assets/img/logoc.png" alt="Bido"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar">
 
                     <ul class="nav navbar-nav">
                         @if(Auth::guest())
                             <li>
-                                <a class="active" href="{{ url('/') }}">Home </i></a>
+                                <a class="active" href="{{ url('/') }}">Home </a>
                             </li>
                             <li>
-                                <a href="{{ url('/about') }}">About Us </i></a>
+                                <a href="{{ url('/about') }}">About Us </a>
                             </li>
 
                         @endif
@@ -34,7 +34,7 @@
                                 <a href="{{ url('') }}"><i class="ti-angle-down"></i> {{ Auth::user()->name }}</a>
                                 <ul class="dropdown">
                                     <li>
-                                        <a href="{{ url('dashboard') }}">Dashboard</a>
+                                        <a href="{{ url('user', Auth::user()->id) }}">Dashboard</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('editProfile') }}">Edit Profile</a>
