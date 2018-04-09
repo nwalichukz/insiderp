@@ -42,7 +42,7 @@
 						<h3 class="block-title">Follow Us</h3>
 						<div class="bottom-social-icons social-icon">
 							<a class="twitter" href="../../../external.html?link=https://twitter.com/bidong"><i class="ti-twitter-alt"></i></a>
-							<a class="facebook" href="../../../external.html?link=https://web.facebook.com/bidong"><i class="ti-facebook"></i></a>
+							<a class="facebook" href="http://web.facebook.com/bido"><i class="ti-facebook"></i></a>
 							<a class="youtube" href="../../../external.html?link=https://youtube.com/"><i class="ti-youtube"></i></a>
 						</div>
 						<p>Join our mailing list to stay up to date and get notices about our new releases!</p>

@@ -10,17 +10,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand logo" href="{{ url('/') }}"><img src="assets/img/logoc.png" alt="Biddo"></a>
+                    <a class="navbar-brand logo" href="{{ url('/') }}">Bido</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar">
 
                     <ul class="nav navbar-nav">
                         @if(Auth::guest())
                             <li>
-                                <a class="active" href="{{ url('/') }}">Home </i></a>
+                                <a class="" href="{{ url('/') }}">Home </i></a>
                             </li>
                             <li>
-                                <a href="{{ url('/about') }}">About Us </i></a>
+                                <a href="{{ url('/about') }}">Post Job </i></a>
                             </li>
 
                         @endif
