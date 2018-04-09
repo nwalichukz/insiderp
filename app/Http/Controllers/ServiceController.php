@@ -106,6 +106,6 @@ class ServiceController extends Controller
         $update->additional_service =$request['additional_service'];
         }
        	$update->save();
-       	
+       	return true;
        }
 }

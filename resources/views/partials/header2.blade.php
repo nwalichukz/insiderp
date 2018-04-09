@@ -37,7 +37,11 @@
                                 <a href="{{ url('') }}"><i class="ti-angle-down"></i> {{ Auth::user()->name }}</a>
                                 <ul class="dropdown">
                                     <li>
-                                        <a href="{{ url('user', Auth::user()->id) }}">Dashboard</a>
+                                        <?php
+                                         $user = Auth::user();
+                                         $name = str_replace(' ', '-', strtolower($user->name));
+                                             ?>
+                                        <a href="{{ url('user/'.$name) }}">Dashboard</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('editProfile') }}">Edit Profile</a>
@@ -68,7 +72,7 @@
                         <a href="{{ url('/register') }}"><i class="ti-user"></i> Sign up</a>
                     </li>
                     <li>
-                        <a href="{{ url('/about') }}"><i class="ti-lock"></i> Login</a>
+                        <a href="{{ url('/sigin') }}"><i class="ti-lock"></i> Login</a>
                     </li>
                 @endif
             </ul>

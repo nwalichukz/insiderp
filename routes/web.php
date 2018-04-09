@@ -42,5 +42,6 @@ Route::post('/change-avatar', 'interfaceController@addAvatar')->name('updateAvat
 Route::post('/change-logo', 'interfaceController@addLogo')->name('updateLogo');
 Route::get('/logout', 'interfaceController@logout');
 Route::get('search-category/{category}', 'interfaceController@searchCategory')->name('search-category');
+Route::post('/service-update', 'interfaceController@updateService')->name('updateService');
 Route::get('/service/delete/{id}', 'interfaceController@deleteService');
 Route::get('/service/edit/{id}', 'interfaceController@editService');

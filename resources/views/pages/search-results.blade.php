@@ -66,15 +66,28 @@ Search Results| Bido
                                                     <img src="{{ asset("assets/img/features/img-1.jpg") }}" alt="">
                                                 </a>
                                             </figure>
+                                            <?php
+                                                $search_result->profession_title = substr(ucwords(strtolower($search_result->profession_title)), 0, 23);
+                                                $search_result->name = substr($search_result->name, 0, 23);
+                                                     /** 
+                                                     *  converts the string to lower case and the string first 
+                                                     *  character is made capital letter.
+                                                     *  then fetches 140 character from the string.
+                                                     */
+                                                $search_result->description = substr(ucfirst(strtolower($search_result->description)), 0, 60);
+                                               ?>
                                             <div class="item-body">
-                                                <b class="name">{{ ucfirst($search_result->user->name) }}</b>
-                                                <h3 class="job-title"><a href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">{{ $search_result->profession_title }}</a></h3>
-                                                <div class="adderess"><i class="ti-location-pin"></i> {{ $search_result->location }}, {{ $search_result->user->state }}</div>
+                                               <h3> <b class="job-title"><a href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">{{ ucfirst($search_result->name) }}</a></b> </h3>
+
+                                                <span class="name">{{ $search_result->profession_title }}</a></span>
+                                                 
+                                                <div class="adderess">{{$search_result->description}}...</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="item-foot">
-                                        <span><i class="ti-calendar"></i> {{ $search_result->created_at->diffForHumans() }}</span>
+                                        <span class="pull-right"><i class="ti-calendar"></i> {{ $search_result->created_at->diffForHumans() }}</span>
+                                        <span ><i class="ti-location-pin"></i> {{ $search_result->location }}, {{ $search_result->user->state }}</span>
                                         <div class="view-iocn">
                                             <a href=""><i class="ti-arrow-right"></i></a>
                                         </div>
@@ -85,7 +98,7 @@ Search Results| Bido
                     </div>
                 @else
                     <div class="col-md-6 col-md-offset-4">
-                        <h1>No result found</h1>
+                        <h3>No result found</h3>
                     </div>
                 @endif
 

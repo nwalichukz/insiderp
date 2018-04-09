@@ -15,6 +15,7 @@ use App\User;
 use App\UserAvater;
 use App\vendor;
 use App\Service;
+use App\vendorLogo;
 
 class interfaceController extends Controller
 {   
@@ -444,7 +445,7 @@ class interfaceController extends Controller
     flash()->overlay('Password changed successfully');
     return redirect()->back();
    }else{
-    flash()->overlay('Something went wrong, password could noe be changed, ple try again');
+    flash()->overlay('Something went wrong, password could noe be changed, please try again');
     return redirect()->back();
    }
  }
@@ -487,9 +488,9 @@ class interfaceController extends Controller
         }
    }
 /**
-*
-*
-*
+* deletes a particular service
+* 
+* @var id
 */
 public function deleteService($id)
 {
@@ -502,17 +503,49 @@ public function deleteService($id)
         flash()->overlay('Something went wrong, service could not be deleted successfully, please try again');
         return redirect()->back();
     }
-}
+}   
+    /**
+    * returns instance of a particular service
+    * 
+    * @var id
+    */
 
     public function editService($id)
     {
         $service = ServiceController::get($id);
         return view('dashboard.edit_service')->with(['service' => $service]);
     }
-
-    public function updateService()
+     /**
+    * updates a particular service
+    * 
+    * @var id
+    */
+    public function updateService(Request $request)
+    {   $validator = Validator::make($request->all(),
+        [  'service_name'=>'required',
+           'profession_title' => 'required',
+           'location'=>'required',
+           'service_category' => 'required',
+           ]);
+    if($validator->passes())
     {
-        
+        $update = ServiceController::update($request);
+        if($update)
+        {
+            flash()->overlay('Service updated successfully');
+            $user = Auth::user();
+            $name = str_replace(' ', '-', strtolower($user->name));
+            return redirect('user/'.$name);
+        }else{
+            flash()->overlay('Something went wrong, service could not be updated successfully, please try again');
+             $user = Auth::user();
+            $name = str_replace(' ', '-', strtolower($user->name));
+            return redirect('user/'.$name);
+        }
+      }else{
+        flash()->overlay($validator->all());
+        return redirect()->back();
+      }
     }
 
 

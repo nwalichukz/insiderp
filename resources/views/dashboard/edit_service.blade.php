@@ -27,12 +27,14 @@
 
                 <!-- edit form column -->
                 <div class="col-md-9 personal-info">
-                    <form class="form-horizontal" role="form" action="" method="post">
+                    <form class="form-horizontal" role="form" action="{{ route('updateService') }}" method="post">
                         {{ csrf_field() }}
                         <div class="divider"><h3>Basic information</h3></div>
                         <div class="form-group">
+
                             <label class="control-label" for="textarea">Service Name</label>
                             <input type="text" name="service_name" name="service_name" class="form-control" placeholder="Service Name (e.g. Axenic Arts)" value="{{ $service->name }}">
+                            <input type="hidden" name="id" value="{{$service->id}}">
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="textarea">Profession Title</label>
@@ -45,6 +47,7 @@
                         <div class="form-group">
                             <label class="control-label" for="select2">Service Category</label>
                             <select name="service_category" class="form-control select">
+                                <option value="{{$service->service_category}}">{{$service->service_category}}</option>
                                 <option>Entertainment</option>
                                 <option>Business</option>
                                 <option>Education and Training</option>
@@ -80,7 +83,7 @@
                             <label class="control-label" for="textarea">Featured services</label>
                             <input class="form-control" name="additional_service" placeholder="Feature name, e.g. Home Service" value="{{ $service->additional_service }}" type="text">
                         </div>
-                        <input type="submit"class="btn btn-common" value="Add Service">
+                        <input type="submit"class="btn btn-common" value="Update Service">
                     </form>
                 </div>
             </div>
