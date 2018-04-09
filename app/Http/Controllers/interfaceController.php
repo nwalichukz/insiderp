@@ -504,4 +504,17 @@ public function deleteService($id)
     }
 }
 
+    public function editService($id)
+    {
+        $service = ServiceController::get($id);
+        return view('dashboard.edit_service')->with(['service' => $service]);
+    }
+
+    public function updateService()
+    {
+        
+    }
+
+
+
 }
