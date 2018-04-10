@@ -62,9 +62,19 @@ Search Results| Bido
                                     <div class="featured-wrap">
                                         <div class="featured-inner">
                                             <figure class="item-thumb">
+                                                @if(!empty($search_result->logo->logo))
+                                                <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
+                                                    <img src="{{ asset("images/user/".$search_result->logo->logo) }}" alt="logo image">
+                                                </a>
+                                                @elseif(!empty($search_result->avater->avater))
+                                                <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
+                                                    <img src="{{ asset("images/user/".$search_result->avater->avater) }}" alt="logo image">
+                                                </a>
+                                                @else
                                                 <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
                                                     <img src="{{ asset("assets/img/features/img-1.jpg") }}" alt="">
                                                 </a>
+                                                @endif
                                             </figure>
                                             <?php
                                                 $search_result->profession_title = substr(ucwords(strtolower($search_result->profession_title)), 0, 23);

@@ -20,7 +20,7 @@ class Vendor extends Model
     }
 
      public function logo() {
-      return $this->belongsTo(VendorLogo::class, 'id', 'user_id');
+      return $this->belongsTo(VendorLogo::class, 'id', 'service_id');
     }
 
      public function avater() {
