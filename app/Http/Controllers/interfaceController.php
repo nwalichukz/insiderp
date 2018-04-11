@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\searchController;
+use App\Http\Controllers\MessageController;
 use Validator;
 use Auth;
 use App\User;
@@ -16,6 +17,7 @@ use App\UserAvater;
 use App\vendor;
 use App\Service;
 use App\vendorLogo;
+use App\Message;
 
 class interfaceController extends Controller
 {   
@@ -61,7 +63,7 @@ class interfaceController extends Controller
         }
     }
     else
-    {
+    {    flash()->error("Phone number or Password Incorrect");
         return redirect()->back()->withErrors($validator);
     }
     }
@@ -250,11 +252,11 @@ class interfaceController extends Controller
             
             if($user)
             {
-                flash()->overlay("Account created successfully, login with the password and phone no", "Bido");
+                flash("Account created successfully, login with the password and phone no", "Bido")->success();
                 return redirect('/signin');
 
             }else{
-                flash()->overlay('Something went wrong user could not be created', 'Bido');
+                flash('Something went wrong user could not be created', 'Bido')->error();
                 return redirect()->back();
             }
         }
@@ -294,10 +296,10 @@ class interfaceController extends Controller
      $service = ServiceController::create($request);
 
      if ($service) {
-         flash()->overlay('Service created successfully', 'All good');
+         flash('Service created successfully', 'All good')->success();
          return redirect()->back();
      } else {
-         flash()->overlay('something went wrong, service could not be created');
+         flash('something went wrong, service could not be created')->error();
          return redirect()->back();
      }
      }
@@ -314,7 +316,7 @@ class interfaceController extends Controller
         [  'profession_title'=>'required',
            ]);
     if($validator->fails()) {
-        flash()->overlay('Please enter service name you want to find');
+        flash('Please enter service name you want to find')->error();
         return redirect()->back();
     }
     $search = searchController::search($request);
@@ -339,7 +341,7 @@ class interfaceController extends Controller
         return view('pages.search-results')->with(['search'=> $search['search'],
                     'total_search'=>$search['total_search']]);
     }else{
-        flash()->overlay('Something went wrong, the system could respond as expected');
+        flash('Something went wrong, the system could respond as expected')->error();
         return redirect()->back();
     }
   }
@@ -355,7 +357,7 @@ class interfaceController extends Controller
     {   ViewController::add($id);
         return view('pages.full-view')->with(['fullview' => $fullview]);
     }else{
-         flash()->overlay('Something went wrong, the system could respond as expected');
+         flash('Something went wrong, the system could respond as expected')->error();
         return redirect()->back();
     }
   }
@@ -374,10 +376,10 @@ class interfaceController extends Controller
      $save = $avater->save();
      if($save)
      {
-         flash()->overlay('Avatar uploaded successfully');
+         flash('Avatar uploaded successfully')->success();
         return redirect()->back();
      }else{
-         flash()->overlay('Something went wrong, image could not be uploaded', 'Try again');
+         flash('Something went wrong, image could not be uploaded', 'Try again')->error();
         return redirect()->back();
        
      }
@@ -400,7 +402,7 @@ class interfaceController extends Controller
      $avater->save();
      return redirect()->back();
    }else{
-        flash()->overlay('Something went wrong, image could not be uploaded');
+        flash('Something went wrong, image could not be uploaded')->error();
         return redirect()->back();
     }
     
@@ -422,7 +424,7 @@ class interfaceController extends Controller
              $save->save();
              return redirect()->back();
          }else{
-        flash()->overlay('Something went wrong, image could not be uploaded');
+        flash('Something went wrong, image could not be uploaded')->error();
         return redirect()->back();
     }
    }
@@ -442,10 +444,10 @@ class interfaceController extends Controller
    $changepswd = UserController::changePassword($request);
    if($changepswd)
    {
-    flash()->overlay('Password changed successfully');
+    flash('Password changed successfully')->success();
     return redirect()->back();
    }else{
-    flash()->overlay('Something went wrong, password could noe be changed, please try again');
+    flash('Something went wrong, password could noe be changed, please try again')->error();
     return redirect()->back();
    }
  }
@@ -471,19 +473,19 @@ class interfaceController extends Controller
             $update = UserController::update($request, $user_id);
             if ($update)
             {
-                flash()->overlay('Profile Updated Successfully', 'All good!');
+                flash('Profile Updated Successfully', 'All good!')->success();
                 return redirect()->back();
             }
             else
             {
-                flash()->overlay('An error has occured', 'Try again');
+                flash('An error has occured', 'Try again')->error();
                 return redirect()->back();
             }
 
         }
         else
         {
-            flash()->overlay("Invalid form", 'Error');
+            flash("Invalid form", 'Error')->error();
             return redirect()->back();
         }
    }
@@ -497,10 +499,10 @@ public function deleteService($id)
     $delete = ServiceController::delete($id);
     if($delete)
     {
-        flash()->overlay('Service deleted successfully');
+        flash('Service deleted successfully')->success();
         return redirect()->back();
     }else{
-        flash()->overlay('Something went wrong, service could not be deleted successfully, please try again');
+        flash('Something went wrong, service could not be deleted successfully, please try again')->error();
         return redirect()->back();
     }
 }   
@@ -532,12 +534,12 @@ public function deleteService($id)
         $update = ServiceController::update($request);
         if($update)
         {
-            flash()->overlay('Service updated successfully');
+            flash('Service updated successfully')->success();
             $user = Auth::user();
             $name = str_replace(' ', '-', strtolower($user->name));
             return redirect('user/'.$name);
         }else{
-            flash()->overlay('Something went wrong, service could not be updated successfully, please try again');
+            flash('Something went wrong, service could not be updated successfully, please try again')->error();
              $user = Auth::user();
             $name = str_replace(' ', '-', strtolower($user->name));
             return redirect('user/'.$name);
@@ -548,6 +550,90 @@ public function deleteService($id)
       }
     }
 
+    /**
+    * send a mesage to a particular user
+    *
+    * @var request
+    *
+    */
+   public static function sendMessage(Request $request)
+   {
+    $validator = Validator::make($request->all(),
+        [  'name'=>'required',
+           'title' => 'required',
+           'phone_no'=>'required',
+           'message' => 'required',
+           ]);
+    if($validator->passes())
+    {
+        $message = MessageController::sendMessage($request);
+        if($message)
+        {
+        flash('message sent successfully, thanks for contacting the merchant')->success();
+        return redirect()->back();
+     }else{
+         flash('Something went wrong, message not sent successfully please try again')->error();
+        return redirect()->back();
+     }
+    }else{
+         flash()->overlay($validator->all());
+        return redirect()->back();
+    }
+   }
 
+    /**
+    * deletes a mesage of a particular user
+    *
+    * @var request
+    *
+    */
+    public static function deleteMessage($id)
+    {
+        $message = MessageController::delete($id);
+        if($message)
+        {
+            flash('Message deleted successfully')->success();
+            return redirect()->back();
+        }else{
+            flash('Something went wrong, message could not be deleted, please try again')->error();
+            return redirect()->back();
+        }
+    }
 
+     /**
+    * returns a mesage 
+    *
+    * @var request
+    *
+    */
+     public function getMessage($id)
+     {
+        $get = MessageController::get($id);
+     }
+
+      /**
+    * returns all mesages for a user 
+    *
+    * @var request
+    *
+    */
+     public function getUserMessage($id)
+     {
+        $get = MessageController::getUserMessage($id);
+     }
+
+    public function postJob(Request $request)
+    {   $validator = Validator::make($request->all(),
+        [  'name'=>'required',
+           'title' => 'required',
+           'phone_no'=>'required',
+           'email' => 'required',
+           'job_description' => 'required',
+           'job_category' => 'required',
+           ]);
+    if($validator->passes())
+    {
+        $post = PostJobController::create($request);
+      }
+    }
 }
