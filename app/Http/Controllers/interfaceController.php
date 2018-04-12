@@ -619,7 +619,7 @@ public function deleteService($id)
      }
 
       /**
-    * returns all mesages for a user 
+    * returns all mesages for a user
     *
     * @var request
     *

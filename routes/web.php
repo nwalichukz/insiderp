@@ -45,9 +45,8 @@ Route::get('search-category/{category}', 'interfaceController@searchCategory')->
 Route::post('/service-update', 'interfaceController@updateService')->name('updateService');
 Route::get('/service/delete/{id}', 'interfaceController@deleteService');
 Route::get('/service/edit/{id}', 'interfaceController@editService');
-<<<<<<< HEAD
 Route::get('/view-service/{id}', 'interfaceController@viewService')->name('viewService');
-=======
 Route::post('send-message', 'interfaceController@sendMessage');
 Route::get('/message/delete/{id}', 'interfaceController@deleteMessage');
->>>>>>> d664b0df95e16078950f9bc297247af723b514f2
+Route::get('post-job', 'interfaceController@postJob');
+Route::post('add-job', 'interfaceController@postJobSave');
