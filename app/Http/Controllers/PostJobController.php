@@ -17,7 +17,7 @@ class PostJobController extends Controller
      $postjob->name = $request['name'];
      $postjob->phone_no = $request['phone_no'];
      $postjob->email = $request['email'];
-     $postjob->status = $request['status'];
+     $postjob->status = 'pending';
      $postjob->job_category = $request['job_category'];
      $postjob->description = $request['job_description'];
      $postjob->save();
@@ -46,10 +46,10 @@ class PostJobController extends Controller
     *
     * @var id
     */
-    public static function changeStatus($id)
+    public static function changeStatus(Request $request)
     {
     	$change = PostJob::find($id);
-    	$change->status = 'done';
+    	$change->status = $request['status'];
     	$change->save();
     }
 
@@ -60,7 +60,7 @@ class PostJobController extends Controller
     */
      public static function delete($id)
      {
-     	return PostJob::delete($id);
+     	return PostJob::where('id', $id)->delete($id);
      }
 
 }

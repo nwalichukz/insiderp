@@ -10,17 +10,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand logo" href="{{ url('/') }}"><img src="{{ asset('assets/img/red png bido text-2_1523397726295.png') }}" alt="Bido"></a>
+
+                    <a class="navbar-brand logo" href="{{ url('/') }}">Bido</a>
+
+
                 </div>
                 <div class="collapse navbar-collapse" id="navbar">
 
                     <ul class="nav navbar-nav">
                         @if(Auth::guest())
                             <li>
-                                <a class="active" href="{{ url('/') }}">Home </a>
+                                <a class="" href="{{ url('/') }}">Home </i></a>
                             </li>
                             <li>
-                                <a href="{{ url('/about') }}">About Us </a>
+                                <a href="{{ url('/about') }}">Post Job </i></a>
+
                             </li>
 
                         @endif
@@ -34,7 +38,11 @@
                                 <a href="{{ url('') }}"><i class="ti-angle-down"></i> {{ Auth::user()->name }}</a>
                                 <ul class="dropdown">
                                     <li>
-                                        <a href="{{ url('user', Auth::user()->id) }}">Dashboard</a>
+                                        <?php
+                                         $user = Auth::user();
+                                         $name = str_replace(' ', '-', strtolower($user->name));
+                                             ?>
+                                        <a href="{{ url('user/'.$name) }}">Dashboard</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('editProfile') }}">Edit Profile</a>
@@ -65,7 +73,7 @@
                         <a href="{{ url('/register') }}"><i class="ti-user"></i> Sign up</a>
                     </li>
                     <li>
-                        <a href="{{ url('/about') }}"><i class="ti-lock"></i> Login</a>
+                        <a href="{{ url('/sigin') }}"><i class="ti-lock"></i> Login</a>
                     </li>
                 @endif
             </ul>

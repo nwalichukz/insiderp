@@ -14,7 +14,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand logo" href="{{ url('/') }}"><img src="assets/img/logo99.png" alt="Bido"></a>
+					<a class="navbar-brand logo" href="{{ url('/') }}">Bido</a>
 				</div>
 				<div class="collapse navbar-collapse" id="navbar">
 
@@ -23,7 +23,7 @@
 							<a class="active" href="{{ url('/') }}">Home </i></a>	
 						</li>
 						<li>
-							<a href="{{ url('/about') }}">About Us </i></a>
+							<a href="{{ url('/about') }}">Post Job </i></a>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right float-right">

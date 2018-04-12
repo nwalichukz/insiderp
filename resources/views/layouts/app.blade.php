@@ -91,6 +91,7 @@ cooks, entrepreneur, programmer, logo designer, makeup artist, artists, plumbers
 
 <script>
     $('#flash-overlay-modal').modal();
+    $('div.alert').not('.alert-important').delay(6000).fadeOut(350);
 </script>
 
 </body>
