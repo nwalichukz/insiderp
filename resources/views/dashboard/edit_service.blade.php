@@ -8,7 +8,7 @@
 
     <div id="content">
         <div class="container">
-            <h1>Edit {{ $service->name }} details</h1>
+            <h1>Edit {{ $service->name }}</h1>
             <hr>
             <div class="row">
                 <!-- left column -->

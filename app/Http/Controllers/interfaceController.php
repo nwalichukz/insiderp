@@ -515,6 +515,11 @@ public function deleteService($id)
         
     }
 
+    public function viewService($id)
+    {
+        $service = ServiceController::get($id);
+        return view('dashboard.view_service')->with(['service' => $service]);
+    }
 
 
 }

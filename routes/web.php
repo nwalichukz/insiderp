@@ -44,3 +44,4 @@ Route::get('/logout', 'interfaceController@logout');
 Route::get('search-category/{category}', 'interfaceController@searchCategory')->name('search-category');
 Route::get('/service/delete/{id}', 'interfaceController@deleteService');
 Route::get('/service/edit/{id}', 'interfaceController@editService');
+Route::get('/view-service/{id}', 'interfaceController@viewService')->name('viewService');
