@@ -367,7 +367,9 @@ class interfaceController extends Controller
  *
  */
    public function addAvatar(Request $request)
-   { $img = ImageController::userImageUpload($request);
+   {$check = ImageController::deleteAvatar(Auth::user()->id); 
+    if($check){
+    $img = ImageController::userImageUpload($request);
    if($img)
    {
      $avater = new UserAvater;
@@ -385,7 +387,10 @@ class interfaceController extends Controller
      }
 
    }
-
+        }else{
+           flash('Something went wrong, image could not be uploaded', 'Try again')->error();
+        return redirect()->back(); 
+        }
    }
      /**
  * This method adds logo to the
@@ -393,18 +398,25 @@ class interfaceController extends Controller
  *
  */
    public function addLogo(Request $request)
-   {  $img = ImageController::userImageUpload($request);
-   if($img)
+   { $check = ImageController::deleteLogo($request['id']);
+    if($check){  
+    $img = ImageController::userImageUpload($request);
+   if(!empty($img))
    {
      $avater = new VendorLogo;
-     $avater->user_id = Auth::user()->id;
+     $avater->service_id = $request['id'];
      $avater->logo = $img;
      $avater->save();
+     flash('logo uploaded successfully')->success();
      return redirect()->back();
    }else{
         flash('Something went wrong, image could not be uploaded')->error();
         return redirect()->back();
     }
+     }else{
+          flash('Something went wrong, image could not be uploaded', 'Try again')->error();
+        return redirect()->back();
+     }
     
    }
 

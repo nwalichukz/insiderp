@@ -18,7 +18,7 @@
                             {{ csrf_field() }}
                             <img src="{{ asset('images/images.jpeg') }}" class="avatar img-circle img-responsive" alt="avatar">
                             <h6>Change logo...</h6>
-
+                            <input type="hidden" name="id" value="{{$service->id}}">
                             <input type="file" class="btn btn-default" name="avatar" required>
                             <button type="submit" class="btn btn-common">Save</button>
                         </form>
