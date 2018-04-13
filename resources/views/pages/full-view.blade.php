@@ -24,27 +24,30 @@
                                 <span class="label label-success">Windows XP, Vista, 7</span>
                             </center>
                             <hr>
-                            <div class="container">
+                            <div class="previous-work">
                                 <p class="text-success">Previous works</p>
                                 <hr>
-                                <div class="col-md-10 com-sm-10 col-xs-12">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a href="#"><img src="{{ asset('assets/img/blog/author.jpg') }}" alt="" class="img-thumbnail img-responsive img-raised"></a><br>
-                                            <a href="#"><small>{ Job Name }: Click to preview</small></a>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <a href="#"><img src="{{ asset('assets/img/blog/author.jpg') }}" alt="" class="img-thumbnail img-responsive img-raised"></a><br>
-                                            <a href="#"><small>{ Job Name }: Click to preview</small></a>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <a href="#"><img src="{{ asset('assets/img/blog/author.jpg') }}" alt="" class="img-thumbnail img-responsive img-raised"></a><br>
-                                            <a href="#"><small>{ Job Name }: Click to preview</small></a>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <a href="#"><img src="{{ asset('assets/img/blog/author.jpg') }}" alt="" class="img-thumbnail img-responsive img-raised"></a><br>
-                                            <a href="#"><small>{ Job Name }: Click to preview</small></a>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <h3>{ Job Title }</h3>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                                    <a href="{{ asset('assets/img/jobs/features-img-1.jpg') }}" class="swipebox" title="Caption Goes Here">
+                                                        <img class="responsive-image preview" src="{{ asset('assets/img/jobs/features-img-1.jpg') }}" alt="img">
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                                    <a href="{{ asset('assets/img/jobs/features-img-1.jpg') }}" class="swipebox" title="Caption Goes Here">
+                                                        <img class="responsive-image preview" src="{{ asset('assets/img/jobs/features-img-1.jpg') }}" alt="img">
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                                    <a href="{{ asset('assets/img/jobs/features-img-1.jpg') }}" class="swipebox" title="Caption Goes Here">
+                                                        <img class="responsive-image preview" src="{{ asset('assets/img/jobs/features-img-1.jpg') }}" alt="img">
+                                                    </a>
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
                                 </div>

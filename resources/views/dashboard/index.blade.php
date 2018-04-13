@@ -13,10 +13,9 @@ Dashboard | welcome
 <div id="content">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3 col-sm-3 col-xs-12">
-				@include('partials.sidebar')
-			</div>
-			<div class="col-md-8 col-sm-8 col-xs-12">
+			<div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
+				<h3>Your Services</h3>
+				<hr>
 				<div class="inner-box my-resume">
 					@foreach($services as $service)
 						<div class="author-resume">

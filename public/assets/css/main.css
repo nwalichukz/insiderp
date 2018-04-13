@@ -198,7 +198,7 @@ a:focus {
   border-bottom: 2px solid #ff4f57;
 }
 #content {
-  padding: 80px 0;
+  padding: 40px 0;
 }
 .main-container {
   padding: 80px 0;
@@ -777,7 +777,7 @@ nav#menu span.fa.fa-bars:hover {
     intro section style
     ====================================================*/
 .section-intro {
-  background: url("../img/bg/bg-intro.jpg") center center no-repeat;
+  background: url("../../images/logo/banner.jpg") center center no-repeat;
   background-size: cover;
   color: #fff;
   position: relative;
@@ -3917,3 +3917,9 @@ blockquote p a:hover {
 .dash-box-color-3 .dash-box-icon > i {
   background: #8150e4;
 }
+
+.previous-work .preview {
+  width: 365px;
+  height: 300px;
+}
+
