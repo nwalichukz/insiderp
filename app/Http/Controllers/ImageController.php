@@ -51,4 +51,55 @@ class ImageController extends Controller
             return $newFileName;
         }
     }
+
+      /**
+      * This method checks if a particlar
+      * user has avater and deletes it
+      *
+     * @access public
+     *
+     * @static
+     * 
+     * @var $file
+     * 
+     * @return image name
+     */
+      public static function deleteAvatar($id)
+      {
+        $image = UserAvater::where('user_id', $id)->first();
+        if(!empty($image))
+        {
+            unlink('images/user/'.$image->avater);
+            $image->delete();
+            return true;
+        }else{
+            return true;
+        }
+      }
+
+       /**
+      * This method checks if a particlar
+      * user has logo and deletes it from DB
+      * and also deltes it from folder
+      *
+     * @access public
+     *
+     * @static
+     * 
+     * @var $file
+     * 
+     * @return image name
+     */
+      public static function deleteLogo($id)
+      {
+        $image = VendorLogo::where('service_id', $id)->first();
+        if(!empty($image))
+        {
+            unlink('images/user/'.$image->avater);
+            $image->delete();
+            return true;
+        }else{
+            return true;
+        }
+      }
 }

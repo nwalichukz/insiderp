@@ -12,18 +12,18 @@ class Vendor extends Model
     }
 
     public function images(){
-      return $this->hasMany(PrevWorkImage::class, 'service_id', 'id');
+      return $this->hasMany(PrevWorkImage::class, 'service_id');
     }
 
      public function view() {
-      return $this->belongsTo(view::class, 'id', 'service_id');
+      return $this->belongsTo(view::class, 'service_id');
     }
 
      public function logo() {
-      return $this->belongsTo(VendorLogo::class, 'id', 'service_id');
+      return $this->belongsTo(VendorLogo::class, 'service_id');
     }
 
      public function avater() {
-      return $this->belongsTo(UserAvater::class, 'id', 'user_id');
+      return $this->belongsTo(UserAvater::class, 'user_id');
     }
 }
