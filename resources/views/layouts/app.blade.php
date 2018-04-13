@@ -34,8 +34,7 @@ cooks, entrepreneur, programmer, logo designer, makeup artist, artists, plumbers
 <link rel="stylesheet" href="{{ asset('assets/extras/settings.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/css/slicknav.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/select2-bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/swipebox.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/colors/red.css') }}" media="screen" />
 <!--[if lt IE 9]>
@@ -87,11 +86,18 @@ cooks, entrepreneur, programmer, logo designer, makeup artist, artists, plumbers
 <script type="text/javascript" src="{{ asset('assets/js/contact-form-script.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.revolution.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.tools.min.js') }}"></script>
-<script src="{{ asset('assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.swipebox.min.js') }}"></script>
 
 <script>
     $('#flash-overlay-modal').modal();
-    $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
+
+    $('div.alert').not('.alert-important').delay(6000).fadeOut(350);
+    ( function( $ ) {
+
+        $( '.swipebox' ).swipebox();
+
+    } )( jQuery );
+
 </script>
 
 </body>

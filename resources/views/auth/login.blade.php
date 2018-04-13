@@ -11,9 +11,7 @@ Login | Sign up
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-6 cd-user-modal">
 				<div class="my-account-form">
-					<div class="col-md-4 col-md-offset-2">
 						<h3><a href="#">Login</a></h3>
-					</div>
 					<hr>
 					<div id="cd-login" class="is-selected">
 						<div class="page-login-form">

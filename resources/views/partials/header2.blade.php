@@ -26,7 +26,10 @@
                                 <a href="{{ url('/about') }}">Post Job </a>
 
                             </li>
-
+                        @endif
+                        @if (Auth::check())
+                                <li><a href="{{ url('Notifications') }}">Notifications</a></li>
+                                <li><a href="{{ url('messages') }}">Messages</a></li>
                         @endif
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -38,21 +41,22 @@
                                 <a href="{{ url('') }}"><i class="ti-angle-down"></i> {{ Auth::user()->name }}</a>
                                 <ul class="dropdown">
                                     <li>
-                                        <?php
-                                         $user = Auth::user();
-                                         $name = str_replace(' ', '-', strtolower($user->name));
-                                             ?>
-                                        <a href="{{ url('user/'.$name) }}">Dashboard</a>
+                                        <a href="{{ url('user/'.str_replace(' ', '-', strtolower(Auth::user()->name))) }}">Dashboard</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('editProfile') }}">Edit Profile</a>
                                     </li>
-                                </ul>
-                            </li>
-                            <li class="right">
-                                <a href="{{ url('/login') }}"> <i class="ti-angle-down"></i> <i class="ti-settings"></i></a>
-                                <ul class="dropdown">
-                                    <a href="{{ url('/logout') }}">Logout</a>
+                                    <li>
+                                        <a href="{{ url('service') }}">Add Service</a>
+                                    </li>
+                                <!--
+                                    <li>
+                                        <a href="{{-- url('manage-applications') --}}">Manage Applications</a>
+                                    </li>
+                                 -->
+                                    <li>
+                                        <a href="{{ url('logout') }}">Logout</a>
+                                    </li>
                                 </ul>
                             </li>
                         @endif
