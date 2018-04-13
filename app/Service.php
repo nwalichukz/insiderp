@@ -25,7 +25,7 @@ class Service extends Model
     }
 
      public function logo() {
-      return $this->belongsTo(VendorLogo::class, 'service_id');
+      return $this->belongsTo(VendorLogo::class);
     }
 
      public function avater() {

@@ -7,6 +7,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ImageController;
 use App\Service;
 use App\Vendor;
+use App\VendorLogo;
 use App\User;
 use App\View;
 use App\UserAvater;
@@ -52,6 +53,7 @@ class ServiceController extends Controller
      public static function get($id){
      	return Service::where('id', $id)
      					->with('user')
+              ->with('logo')
      					->with('view')->first();
      }
 
