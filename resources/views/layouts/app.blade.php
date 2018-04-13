@@ -16,7 +16,7 @@ cooks, entrepreneur, programmer, logo designer, makeup artist, artists, plumbers
  mechanic, electrician, technician, architects,
 ">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="shortcut icon" href="assets/img/favicon.png">
+<link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
 
 <!-- CSS
 ================================================== -->

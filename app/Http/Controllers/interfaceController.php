@@ -593,6 +593,13 @@ public function deleteService($id)
     }
    }
 
+
+    public function viewService($id)
+    {
+        $service = ServiceController::get($id);
+        return view('dashboard.view_service')->with(['service' => $service]);
+    }
+
     /**
     * deletes a mesage of a particular user
     *
@@ -624,7 +631,7 @@ public function deleteService($id)
      }
 
       /**
-    * returns all mesages for a user 
+    * returns all mesages for a user
     *
     * @var request
     *

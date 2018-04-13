@@ -13,16 +13,17 @@
 
                     <a class="navbar-brand logo" href="{{ url('/') }}">Bido</a>
 
+
                 </div>
                 <div class="collapse navbar-collapse" id="navbar">
 
                     <ul class="nav navbar-nav">
                         @if(Auth::guest())
                             <li>
-                                <a class="" href="{{ url('/') }}">Home </i></a>
+                                <a class="" href="{{ url('/') }}">Home </a>
                             </li>
                             <li>
-                                <a href="{{ url('/about') }}">Post Job </i></a>
+                                <a href="{{ url('/about') }}">Post Job </a>
 
                             </li>
 

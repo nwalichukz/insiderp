@@ -7,6 +7,7 @@ use App\Http\Controllers\mailer;
 use App\Http\Controllers\ServiceController;
 use App\Vendor;
 use App\User;
+use App\UserAvater;
 
 class UserController extends Controller
 {
@@ -56,8 +57,7 @@ class UserController extends Controller
      {
 
      	return User::where('id', $id)
-                    ->with('avater')
-                    ->get();
+                    ->with('avater')->get();
      }
     /**
     * This method deletes a user

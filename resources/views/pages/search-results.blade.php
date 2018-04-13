@@ -77,21 +77,28 @@ Search Results| Bido
                                                 @endif
                                             </figure>
                                             <?php
-                                                $search_result->profession_title = substr(ucwords(strtolower($search_result->profession_title)), 0, 23);
-                                                $search_result->name = substr($search_result->name, 0, 23);
+                                                //$search_result->profession_title = substr(ucwords(strtolower($search_result->profession_title)), 0, 23);
+                                                //$search_result->name = substr($search_result->name, 0, 23);
                                                      /** 
                                                      *  converts the string to lower case and the string first 
                                                      *  character is made capital letter.
                                                      *  then fetches 140 character from the string.
                                                      */
-                                                $search_result->description = substr(ucfirst(strtolower($search_result->description)), 0, 60);
+                                                //$search_result->description = substr(ucfirst(strtolower($search_result->description)), 0, 60);
                                                ?>
                                             <div class="item-body">
-                                               <h3> <b class="job-title"><a href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">{{ ucfirst($search_result->name) }}</a></b> </h3>
+                                               <h3>
+                                                   <b class="job-title">
+                                                       <a href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
+                                                           {{ substr($search_result->name, 0, 23) }}
+                                                       </a>
+                                                   </b>
+                                                   <sub class="pull-right">{{ $search_result->user->phone_no }}</sub>
+                                               </h3>
 
-                                                <span class="name">{{ $search_result->profession_title }}</a></span>
+                                                <span class="name">{{ substr(ucwords(strtolower($search_result->profession_title)), 0, 23) }}</span>
                                                  
-                                                <div class="adderess">{{$search_result->description}}...</div>
+                                                <div class="adderess">{{ substr(ucfirst(strtolower($search_result->description)), 0, 60) }}...</div>
                                             </div>
                                         </div>
                                     </div>

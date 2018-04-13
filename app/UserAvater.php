@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class UserAvater extends Model
 {
 
-      public function avater() {
-      return $this->belongsTo(UserAvater::class, 'id', 'user_id');
+      public function user() {
+      return $this->belongsTo(User::class);
     }
 
      public function images(){
@@ -25,7 +25,7 @@ class UserAvater extends Model
 
     public function service()
     {
-        return $this->hasMany(Service::class, 'id', 'user_id');
+        return $this->belongsTo(Service::class, 'id', 'user_id');
 
     }
 }

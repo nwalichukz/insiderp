@@ -36,19 +36,19 @@ class User extends Authenticatable
     }
 
       public function avater() {
-      return $this->belongsTo(UserAvater::class, 'id', 'user_id');
+      return $this->hasOne(UserAvater::class);
     }
 
      public function images(){
-      return $this->hasMany(PrevWorkImage::class, 'service_id', 'id');
+      return $this->hasMany(PrevWorkImage::class, 'service_id');
     }
 
      public function view() {
-      return $this->belongsTo(view::class, 'id', 'service_id');
+      return $this->belongsTo(view::class, 'service_id');
     }
 
      public function logo() {
-      return $this->hasMany(VendorLogo::class, 'id', 'user_id');
+      return $this->hasMany(VendorLogo::class, 'user_id');
 
     }
 }
