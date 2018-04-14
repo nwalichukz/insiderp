@@ -782,6 +782,7 @@ nav#menu span.fa.fa-bars:hover {
   color: #fff;
   position: relative;
   width: 100%;
+
 }
 .section-intro:before {
   content: "";
@@ -3918,8 +3919,32 @@ blockquote p a:hover {
   background: #8150e4;
 }
 
-.previous-work .preview {
+.preview {
   width: 365px;
   height: 300px;
+}
+
+.modal-header {
+  padding-bottom: 5px;
+}
+
+.modal-footer {
+  padding: 0;
+}
+
+.modal-footer .btn-group button {
+  height:40px;
+  border-top-left-radius : 0;
+  border-top-right-radius : 0;
+  border: none;
+  border-right: 1px solid #ddd;
+}
+
+.modal-footer .btn-group:last-child > button {
+  border-right: 0;
+}
+
+#search_form .form-group .form-control {
+  height: 10px;
 }
 

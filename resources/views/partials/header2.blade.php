@@ -28,8 +28,18 @@
                             </li>
                         @endif
                         @if (Auth::check())
-                                <li><a href="{{ url('Notifications') }}">Notifications</a></li>
-                                <li><a href="{{ url('messages') }}">Messages</a></li>
+                                <li>
+                                    <a href="{{ url('Notifications') }}">Notifications</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('messages') }}">Messages</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('jobs') }}">My Jobs</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('service') }}">Add Service</a>
+                                </li>
                         @endif
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -45,9 +55,6 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('editProfile') }}">Edit Profile</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('service') }}">Add Service</a>
                                     </li>
                                 <!--
                                     <li>
@@ -65,7 +72,7 @@
             </div>
 
             <ul class="wpb-mobile-menu">
-                @if(Auth::check())
+                @if(Auth::guest())
                     <li>
                         <a class="active" href="{{ url('/') }}">Home</a>
                     </li>
@@ -78,6 +85,38 @@
                     </li>
                     <li>
                         <a href="{{ url('/sigin') }}"><i class="ti-lock"></i> Login</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ url('Notifications') }}">Notifications</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('messages') }}">Messages</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('jobs') }}">My Jobs</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('service') }}">Add Service</a>
+                    </li>
+                    <li class="left">
+                        <a href="{{ url('') }}"><i class="ti-angle-down"></i> {{ Auth::user()->name }}</a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="{{ url('user/'.str_replace(' ', '-', strtolower(Auth::user()->name))) }}">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('editProfile') }}">Edit Profile</a>
+                            </li>
+                        <!--
+                                    <li>
+                                        <a href="{{-- url('manage-applications') --}}">Manage Applications</a>
+                                    </li>
+                                 -->
+                            <li>
+                                <a href="{{ url('logout') }}">Logout</a>
+                            </li>
+                        </ul>
                     </li>
                 @endif
             </ul>

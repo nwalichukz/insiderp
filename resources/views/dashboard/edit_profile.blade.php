@@ -8,12 +8,11 @@
 
     <div id="content">
         <div class="container">
-            <h1>Edit Profile</h1>
+            <h3>Edit Profile</h3>
             <hr>
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-3
-">
+                <div class="col-md-3">
                     <div class="text-center">
                         <form action="{{ route('updateAvatar') }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -38,11 +37,29 @@
                                 <input name="name" class="form-control" type="text" value="{{ ucfirst($user->name) }}" placeholder="Full Name">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Email Address:</label>
+                            <div class="col-lg-8">
+                                <input name="email" class="form-control" type="text" value="{{ ucfirst($user->email) }}" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">State:</label>
+                            <div class="col-lg-8">
+                                <input name="state" class="form-control" type="text" value="{{ ucfirst($user->state) }}" placeholder="State">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Location:</label>
                             <div class="col-md-8">
-                                <input name="location" class="form-control" type="text" value="{{ $user->location }}" placeholder="Your Location">
+                                <input name="location" class="form-control" type="text" value="{{ ucfirst($user->location) }}" placeholder="Your Location">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Address:</label>
+                            <div class="col-lg-8">
+                                <input name="address" class="form-control" type="text" value="{{ ucfirst($user->address) }}" placeholder="Address">
                             </div>
                         </div>
                         <div class="form-group">

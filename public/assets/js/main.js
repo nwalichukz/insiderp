@@ -6,7 +6,28 @@ jQuery(document).ready(function( $ ) {
   });
 });
 
-
+    function showFields() {
+        var field = $('#profession_field').val();
+        if(field !== '')
+        {
+            $('#filters').removeClass('hidden').fadeIn(7000);
+        }
+        else {
+            $('#filters').addClass('hidden');
+        }
+    }
+function checkAmount() {
+    var amount = $('#amount').val();
+    if(amount < 1000)
+    {
+        $('#amount').addClass('has-error');
+        $('#error').text('Amount cannot be below 1000');
+    }
+    else
+    {
+        $('#error').text('');
+    }
+}
 // Page Loader
 $(window).load(function() {
   "use strict";

@@ -655,4 +655,10 @@ public function deleteService($id)
         $post = PostJobController::create($request);
       }
     }
+
+    public function myJobs()
+    {
+        $user = UserController::getUser(Auth::user()->id);
+        
+    }
 }
