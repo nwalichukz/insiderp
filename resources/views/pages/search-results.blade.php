@@ -9,35 +9,37 @@ Search Results| Bido
 <section class="search-area">
     <div class="col-md-12">
         <div class="container">
-            <form method="post" action="{{ route('search') }}">
+            <form method="post" action="{{ route('search') }}" id="search-form">
                 {{ csrf_field() }}
                 <div class="controls col-md-12">
                     <div class="row">
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
-                                <input type="text" id="profession" name="profession_title" placeholder="Find Service  e.g Orange Lab" class="form-control">
+                                <input type="text" id="profession_field" name="profession_title" placeholder="Find Service  e.g Orange Lab" class="form-control" onkeyup="showFields();">
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <input type="text" id="location" name="location" placeholder="Enter location you want to find service" class="form-control">
+                        <div class="hidden" id="filters">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" id="location" name="location" placeholder="Enter location you want to find service" class="form-control">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="search-category-container">
-                                <label class="styled-select">
-                                    <select class="dropdown-product selectpicker" name="service_category" class="form-control">
-                                        <option value="">Select Service Category</option>
-                                        <option>Entertainment</option>
-                                        <option>Business</option>
-                                        <option>Education/Training</option>
-                                        <option>Art/Design</option>
-                                        <option>Events and Lifestyle</option>
-                                        <option>Programming and IT</option>
-                                        <option>Sewing and Makeups</option>
-                                        <option>Repairs</option>
-                                    </select>
-                                </label>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-category-container">
+                                    <label class="styled-select">
+                                        <select class="dropdown-product selectpicker" name="service_category" class="form-control">
+                                            <option value="">Select Service Category</option>
+                                            <option>Entertainment</option>
+                                            <option>Business</option>
+                                            <option>Education/Training</option>
+                                            <option>Art/Design</option>
+                                            <option>Events and Lifestyle</option>
+                                            <option>Programming and IT</option>
+                                            <option>Sewing and Makeups</option>
+                                            <option>Repairs</option>
+                                        </select>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-1 col-sm-6">

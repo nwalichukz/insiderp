@@ -655,6 +655,12 @@ public function deleteService($id)
         $post = PostJobController::create($request);
       }
     }
+
+
+    public function myJobs()
+    {
+        $user = UserController::getUser(Auth::user()->id);
+    }
        /**
     * makes an offer to an agent
     *
