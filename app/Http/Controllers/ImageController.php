@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vendor;
+use App\UserAvater;
+use App\VendorLogo;
 use App\prevWorkImage;
 
 class ImageController extends Controller
@@ -94,8 +96,8 @@ class ImageController extends Controller
       {
         $image = VendorLogo::where('service_id', $id)->first();
         if(!empty($image))
-        {
-            unlink('images/user/'.$image->avater);
+        {   
+            unlink('images/user/'.$image->logo);
             $image->delete();
             return true;
         }else{

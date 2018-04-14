@@ -656,9 +656,29 @@ public function deleteService($id)
       }
     }
 
+
     public function myJobs()
     {
         $user = UserController::getUser(Auth::user()->id);
-        
+    }
+       /**
+    * makes an offer to an agent
+    *
+    * @var request
+    * @return response
+    */
+    public function makeOffers(Request $request)
+    {   $validator = Validator::make($request->all(),
+        [  'job_name'=>'required',
+           'offer_amount' => 'required',
+           'duration'=>'required',
+           'description' => 'required',
+           ]);
+    if($validator->passes())
+    {
+        $job = JobOfferDetailController::create($request);
+        JobOfferController::create($request, $job);
+    }
+
     }
 }

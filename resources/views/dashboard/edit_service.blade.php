@@ -16,7 +16,11 @@
                     <div class="text-center">
                         <form action="{{ route('updateLogo') }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <img src="{{ asset('images/images.jpeg') }}" class="avatar img-circle img-responsive" alt="avatar">
+                            @if(!empty($service->logo->logo))
+                            <img src='{{ asset("images/user/".$service->logo->logo) }}' class="avatar img-circle img-responsive" alt="logo">
+                            @else
+                            <img src="{{ asset('images/images.jpeg') }}" class="avatar img-circle img-responsive" alt="logo">
+                            @endif
                             <h6>Change logo...</h6>
                             <input type="hidden" name="id" value="{{$service->id}}">
                             <input type="file" class="btn btn-default" name="avatar" required>

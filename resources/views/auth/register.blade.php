@@ -57,15 +57,22 @@ Login | Sign up
 
 								<div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
 									<div class="input-icon">
-										<i class="ti-world"></i>
-										<input type="text" id="state" class="form-control" name="state" placeholder="State" value="{{ old('state') }}">
-										@if ($errors->has('state'))
-											<span class="help-block">
-												<strong>{{ $errors->first('state') }}</strong>
-											</span>
-										@endif
+										
+										<select class="form-control" name="state">
+										<option disabled selected><b>Select State</b></option>
+										<?php
+								    $states = array("Abia","Abuja","Adamawa","Akwa Ibom","Anambra","Bauchi","Bayelsa","Benue","Borno",
+                                    "Cross River","Delta","Ebonyi","Edo","Ekiti","Enugu","Gombe","Imo","Jigawa","Kaduna","Kano","Katsina",
+                                    "Kebbi","Kogi","Kwara","Lagos","Nasarawa","Niger","Ogun","Ondo","Osun","Oyo","Plateau","Rivers",
+                                    "Sokoto","Taraba","Yobe","Zamfara");
+                                    ?>
+                                    @foreach($states as $state)
+                                    <option value="{{$state}}" >{{$state}} </option>
+                                    @endforeach
+									</select>
 									</div>
 								</div>
+								
 								<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-map"></i>
@@ -96,6 +103,7 @@ Login | Sign up
 									</select>
 									</div>
 									<button class="btn btn-common log-btn">Register</button>
+									<span>By clicking the register button you agree with our <a href="terms"> Terms of use </a> </span>
 								</div>
 							</form>
 						</div>
