@@ -124,7 +124,7 @@
                         <div class="row">
                             <center>
                                 @if(Auth::check())
-                                    <button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-common">good enough? Hire {{ $fullview->name }}</button>
+                                    <button data-toggle="modal" data-target="#hireModal" class="btn btn-common">good enough? Hire {{ $fullview->name }}</button>
                                 @else
                                     <a href="{{ url('/register') }}" class="btn btn-warning">You have to be registered to hire someone</a>
                                 @endif
@@ -135,7 +135,7 @@
             </div>
         </div>
         <!-- line modal -->
-        <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal fade" id="hireModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

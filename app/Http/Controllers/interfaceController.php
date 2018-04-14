@@ -660,6 +660,23 @@ public function deleteService($id)
     public function myJobs()
     {
         $user = UserController::getUser(Auth::user()->id);
+
+        return view('jobs.index')->with(['user' => $user]);
+    }
+
+    public function jobsOngoing()
+    {
+        $user = UserController::getUser(Auth::user()->id);
+
+        return view('jobs.jobs-ongoing')->with(['user' => $user]);
+
+    }
+
+    public function jobsCompleted()
+    {
+        $user = UserController::getUser(Auth::user()->id);
+
+        return view('jobs.jobs-completed')->with(['user' => $user]);
     }
        /**
     * makes an offer to an agent

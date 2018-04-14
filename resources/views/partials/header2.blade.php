@@ -35,7 +35,26 @@
                                     <a href="{{ url('messages') }}">Messages</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('jobs') }}">My Jobs</a>
+                                <a href="{{ url('my-jobs') }}">
+                                    My Jobs <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown">
+                                    <li>
+                                        <a class="active" href="{{ url('my-jobs') }}">
+                                            Job Offers
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('jobs-ongoing') }}">
+                                            Ongoing Jobs
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('jobs-completed') }}">
+                                            Jobs Completed
+                                        </a>
+                                    </li>
+                                </ul>
                                 </li>
                                 <li>
                                     <a href="{{ url('service') }}">Add Service</a>
@@ -48,7 +67,7 @@
                             <li class="right"><a href="{{ url('/signin') }}"><i class="ti-lock"></i> Log In</a></li>
                         @else
                             <li class="left">
-                                <a href="{{ url('') }}"><i class="ti-angle-down"></i> {{ Auth::user()->name }}</a>
+                                <a href="{{ url('user/'.str_replace(' ', '-', strtolower(Auth::user()->name))) }}">{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown">
                                     <li>
                                         <a href="{{ url('user/'.str_replace(' ', '-', strtolower(Auth::user()->name))) }}">Dashboard</a>
@@ -94,7 +113,10 @@
                         <a href="{{ url('messages') }}">Messages</a>
                     </li>
                     <li>
-                        <a href="{{ url('jobs') }}">My Jobs</a>
+                        <a href="{{ url('my-jobs') }}"><i class="fa fa-angle-down"></i> My Jobs</a>
+                        <ul class="dropdown">
+
+                        </ul>
                     </li>
                     <li>
                         <a href="{{ url('service') }}">Add Service</a>

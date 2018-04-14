@@ -31,6 +31,8 @@ Route::get('/admin/{user}', 'interfaceController@adminDashboard');
 Route::post('/login', 'interfaceController@postLogin')->name('login');
 Route::get('/job-detail', 'interfaceController@jobDetail')->name('job');
 Route::get('/my-jobs', 'interfaceController@myJobs');
+Route::get('/jobs-ongoing', 'interfaceController@jobsOngoing');
+Route::get('/jobs-completed', 'interfaceController@jobsCompleted');
 Route::get('/offers', 'interfaceController@offers')->name('offer');
 Route::get('/manage-applications', 'interfaceController@manageApplications')->name('manage-applications');
 Route::get('/service', 'interfaceController@service')->name('service');
@@ -50,4 +52,7 @@ Route::get('/view-service/{id}', 'interfaceController@viewService')->name('viewS
 Route::post('send-message', 'interfaceController@sendMessage');
 Route::get('/message/delete/{id}', 'interfaceController@deleteMessage');
 Route::get('post-job', 'interfaceController@postJob');
-Route::post('add-job', 'interfaceController@postJobSave');
+Route::post('/add-job', 'interfaceController@postJobSave');
+Route::get('/job-offers', 'interfaceController@jobOffers');
+Route::get('/ongoing-jobs', 'interfaceController@ongoingJobs');
+Route::get('/completed-jobs', 'interfaceController@completedJobs');

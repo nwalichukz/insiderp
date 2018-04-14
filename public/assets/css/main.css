@@ -2402,10 +2402,7 @@ footer {
   margin-top: 6px;
   color: #999;
 }
-.manager-resumes-item .manager-content .manager-info .manager-meta {
-  float: right;
-  text-align: right;
-}
+
 .manager-resumes-item .manager-content .manager-info .manager-meta span {
   display: block;
   color: #999;
