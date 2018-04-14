@@ -27,7 +27,7 @@
                 @endif
                 <div class="col-md-8 col-sm-8 col-xs-12">
 
-                    <form action="{{ route('addService') }}" method="post" class="form-ad">
+                    <form action="{{ route('addService') }}" method="post" class="form-ad" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="divider"><h3>Basic information</h3></div>
                         <div class="form-group">

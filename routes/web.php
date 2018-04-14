@@ -49,5 +49,6 @@ Route::get('/service/edit/{id}', 'interfaceController@editService');
 Route::get('/view-service/{id}', 'interfaceController@viewService')->name('viewService');
 Route::post('send-message', 'interfaceController@sendMessage');
 Route::get('/message/delete/{id}', 'interfaceController@deleteMessage');
-Route::get('post-job', 'interfaceController@postJob');
-Route::post('add-job', 'interfaceController@postJobSave');
+Route::get('/post-job', 'interfaceController@postJob');
+Route::post('/add-job', 'interfaceController@postJobSave');
+Route::post('/make-offer', 'interfaceController@makeOffer');

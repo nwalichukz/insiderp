@@ -8,7 +8,7 @@ use DB, Mail;
 class mailer extends Controller
 {
       /**
-	     * Deliver the email confirmation.
+	     * Deliver the email notification.
 	     *
 	     * @param  $user, $data
 	     * @return void
@@ -29,7 +29,7 @@ class mailer extends Controller
 	               
 	        ';          
 	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return mail($to, $subject, $message, $headers);
+	       return Mail($to, $subject, $message, $headers);
 	    }
 
 		/**
@@ -48,7 +48,7 @@ class mailer extends Controller
 	        $subject = 'Password Reset Notification'; // Give the email a subject 
 	        $message = '
 	        Your password has been reset !!!
-	        Use this password to login and update your password.!
+	        Use this password to login and update your password thereafter if you wish.!
 	        
 	        ------------------------
 	        New Password: '.$data['password'].'
@@ -57,7 +57,7 @@ class mailer extends Controller
 	        ';
 
 	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-           return mail($to, $subject, $message, $headers);
+           return Mail($to, $subject, $message, $headers);
 	    }
 
 }

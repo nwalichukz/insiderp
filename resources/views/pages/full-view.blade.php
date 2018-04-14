@@ -145,34 +145,47 @@
                     <div class="modal-body">
 
                         <!-- content goes here -->
-                        <form>
+                        <form action="{{url('/make-offer')}}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
                             <div class="form-group">
                                 <input type="hidden" name="service_id" value="{{ $fullview->id }}">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Job Name</label>
-                                <input type="text" name="job_name" class="form-control" id="jobname" placeholder="Job Name">
+                                <input type="text" name="job_name" class="form-control" id="jobname" placeholder="Job Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="amount">Offer Amount</label>
-                                <input type="text" name="amount" id="amount" class="form-control" onkeyup="checkAmount();">
+                                <input type="text" name="offer_amount" id="amount" placeholder="How much can you pay for the job, the least on this platform is 1000"
+                                 class="form-control" onkeyup="checkAmount();" required>
                                 <span class="help-block">
                                     <strong id="error"></strong>
                                 </span>
                             </div>
                             <div class="form-group">
                                 <label for="duration">Duration</label>
-                                <select name="duration" class="form-control">
-                                    <option value="">3 - 7 days</option>
-                                    <option value="">7 - 14 days</option>
-                                    <option value="">2 - 4 weeks</option>
-                                    <option value="">1 - 3 months</option>
-                                    <option value="">3 - 6 months</option>
+                                <select name="duration" class="form-control" required>
+                                    <option value="3">3 days</option>
+                                    <option value="4">4 days</option>
+                                    <option value="5">5 days</option>
+                                    <option value="6">6 days</option>
+                                    <option value="7">7  days</option>
+                                    <option value="8">8 days</option>
+                                    <option value="9">9 days</option>
+                                    <option value="10">10 days</option>
+                                    <option value="11">11 days</option>
+                                    <option value="12">12 days</option>
+                                    <option value="13">13 days</option>
+                                    <option value="14">14 days</option>
+                                    <option value="15">15 days</option>
+                                    <option value="21">3 weeks</option>
+                                    <option value="30">1 months</option>
+                                    <option value="60">2 months</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Job Description</label>
-                                <textarea name="job_description" cols="7" rows="5" class="form-control" placeholder="Job Description"></textarea>
+                                <textarea name="description" cols="7" rows="5" class="form-control" placeholder="Job Description; how you want it done" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-common">Submit</button>
                         </form>
@@ -187,11 +200,14 @@
                                 <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
                             </div>
                             <div class="btn-group" role="group">
-                                <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button>
+                                <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button> 
                             </div>
+
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>
