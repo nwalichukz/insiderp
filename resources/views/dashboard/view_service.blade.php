@@ -44,10 +44,12 @@
                                                 <div class="dash-box-icon">
                                                     <i class="fa fa-briefcase"></i>
                                                 </div>
-                                                <div class="dash-box-body">
-                                                    <span class="dash-box-count">8</span>
-                                                    <span class="dash-box-title">Ongoing Jobs</span>
-                                                </div>
+                                                <a href="">
+                                                    <div class="dash-box-body">
+                                                        <span class="dash-box-count">8</span>
+                                                        <span class="dash-box-title">Ongoing Jobs</span>
+                                                    </div>
+                                                </a>
 
                                                 <div class="dash-box-action">
                                                     <a href="#">More Info</a>
@@ -59,10 +61,12 @@
                                                 <div class="dash-box-icon">
                                                     <i class="fa fa-handshake-o"></i>
                                                 </div>
-                                                <div class="dash-box-body">
-                                                    <span class="dash-box-count">5</span>
-                                                    <span class="dash-box-title">Job Offers</span>
-                                                </div>
+                                                <a href="">
+                                                    <div class="dash-box-body">
+                                                        <span class="dash-box-count">5</span>
+                                                        <span class="dash-box-title">Job Offers</span>
+                                                    </div>
+                                                </a>
 
                                                 <div class="dash-box-action">
                                                     <a href="#">More Info</a>
@@ -74,10 +78,12 @@
                                                 <div class="dash-box-icon">
                                                     <i class="fa fa-file-code-o"></i>
                                                 </div>
-                                                <div class="dash-box-body">
-                                                    <span class="dash-box-count">3</span>
-                                                    <span class="dash-box-title">Jobs Completed</span>
-                                                </div>
+                                                <a href="">
+                                                    <div class="dash-box-body">
+                                                        <span class="dash-box-count">3</span>
+                                                        <span class="dash-box-title">Jobs Completed</span>
+                                                    </div>
+                                                </a>
 
                                                 <div class="dash-box-action">
                                                     <a href="#">More Info</a>
