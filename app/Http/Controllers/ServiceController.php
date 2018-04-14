@@ -36,12 +36,13 @@ class ServiceController extends Controller
       $service->additional_service = $request['additional_service'];
     	$service->save();
       $view = ViewController::create($service->id);
-      if(!empty($request->file('images'))){
-      $image = ImageController::userImageUpload($request->file('images'));
-      $save = new UserAvater;
-      $save->user_id = $service->id;
-      $save->name = $image;
-      $save->save();
+      if(!empty($request->file('avatar'))){
+      $image = ImageController::userImageUpload($request);
+      $avater = new VendorLogo;
+     $avater->service_id = $service->id;
+     $avater->logo = $image;
+     $avater->save();
+      return true;
     }
 
     }
