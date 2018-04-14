@@ -21,7 +21,12 @@ class JobController extends Controller
     *
     */
     public static function jobCompleted()
-    {
+    { return JobOffer::where('user_id', Auth::user()->id)
+                                ->where('payment_status', 'paid')
+                                ->where('approval_status', 'accepted')
+                                ->where('progress_status', 'completed')
+                                ->with('job_details')
+                                ->get();
 
     }
 
@@ -35,7 +40,12 @@ class JobController extends Controller
     */
     public static function myJobOngoing()
     {
-    	
+    	return JobOffer::where('user_id', Auth::user()->id)
+                                ->where('payment_status', '!=', 'not paid')
+                                ->where('approval_status', 'accepted')
+                                ->where('progress_status', '!=', 'completed')
+                                ->with('job_details')
+                                ->get();
     }
 
      /**

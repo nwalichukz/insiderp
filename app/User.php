@@ -49,6 +49,10 @@ class User extends Authenticatable
 
      public function logo() {
       return $this->hasMany(VendorLogo::class, 'service_id');
-
     }
+
+      public function job_detail() {
+      return $this->hasMany(JobOfferDetail::class, 'user_id');
+    }
+
 }

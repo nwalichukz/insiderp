@@ -21,8 +21,13 @@ class CreateJobOfferDetailsTable extends Migration
             $table->string('offer_amount');
             $table->string('duration');
             $table->string('description');
+            $table->string('commission');
+            $table->string('offer_level')->default(1);
+            $table->timestamp('initial_deliver_date')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade');
+             $table->foreign('service_id')->references('id')->on('services')
                 ->onUpdate('cascade');
         });
     }

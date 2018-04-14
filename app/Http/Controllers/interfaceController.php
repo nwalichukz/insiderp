@@ -68,6 +68,43 @@ class interfaceController extends Controller
     }
     }
 
+     /**
+     * This method logins the user and redirect back
+     * to the previous page
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+      protected function postLoginModal(Request $request)
+    {   $validator = Validator::make($request->all(), [
+        'phone_no' => 'required|min:11',
+        'password' => 'required|max:255'
+        ]);
+        if($validator->passes())
+        {
+        $auth = AuthController::authenticate($request);
+        if($auth === 'admin'){
+            $vendor =  Auth::user();
+          return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
+        }elseif ($auth === 'user') {
+            $user = Auth::user();
+            return redirect()->back();
+        }elseif ($auth === 'suspended') {
+            return redirect('suspended-banned');
+        }elseif ($auth === 'banned') {
+            return redirect('suspended-banned');
+        }else{
+            Auth::logout();
+            flash()->error("Phone number or Password Incorrect");
+            return redirect()->back();
+        }
+    }
+    else
+    {    flash()->error("Phone number or Password Incorrect");
+        return redirect()->back()->withErrors($validator);
+    }
+    }
+
     /**
      * @method index
      * returns index page
@@ -237,13 +274,14 @@ class interfaceController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
- public function registerVendor(Request $request)
+ public function registerVendorModal(Request $request)
  {   
      $validator = Validator::make($request->all(),
         [  'email'=>'unique:users',
            'name'=>'required',
            'state'=>'required',
            'phone_no'=>'required|numeric',
+           'password' => 'required|string|min:6|confirmed',
            ]);
 
           if($validator->passes())
@@ -265,6 +303,45 @@ class interfaceController extends Controller
             return redirect()->back()->withErrors($validator);
         }
  }
+  /**
+     * This method returns the admin page
+     *
+     * returns collecion
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+     public function registerVendor(Request $request)
+ {   
+     $validator = Validator::make($request->all(),
+        [  'email'=>'unique:users',
+           'name'=>'required',
+           'state'=>'required',
+           'phone_no'=>'required|numeric',
+           'password' => 'required|string|min:6|confirmed',
+           ]);
+
+          if($validator->passes())
+        {  
+            $user = UserController::create($request);
+            
+            if($user)
+            {   Auth::attempt(['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'),
+             'status'=>'active', 'user_level' =>'user'])
+                flash("Account created successfully, welcome to bido platform you can now hire", "Bido")->success();
+                return redirect()->back();
+
+            }else{
+                flash('Something went wrong user could not be created', 'Bido')->error();
+                return redirect()->back();
+            }
+        }
+        else
+        {
+            return redirect()->back()->withErrors($validator);
+        }
+ }
+
+
  /**
  * This method is for logout
  * 
@@ -694,10 +771,11 @@ public function deleteService($id)
     if($validator->passes())
     {
         $job = JobOfferDetailController::create($request);
-        $offer = JobOfferController::create($request, $job);
-        if($offer)
+        $jobapproval = JobApprovalController::create($job);
+        $jobprogress= JobProgressController::create($job);
+        if($jobprogress)
         {
-            flash('Your offer has been sent, you will receive a response from the artisan soon, thanks')->success();
+            flash('Your offer has been sent, you will receive a response from the vendor soon, thanks')->success();
             return redirect()->back();
         }else{
             flash('Something went wrong, your offer was not sent, please try again')->error();
