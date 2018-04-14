@@ -274,7 +274,7 @@ class interfaceController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
- public function registerVendorModal(Request $request)
+ public function registerVendor(Request $request)
  {   
      $validator = Validator::make($request->all(),
         [  'email'=>'unique:users',
@@ -310,7 +310,7 @@ class interfaceController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-     public function registerVendor(Request $request)
+     public function registerVendorModal(Request $request)
  {   
      $validator = Validator::make($request->all(),
         [  'email'=>'unique:users',
@@ -326,7 +326,7 @@ class interfaceController extends Controller
             
             if($user)
             {   Auth::attempt(['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'),
-             'status'=>'active', 'user_level' =>'user'])
+             'status'=>'active', 'user_level' =>'user']);
                 flash("Account created successfully, welcome to bido platform you can now hire", "Bido")->success();
                 return redirect()->back();
 
