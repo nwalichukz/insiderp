@@ -22,18 +22,16 @@
                                                     <h4><a href="#">Service Name</a></h4>
                                                     <h5>Profession Title</h5>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="manager-info">
-                                                    <h5>Job Description</h5>
-                                                    <hr>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo in placeat quas soluta voluptatum? Blanditiis delectus deleniti earum nemo quidem repellat totam unde....</p>
+                                                <div class="manager-meta">
+                                                    <span class="location">Location</span>
+                                                    <span class="rate"><i class="fa fa-money"></i> offer amount</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="manager-meta">
-                                            <span class="location"><i class="ti-location-pin"></i> Location</span>
-                                            <span class="rate"><i class="fa fa-money"></i> offer amount</span>
+                                            <div class="col-md-8">
+                                                <h5>Job Description</h5>
+                                                <hr>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex fugiat ipsa, quos reprehenderit rerum ullam.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

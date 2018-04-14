@@ -15,13 +15,27 @@
                             <div class="manager-content">
                                 <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
                                 <div class="manager-info">
-                                    <div class="manager-name">
-                                        <h4><a href="#">Service Name</a></h4>
-                                        <h5>Profession Title</h5>
-                                    </div>
-                                    <div class="manager-meta">
-                                        <span class="location"><i class="ti-location-pin"></i> Location</span>
-                                        <span class="rate"><i class="fa fa-money"></i> offer amount</span>
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="manager-name">
+                                                    <h4><a href="#">User Name</a></h4>
+                                                    <h5>Job Name</h5>
+                                                </div>
+                                                <div class="manager-meta">
+                                                    <span class="location">Location</span>
+                                                    <span class="rate"><i class="fa fa-money"></i> offer amount</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="manager-info">
+                                                    <h5>Job Description</h5>
+                                                    <hr>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo in placeat quas soluta voluptatum? Blanditiis delectus deleniti earum nemo quidem repellat totam unde....</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
