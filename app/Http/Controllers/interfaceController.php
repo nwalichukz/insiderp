@@ -684,7 +684,7 @@ public function deleteService($id)
     * @var request
     * @return response
     */
-    public function makeOffers(Request $request)
+    public function makeOffer(Request $request)
     {   $validator = Validator::make($request->all(),
         [  'job_name'=>'required',
            'offer_amount' => 'required',
@@ -694,7 +694,18 @@ public function deleteService($id)
     if($validator->passes())
     {
         $job = JobOfferDetailController::create($request);
-        JobOfferController::create($request, $job);
+        $offer = JobOfferController::create($request, $job);
+        if($offer)
+        {
+            flash('Your offer has been sent, you will receive a response from the artisan soon, thanks')->success();
+            return redirect()->back();
+        }else{
+            flash('Something went wrong, your offer was not sent, please try again')->error();
+            return redirect()->back();
+        }
+    }else{
+        flash('Error in the form inputs please check them and try again')->error();
+        return redirect()->back();
     }
 
     }

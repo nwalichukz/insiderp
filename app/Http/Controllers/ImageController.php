@@ -22,7 +22,6 @@ class ImageController extends Controller
     public static function userImageUpload(Request $request)
     {   $file = $request->file('avatar');
         $UniqueNoGen = time().mt_rand();
-        	
             $destinationPath = 'images/user';
             //$fileName = $file->getClientOriginalName();
             $fileExte = $file->getClientOriginalExtension();

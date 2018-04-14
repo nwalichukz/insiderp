@@ -13,7 +13,7 @@ Login | Sign up
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-6 cd-user-modal">
 				<div class="my-account-form">
-					<h1><a href="#">Register Here!</a></h1>
+					<h3><a href="#">Register Here!</a></h3>
 					<hr>
 
 					<div id="cd-signup">

@@ -27,24 +27,25 @@
                 @endif
                 <div class="col-md-8 col-sm-8 col-xs-12">
 
-                    <form action="{{ route('addService') }}" method="post" class="form-ad">
+                    <form action="{{ route('addService') }}" method="post" class="form-ad" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="divider"><h3>Basic information</h3></div>
                         <div class="form-group">
-                            <label class="control-label" for="textarea">Service Name</label>
-                            <input type="text" name="service_name" name="service_name" class="form-control" placeholder="Service Name (e.g. Axenic Arts)">
+                            <label class="control-label" for="service_name">Service Name</label>
+                            <input type="text" name="service_name" name="service_name" class="form-control" placeholder="Service Name (e.g. Axenic Arts)" required>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="textarea">Profession Title</label>
-                            <input type="text" name="profession_title" class="form-control" placeholder="Headline (e.g. Graphic Designer)">
+                            <label class="control-label" for="profession_title">Profession Title</label>
+                            <input type="text" name="profession_title" class="form-control" placeholder="Headline (e.g. Graphic Designer)" required>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="textarea">Location</label>
+                            <label class="control-label" for="location">Location</label>
                             <input type="text" name="location" class="form-control" placeholder="Location">
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="select2">Service Category</label>
+                            <label class="control-label" for="service_category">Service Category</label>
                             <select name="service_category" class="form-control select">
+                                <option value="">Select service category</option>
                                 <option>Entertainment</option>
                                 <option>Business</option>
                                 <option>Education and Training</option>
@@ -61,27 +62,27 @@
                                 <div class="action-buttons">
                                     <div class="upload-button">
                                         <button class="btn btn-common">Choose a service logo</button>
-                                        <input id="cover_img_file" type="file" name="images[]">
+                                        <input id="cover_img_file" type="file" name="avatar">
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label" for="textarea">Description</label>
-                            <textarea name="description" class="form-control" rows="7"></textarea>
+                            <label class="control-label" for="description">Description</label>
+                            <textarea name="description" class="form-control" rows="5" required></textarea>
                         </div>
 
                         <div class="divider"><h3>Skills</h3></div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label class="control-label" for="textarea">Skill Name</label>
+                                    <label class="control-label" for="skills">Skill Name</label>
                                     <input class="form-control" name="skills" placeholder="Skill name, e.g. Design" type="text">
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="control-label" for="textarea">% (1-100)</label>
-                                    <input class="form-control"name="proficiency" placeholder="Skill proficiency, e.g. 90" type="text">
+                                    <label class="control-label" for="proficiency">% (1-100)</label>
+                                    <input class="form-control"name="proficiency" placeholder="Skill proficiency, e.g. 90" type="text" required>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +90,7 @@
                             <h3>Features</h3>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="textarea">Featured services</label>
+                            <label class="control-label" for="additional_service">Featured services</label>
                             <input class="form-control" name="additional_service" placeholder="Feature name, e.g. Home Service" type="text">
                         </div>
                         <input type="submit"class="btn btn-common" value="Add Service">
