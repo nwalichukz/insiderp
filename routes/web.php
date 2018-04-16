@@ -57,4 +57,3 @@ Route::post('/add-job', 'interfaceController@postJobSave');
 Route::get('/job-offers', 'interfaceController@jobOffers');
 Route::get('/ongoing-jobs', 'interfaceController@ongoingJobs');
 Route::get('/completed-jobs', 'interfaceController@completedJobs');
-

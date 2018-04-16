@@ -181,13 +181,15 @@ class interfaceController extends Controller
  public function userDashboard()
 
  {  if(Auth::check()){
-    $users = UserController::getUser(Auth::user()->id);
+    $user = Auth::user();
     $service = ServiceController::getUserService(Auth::user()->id);
-    return view('dashboard.index')->with(['users' => $users, 'services' => $service, 'total'=> $service->count()]);
-}else{
- Auth::logout();
- return redirect('/');
-}
+    return view('dashboard.index')->with(['user' => $user, 'services' => $service, 'total'=> $service->count()]);
+    }
+    else
+    {
+     Auth::logout();
+     return redirect('/');
+    }
 
  }
 /**
@@ -691,22 +693,45 @@ public function deleteService($id)
            'duration'=>'required',
            'description' => 'required',
            ]);
-    if($validator->passes())
-    {
-        $job = JobOfferDetailController::create($request);
-        $offer = JobOfferController::create($request, $job);
-        if($offer)
+        if($validator->passes())
         {
-            flash('Your offer has been sent, you will receive a response from the artisan soon, thanks')->success();
-            return redirect()->back();
+            $job = JobOfferDetailController::create($request);
+            $offer = JobOfferController::create($request, $job);
+            if($offer)
+            {
+                flash('Your offer has been sent, you will receive a response from the artisan soon, thanks')->success();
+                return redirect()->back();
+            }else{
+                flash('Something went wrong, your offer was not sent, please try again')->error();
+                return redirect()->back();
+            }
         }else{
-            flash('Something went wrong, your offer was not sent, please try again')->error();
+            flash('Error in the form inputs please check them and try again')->error();
             return redirect()->back();
         }
-    }else{
-        flash('Error in the form inputs please check them and try again')->error();
-        return redirect()->back();
     }
 
+    public function jobOffers()
+    {
+        $user = UserController::getUser(Auth::user()->id);
+       // $service = ServiceController::get($user->service->id);
+
+        return view('dashboard.job-offers')->with(['user' => $user]);
+    }
+
+    public function ongoingJobs()
+    {
+        $user = UserController::getUser(Auth::user()->id);
+        //$service = ServiceController::get($user->service->id);
+
+        return view('dashboard.ongoing-jobs')->with(['user' => $user]);
+    }
+
+    public function completedJobs()
+    {
+        $user = UserController::getUser(Auth::user()->id);
+        //$service = ServiceController::get($user->service->id);
+
+        return view('dashboard.completed-jobs')->with(['user' => $user]);
     }
 }
