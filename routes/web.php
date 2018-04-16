@@ -22,6 +22,8 @@ Route::get('/contact', 'interfaceController@contact')->name('contact');
 Route::get('/signin', 'interfaceController@login')->name('signin');
 Route::get('/register', 'interfaceController@register')->name('register');
 Route::post('/register-vendor', 'interfaceController@registerVendor')->name('signup');
+Route::post('/register-vendor-modal', 'interfaceController@registerVendorModal');
+Route::post('/post-login-modal', 'interfaceController@postLoginModal');
 Route::get('/suspended-banned', 'interfaceController@suspendedBanned');
 Route::get('/user/{user}', 'interfaceController@userDashboard');
 Route::get('/admin/{user}/details', 'interfaceController@adminUserDetails');

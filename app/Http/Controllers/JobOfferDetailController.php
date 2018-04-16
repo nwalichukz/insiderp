@@ -23,21 +23,42 @@ class JobOfferDetailController extends Controller
        $create->offer_amount = $request['offer_amount'];
        $create->duration = $request['duration'];
        $create->description = $request['description'];
+       $create->commission = self::commission($request['offer_amount']);
        $create->save();
        return $create->id;
     }
 
-     /**
-    * cancels a job detail
+
+       /**
+    * creates the joboffer
+    * @var request
     *
-    * @var id
     * @return response
     */
-     public static function cancel($id)
-     { $cancel = JobOffer::where('job_detail_id', $id)->first();
-      $cancel->accept_status = 'canceled';
-      $cancel->save();
-      return true;
-     }
+    public static function commission($amount)
+    {
+      if($amount >= 1000 AND $amount <= 5000)
+      {
+        return 275;
+      }
+      elseif($amount > 5000 AND $amount <= 10000)
+      {
+        return 375;
+      }elseif($amount > 10000 AND $amount <= 30000)
+      {
+        return 475;
+      }elseif($amount > 30000 AND $amount <= 50000)
+      {
+        return 568;
+      }elseif ($amount > 50000 AND $amount <= 100000) {
+        return 970;
+      }elseif ($amount > 100000 AND $amount <= 200000) {
+        return 1435;
+      }elseif ($amount > 200000 AND $amount <= 500000) {
+        return 1780;
+      }elseif ($amount > 500000 AND $amount <= 5000) {
+        return 2233;
+      }
+    }
 
 }
