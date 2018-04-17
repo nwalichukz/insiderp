@@ -15,7 +15,7 @@ class CreateJobProgressesTable extends Migration
     {
         Schema::create('job_progresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('job_offer_deail_id');
+            $table->integer('job_offer_detail_id');
             $table->string('progress_status')->default('pending');
             $table->timestamps();
         });

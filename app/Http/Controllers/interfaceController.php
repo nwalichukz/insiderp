@@ -208,13 +208,15 @@ class interfaceController extends Controller
  public function userDashboard()
 
  {  if(Auth::check()){
-    $users = UserController::getUser(Auth::user()->id);
+    $user = Auth::user();
     $service = ServiceController::getUserService(Auth::user()->id);
-    return view('dashboard.index')->with(['users' => $users, 'services' => $service, 'total'=> $service->count()]);
-}else{
- Auth::logout();
- return redirect('/');
-}
+    return view('dashboard.index')->with(['user' => $user, 'services' => $service, 'total'=> $service->count()]);
+    }
+    else
+    {
+     Auth::logout();
+     return redirect('/');
+    }
 
  }
 /**
@@ -721,6 +723,7 @@ public function deleteService($id)
     * @return response
     */
     public function makeOffer(Request $request)
+
     {   $this->validate($request,
         [  'job_name'=>'required',
            'offer_amount' => 'required',
@@ -739,7 +742,29 @@ public function deleteService($id)
             flash('Something went wrong, your offer was not sent, please try again')->error();
             return redirect()->back();
         }
-   
+}   
 
+    public function jobOffers()
+    {
+        $user = UserController::getUser(Auth::user()->id);
+       // $service = ServiceController::get($user->service->id);
+
+        return view('dashboard.job-offers')->with(['user' => $user]);
+    }
+
+    public function ongoingJobs()
+    {
+        $user = UserController::getUser(Auth::user()->id);
+        //$service = ServiceController::get($user->service->id);
+
+        return view('dashboard.ongoing-jobs')->with(['user' => $user]);
+    }
+
+    public function completedJobs()
+    {
+        $user = UserController::getUser(Auth::user()->id);
+        //$service = ServiceController::get($user->service->id);
+
+        return view('dashboard.completed-jobs')->with(['user' => $user]);
     }
 }

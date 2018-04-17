@@ -15,12 +15,12 @@ class JobOfferController extends Controller
     *
     * @return response
     */
-    public static function create(Request $request, $id=null)
+    public function create(Request $request, $id=null)
     {
     	$job = new JobOffer;
     	$job->user_id = Auth::user()->id;
     	$job->job_offer_detail_id = $id;
-    	$job->commission = self::commission($request['offer_amount']);
+    	$job->commission = $this->commission($request['offer_amount']);
     	$job->save();
     	return true;
     }

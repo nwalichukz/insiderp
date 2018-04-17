@@ -15,7 +15,7 @@ class CreateJobApprovalsTable extends Migration
     {
         Schema::create('job_approvals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('job_offer_deail_id');
+            $table->integer('job_offer_detail_id');
             $table->string('approval_status')->default('pending');
             $table->timestamps();
         });

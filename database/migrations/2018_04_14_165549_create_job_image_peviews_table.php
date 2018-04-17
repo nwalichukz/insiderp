@@ -15,7 +15,7 @@ class CreateJobImagePeviewsTable extends Migration
     {
         Schema::create('job_image_peviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('job_offer_deail_id');
+            $table->integer('job_offer_detail_id');
             $table->string('name');
             $table->timestamps();
         });

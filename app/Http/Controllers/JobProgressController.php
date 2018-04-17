@@ -18,7 +18,7 @@ class JobProgressController extends Controller
     	$create = new JobProgress;
     	$create->job_offer_detail_id = $id;
     	$create->save();
-    	true;
+    	return true;
     }
 
      /**

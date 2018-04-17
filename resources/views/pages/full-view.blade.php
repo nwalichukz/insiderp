@@ -59,30 +59,34 @@
                                         </div>
                                     </div>
                                 </aside>
+                                <br>
                             </div>
-                            <br>
                             <div class="col-md-4">
-                                <div class="box">
-                                    <form action="">
-                                        <div class="form-group">
-                                            <input type="text" name="name" placeholder="Full Name" class="form-control">
-                                            <input type="hidden" name="service_email" value="{{ $fullview->user->email }}" class="form-control">
+                                <aside>
+                                    <div class="sidebar">
+                                        <div class="box">
+                                            <form action="">
+                                                <div class="form-group">
+                                                    <input type="text" name="name" placeholder="Full Name" class="form-control">
+                                                    <input type="hidden" name="service_email" value="{{ $fullview->user->email }}" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="email" name="email" placeholder="Email Address" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="phone" placeholder="Phone Number" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea name="message"  cols="7" rows="2" class="form-control" placeholder="Message"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-common">Send</button>
+                                                    <p>Send an enquiry to {{ $fullview->name }}</p>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="email" name="email" placeholder="Email Address" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="phone" placeholder="Phone Number" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea name="message"  cols="7" rows="2" class="form-control" placeholder="Message"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Send</button>
-                                            Send an enquiry to {{ $fullview->name }}
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </aside>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -126,7 +130,7 @@
                                 @if(Auth::check())
                                     <button data-toggle="modal" data-target="#hireModal" class="btn btn-common">good enough? Hire {{ $fullview->name }}</button>
                                 @else
-                                    <a href="{{ url('/register') }}" class="btn btn-warning">You have to be registered to hire someone</a>
+                                    <button data-toggle="modal" data-target="#authModal" class="btn btn-warning">You have to Login to hire someone</button>
                                 @endif
                             </center>
                         </div>
@@ -152,7 +156,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Job Name</label>
-                                <input type="text" name="job_name" class="form-control" id="jobname" placeholder="Job Name" required>
+                                <input type="text" name="job_name" class="form-control" id="job_name" placeholder="Job Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="amount">Offer Amount</label>
@@ -210,5 +214,59 @@
 
             </div>
         </div>
+
+        <!-- Auth modal -->
+        <div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="lineModalLabel">Hire {{ $fullview->name }}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <!-- content goes here -->
+                        <form action="{{ url('post-login-modal') }}" method="post">
+                            <h3>Login</h3>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="text" class="form-control" name="phone" placeholder="Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                            <div class="checkbox-item">
+                                <div class="checkbox">
+                                    <label for="rememberme" class="rememberme">
+                                        <input name="rememberme" id="rememberme" value="forever" type="checkbox"> Remember Me
+                                    </label>
+                                </div>
+                                <p class="cd-form-bottom-message"><a href="#0">Lost your password?</a></p>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" value="" class="btn btn-common">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+                            </div>
+                            <div class="btn-group btn-delete hidden" role="group">
+                                <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
     </div>
 @endsection
