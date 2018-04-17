@@ -36,15 +36,7 @@ class User extends Authenticatable
     }
 
       public function avater() {
-      return $this->hasOne(UserAvater::class);
-    }
-
-     public function images(){
-      return $this->hasMany(PrevWorkImage::class, 'service_id');
-    }
-
-     public function view() {
-      return $this->belongsTo(view::class, 'service_id');
+      return $this->hasOne('App\UserAvater');
     }
 
       public function job_detail() {

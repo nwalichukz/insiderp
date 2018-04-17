@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class VendorLogo extends Model
 {
-      public function logo_owner() {
+      public function logo() {
       return $this->belongsTo('App\Service');
     }
 }

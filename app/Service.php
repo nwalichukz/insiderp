@@ -25,15 +25,10 @@ class Service extends Model
     }
 
      public function logo() {
-      return $this->hasOne('App\VendorLogo');
+      return $this->hasOne('App\VendorLogo', 'service_id');
     }
 
      public function avater() {
-      return $this->hasOne('App\UserAvater');
-    }
-
-public function service()
-    {
-        return $this->hasMany('App\Service');
+      return $this->belongsTo('App\UserAvater');
     }
 }

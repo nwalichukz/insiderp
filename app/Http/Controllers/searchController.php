@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Service;
-use App\Vendor;
+use App\User;
+use App\VendorLogo;
 use DB;
 use Response;
 use App\View;
