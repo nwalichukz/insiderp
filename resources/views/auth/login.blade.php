@@ -67,6 +67,7 @@ Login | Sign up
 						<p class="cd-form-bottom-message"><a href="#">Back to log-in</a></p>
 					</div>
 				</div>
+				@include('partials.errors')
 			</div>
 		</div>
 	</div>

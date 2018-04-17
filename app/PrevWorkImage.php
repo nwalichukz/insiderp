@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PrevWorkImage extends Model
 {
-    public function service()
+    public function prevworkservice()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo('App\Service');
     }
 }

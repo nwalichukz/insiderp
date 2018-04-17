@@ -13,27 +13,27 @@ class Service extends Model
 {
    public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\User');
     }
 
     public function images(){
-      return $this->hasMany(PrevWorkImage::class, 'service_id');
+      return $this->hasMany('App\PrevWorkImage');
     }
 
      public function view() {
-      return $this->belongsTo(view::class,  'service_id');
+      return $this->hasOne('App\view');
     }
 
      public function logo() {
-      return $this->belongsTo(VendorLogo::class, 'service_id');
+      return $this->hasOne('App\VendorLogo');
     }
 
      public function avater() {
-      return $this->hasOne(UserAvater::class,  'user_id');
+      return $this->hasOne('App\UserAvater');
     }
 
 public function service()
     {
-        return $this->hasMany(Service::class, 'user_id');
+        return $this->hasMany('App\Service');
     }
 }

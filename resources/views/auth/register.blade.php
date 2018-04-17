@@ -107,6 +107,7 @@ Login | Sign up
 								</div>
 							</form>
 						</div>
+						@include('partials.errors')
 					</div> 
 				</div>
 			</div>

@@ -38,12 +38,11 @@ class interfaceController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
       protected function postLogin(Request $request)
-    {   $validator = Validator::make($request->all(), [
+    {   $this->validate($request, [
         'phone_no' => 'required|min:11',
         'password' => 'required|max:255'
         ]);
-        if($validator->passes())
-        {
+       
         $auth = AuthController::authenticate($request);
         if($auth === 'admin'){
             $vendor =  Auth::user();
@@ -61,11 +60,7 @@ class interfaceController extends Controller
         	flash()->error("Phone number or Password Incorrect");
             return redirect()->back();
         }
-    }
-    else
-    {    flash()->error("Phone number or Password Incorrect");
-        return redirect()->back()->withErrors($validator);
-    }
+   
     }
 
      /**
@@ -76,12 +71,11 @@ class interfaceController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
       protected function postLoginModal(Request $request)
-    {   $validator = Validator::make($request->all(), [
+    {   $this->validate($request, [
         'phone_no' => 'required|min:11',
         'password' => 'required|max:255'
         ]);
-        if($validator->passes())
-        {
+       
         $auth = AuthController::authenticate($request);
         if($auth === 'admin'){
             $vendor =  Auth::user();
@@ -98,11 +92,7 @@ class interfaceController extends Controller
             flash()->error("Phone number or Password Incorrect");
             return redirect()->back();
         }
-    }
-    else
-    {    flash()->error("Phone number or Password Incorrect");
-        return redirect()->back()->withErrors($validator);
-    }
+   
     }
 
     /**
@@ -276,16 +266,14 @@ class interfaceController extends Controller
      */
  public function registerVendor(Request $request)
  {   
-     $validator = Validator::make($request->all(),
+     $this->validate($request,
         [  'email'=>'unique:users',
            'name'=>'required',
            'state'=>'required',
            'phone_no'=>'required|numeric',
            'password' => 'required|string|min:6|confirmed',
            ]);
-
-          if($validator->passes())
-        {  
+ 
             $user = UserController::create($request);
             
             if($user)
@@ -296,12 +284,7 @@ class interfaceController extends Controller
             }else{
                 flash('Something went wrong user could not be created', 'Bido')->error();
                 return redirect()->back();
-            }
-        }
-        else
-        {
-            return redirect()->back()->withErrors($validator);
-        }
+            }  
  }
   /**
      * This method returns the admin page
@@ -312,33 +295,26 @@ class interfaceController extends Controller
      */
      public function registerVendorModal(Request $request)
  {   
-     $validator = Validator::make($request->all(),
+     $this->validate($request,
         [  'email'=>'unique:users',
            'name'=>'required',
            'state'=>'required',
            'phone_no'=>'required|numeric',
            'password' => 'required|string|min:6|confirmed',
            ]);
-
-          if($validator->passes())
-        {  
+ 
             $user = UserController::create($request);
             
             if($user)
             {   Auth::attempt(['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'),
              'status'=>'active', 'user_level' =>'user']);
-                flash("Account created successfully, welcome to bido platform you can now hire", "Bido")->success();
+                flash("Account created successfully, you can now continue", "Bido")->success();
                 return redirect()->back();
 
             }else{
                 flash('Something went wrong user could not be created', 'Bido')->error();
                 return redirect()->back();
             }
-        }
-        else
-        {
-            return redirect()->back()->withErrors($validator);
-        }
  }
 
 
@@ -363,12 +339,12 @@ class interfaceController extends Controller
  *
  */
  public static function createService(Request $request)
- {   $validator = Validator::make($request->all(),
+ {   $this->validate($request,
         [  'service_name'=>'required',
            'profession_title' => 'required',
            'location'=>'required',
+           'description' => 'required',
            ]);
- if($validator->passes()) {
 
      $service = ServiceController::create($request);
 
@@ -379,7 +355,7 @@ class interfaceController extends Controller
          flash('something went wrong, service could not be created')->error();
          return redirect()->back();
      }
-     }
+     
       
  }
  /**
@@ -523,13 +499,12 @@ class interfaceController extends Controller
  *
  */
    public static function changePassword(Request $request)
-   { $validator = validator::make($request->all(),
+   { $this->validate($request,
         [  'phone_no'=>'required',
            'old_password'=>'required',
            'new_password'=>'required',
            ]);
- if($validator->passes())
- {
+ 
    $changepswd = UserController::changePassword($request);
    if($changepswd)
    {
@@ -539,7 +514,7 @@ class interfaceController extends Controller
     flash('Something went wrong, password could noe be changed, please try again')->error();
     return redirect()->back();
    }
- }
+ 
    }
 
     public function editProfile()
@@ -550,13 +525,11 @@ class interfaceController extends Controller
 
     public function updateProfile(Request $request )
     {
-        $validation = Validator::make($request->all(), [
+        $this->validate($request, [
            'name' => 'required',
            'location' => 'required',
         ]);
 
-        if ($validation->passes())
-        {
             $user_id = Auth::user()->id;
 
             $update = UserController::update($request, $user_id);
@@ -571,12 +544,7 @@ class interfaceController extends Controller
                 return redirect()->back();
             }
 
-        }
-        else
-        {
-            flash("Invalid form", 'Error')->error();
-            return redirect()->back();
-        }
+       
    }
 /**
 * deletes a particular service
@@ -612,14 +580,13 @@ public function deleteService($id)
     * @var id
     */
     public function updateService(Request $request)
-    {   $validator = Validator::make($request->all(),
+    {   $this->validate($request,
         [  'service_name'=>'required',
            'profession_title' => 'required',
            'location'=>'required',
            'service_category' => 'required',
            ]);
-    if($validator->passes())
-    {
+   
         $update = ServiceController::update($request);
         if($update)
         {
@@ -633,10 +600,7 @@ public function deleteService($id)
             $name = str_replace(' ', '-', strtolower($user->name));
             return redirect('user/'.$name);
         }
-      }else{
-        flash()->overlay($validator->all());
-        return redirect()->back();
-      }
+    
     }
 
     /**
@@ -647,14 +611,13 @@ public function deleteService($id)
     */
    public static function sendMessage(Request $request)
    {
-    $validator = Validator::make($request->all(),
+    $this->validate($request,
         [  'name'=>'required',
            'title' => 'required',
            'phone_no'=>'required',
            'message' => 'required',
            ]);
-    if($validator->passes())
-    {
+   
         $message = MessageController::sendMessage($request);
         if($message)
         {
@@ -664,10 +627,7 @@ public function deleteService($id)
          flash('Something went wrong, message not sent successfully please try again')->error();
         return redirect()->back();
      }
-    }else{
-         flash()->overlay($validator->all());
-        return redirect()->back();
-    }
+  
    }
 
 
@@ -719,7 +679,7 @@ public function deleteService($id)
      }
 
     public function postJob(Request $request)
-    {   $validator = Validator::make($request->all(),
+    {   $this->validate($request,
         [  'name'=>'required',
            'title' => 'required',
            'phone_no'=>'required',
@@ -727,10 +687,9 @@ public function deleteService($id)
            'job_description' => 'required',
            'job_category' => 'required',
            ]);
-    if($validator->passes())
-    {
+   
         $post = PostJobController::create($request);
-      }
+      
     }
 
 
@@ -762,14 +721,13 @@ public function deleteService($id)
     * @return response
     */
     public function makeOffer(Request $request)
-    {   $validator = Validator::make($request->all(),
+    {   $this->validate($request,
         [  'job_name'=>'required',
            'offer_amount' => 'required',
            'duration'=>'required',
            'description' => 'required',
            ]);
-    if($validator->passes())
-    {
+   
         $job = JobOfferDetailController::create($request);
         $jobapproval = JobApprovalController::create($job);
         $jobprogress= JobProgressController::create($job);
@@ -781,10 +739,7 @@ public function deleteService($id)
             flash('Something went wrong, your offer was not sent, please try again')->error();
             return redirect()->back();
         }
-    }else{
-        flash('Error in the form inputs please check them and try again')->error();
-        return redirect()->back();
-    }
+   
 
     }
 }

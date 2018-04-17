@@ -28,4 +28,9 @@ class UserAvater extends Model
         return $this->belongsTo(Service::class, 'user_id');
 
     }
+      public function avater_owner()
+    {
+        return $this->belongsTo('App\User');
+
+    }
 }
