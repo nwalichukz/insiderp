@@ -15,7 +15,7 @@ class CreateJobDateExtensionsTable extends Migration
     {
         Schema::create('job_date_extensions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('job_offer_deail_id');
+            $table->integer('job_offer_detail_id');
             $table->timestamp('extended_date');
             $table->timestamps();
         });

@@ -156,7 +156,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Job Name</label>
-                                <input type="text" name="job_name" class="form-control" id="jobname" placeholder="Job Name" required>
+                                <input type="text" name="job_name" class="form-control" id="job_name" placeholder="Job Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="amount">Offer Amount</label>
