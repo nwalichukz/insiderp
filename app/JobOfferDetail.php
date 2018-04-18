@@ -13,7 +13,7 @@ class JobOfferDetail extends Model
 
       public function job_executor()
     {
-    	return $this->belongsTo('App\Service');
+    	return $this->belongsTo('App\Service', 'service_id');
     }
 
      public function job_payment()

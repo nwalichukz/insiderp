@@ -343,7 +343,7 @@ class interfaceController extends Controller
  * 
  *
  */
- public static function createService(Request $request)
+ public function createService(Request $request)
  {   $this->validate($request,
         [  'service_name'=>'required',
            'profession_title' => 'required',
@@ -360,8 +360,7 @@ class interfaceController extends Controller
          flash('something went wrong, service could not be created')->error();
          return redirect()->back();
      }
-     
-      
+         
  }
  /**
  * This method creates a search
@@ -503,7 +502,7 @@ class interfaceController extends Controller
  * @var request
  *
  */
-   public static function changePassword(Request $request)
+   public function changePassword(Request $request)
    { $this->validate($request,
         [  'phone_no'=>'required',
            'old_password'=>'required',
@@ -614,9 +613,9 @@ public function deleteService($id)
     * @var request
     *
     */
-   public static function sendMessage(Request $request)
+   public function sendMessage(Request $request)
    {
-    $this->validate($request,
+        $this->validate($request,
         [  'name'=>'required',
            'title' => 'required',
            'phone_no'=>'required',
@@ -648,7 +647,7 @@ public function deleteService($id)
     * @var request
     *
     */
-    public static function deleteMessage($id)
+    public function deleteMessage($id)
     {
         $message = MessageController::delete($id);
         if($message)
@@ -700,9 +699,10 @@ public function deleteService($id)
 
     public function myJobOffer()
     {
-        $user = JobController::jobOffer();
+        $jobs = JobController::jobOffer();
+        $user = UserController::getUser(Auth::user()->id);
 
-        return view('jobs.index')->with(['user' => $user]);
+        return view('jobs.index')->with(['jobs' => $jobs, 'user' => $user]);
     }
 
 
@@ -724,6 +724,7 @@ public function deleteService($id)
                                 ->get();
 
         return view('jobs.jobs-ongoing')->with(['user' => $jobs_ongoing]);
+
 
     }
 

@@ -226,10 +226,11 @@
                     <div class="modal-body">
                         <!-- content goes here -->
                         <form action="{{ url('post-login-modal') }}" method="post">
+                            {{ csrf_field() }}
                             <h3>Login</h3>
                             <div class="form-group">
                                 <label for="phone">Phone Number</label>
-                                <input type="text" class="form-control" name="phone" placeholder="Phone Number">
+                                <input type="text" class="form-control" name="phone_no" placeholder="Phone Number">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>

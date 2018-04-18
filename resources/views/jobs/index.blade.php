@@ -10,8 +10,9 @@
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
                     <div class="job-alerts-item candidates">
-                        <h4 class="alerts-title">Manage Job Offers</h4>
-                        <div class="manager-resumes-item">
+                        <h4 class="alerts-title">Manage  jobs you Offered</h4>
+                        @foreach($jobs as $job)
+                            <div class="manager-resumes-item">
                             <div class="manager-content">
                                 <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
                                 <div class="manager-info">
@@ -19,18 +20,18 @@
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="manager-name">
-                                                    <h4><a href="#">Service Name</a></h4>
-                                                    <h5>Profession Title</h5>
+                                                    <h4><a href="#">{{ $job->job_executor->name }}</a></h4>
+                                                    <h5>{{ $job->job_executor->profession_title }}</h5>
                                                 </div>
                                                 <div class="manager-meta">
-                                                    <span class="location">Location</span>
-                                                    <span class="rate"><i class="fa fa-money"></i> offer amount</span>
+                                                    <span class="location">{{ $job->job_executor->location }}</span>
+                                                    <span class="rate"><i class="fa fa-money"></i> {{ $job->offer_amount }}</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-7">
                                                 <h5>Job Description</h5>
                                                 <hr>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex fugiat ipsa, quos reprehenderit rerum ullam.</p>
+                                                <p>{{ $job->description }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -38,7 +39,7 @@
                             </div>
                             <div class="update-date">
                                 <p class="status">
-                                    <strong>offered on:</strong> Fab 22, 2017
+                                    <strong>offered on:</strong> {{ $job->created_at->toFormattedDateString() }}
                                 </p>
                                 <div class="action-btn">
                                     <button data-toggle="modal" data-target="#editOfferModal" class="btn btn-xs btn-gray" href="#">Edit offer</button>
@@ -46,6 +47,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
