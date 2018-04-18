@@ -10,9 +10,12 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\searchController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\JobOfferDetailController;
+use App\Http\Controllers\JobController;
 use Validator;
 use Auth;
 use App\User;
+use App\JobOfferDetail;
 use App\UserAvater;
 use App\vendor;
 use App\Service;
@@ -697,7 +700,7 @@ public function deleteService($id)
 
     public function myJobs()
     {
-        $user = UserController::getUser(Auth::user()->id);
+        $user = JobController::jobOffer();
 
         return view('jobs.index')->with(['user' => $user]);
     }
@@ -745,7 +748,7 @@ public function deleteService($id)
 }   
 
     public function jobOffers()
-    {
+    {   
         $user = UserController::getUser(Auth::user()->id);
        // $service = ServiceController::get($user->service->id);
 

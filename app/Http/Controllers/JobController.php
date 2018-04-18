@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use JobOfferDetail;
-use User;
-use Service;
+use App\JobOfferDetail;
+use App\User;
+use App\Service;
 use App\Http\Controllers\JobOfferController;
 use App\Http\Controllers\JobOfferDetailController;
+use Auth, DB;
 
 class JobController extends Controller
 {
@@ -65,7 +66,7 @@ class JobController extends Controller
     * This method returns all the job
     *
     *  by a particular artisan/vendor
-    * @var
+    * @var service_id
     * @return collection
     *
     */
