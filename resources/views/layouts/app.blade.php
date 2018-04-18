@@ -27,7 +27,6 @@ cooks, entrepreneur, programmer, logo designer, makeup artist, artists, plumbers
 <link rel="stylesheet" href="{{ asset('assets/css/material-kit.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/fonts/font-awesome.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/fonts/themify-icons.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/color-switcher.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/extras/animate.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/extras/owl.carousel.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/extras/owl.theme.css') }}" type="text/css">
