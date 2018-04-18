@@ -23,7 +23,7 @@
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
 					<a href="search-category/Education and Training">
 						 <div class="icon">
-							<i class="ti-book"></i>
+							<i class="fa fa-book"></i>
 						</div>
 						<h3>Education and Training</h3>
 					</a>
