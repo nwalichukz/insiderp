@@ -17,6 +17,7 @@ class CreateJobApprovalsTable extends Migration
             $table->increments('id');
             $table->integer('job_offer_detail_id')->unsigned();
             $table->string('approval_status')->default('pending');
+            $table->string('decline_reason')->nullable();
             $table->timestamps();
             $table->foreign('job_offer_detail_id')->references('id')->on('job_offer_details')
                 ->onUpdate('cascade');

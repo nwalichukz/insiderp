@@ -9,6 +9,7 @@ use App\Service;
 use App\Http\Controllers\JobOfferController;
 use App\Http\Controllers\JobOfferDetailController;
 use Auth, DB;
+use Carbon\Carbon;
 
 class JobController extends Controller
 {
@@ -75,4 +76,29 @@ class JobController extends Controller
     	return JobOfferDetail::where('service_id', $service_id)->with('job_owner')->with('job_progress')
                                 ->with('job_approval')->with('job_payment')->get();
     }
+
+      /**
+    * This method accepts an offer
+    *
+    *  by a particular user/offerer
+    * @var job-offer_detail_id
+    *
+    * @return collection
+    *
+    */
+      public static function acceptDeclineOffer(Request $request){
+        $job = JobApproval::where('job_offer_detail_id', $request['job_id'])->first();
+        $job->approval_status = $request['status'];
+        $job->decline_reason = $request['decline_reason'];
+        $job->save();
+        $job_detail = JobOfferDetail::find($job->job_offer_detail_id);
+        if($job_detail->duration < 30){
+        $job_detail->initial_deliver_date = Carbon::addDays($job_detail->duration);
+        }elseif($job_detail->duration == 30){
+           $job_detail->initial_deliver_date = Carbon::addMonths(1); 
+        }elseif($job_detail->duration == 30){
+            $job_detail->initial_deliver_date = Carbon::addMonths(2);
+        }
+        $job_detail->save();
+      }
 }

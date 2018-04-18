@@ -698,20 +698,35 @@ public function deleteService($id)
     }
 
 
-    public function myJobs()
+    public function myJobOffer()
     {
         $user = JobController::jobOffer();
 
         return view('jobs.index')->with(['user' => $user]);
     }
 
+
+      public function myJobs($service_id)
+    {
+        $user = JobController::myJob($service_id);
+
+        return view('jobs.my_jobs')->with(['user' => $user]);
+    }
+
+
     public function jobsOngoing()
     {
-        $user = UserController::getUser(Auth::user()->id);
+        $user = $this->myJobOffer();
+        $jobs_ongoing = $user->job_payment()
+                                ->where('payment_status', '!=', 'not paid')->job_approval()
+                                ->where('approval_status', 'accepted')->job_progress()
+                                ->where('progress_status', '!=', 'completed')
+                                ->get();
 
-        return view('jobs.jobs-ongoing')->with(['user' => $user]);
+        return view('jobs.jobs-ongoing')->with(['user' => $jobs_ongoing]);
 
     }
+
 
     public function jobsCompleted()
     {
