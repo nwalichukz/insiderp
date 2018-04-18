@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'state', 'gender', 'location', 'facebook', 'twitter', 'youtube', 'website',
+        'name', 'email', 'password', 'phone_no', 'state', 'gender', 'location', 'facebook', 'twitter', 'youtube', 'website',
     ];
 
     /**
@@ -32,27 +32,20 @@ class User extends Authenticatable
 
     public function service()
     {
-        return $this->hasMany(Service::class);
+        return $this->hasMany('App\Service');
     }
 
       public function avater() {
-      return $this->hasOne(UserAvater::class);
-    }
-
-     public function images(){
-      return $this->hasMany(PrevWorkImage::class, 'service_id');
-    }
-
-     public function view() {
-      return $this->belongsTo(view::class, 'service_id');
-    }
-
-     public function logo() {
-      return $this->hasMany(VendorLogo::class, 'service_id');
+      return $this->hasOne('App\UserAvater');
     }
 
       public function job_detail() {
-      return $this->hasMany(JobOfferDetail::class, 'user_id');
+      return $this->hasMany('App\JobOfferDetail');
     }
+
+       public function user_last_login() {
+      return $this->hasMany('App\LastLogin');
+    }
+
 
 }

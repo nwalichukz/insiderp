@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\JobOfferDetail;
 use App\JobOffer;
+use App\Service;
+use App\User;
 use Auth, DB;
 
 class JobOfferDetailController extends Controller

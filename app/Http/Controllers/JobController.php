@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use JobOffer;
-use JobOfferDetail;
-use User;
-use Service;
+use App\JobOfferDetail;
+use App\User;
+use App\Service;
 use App\Http\Controllers\JobOfferController;
 use App\Http\Controllers\JobOfferDetailController;
+use Auth, DB;
 
 class JobController extends Controller
 {
@@ -21,11 +21,11 @@ class JobController extends Controller
     *
     */
     public static function jobCompleted()
-    { return JobOffer::where('user_id', Auth::user()->id)
-                                ->where('payment_status', 'paid')
-                                ->where('approval_status', 'accepted')
+    { return JobOfferDetail::where('user_id', Auth::user()->id)->job_payment()
+                                ->where('payment_status', 'paid')->job_approval()
+                                ->where('approval_status', 'accepted')->job_progress()
                                 ->where('progress_status', 'completed')
-                                ->with('job_details')
+                                ->with('job_executor')
                                 ->get();
 
     }
@@ -40,11 +40,11 @@ class JobController extends Controller
     */
     public static function myJobOngoing()
     {
-    	return JobOffer::where('user_id', Auth::user()->id)
-                                ->where('payment_status', '!=', 'not paid')
-                                ->where('approval_status', 'accepted')
+    	return JobOfferDetail::where('user_id', Auth::user()->id)->job_payment()
+                                ->where('payment_status', '!=', 'not paid')->job_approval()
+                                ->where('approval_status', 'accepted')->job_progress()
                                 ->where('progress_status', '!=', 'completed')
-                                ->with('job_details')
+                                ->with('job_executor')
                                 ->get();
     }
 
@@ -57,20 +57,22 @@ class JobController extends Controller
     *
     */
     public static function jobOffer()
-    { return JobOffer::where('user_id', Auth::user()->id)->get();
+    { return JobOfferDetail::where('user_id', Auth::user()->id)->with('job_executor')->with('job_progress')
+                                ->with('job_approval')->with('job_payment')->get();
     	
     }
 
      /**
     * This method returns all the job
     *
-    * completed by a particular artisan
-    * @var
+    *  by a particular artisan/vendor
+    * @var service_id
     * @return collection
     *
     */
     public static function myJob($service_id)
     {
-    	return JobOfferDetail::where('service_id', $service_id)->with('job_offer')->get();
+    	return JobOfferDetail::where('service_id', $service_id)->with('job_owner')->with('job_progress')
+                                ->with('job_approval')->with('job_payment')->get();
     }
 }

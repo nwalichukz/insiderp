@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class view extends Model
 {
-    public function service()
+    public function viewOwner()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo('App\Service');
     }
 }

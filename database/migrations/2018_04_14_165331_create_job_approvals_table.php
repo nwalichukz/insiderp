@@ -15,9 +15,11 @@ class CreateJobApprovalsTable extends Migration
     {
         Schema::create('job_approvals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('job_offer_detail_id');
+            $table->integer('job_offer_detail_id')->unsigned();
             $table->string('approval_status')->default('pending');
             $table->timestamps();
+            $table->foreign('job_offer_detail_id')->references('id')->on('job_offer_details')
+                ->onUpdate('cascade');
         });
     }
 

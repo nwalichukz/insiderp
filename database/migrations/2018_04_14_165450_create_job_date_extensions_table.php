@@ -15,9 +15,11 @@ class CreateJobDateExtensionsTable extends Migration
     {
         Schema::create('job_date_extensions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('job_offer_detail_id');
+            $table->integer('job_offer_detail_id')->unsigned();
             $table->timestamp('extended_date');
             $table->timestamps();
+            $table->foreign('job_offer_detail_id')->references('id')->on('job_offer_details')
+                ->onUpdate('cascade');
         });
     }
 
