@@ -228,18 +228,71 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function adminDashboard()
- { $admin = AdminController::get(Auth::user()->id);
-    return view('admin.dashboard')->with(['admin'=>$admin]);
+ {
+     $admin = AdminController::get(Auth::user()->id);
+     $users = User::all();
+    return view('admin.dashboard')->with(['admin'=>$admin, 'users' => $users]);
     
  }
+/*
+**
+* This method returns the admin vendors page
+*
+* returns collecion
+*/
+    public function adminVendors()
+    {
+        $admin = AdminController::get(Auth::user()->id);
+        $vendors = Service::all();
+        return view('admin.vendors')->with(['admin'=>$admin, 'vendors' => $vendors]);
+
+    }
     /**
      * This method returns the admin user detail page
      *
      * returns collection
      */
-    public function adminUserDetails()
-    { $admin = AdminController::get(Auth::user()->id);
-        return view('admin.user-details')->with(['admin'=>$admin]);
+    public function adminUserDetails($user)
+    {
+        $admin = AdminController::get(Auth::user()->id);
+        $user = User::findOrFail($user);
+        return view('admin.user-details')->with(['admin'=>$admin, 'user' => $user]);
+
+    }
+
+    /**
+     * This method returns the admin job offers page
+     *
+     * returns collection
+     */
+    public function adminJobOffers()
+    {
+        $admin = AdminController::get(Auth::user()->id);
+        return view('admin.job-offers')->with(['admin'=>$admin]);
+
+    }
+
+    /**
+     * This method returns the admin ongoing jobs page
+     *
+     * returns collection
+     */
+    public function adminJobsOngoing()
+    {
+        $admin = AdminController::get(Auth::user()->id);
+        return view('admin.jobs-ongoing')->with(['admin'=>$admin]);
+
+    }
+
+    /**
+     * This method returns the admin jobs completed page
+     *
+     * returns collection
+     */
+    public function adminJobsCompleted()
+    {
+        $admin = AdminController::get(Auth::user()->id);
+        return view('admin.jobs-completed')->with(['admin'=>$admin]);
 
     }
 
@@ -697,7 +750,7 @@ public function deleteService($id)
     }
 
 
-    public function myJobOffer()
+    public function myJobs()
     {
         $jobs = JobController::jobOffer();
         $user = UserController::getUser(Auth::user()->id);
@@ -706,7 +759,7 @@ public function deleteService($id)
     }
 
 
-      public function myJobs($service_id)
+      public function myJobOffer($service_id)
     {
         $user = JobController::myJob($service_id);
 
@@ -716,14 +769,9 @@ public function deleteService($id)
 
     public function jobsOngoing()
     {
-        $user = $this->myJobOffer();
-        $jobs_ongoing = $user->job_payment()
-                                ->where('payment_status', '!=', 'not paid')->job_approval()
-                                ->where('approval_status', 'accepted')->job_progress()
-                                ->where('progress_status', '!=', 'completed')
-                                ->get();
+        $jobs_ongoing = $jobs = JobController::jobOffer();
 
-        return view('jobs.jobs-ongoing')->with(['user' => $jobs_ongoing]);
+        return view('jobs.jobs-ongoing')->with(['jobs_ongoing' => $jobs_ongoing]);
 
 
     }
@@ -732,8 +780,9 @@ public function deleteService($id)
     public function jobsCompleted()
     {
         $user = UserController::getUser(Auth::user()->id);
+        $jobs_completed = $jobs = JobController::jobOffer();
 
-        return view('jobs.jobs-completed')->with(['user' => $user]);
+        return view('jobs.jobs-completed', compact(['user', 'jobs_completed']));
     }
        /**
     * makes an offer to an agent

@@ -12,7 +12,8 @@
                     <div class="job-alerts-item candidates">
                         <h4 class="alerts-title">Manage  jobs you Offered</h4>
                         @foreach($jobs as $job)
-                            <div class="manager-resumes-item">
+                            @if($job->job_progress->progress_status == "accepted")
+                                <div class="manager-resumes-item">
                             <div class="manager-content">
                                 <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
                                 <div class="manager-info">
@@ -42,11 +43,49 @@
                                     <strong>offered on:</strong> {{ $job->created_at->toFormattedDateString() }}
                                 </p>
                                 <div class="action-btn">
-                                    <button data-toggle="modal" data-target="#editOfferModal" class="btn btn-xs btn-gray" href="#">Edit offer</button>
+                                    <button data-toggle="modal" data-target="#PaymentModal" class="btn btn-xs btn-gray" href="#">Make payment</button>
                                     <a class="btn btn-xs btn-danger" href="#">Cancel Offer</a>
                                 </div>
                             </div>
                         </div>
+                                <hr>
+                            @else
+                                <div class="manager-resumes-item">
+                                    <div class="manager-content">
+                                        <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
+                                        <div class="manager-info">
+                                            <div class="col-md-10">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="manager-name">
+                                                            <h4><a href="#">{{ $job->job_executor->name }}</a></h4>
+                                                            <h5>{{ $job->job_executor->profession_title }}</h5>
+                                                        </div>
+                                                        <div class="manager-meta">
+                                                            <span class="location">{{ $job->job_executor->location }}</span>
+                                                            <span class="rate"><i class="fa fa-money"></i> {{ $job->offer_amount }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <h5>Job Description</h5>
+                                                        <hr>
+                                                        <p>{{ $job->description }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="update-date">
+                                        <p class="status">
+                                            <strong>offered on:</strong> {{ $job->created_at->toFormattedDateString() }}
+                                        </p>
+                                        <div class="action-btn">
+                                            <button data-toggle="modal" data-target="#editOfferModal" class="btn btn-xs btn-gray" href="#">Edit offer</button>
+                                            <a class="btn btn-xs btn-danger" href="#">Cancel Offer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
