@@ -18,7 +18,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <a href="#" class="btn btn-common btn-block" data-toggle="modal" data-target="#addUserModal"><i class="fa fa-plus"></i> Add User</a>
+                                    <a href="#" class="btn btn-common btn-block" data-toggle="modal" data-target="#addVendorModal"><i class="fa fa-plus"></i> Add Vendor</a>
                                 </div>
                             </div>
                         </div>
@@ -32,26 +32,26 @@
                                 <div class="col-md-8">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4>All Users</h4>
+                                            <h4>Vendors</h4>
                                         </div>
                                         <table class="table table-striped">
                                             <thead class="thead-inverse">
                                             <tr>
                                                 <th>#</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Gender</th>
+                                                <th>Vendor Name</th>
+                                                <th>Profession Title</th>
+                                                <th>Location</th>
                                                 <th></th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                @foreach($users as $user)
-                                                    <td scope="row">{{ $user->id }}</td>
-                                                    <td>{{ $user->name }}</td>
-                                                    <td>{{ $user->email }}</td>
-                                                    <td>{{ $user->gender }}</td>
-                                                    <td><a href="{{ route('userDetails', ['user' => $user->id]) }}"><i class="fa fa-angle-right"></i> Details</a></td>
+                                                @foreach($vendors as $vendor)
+                                                    <td scope="row">{{ $vendor->id }}</td>
+                                                    <td>{{ $vendor->name }}</td>
+                                                    <td>{{ $vendor->profession_title }}</td>
+                                                    <td>{{ $vendor->location }}</td>
+                                                    <td><a href=""><i class="fa fa-angle-right"></i> Details</a></td>
                                                 @endforeach
                                             </tr>
                                             </tbody>

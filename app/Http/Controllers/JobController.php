@@ -47,10 +47,6 @@ class JobController extends Controller
                                 ->where('progress_status', '!=', 'completed')
                                 ->with('job_executor')
                                 ->get();
-        return DB::table('job_offer_details')
-                ->where('user_id', Auth::user()->id)
-                ->join('job_payments', 'job_payments.job_offer_detail_id', '=', 'job_payments.job_offer_detail_id')
-                ->
     }
 
      /**

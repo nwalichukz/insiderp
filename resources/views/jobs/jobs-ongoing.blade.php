@@ -11,32 +11,34 @@
                 <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-1">
                     <div class="job-alerts-item candidates">
                         <h4 class="alerts-title">Ongoing jobs</h4>
-                        <div class="manager-resumes-item">
-                            <div class="manager-content">
+                        @foreach($jobs_ongoing as $job)
+                            @if($job->job_progress->progress_status === "ongoining")
+                                <div class="manager-resumes-item">
+                                    <div class="manager-content">
                                 <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
                                 <div class="manager-info">
                                     <div class="col-md-10">
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="manager-name">
-                                                    <h4><a href="#">Service Name</a></h4>
-                                                    <h5>Profession Title</h5>
+                                                    <h4><a href="#">{{ $job->job_executor->name }}</a></h4>
+                                                    <h5>{{ $job->job_executor->profession_title }}</h5>
                                                 </div>
                                                 <div class="manager-meta">
                                                     <span class="location">Location</span>
-                                                    <span class="rate"><i class="fa fa-money"></i> offer amount</span>
+                                                    <span class="rate"><i class="fa fa-money"></i> {{ $job->offer_amount }}</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
                                                 <h5>Job Description</h5>
                                                 <hr>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex fugiat ipsa, quos reprehenderit rerum ullam.</p>
+                                                <p>{{ $job->description }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="update-date">
+                                <div class="update-date">
                                 <p class="status">
                                     <strong>offered on:</strong> Fab 22, 2017 <br>
                                     <strong>Time to Completion:</strong> 2 days
@@ -44,10 +46,14 @@
                                 <div class="action-btn">
                                     <a class="btn btn-xs btn-gray" href="#">Make Payment</a>
                                     <a class="btn btn-xs btn-gray" href="#">View work progress</a>
-                                    <button data-toggle="modal" data-target="#reportServiceModal" href="#" class="btn btn-xs btn-danger">Report Service</a>
+                                    <button data-toggle="modal" data-target="#reportServiceModal" href="#" class="btn btn-xs btn-danger">Report Service</button>
                                 </div>
                             </div>
-                        </div>
+                                </div>
+                             @else
+                                <p>No ongoing jobs at the moment</p>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>

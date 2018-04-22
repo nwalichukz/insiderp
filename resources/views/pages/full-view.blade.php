@@ -26,6 +26,9 @@
                                     <span class="label label-info">Adobe CS 5.5</span>
                                     <span class="label label-info">Microsoft Office</span>
                                     <span class="label label-success">Windows XP, Vista, 7</span>
+                                    <div class="col-md-4">
+                                        <p>{{ $fullview->user->description }}</p>
+                                    </div>
                                 </center>
                             </div>
                             <br>
@@ -33,7 +36,7 @@
                                 <aside>
                                     <div class="sidebar">
                                         <div class="box">
-                                            <h2 class="small-title">Service Details</h2>
+                                            <h4 class="small-title">Service Details</h4>
                                             <ul class="detail-list">
                                                 <li>
                                                     <a href="#">Service Id</a>
@@ -48,6 +51,14 @@
                                                     <span class="type-posts">{{ $fullview->location }}</span>
                                                 </li>
                                                 <li>
+                                                    <a href="#">Email</a>
+                                                    <span class="type-posts">{{ $fullview->user->email }}</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Phone</a>
+                                                    <span class="type-posts">{{ $fullview->user->phone_no }}</span>
+                                                </li>
+                                                <li>
                                                     <a href="#">Jobs Completed</a>
                                                     <span class="type-posts">30</span>
                                                 </li>
@@ -55,12 +66,22 @@
                                                     <a href="#">Verification Status</a>
                                                     <span class="type-posts">Verified <i class="fa fa-check-circle"></i></span>
                                                 </li>
+                                                <li>
+                                                    <a href="#">Date Joined</a>
+                                                    <span class="type-posts">{{ $fullview->user->created_at->diffForHumans()  }} <i class="fa fa-check-circle"></i></span>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </aside>
+                                <div class="col-md-4">
+                                    <div class="box">
+                                        <p>{{ $fullview->description }}</p>
+                                    </div>
+                                </div>
                                 <br>
                             </div>
+
                             <div class="col-md-4">
                                 <aside>
                                     <div class="sidebar">
