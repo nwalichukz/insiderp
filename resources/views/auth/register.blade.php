@@ -10,6 +10,7 @@ Login | Sign up
 ================================================== -->
 <div id="content" class="my-account">
 	<div class="container">
+		@include('partials.errors')
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-6 cd-user-modal">
 				<div class="my-account-form">
@@ -34,7 +35,7 @@ Login | Sign up
 								<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 									<div class="input-icon">
 										<i class="ti-email"></i>
-										<input type="text" id="email" class="form-control" name="email" placeholder="Email Address" value="{{ old('email') }}">
+										<input type="text" id="email" class="form-control" name="email" placeholder="Email Address" value="">
 										@if ($errors->has('email'))
 											<span class="help-block">
 												<strong>{{ $errors->first('email') }}</strong>
@@ -95,6 +96,13 @@ Login | Sign up
 										@endif
 									</div>
 								</div>
+								<div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+									<div class="input-icon">
+										<i class="ti-lock"></i>
+										<input type="password" id="password" class="form-control" name="password_confirmation" placeholder="Re-enter your password again" autocomplete="false" value="">
+	
+									</div>
+								</div>
 								<div class="form-group">
 									<select class="form-control" name="gender">
 										<option disabled selected><b>Gender</b></option>
@@ -107,7 +115,7 @@ Login | Sign up
 								</div>
 							</form>
 						</div>
-						@include('partials.errors')
+						
 					</div> 
 				</div>
 			</div>

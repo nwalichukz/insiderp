@@ -717,11 +717,11 @@ public function deleteService($id)
     public function jobsOngoing()
     {
         $user = $this->myJobOffer();
-        $jobs_ongoing = $user->job_payment()
+        $jobs_ongoing = $user;/*->job_payment()
                                 ->where('payment_status', '!=', 'not paid')->job_approval()
                                 ->where('approval_status', 'accepted')->job_progress()
                                 ->where('progress_status', '!=', 'completed')
-                                ->get();
+                                ->get();*/
 
         return view('jobs.jobs-ongoing')->with(['user' => $jobs_ongoing]);
 

@@ -32,7 +32,7 @@ Route::get('/admin/administrators', 'interfaceController@adminUsers')->name('adm
 Route::get('/admin/{user}', 'interfaceController@adminDashboard');
 Route::post('/login', 'interfaceController@postLogin')->name('login');
 Route::get('/job-detail', 'interfaceController@jobDetail')->name('job');
-Route::get('/my-jobs', 'interfaceController@myJobs');
+Route::get('/my-jobs', 'interfaceController@myJobOffer');
 Route::get('/jobs-ongoing', 'interfaceController@jobsOngoing');
 Route::get('/jobs-completed', 'interfaceController@jobsCompleted');
 Route::get('/offers', 'interfaceController@offers')->name('offer');
