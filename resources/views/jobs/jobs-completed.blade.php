@@ -11,7 +11,9 @@
                 <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
                     <div class="job-alerts-item candidates">
                         <h5 class="alerts-title">Completed jobs</h5>
-                        <div class="manager-resumes-item">
+                        @foreach($jobs_completed as $job)
+                        @if($job->job_progress->progress_status === "completed")
+                            <div class="manager-resumes-item">
                             <div class="manager-content">
                                 <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
                                 <div class="manager-info">
@@ -19,19 +21,19 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="manager-name">
-                                                    <h4><a href="#">User Name</a></h4>
-                                                    <h5>Job Name</h5>
+                                                    <h4><a href="#">{{ $job->job_executor->name }}</a></h4>
+                                                    <h5>{{ $job->name }}</h5>
                                                 </div>
                                                 <div class="manager-meta">
-                                                    <span class="location">Location</span>
-                                                    <span class="rate"><i class="fa fa-money"></i> offer amount</span>
+                                                    <span class="location">{{ $job->job_executor->location }}</span>
+                                                    <span class="rate"><i class="fa fa-money"></i> {{ $job->offer_amount }}</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="manager-info">
                                                     <h5>Job Description</h5>
                                                     <hr>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo in placeat quas soluta voluptatum? Blanditiis delectus deleniti earum nemo quidem repellat totam unde....</p>
+                                                    <p>{{ $job->description}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -50,6 +52,10 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                            <p>You have Not completed any jobs at the moment</p>
+                        @endif
+                        @endforeach
                     </div>
                 </div>
             </div>

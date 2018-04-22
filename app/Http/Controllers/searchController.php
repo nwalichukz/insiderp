@@ -23,8 +23,9 @@ class searchController extends Controller
     public static function search(Request $request)
     { $data = $request->all();
       $title= $data['profession_title'];
-     $query = Service::where('profession_title', 'like', '%'.$title)
-                        ->orWhere('id', $title);
+     $query = Service::where('profession_title', 'like', '%'.$title.'%')
+                        ->orWhere('id', $title)
+                        ->orWhere('name', 'like', '%'.$title.'%');
      if(!empty($data['location']))
      {
      	$query->where('location', $data['location']);

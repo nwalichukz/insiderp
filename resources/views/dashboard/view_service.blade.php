@@ -44,7 +44,7 @@
                                                 <div class="dash-box-icon">
                                                     <i class="fa fa-briefcase"></i>
                                                 </div>
-                                                <a href="{{ url('ongoing-jobs') }}">
+                                                <a href="{{ url('ongoing-jobs', $service->id) }}">
                                                     <div class="dash-box-body">
                                                         <span class="dash-box-count">8</span>
                                                         <span class="dash-box-title">Ongoing Jobs</span>
@@ -52,7 +52,7 @@
                                                 </a>
 
                                                 <div class="dash-box-action">
-                                                    <a href="{{ url('ongoing-jobs') }}">More Info</a>
+                                                    <a href="{{ url('ongoing-jobs', $service->id) }}">More Info</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -61,7 +61,7 @@
                                                 <div class="dash-box-icon">
                                                     <i class="fa fa-handshake-o"></i>
                                                 </div>
-                                                <a href="{{ url('job-offers') }}">
+                                                <a href="{{ url('job-offers', $service->id) }}">
                                                     <div class="dash-box-body">
                                                         <span class="dash-box-count">5</span>
                                                         <span class="dash-box-title">Job Offers</span>
@@ -69,7 +69,7 @@
                                                 </a>
 
                                                 <div class="dash-box-action">
-                                                    <a href="{{ url('job-offers') }}">More Info</a>
+                                                    <a href="{{ url('job-offers', $service->id) }}">More Info</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -78,7 +78,7 @@
                                                 <div class="dash-box-icon">
                                                     <i class="fa fa-file-code-o"></i>
                                                 </div>
-                                                <a href="{{ url('jobs-completed') }}">
+                                                <a href="{{ url('jobs-completed', $service->id) }}">
                                                     <div class="dash-box-body">
                                                         <span class="dash-box-count">3</span>
                                                         <span class="dash-box-title">Jobs Completed</span>
@@ -86,7 +86,7 @@
                                                 </a>
 
                                                 <div class="dash-box-action">
-                                                    <a href="{{ url('jobs-completed') }}">More Info</a>
+                                                    <a href="{{ url('jobs-completed', $service->id) }}">More Info</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -8,11 +8,11 @@
     <div id="content">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
-                    <div class="job-alerts-item candidates">
+                <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">ongoining
+                    <div class="job-alerts-item candidates">ongoiningongoiningongoiningongoining
                         <h4 class="alerts-title">Manage  jobs you Offered</h4>
                         @foreach($jobs as $job)
-                            @if($job->job_progress->progress_status == "accepted")
+                            @if($job->job_progress->progress_status === "accepted")
                                 <div class="manager-resumes-item">
                             <div class="manager-content">
                                 <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
@@ -73,6 +73,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                     <div class="update-date">

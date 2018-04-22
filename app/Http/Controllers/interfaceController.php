@@ -759,11 +759,11 @@ public function deleteService($id)
     }
 
 
-      public function myJobOffer($service_id)
+      public function serviceJobOffer($service_id)
     {
-        $user = JobController::myJob($service_id);
+        $jobs = JobController::myJob($service_id);
 
-        return view('jobs.my_jobs')->with(['user' => $user]);
+        return view('jobs.my_jobs')->with(['jobs' => $jobs]);
     }
 
 
@@ -812,12 +812,14 @@ public function deleteService($id)
         }
 }   
 
-    public function jobOffers()
+    public function jobOffers($service_id)
     {   
         $user = UserController::getUser(Auth::user()->id);
+        $service = Service::findOrFail($user->service->id);
+        $jobs = JobController::myJob($service);
        // $service = ServiceController::get($user->service->id);
 
-        return view('dashboard.job-offers')->with(['user' => $user]);
+        return view('dashboard.job-offers')->with(['user' => $user, 'jobs'=> $jobs]);
     }
 
     public function ongoingJobs()
