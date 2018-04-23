@@ -8,9 +8,9 @@
     <div id="content">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">ongoining
-                    <div class="job-alerts-item candidates">ongoiningongoiningongoiningongoining
+                <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
                         <h4 class="alerts-title">Manage  jobs you Offered</h4>
+                        <hr>
                         @foreach($jobs as $job)
                             @if($job->job_progress->progress_status === "accepted")
                                 <div class="manager-resumes-item">
@@ -21,18 +21,18 @@
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="manager-name">
-                                                    <h4><a href="#">{{ $job->job_executor->name }}</a></h4>
-                                                    <h5>{{ $job->job_executor->profession_title }}</h5>
+                                                    <h4><a href="#">{{ ucfirst($job->job_executor->name) }}</a></h4>
+                                                    <h5>{{ ucfirst($job->job_executor->profession_title) }}</h5>
                                                 </div>
                                                 <div class="manager-meta">
-                                                    <span class="location">{{ $job->job_executor->location }}</span>
+                                                    <span class="location">{{ ucfirst($job->job_executor->location) }}</span>
                                                     <span class="rate"><i class="fa fa-money"></i> {{ $job->offer_amount }}</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-7">
                                                 <h5>Job Description</h5>
                                                 <hr>
-                                                <p>{{ $job->description }}</p>
+                                                <p>{{ substr($job->description, 0, 30) }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -57,19 +57,17 @@
                                             <div class="col-md-10">
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <div class="manager-name">
+                                                        <div class="manager-name" id="manager">
                                                             <h4><a href="#">{{ $job->job_executor->name }}</a></h4>
                                                             <h5>{{ $job->job_executor->profession_title }}</h5>
-                                                        </div>
-                                                        <div class="manager-meta">
-                                                            <span class="location">{{ $job->job_executor->location }}</span>
+                                                            <span class="location"><i class="ti-location-pin"></i> {{ $job->job_executor->location }}</span>
                                                             <span class="rate"><i class="fa fa-money"></i> {{ $job->offer_amount }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <h5>Job Description</h5>
                                                         <hr>
-                                                        <p>{{ $job->description }}</p>
+                                                        <p>{{ substr($job->description, 0, 30) }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,5 +150,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection

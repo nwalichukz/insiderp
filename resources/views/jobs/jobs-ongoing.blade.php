@@ -9,9 +9,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-1">
-                    <div class="job-alerts-item candidates">
-                        <h4 class="alerts-title">Ongoing jobs</h4>
-                        @foreach($jobs_ongoing as $job)
+                    <h4 class="alerts-title">Ongoing jobs</h4>
+                    <hr>
+                    @foreach($jobs_ongoing as $job)
                             @if($job->job_progress->progress_status === "ongoining")
                                 <div class="manager-resumes-item">
                                     <div class="manager-content">
@@ -21,18 +21,16 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="manager-name">
-                                                    <h4><a href="#">{{ $job->job_executor->name }}</a></h4>
-                                                    <h5>{{ $job->job_executor->profession_title }}</h5>
-                                                </div>
-                                                <div class="manager-meta">
-                                                    <span class="location">Location</span>
+                                                    <h4><a href="#">{{ ucfirst($job->job_executor->name) }}</a></h4>
+                                                    <h5>{{ ucfirst($job->job_executor->profession_title) }}</h5>
+                                                    <span class="location"><i class="ti-location-pin"></i> {{ ucfirst($job->job_executor->location) }}</span>
                                                     <span class="rate"><i class="fa fa-money"></i> {{ $job->offer_amount }}</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
                                                 <h5>Job Description</h5>
                                                 <hr>
-                                                <p>{{ $job->description }}</p>
+                                                <p>{{ substr($job->description, 0, 30) }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +52,6 @@
                                 <p>No ongoing jobs at the moment</p>
                             @endif
                         @endforeach
-                    </div>
                 </div>
             </div>
         </div>

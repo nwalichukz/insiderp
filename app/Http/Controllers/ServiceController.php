@@ -63,10 +63,7 @@ class ServiceController extends Controller
     *
     */
      public static function getUserService($user_id){
-      return Service::where('user_id', $user_id)
-              //->with('logo')
-              ->with('view')
-              ->with('images')->get();
+      return Service::where('user_id', $user_id)->get();
      }
 
     /**
