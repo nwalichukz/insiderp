@@ -15,7 +15,7 @@
         </ul>
         <ul class="lest">
             <li><a href="">Change Password</a></li>
-            <li><a href="">Sing Out</a></li>
+            <li><a href="{{url('/logout')}}">Sing Out</a></li>
         </ul>
     </div>
 </div>
