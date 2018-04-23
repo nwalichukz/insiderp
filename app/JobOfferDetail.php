@@ -8,7 +8,7 @@ class JobOfferDetail extends Model
 {
     public function job_owner()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\User', 'user_id');
     }
 
       public function job_executor()

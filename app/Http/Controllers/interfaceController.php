@@ -212,8 +212,8 @@ class interfaceController extends Controller
 
  {  if(Auth::check()){
     $user = Auth::user();
-    $service = ServiceController::getUserService(Auth::user()->id);
-    return view('dashboard.index')->with(['user' => $user, 'services' => $service, 'total'=> $service->count()]);
+    $services = ServiceController::getUserService(Auth::user()->id);
+    return view('dashboard.index')->with(['user' => $user, 'services' => $services, 'total'=> $services->count()]);
     }
     else
     {
@@ -759,11 +759,29 @@ public function deleteService($id)
     }
 
 
-      public function serviceJobOffer($service_id)
+      public function serviceJobOffers($service_id)
     {
         $jobs = JobController::myJob($service_id);
 
-        return view('jobs.my_jobs')->with(['jobs' => $jobs]);
+        return view('dashboard.job-offers')->with(['jobs' => $jobs]);
+    }
+    public function serviceOngoingJobs($service_id)
+    {
+        $user = UserController::getUser(Auth::user()->id);
+        $jobs = JobController::myJob($service_id);
+        //$service = ServiceController::get($user->service->id);
+
+        //dd($jobs);
+        return view('dashboard.ongoing-jobs')->with(['user' => $user, 'jobs' => $jobs]);
+    }
+
+    public function serviceCompletedJobs($service_id)
+    {
+        $user = UserController::getUser(Auth::user()->id);
+        $jobs = JobController::myJob($service_id);
+        //$service = ServiceController::get($user->service->id);
+
+        return view('dashboard.completed-jobs')->with(['user' => $user, 'jobs' => $jobs]);
     }
 
 
@@ -812,29 +830,4 @@ public function deleteService($id)
         }
 }   
 
-    public function jobOffers($service_id)
-    {   
-        $user = UserController::getUser(Auth::user()->id);
-        $service = Service::findOrFail($user->service->id);
-        $jobs = JobController::myJob($service);
-       // $service = ServiceController::get($user->service->id);
-
-        return view('dashboard.job-offers')->with(['user' => $user, 'jobs'=> $jobs]);
-    }
-
-    public function ongoingJobs()
-    {
-        $user = UserController::getUser(Auth::user()->id);
-        //$service = ServiceController::get($user->service->id);
-
-        return view('dashboard.ongoing-jobs')->with(['user' => $user]);
-    }
-
-    public function completedJobs()
-    {
-        $user = UserController::getUser(Auth::user()->id);
-        //$service = ServiceController::get($user->service->id);
-
-        return view('dashboard.completed-jobs')->with(['user' => $user]);
-    }
 }

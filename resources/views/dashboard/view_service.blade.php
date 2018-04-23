@@ -40,23 +40,6 @@
                                     <h4>Basic Information</h4>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="dash-box dash-box-color-1">
-                                                <div class="dash-box-icon">
-                                                    <i class="fa fa-briefcase"></i>
-                                                </div>
-                                                <a href="{{ url('ongoing-jobs', $service->id) }}">
-                                                    <div class="dash-box-body">
-                                                        <span class="dash-box-count">8</span>
-                                                        <span class="dash-box-title">Ongoing Jobs</span>
-                                                    </div>
-                                                </a>
-
-                                                <div class="dash-box-action">
-                                                    <a href="{{ url('ongoing-jobs', $service->id) }}">More Info</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
                                             <div class="dash-box dash-box-color-3">
                                                 <div class="dash-box-icon">
                                                     <i class="fa fa-handshake-o"></i>
@@ -74,11 +57,28 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
+                                            <div class="dash-box dash-box-color-1">
+                                                <div class="dash-box-icon">
+                                                    <i class="fa fa-briefcase"></i>
+                                                </div>
+                                                <a href="{{ url('ongoing-jobs', $service->id) }}">
+                                                    <div class="dash-box-body">
+                                                        <span class="dash-box-count">8</span>
+                                                        <span class="dash-box-title">Ongoing Jobs</span>
+                                                    </div>
+                                                </a>
+
+                                                <div class="dash-box-action">
+                                                    <a href="{{ url('ongoing-jobs', $service->id) }}">More Info</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
                                             <div class="dash-box dash-box-color-2">
                                                 <div class="dash-box-icon">
                                                     <i class="fa fa-file-code-o"></i>
                                                 </div>
-                                                <a href="{{ url('jobs-completed', $service->id) }}">
+                                                <a href="{{ url('completed-jobs', $service->id) }}">
                                                     <div class="dash-box-body">
                                                         <span class="dash-box-count">3</span>
                                                         <span class="dash-box-title">Jobs Completed</span>

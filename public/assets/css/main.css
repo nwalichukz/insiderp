@@ -2054,6 +2054,7 @@ footer {
   font-size: 16px;
   line-height: 30px;
 }
+
 .detail-company .name {
   padding-right: 100px;
 }
@@ -2226,7 +2227,7 @@ footer {
   text-transform: uppercase;
 }
 .job-alerts-item .alerts-title {
-  font-size: 26px;
+  font-size: 20px;
   margin-bottom: 30px;
 }
 .job-alerts-item .alerts-content {
@@ -2403,12 +2404,23 @@ footer {
   color: #999;
 }
 
+.manager-resumes-item .manager-content .manager-info .manager-name span {
+  display: block;
+  color: #999;
+  font-size: 13px;
+  line-height: 25px;
+}
+
+.manager-resumes-item .manager-content .manager-info .manager-meta {
+  float: right;
+}
 .manager-resumes-item .manager-content .manager-info .manager-meta span {
   display: block;
   color: #999;
   font-size: 16px;
   line-height: 35px;
 }
+
 .manager-resumes-item .update-date {
   padding: 5px 30px;
   display: inline-block;

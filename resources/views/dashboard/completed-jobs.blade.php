@@ -9,28 +9,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
-                    <div class="job-alerts-item candidates">
-                        <h5 class="alerts-title">Completed jobs</h5>
-                        <div class="manager-resumes-item">
+                    <h5 class="alerts-title">Completed jobs</h5>
+                    <hr>
+                    @foreach($jobs as $job)
+                        @if($job->job_progress->profress_status === "complete")
+                            <div class="manager-resumes-item">
                             <div class="manager-content">
                                 <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
                                 <div class="manager-info">
-                                    <div class="col-md-10">
+                                    <div class="col-md-11">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-5">
                                                 <div class="manager-name">
-                                                    <h4><a href="#">User Name</a></h4>
-                                                    <h5>Job Name</h5>
+                                                    <h4><a href="#">{{ ucfirst($job->job_owner->name) }}</a></h4>
+                                                    <h5>{{ ucfirst($job->name) }}</h5>
+                                                    <span class="location"><i class="ti-location-pin"></i> {{ ucfirst($job->job_owner->location) }}</span>
+                                                    <span class="rate"><i class="fa fa-money"></i> {{ $job->offer_amount }}</span>
                                                 </div>
-                                                <div class="manager-meta">
-                                                    <span class="location">Location</span>
-                                                    <span class="rate"><i class="fa fa-money"></i> offer amount</span>
-                                                </div>
+
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <h5>Job Description</h5>
                                                 <hr>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex fugiat ipsa, quos reprehenderit rerum ullam.</p>
+                                                <p>{{ substr($job->description, 0, 30) }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -94,7 +95,10 @@
             </div>
         </div>
                         </div>
-                    </div>
+                        @else
+                            <p>You have not completed any jobs at this moment</p>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
