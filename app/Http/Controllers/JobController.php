@@ -87,9 +87,9 @@ class JobController extends Controller
     *
     */
       public static function acceptDeclineOffer(Request $request){
+        if(empty($request['decline_reason'])){
         $job = JobApproval::where('job_offer_detail_id', $request['job_id'])->first();
         $job->approval_status = $request['status'];
-        $job->decline_reason = $request['decline_reason'];
         $job->save();
         $job_detail = JobOfferDetail::find($job->job_offer_detail_id);
         if($job_detail->duration < 30){
@@ -100,5 +100,12 @@ class JobController extends Controller
             $job_detail->initial_deliver_date = Carbon::addMonths(2);
         }
         $job_detail->save();
+    }else{
+        $job = JobApproval::where('job_offer_detail_id', $request['job_id'])->first();
+        $job->approval_status = $request['status'];
+        $job->decline_reason = $request['decline_reason'];
+        $job->save();
+    }
       }
+      //send mail and notification
 }
