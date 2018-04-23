@@ -750,7 +750,7 @@ public function deleteService($id)
     }
 
 
-    public function myJobs()
+    public function myJobOffer()
     {
         $jobs = JobController::jobOffer();
         $user = UserController::getUser(Auth::user()->id);
@@ -787,7 +787,9 @@ public function deleteService($id)
 
     public function jobsOngoing()
     {
+        
         $jobs_ongoing = $jobs = JobController::jobOffer();
+
 
         return view('jobs.jobs-ongoing')->with(['jobs_ongoing' => $jobs_ongoing]);
 

@@ -42,7 +42,7 @@ class ServiceController extends Controller
      $avater->service_id = $service->id;
      $avater->logo = $image;
      $avater->save();
-      return true;
+    return true;
     }
 
     }
