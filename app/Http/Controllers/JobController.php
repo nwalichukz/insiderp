@@ -87,9 +87,9 @@ class JobController extends Controller
     * @return collection
     *
     */
-      public static function acceptDeclineOffer(Request $request){
-        if(empty($request['decline_reason'])){
-        $job = JobApproval::where('job_offer_detail_id', $request['job_id'])->first();
+      public static function acceptOffer($job_id){
+        
+        $job = JobApproval::where('job_offer_detail_id', $job_id)->first();
         $job->approval_status = $request['status'];
         $job->save();
         $job_detail = JobOfferDetail::find($job->job_offer_detail_id);
@@ -108,13 +108,7 @@ class JobController extends Controller
         $job_detail->save();
         // send mail
         mailer::sendAcceptNotification($useremail, $data);
-    }else{
-        $job = JobApproval::where('job_offer_detail_id', $request['job_id'])->first();
-        $job->approval_status = $request['status'];
-        $job->decline_reason = $request['decline_reason'];
-        $job->save();
-        mailer::sendDeclineNotification($useremail, $data);
-    }
+    
       }
       //send mail and notification
 
@@ -127,7 +121,7 @@ class JobController extends Controller
     * @return collection
     *
     */
-    public static function jobCompleted($id){
+    public static function jobDone($id){
      $completed = JobProgess::where('job_offer_detail_id', $id)->first();
      $completed->progress_status = 'completed';
      $completed->save();
@@ -138,6 +132,7 @@ class JobController extends Controller
                     ];
         $useremail = $user->email;
         mailer::sendJobCompletedNotification($useremail, $data);
+        return true
     }
 
       //send mail and notification
@@ -151,7 +146,19 @@ class JobController extends Controller
     * @return collection
     *
     */
-    public static function jobDone($id){
+   public static function DeclineOffer(Request $request){
+    $job = JobApproval::where('job_offer_detail_id', $request['job_id'])->first();
+        $job->approval_status = $request['status'];
+        $job->decline_reason = $request['decline_reason'];
+        $job->save();
+        ;
+        $job_detail = JobOfferDetail::find($job->job_offer_detail_id);
+        $user = UserController::find($job_detail->user_id);
+        $Service = ServiceController::find($job_detail->service_id);
+        $data = ['name' => $Service->name,
+                    ];
+        $useremail = $user->email;
+        mailer::sendDeclineNotification($useremail, $data);
 
-    }
+   }
 }

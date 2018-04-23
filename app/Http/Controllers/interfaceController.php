@@ -832,4 +832,49 @@ public function deleteService($id)
         }
 }   
 
+    /**
+    * updates the progress of the job to done
+    *
+    * @var request
+    * @return response
+    */
+ public function jobDone($job_id){
+   $done = JobController::jobDone($job_id);
+   if($done){
+    flash('Ok, congrats your client would be notified or you can also notify him')->success();
+   }else{
+    flash('Something went wrong operation failed, please try again')->success();
+   }
+ }
+  /**
+    * accepts an offer
+    *
+    * @var job_id
+    * @return response
+    */
+  public function acceptOffer($id){
+    $offer = JobController::acceptOffer($id);
+    if($offer){
+        flash('Offer accepted successfully, await a response from Bido team when he pays to start the Job')->success();
+    }else{
+        flash('Something went wrong operation failed to complete')->error();
+    }
+  }
+
+   /**
+    * declines an offer
+    *
+    * @var request
+    * @return response
+    */
+  public function declineOffer(Request $request){
+    $offer = JobController::declineOffer($request);
+    if($offer){
+        flash('Offer declined successfully')->success();
+    }else{
+        flash('Something went wrong operation failed to complete')->error();
+    }
+  }
+
+
 }
