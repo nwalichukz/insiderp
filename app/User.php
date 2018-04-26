@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     public function service()
     {
-        return $this->hasMany('App\Service');
+        return $this->hasOne('App\Service');
     }
 
       public function avater() {

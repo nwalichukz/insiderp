@@ -46,7 +46,8 @@
                                     <button data-toggle="modal" data-target="#requestExtensionModal" class="btn btn-xs btn-common">Request extension</button>
                                     <button data-toggle="modal" data-target="#quitJobModal" class="btn btn-xs btn-common">Quit job</button>
                                 </div>
-                            </div><!-- line modal -->
+                            </div>
+                                    <!-- line modal -->
                             <div class="modal fade" id="addPreviewModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">

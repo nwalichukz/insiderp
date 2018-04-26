@@ -212,8 +212,8 @@ class interfaceController extends Controller
 
  {  if(Auth::check()){
     $user = Auth::user();
-    $services = ServiceController::getUserService(Auth::user()->id);
-    return view('dashboard.index')->with(['user' => $user, 'services' => $services, 'total'=> $services->count()]);
+    $service = ServiceController::getUserService($user->id);
+    return view('dashboard.index')->with(['user' => $user, 'service' => $service]);
     }
     else
     {
@@ -577,7 +577,7 @@ class interfaceController extends Controller
     public function editProfile()
     {
         $user = Auth::user();
-        return view('dashboard.edit_profile')->with(['user' => $user]);
+        return view('dashboard.edit_profile', compact(['user']));
    }
 
     public function updateProfile(Request $request )

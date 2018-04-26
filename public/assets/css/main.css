@@ -632,11 +632,11 @@ a:focus {
   color: #fff!important;
 }
 .main-navigation .navbar-nav .dropdown {
-  background: #282828;
+  background: #fff;
 }
 .main-navigation .dropdown li a,
 .main-navigation .sup-dropdown li a {
-  color: #fff;
+  color: #000;
 }
 .main-navigation .navbar-nav .dropdown:before {
   border-color: transparent transparent #282828;
@@ -3584,6 +3584,10 @@ blockquote p a:hover {
   border-right: 0;
 }
 
-#search_form .form-group .form-control {
-  height: 10px;
+.search-area .form-group .form-control {
+  height: 15px;
+}
+
+.search-area button {
+  height: 15px;
 }
