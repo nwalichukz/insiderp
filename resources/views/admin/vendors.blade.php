@@ -9,7 +9,7 @@
     <div id="content">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-3 col-sm-3 col-xs-12">
                     @include('admin.sidebar')
                 </div>
                 <div class="col-md-8 col-sm-8 com-xs-12">
@@ -29,7 +29,7 @@
                     <section id="Users">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <div class="card">
                                         <div class="card-header">
                                             <h4>Vendors</h4>

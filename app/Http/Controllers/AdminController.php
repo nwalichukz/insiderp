@@ -29,4 +29,16 @@ class AdminController extends Controller
                         ->paginate(9);
      }
 
+     /**
+     * This method makes payment
+     *
+     * @var request
+     *
+     * @return collection
+     */
+     public static function makePayment(Request $request){
+
+
+     }
+
 }

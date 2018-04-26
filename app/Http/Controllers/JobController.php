@@ -8,6 +8,7 @@ use App\User;
 use App\Service;
 use App\Http\Controllers\JobOfferController;
 use App\Http\Controllers\JobOfferDetailController;
+use App\Http\Controllers\mailer;
 use Auth, DB;
 use Carbon\Carbon;
 
@@ -86,12 +87,17 @@ class JobController extends Controller
     * @return collection
     *
     */
-      public static function acceptDeclineOffer(Request $request){
-        $job = JobApproval::where('job_offer_detail_id', $request['job_id'])->first();
+      public static function acceptOffer($job_id){
+        
+        $job = JobApproval::where('job_offer_detail_id', $job_id)->first();
         $job->approval_status = $request['status'];
-        $job->decline_reason = $request['decline_reason'];
         $job->save();
         $job_detail = JobOfferDetail::find($job->job_offer_detail_id);
+        $user = UserController::find($job_detail->user_id);
+        $Service = ServiceController::find($job_detail->service_id);
+        $data = ['name' => $Service->name,
+                    ];
+        $useremail = $user->email;
         if($job_detail->duration < 30){
         $job_detail->initial_deliver_date = Carbon::addDays($job_detail->duration);
         }elseif($job_detail->duration == 30){
@@ -100,5 +106,59 @@ class JobController extends Controller
             $job_detail->initial_deliver_date = Carbon::addMonths(2);
         }
         $job_detail->save();
+        // send mail
+        mailer::sendAcceptNotification($useremail, $data);
+    
       }
+      //send mail and notification
+
+    /**
+    * This method confirms that the job is done
+    *
+    *  by a particular user/offerer
+    * @var job-offer_detail_id
+    *
+    * @return collection
+    *
+    */
+    public static function jobDone($id){
+     $completed = JobProgess::where('job_offer_detail_id', $id)->first();
+     $completed->progress_status = 'completed';
+     $completed->save();
+      $job_detail = JobOfferDetail::find($completed->job_offer_detail_id);
+        $user = UserController::find($job_detail->user_id);
+        $Service = ServiceController::find($job_detail->service_id);
+        $data = ['name' => $Service->name,
+                    ];
+        $useremail = $user->email;
+        mailer::sendJobCompletedNotification($useremail, $data);
+        return true
+    }
+
+      //send mail and notification
+
+    /**
+    * This method confirms that the job is done
+    *
+    *  by a particular user/offerer
+    * @var job-offer_detail_id
+    *
+    * @return collection
+    *
+    */
+   public static function DeclineOffer(Request $request){
+    $job = JobApproval::where('job_offer_detail_id', $request['job_id'])->first();
+        $job->approval_status = $request['status'];
+        $job->decline_reason = $request['decline_reason'];
+        $job->save();
+        ;
+        $job_detail = JobOfferDetail::find($job->job_offer_detail_id);
+        $user = UserController::find($job_detail->user_id);
+        $Service = ServiceController::find($job_detail->service_id);
+        $data = ['name' => $Service->name,
+                    ];
+        $useremail = $user->email;
+        mailer::sendDeclineNotification($useremail, $data);
+
+   }
 }
