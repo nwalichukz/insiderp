@@ -7,6 +7,7 @@ use App\Vendor;
 use App\UserAvater;
 use App\VendorLogo;
 use App\prevWorkImage;
+use Image;
 
 class ImageController extends Controller
 {
@@ -17,17 +18,21 @@ class ImageController extends Controller
      * 
      * @var $file
      * 
-     * @return image name
+     * @return bool
      */
     public static function userImageUpload(Request $request)
-    {   $file = $request->file('avatar');
-        $UniqueNoGen = time().mt_rand();
+    {
+        if ($request->hasFile('avatar'))
+        {
             $destinationPath = 'images/user';
-            //$fileName = $file->getClientOriginalName();
-            $fileExte = $file->getClientOriginalExtension();
-            $newFileName = $UniqueNoGen.'.'.$fileExte;
-            $uploadSuccess = $file->move($destinationPath, $newFileName);
-            return $newFileName;
+            $file = $request->file('avatar');
+            $avatar = time().'.'.$file->getClientOriginalExtension();
+            Image::make($avatar)->resize(450, 450)->save($destinationPath);
+            return $avatar;
+        }
+        else{
+            return false;
+        }
 
     }
 
@@ -40,16 +45,15 @@ class ImageController extends Controller
      * 
      * @return image name
      */
-    public static function prevWorkImg($file)
-    {  
-    	foreach ($file as $files) {
-           $UniqueNoGen = time().mt_rand();
+    public static function prevWorkImg($files)
+    {
+        foreach ($files as $file) {
+
             $destinationPath = 'images/prevwork';
-            //$fileName = $files->getClientOriginalName();
-            $fileExte = $files->getClientOriginalExtension();
-            $newFileName = $UniqueNoGen.'.'.$fileExte;
-            $uploadSuccess = $files->move($destinationPath, $newFileName);
-            return $newFileName;
+            $photo = time().'.'.$file->getClientOriginalExtension();
+            Image::make($photo)->resize(350,350)->brightness(13)->text("Bido Works", 15, 15)->save($destinationPath);
+            return true;
+
         }
     }
 
