@@ -33,7 +33,7 @@ Route::get('/admin/jobs-completed', 'interfaceController@adminJobsCompleted');
 Route::get('/admin/{user}/details', 'interfaceController@adminUserDetails')->name('userDetails');
 Route::get('/admin/suspended-users', 'interfaceController@suspendedUsers')->name('suspended');
 Route::get('/admin/administrators', 'interfaceController@adminUsers')->name('administrators');
-Route::get('/admin/{user}', 'interfaceController@adminDashboard')->name('admin');
+Route::get('/admin/{admin}', 'interfaceController@adminDashboard')->name('admin');
 Route::post('/login', 'interfaceController@postLogin')->name('login');
 Route::get('/job-detail', 'interfaceController@jobDetail')->name('job');
 Route::get('/my-jobs', 'interfaceController@myJobOffer');

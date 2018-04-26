@@ -132,7 +132,7 @@ class JobController extends Controller
                     ];
         $useremail = $user->email;
         mailer::sendJobCompletedNotification($useremail, $data);
-        return true
+        return true;
     }
 
       //send mail and notification
