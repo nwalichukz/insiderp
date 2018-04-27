@@ -11,7 +11,7 @@
             <h3>Edit {{ $service->name }}</h3>
             <hr>
             <div class="row">
-                <!-- left column -->
+                <!-- left column 
                 <div class="col-md-3">
                     <div class="text-center">
                         <form action="{{ route('updateLogo') }}" method="post" enctype="multipart/form-data">
@@ -27,7 +27,7 @@
                             <button type="submit" class="btn btn-common">Save</button>
                         </form>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- edit form column -->
                 <div class="col-md-9 personal-info">

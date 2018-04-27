@@ -210,7 +210,7 @@ class interfaceController extends Controller
  */
  public function userDashboard()
 
- {  if(Auth::check()){
+ {  if(Auth::check() AND Auth::user()->user_level === 'user'){
     $user = Auth::user();
     $service = ServiceController::getUserService($user->id);
     return view('dashboard.index')->with(['user' => $user, 'service' => $service]);
@@ -228,11 +228,15 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function adminDashboard()
- {
+ { if(Auth::check() AND Auth::user()->user_level === 'admin'){
      $admin = AdminController::get(Auth::user()->id);
      $users = User::all();
     return view('admin.dashboard')->with(['admin'=>$admin, 'users' => $users]);
-    
+    } else
+    {
+     Auth::logout();
+     return redirect('/');
+    }
  }
 /*
 **

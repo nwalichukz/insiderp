@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 /**
  * @property mixed $view
  * @property mixed $user
@@ -29,6 +30,7 @@ class Service extends Model
     }
 
      public function avater() {
-      return $this->belongsTo('App\UserAvater');
+      $fi = new User;
+      return $fi->avater();
     }
 }

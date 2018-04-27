@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdsPaymentsTable extends Migration
+class JobCategories extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateAdsPaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ads_payments', function (Blueprint $table) {
+        Schema::create('job_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('amount');
-            $table->string('status');
-            $table->string('no_days');
-            $table->timestamp('start_date')->nullable();
-            $table->imestamp('stop_date')->nullable();
+            $table->string('category');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateAdsPaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ads_payments');
+         Schema::dropIfExists('job_categories');
     }
 }
