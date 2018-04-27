@@ -14,7 +14,8 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand logo" href="{{ url('/') }}">Bido</a>
+					<a class="navbar-brand logo" href="{{ url('/') }}">
+						<img src='{{asset("images/watermark/logo.png")}}' alt="Bido"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="navbar">
 

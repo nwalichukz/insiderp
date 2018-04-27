@@ -64,11 +64,7 @@ Search Results| Bido
                                     <div class="featured-wrap">
                                         <div class="featured-inner">
                                             <figure class="item-thumb">
-                                                @if(!empty($search_result->logo->logo))
-                                                <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
-                                                    <img src="{{ asset("images/user/".$search_result->logo->logo) }}" alt="logo image">
-                                                </a>
-                                                @elseif(!empty($search_result->avater->avater))
+                                                @if(!empty($search_result->avater->avater))
                                                 <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
                                                     <img src="{{ asset("images/user/".$search_result->avater->avater) }}" alt="logo image">
                                                 </a>

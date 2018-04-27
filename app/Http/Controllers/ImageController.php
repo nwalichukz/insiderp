@@ -23,12 +23,12 @@ class ImageController extends Controller
     public static function userImageUpload(Request $request)
     {
         if ($request->hasFile('avatar'))
-        {
-            $destinationPath = 'images/user';
+        {    
             $file = $request->file('avatar');
-            $avatar = time().'.'.$file->getClientOriginalExtension();
-            Image::make($avatar)->resize(450, 450)->save($destinationPath);
-            return $avatar;
+            $filename = rand().time().'.'.$file->getClientOriginalExtension();
+            $path = public_path('images/user/'.$filename);
+            $avatar = Image::make($file->getRealPath())->resize(350, 300)->sharpen(16)->encode('png')->save($path);
+            return $filename;
         }
         else{
             return false;
@@ -49,10 +49,12 @@ class ImageController extends Controller
     {
         foreach ($files as $file) {
 
-            $destinationPath = 'images/prevwork';
-            $photo = time().'.'.$file->getClientOriginalExtension();
-            Image::make($photo)->resize(350,350)->brightness(13)->text("Bido Works", 15, 15)->save($destinationPath);
-            return true;
+          $watermark = Image::make('images/watermark/watermark.png')->greyscale()->resize(100, 40)->opacity(10);
+            $filename = rand().time().'.'.$file->getClientOriginalExtension();
+            $path = public_path('images/prev/'.$filename);
+            $avatar = Image::make($file->getRealPath())->resize(450, 450)->sharpen(16)->encode('png')
+            ->insert($watermark, 'bottom-right', 10, 10)->save($path);
+            return $filename;
 
         }
     }
