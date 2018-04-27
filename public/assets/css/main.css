@@ -2140,7 +2140,7 @@ footer {
 }
 .job-list .job-list-content {
   display: block;
-  margin-left: 125px;
+  margin-left: auto;
   position: relative;
 }
 .job-list .job-list-content h4 {

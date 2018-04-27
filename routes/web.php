@@ -67,3 +67,4 @@ Route::get('/notifications', 'interfaceController@notifications');
 Route::get('/accept-offer', 'interfaceController@acceptOffer');
 Route::get('/job-done', 'interfaceController@jobDone');
 Route::post('/decline-offer', 'interfaceController@declineOffer');
+Route::get('browse_jobs', 'interfaceController@browse_jobs');

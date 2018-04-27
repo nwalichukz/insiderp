@@ -35,6 +35,9 @@
                                     <a href="{{ url('messages') }}">Messages</a>
                                 </li>
                                 <li>
+                                    <a href="{{ url('browse_jobs') }}">Browse Jobs</a>
+                                </li>
+                                <li>
                                 <a href="{{ url('my-jobs') }}">
                                     My Jobs <i class="fa fa-angle-down"></i>
                                 </a>

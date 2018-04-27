@@ -735,7 +735,13 @@ public function deleteService($id)
         $get = MessageController::getUserMessage($id);
      }
 
-    public function postJob(Request $request)
+    public function postJob()
+    {
+        $user = Auth::user();
+        return view('dashboard.post_job')->with(['user' => $user]);
+     }
+
+    public function postJobSave(Request $request)
     {   $this->validate($request,
         [  'name'=>'required',
            'title' => 'required',
@@ -747,6 +753,13 @@ public function deleteService($id)
    
         $post = PostJobController::create($request);
       
+    }
+
+    public function browse_jobs()
+    {
+        $user = Auth::user();
+
+        return view('dashboard.browse_jobs')->with(['user' => $user]);
     }
 
 
@@ -842,8 +855,10 @@ public function deleteService($id)
    $done = JobController::jobDone($job_id);
    if($done){
     flash('Ok, congrats your client would be notified or you can also notify him')->success();
+       return redirect()->back();
    }else{
     flash('Something went wrong operation failed, please try again')->success();
+       return redirect()->back();
    }
  }
   /**
@@ -856,8 +871,10 @@ public function deleteService($id)
     $offer = JobController::acceptOffer($id);
     if($offer){
         flash('Offer accepted successfully, await a response from Bido team when he pays to start the Job')->success();
+        return redirect()->back();
     }else{
         flash('Something went wrong operation failed to complete')->error();
+        return redirect()->back();
     }
   }
 
@@ -871,8 +888,10 @@ public function deleteService($id)
     $offer = JobController::declineOffer($request);
     if($offer){
         flash('Offer declined successfully')->success();
+        return redirect()->back();
     }else{
         flash('Something went wrong operation failed to complete')->error();
+        return redirect()->back();
     }
   }
 
