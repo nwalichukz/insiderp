@@ -621,8 +621,10 @@ a:focus {
 .main-navigation {
   background: #fff;
 }
-.main-navigation .navbar-nav > li > a {
+.main-navigation .navbar-nav > li > a
+{
   color: #444;
+  font-size: 14px;
 }
 .main-navigation .float-right li a {
   color: #ff4f57 !important;
@@ -2059,7 +2061,7 @@ footer {
   padding-right: 100px;
 }
 .detail-company .img-thum {
-  width: 80px;
+  width: 90px;
   float: right;
 }
 .small-title {
@@ -2132,15 +2134,9 @@ footer {
   display: inline-block;
   margin-bottom: 15px;
 }
-.job-list .thumb {
-  float: left;
-}
-.job-list .thumb img {
-  border-radius: 4px;
-}
+
 .job-list .job-list-content {
   display: block;
-  margin-left: auto;
   position: relative;
 }
 .job-list .job-list-content h4 {
@@ -2227,7 +2223,7 @@ footer {
   text-transform: uppercase;
 }
 .job-alerts-item .alerts-title {
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 30px;
 }
 .job-alerts-item .alerts-content {
@@ -2439,9 +2435,7 @@ footer {
   padding: 0 12px;
   font-size: 11px;
 }
-.manager-resumes-item .btn {
-  background: #eceeef;
-}
+
 .manager-resumes-item .btn-gray {
   color: #818a91;
 }
@@ -3165,7 +3159,7 @@ blockquote p a:hover {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075);
   color: #444;
   display: block;
-  height: 50px;
+  height: 55px;
   padding: 15px 10px;
   width: 100%;
 }
@@ -3560,8 +3554,7 @@ blockquote p a:hover {
 }
 
 .preview {
-  width: 365px;
-  height: 300px;
+  margin-bottom: 15px;
 }
 
 .modal-header {
@@ -3591,3 +3584,4 @@ blockquote p a:hover {
 .search-area button {
   height: 15px;
 }
+

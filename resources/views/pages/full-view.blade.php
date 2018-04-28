@@ -74,12 +74,6 @@
                                         </div>
                                     </div>
                                 </aside>
-                                <div class="col-md-4">
-                                    <div class="box">
-                                        <p>{{ $fullview->description }}</p>
-                                    </div>
-                                </div>
-                                <br>
                             </div>
 
                             <div class="col-md-4">
@@ -119,31 +113,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="col-md-4 col-md-offset-3">
-                                    <h4 class="col-md-offset-4">Job Name</h4>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <a href="{{ asset('images/recent-post-03.jpg') }}" class="swipebox" title="Caption Goes Here">
-                                    <img class="responsive-image preview" src="{{ asset('images/recent-post-03.jpg') }}" alt="img">
-                                </a>
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <a href="{{ asset('images/blog-post-01.jpg') }}" class="swipebox" title="Caption Goes Here">
-                                    <img class="responsive-image preview" src="{{ asset('images/blog-post-01.jpg') }}" alt="img">
-                                </a>
-                                <br>
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <a href="{{ asset('images/blog-post-02.jpg') }}" class="swipebox" title="Caption Goes Here">
-                                    <img class="responsive-image preview" src="{{ asset('images/blog-post-02.jpg') }}" alt="img">
-                                </a>
-                                <br>
-                            </div>
+                            @if($fullview->images->count() > 0)
+                                @foreach($fullview->images as $image)
+                                    <div class="col-md-4">
+                                        <a href="{{ asset('images/prev/'.$image->name) }}" class="swipebox" title="Caption Goes Here">
+                                            <img class="img-responsive img-thumbnail img-raised preview" src="{{ asset('images/prev/'.$image->name) }}" alt="img">
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                         <br>
                         <div class="row">

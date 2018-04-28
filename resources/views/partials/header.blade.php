@@ -25,43 +25,62 @@
 								<a class="" href="{{ url('/') }}">Home </a>
 							</li>
 							<li>
-								<a href="{{ url('/about') }}">Post Job </a>
-
+								<a href="{{ url('/about') }}">About</a>
+							</li>
+							<li>
+								<a href="{{ url('/contact') }}">Contact us </a>
+							</li>
+							<li>
+								<a href="{{ url('/faqs') }}">FAQs</a>
 							</li>
 						@endif
 						@if (Auth::check())
+								<li>
+									<a href="{{ url('/post-job') }}">Post Job </a>
+								</li>
 							<li>
 								<a href="{{ url('Notifications') }}">Notifications</a>
 							</li>
 							<li>
 								<a href="{{ url('messages') }}">Messages</a>
 							</li>
-							<li>
-								<a href="{{ url('my-jobs') }}">
-									My Jobs <i class="fa fa-angle-down"></i>
-								</a>
-								<ul class="dropdown">
+								<li>
+									<a href="{{ url('my-jobs') }}">
+										My Jobs <i class="fa fa-angle-down"></i>
+									</a>
+									<ul class="dropdown">
+										<li>
+											<a class="active" href="{{ url('my-jobs') }}">
+												Job Offers
+											</a>
+										</li>
+										<li>
+											<a href="{{ url('jobs-ongoing') }}">
+												Ongoing Jobs
+											</a>
+										</li>
+										<li>
+											<a href="{{ url('jobs-completed') }}">
+												Jobs Completed
+											</a>
+										</li>
+										<li>
+											<a href="{{ url('manage-applications') }}">
+												Applications
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="{{ url('browse_jobs') }}">Browse Jobs</a>
+								</li>
+								@if(Auth::user()->service->count() <= 0)
 									<li>
-										<a class="active" href="{{ url('my-jobs') }}">
-											Job Offers
-										</a>
+										<a href="{{ url('service') }}">Add Service</a>
 									</li>
-									<li>
-										<a href="{{ url('jobs-ongoing') }}">
-											Ongoing Jobs
-										</a>
-									</li>
-									<li>
-										<a href="{{ url('jobs-completed') }}">
-											Jobs Completed
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="{{ url('service') }}">Add Service</a>
-							</li>
-						@endif
+								@endif
+
+							@endif
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						@if(Auth::guest())

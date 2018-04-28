@@ -43,8 +43,8 @@
                                 </p>
                                 <div class="action-btn">
                                     <button data-toggle="modal" data-target="#addPreviewModal" class="btn btn-xs btn-gray" href="#">Add preview</button>
-                                    <button data-toggle="modal" data-target="#requestExtensionModal" class="btn btn-xs btn-common">Request extension</button>
-                                    <button data-toggle="modal" data-target="#quitJobModal" class="btn btn-xs btn-common">Quit job</button>
+                                    <button data-toggle="modal" data-target="#requestExtensionModal" class="btn btn-xs btn-danger">Request extension</button>
+                                    <button data-toggle="modal" data-target="#quitJobModal" class="btn btn-xs btn-danger">Quit job</button>
                                 </div>
                             </div>
                                     <!-- line modal -->

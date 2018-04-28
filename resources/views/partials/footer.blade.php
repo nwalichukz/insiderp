@@ -7,10 +7,10 @@
 			<div class="row">
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="widget">
-						<h3 class="block-title"><img src="" class="img-responsive" alt="Bido"></h3>
+						<h3 class="block-title"><img src="{{ asset("images/watermark/logo.png") }}" class="img-responsive" alt="Bido"></h3>
 						<div class="textwidget">
 							<p>Bido is a skill portal, where you can find the best 
-								skill that suits your demand from the very best availble...</p>
+								skill that suits your demand from the very best available...</p>
 						</div>
 					</div>
 				</div>
@@ -45,11 +45,6 @@
 							<a class="facebook" href="http://web.facebook.com/bido"><i class="ti-facebook"></i></a>
 							<a class="youtube" href="../../../external.html?link=https://youtube.com/"><i class="ti-youtube"></i></a>
 						</div>
-						<p>Join our mailing list to stay up to date and get notices about our new releases!</p>
-						<form class="subscribe-box">
-							<input type="text" placeholder="Your email">
-							<input type="submit" class="btn-system" value="Send">
-						</form>
 					</div>
 				</div>
 			</div>

@@ -18,7 +18,9 @@
 							</div>
 							<div class="detail-company pull-right text-right">
 								<div class="img-thum">
-									<img class="img-responsive" src="{{ asset('assets/img/jobs/recent-job-detail.jpg') }}" alt="">
+									@if(!empty($user->avater->avater))
+										<img src='{{ asset("images/user/". $user->avater->avater) }}' class="img-responsive" alt="avatar">
+									@endif
 								</div>
 								<div class="name pull-rightf">
 									<h4>{{ $service->profession_title }}</h4>
@@ -28,7 +30,7 @@
 							<div class="clearfix">
 								<div class="meta">
 									<span><a class="btn btn-border btn-sm" href="{{ url('service/edit', $service->id) }}" data-toggle="tooltip" data-placement="top" title="Edit Service"><i class="fa fa-edit"></i> Edit Service</a></span>
-									<span><a class="btn btn-border btn-sm" href="" data-toggle="tooltip" data-placement="top" title="Add Previous Works Images"><i class="fa fa-edit"></i> Previous Works</a></span>
+									<span><a class="btn btn-border btn-sm" href="" data-toggle="modal" data-target="#previousWorksModal" data-placement="top" title="Add Previous Works Images"><i class="fa fa-edit"></i> Previous Works</a></span>
 									<span><a class="btn btn-border btn-sm" href="{{ url('service/delete/'. $service->id.'/'.$service->vendor_id) }}" data-toggle="tooltip" data-placement="top" title="Delete Service"><i class="fa fa-close"></i> Delete Service</a></span>
 								</div>
 							</div>
@@ -100,4 +102,44 @@
 			</div>
 		</section>
 	</div>
+	<!-- line modal -->
+	<div class="modal fade" id="previousWorksModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+					<h3 class="modal-title" id="lineModalLabel">Add previous work images</h3>
+				</div>
+				<div class="modal-body">
+
+					<!-- content goes here -->
+					<form action="{{ route('workImages') }}" method="post" enctype="multipart/form-data">
+						{{ csrf_field() }}
+						<div class="form-group">
+							<label for="attachment">attach files:</label>
+							<input type="file" name="files[]" id="files" class="form-control">
+						</div>
+
+
+						<button type="submit" class="btn btn-common">Send Preview</button>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+						</div>
+						<div class="btn-group btn-delete hidden" role="group">
+							<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+						</div>
+						<div class="btn-group" role="group">
+							<button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	@include('partials.footer')
 @endsection

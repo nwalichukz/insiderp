@@ -21,7 +21,7 @@ use App\vendor;
 use App\Service;
 use App\vendorLogo;
 use App\Message;
-
+use App\PrevWorkImage;
 class interfaceController extends Controller
 {   
 
@@ -145,30 +145,6 @@ class interfaceController extends Controller
     }
 
     /**
-     * @method jobOffers 
-     * returns job offers page
-     */
-    public function offers()
-    {
-        return view('dashboard.offers');
-    }
-
-    /**
-     * @method manageApplications
-     * returns manage applications page
-     */
-    public function manageApplications()
-    {
-        return view('dashboard.applications');
-    }
-
-    public function searchpage()
-    {
-        return view('pages.search-results');
-    }
-
-
-    /**
      * @method about
      * returns about Biddo page
      */
@@ -187,12 +163,21 @@ class interfaceController extends Controller
     }
 
     /**
+ * @method terms
+ * returns terms page
+ */
+    public function terms()
+    {
+        return view('pages.terms')->with(['title' => 'Terms and Conditions']);
+    }
+
+    /**
      * @method terms
      * returns terms page
      */
-    public function terms()
+    public function faqs()
     {
-    	return view('pages.terms')->with(['title' => 'Terms and Conditions']);
+        return view('pages.faqs')->with(['title' => 'Frequently asked questions | Bido']);
     }
  /**
  * This method
@@ -540,11 +525,13 @@ class interfaceController extends Controller
  *
  */
    public function addPrevWorkImg(Request $request)
-   { $img = ImageController::prevWorkImg($request);
+   {
+       $user = Auth::user();
+       $img = ImageController::prevWorkImg($request['files']);
      if($img){
-             $save = new prevWorkImg;
-             $save->user_id = Auth::user()->id;
-             $save->service_id = $request['service_id'];
+             $save = new prevWorkImage;
+             $save->user_id = $user->id;
+             $save->service_id = $user->service->id;
              $save->name = $img;
              $save->description = $request['description'];
              $save->save();
@@ -898,6 +885,14 @@ public function deleteService($id)
         return redirect()->back();
     }
   }
-
-
+    /**
+     * returns all applications to job
+     *
+     * @var request
+     * @return response
+     */
+    public function applications()
+    {
+        return view('dashboard.applications');
+    }
 }

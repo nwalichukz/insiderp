@@ -49,7 +49,7 @@ class ImageController extends Controller
     {
         foreach ($files as $file) {
 
-          $watermark = Image::make('images/watermark/watermark.png')->greyscale()->resize(100, 40)->opacity(10);
+          $watermark = Image::make('images/watermark/watermark.png')->greyscale()->resize(100, 40);
             $filename = rand().time().'.'.$file->getClientOriginalExtension();
             $path = public_path('images/prev/'.$filename);
             $avatar = Image::make($file->getRealPath())->resize(450, 450)->sharpen(16)->encode('png')
