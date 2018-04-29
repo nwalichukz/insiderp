@@ -735,14 +735,19 @@ public function deleteService($id)
     public function postJobSave(Request $request)
     {   $this->validate($request,
         [  'name'=>'required',
-           'title' => 'required',
-           'phone_no'=>'required',
-           'email' => 'required',
+            'offer_amount' => 'required',
            'job_description' => 'required',
            'job_category' => 'required',
            ]);
    
         $post = PostJobController::create($request);
+        if($post){
+            flash('Job posted successfully')->success();
+            return redirect()->back();
+        }else{
+           flash('Something went wrong, job not posted successfully')->error();
+            return redirect()->back(); 
+        }
       
     }
 
@@ -822,7 +827,12 @@ public function deleteService($id)
            'duration'=>'required',
            'description' => 'required',
            ]);
-   
+       $service = Service::find($request['service_id']);
+       if($service->user_id == Auth::user()->id)
+       {
+        flash('Hey sorry you cannot offer a job to yourself')->error();
+        return redirect()->back();
+       }
         $job = JobOfferDetailController::create($request);
         $jobapproval = JobApprovalController::create($job);
         $jobprogress= JobProgressController::create($job);

@@ -17,7 +17,7 @@ class JobOfferDetailController extends Controller
     * @var request
     */
     public static function create(Request $request)
-    {
+    { 
        $create = new JobOfferDetail;
        $create->user_id = Auth::user()->id;
        $create->service_id = $request['service_id'];

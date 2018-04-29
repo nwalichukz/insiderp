@@ -25,6 +25,7 @@ class PostJobController extends Controller
      $postjob->job_category = $request['job_category'];
      $postjob->description = $request['job_description'];
      $postjob->save();
+     return true;
     }
      /**
     * returns a job that are availabe
