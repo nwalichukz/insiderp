@@ -131,6 +131,11 @@
                                 @else
                                     <button data-toggle="modal" data-target="#authModal" class="btn btn-warning">You have to Login to hire someone</button>
                                 @endif
+                                    <hr>
+                                    <a href="{{ url('about') }}">About us</a> |
+                                    <a href="{{ url('terms') }}">Terms</a> |
+                                    <a href="{{ url('contact') }}">Contact us</a> |
+                                    <a href="{{ url('about') }}">About us</a>
                             </center>
                         </div>
                     </div>
@@ -159,10 +164,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="amount">Offer Amount</label>
-                                <input type="text" name="offer_amount" id="amount" placeholder="How much can you pay for the job, the least on this platform is 1000"
+                                <input type="number" name="offer_amount" id="offer_amount" placeholder="How much can you pay for the job, the least on this platform is 1000"
                                  class="form-control" onkeyup="checkAmount();" required>
                                 <span class="help-block">
                                     <strong id="error"></strong>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="amount">Total amount</label>
+                                <input type="number" name="total_amount" id="total_amount" disabled="disabled" class="form-control">
+                                <span class="">
+                                    <strong id="total">The total amount is the offer amount plus the commission</strong>
                                 </span>
                             </div>
                             <div class="form-group">
@@ -199,13 +211,6 @@
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
                             </div>
-                            <div class="btn-group btn-delete hidden" role="group">
-                                <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button> 
-                            </div>
-
                         </div>
                     </div>
 
@@ -253,13 +258,6 @@
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
                             </div>
-                            <div class="btn-group btn-delete hidden" role="group">
-                                <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button>
-                            </div>
-
                         </div>
                     </div>
 
