@@ -58,8 +58,10 @@ class JobOfferDetailController extends Controller
         return 1435;
       }elseif ($amount > 200000 AND $amount <= 500000) {
         return 1780;
-      }elseif ($amount > 500000 AND $amount <= 5000) {
+      }elseif ($amount > 500000 AND $amount <= 1000000) {
         return 2233;
+      }elseif($amount > 1000000){
+        return 2780;
       }
     }
 

@@ -47,5 +47,9 @@ class User extends Authenticatable
       return $this->hasMany('App\LastLogin');
     }
 
+    public function post_job()
+    {
+        return $this->hasMany('App\PostJob');
+    }
 
 }

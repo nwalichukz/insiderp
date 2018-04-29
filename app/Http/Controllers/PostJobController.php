@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\JobOfferDetailController;
 use App\PostJob;
+use App\Service;
 
 class PostJobController extends Controller
 {
@@ -15,32 +17,26 @@ class PostJobController extends Controller
     public static function postJob(Request $request)
     { $postjob = new PostJob;
      $postjob->name = $request['name'];
-     $postjob->phone_no = $request['phone_no'];
-     $postjob->email = $request['email'];
-     $postjob->status = 'pending';
+     $postjob->user_id = Auth::user()->id;
+     $postjob->offer_amount = $request['offer_amount'];
+     $postjob->commission = JobOfferDetailController::commission($request['offer_amount']);
+     $postjob->total_aamount = $postjob->offer_amount + $postjob->commission;
+     $postjob->status = 'available';
      $postjob->job_category = $request['job_category'];
      $postjob->description = $request['job_description'];
      $postjob->save();
     }
      /**
-    * returns a job that are pending
+    * returns a job that are availabe
     *
     */
-     public static function getPending()
-     {
-     	return PostJob::where('status', 'pending')->get();
+     public static function getAvailableJob()
+     {  $category = Service::where('user_id', Auth::user()->id)->first();
+     	return PostJob::where('status', 'available')
+                        ->where('job_category', $category->service_category)->get();
      }
 
-     /**
-    * returns a job by category
-    *
-    * @var request
-    */
-     public static function getPendingByCategory($category)
-     {
-     	return PostJob::where('status', 'pending')
-     				    ->where('job_category', $category)->get();
-     }
+    
     /**
     * changes the status of a posted job
     *
@@ -48,7 +44,7 @@ class PostJobController extends Controller
     */
     public static function changeStatus(Request $request)
     {
-    	$change = PostJob::find($id);
+    	$change = PostJob::find($request['id']);
     	$change->status = $request['status'];
     	$change->save();
     }

@@ -8,6 +8,6 @@ class JobApproval extends Model
 {
       public function job_approval_owner()
     {
-    	return $this->belongsTo('App\JobOfferdetail');
+    	return $this->belongsTo('App\JobOfferDetail', 'job_offer_detail_id');
     }
 }

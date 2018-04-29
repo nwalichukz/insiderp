@@ -623,8 +623,9 @@ a:focus {
 }
 .main-navigation .navbar-nav > li > a
 {
-  color: #444;
-  font-size: 14px;
+  color: #696969;
+  font-family: 'Helvetica, Verdana, Times New Romans';
+  font-size: 15px;
 }
 .main-navigation .float-right li a {
   color: #ff4f57 !important;
@@ -1885,7 +1886,7 @@ footer {
 .header-detail {
   border: 1px solid #ddd;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.075);
-  background: #fff;
+  background: #fafafa;
   margin-bottom: 30px;
 }
 .header-detail .header-content {

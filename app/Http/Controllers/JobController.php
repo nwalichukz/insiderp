@@ -90,7 +90,7 @@ class JobController extends Controller
       public static function acceptOffer($job_id){
         
         $job = JobApproval::where('job_offer_detail_id', $job_id)->first();
-        $job->approval_status = $request['status'];
+        $job->approval_status = 'accepted';
         $job->save();
         $job_detail = JobOfferDetail::find($job->job_offer_detail_id);
         $user = UserController::find($job_detail->user_id);
@@ -102,7 +102,7 @@ class JobController extends Controller
         $job_detail->initial_deliver_date = Carbon::addDays($job_detail->duration);
         }elseif($job_detail->duration == 30){
            $job_detail->initial_deliver_date = Carbon::addMonths(1); 
-        }elseif($job_detail->duration == 30){
+        }elseif($job_detail->duration == 60){
             $job_detail->initial_deliver_date = Carbon::addMonths(2);
         }
         $job_detail->save();
@@ -151,7 +151,6 @@ class JobController extends Controller
         $job->approval_status = $request['status'];
         $job->decline_reason = $request['decline_reason'];
         $job->save();
-        ;
         $job_detail = JobOfferDetail::find($job->job_offer_detail_id);
         $user = UserController::find($job_detail->user_id);
         $Service = ServiceController::find($job_detail->service_id);
