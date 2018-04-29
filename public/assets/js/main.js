@@ -1,4 +1,5 @@
 
+
 function showFields() {
     var field = $('#profession_field').val();
     if(field !== '')
@@ -9,16 +10,52 @@ function showFields() {
         $('#filters').addClass('hidden');
     }
 }
-function checkAmount() {
-    var amount = $('#amount').val();
-    if(amount < 1000)
+function commission(amount)
+{
+
+    if(amount >= 1000 && amount <= 5000)
     {
+        return 275;
+    }
+    else if(amount > 5000 && amount <= 10000)
+    {
+        return 375;
+    }
+    else if(amount > 10000 && amount <= 30000)
+    {
+        return 475;
+    }else if(amount > 30000 && amount <= 50000)
+    {
+        return 568;
+    }else if (amount > 50000 && amount <= 100000)
+    {
+    return 970;
+    }
+    else if (amount > 100000 && amount <= 200000)
+    {
+    return 1435;
+    }
+    else if (amount > 200000 && amount <= 500000)
+    {
+    return 1780;
+    }
+    else if (amount > 500000 && amount <= 5000)
+    {
+    return 2233;
+}
+}
+function checkAmount() {
+    var amount = $('#offer_amount').val();
+    var totalAmount = 0;
+    if (amount < 1000) {
         amount.addClass('has-error');
         $('#error').text('Amount cannot be below 1000');
+        $('#total_amount').val('');
     }
-    else
-    {
+    else {
         $('#error').text('');
+        totalAmount = Number(amount) + this.commission(Number(amount));
+        $('#total_amount').val(totalAmount);
     }
 }
 // Page Loader

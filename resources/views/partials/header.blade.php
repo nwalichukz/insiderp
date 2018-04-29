@@ -39,9 +39,6 @@
 									<a href="{{ url('/post-job') }}">Post Job </a>
 								</li>
 							<li>
-								<a href="{{ url('Notifications') }}">Notifications</a>
-							</li>
-							<li>
 								<a href="{{ url('messages') }}">Messages</a>
 							</li>
 								<li>
@@ -127,9 +124,6 @@
 						<a href="{{ url('/sigin') }}"><i class="ti-lock"></i> Login</a>
 					</li>
 				@else
-					<li>
-						<a href="{{ url('Notifications') }}">Notifications</a>
-					</li>
 					<li>
 						<a href="{{ url('messages') }}">Messages</a>
 					</li>
