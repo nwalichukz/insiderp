@@ -14,12 +14,13 @@ class BiddingController extends Controller
     *
     */
     public static function makeBid($job_id)
-    { $service = Service::where('user_id', Auth::user()->id)->first(); 
-     $makebid = new Bidding;
-      $makebid->post_job_id = $job_id;
-      $makebid->service_id = $service->id;
-      $makebid->status = 'not-offered';
-      $makebid->save();
+    {
+        $service = Service::where('user_id', Auth::user()->id)->first();
+        $makebid = new Bidding;
+         $makebid->post_job_id = $job_id;
+         $makebid->service_id = $service->id;
+         $makebid->status = 'not-offered';
+         $makebid->save();
 
     }
 
