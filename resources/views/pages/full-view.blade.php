@@ -80,19 +80,21 @@
                                 <aside>
                                     <div class="sidebar">
                                         <div class="box">
-                                            <form action="">
+                                            <form id="sendEquiry">
                                                 <div class="form-group">
                                                     <input type="text" name="name" placeholder="Full Name" class="form-control">
                                                     <input type="hidden" name="service_email" value="{{ $fullview->user->email }}" class="form-control">
+                                                    <input type="hidden" name="id" value="{{ $fullview->user->id }}" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="email" name="email" placeholder="Email Address" class="form-control">
+                                                    <input type="email" name="email" placeholder="Email Address" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" name="phone" placeholder="Phone Number" class="form-control">
+                                                    <input type="text" name="phone_no" placeholder="Phone Number" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <textarea name="message"  cols="7" rows="2" class="form-control" placeholder="Message"></textarea>
+                                                    <textarea name="message"  cols="7" rows="1" class="form-control" placeholder="Please enter your message" required>
+                                                    </textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-common">Send</button>

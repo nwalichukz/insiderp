@@ -12,7 +12,7 @@ class CreatePriceSamplesTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::defaultStringLength(191);
         Schema::create('price_samples', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();

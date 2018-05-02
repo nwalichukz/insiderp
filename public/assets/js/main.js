@@ -1,4 +1,53 @@
+ function sendEquiry(event){
+ event.preventDefault();
+ var form = document.getElementById('sendEquiry');
+ var getData = new FormData(form);
+ $.ajax({
+    url:'send-enquiry',
+    data: getData,
+    type: 'POST',
+    processData: false,
+    contentType: false,
+    cache: false,
+    ajaxStart:function(){
+    $('.status').show();
+    $('.status').html('Wait, sending message to the vendor...');
+    },
+    success:function(data){
+    $('.status').empty();
+   // $('.successMsg').show();
+    $('.status').html(data).fadeOut(6000);
+    }, 
+    error:function(x,e) {
+    if (x.status==0) {
+        $('.status').hide();
+        $('.successMsg').show();
+       $('.successMsg').html('You are offline!!\n Please Check Your Network.').fadeOut(6000);
+    } else if(x.status==404) {
+        $('.status').hide();
+        $('.successMsg').show();
+       $('.successMsg').html('Requested URL not found.').fadeOut(6000);
+    } else if(x.status==500) {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Internel Server Error.').fadeOut(6000);
+    } else if(e=='parsererror') {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Error.\nParsing JSON Request failed.').fadeOut(6000);
+    } else if(e=='timeout'){
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Request Time out.').fadeOut(6000);
+    } else {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Unknow Error.\n'+x.responseText).fadeOut(5000);
+    }
+        },
 
+ });
+}
 
 function showFields() {
     var field = $('#profession_field').val();

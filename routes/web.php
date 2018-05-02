@@ -73,3 +73,4 @@ Route::get('/post-job', 'interfaceController@postJob')->name('postJob');
 Route::post('/post-job', 'interfaceController@postJobSave')->name('postJobSave');
 Route::get('browse_jobs', 'interfaceController@browse_jobs');
 Route::get('bid/{post_job_id}', 'interfaceController@makeBid')->name('bid');
+Route::post('send-enquiry', 'interfaceController@sendEquiry');

@@ -924,4 +924,17 @@ public function deleteService($id)
     {
         return view('dashboard.applications');
     }
+
+
+    // sends an enquiry through ajax
+
+    public function sendEquiry(Request $request)
+    {
+        $msg = MessageController::sendMessage($request);
+        if($msg){
+            return 'Message sent successfully';
+        }else{
+            return 'Something went wrong message could not be sent, please try again';
+        }
+    }
 }
