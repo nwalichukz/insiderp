@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PostJob;
 use App\view;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
@@ -734,11 +735,12 @@ public function deleteService($id)
 
     public function postJobSave(Request $request)
     {   $this->validate($request,
-        [  'name'=>'required',
-            'offer_amount' => 'required',
-           'job_description' => 'required',
-           'job_category' => 'required',
-           ]);
+        [
+            'name'=>'required',
+            'budget' => 'required|numeric|min:1000',
+            'job_description' => 'required',
+            'job_category' => 'required',
+        ]);
    
         $post = PostJobController::create($request);
         if($post){
@@ -754,8 +756,25 @@ public function deleteService($id)
     public function browse_jobs()
     {
         $user = Auth::user();
+        $jobs = PostJobController::getAvailableJob();
 
-        return view('dashboard.browse_jobs')->with(['user' => $user]);
+        return view('dashboard.browse_jobs')->with(['user' => $user, 'jobs' => $jobs]);
+    }
+
+    public function makeBid($post_job_id)
+    {
+        $make_bid = BiddingController::makeBid($post_job_id);
+
+        if ($make_bid)
+        {
+            flash("You have successfully applied for the job. Please await a response from the job owner")->success();
+            return redirect()->back();
+        }
+        else
+        {
+            flash("An error has occurred. please try again")->error();
+            return redirect()->back();
+        }
     }
 
 

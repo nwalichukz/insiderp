@@ -17,7 +17,7 @@ class CreatePostJobsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name');
-            $table->string('offer_amount');
+            $table->string('budget');
             $table->string('commission');
             $table->string('total_amount');
             $table->string('status');

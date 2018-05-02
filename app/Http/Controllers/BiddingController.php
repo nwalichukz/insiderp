@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PostJobController;
 use App\Bidding;
+use App\Service;
+use Auth;
 
 class BiddingController extends Controller
 {
     /**
-    * This method makes a bid for a job
-    * @return respnse
-    *
-    */
+     * This method makes a bid for a job
+     * @param $job_id
+     * @return bool
+     */
     public static function makeBid($job_id)
     {
         $service = Service::where('user_id', Auth::user()->id)->first();
@@ -22,6 +24,7 @@ class BiddingController extends Controller
          $makebid->status = 'not-offered';
          $makebid->save();
 
+         return true;
     }
 
 

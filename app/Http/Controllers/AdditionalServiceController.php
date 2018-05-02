@@ -20,6 +20,6 @@ class AdditionalServiceController extends Controller
     {
     	$feature = new AdditionalService;
     	$feature->user_id = $id;
-    	$feature->service_id =
+    	//$feature->service_id =
     }
 }

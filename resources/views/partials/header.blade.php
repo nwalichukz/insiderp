@@ -68,10 +68,12 @@
 										</li>
 									</ul>
 								</li>
-								<li>
-									<a href="{{ url('browse_jobs') }}">Browse Jobs</a>
-								</li>
-								@if(Auth::user()->service->count() <= 0)
+                                @if(Auth::user()->service)
+                                    <li>
+                                        <a href="{{ url('browse_jobs') }}">Browse Jobs</a>
+                                    </li>
+                                @endif
+								@if(!Auth::user()->service)
 									<li>
 										<a href="{{ url('service') }}">Add Service</a>
 									</li>
@@ -127,18 +129,41 @@
 					<li>
 						<a href="{{ url('messages') }}">Messages</a>
 					</li>
-					<li>
-						<a href="{{ url('browse_jobs') }}">Browse Jobs</a>
-					</li>
-					<li>
-						<a href="{{ url('my-jobs') }}"><i class="fa fa-angle-down"></i> My Jobs</a>
-						<ul class="dropdown">
-
-						</ul>
-					</li>
-					<li>
-						<a href="{{ url('service') }}">Add Service</a>
-					</li>
+                    <li>
+                        <a href="{{ url('my-jobs') }}"><i class="fa fa-angle-down"></i> My Jobs</a>
+                        <ul class="dropdown">
+                            <li>
+                                <a class="active" href="{{ url('my-jobs') }}">
+                                    Job Offers
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('jobs-ongoing') }}">
+                                    Ongoing Jobs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('jobs-completed') }}">
+                                    Jobs Completed
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('manage-applications') }}">
+                                    Applications
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    @if(Auth::user()->service)
+                        <li>
+                            <a href="{{ url('browse_jobs') }}">Browse Jobs</a>
+                        </li>
+                    @endif
+					@if(!Auth::user()->service)
+						<li>
+							<a href="{{ url('service') }}">Add Service</a>
+						</li>
+					@endif
 					<li class="left">
 						<a href="{{ url('') }}"><i class="ti-angle-down"></i> {{ Auth::user()->name }}</a>
 						<ul class="dropdown">

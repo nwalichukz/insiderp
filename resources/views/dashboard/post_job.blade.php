@@ -8,13 +8,21 @@ Post Job | Bido
 <section id="content">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-9 col-md-offset-2">
+            <div class="col-md-4 hidden-sm hidden-xs">
+                @include('partials.sidebar')
+            </div>
+            <div class="col-sm-12 col-md-6">
                 <div class="page-ads box">
                     <form action="{{ route('postJobSave') }}" method="post" enctype="multipart/form-data" class="form-ad">
                         {{ csrf_field() }}
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label class="control-label">Job name</label>
-                            <input type="text" class="form-control" name="job_name" placeholder="e.g. I want a professional logo done">
+                            <input type="text" class="form-control" name="name" placeholder="e.g. I want a professional logo done" value="{{ old('name') }}">
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label class="control-label">Category</label>
@@ -34,25 +42,35 @@ Post Job | Bido
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="textarea">Job Tags <span>(optional)</span></label>
-                            <input type="text" class="form-control" placeholder="e.g.PHP,Social Media,Management" name="tags">
-                            <p class="note">Comma separate tags, such as required skills or technologies, for this job.</p>
-                        </div>
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('job_description') ? ' has-error' : '' }}">
                             <label class="control-label">Job Description</label>
-                            <textarea name="description" cols="7" rows="7" :name="description" class="form-control" placeholder="Job Description"></textarea>
+                            <textarea name="job_description" cols="7" rows="7" class="form-control" placeholder="Job Description">{{ old('job_description') }}</textarea>
+                            @if ($errors->has('job_description'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('job_description') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group{{ $errors->has('budget') ? ' has-error' : '' }}">
+                            <label for="budget">Budget</label>
+                            <input type="number" class="form-control" name="budget" placeholder="Your Budget" id="offer_amount" onkeyup="checkAmount()" value="{{ old('budget') }}">
+                            @if ($errors->has('budget'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('budget') }}</strong>
+                                </span>
+                            @endif
+                            <span class="help-block">
+                                <strong id="error"></strong>
+                            </span>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Duration <span></span></label>
-                            <input type="text" class="form-control" placeholder="yyyy-mm-dd">
-                            <p class="note">Deadline for new applicants.</p>
+                            <label for="total_amount">Total amount</label>
+                            <input type="number" name="total_amount" id="total_amount" disabled="disabled" class="form-control">
+                            <span class="">
+                                <strong id="total">The total amount is the offer amount plus the commission</strong>
+                            </span>
                         </div>
-                        <div class="divider"><h3>Company Details</h3></div>
-                        <div class="form-group">
-                            <label class="control-label">Company Name</label>
-                            <input type="text" class="form-control" placeholder="Enter the name of the company">
-                        </div>
+                        {{--
                         <div class="form-group">
                             <label for="sample">Upload sample photo</label>
                             <div class="button-group">
@@ -64,7 +82,8 @@ Post Job | Bido
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-common">Submit your job</a>
+                        --}}
+                        <button type="submit" class="btn btn-common">Submit your job</button>
                     </form>
                 </div>
             </div>

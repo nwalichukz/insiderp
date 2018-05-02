@@ -23,8 +23,6 @@
                                         <div class="manager-name">
                                             <h4><a href="#">{{ ucfirst($job->job_owner->name) }}</a></h4>
                                             <h5>{{ ucfirst($job->name) }}</h5>
-                                        </div>
-                                        <div class="manager-meta">
                                             <span class="location"><i class="ti-location-pin"></i> {{ $job->job_owner->location }}</span>
                                             <span class="rate"><i class="fa fa-money"></i> {{ $job->offer_amount }}</span>
                                         </div>

@@ -8,33 +8,41 @@ Browse Jobs | Bido
 <section class="job-browse section">
     <div class="container">
         <div class="row">
-            <div class="col-md-9 col-sm-8 col-md-offset-1">
-                <div class="job-list">
-                    <div class="job-list-content">
-                        <h4><a href="job-details.html">We need a web designer</a><span class="full-time">$1000 - 5000</span></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quaerat aut veniam molestiae atque dolorum omnis temporibus consequuntur saepe. Nemo atque consectetur saepe corporis odit in dicta reprehenderit, officiis, praesentium?</p>
-                        <div class="job-tag">
-                            <div class="pull-left">
-                                <div class="meta-tag">
-                                    <span><a href="browse-categories.html"><i class="ti-brush"></i>Art/Design</a></span>
-                                    <span><i class="ti-location-pin"></i>Cupertino, CA, USA</span>
-                                    <span><i class="ti-time"></i>60/Hour</span>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @if($jobs->count() > 0)
+                    <div class="row">
+                        @foreach($jobs as $job)
+                            <div class="col-md-6">
+                                <div class="job-list">
+                                    <div class="job-list-content">
+                                        <h4><a href="job-details.html">{{ $job->name }}</a><span class="full-time">N{{ $job->offer_amount }}</span></h4>
+                                        <p>{{ $job->job_description }}</p>
+                                        <div class="job-tag">
+                                            <div class="pull-left">
+                                                <div class="meta-tag">
+                                                    <span><a href="#"><i class="ti-brush"></i>{{ $job->job_category }}</a></span>
+                                                    <span><i class="ti-location-pin"></i>Cupertino, CA, USA</span>
+                                                    <span><i class="ti-time"></i>60/Hour</span>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right">
+                                                <a href="{{ url('bid/'.$job->id) }}" class="btn btn-common btn-rm">Apply</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="pull-right">
-                                <div class="btn btn-common btn-rm">Apply</div>
-                            </div>
-                        </div>
+
+                        @endforeach
                     </div>
-                </div>
+
+                @else
+                    <div class="col-md-8">
+                        <p>There are no available jobs for to at the moment</p>
+                    </div>
+                @endif
                 <ul class="pagination">
-                    <li class="active"><a href="#" class="btn btn-common"><i class="ti-angle-left"></i> prev</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li class="active"><a href="#" class="btn btn-common">Next <i class="ti-angle-right"></i></a></li>
+                    {{ $jobs->links() }}
                 </ul>
 
             </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-	{{ $service->name }} | Bido
+	{{ $user->name }} | Bido
 @endsection
 @section('content')
 	@include('partials.header2')
@@ -8,7 +8,8 @@
 	<div id="content">
 		<section class="job-detail section">
 			<div class="container">
-				<div class="row">
+				@if($user->service)
+					<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="header-detail">
 							<div class="header-content pull-left">
@@ -99,6 +100,17 @@
 						</div>
 					</div>
 				</div>
+				@else
+					<div class="row">
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							@include('partials.sidebar')
+						</div>
+						<div class="col-md-8 col-sm-12 col-xs-12">
+							<p>You are currently not a vendor <a href="{{ url('service') }}" style="color: #cb1d1d">Register a service</a> to become a vendor...</p>
+							<hr>
+						</div>
+					</div>
+				@endif
 			</div>
 		</section>
 	</div>

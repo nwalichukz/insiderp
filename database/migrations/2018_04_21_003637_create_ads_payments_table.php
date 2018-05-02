@@ -20,7 +20,7 @@ class CreateAdsPaymentsTable extends Migration
             $table->string('status');
             $table->string('no_days');
             $table->timestamp('start_date')->nullable();
-            $table->imestamp('stop_date')->nullable();
+            $table->timestamp('stop_date')->nullable();
             $table->timestamps();
         });
     }

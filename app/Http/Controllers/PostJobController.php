@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\JobOfferDetailController;
 use App\PostJob;
 use App\Service;
+use Auth;
 
 class PostJobController extends Controller
 {
@@ -14,18 +15,19 @@ class PostJobController extends Controller
     *
     * @var request
     */
-    public static function postJob(Request $request)
-    { $postjob = new PostJob;
-     $postjob->name = $request['name'];
-     $postjob->user_id = Auth::user()->id;
-     $postjob->offer_amount = $request['offer_amount'];
-     $postjob->commission = JobOfferDetailController::commission($request['offer_amount']);
-     $postjob->total_aamount = $postjob->offer_amount + $postjob->commission;
-     $postjob->status = 'available';
-     $postjob->job_category = $request['job_category'];
-     $postjob->description = $request['job_description'];
-     $postjob->save();
-     return true;
+    public static function create(Request $request)
+    {
+        $postjob = new PostJob;
+        $postjob->name = $request['name'];
+        $postjob->user_id = Auth::user()->id;
+        $postjob->offer_amount = $request['budget'];
+        $postjob->commission = JobOfferDetailController::commission($request['budget']);
+        $postjob->total_amount = $postjob->offer_amount + $postjob->commission;
+        $postjob->status = 'available';
+        $postjob->job_category = $request['job_category'];
+        $postjob->job_description = $request['job_description'];
+        $postjob->save();
+         return true;
     }
      /**
     * returns a job that are availabe
@@ -34,7 +36,7 @@ class PostJobController extends Controller
      public static function getAvailableJob()
      {  $category = Service::where('user_id', Auth::user()->id)->first();
      	return PostJob::where('status', 'available')
-                        ->where('job_category', $category->service_category)->get();
+                        ->where('job_category', $category->service_category)->paginate(10);
      }
 
     
