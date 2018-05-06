@@ -37,6 +37,35 @@
 							</div>
 						</div>
 					</div>
+
+                    {{--
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="content-area">
+								<div class="clearfix">
+									<div class="box">
+										<div class="row">
+											<div class="col-md-4">
+												<a href="{{ asset('images/prev/157611524917044.jpg') }}" class="swipebox" title="Caption Goes Here">
+														<img class="img-responsive work" src="{{ asset('images/prev/157611524917044.jpg') }}" alt="img">
+													</a>
+											</div>
+											<div class="col-md-4">
+												<a href="{{ asset('images/prev/157611524917044.jpg') }}" class="swipebox" title="Caption Goes Here">
+													<img class="img-responsive work" src="{{ asset('images/prev/157611524917044.jpg') }}" alt="img">
+												</a>
+											</div>
+											<div class="col-md-4">
+												<a href="{{ asset('images/prev/157611524917044.jpg') }}" class="swipebox" title="Caption Goes Here">
+													<img class="img-responsive work" src="{{ asset('images/prev/157611524917044.jpg') }}" alt="img">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				 --}}
+
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="content-area">
 							<div class="clearfix">

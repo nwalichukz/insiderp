@@ -39,7 +39,15 @@ class PostJobController extends Controller
                         ->where('job_category', $category->service_category)->paginate(10);
      }
 
-    
+    /**
+     * returns a jobs posted by a user
+     *
+     */
+    public static function getUserJobs()
+    {
+        $jobs = PostJob::where('user_id', Auth::user()->id);
+        return $jobs->paginate(10);
+    }
     /**
     * changes the status of a posted job
     *

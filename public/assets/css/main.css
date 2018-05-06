@@ -3558,6 +3558,12 @@ blockquote p a:hover {
   margin-bottom: 15px;
 }
 
+.work{
+  width: 70%;
+  height: 20%;
+  padding-left: 10px;
+}
+
 .modal-header {
   padding-bottom: 5px;
 }
