@@ -18,7 +18,7 @@ class CreateEnquiriesTable extends Migration
             $table->string('name');
             $table->string('phone_no');
             $table->string('email');
-            $table->string('message');
+            $table->longText('message');
             $table->timestamps();
         });
     }

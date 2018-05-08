@@ -1,9 +1,10 @@
+
  function sendEquiry(event){
  event.preventDefault();
  var form = document.getElementById('sendEquiry');
  var getData = new FormData(form);
  $.ajax({
-    url:'send-enquiry',
+    url: '/send-enquiry',
     data: getData,
     type: 'POST',
     processData: false,

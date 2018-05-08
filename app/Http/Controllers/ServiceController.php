@@ -35,15 +35,7 @@ class ServiceController extends Controller
     	$service->description = $request['description'];
       $service->additional_service = $request['additional_service'];
     	$service->save();
-      $view = ViewController::create($service->id);
-      if(!empty($request->file('avatar'))){
-      $image = ImageController::userImageUpload($request);
-      $avater = new VendorLogo;
-     $avater->service_id = $service->id;
-     $avater->logo = $image;
-     $avater->save();
     return true;
-    }
 
     }
   
@@ -54,7 +46,7 @@ class ServiceController extends Controller
      public static function get($id){
      	return Service::where('id', $id)
      					->with('user')
-              ->with('logo')
+              //->with('logo')
      					->with('view')->first();
      }
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    View Works
+    Full view - {{ $fullview->name }}
 @endsection
 @section('content')
     @include('partials.header2')
@@ -77,12 +77,15 @@
                             </div>
 
                             <div class="col-md-4">
+                                <div class="status"> </div>
+                                <div class="successMsg"> </div>
                                 <aside>
                                     <div class="sidebar">
                                         <div class="box">
-                                            <form id="sendEquiry">
+                                            <form id="sendEquiry" onsubmit="sendEquiry(event);" action="" method="post" enctype="multipart/form-data" accept-charset="UTF-8" files="true">
+                                                  <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <div class="form-group">
-                                                    <input type="text" name="name" placeholder="Full Name" class="form-control">
+                                                    <input type="text" name="name" placeholder="Full Name" class="form-control" required>
                                                     <input type="hidden" name="service_email" value="{{ $fullview->user->email }}" class="form-control">
                                                     <input type="hidden" name="id" value="{{ $fullview->user->id }}" class="form-control" required>
                                                 </div>

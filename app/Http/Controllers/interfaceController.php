@@ -937,4 +937,61 @@ public function deleteService($id)
             return 'Something went wrong message could not be sent, please try again';
         }
     }
+    /**
+    * send contact to the admin
+    *
+    */
+    public function ContactUs(Request $request)
+    {
+        $contact = EnquiryController::sendEquiry($request);
+        if($contact)
+        {
+            flash('Thanks for reaching to us, we would get back to you soon')->success();
+            return redirect()->back();
+        }else{
+            flash('Something went wrong, message could not be sent. Please try again')->error();
+            return redirect()->back();
+        }
+    }
+
+    /**
+    * returns all enquiry
+    *
+    */
+    public function getAllEnquiry()
+    {
+       
+     $enquiry = EnquiryController::getAll();
+     return view('admin/enquiry')->with(['enquiries' => $enquiry]);
+
+    }
+
+    /**
+    * returns a particular enquiry
+    *
+    */
+    public function getEnquiry($id)
+    {
+       
+        return $enquiry = EnquiryController::getenquiry($id);
+
+    }
+     /**
+    * deletes a particular enquiry
+    *
+    */
+    public function deleteEnquiry($id)
+    {
+       
+         $delete = EnquiryController::delete($id);
+         if($delete)
+         {
+            flash('Enquiry deleted successfully')->success();
+            return redirect()->back();
+         }else{
+            flash('Something went wrong, operation failed. Please try again')->error();
+            return redirect()->back();
+         }
+
+    }
 }

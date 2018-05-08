@@ -18,7 +18,7 @@ class EnquiryController extends Controller
     	$send->name = $request['name'];
     	$send->email = $request['email'];
     	$send->phone_no = $request['phone_no'];
-    	$sned->massage = $request['message'];
+    	$send->message = $request['message'];
     	$send->save();
     	return true;
 
@@ -31,7 +31,7 @@ class EnquiryController extends Controller
      public static function getAll()
      {
      	if(Auth::check() && Auth::user()->user_level === 'admin'){
-     		return Enquiry::get()->paginate(20);
+     		return Enquiry::paginate(20);
      	}else{
      		Auth::logout();
      		return redirect('/');
@@ -42,7 +42,7 @@ class EnquiryController extends Controller
     * returns a particular messages for the admin
     *
     */
-      public static function get($id)
+      public static function getenquiry($id)
       { 	if(Auth::check() && Auth::user()->user_level === 'admin'){
      		return Enquiry::where('id', $id)->first();
      	}else{

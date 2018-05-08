@@ -16,6 +16,7 @@ Route::get('/', function () {
 });*/
 
 Route::get('/', 'interfaceController@index');
+Route::post('/send-enquiry', 'interfaceController@sendEquiry');
 Route::get('/about', 'interfaceController@about')->name('about');
 Route::get('/terms', 'interfaceController@terms')->name('terms');
 Route::get('/contact', 'interfaceController@contact')->name('contact');
@@ -72,5 +73,9 @@ Route::post('/decline-offer', 'interfaceController@declineOffer');
 Route::get('/post-job', 'interfaceController@postJob')->name('postJob');
 Route::post('/post-job', 'interfaceController@postJobSave')->name('postJobSave');
 Route::get('browse_jobs', 'interfaceController@browse_jobs');
-Route::get('bid/{post_job_id}', 'interfaceController@makeBid')->name('bid');
-Route::post('send-enquiry', 'interfaceController@sendEquiry');
+Route::get('/bid/{post_job_id}', 'interfaceController@makeBid')->name('bid');
+Route::post('/post-enquiry', 'interfaceController@contactUs');
+Route::get('/get-all-enquiry', 'interfaceController@getAllEnquiry');
+Route::get('/get-enquiry/{id}', 'interfaceController@getEnquiry');
+Route::get('/delete-enquiry/{id}', 'interfaceController@deleteEnquiry');
+

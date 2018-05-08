@@ -17,11 +17,11 @@ class MessageController extends Controller
     *
     */
     public static function sendMessage(Request $request)
-    {  $
+    {  
     	$message = new Message;
     	$message->user_id = $request['id'];
     	$message->name = $request['name'];
-    	$message->title = $request['email'];
+    	$message->email = $request['email'];
       $message->phone_no = $request['phone_no'];
     	$message->message = $request['message'];
     	$message->status = 'unread';
