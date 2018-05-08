@@ -914,6 +914,18 @@ public function deleteService($id)
         return redirect()->back();
     }
   }
+
+    /**
+     * returns all posted jobs
+     *
+     * @var request
+     * @return response
+     */
+    public function myPostedJobs()
+    {
+        $jobs = PostJobController::getUserJobs();
+        return view('dashboard.posted_jobs')->with(['jobs' => $jobs]);
+    }
     /**
      * returns all applications to job
      *

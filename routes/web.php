@@ -71,6 +71,7 @@ Route::get('/accept-offer', 'interfaceController@acceptOffer');
 Route::get('/job-done', 'interfaceController@jobDone');
 Route::post('/decline-offer', 'interfaceController@declineOffer');
 Route::get('/post-job', 'interfaceController@postJob')->name('postJob');
+Route::get('/posted-jobs', 'interfaceController@myPostedJobs');
 Route::post('/post-job', 'interfaceController@postJobSave')->name('postJobSave');
 Route::get('browse_jobs', 'interfaceController@browse_jobs');
 Route::get('/bid/{post_job_id}', 'interfaceController@makeBid')->name('bid');
