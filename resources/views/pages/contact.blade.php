@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Contact us | Biddo
+Contact us | Bido
 @endsection
 
 @section('content')
@@ -86,6 +86,7 @@ Contact us | Biddo
 					</div>
 				</form>
 			</div>
+			@include('partials.footer')
 		</div>
 	</div>
 </section>

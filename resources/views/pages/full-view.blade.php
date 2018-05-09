@@ -4,6 +4,7 @@
 @endsection
 @section('content')
     @include('partials.header2')
+    @include('partials.footer')
     <div id="content">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="content-area">
@@ -185,6 +186,8 @@
                             <div class="form-group">
                                 <label for="duration">Duration</label>
                                 <select name="duration" class="form-control" required>
+                                     <option value="1">1 day</option>
+                                     <option value="2">2 days</option>
                                     <option value="3">3 days</option>
                                     <option value="4">4 days</option>
                                     <option value="5">5 days</option>

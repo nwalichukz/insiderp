@@ -20,9 +20,10 @@ class PostJobController extends Controller
         $postjob = new PostJob;
         $postjob->name = $request['name'];
         $postjob->user_id = Auth::user()->id;
-        $postjob->offer_amount = $request['budget'];
+        $postjob->budget = $request['budget'];
+        $postjob->duration = $request['duration'];
         $postjob->commission = JobOfferDetailController::commission($request['budget']);
-        $postjob->total_amount = $postjob->offer_amount + $postjob->commission;
+        $postjob->total_amount = $postjob->budget + $postjob->commission;
         $postjob->status = 'available';
         $postjob->job_category = $request['job_category'];
         $postjob->job_description = $request['job_description'];
@@ -36,7 +37,8 @@ class PostJobController extends Controller
      public static function getAvailableJob()
      {  $category = Service::where('user_id', Auth::user()->id)->first();
      	return PostJob::where('status', 'available')
-                        ->where('job_category', $category->service_category)->paginate(10);
+                        ->where('job_category', $category->service_category)
+                        ->where('user_id', '!=', Auth::user()->id)->with('user')->paginate(10);
      }
 
     /**

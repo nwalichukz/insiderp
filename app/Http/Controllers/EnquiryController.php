@@ -31,7 +31,7 @@ class EnquiryController extends Controller
      public static function getAll()
      {
      	if(Auth::check() && Auth::user()->user_level === 'admin'){
-     		return Enquiry::paginate(20);
+     		return Enquiry::orderBy('created_at','DESC')->paginate(20);
      	}else{
      		Auth::logout();
      		return redirect('/');

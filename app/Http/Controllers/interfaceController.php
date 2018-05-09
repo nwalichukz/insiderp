@@ -13,6 +13,7 @@ use App\Http\Controllers\searchController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\JobOfferDetailController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ServiceCategoryController;
 use Validator;
 use Auth;
 use App\User;
@@ -105,9 +106,8 @@ class interfaceController extends Controller
      */
     public function index()
     {
-    	$ads = new AdsController;
-        // return $ads->getHomePageAds();
-    	return view('index');
+    	$ads =  AdsController::homeAds();
+    	return view('index')->with(['homeads' => $ads]);
     }
 
     /**
@@ -378,8 +378,8 @@ class interfaceController extends Controller
  }
 
     public function service()
-    {
-        return view('dashboard.service');
+    { $category = ServiceCategoryController::category();
+        return view('dashboard.service')->with(['category' => $category]);
     }
 /**
  * This method creates a service
@@ -415,6 +415,7 @@ class interfaceController extends Controller
     $validator = validator::make($request->all(),
         [  'profession_title'=>'required',
            ]);
+    $category = ServiceCategoryController::category();
     if($validator->fails()) {
         flash('Please enter service name you want to find')->error();
         return redirect()->back();
@@ -423,7 +424,7 @@ class interfaceController extends Controller
     if($search)
     {
         return view('pages.search-results')->with(['search'=> $search['search'],
-                    'total_search'=>$search['total_search']]);
+                    'total_search'=>$search['total_search'], 'category' => $category]);
     }
  }
 
@@ -619,9 +620,9 @@ public function deleteService($id)
     */
 
     public function editService($id)
-    {
+    {   $category = ServiceCategoryController::category();
         $service = ServiceController::get($id);
-        return view('dashboard.edit_service')->with(['service' => $service]);
+        return view('dashboard.edit_service')->with(['service' => $service])->with(['category' =>$category]);
     }
      /**
     * updates a particular service
@@ -728,9 +729,9 @@ public function deleteService($id)
      }
 
     public function postJob()
-    {
+    {   $category = ServiceCategoryController::category();
         $user = Auth::user();
-        return view('dashboard.post_job')->with(['user' => $user]);
+        return view('dashboard.post_job')->with(['user' => $user])->with(['category' => $category]);
      }
 
     public function postJobSave(Request $request)

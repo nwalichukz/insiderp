@@ -9,10 +9,10 @@ Job Offers | Biddo
 <div id="content">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="col-md-3 col-sm-3 col-xs-12">
                 @include('partials.sidebar')
             </div>
-            <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class="col-md-9 col-sm-9 col-xs-12">
                 <div class="job-alerts-item">
                     <h3 class="alerts-title">Job Offers</h3>
                     <div class="job-list">

@@ -22,7 +22,7 @@ class CreateServicesTable extends Migration
             $table->string('proficiency')->nullable();
             $table->string('status')->default('active');
             $table->string('location');
-            $table->string('description');
+            $table->longText('description');
             $table->string('additional_service')->nullable();
             $table->string('service_category');
             $table->timestamps();

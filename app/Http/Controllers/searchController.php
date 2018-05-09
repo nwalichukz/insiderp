@@ -51,10 +51,11 @@ class searchController extends Controller
     * @var request
     */
     public static function fullview($id)
-    {
+    {   
     	return $view = Service::where('id', $id)
     						->with('user')
     						->with('view')
+                            ->with('avater')
     						->with('images')
     						->first();
     }
