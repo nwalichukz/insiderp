@@ -1,8 +1,6 @@
-<section class="featured-jobs section">
-	<div class="container">
-		<h2 class="section-title">Featured Services</h2>
-		<div class="row">
+<div class="row">
 			@foreach($homeads as $search_result)
+
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="featured-item">
                                     <div class="featured-wrap">
@@ -30,7 +28,7 @@
 
                                                 <span class="name">{{ substr(ucwords(strtolower($search_result->profession_title)), 0, 23) }}</span>
                                                  
-                                                <div class="adderess">{{ substr(ucfirst(strtolower($search_result->description)), 0, 70) }}...</div>
+                                                <div class="adderess">{{ substr(ucfirst(strtolower($search_result->description)), 0, 60) }}...</div>
                                             </div>
                                         </div>
                                     </div>
@@ -44,10 +42,5 @@
                                 </div>
                             </div>
                         @endforeach
-			
-			<div class="col-md-12 col-md-offset-5">
-				<h3><a class="" href=""> View More <i class="ti-arrow-right"></i></a></h3>
-			</div>
+
 		</div>
-	</div>
-</section>

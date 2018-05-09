@@ -5,19 +5,20 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Entertainment">
+					<a href="search-category/Art and Design">
 						<div class="icon">
-							<i class="fa fa-microphone"></i>
+							<i class="fa fa-paint-brush"></i>
 						</div>
-						<h3>Entertainment</h3>
+						<h3>Art and Design</h3>
 					</a>
 				</div>
+				
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
 					<a href="search-category/Business">
 						<div class="icon">
 							<i class="fa fa-money"></i>
 						</div>
-						<h3>Business</h3>
+						<h3>Business and Consulting</h3>
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
@@ -29,11 +30,11 @@
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Art and Design">
+					<a href="search-category/Entertainment and Video Editing">
 						<div class="icon">
-							<i class="fa fa-paint-brush"></i>
+							<i class="fa fa-microphone"></i>
 						</div>
-						<h3>Art and Design</h3>
+						<h3>Entertainment and Video Editing</h3>
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
@@ -65,7 +66,7 @@
 						<div class="icon">
 							<i class="fa fa-gear"></i>
 						</div>
-						<h3>Repairs</h3>
+						<h3>Repairs and Services</h3>
 					</a>
 				</div>
 			</div>
