@@ -31,16 +31,21 @@
         <section id="edit-post">
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-8 col-md-offset-2">
                         <div class="panel panel-info">
-                            <div class="panel-header">
-                                <h4>{{ $user->name }}</h4>
-                            </div>
                             <div class="panel-body">
                                 <form>
                                     <div class="form-group">
                                         <label for="title" class="form-control-label">Full Name</label>
                                         <input type="text" name="name" class="form-control" placeholder="Full Name" value="{{ ucfirst($user->name) }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status form-control-label">Status</label>
+                                        <select name="status" id="" class="form-control">
+                                            <option value="active">Active</option>
+                                            <option value="suspended">Suspended</option>
+                                            <option value="banned">Banned</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="category" class="form-control-label">Email Address</label>

@@ -16,7 +16,7 @@ class CreateJobPaymentsTable extends Migration
         Schema::create('job_payments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('job_offer_detail_id')->unsigned();
-            $table->string('payment_status')->nullable();
+            $table->boolean('payment_status')->default(false);
             $table->string('amount_paid');
             $table->string('amount_left');
             $table->timestamps();
