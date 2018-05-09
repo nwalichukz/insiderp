@@ -16,7 +16,7 @@ class CreateAdminNotifiesTable extends Migration
         Schema::create('admin_notifies', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('message');
+            $table->text('message');
             $table->timestamps();
         });
     }

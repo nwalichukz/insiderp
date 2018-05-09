@@ -18,7 +18,7 @@ class CreateReplyCommentsTable extends Migration
              $table->integer('user_id')->unsigned();
             $table->integer('service_id')->unsigned();
             $table->integer('comment_id')->unsigned();
-            $table->string('reply');
+            $table->text('reply');
             $table->timestamps();
         });
     }

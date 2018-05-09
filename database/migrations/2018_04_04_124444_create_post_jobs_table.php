@@ -22,7 +22,7 @@ class CreatePostJobsTable extends Migration
             $table->string('total_amount');
             $table->string('status');
             $table->string('job_category');
-            $table->string('job_description');
+            $table->text('job_description');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');
