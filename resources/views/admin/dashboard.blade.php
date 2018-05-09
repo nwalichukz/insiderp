@@ -9,10 +9,10 @@
     <div id="content">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-3 col-sm-9 col-xs-12">
                     @include('admin.sidebar')
                 </div>
-                <div class="col-md-8 col-sm-8 com-xs-12">
+                <div class="col-md-9 col-sm-9 com-xs-12">
                     <!-- ACTIONS -->
                     <section id="actions" class="py-4 mb-4 bg-faded">
                         <div class="container">
@@ -49,28 +49,36 @@
                                 <div class="col-md-8">
                                     <div class="card">
                                         <div class="card-header">
+
                                             <h4>All Users</h4>
+
                                         </div>
                                         <table class="table table-striped">
                                             <thead class="thead-inverse">
                                             <tr>
-                                                <th>#</th>
+                                                <th>id</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Gender</th>
+                                                <th>Date registered</th>
                                                 <th></th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($users as $user)
+                                           
                                             <tr>
-                                                <td scope="row">{{ $user->id }}</td>
+                                                
+                                                <td scope="row">
+                                                <a href="{{ route('userDetails', ['user' => $user->id]) }}">
+                                                {{ $user->id }} </a></td> 
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->gender }}</td>
-                                                <td><a href="{{ route('userDetails', ['user' => $user->id]) }}"><i class="fa fa-angle-right"></i> Details</a></td>
-
+                                                <td>{{$user->created_at->diffForHumans()}}</td>
+                                               
                                             </tr>
+                                            
                                             @endforeach
                                             </tbody>
                                         </table>

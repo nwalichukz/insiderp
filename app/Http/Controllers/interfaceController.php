@@ -13,6 +13,7 @@ use App\Http\Controllers\searchController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\JobOfferDetailController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ServiceCategoryController;
 use Validator;
 use Auth;
 use App\User;
@@ -106,9 +107,8 @@ class interfaceController extends Controller
      */
     public function index()
     {
-    	$ads = new AdsController;
-        // return $ads->getHomePageAds();
-    	return view('index');
+    	$ads =  AdsController::homeAds();
+    	return view('index')->with(['homeads' => $ads]);
     }
 
     /**
@@ -379,8 +379,8 @@ class interfaceController extends Controller
  }
 
     public function service()
-    {
-        return view('dashboard.service');
+    { $category = ServiceCategoryController::category();
+        return view('dashboard.service')->with(['category' => $category]);
     }
 /**
  * This method creates a service
@@ -416,6 +416,7 @@ class interfaceController extends Controller
     $validator = validator::make($request->all(),
         [  'profession_title'=>'required',
            ]);
+    $category = ServiceCategoryController::category();
     if($validator->fails()) {
         flash('Please enter service name you want to find')->error();
         return redirect()->back();
@@ -424,7 +425,7 @@ class interfaceController extends Controller
     if($search)
     {
         return view('pages.search-results')->with(['search'=> $search['search'],
-                    'total_search'=>$search['total_search']]);
+                    'total_search'=>$search['total_search'], 'category' => $category]);
     }
  }
 
@@ -620,9 +621,9 @@ public function deleteService($id)
     */
 
     public function editService($id)
-    {
+    {   $category = ServiceCategoryController::category();
         $service = ServiceController::get($id);
-        return view('dashboard.edit_service')->with(['service' => $service]);
+        return view('dashboard.edit_service')->with(['service' => $service])->with(['category' =>$category]);
     }
      /**
     * updates a particular service
@@ -729,9 +730,9 @@ public function deleteService($id)
      }
 
     public function postJob()
-    {
+    {   $category = ServiceCategoryController::category();
         $user = Auth::user();
-        return view('dashboard.post_job')->with(['user' => $user]);
+        return view('dashboard.post_job')->with(['user' => $user])->with(['category' => $category]);
      }
 
     public function postJobSave(Request $request)
@@ -936,5 +937,75 @@ public function deleteService($id)
     public function applications()
     {
         return view('dashboard.applications');
+    }
+
+
+    // sends an enquiry through ajax
+
+    public function sendEquiry(Request $request)
+    {
+        $msg = MessageController::sendMessage($request);
+        if($msg){
+            return 'Message sent successfully';
+        }else{
+            return 'Something went wrong message could not be sent, please try again';
+        }
+    }
+    /**
+    * send contact to the admin
+    *
+    */
+    public function ContactUs(Request $request)
+    {
+        $contact = EnquiryController::sendEquiry($request);
+        if($contact)
+        {
+            flash('Thanks for reaching to us, we would get back to you soon')->success();
+            return redirect()->back();
+        }else{
+            flash('Something went wrong, message could not be sent. Please try again')->error();
+            return redirect()->back();
+        }
+    }
+
+    /**
+    * returns all enquiry
+    *
+    */
+    public function getAllEnquiry()
+    {
+       
+     $enquiry = EnquiryController::getAll();
+     return view('admin/enquiry')->with(['enquiries' => $enquiry]);
+
+    }
+
+    /**
+    * returns a particular enquiry
+    *
+    */
+    public function getEnquiry($id)
+    {
+       
+        return $enquiry = EnquiryController::getenquiry($id);
+
+    }
+     /**
+    * deletes a particular enquiry
+    *
+    */
+    public function deleteEnquiry($id)
+    {
+       
+         $delete = EnquiryController::delete($id);
+         if($delete)
+         {
+            flash('Enquiry deleted successfully')->success();
+            return redirect()->back();
+         }else{
+            flash('Something went wrong, operation failed. Please try again')->error();
+            return redirect()->back();
+         }
+
     }
 }

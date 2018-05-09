@@ -3591,4 +3591,15 @@ blockquote p a:hover {
 .search-area button {
   height: 15px;
 }
-
+.status
+{
+display:none;
+background: #FF8C00;
+border: 1px solid #fafafa;
+}
+.successMsg
+{
+display:none;
+background: #FF8C00;
+border: 1px solid #fafafa;
+}

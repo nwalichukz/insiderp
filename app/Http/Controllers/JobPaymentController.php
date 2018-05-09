@@ -32,7 +32,7 @@ class JobPaymentController extends Controller
     	return true;
     }
 
-     /**
+    /**
     * updates job payment status
     *
     * @var id

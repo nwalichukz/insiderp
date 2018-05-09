@@ -16,7 +16,7 @@
     <div id="content">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-3 col-sm-3 col-xs-12">
                     @include('partials.sidebar')
                 </div>
                  @if ($message = Session::get('status'))
@@ -25,7 +25,7 @@
                         <strong>{{ $message }}</strong>
                 </div>
                 @endif
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-9 col-sm-9 col-xs-12">
 
                     <form action="{{ route('addService') }}" method="post" class="form-ad" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -46,14 +46,10 @@
                             <label class="control-label" for="service_category">Service Category</label>
                             <select name="service_category" class="form-control select">
                                 <option value="">Select service category</option>
-                                <option>Entertainment</option>
-                                <option>Business</option>
-                                <option>Education and Training</option>
-                                <option>Art and Design</option>
-                                <option>Events and Lifestyle</option>
-                                <option>Programming and IT</option>
-                                <option>Sewing and Makeups</option>
-                                <option>Repairs</option>
+                                @foreach ($category as $name)
+                                <option value="{{$name->name}}">{{$name->name}}</option>
+                                @endforeach
+                               
                             </select>
                         </div>
     

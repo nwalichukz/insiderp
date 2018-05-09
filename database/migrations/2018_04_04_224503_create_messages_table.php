@@ -17,10 +17,10 @@ class CreateMessagesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name');
+            $table->string('email');
             $table->string('phone_no');
-            $table->string('title');
-            $table->string('status');
             $table->string('message');
+            $table->string('status');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');

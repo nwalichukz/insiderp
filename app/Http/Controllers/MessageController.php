@@ -17,12 +17,12 @@ class MessageController extends Controller
     *
     */
     public static function sendMessage(Request $request)
-    {   $user_id = Service::find($request['id']);
+    {  
     	$message = new Message;
-    	$message->user_id = $user_id->user_id;
+    	$message->user_id = $request['id'];
     	$message->name = $request['name'];
-    	$message->title = $request['title'];
-    	$message->phone_no = $request['phone_no'];
+    	$message->email = $request['email'];
+      $message->phone_no = $request['phone_no'];
     	$message->message = $request['message'];
     	$message->status = 'unread';
     	$message->save();

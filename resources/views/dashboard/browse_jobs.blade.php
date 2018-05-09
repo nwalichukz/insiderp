@@ -15,14 +15,14 @@ Browse Jobs | Bido
                             <div class="col-md-6">
                                 <div class="job-list">
                                     <div class="job-list-content">
-                                        <h4><a href="job-details.html">{{ $job->name }}</a><span class="full-time">N{{ $job->offer_amount }}</span></h4>
+                                        <h4><a href="job-details.html">{{ $job->name }}</a><span class="full-time">&#8358; {{ $job->total_amount }}</span></h4>
                                         <p>{{ $job->job_description }}</p>
                                         <div class="job-tag">
                                             <div class="pull-left">
                                                 <div class="meta-tag">
-                                                    <span><a href="#"><i class="ti-brush"></i>{{ $job->job_category }}</a></span>
-                                                    <span><i class="ti-location-pin"></i>Cupertino, CA, USA</span>
-                                                    <span><i class="ti-time"></i>60/Hour</span>
+                    
+                                                    <span><i class="ti-location-pin"></i>{{$job->user->state}}, {{$job->user->location}}</span>
+                                                    <span><i class="ti-time"></i>Duration: {{$job->duration}} days</span>
                                                 </div>
                                             </div>
                                             <div class="pull-right">
@@ -38,7 +38,7 @@ Browse Jobs | Bido
 
                 @else
                     <div class="col-md-8">
-                        <p>There are no available jobs for to at the moment</p>
+                        <p>There are no available jobs for you at the moment</p>
                     </div>
                 @endif
                 <ul class="pagination">

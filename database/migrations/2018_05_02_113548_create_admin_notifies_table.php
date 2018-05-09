@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBiddingsTable extends Migration
+class CreateAdminNotifiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateBiddingsTable extends Migration
      */
     public function up()
     {   Schema::defaultStringLength(191);
-        Schema::create('biddings', function (Blueprint $table) {
+        Schema::create('admin_notifies', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_job_id')->unsigned();
-            $table->integer('service_id')->unsigned();
-            $table->string('status');
+            $table->integer('user_id')->unsigned();
+            $table->string('message');
             $table->timestamps();
-            $table->foreign('post_job_id')->references('id')->on('post_jobs')->onUpdate('cascade')
-            ->onDelete('cascade'); 
         });
     }
 
@@ -31,6 +28,6 @@ class CreateBiddingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('biddings');
+        Schema::dropIfExists('admin_notifies');
     }
 }

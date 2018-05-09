@@ -3,9 +3,10 @@
         <h4>Overview</h4>
         <ul class="lest item">
             <li><a class="active" href="{{ route('admin', ['user' => str_replace(' ', '-', strtolower(Auth::user()->name))]) }}">Users</a></li>
-            <li><a  href="{{ route('vendors') }}">Vendors</a></li>
-            <li><a href="{{ route('suspended') }}">Suspended users <span class="notinumber">3</span></a></li>
-            <li><a href="{{ route('administrators') }}">Administrators</a></li>
+            <li><a  href="{{ route('vendors') }}" title="View registered vendors">Vendors</a></li>
+            <li><a href="{{ route('suspended') }}" title="Get the suspended users">Suspended users <span class="notinumber">3</span></a></li>
+            <li><a href="{{ route('administrators') }}" title="View all admins">Administrators</a></li>
+             <li><a href="{{ url('get-all-enquiry') }}" title="View all sent enquiries">Enquiry</a></li>
         </ul>
         <h4>Jobs</h4>
         <ul class="lest item">

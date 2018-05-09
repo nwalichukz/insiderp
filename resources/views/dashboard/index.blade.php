@@ -131,10 +131,10 @@
 				</div>
 				@else
 					<div class="row">
-						<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="col-md-3 col-sm-3 col-xs-12">
 							@include('partials.sidebar')
 						</div>
-						<div class="col-md-8 col-sm-12 col-xs-12">
+						<div class="col-md-9 col-sm-12 col-xs-12">
 							<p>You are currently not a vendor <a href="{{ url('service') }}" style="color: #cb1d1d">Register a service</a> to become a vendor...</p>
 							<hr>
 						</div>

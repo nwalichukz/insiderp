@@ -30,9 +30,9 @@ class CreateUsersTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('youtube')->nullable();
             $table->string('website')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps(); 
         });
        
     }

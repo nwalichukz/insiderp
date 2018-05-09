@@ -25,7 +25,7 @@ class CreatePostJobsTable extends Migration
             $table->string('job_description');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')
-            ->onUpdate('cascade');
+            ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

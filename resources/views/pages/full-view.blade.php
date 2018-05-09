@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('title')
-    View Works
+    Full view - {{ $fullview->name }}
 @endsection
 @section('content')
     @include('partials.header2')
+    @include('partials.footer')
     <div id="content">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="content-area">
@@ -77,22 +78,27 @@
                             </div>
 
                             <div class="col-md-4">
+                                <div class="status"> </div>
+                                <div class="successMsg"> </div>
                                 <aside>
                                     <div class="sidebar">
                                         <div class="box">
-                                            <form action="">
+                                            <form id="sendEquiry" onsubmit="sendEquiry(event);" action="" method="post" enctype="multipart/form-data" accept-charset="UTF-8" files="true">
+                                                  <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <div class="form-group">
-                                                    <input type="text" name="name" placeholder="Full Name" class="form-control">
+                                                    <input type="text" name="name" placeholder="Full Name" class="form-control" required>
                                                     <input type="hidden" name="service_email" value="{{ $fullview->user->email }}" class="form-control">
+                                                    <input type="hidden" name="id" value="{{ $fullview->user->id }}" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="email" name="email" placeholder="Email Address" class="form-control">
+                                                    <input type="email" name="email" placeholder="Email Address" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" name="phone" placeholder="Phone Number" class="form-control">
+                                                    <input type="text" name="phone_no" placeholder="Phone Number" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <textarea name="message"  cols="7" rows="2" class="form-control" placeholder="Message"></textarea>
+                                                    <textarea name="message"  cols="7" rows="1" class="form-control" placeholder="Please enter your message" required>
+                                                    </textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-common">Send</button>
@@ -180,6 +186,8 @@
                             <div class="form-group">
                                 <label for="duration">Duration</label>
                                 <select name="duration" class="form-control" required>
+                                     <option value="1">1 day</option>
+                                     <option value="2">2 days</option>
                                     <option value="3">3 days</option>
                                     <option value="4">4 days</option>
                                     <option value="5">5 days</option>

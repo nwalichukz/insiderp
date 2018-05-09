@@ -12,7 +12,7 @@ class CreateServiceCategoriesTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::defaultStringLength(191);
         Schema::create('service_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');

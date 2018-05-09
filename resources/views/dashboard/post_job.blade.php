@@ -8,7 +8,7 @@ Post Job | Bido
 <section id="content">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 hidden-sm hidden-xs">
+            <div class="col-md-3 hidden-sm hidden-xs">
                 @include('partials.sidebar')
             </div>
             <div class="col-sm-12 col-md-6">
@@ -30,18 +30,36 @@ Post Job | Bido
                                 <label class="styled-select">
                                     <select class="dropdown-product selectpicker" name="job_category">
                                         <option value="">Select Service Category</option>
-                                        <option>Entertainment</option>
-                                        <option>Business</option>
-                                        <option>Education/Training</option>
-                                        <option>Art/Design</option>
-                                        <option>Events and Lifestyle</option>
-                                        <option>Programming and IT</option>
-                                        <option>Sewing and Makeups</option>
-                                        <option>Repairs</option>
+                                       @foreach ($category as $name)
+                                <option value="{{$name->name}}">{{$name->name}}</option>
+                                @endforeach
                                     </select>
                                 </label>
                             </div>
                         </div>
+                          <div class="form-group">
+                                <label for="duration">Duration</label>
+                                <select name="duration" class="form-control" required>
+                                    <option value="1">1 day</option>
+                                    <option value="2">2 days</option>
+                                    <option value="3">3 days</option>
+                                    <option value="4">4 days</option>
+                                    <option value="5">5 days</option>
+                                    <option value="6">6 days</option>
+                                    <option value="7">7  days</option>
+                                    <option value="8">8 days</option>
+                                    <option value="9">9 days</option>
+                                    <option value="10">10 days</option>
+                                    <option value="11">11 days</option>
+                                    <option value="12">12 days</option>
+                                    <option value="13">13 days</option>
+                                    <option value="14">14 days</option>
+                                    <option value="15">15 days</option>
+                                    <option value="21">3 weeks</option>
+                                    <option value="30">1 months</option>
+                                    <option value="60">2 months</option>
+                                </select>
+                            </div>
                         <div class="form-group{{ $errors->has('job_description') ? ' has-error' : '' }}">
                             <label class="control-label">Job Description</label>
                             <textarea name="job_description" cols="7" rows="7" class="form-control" placeholder="Job Description">{{ old('job_description') }}</textarea>
@@ -67,7 +85,7 @@ Post Job | Bido
                             <label for="total_amount">Total amount</label>
                             <input type="number" name="total_amount" id="total_amount" disabled="disabled" class="form-control">
                             <span class="">
-                                <strong id="total">The total amount is the offer amount plus the commission</strong>
+                                <strong id="total">The total amount is the budget plus the commission</strong>
                             </span>
                         </div>
                         {{--

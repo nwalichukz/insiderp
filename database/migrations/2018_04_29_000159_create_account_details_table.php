@@ -12,7 +12,7 @@ class CreateAccountDetailsTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::defaultStringLength(191);
         Schema::create('account_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
@@ -21,6 +21,8 @@ class CreateAccountDetailsTable extends Migration
             $table->string('account_type');
             $table->string('bank');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 

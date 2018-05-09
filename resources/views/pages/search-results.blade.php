@@ -29,14 +29,9 @@ Search Results| Bido
                                     <label class="styled-select">
                                         <select class="dropdown-product selectpicker form-control" name="service_category">
                                             <option value="">Select Service Category</option>
-                                            <option>Entertainment</option>
-                                            <option>Business</option>
-                                            <option>Education/Training</option>
-                                            <option>Art/Design</option>
-                                            <option>Events and Lifestyle</option>
-                                            <option>Programming and IT</option>
-                                            <option>Sewing and Makeups</option>
-                                            <option>Repairs</option>
+                                                @foreach ($category as $name)
+                                <option value="{{$name->name}}">{{$name->name}}</option>
+                                @endforeach
                                         </select>
                                     </label>
                                 </div>
@@ -70,7 +65,7 @@ Search Results| Bido
                                                 </a>
                                                 @else
                                                 <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
-                                                    <img src="{{ asset("images/watermark/watermark.png") }}" alt="">
+                                                    <img src="{{ asset("images/logo/logo.png") }}" alt="">
                                                 </a>
                                                 @endif
                                             </figure>

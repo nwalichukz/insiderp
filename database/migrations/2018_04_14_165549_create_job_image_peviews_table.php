@@ -12,7 +12,7 @@ class CreateJobImagePeviewsTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::defaultStringLength(191);
         Schema::create('job_image_peviews', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('job_offer_detail_id')->unsigned();
