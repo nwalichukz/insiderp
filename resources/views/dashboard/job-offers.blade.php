@@ -42,8 +42,13 @@
                             <strong>Duration:</strong> Feb 25, 2018
                         </p>
                         <div class="action-btn">
-                            <a class="btn btn-xs btn-success" href="{{ url('accept-offer') }}">Accept job</a>
-                            <button class="btn btn-xs btn-common" data-toggle="modal" data-target="#rejectJobModal">Reject job</button>
+                            @if($job->job_approval->approval_status == "accepted" && $job->job_payment->payment_status == "not paid")
+                                <a class="btn btn-xs btn-gray" href="#">Payment Pending</a>
+                                <button class="btn btn-xs btn-common" data-toggle="modal" data-target="#rejectJobModal">Reject job</button>
+                            @else
+                                <a class="btn btn-xs btn-success" href="{{ url('accept-offer/'.$job->id) }}">Accept job</a>
+                                <button class="btn btn-xs btn-common" data-toggle="modal" data-target="#rejectJobModal">Reject job</button>
+                            @endif
                         </div>
                     </div>
                     <!-- line modal -->

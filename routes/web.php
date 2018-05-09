@@ -67,7 +67,7 @@ Route::get('/job-offers/{service_id}', 'interfaceController@serviceJobOffers');
 Route::get('/ongoing-jobs/{service_id}', 'interfaceController@serviceOngoingJobs');
 Route::get('/completed-jobs/{service_id}', 'interfaceController@serviceCompletedJobs');
 Route::get('/notifications', 'interfaceController@notifications');
-Route::get('/accept-offer', 'interfaceController@acceptOffer');
+Route::get('/accept-offer/{id}', 'interfaceController@acceptOffer');
 Route::get('/job-done', 'interfaceController@jobDone');
 Route::post('/decline-offer', 'interfaceController@declineOffer');
 Route::get('/post-job', 'interfaceController@postJob')->name('postJob');
