@@ -7,13 +7,12 @@
 			$name = str_replace(' ', '-', strtolower($user->name));
 			?>
 			<li><a class="active" href="{{ url('user/'.$name) }}">Dashboard</a></li>
-			<li><a href="#+">Ongoing Job</a></li>
-			<li><a href="{{ url('Notifications') }}">Notifications <span class="notinumber">3</span></a></li>
-			<li><a href="{{ url('messages') }}">Messages <span class="notinumber">10</span></a></li>
+			<li><a href="#">Jobs</a></li>
+			<li><a href="{{ url('messages') }}">Messages</a></li>
 		</ul>
 		<h4>Job</h4>
 		<ul class="lest item">
-			<li><a href="{{ url('service') }}">Add Servicea</a></li>
+			<li><a href="{{ url('service') }}">Add Service</a></li>
 			<li><a href="{{ url('manage-applications') }}">Manage Applications</a></li>
 		</ul>
 		<ul class="lest">

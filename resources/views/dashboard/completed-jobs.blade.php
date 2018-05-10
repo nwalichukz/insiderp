@@ -12,7 +12,7 @@
                     <h5 class="alerts-title">Completed jobs</h5>
                     <hr>
                     @foreach($jobs as $job)
-                        @if($job->job_progress->profress_status === "complete")
+                        @if($job->job_progress->progress_status === "complete")
                             <div class="manager-resumes-item">
                             <div class="manager-content">
                                 <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
@@ -46,59 +46,59 @@
                                     <a class="btn btn-xs btn-gray" href="#">View Job Details</a>
                                 </div>
                             </div><!-- line modal -->
-        <div class="modal fade" id="reportServiceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title" id="lineModalLabel">Report {{-- $fullview->name --}}</h3>
-                    </div>
-                    <div class="modal-body">
-
-                        <!-- content goes here -->
-                        <form>
-                            <div class="form-group">
-                                <input type="hidden" name="service_id" value="{{-- $fullview->id --}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="offence">Offence:</label>
-                                <select name="offence" id="" class="form-control selectpicker">
-                                    <option>Work not Conclusive</option>
-                                    <option>Job not done right</option>
-                                    <option>Contract violation</option>
-                                    <option>Other reasons</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Report:</label>
-                                <textarea name="report_message" cols="7" rows="5" class="form-control" placeholder="Report Message"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-common">Submit</button>
-                        </form>
-
-                    </div>
-                    <div class="modal-footer">
-                        <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
-                            </div>
-                            <div class="btn-group btn-delete hidden" role="group">
-                                <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
                         </div>
                         @else
                             <p>You have not completed any jobs at this moment</p>
                         @endif
                     @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="reportServiceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h3 class="modal-title" id="lineModalLabel">Report {{-- $fullview->name --}}</h3>
+                </div>
+                <div class="modal-body">
+
+                    <!-- content goes here -->
+                    <form>
+                        <div class="form-group">
+                            <input type="hidden" name="service_id" value="{{-- $fullview->id --}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="offence">Offence:</label>
+                            <select name="offence" id="" class="form-control selectpicker">
+                                <option>Work not Conclusive</option>
+                                <option>Job not done right</option>
+                                <option>Contract violation</option>
+                                <option>Other reasons</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Report:</label>
+                            <textarea name="report_message" cols="7" rows="5" class="form-control" placeholder="Report Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-common">Submit</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+                        </div>
+                        <div class="btn-group btn-delete hidden" role="group">
+                            <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

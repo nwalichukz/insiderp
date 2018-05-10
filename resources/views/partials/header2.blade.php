@@ -11,7 +11,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand logo" href="{{ url('/') }}">Bido</a>
+                    <a class="navbar-brand logo" href="{{ url('/') }}"><img src='{{asset("images/watermark/logo.png")}}' alt="Bido"></a>
 
 
                 </div>
@@ -23,42 +23,59 @@
                                 <a class="" href="{{ url('/') }}">Home </a>
                             </li>
                             <li>
-                                <a href="{{ url('/about') }}">Post Job </a>
-
+                                <a href="{{ url('/about') }}">About</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/contact') }}">Contact us </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/faqs') }}">FAQs</a>
                             </li>
                         @endif
                         @if (Auth::check())
                                 <li>
-                                    <a href="{{ url('Notifications') }}">Notifications</a>
+                                    <a href="{{ url('/post-job') }}">Post Job </a>
                                 </li>
                                 <li>
                                     <a href="{{ url('messages') }}">Messages</a>
                                 </li>
                                 <li>
-                                <a href="{{ url('my-jobs') }}">
-                                    My Jobs <i class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="dropdown">
-                                    <li>
-                                        <a class="active" href="{{ url('my-jobs') }}">
-                                            Job Offers
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('jobs-ongoing') }}">
-                                            Ongoing Jobs
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('jobs-completed') }}">
-                                            Jobs Completed
-                                        </a>
-                                    </li>
-                                </ul>
+                                    <a href="{{ url('my-jobs') }}">
+                                        My Jobs <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown">
+                                        <li>
+                                            <a class="active" href="{{ url('my-jobs') }}">
+                                                Job Offers
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('jobs-ongoing') }}">
+                                                Ongoing Jobs
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('jobs-completed') }}">
+                                                Jobs Completed
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('manage-applications') }}">
+                                                Applications
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li>
-                                    <a href="{{ url('service') }}">Add Service</a>
-                                </li>
+                                @if(Auth::user()->service)
+                                    <li>
+                                        <a href="{{ url('browse_jobs') }}">Browse Jobs</a>
+                                    </li>
+                                @endif
+                                @if(!Auth::user()->service)
+                                    <li>
+                                        <a href="{{ url('service') }}">Add Service</a>
+                                    </li>
+                                @endif
                         @endif
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -107,20 +124,43 @@
                     </li>
                 @else
                     <li>
-                        <a href="{{ url('Notifications') }}">Notifications</a>
-                    </li>
-                    <li>
                         <a href="{{ url('messages') }}">Messages</a>
                     </li>
                     <li>
                         <a href="{{ url('my-jobs') }}"><i class="fa fa-angle-down"></i> My Jobs</a>
                         <ul class="dropdown">
-
+                            <li>
+                                <a class="active" href="{{ url('my-jobs') }}">
+                                    Job Offers
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('jobs-ongoing') }}">
+                                    Ongoing Jobs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('jobs-completed') }}">
+                                    Jobs Completed
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('manage-applications') }}">
+                                    Applications
+                                </a>
+                            </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="{{ url('service') }}">Add Service</a>
-                    </li>
+                    @if(Auth::user()->service)
+                        <li>
+                            <a href="{{ url('browse_jobs') }}">Browse Jobs</a>
+                        </li>
+                    @endif
+                    @if(!Auth::user()->service)
+                        <li>
+                            <a href="{{ url('service') }}">Add Service</a>
+                        </li>
+                    @endif
                     <li class="left">
                         <a href="{{ url('') }}"><i class="ti-angle-down"></i> {{ Auth::user()->name }}</a>
                         <ul class="dropdown">

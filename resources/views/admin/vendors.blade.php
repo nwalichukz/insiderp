@@ -17,13 +17,29 @@
                     <section id="actions" class="py-4 mb-4 bg-faded">
                         <div class="container">
                             <div class="row">
+                                <div class="col-md-10">
+                                    <form action="">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="search" placeholder="Search with id,  vendor Name,  Profession Title... ">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 col-sm-6">
+                                                <button type="submit" class="btn btn-search-icon"><i class="ti-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-3">
                                     <a href="#" class="btn btn-common btn-block" data-toggle="modal" data-target="#addVendorModal"><i class="fa fa-plus"></i> Add Vendor</a>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <hr>
                     <br>
                     <!-- Users -->
                     <section id="Users">

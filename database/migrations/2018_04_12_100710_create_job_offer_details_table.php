@@ -12,7 +12,7 @@ class CreateJobOfferDetailsTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::defaultStringLength(191);
         Schema::create('job_offer_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
@@ -20,7 +20,7 @@ class CreateJobOfferDetailsTable extends Migration
             $table->string('job_name');
             $table->string('offer_amount');
             $table->string('duration');
-            $table->string('description');
+            $table->text('description');
             $table->string('commission');
             $table->string('offer_level')->default(1);
             $table->timestamp('initial_deliver_date')->nullable();

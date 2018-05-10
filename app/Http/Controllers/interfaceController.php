@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PostJob;
 use App\view;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\searchController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\JobOfferDetailController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ServiceCategoryController;
 use Validator;
 use Auth;
 use App\User;
@@ -21,6 +23,7 @@ use App\vendor;
 use App\Service;
 use App\vendorLogo;
 use App\Message;
+use App\PrevWorkImage;
 
 class interfaceController extends Controller
 {   
@@ -104,9 +107,8 @@ class interfaceController extends Controller
      */
     public function index()
     {
-    	$ads = new AdsController;
-        // return $ads->getHomePageAds();
-    	return view('index');
+    	$ads =  AdsController::homeAds();
+    	return view('index')->with(['homeads' => $ads]);
     }
 
     /**
@@ -145,30 +147,6 @@ class interfaceController extends Controller
     }
 
     /**
-     * @method jobOffers 
-     * returns job offers page
-     */
-    public function offers()
-    {
-        return view('dashboard.offers');
-    }
-
-    /**
-     * @method manageApplications
-     * returns manage applications page
-     */
-    public function manageApplications()
-    {
-        return view('dashboard.applications');
-    }
-
-    public function searchpage()
-    {
-        return view('pages.search-results');
-    }
-
-
-    /**
      * @method about
      * returns about Biddo page
      */
@@ -187,12 +165,21 @@ class interfaceController extends Controller
     }
 
     /**
+ * @method terms
+ * returns terms page
+ */
+    public function terms()
+    {
+        return view('pages.terms')->with(['title' => 'Terms and Conditions']);
+    }
+
+    /**
      * @method terms
      * returns terms page
      */
-    public function terms()
+    public function faqs()
     {
-    	return view('pages.terms')->with(['title' => 'Terms and Conditions']);
+        return view('pages.faqs')->with(['title' => 'Frequently asked questions | Bido']);
     }
  /**
  * This method
@@ -210,10 +197,10 @@ class interfaceController extends Controller
  */
  public function userDashboard()
 
- {  if(Auth::check()){
+ {  if(Auth::check() AND Auth::user()->user_level === 'user'){
     $user = Auth::user();
-    $services = ServiceController::getUserService(Auth::user()->id);
-    return view('dashboard.index')->with(['user' => $user, 'services' => $services, 'total'=> $services->count()]);
+    $service = ServiceController::getUserService($user->id);
+    return view('dashboard.index')->with(['user' => $user, 'service' => $service]);
     }
     else
     {
@@ -228,11 +215,15 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function adminDashboard()
- {
+ { if(Auth::check() AND Auth::user()->user_level === 'admin'){
      $admin = AdminController::get(Auth::user()->id);
      $users = User::all();
     return view('admin.dashboard')->with(['admin'=>$admin, 'users' => $users]);
-    
+    } else
+    {
+     Auth::logout();
+     return redirect('/');
+    }
  }
 /*
 **
@@ -388,8 +379,8 @@ class interfaceController extends Controller
  }
 
     public function service()
-    {
-        return view('dashboard.service');
+    { $category = ServiceCategoryController::category();
+        return view('dashboard.service')->with(['category' => $category]);
     }
 /**
  * This method creates a service
@@ -425,6 +416,7 @@ class interfaceController extends Controller
     $validator = validator::make($request->all(),
         [  'profession_title'=>'required',
            ]);
+    $category = ServiceCategoryController::category();
     if($validator->fails()) {
         flash('Please enter service name you want to find')->error();
         return redirect()->back();
@@ -433,7 +425,7 @@ class interfaceController extends Controller
     if($search)
     {
         return view('pages.search-results')->with(['search'=> $search['search'],
-                    'total_search'=>$search['total_search']]);
+                    'total_search'=>$search['total_search'], 'category' => $category]);
     }
  }
 
@@ -536,11 +528,13 @@ class interfaceController extends Controller
  *
  */
    public function addPrevWorkImg(Request $request)
-   { $img = ImageController::prevWorkImg($request);
+   {
+       $user = Auth::user();
+       $img = ImageController::prevWorkImg($request['files']);
      if($img){
-             $save = new prevWorkImg;
-             $save->user_id = Auth::user()->id;
-             $save->service_id = $request['service_id'];
+             $save = new prevWorkImage;
+             $save->user_id = $user->id;
+             $save->service_id = $user->service->id;
              $save->name = $img;
              $save->description = $request['description'];
              $save->save();
@@ -577,7 +571,7 @@ class interfaceController extends Controller
     public function editProfile()
     {
         $user = Auth::user();
-        return view('dashboard.edit_profile')->with(['user' => $user]);
+        return view('dashboard.edit_profile', compact(['user']));
    }
 
     public function updateProfile(Request $request )
@@ -627,9 +621,9 @@ public function deleteService($id)
     */
 
     public function editService($id)
-    {
+    {   $category = ServiceCategoryController::category();
         $service = ServiceController::get($id);
-        return view('dashboard.edit_service')->with(['service' => $service]);
+        return view('dashboard.edit_service')->with(['service' => $service])->with(['category' =>$category]);
     }
      /**
     * updates a particular service
@@ -735,18 +729,54 @@ public function deleteService($id)
         $get = MessageController::getUserMessage($id);
      }
 
-    public function postJob(Request $request)
+    public function postJob()
+    {   $category = ServiceCategoryController::category();
+        $user = Auth::user();
+        return view('dashboard.post_job')->with(['user' => $user])->with(['category' => $category]);
+     }
+
+    public function postJobSave(Request $request)
     {   $this->validate($request,
-        [  'name'=>'required',
-           'title' => 'required',
-           'phone_no'=>'required',
-           'email' => 'required',
-           'job_description' => 'required',
-           'job_category' => 'required',
-           ]);
+        [
+            'name'=>'required',
+            'budget' => 'required|numeric|min:1000',
+            'job_description' => 'required',
+            'job_category' => 'required',
+        ]);
    
         $post = PostJobController::create($request);
+        if($post){
+            flash('Job posted successfully')->success();
+            return redirect()->back();
+        }else{
+           flash('Something went wrong, job not posted successfully')->error();
+            return redirect()->back(); 
+        }
       
+    }
+
+    public function browse_jobs()
+    {
+        $user = Auth::user();
+        $jobs = PostJobController::getAvailableJob();
+
+        return view('dashboard.browse_jobs')->with(['user' => $user, 'jobs' => $jobs]);
+    }
+
+    public function makeBid($post_job_id)
+    {
+        $make_bid = BiddingController::makeBid($post_job_id);
+
+        if ($make_bid)
+        {
+            flash("You have successfully applied for the job. Please await a response from the job owner")->success();
+            return redirect()->back();
+        }
+        else
+        {
+            flash("An error has occurred. please try again")->error();
+            return redirect()->back();
+        }
     }
 
 
@@ -818,7 +848,12 @@ public function deleteService($id)
            'duration'=>'required',
            'description' => 'required',
            ]);
-   
+       $service = Service::find($request['service_id']);
+       if($service->user_id == Auth::user()->id)
+       {
+        flash('Hey sorry you cannot offer a job to yourself')->error();
+        return redirect()->back();
+       }
         $job = JobOfferDetailController::create($request);
         $jobapproval = JobApprovalController::create($job);
         $jobprogress= JobProgressController::create($job);
@@ -842,8 +877,10 @@ public function deleteService($id)
    $done = JobController::jobDone($job_id);
    if($done){
     flash('Ok, congrats your client would be notified or you can also notify him')->success();
+       return redirect()->back();
    }else{
     flash('Something went wrong operation failed, please try again')->success();
+       return redirect()->back();
    }
  }
   /**
@@ -856,8 +893,10 @@ public function deleteService($id)
     $offer = JobController::acceptOffer($id);
     if($offer){
         flash('Offer accepted successfully, await a response from Bido team when he pays to start the Job')->success();
+        return redirect()->back();
     }else{
         flash('Something went wrong operation failed to complete')->error();
+        return redirect()->back();
     }
   }
 
@@ -871,10 +910,102 @@ public function deleteService($id)
     $offer = JobController::declineOffer($request);
     if($offer){
         flash('Offer declined successfully')->success();
+        return redirect()->back();
     }else{
         flash('Something went wrong operation failed to complete')->error();
+        return redirect()->back();
     }
   }
 
+    /**
+     * returns all posted jobs
+     *
+     * @var request
+     * @return response
+     */
+    public function myPostedJobs()
+    {
+        $jobs = PostJobController::getUserJobs();
+        return view('dashboard.posted_jobs')->with(['jobs' => $jobs]);
+    }
+    /**
+     * returns all applications to job
+     *
+     * @var request
+     * @return response
+     */
+    public function applications()
+    {
+        return view('dashboard.applications');
+    }
 
+
+    // sends an enquiry through ajax
+
+    public function sendEquiry(Request $request)
+    {
+        $msg = MessageController::sendMessage($request);
+        if($msg){
+            return 'Message sent successfully';
+        }else{
+            return 'Something went wrong message could not be sent, please try again';
+        }
+    }
+    /**
+    * send contact to the admin
+    *
+    */
+    public function ContactUs(Request $request)
+    {
+        $contact = EnquiryController::sendEquiry($request);
+        if($contact)
+        {
+            flash('Thanks for reaching to us, we would get back to you soon')->success();
+            return redirect()->back();
+        }else{
+            flash('Something went wrong, message could not be sent. Please try again')->error();
+            return redirect()->back();
+        }
+    }
+
+    /**
+    * returns all enquiry
+    *
+    */
+    public function getAllEnquiry()
+    {
+       
+     $enquiry = EnquiryController::getAll();
+     return view('admin/enquiry')->with(['enquiries' => $enquiry]);
+
+    }
+
+    /**
+    * returns a particular enquiry
+    *
+    */
+    public function getEnquiry($id)
+    {
+       
+        return $enquiry = EnquiryController::getenquiry($id);
+
+    }
+     /**
+    * deletes a particular enquiry
+    *
+    */
+    public function deleteEnquiry($id)
+    {
+       
+         $delete = EnquiryController::delete($id);
+         if($delete)
+         {
+            flash('Enquiry deleted successfully')->success();
+            return redirect()->back();
+         }else{
+            flash('Something went wrong, operation failed. Please try again')->error();
+            return redirect()->back();
+         }
+
+    }
 }

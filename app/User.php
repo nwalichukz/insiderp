@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     public function service()
     {
-        return $this->hasMany('App\Service');
+        return $this->hasOne('App\Service');
     }
 
       public function avater() {
@@ -47,5 +47,9 @@ class User extends Authenticatable
       return $this->hasMany('App\LastLogin');
     }
 
+    public function post_job()
+    {
+        return $this->hasMany('App\PostJob');
+    }
 
 }

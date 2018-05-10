@@ -16,7 +16,12 @@
                     <div class="text-center">
                         <form action="{{ route('updateAvatar') }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <img src='{{  asset("images/user/". $user->avater->avater) }}' class="avatar img-responsive" alt="avatar">
+                            @if(!empty($user->avater->avater))
+                                <a href="{{ asset("images/user/". $user->avater->avater) }}" class="swipebox" title="Profile Photo">
+                                    <img src='{{ asset("images/user/". $user->avater->avater) }}' class="avatar img-responsive img-raised img-thumbnail" alt="avatar">
+                                </a>
+                            @endif
+                            <br>
                             <h6>Upload a different photo...</h6>
 
                             <input type="file" class="btn btn-default" name="avatar" required>

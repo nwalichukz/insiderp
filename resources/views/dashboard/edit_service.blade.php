@@ -11,7 +11,7 @@
             <h3>Edit {{ $service->name }}</h3>
             <hr>
             <div class="row">
-                <!-- left column -->
+                <!-- left column 
                 <div class="col-md-3">
                     <div class="text-center">
                         <form action="{{ route('updateLogo') }}" method="post" enctype="multipart/form-data">
@@ -27,7 +27,7 @@
                             <button type="submit" class="btn btn-common">Save</button>
                         </form>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- edit form column -->
                 <div class="col-md-9 personal-info">
@@ -52,14 +52,9 @@
                             <label class="control-label" for="select2">Service Category</label>
                             <select name="service_category" class="form-control select">
                                 <option value="{{$service->service_category}}">{{$service->service_category}}</option>
-                                <option>Entertainment</option>
-                                <option>Business</option>
-                                <option>Education and Training</option>
-                                <option>Art and Design</option>
-                                <option>Events and Lifestyle</option>
-                                <option>Programming and IT</option>
-                                <option>Sewing and Makeups</option>
-                                <option>Repairs</option>
+                                @foreach ($category as $name)
+                                <option value="{{$name->name}}">{{$name->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">

@@ -16,17 +16,18 @@ class JobOfferDetail extends Model
     	return $this->belongsTo('App\Service', 'service_id');
     }
 
-     public function job_payment()
-    {
-    	return $this->hasOne('App\JobPayment');
-    }
       public function job_progress()
     {
-    	return $this->hasOne('App\JobProgress');
+    	return $this->hasOne(JobProgress::class, 'job_offer_detail_id');
     }
       public function job_approval()
     {
-    	return $this->hasOne('App\JobApproval');
+    	return $this->hasOne(JobApproval::class, 'job_offer_detail_id');
+    }
+    
+    public function job_payment()
+    {
+      return $this->hasOne(JobPayment::class, 'job_offer_detail_id');
     }
       public function job_imagepreview()
     {
@@ -34,6 +35,6 @@ class JobOfferDetail extends Model
     }
       public function job_dateExtension()
     {
-    	return $this->hasMany('App\JobDateExtension');
+    	return $this->hasMany('App\JobDateExtension', 'service_id');
     }
 }

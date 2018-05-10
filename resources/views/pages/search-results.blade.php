@@ -27,23 +27,18 @@ Search Results| Bido
                             <div class="col-md-3 col-sm-6">
                                 <div class="search-category-container">
                                     <label class="styled-select">
-                                        <select class="dropdown-product selectpicker" name="service_category" class="form-control">
+                                        <select class="dropdown-product selectpicker form-control" name="service_category">
                                             <option value="">Select Service Category</option>
-                                            <option>Entertainment</option>
-                                            <option>Business</option>
-                                            <option>Education/Training</option>
-                                            <option>Art/Design</option>
-                                            <option>Events and Lifestyle</option>
-                                            <option>Programming and IT</option>
-                                            <option>Sewing and Makeups</option>
-                                            <option>Repairs</option>
+                                                @foreach ($category as $name)
+                                <option value="{{$name->name}}">{{$name->name}}</option>
+                                @endforeach
                                         </select>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-1 col-sm-6">
-                            <button type="submit" class="btn btn-search-icon"><i class="ti-search"></i></button>
+                            <button type="submit" class="btn btn-common"><i class="ti-search"></i></button>
                         </div>
                     </div>
                 </div>
@@ -64,30 +59,16 @@ Search Results| Bido
                                     <div class="featured-wrap">
                                         <div class="featured-inner">
                                             <figure class="item-thumb">
-                                                @if(!empty($search_result->logo->logo))
+                                                @if(!empty($search_result->user->avater->avater))
                                                 <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
-                                                    <img src="{{ asset("images/user/".$search_result->logo->logo) }}" alt="logo image">
-                                                </a>
-                                                @elseif(!empty($search_result->avater->avater))
-                                                <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
-                                                    <img src="{{ asset("images/user/".$search_result->avater->avater) }}" alt="logo image">
+                                                    <img src="{{ asset("images/user/".$search_result->user->avater->avater) }}" alt="logo image">
                                                 </a>
                                                 @else
                                                 <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
-                                                    <img src="{{ asset("assets/img/features/img-1.jpg") }}" alt="">
+                                                    <img src="{{ asset("images/logo/logo.png") }}" alt="">
                                                 </a>
                                                 @endif
                                             </figure>
-                                            <?php
-                                                //$search_result->profession_title = substr(ucwords(strtolower($search_result->profession_title)), 0, 23);
-                                                //$search_result->name = substr($search_result->name, 0, 23);
-                                                     /** 
-                                                     *  converts the string to lower case and the string first 
-                                                     *  character is made capital letter.
-                                                     *  then fetches 140 character from the string.
-                                                     */
-                                                //$search_result->description = substr(ucfirst(strtolower($search_result->description)), 0, 60);
-                                               ?>
                                             <div class="item-body">
                                                <h3>
                                                    <b class="job-title">

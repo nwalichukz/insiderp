@@ -7,6 +7,7 @@ use App\Vendor;
 use App\UserAvater;
 use App\VendorLogo;
 use App\prevWorkImage;
+use Image;
 
 class ImageController extends Controller
 {
@@ -17,17 +18,21 @@ class ImageController extends Controller
      * 
      * @var $file
      * 
-     * @return image name
+     * @return bool
      */
     public static function userImageUpload(Request $request)
-    {   $file = $request->file('avatar');
-        $UniqueNoGen = time().mt_rand();
-            $destinationPath = 'images/user';
-            //$fileName = $file->getClientOriginalName();
-            $fileExte = $file->getClientOriginalExtension();
-            $newFileName = $UniqueNoGen.'.'.$fileExte;
-            $uploadSuccess = $file->move($destinationPath, $newFileName);
-            return $newFileName;
+    {
+        if ($request->hasFile('avatar'))
+        {    
+            $file = $request->file('avatar');
+            $filename = rand().time().'.'.$file->getClientOriginalExtension();
+            $path = public_path('images/user/'.$filename);
+            $avatar = Image::make($file->getRealPath())->resize(350, 300)->sharpen(16)->encode('png')->save($path);
+            return $filename;
+        }
+        else{
+            return false;
+        }
 
     }
 
@@ -40,16 +45,17 @@ class ImageController extends Controller
      * 
      * @return image name
      */
-    public static function prevWorkImg($file)
-    {  
-    	foreach ($file as $files) {
-           $UniqueNoGen = time().mt_rand();
-            $destinationPath = 'images/prevwork';
-            //$fileName = $files->getClientOriginalName();
-            $fileExte = $files->getClientOriginalExtension();
-            $newFileName = $UniqueNoGen.'.'.$fileExte;
-            $uploadSuccess = $files->move($destinationPath, $newFileName);
-            return $newFileName;
+    public static function prevWorkImg($files)
+    {
+        foreach ($files as $file) {
+
+          $watermark = Image::make('images/watermark/watermark.png')->greyscale()->resize(100, 40);
+            $filename = rand().time().'.'.$file->getClientOriginalExtension();
+            $path = public_path('images/prev/'.$filename);
+            $avatar = Image::make($file->getRealPath())->resize(450, 450)->sharpen(16)->encode('png')
+            ->insert($watermark, 'bottom-right', 10, 10)->save($path);
+            return $filename;
+
         }
     }
 

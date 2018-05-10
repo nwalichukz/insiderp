@@ -35,7 +35,7 @@ class searchController extends Controller
      	$query->where('service_category', $data['service_category']);
      }
 
-     $query->orderBy('created_at','DESC')->with('user')->with('view')->with('avater')->with('logo');
+     $query->orderBy('created_at','DESC')->with('user')->with('view')->with('avater');
      DumpController::dumpSearch($request);
 
      return ['search' => $query->paginate(12), 'total_search' => $query->count()];
@@ -51,10 +51,11 @@ class searchController extends Controller
     * @var request
     */
     public static function fullview($id)
-    {
+    {   
     	return $view = Service::where('id', $id)
     						->with('user')
     						->with('view')
+                            ->with('avater')
     						->with('images')
     						->first();
     }

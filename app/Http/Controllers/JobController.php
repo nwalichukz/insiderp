@@ -11,6 +11,7 @@ use App\Http\Controllers\JobOfferDetailController;
 use App\Http\Controllers\mailer;
 use Auth, DB;
 use Carbon\Carbon;
+use App\JobApproval;
 
 class JobController extends Controller
 {
@@ -90,24 +91,24 @@ class JobController extends Controller
       public static function acceptOffer($job_id){
         
         $job = JobApproval::where('job_offer_detail_id', $job_id)->first();
-        $job->approval_status = $request['status'];
+        $job->approval_status = 'accepted';
         $job->save();
         $job_detail = JobOfferDetail::find($job->job_offer_detail_id);
-        $user = UserController::find($job_detail->user_id);
-        $Service = ServiceController::find($job_detail->service_id);
-        $data = ['name' => $Service->name,
-                    ];
+        $user = User::find($job_detail->user_id);
+        $Service = Service::find($job_detail->service_id);
+        $data = ['name' => $Service->name,];
         $useremail = $user->email;
         if($job_detail->duration < 30){
-        $job_detail->initial_deliver_date = Carbon::addDays($job_detail->duration);
+        $job_detail->initial_deliver_date = (new \Carbon\Carbon)->addDays($job_detail->duration);
         }elseif($job_detail->duration == 30){
-           $job_detail->initial_deliver_date = Carbon::addMonths(1); 
-        }elseif($job_detail->duration == 30){
-            $job_detail->initial_deliver_date = Carbon::addMonths(2);
+           $job_detail->initial_deliver_date = (new \Carbon\Carbon)->addMonths(1);
+        }elseif($job_detail->duration == 60){
+            $job_detail->initial_deliver_date = (new \Carbon\Carbon)->addMonths(2);
         }
         $job_detail->save();
         // send mail
         mailer::sendAcceptNotification($useremail, $data);
+        return true;
     
       }
       //send mail and notification
@@ -151,7 +152,6 @@ class JobController extends Controller
         $job->approval_status = $request['status'];
         $job->decline_reason = $request['decline_reason'];
         $job->save();
-        ;
         $job_detail = JobOfferDetail::find($job->job_offer_detail_id);
         $user = UserController::find($job_detail->user_id);
         $Service = ServiceController::find($job_detail->service_id);

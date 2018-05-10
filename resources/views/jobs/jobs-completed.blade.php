@@ -12,7 +12,7 @@
                         <h5 class="alerts-title">Completed jobs</h5>
                         <hr>
                         @foreach($jobs_completed as $job)
-                        @if($job->job_progress->progress_status === "completed")
+                        @if($job->job_progress->progress_status === "complete")
                             <div class="manager-resumes-item">
                             <div class="manager-content">
                                 <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>

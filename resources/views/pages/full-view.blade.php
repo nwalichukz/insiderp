@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('title')
-    View Works
+    Full view - {{ $fullview->name }}
 @endsection
 @section('content')
     @include('partials.header2')
+    @include('partials.footer')
     <div id="content">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="content-area">
@@ -74,31 +75,30 @@
                                         </div>
                                     </div>
                                 </aside>
-                                <div class="col-md-4">
-                                    <div class="box">
-                                        <p>{{ $fullview->description }}</p>
-                                    </div>
-                                </div>
-                                <br>
                             </div>
 
                             <div class="col-md-4">
+                                <div class="status"> </div>
+                                <div class="successMsg"> </div>
                                 <aside>
                                     <div class="sidebar">
                                         <div class="box">
-                                            <form action="">
+                                            <form id="sendEquiry" onsubmit="sendEquiry(event);" action="" method="post" enctype="multipart/form-data" accept-charset="UTF-8" files="true">
+                                                  <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <div class="form-group">
-                                                    <input type="text" name="name" placeholder="Full Name" class="form-control">
+                                                    <input type="text" name="name" placeholder="Full Name" class="form-control" required>
                                                     <input type="hidden" name="service_email" value="{{ $fullview->user->email }}" class="form-control">
+                                                    <input type="hidden" name="id" value="{{ $fullview->user->id }}" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="email" name="email" placeholder="Email Address" class="form-control">
+                                                    <input type="email" name="email" placeholder="Email Address" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" name="phone" placeholder="Phone Number" class="form-control">
+                                                    <input type="text" name="phone_no" placeholder="Phone Number" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <textarea name="message"  cols="7" rows="2" class="form-control" placeholder="Message"></textarea>
+                                                    <textarea name="message"  cols="7" rows="1" class="form-control" placeholder="Please enter your message" required>
+                                                    </textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-common">Send</button>
@@ -119,31 +119,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="col-md-4 col-md-offset-3">
-                                    <h4 class="col-md-offset-4">Job Name</h4>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <a href="{{ asset('images/recent-post-03.jpg') }}" class="swipebox" title="Caption Goes Here">
-                                    <img class="responsive-image preview" src="{{ asset('images/recent-post-03.jpg') }}" alt="img">
-                                </a>
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <a href="{{ asset('images/blog-post-01.jpg') }}" class="swipebox" title="Caption Goes Here">
-                                    <img class="responsive-image preview" src="{{ asset('images/blog-post-01.jpg') }}" alt="img">
-                                </a>
-                                <br>
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <a href="{{ asset('images/blog-post-02.jpg') }}" class="swipebox" title="Caption Goes Here">
-                                    <img class="responsive-image preview" src="{{ asset('images/blog-post-02.jpg') }}" alt="img">
-                                </a>
-                                <br>
-                            </div>
+                            @if($fullview->images->count() > 0)
+                                @foreach($fullview->images as $image)
+                                    <div class="col-md-4">
+                                        <a href="{{ asset('images/prev/'.$image->name) }}" class="swipebox" title="Caption Goes Here">
+                                            <img class="img-responsive img-thumbnail img-raised preview" src="{{ asset('images/prev/'.$image->name) }}" alt="img">
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                         <br>
                         <div class="row">
@@ -153,6 +137,11 @@
                                 @else
                                     <button data-toggle="modal" data-target="#authModal" class="btn btn-warning">You have to Login to hire someone</button>
                                 @endif
+                                    <hr>
+                                    <a href="{{ url('about') }}">About us</a> |
+                                    <a href="{{ url('terms') }}">Terms</a> |
+                                    <a href="{{ url('contact') }}">Contact us</a> |
+                                    <a href="{{ url('about') }}">About us</a>
                             </center>
                         </div>
                     </div>
@@ -181,15 +170,24 @@
                             </div>
                             <div class="form-group">
                                 <label for="amount">Offer Amount</label>
-                                <input type="text" name="offer_amount" id="amount" placeholder="How much can you pay for the job, the least on this platform is 1000"
+                                <input type="number" name="offer_amount" id="offer_amount" placeholder="How much can you pay for the job, the least on this platform is 1000"
                                  class="form-control" onkeyup="checkAmount();" required>
                                 <span class="help-block">
                                     <strong id="error"></strong>
                                 </span>
                             </div>
                             <div class="form-group">
+                                <label for="amount">Total amount</label>
+                                <input type="number" name="total_amount" id="total_amount" disabled="disabled" class="form-control">
+                                <span class="">
+                                    <strong id="total">The total amount is the offer amount plus the commission</strong>
+                                </span>
+                            </div>
+                            <div class="form-group">
                                 <label for="duration">Duration</label>
                                 <select name="duration" class="form-control" required>
+                                     <option value="1">1 day</option>
+                                     <option value="2">2 days</option>
                                     <option value="3">3 days</option>
                                     <option value="4">4 days</option>
                                     <option value="5">5 days</option>
@@ -221,13 +219,6 @@
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
                             </div>
-                            <div class="btn-group btn-delete hidden" role="group">
-                                <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button> 
-                            </div>
-
                         </div>
                     </div>
 
@@ -275,13 +266,6 @@
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
                             </div>
-                            <div class="btn-group btn-delete hidden" role="group">
-                                <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button>
-                            </div>
-
                         </div>
                     </div>
 

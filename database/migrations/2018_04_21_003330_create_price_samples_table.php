@@ -12,14 +12,14 @@ class CreatePriceSamplesTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::defaultStringLength(191);
         Schema::create('price_samples', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('service_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('job_name');
             $table->string('amount');
             $table->timestamps();
-            $table->foreign('service_id')->references('id')->on('services')
+            $table->foreign('user_id')->references('id')->on('services')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }

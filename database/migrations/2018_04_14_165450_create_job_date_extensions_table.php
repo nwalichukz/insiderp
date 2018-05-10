@@ -12,7 +12,7 @@ class CreateJobDateExtensionsTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::defaultStringLength(191);
         Schema::create('job_date_extensions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('job_offer_detail_id')->unsigned();

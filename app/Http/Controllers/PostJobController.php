@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\JobOfferDetailController;
 use App\PostJob;
+use App\Service;
+use Auth;
 
 class PostJobController extends Controller
 {
@@ -12,35 +15,41 @@ class PostJobController extends Controller
     *
     * @var request
     */
-    public static function postJob(Request $request)
-    { $postjob = new PostJob;
-     $postjob->name = $request['name'];
-     $postjob->phone_no = $request['phone_no'];
-     $postjob->email = $request['email'];
-     $postjob->status = 'pending';
-     $postjob->job_category = $request['job_category'];
-     $postjob->description = $request['job_description'];
-     $postjob->save();
+    public static function create(Request $request)
+    {
+        $postjob = new PostJob;
+        $postjob->name = $request['name'];
+        $postjob->user_id = Auth::user()->id;
+        $postjob->budget = $request['budget'];
+        $postjob->duration = $request['duration'];
+        $postjob->commission = JobOfferDetailController::commission($request['budget']);
+        $postjob->total_amount = $postjob->budget + $postjob->commission;
+        $postjob->status = 'available';
+        $postjob->job_category = $request['job_category'];
+        $postjob->job_description = $request['job_description'];
+        $postjob->save();
+         return true;
     }
      /**
-    * returns a job that are pending
+    * returns a job that are availabe
     *
     */
-     public static function getPending()
-     {
-     	return PostJob::where('status', 'pending')->get();
+     public static function getAvailableJob()
+     {  $category = Service::where('user_id', Auth::user()->id)->first();
+     	return PostJob::where('status', 'available')
+                        ->where('job_category', $category->service_category)
+                        ->where('user_id', '!=', Auth::user()->id)->with('user')->paginate(10);
      }
 
-     /**
-    * returns a job by category
-    *
-    * @var request
-    */
-     public static function getPendingByCategory($category)
-     {
-     	return PostJob::where('status', 'pending')
-     				    ->where('job_category', $category)->get();
-     }
+    /**
+     * returns a jobs posted by a user
+     *
+     */
+    public static function getUserJobs()
+    {
+        $jobs = PostJob::where('user_id', Auth::user()->id);
+        return $jobs->paginate(10);
+    }
     /**
     * changes the status of a posted job
     *
@@ -48,7 +57,7 @@ class PostJobController extends Controller
     */
     public static function changeStatus(Request $request)
     {
-    	$change = PostJob::find($id);
+    	$change = PostJob::find($request['id']);
     	$change->status = $request['status'];
     	$change->save();
     }

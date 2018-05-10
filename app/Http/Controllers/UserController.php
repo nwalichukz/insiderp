@@ -45,7 +45,6 @@ class UserController extends Controller
      { $user = User::find($user_id);
      	$user->update($request->all());
      	$user->save();
-
      	return true;
      }
 
