@@ -14,7 +14,7 @@
 				</div>
 				
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Business">
+					<a href="search-category/Business and Consulting">
 						<div class="icon">
 							<i class="fa fa-money"></i>
 						</div>
@@ -62,7 +62,7 @@
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Repairs">
+					<a href="search-category/Repairs and Services">
 						<div class="icon">
 							<i class="fa fa-gear"></i>
 						</div>

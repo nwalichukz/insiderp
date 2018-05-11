@@ -3,8 +3,9 @@
     Full view - {{ $fullview->name }}
 @endsection
 @section('content')
-    @include('partials.header2')
-    @include('partials.footer')
+@include('partials.header2')
+@include('partials.searchform')
+   
     <div id="content">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="content-area">
@@ -14,7 +15,12 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <center>
-                                    <img src="{{ asset('assets/img/blog/author.jpg') }}" name="avatar" width="140" height="140" border="0" class="img-circle"></a>
+                                    @if(!empty($search_result->user->avater->avater))
+                                    <img src="{{ asset("images/user/".$search_result->user->avater->avater) }}" name="avatar" width="140" height="140" border="0" class="img-circle"></a>
+                                    @else
+                                    <img src="{{ asset("images/logo/logo.png") }}" alt="">
+                                    @endif
+
                                     <h3 class="media-heading">{{ ucfirst($fullview->user->name) }} <small>{{ ucfirst($fullview->user->location) }}</small></h3>
                                     <div class="social-link">
                                         <a href="#"  data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-f"></i></a>
@@ -41,7 +47,7 @@
                                             <ul class="detail-list">
                                                 <li>
                                                     <a href="#">Service Id</a>
-                                                    <span class="type-posts">BD1246789</span>
+                                                    <span class="type-posts">BD-{{$fullview->id}}</span>
                                                 </li>
                                                 <li>
                                                     <a href="#">Profession</a>
@@ -186,8 +192,8 @@
                             <div class="form-group">
                                 <label for="duration">Duration</label>
                                 <select name="duration" class="form-control" required>
-                                     <option value="1">1 day</option>
-                                     <option value="2">2 days</option>
+                                    <option value="1">1 day</option>
+                                    <option value="2">2 days</option>
                                     <option value="3">3 days</option>
                                     <option value="4">4 days</option>
                                     <option value="5">5 days</option>
@@ -275,4 +281,5 @@
         </div>
 
     </div>
+
 @endsection

@@ -18,10 +18,10 @@
 					<div class="widget">
 						<h3 class="block-title">Quick Links</h3>
 						<ul class="menu">
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Support</a></li>
-							<li><a href="#">Terms & Conditions</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="{{url('/about')}}">About Us</a></li>
+							<li><a href="{{url('/contact')}}">Support</a></li>
+							<li><a href="{{url('/terms')}}">Terms & Conditions</a></li>
+							<li><a href="{{url('/contact')}}">Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 							<li><a href="search-category/Programming and IT">Android Developer</a></li>
 							<li><a href="search-category/Art and Design">Graphic Designer</a></li>
 							<li><a href="search-category/Programming and IT">Frontend Developer</a></li>
-							<li><a href="search-category/Entertainment">MC</a></li>
+							<li><a href="search-category/Entertainment and Video Editing">MC</a></li>
 							<li><a href="search-category/Sewing and Makeups">Makeup Artist</a></li>
 						</ul>
 					</div>

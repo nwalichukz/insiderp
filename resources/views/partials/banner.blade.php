@@ -28,14 +28,14 @@
 									<label class="styled-select">
 									<select class="dropdown-product selectpicker" name="service_category">
 										<option value="">Select Service Category</option>
-										<option>Entertainment</option>
-										<option>Business</option>
+										<option>Entertainment and Video Editing</option>
+										<option>Business and Consulting</option>
 										<option>Education and Training</option>
 										<option>Art and Design</option>
 										<option>Events and Lifestyle</option>
 										<option>Programming and IT</option>
 										<option>Sewing and Makeups</option>
-										<option>Repairs</option>
+										<option>Repairs and Services</option>
 									</select>
 									</label>
 								</div>

@@ -71,4 +71,15 @@ class BiddingController extends Controller
      $bid->save();
 
      }
+      /**
+    * This method cancels a bid 
+    *
+    * for a aprticular job
+    *
+    * @return respnse
+    *
+    */
+      public static function cancelBid($id){
+        $delete = Bidding::where('id', $id)->delete();
+      }
 }

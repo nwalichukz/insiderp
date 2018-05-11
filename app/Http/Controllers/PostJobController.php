@@ -72,4 +72,49 @@ class PostJobController extends Controller
      	return PostJob::where('id', $id)->delete($id);
      }
 
+    /**
+    * returns a job
+    *
+    * @var id
+    */
+     public static function get($id)
+     {
+        return PostJob::find($id);
+     }
+
+    /**
+    * updates a job
+    *
+    * @var id
+    */
+
+    public static function update(Request $request)
+    {
+        $update = PostJob::find($request['id']);
+        if(!empty($request['name']))
+        {
+            $update->name = $request['name'];
+        }
+         if(!empty($request['job_category']))
+        {
+            $update->job_category = $request['job_category'];
+        }
+         if(!empty($request['job_description']))
+        {
+            $update->job_description = $request['job_description'];
+        }
+         if(!empty($request['budget']))
+        {
+        $update->budget = $request['budget'];
+        $update->commission = JobOfferDetailController::commission($request['budget']);
+        $update->total_amount = $update->budget + $update->commission;
+        }
+         if(!empty($request['duration']))
+        {
+            $update->duration = $request['duration'];
+        }
+        
+        $update->save();
+        return true;
+    }
 }

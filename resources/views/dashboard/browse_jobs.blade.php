@@ -26,7 +26,8 @@ Browse Jobs | Bido
                                                 </div>
                                             </div>
                                             <div class="pull-right">
-                                                <a href="{{ url('bid/'.$job->id) }}" class="btn btn-common btn-rm">Apply</a>
+                                                <a href="{{ url('bid/'.$job->id) }}" title="Apply for this job" class="btn btn-common btn-rm">Apply</a>
+                                                <a href="{{ url('cancel-bid/'.$job->id) }}" title="Cancel job application" class="btn btn-common btn-rm">Cancel</a>
                                             </div>
                                         </div>
                                     </div>
