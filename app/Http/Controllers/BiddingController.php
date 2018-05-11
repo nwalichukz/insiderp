@@ -71,4 +71,5 @@ class BiddingController extends Controller
      $bid->save();
 
      }
+
 }

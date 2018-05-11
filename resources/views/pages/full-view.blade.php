@@ -4,7 +4,6 @@
 @endsection
 @section('content')
     @include('partials.header2')
-    @include('partials.footer')
     <div id="content">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="content-area">
@@ -14,7 +13,15 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <center>
-                                    <img src="{{ asset('assets/img/blog/author.jpg') }}" name="avatar" width="140" height="140" border="0" class="img-circle"></a>
+                                    @if(!empty($search_result->user->avater->avater))
+                                        <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $fullviev->id]) }}">
+                                            <img src="{{ asset("images/user/".$fullview->user->avater->avater) }}" alt="logo image" width="140" height="140" class="img-circle">
+                                        </a>
+                                    @else
+                                        <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $fullview->id]) }}">
+                                            <img src="{{ asset("images/logo/logo.png") }}" alt="" width="140" height="140" class="img-circle">
+                                        </a>
+                                    @endif
                                     <h3 class="media-heading">{{ ucfirst($fullview->user->name) }} <small>{{ ucfirst($fullview->user->location) }}</small></h3>
                                     <div class="social-link">
                                         <a href="#"  data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-f"></i></a>
@@ -22,11 +29,7 @@
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube"></i></a>
                                     </div>
-                                    <span><strong>Skills: </strong></span>
-                                    <span class="label label-warning">HTML5/CSS</span>
-                                    <span class="label label-info">Adobe CS 5.5</span>
-                                    <span class="label label-info">Microsoft Office</span>
-                                    <span class="label label-success">Windows XP, Vista, 7</span>
+
                                     <div class="col-md-4">
                                         <p>{{ $fullview->user->description }}</p>
                                     </div>

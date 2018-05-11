@@ -9,6 +9,6 @@ class ServiceCategoryController extends Controller
 {
     public static function category()
     {
-    	return ServiceCategory::get();
+    	return ServiceCategory::all();
     }
 }

@@ -26,19 +26,23 @@ Browse Jobs | Bido
                                                 </div>
                                             </div>
                                             <div class="pull-right">
+                                                @if($job->bidding->hasMadeBid(Auth::user()->service->id))
+                                                    <a href="" class="btn btn-danger">Cancel</a>
+                                                @endif
                                                 <a href="{{ url('bid/'.$job->id) }}" class="btn btn-common btn-rm">Apply</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         @endforeach
                     </div>
 
                 @else
-                    <div class="col-md-8">
-                        <p>There are no available jobs for you at the moment</p>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="box">
+                            <p>There are no available jobs for you at the moment</p>
+                        </div>
                     </div>
                 @endif
                 <ul class="pagination">

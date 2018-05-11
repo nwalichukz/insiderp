@@ -36,6 +36,7 @@ class PostJobController extends Controller
     */
      public static function getAvailableJob()
      {  $category = Service::where('user_id', Auth::user()->id)->first();
+        if (!$category) return redirect()->back();
      	return PostJob::where('status', 'available')
                         ->where('job_category', $category->service_category)
                         ->where('user_id', '!=', Auth::user()->id)->with('user')->paginate(10);

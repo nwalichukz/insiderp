@@ -38,7 +38,7 @@ Search Results| Bido
                             </div>
                         </div>
                         <div class="col-md-1 col-sm-6">
-                            <button type="submit" class="btn btn-common"><i class="ti-search"></i></button>
+                            <button type="submit" class="btn btn-search-icon"><i class="ti-search"></i></button>
                         </div>
                     </div>
                 </div>
