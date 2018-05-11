@@ -61,7 +61,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ url('manage-applications') }}">
-                                                Applications
+                                                 My posted jobs
                                             </a>
                                         </li>
                                     </ul>
@@ -146,7 +146,7 @@
                             </li>
                             <li>
                                 <a href="{{ url('manage-applications') }}">
-                                    Applications
+                                    My posted jobs
                                 </a>
                             </li>
                         </ul>

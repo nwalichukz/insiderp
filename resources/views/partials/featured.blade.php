@@ -9,12 +9,12 @@
                                         <div class="featured-inner">
                                             <figure class="item-thumb">
                                                 @if(!empty($search_result->user->avater->avater))
-                                                <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
+                                                <a class="hover-effect" href="{{ url('view-search/'.$search_result->id) }}">
                                                     <img src="{{ asset("images/user/".$search_result->user->avater->avater) }}" alt="logo image">
                                                 </a>
                                                 @else
-                                                <a class="hover-effect" href="{{ action('interfaceController@fullView', ['id' => $search_result->id]) }}">
-                                                    <img src="{{ asset("images/logo/logo.png") }}" alt="">
+                                                <a class="hover-effect" href="{{ url('view-search/'.$search_result->id) }}">
+                                                    <img src="{{ asset("images/logo/logo.png") }}" alt="default image">
                                                 </a>
                                                 @endif
                                             </figure>

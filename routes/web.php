@@ -47,7 +47,7 @@ Route::get('my-applications', 'interfaceController@myApplications')->name('my-ap
 Route::get('/service', 'interfaceController@service')->name('service');
 Route::post('/service/add', 'interfaceController@createService')->name('addService');
 Route::post('/search', 'interfaceController@postSearch')->name('search');
-Route::get('/view/{id}', 'interfaceController@fullView')->name('fullView');
+Route::get('/view-search/{id}', 'interfaceController@fullView');
 Route::get('profile/edit/', 'interfaceController@editProfile')->name('editProfile');
 Route::post('profile/update', 'interfaceController@updateProfile')->name('updateProfile');
 Route::post('/change-avatar', 'interfaceController@addAvatar')->name('updateAvatar');
@@ -80,4 +80,8 @@ Route::post('/post-enquiry', 'interfaceController@contactUs');
 Route::get('/get-all-enquiry', 'interfaceController@getAllEnquiry');
 Route::get('/get-enquiry/{id}', 'interfaceController@getEnquiry');
 Route::get('/delete-enquiry/{id}', 'interfaceController@deleteEnquiry');
+Route::get('/edit-posted-job/{id}', 'interfaceController@editPostedJob');
+Route::get('/delete-posted-job/{id}', 'interfaceController@deletePostedJob');
+Route::post('/update-posted-job', 'interfaceController@updatePostedJob')->name('postJobUpdate');
+
 

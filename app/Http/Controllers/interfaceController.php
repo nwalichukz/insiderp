@@ -31,7 +31,7 @@ class interfaceController extends Controller
     public static function checkSession()
     {
         if(!Auth::check())
-        {   self::logout();
+        {   Auth::logout();
             return redirect('/');
         }
     }
@@ -45,7 +45,7 @@ class interfaceController extends Controller
      */
       protected function postLogin(Request $request)
     {   $this->validate($request, [
-        'phone_no' => 'required|min:11',
+        'email' => 'required|email',
         'password' => 'required|max:255'
         ]);
        
@@ -63,7 +63,7 @@ class interfaceController extends Controller
             return redirect('suspended-banned');
         }else{
         	Auth::logout();
-        	flash()->error("Phone number or Password Incorrect");
+        	flash()->error("Email or Password Incorrect");
             return redirect()->back();
         }
    
@@ -95,7 +95,7 @@ class interfaceController extends Controller
             return redirect('suspended-banned');
         }else{
             Auth::logout();
-            flash()->error("Phone number or Password Incorrect");
+            flash()->error("Email or Password Incorrect");
             return redirect()->back();
         }
    
@@ -161,7 +161,7 @@ class interfaceController extends Controller
      */
     public function contact()
     {
-    	return view('pages.contact')->with(['title' => 'Contact Page']);
+    	return view('pages.contact')->with(['title' => 'Contact Page | Bido']);
     }
 
     /**
@@ -170,7 +170,7 @@ class interfaceController extends Controller
  */
     public function terms()
     {
-        return view('pages.terms')->with(['title' => 'Terms and Conditions']);
+        return view('pages.terms')->with(['title' => 'Terms and Conditions | Bido']);
     }
 
     /**
@@ -437,14 +437,16 @@ class interfaceController extends Controller
  *
  */
 
-  public function searchCategory($category)
-  {
-      $categorys = ServiceCategoryController::category();
-       $search = searchController::searchCategory($category);
+
+  public function searchCategory($scategory)
+  {    
+       $category = ServiceCategoryController::category();
+       $search = searchController::searchCategory($scategory);
     if($search)
     {
         return view('pages.search-results')->with(['search'=> $search['search'],
-                    'total_search'=>$search['total_search'], 'category' => $categorys]);
+                    'total_search'=>$search['total_search'], 'category' => $category]);
+
     }else{
         flash('Something went wrong, the system could respond as expected')->error();
         return redirect()->back();
@@ -456,11 +458,13 @@ class interfaceController extends Controller
  *
  */
   public function fullView($id)
-  {
+  {   $category = ServiceCategoryController::category();
     $fullview = searchController::fullview($id);
+    //$related = SearchController::relatedSearch($title);
+
     if(!empty($fullview))
     {   ViewController::add($id);
-        return view('pages.full-view')->with(['fullview' => $fullview]);
+        return view('pages.full-view')->with(['fullview' => $fullview, 'category' => $category]);
     }else{
          flash('Something went wrong, the system could respond as expected')->error();
         return redirect()->back();
@@ -810,7 +814,10 @@ public function deleteService($id)
     }
 
     public function serviceCompletedJobs($service_id)
-    {
+    {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }
         $user = UserController::getUser(Auth::user()->id);
         $jobs = JobController::myJob($service_id);
         //$service = ServiceController::get($user->service->id);
@@ -821,7 +828,10 @@ public function deleteService($id)
 
     public function jobsOngoing()
     {
-        
+         if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }
         $jobs_ongoing = $jobs = JobController::jobOffer();
 
 
@@ -832,7 +842,10 @@ public function deleteService($id)
 
 
     public function jobsCompleted()
-    {
+    {  if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }
         $user = UserController::getUser(Auth::user()->id);
         $jobs_completed = $jobs = JobController::jobOffer();
 
@@ -878,6 +891,10 @@ public function deleteService($id)
     * @return response
     */
  public function jobDone($job_id){
+    if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }
    $done = JobController::jobDone($job_id);
    if($done){
     flash('Ok, congrats your client would be notified or you can also notify him')->success();
@@ -894,6 +911,10 @@ public function deleteService($id)
     * @return response
     */
   public function acceptOffer($id){
+    if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }
     $offer = JobController::acceptOffer($id);
     if($offer){
         flash('Offer accepted successfully, await a response from Bido team when he pays to start the Job')->success();
@@ -927,11 +948,11 @@ public function deleteService($id)
      * @var request
      * @return response
      */
-    public function myPostedJobs()
+   /* public function myPostedJobs()
     {
         $jobs = PostJobController::getUserJobs();
         return view('dashboard.posted_jobs')->with(['jobs' => $jobs]);
-    }
+    }*/
     /**
      * returns all applications to job
      *
@@ -939,10 +960,65 @@ public function deleteService($id)
      * @return response
      */
     public function applications()
-    {
-        return view('dashboard.applications');
+    {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }   
+        $postedjob = PostJobController::getUserJobs();
+        return view('dashboard.applications')->with(['jobs' => $postedjob]);
     }
+     /**
+     * returns a particular posted job by
+     * a user
+     * 
+     * @var id
+     * 
+     */
+    public function editPostedJob($id)
+    {
+        $category = ServiceCategoryController::category();
+        $job = PostJobController::get($id);
+        return view('dashboard.editpostedjob')->with(['job' => $job, 'category' => $category]);
+    }
+     /**
+     * updates a posted job by
+     * a user
+     * 
+     * @var id
+     * 
+     */
+     public function updatePostedJob(Request $request)
+     {
+        $update = PostJobController::update($request);
+        if($update)
+        {
+            flash('Posted job updated successfully')->success();
+            return redirect()->back();
+        }else{
+            flash('Something went wrong, Posted job not updated successfully. Please try again')->error();
+            return redirect()->back();
+        }
+     }
 
+      /**
+     * deletes a posted job by
+     * a user
+     * 
+     * @var id
+     * 
+     */
+      public function deletePostedJob($id)
+      {
+        $delete = PostJobController::delete($id);
+        if($delete)
+        {
+             flash('Posted job deleted successfully')->success();
+            return redirect()->back();
+        }else{
+            flash('Something went wrong, Posted job not deleted successfully. Please try again')->error();
+            return redirect()->back();
+        }
+      }
 
     // sends an enquiry through ajax
 

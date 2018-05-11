@@ -72,4 +72,16 @@ class BiddingController extends Controller
 
      }
 
+      /**
+    * This method cancels a bid 
+    *
+    * for a aprticular job
+    *
+    * @return bool
+    *
+    */
+      public static function cancelBid($id){
+        $delete = Bidding::where('id', $id)->delete();
+        return true;
+      }
 }

@@ -1,43 +1,52 @@
 @extends('layouts.app')
 @section('title')
-    Job Applications | Bido
+    My Posted Jobs | Biddo
 @endsection
-
 @section('content')
 @include('partials.header2')
-<div id="content">
-    <div class="container">
+<section class="job-browse section">
+<div class="container">
         <div class="row">
-            <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
-                <div class="job-alerts-item candidates">
-                    <h3 class="alerts-title">Manage Applications</h3>
-                    <div class="manager-resumes-item">
-                        <div class="manager-content">
-                            <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
-                            <div class="manager-info">
-                                <div class="manager-name">
-                                    <h4><a href="#">name</a></h4>
-                                    <h5>Profession Title</h5>
-                                </div>
-                                <div class="manager-meta">
-                                    <span class="location"><i class="ti-location-pin"></i> location</span>
-                                    <span class="rate"><i class="fa fa-money"></i> amount</span>
+<div class="col-md-12 col-sm-12 col-xs-12">
+                @if($jobs->count() > 0)
+                    <div class="row">
+                        @foreach($jobs as $job)
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="job-list">
+                                    <div class="job-list-content">
+                                        <h4><a href="job-details.html">{{ $job->name }}</a><span class="full-time">&#8358; {{ $job->total_amount }}</span></h4>
+                                        <p>{{ $job->job_description }}</p>
+                                        <div class="job-tag">
+                                            <div class="pull-left">
+                                                <div class="meta-tag">
+                
+                                                    <span><i class="ti-time"></i>Duration: {{$job->duration}} days</span>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right">
+                                                 <a href="{{ url('view-bids/'.$job->id) }}" title="view bids for this job" class="btn btn-common btn-rm"><i class="fa fa-view"></i></a>
+                                                <a href="{{ url('edit-posted-job/'.$job->id) }}" title="Edit posted job" class="btn btn-common btn-rm"><i class="fa fa-edit"></i></a>
+                                                 <a href="{{ url('delete-posted-job/'.$job->id) }}" title="delete posted job" class="btn btn-common btn-rm"><i class="fa fa-close"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="update-date">
-                            <p class="status">
-                                <strong>Updated on:</strong> Fab 22, 2017
-                            </p>
-                            <div class="action-btn">
-                                <a class="btn btn-xs btn-danger" href="#">Delete</a>
-                                <a class="btn btn-xs btn-success" href="#">Offer Job</a>
-                            </div>
-                        </div>
+
+                        @endforeach
                     </div>
-                </div>
+
+                @else
+                    <div class="col-md-8">
+                        <p>There are no available jobs for you at the moment</p>
+                    </div>
+                @endif
+                <ul class="pagination">
+                    {{ $jobs->links() }}
+                </ul>
+
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection
