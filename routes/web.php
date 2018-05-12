@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/send-mail', function (){
+    Mail::raw('emails with mailgun is fun', function ($message){
+        $message->subject('Welcome to Bido!');
+        $message->from('support@bido.com.ng');
+        $message->to('mamahemeka84@gmail.com');
+    }) ;
+});
 Route::get('/', 'interfaceController@index');
 Route::post('/send-enquiry', 'interfaceController@sendEquiry');
 Route::get('/about', 'interfaceController@about')->name('about');
