@@ -21,6 +21,11 @@ class Service extends Model
       return $this->hasMany('App\PrevWorkImage');
     }
 
+    public function jobOffer()
+    {
+        return $this->hasMany(JobOfferDetail::class, 'service_id');
+    }
+
      public function view() {
       return $this->hasOne('App\view');
     }

@@ -33,13 +33,14 @@ Browse Jobs | Bido
                                     </div>
                                 </div>
                             </div>
-
                         @endforeach
                     </div>
 
                 @else
-                    <div class="col-md-8">
-                        <p>There are no available jobs for you at the moment</p>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="box">
+                            <p>There are no available jobs for you at the moment</p>
+                        </div>
                     </div>
                 @endif
                 <ul class="pagination">

@@ -70,7 +70,7 @@
 						<div class="content-area">
 							<div class="clearfix">
 								<div class="box">
-									<h4>Basic Information</h4>
+									<h6>Basic Information</h6>
 									<div class="row">
 										<div class="col-md-4">
 											<div class="dash-box dash-box-color-3">
@@ -79,7 +79,7 @@
 												</div>
 												<a href="{{ url('job-offers', $service->id) }}">
 													<div class="dash-box-body">
-														<span class="dash-box-count">5</span>
+														<span class="dash-box-count">{{ $service->jobOffer->count() }}</span>
 														<span class="dash-box-title">Job Offers</span>
 													</div>
 												</a>
@@ -96,7 +96,7 @@
 												</div>
 												<a href="{{ url('ongoing-jobs', $service->id) }}">
 													<div class="dash-box-body">
-														<span class="dash-box-count">8</span>
+														<span class="dash-box-count">{{ $ongoing}}</span>
 														<span class="dash-box-title">Ongoing Jobs</span>
 													</div>
 												</a>
@@ -113,7 +113,7 @@
 												</div>
 												<a href="{{ url('completed-jobs', $service->id) }}">
 													<div class="dash-box-body">
-														<span class="dash-box-count">3</span>
+														<span class="dash-box-count">{{ $completed }}</span>
 														<span class="dash-box-title">Jobs Completed</span>
 													</div>
 												</a>
@@ -123,10 +123,14 @@
 												</div>
 											</div>
 										</div>
+										<div class="col-md-8 col-md-offset-5">
+											<a href="{{ url('my-applications') }}" class="btn btn-common">My Applications <i class="ti-arrow-right"></i></a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 				@else

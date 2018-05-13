@@ -43,7 +43,7 @@ Login | Sign up
 								<div class="checkbox-item">
 									<div class="checkbox">
 										<label for="rememberme" class="rememberme">
-											<input name="rememberme" id="rememberme" value="forever" type="checkbox" {{ old('remember') ? 'checked' : '' }}> Remember Me
+											<input name="remember" id="rememberme" value="forever" type="checkbox" {{ old('remember') ? 'checked' : '' }}> Remember Me
 										</label>
 									</div>
 									<p class="cd-form-bottom-message"><a href="#0">Lost your password?</a></p>

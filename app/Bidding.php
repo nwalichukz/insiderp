@@ -13,4 +13,5 @@ class Bidding extends Model
     {
     	return $this->belongsTo('App\PostJob', 'post_job_id');
     }
+
 }

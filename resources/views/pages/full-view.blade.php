@@ -3,9 +3,13 @@
     Full view - {{ $fullview->name }}
 @endsection
 @section('content')
+<<<<<<< HEAD
+    @include('partials.header2')
+=======
 @include('partials.header2')
 @include('partials.searchform')
    
+>>>>>>> e37ce199f842c42fb1ebccec6332762abf25ad11
     <div id="content">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="content-area">
@@ -28,11 +32,7 @@
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube"></i></a>
                                     </div>
-                                    <span><strong>Skills: </strong></span>
-                                    <span class="label label-warning">HTML5/CSS</span>
-                                    <span class="label label-info">Adobe CS 5.5</span>
-                                    <span class="label label-info">Microsoft Office</span>
-                                    <span class="label label-success">Windows XP, Vista, 7</span>
+
                                     <div class="col-md-4">
                                         <p>{{ $fullview->user->description }}</p>
                                     </div>

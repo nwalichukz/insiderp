@@ -1,10 +1,3 @@
-<!--
-/**
- * Created by PhpStorm.
- * User: emeka
- * Date: 3/7/18
- * Time: 11:42 PM
- */ -->
 @extends('layouts.app')
 @section('title')
     My Posted Jobs | Biddo

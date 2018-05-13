@@ -103,10 +103,11 @@ class BiddingController extends Controller
     *
     * for a aprticular job
     *
-    * @return respnse
+    * @return bool
     *
     */
       public static function deleteBid($id){
         $delete = Bidding::where('id', $id)->delete();
+        return true;
       }
 }

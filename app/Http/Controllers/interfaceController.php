@@ -192,7 +192,9 @@ class interfaceController extends Controller
  {  if(Auth::check() AND Auth::user()->user_level === 'user'){
     $user = Auth::user();
     $service = ServiceController::getUserService($user->id);
-    return view('dashboard.index')->with(['user' => $user, 'service' => $service]);
+    $ongoing = JobController::ongoingJobsCount($service->id);
+    $completed = JobController::completedJobsCount($service->id);
+    return view('dashboard.index')->with(['user' => $user, 'service' => $service, 'ongoing' => $ongoing, 'completed' => $completed]);
     }
     else
     {
@@ -427,6 +429,7 @@ class interfaceController extends Controller
  *
  */
 
+
   public function searchCategory($scategory)
   {    
        $category = ServiceCategoryController::category();
@@ -435,6 +438,7 @@ class interfaceController extends Controller
     {
         return view('pages.search-results')->with(['search'=> $search['search'],
                     'total_search'=>$search['total_search'], 'category' => $category]);
+
     }else{
         flash('Something went wrong, the system could respond as expected')->error();
         return redirect()->back();
@@ -737,6 +741,7 @@ public function deleteService($id)
             'budget' => 'required|numeric|min:1000',
             'job_description' => 'required',
             'job_category' => 'required',
+            'duration' => 'required',
         ]);
    
         $post = PostJobController::create($request);
@@ -1149,6 +1154,15 @@ public function deleteService($id)
             flash('Something went wrong, operation failed. Please try again')->error();
             return redirect()->back();
          }
+
+    }
+
+    public function myApplications()
+    {
+        $service = ServiceController::getUserService(Auth::user()->id);
+        $applications = BiddingController::jobBidding($service->id);
+
+        return view('dashboard.my_applications')->with('applications', $applications);
 
     }
 }

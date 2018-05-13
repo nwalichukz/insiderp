@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\JobProgress;
 use Illuminate\Http\Request;
 use App\JobOfferDetail;
 use App\User;
@@ -77,6 +78,34 @@ class JobController extends Controller
     {
     	return JobOfferDetail::where('service_id', $service_id)->with('job_owner')->with('job_progress')
                                 ->with('job_approval')->with('job_payment')->get();
+    }
+
+    // this method returns the number of ongoing jobs for a service
+    public static function ongoingJobsCount($service_id)
+    {
+        $jobs = JobOfferDetail::where('service_id', $service_id)->get();
+        $count = 0;
+        foreach ($jobs as $job)
+        {
+            $job_progress = JobProgress::where('progress_status', 'ongoing')
+                ->where('job_offer_detail_id', $job->id)->count();
+
+            return $job_progress;
+        }
+    }
+
+    // this method returns the number of completed jobs for a service
+    public static function completedJobsCount($service_id)
+    {
+        $jobs = JobOfferDetail::where('service_id', $service_id)->get();
+        $count = 0;
+        foreach ($jobs as $job)
+        {
+            $job_progress = JobProgress::where('progress_status', 'completed')
+                ->where('job_offer_detail_id', $job->id)->count();
+
+            return $job_progress;
+        }
     }
 
       /**

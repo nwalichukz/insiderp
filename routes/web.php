@@ -43,6 +43,7 @@ Route::get('/jobs-ongoing', 'interfaceController@jobsOngoing');
 Route::get('/jobs-completed', 'interfaceController@jobsCompleted');
 Route::get('/offers', 'interfaceController@offers')->name('offer');
 Route::get('/manage-applications', 'interfaceController@applications')->name('manage-applications');
+Route::get('my-applications', 'interfaceController@myApplications')->name('my-applications');
 Route::get('/service', 'interfaceController@service')->name('service');
 Route::post('/service/add', 'interfaceController@createService')->name('addService');
 Route::post('/search', 'interfaceController@postSearch')->name('search');

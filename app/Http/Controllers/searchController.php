@@ -65,12 +65,13 @@ class searchController extends Controller
     *
     * services entered by the user base n category
     *
-    * @return collection
+    * @return array
     * @var request
     */
      public static function searchCategory($category)
      {   
-     	 $query = Service::where('service_category', $category)
+     	 $query = $query = Service::where('service_category', str_replace('-', ' ', $category))
+
      			 ->orderBy('created_at','DESC')->with('user')->with('view')->with('avater');
      	return ['search' => $query->paginate(12), 'total_search' => $query->count()];
      }

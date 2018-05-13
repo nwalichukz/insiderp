@@ -20,6 +20,7 @@ class CreatePostJobsTable extends Migration
             $table->string('budget');
             $table->string('commission');
             $table->string('total_amount');
+            $table->string('duration');
             $table->string('status');
             $table->string('job_category');
             $table->text('job_description');
