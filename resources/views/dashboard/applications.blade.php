@@ -27,11 +27,11 @@
                                             <div class="pull-left">
                                                 <div class="meta-tag">
                 
-                                                    <span><i class="ti-time"></i>Duration: {{$job->duration}} days</span>
+                                                    <span><i class="ti-time"></i>Duration:@if($job->duration > 1) {{$job->duration}} days @else {{$job->duration}} day @endif</span>
                                                 </div>
                                             </div>
                                             <div class="pull-right">
-                                                 <a href="{{ url('view-bids/'.$job->id) }}" title="view bids for this job" class="btn btn-common btn-rm"><i class="fa fa-view"></i></a>
+                                                 <a href="{{ url('view-applications/'.$job->id) }}" title="view bids for this job" class="btn btn-common btn-rm"><i class="fa fa-view"></i>view applications</a>
                                                 <a href="{{ url('edit-posted-job/'.$job->id) }}" title="Edit posted job" class="btn btn-common btn-rm"><i class="fa fa-edit"></i></a>
                                                  <a href="{{ url('delete-posted-job/'.$job->id) }}" title="delete posted job" class="btn btn-common btn-rm"><i class="fa fa-close"></i></a>
                                             </div>

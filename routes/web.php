@@ -82,5 +82,8 @@ Route::get('/delete-enquiry/{id}', 'interfaceController@deleteEnquiry');
 Route::get('/edit-posted-job/{id}', 'interfaceController@editPostedJob');
 Route::get('/delete-posted-job/{id}', 'interfaceController@deletePostedJob');
 Route::post('/update-posted-job', 'interfaceController@updatePostedJob')->name('postJobUpdate');
+Route::get('/view-applications/{id}', 'interfaceController@viewApplications');
+Route::get('/accept-job-application/{job_id}/{bid_id}', 'interfaceController@acceptApplication');
+Route::get('/cancel-offered-job-application/{job_id}/{bid_id}', 'interfaceController@cancelApplication');
 
 

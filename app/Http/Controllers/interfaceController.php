@@ -28,14 +28,6 @@ use App\PrevWorkImage;
 class interfaceController extends Controller
 {   
 
-    public static function checkSession()
-    {
-        if(!Auth::check())
-        {   Auth::logout();
-            return redirect('/');
-        }
-    }
-
     /**
      * This method checks
      *
@@ -853,8 +845,11 @@ public function deleteService($id)
     * @return response
     */
     public function makeOffer(Request $request)
-
-    {   $this->validate($request,
+    {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }   
+     $this->validate($request,
         [  'job_name'=>'required',
            'offer_amount' => 'required',
            'duration'=>'required',
@@ -927,6 +922,10 @@ public function deleteService($id)
     * @return response
     */
   public function declineOffer(Request $request){
+     if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }   
     $offer = JobController::declineOffer($request);
     if($offer){
         flash('Offer declined successfully')->success();
@@ -983,7 +982,10 @@ public function deleteService($id)
      * 
      */
      public function updatePostedJob(Request $request)
-     {
+     {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }   
         $update = PostJobController::update($request);
         if($update)
         {
@@ -1003,7 +1005,10 @@ public function deleteService($id)
      * 
      */
       public function deletePostedJob($id)
-      {
+      {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }   
         $delete = PostJobController::delete($id);
         if($delete)
         {
@@ -1014,6 +1019,69 @@ public function deleteService($id)
             return redirect()->back();
         }
       }
+
+       /**
+     * returns applications for a posted job by
+     * a user
+     * 
+     * @var id
+     * 
+     */
+       public function viewApplications($id)
+       {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }   
+         $applications = BiddingController::vendorsBidding($id);
+         return view('dashboard.view-applications')->with(['application' => $applications]);
+       }
+
+       /**
+     * accepts applications for a posted job by
+     * a user
+     * 
+     * @var id
+     * 
+     */
+       public function acceptApplication($job_id, $bid_id)
+       {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }   
+         $accept = BiddingController::acceptBid($job_id, $bid_id);
+         if($accept)
+         {
+            flash('Application accepted successfully')->success();
+            return redirect()->back();
+         }else{
+            flash('Something went wrong, application not accepted successfully')->error();
+            return redirect()->back();
+         }
+       }
+
+     /**
+     * cancels applications for a posted job by
+     * a user
+     * 
+     * @var id
+     * 
+     */
+       public function cancelApplication($job_id, $bid_id)
+       {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }     
+        $accept = BiddingController::cancelBid($job_id, $bid_id);
+         if($accept)
+         {
+            flash('Application offer cancelled successfully')->success();
+            return redirect()->back();
+         }else{
+            flash('Something went wrong, application not cancelled successfully')->error();
+            return redirect()->back();
+         }
+
+       }
 
     // sends an enquiry through ajax
 

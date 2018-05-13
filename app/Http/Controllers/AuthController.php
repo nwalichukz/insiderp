@@ -39,4 +39,15 @@ class AuthController extends Controller
         }
        
     }
+
+    public static function checkSession()
+    {
+        if(!Auth::check())
+        {   Auth::logout();
+            return redirect('/');
+        }else{
+            true;
+        }
+
+    }
 }
