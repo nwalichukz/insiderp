@@ -64,6 +64,11 @@
                                                  My posted jobs
                                             </a>
                                         </li>
+                                            <li>
+                                        <a title="The jobs I applied for" href="{{ url('my-applications') }}">
+                                            My Applications for jobs
+                                        </a>
+                                    </li>
                                     </ul>
                                 </li>
                                 @if(Auth::user()->service)
@@ -130,30 +135,35 @@
                         <a href="{{ url('my-jobs') }}"><i class="fa fa-angle-down"></i> My Jobs</a>
                         <ul class="dropdown">
                             <li>
-                                <a class="active" href="{{ url('my-jobs') }}">
+                                <a title="The jobs I offered" class="active" href="{{ url('my-jobs') }}">
                                     Job Offers
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('jobs-ongoing') }}">
+                                <a title="My jobs ongoing" href="{{ url('jobs-ongoing') }}">
                                     Ongoing Jobs
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('jobs-completed') }}">
+                                <a title="The jobs I have completed" href="{{ url('jobs-completed') }}">
                                     Jobs Completed
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('manage-applications') }}">
+                                <a title="The jobs I posted" href="{{ url('manage-applications') }}">
                                     My posted jobs
                                 </a>
                             </li>
+                                <li>
+                                        <a title="The jobs I applied for" href="{{ url('my-applications') }}">
+                                            My Applications for jobs
+                                        </a>
+                                    </li>
                         </ul>
                     </li>
                     @if(Auth::user()->service)
                         <li>
-                            <a href="{{ url('browse_jobs') }}">Browse Jobs</a>
+                            <a title="View posted jobs" href="{{ url('browse_jobs') }}">Browse Jobs</a>
                         </li>
                     @endif
                     @if(!Auth::user()->service)
@@ -165,10 +175,10 @@
                         <a href="{{ url('') }}"><i class="ti-angle-down"></i> {{ Auth::user()->name }}</a>
                         <ul class="dropdown">
                             <li>
-                                <a href="{{ url('user/'.str_replace(' ', '-', strtolower(Auth::user()->name))) }}">Dashboard</a>
+                                <a title="Go to your dashboard home page" href="{{ url('user/'.str_replace(' ', '-', strtolower(Auth::user()->name))) }}">Dashboard</a>
                             </li>
                             <li>
-                                <a href="{{ route('editProfile') }}">Edit Profile</a>
+                                <a title="edit your profile" href="{{ route('editProfile') }}">Edit Profile</a>
                             </li>
                         <!--
                                     <li>
@@ -176,7 +186,7 @@
                                     </li>
                                  -->
                             <li>
-                                <a href="{{ url('logout') }}">Logout</a>
+                                <a title="click to logout" href="{{ url('logout') }}">Logout</a>
                             </li>
                         </ul>
                     </li>

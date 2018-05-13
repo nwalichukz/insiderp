@@ -17,6 +17,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
                 @if($application->count() > 0)
                  <h4><span class="">These services applied for your job </span></h4>
+                 <hr/>
                     <div class="row">
 
                         @foreach($application as $service)

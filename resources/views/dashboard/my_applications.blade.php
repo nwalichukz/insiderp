@@ -13,26 +13,31 @@
                     <hr>
                     @if($applications->count() > 0)
                     @foreach($applications as $application)
-                            <div class="manager-resumes-item">
-                            <div class="manager-content">
-                                <a href="resume.html"><img class="resume-thumb" src="assets/img/jobs/avatar.jpg" alt=""></a>
-                                <div class="manager-info">
-                                    <div class="manager-name">
-                                        <h4><a href="#">{{ $application->postJob->name }}</a></h4>
-                                        <span class="location"><i class="ti-location-pin"></i> {{ $application->postJob->user->location }}</span>
-                                        <span class="rate"><i class="fa fa-money"></i> {{ $application->postJob->budget }}</span>
+                       <div class="col-md-12 col-sm-12 col-xs-12">
+            
+                                <div class="job-list">
+                                    <div class="job-list-content">
+                                        <h4><a href="">{{substr(ucwords(strtolower($application->PostJob->name)), 0, 23) }}</a><span  title="The budget for the job" class="pull-right badge">&#8358; {{ $application->postJob->budget }}</span></h4>
+                                        <p>{{ substr(ucfirst(strtolower($application->postJob->job_description)), 0, 240) }}</p>
+                                        <div class="job-tag">
+                                            <div class="pull-left">
+                                                <div class="meta-tag">
+                                                    <span title="The status of the job at the moment">Status: {{$application->postJob->status}}</span>
+                                                    <span title="Date the job was posted">Posted: {{$application->postJob->created_at->diffForHumans()}}</span>
+                                                     <span title="Date you applied for the job">Applied: {{$application->created_at->diffForHumans()}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right">
+                                                 @if($application->postJob->status === 'available' && $application->status === 'not-offered')
+                                                <a href="{{ url('delete-job-application/'.$application->id) }}" title="Cancel your application for this job" class="btn btn-common btn-rm"><i class="fa fa-edit"></i> Cancel application</a>
+                                                @elseif($application->postJob->status === 'unavailable' && $application->status === 'offered')
+                                                <a href="{{ url('view-service-executing-this-job/'.$application->postJob->id) }}" title="View the service this job was offered to" class="btn btn-common btn-rm"><i class="fa fa-edit"></i> Full view</a>
+                                                 @endif
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="update-date">
-                                <p class="status">
-                                    <strong>Duration:</strong> {{ $application->postJob->duration }}
-                                </p>
-                                <div class="action-btn">
-                                    <a class="btn btn-xs btn-danger" href="#">Delete Offer</a>
-                                </div>
-                            </div>
-                        </div>
                         @endforeach
                     @else
                         <div class="box">

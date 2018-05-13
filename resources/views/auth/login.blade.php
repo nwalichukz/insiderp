@@ -46,7 +46,7 @@ Login | Sign up
 											<input name="remember" id="rememberme" value="forever" type="checkbox" {{ old('remember') ? 'checked' : '' }}> Remember Me
 										</label>
 									</div>
-									<p class="cd-form-bottom-message"><a href="#0">Lost your password?</a></p>
+									<p class="cd-form-bottom-message"><a href="{{url("reset-password")}}">Lost your password?</a></p>
 								</div>
 							</form>
 						</div>

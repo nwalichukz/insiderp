@@ -15,7 +15,7 @@ Browse Jobs | Bido
                             <div class="col-md-6">
                                 <div class="job-list">
                                     <div class="job-list-content">
-                                        <h4><a href="job-details.html">{{ $job->name }}</a><span class="full-time">&#8358; {{ $job->total_amount }}</span></h4>
+                                        <h4><a href="job-details.html">{{ $job->name }}</a><span class="full-time">&#8358; {{ $job->budget }}</span></h4>
                                         <p>{{ $job->job_description }}</p>
                                         <div class="job-tag">
                                             <div class="pull-left">

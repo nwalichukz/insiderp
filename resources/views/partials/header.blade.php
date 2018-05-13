@@ -47,25 +47,30 @@
 									</a>
 									<ul class="dropdown">
 										<li>
-											<a class="active" href="{{ url('my-jobs') }}">
+											<a title="The jobs I offered" class="active" href="{{ url('my-jobs') }}">
 												Job Offers
 											</a>
 										</li>
 										<li>
-											<a href="{{ url('jobs-ongoing') }}">
+											<a title="My jobs ongoing" href="{{ url('jobs-ongoing') }}">
 												Ongoing Jobs
 											</a>
 										</li>
 										<li>
-											<a href="{{ url('jobs-completed') }}">
+											<a title ="The jobs I have completed" href="{{ url('jobs-completed') }}">
 												Jobs Completed
 											</a>
 										</li>
 										<li>
-											<a href="{{ url('manage-applications') }}">
+											<a title="The jobs I posted" href="{{ url('manage-applications') }}">
 												My Posted Jobs
 											</a>
 										</li>
+										<li>
+										<a title="The jobs I applied for" href="{{ url('my-applications') }}">
+											My Applications for jobs
+										</a>
+									</li>
 									</ul>
 								</li>
                                 @if(Auth::user()->service)
@@ -152,6 +157,11 @@
                                     My posted jobs
                                 </a>
                             </li>
+                            	<li>
+										<a title="The jobs I applied for" href="{{ url('my-applications') }}">
+											My Applications for jobs
+										</a>
+									</li>
                         </ul>
                     </li>
                     @if(Auth::user()->service)

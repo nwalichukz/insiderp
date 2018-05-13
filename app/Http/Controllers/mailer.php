@@ -147,7 +147,7 @@ class mailer extends Controller
 	        $message = '
 	        Prior to the offer you accepted from '.$data['name'].'.
 	        The payment for the job has been made fully and you are to start the job immediately.
-	        The money will be transfered to you immediately the job is complete and confirmed by your client.
+	        The money will be transfered to you immediately the job is completed and confirmed by your client.
 	        Failure to deliver on the aggreed date will lead to cancellation of the contract and the money returned 
 	        to the client. Please do not hesitate to inform us if there is any issue. Goodluck !!!
 

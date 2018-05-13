@@ -543,15 +543,56 @@ class interfaceController extends Controller
         return redirect()->back();
     }
    }
-/**
+   /**
  * This method adds prev work images to the
  * @var request
  *
  */
+   public function resetPassword()
+   {  return view('pages.password-reset');
+   }
+/**
+ * This method changes password
+ * @var request
+ *
+ */
+
+ public function postResetPassword(Request $request)
+    {   $this->validate($request,
+        [  'email'=>'required|email',
+          
+           ]);
+        $sentpassword = mt_rand(100000, 1000000);
+        $dbpassword =bcrypt($sentpassword);
+        $data = [ 'password' => $sentpassword
+                        ];
+         $check = User::where('email', $request['email'])->first();
+         if($check){
+          $check->password = $dbpassword;
+          $check->save();
+          $data = ['password' => $sentpassword];
+         // $check->password = $sentpassword;
+
+          mailer::sendpasswordreset($request['email'], $data);
+          flash('A password has been sent to your email. Please check your email and use it to login')->success();
+          return redirect('/');
+       
+        }else{
+        // return response()->json(['error' => 'Email not registered in this platform. Please check if email is correct and try again']);
+            flash('Email not registered in this platform. Please check if email is correct and try again')->error();
+            return redirect::back();
+        }
+    }
+
+    /**
+ * This method changes password
+ * @var request
+ *
+ */
+
    public function changePassword(Request $request)
    { $this->validate($request,
-        [  'phone_no'=>'required',
-           'old_password'=>'required',
+        [  'old_password'=>'required',
            'new_password'=>'required',
            ]);
  
@@ -1158,7 +1199,10 @@ public function deleteService($id)
     }
 
     public function myApplications()
-    {
+    {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+    }     
         $service = ServiceController::getUserService(Auth::user()->id);
         $applications = BiddingController::jobBidding($service->id);
 

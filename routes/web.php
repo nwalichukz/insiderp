@@ -86,5 +86,7 @@ Route::post('/update-posted-job', 'interfaceController@updatePostedJob')->name('
 Route::get('/view-applications/{id}', 'interfaceController@viewApplications');
 Route::get('/accept-job-application/{job_id}/{bid_id}', 'interfaceController@acceptApplication');
 Route::get('/cancel-offered-job-application/{job_id}/{bid_id}', 'interfaceController@cancelApplication');
+Route::get('/reset-password', 'interfaceController@resetPassword');
+Route::post('/post-reset-password', 'interfaceController@postResetPassword')->name('post-reset-password');
 
 
