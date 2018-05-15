@@ -45,7 +45,7 @@ class interfaceController extends Controller
      */
       protected function postLogin(Request $request)
     {   $this->validate($request, [
-        'email' => 'required|email',
+        'phone_no' => 'required|numeric',
         'password' => 'required|max:255'
         ]);
        
@@ -261,7 +261,10 @@ class interfaceController extends Controller
     public function adminJobOffers()
     {
         $admin = AdminController::get(Auth::user()->id);
-        return view('admin.job-offers')->with(['admin'=>$admin]);
+        $jobs = JobController::allJobs();
+
+
+        return view('admin.job-offers')->with(['admin'=>$admin, 'jobs' => $jobs]);
 
     }
 
@@ -273,7 +276,8 @@ class interfaceController extends Controller
     public function adminJobsOngoing()
     {
         $admin = AdminController::get(Auth::user()->id);
-        return view('admin.jobs-ongoing')->with(['admin'=>$admin]);
+        $jobs = JobController::allJobs();
+        return view('admin.jobs-ongoing')->with(['admin'=>$admin, 'jobs' => $jobs]);
 
     }
 
@@ -285,7 +289,8 @@ class interfaceController extends Controller
     public function adminJobsCompleted()
     {
         $admin = AdminController::get(Auth::user()->id);
-        return view('admin.jobs-completed')->with(['admin'=>$admin]);
+        $jobs = JobController::allJobs();
+        return view('admin.jobs-completed')->with(['admin'=>$admin, 'jobs' => $jobs]);
 
     }
 
@@ -1097,4 +1102,6 @@ public function deleteService($id)
         return view('dashboard.my_applications')->with('applications', $applications);
 
     }
+
+
 }

@@ -93,5 +93,8 @@ Route::get('/delete-enquiry/{id}', 'interfaceController@deleteEnquiry');
 Route::get('/edit-posted-job/{id}', 'interfaceController@editPostedJob');
 Route::get('/delete-posted-job/{id}', 'interfaceController@deletePostedJob');
 Route::post('/update-posted-job', 'interfaceController@updatePostedJob')->name('postJobUpdate');
+Route::get('/all-job-offers', 'interfaceController@allJobOffers');
+Route::get('/all-ongoing-jobs', 'interfaceController@allOngoingJobs');
+Route::get('/all-jobs-completed', 'interfaceController@allJobsCompleted');
 
 

@@ -66,6 +66,12 @@ class JobController extends Controller
     	
     }
 
+    public static function allJobs()
+    {
+        return JobOfferDetail::with('job_executor')->with('job_owner')->with('job_progress')
+            ->with('job_approval')->with('job_payment')->get();
+    }
+
      /**
     * This method returns all the job
     *
