@@ -247,8 +247,8 @@
                             {{ csrf_field() }}
                             <h3>Login</h3>
                             <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="text" class="form-control" name="phone_no" placeholder="Phone Number">
+                                <label for="phone">Email Address</label>
+                                <input type="text" class="form-control" name="email" placeholder="Email address e.g jon@gmail.com">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
@@ -260,7 +260,7 @@
                                         <input name="rememberme" id="rememberme" value="forever" type="checkbox"> Remember Me
                                     </label>
                                 </div>
-                                <p class="cd-form-bottom-message"><a href="#0">Lost your password?</a></p>
+                                <p class="cd-form-bottom-message"><a href="{{url("reset-password")}}">Lost your password?</a></p>
                             </div>
                             <div class="form-group">
                                 <button type="submit" value="" class="btn btn-common">Login</button>

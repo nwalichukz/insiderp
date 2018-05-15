@@ -76,18 +76,7 @@
                                     <label class="control-label" for="skills">Skill Name</label>
                                     <input class="form-control" name="skills" placeholder="Skill name, e.g. Design" type="text">
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="control-label" for="proficiency">% (1-100)</label>
-                                    <input class="form-control"name="proficiency" placeholder="Skill proficiency, e.g. 90" type="text" required>
-                                </div>
                             </div>
-                        </div>
-                        <div class="divider">
-                            <h3>Features</h3>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="additional_service">Featured services</label>
-                            <input class="form-control" name="additional_service" placeholder="Feature name, e.g. Home Service" type="text">
                         </div>
                         <input type="submit"class="btn btn-common" value="Add Service">
                     </form>

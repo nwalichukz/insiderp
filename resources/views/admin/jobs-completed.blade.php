@@ -26,19 +26,24 @@
                                             <thead class="thead-inverse">
                                             <tr>
                                                 <th>#</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Gender</th>
-                                                <th></th>
+                                                <th>Job name</th>
+                                                <th>Job owner</th>
+                                                <th>Job executor</th>
+                                                <th>Amount</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td scope="row"></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="{{-- route('userDetails', ['user' => $user->id]) --}}"><i class="fa fa-angle-right"></i> Details</a></td>
+                                                @foreach($jobs as $job)
+                                                    @if($job->job_progress->progress_status == "completed" )
+                                                        <td scope="row">{{ $job->id }}</td>
+                                                        <td scope="row">{{ $job->job_name }}</td>
+                                                        <td scope="row">{{ $job->job_owner->name }}</td>
+                                                        <td scope="row">{{ $job->job_executor->name }}</td>
+                                                        <td scope="row">{{ $job->total_amount }}</td>
+                                                        <td scope="row"><a href=""><i class="fa fa-angle-right"></i> Details</a></td>
+                                                    @endif
+                                                @endforeach
 
                                             </tr>
                                             </tbody>

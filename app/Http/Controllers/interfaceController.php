@@ -14,6 +14,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\JobOfferDetailController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ServiceCategoryController;
+use App\Http\Controllers\VerifyEmailController;
 use Validator;
 use Auth;
 use App\User;
@@ -70,7 +71,7 @@ class interfaceController extends Controller
      */
       protected function postLoginModal(Request $request)
     {   $this->validate($request, [
-        'phone_no' => 'required|min:11',
+        'email' => 'required|email',
         'password' => 'required|max:255'
         ]);
        
@@ -253,7 +254,10 @@ class interfaceController extends Controller
     public function adminJobOffers()
     {
         $admin = AdminController::get(Auth::user()->id);
-        return view('admin.job-offers')->with(['admin'=>$admin]);
+        $jobs = JobController::allJobs();
+
+
+        return view('admin.job-offers')->with(['admin'=>$admin, 'jobs' => $jobs]);
 
     }
 
@@ -265,7 +269,8 @@ class interfaceController extends Controller
     public function adminJobsOngoing()
     {
         $admin = AdminController::get(Auth::user()->id);
-        return view('admin.jobs-ongoing')->with(['admin'=>$admin]);
+        $jobs = JobController::allJobs();
+        return view('admin.jobs-ongoing')->with(['admin'=>$admin, 'jobs' => $jobs]);
 
     }
 
@@ -277,7 +282,8 @@ class interfaceController extends Controller
     public function adminJobsCompleted()
     {
         $admin = AdminController::get(Auth::user()->id);
-        return view('admin.jobs-completed')->with(['admin'=>$admin]);
+        $jobs = JobController::allJobs();
+        return view('admin.jobs-completed')->with(['admin'=>$admin, 'jobs' => $jobs]);
 
     }
 
@@ -321,7 +327,7 @@ class interfaceController extends Controller
             
             if($user)
             {
-                flash("Account created successfully, login with the password and phone no", "Bido")->success();
+                flash("Account created successfully, login with the password and email", "Bido")->success();
                 return redirect('/signin');
 
             }else{
@@ -349,7 +355,7 @@ class interfaceController extends Controller
             $user = UserController::create($request);
             
             if($user)
-            {   Auth::attempt(['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'),
+            {   Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'),
              'status'=>'active', 'user_level' =>'user']);
                 flash("Account created successfully, you can now continue", "Bido")->success();
                 return redirect()->back();
@@ -390,15 +396,21 @@ class interfaceController extends Controller
            ]);
 
      $service = ServiceController::create($request);
-
-     if ($service) {
+   
+   if(!empty($request['avatar']))
+   { $img = ImageController::userImageUpload($request);
+     $avater = new VendorLogo;
+     $avater->service_id = $service;
+     $avater->logo = $img;
+     $avater->save();
+    }
+     if (!empty($service)) {
          flash('Service created successfully', 'All good')->success();
          return redirect()->back();
      } else {
-         flash('something went wrong, service could not be created')->error();
+         flash('something went wrong, service could not be created, please try again')->error();
          return redirect()->back();
-     }
-         
+     }      
  }
  /**
  * This method creates a search
@@ -1209,4 +1221,21 @@ public function deleteService($id)
         return view('dashboard.my_applications')->with('applications', $applications);
 
     }
+ /**
+ *verifies mail
+ *
+ *@var $user_id, $token
+ */
+ public function verifyEmail($user_id, $token)
+ { 
+   $verify = VerifyEmailController::verifyEmail($user_id, $token);
+   if($verify)
+   {
+    flash('User email verified successfully, thanks')->success();
+    return redirect('/');
+   }else{
+    flash('User email verified successfully, thanks')->error();
+    return redirect('/');
+   }
+ }
 }

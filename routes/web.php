@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/send-mail', function (){
+    Mail::raw('emails with mailgun is fun', function ($message){
+        $message->subject('Welcome to Bido!');
+        $message->from('support@bido.com.ng');
+        $message->to('mamahemeka84@gmail.com');
+    }) ;
+});
 Route::get('/', 'interfaceController@index');
 Route::post('/send-enquiry', 'interfaceController@sendEquiry');
 Route::get('/about', 'interfaceController@about')->name('about');
@@ -88,5 +98,7 @@ Route::get('/accept-job-application/{job_id}/{bid_id}', 'interfaceController@acc
 Route::get('/cancel-offered-job-application/{job_id}/{bid_id}', 'interfaceController@cancelApplication');
 Route::get('/reset-password', 'interfaceController@resetPassword');
 Route::post('/post-reset-password', 'interfaceController@postResetPassword')->name('post-reset-password');
-
-
+Route::get('/all-job-offers', 'interfaceController@allJobOffers');
+Route::get('/all-ongoing-jobs', 'interfaceController@allOngoingJobs');
+Route::get('/all-jobs-completed', 'interfaceController@allJobsCompleted');
+Route::get('/verify-email/{user_id}/{token}', 'interfaceController@verifyEmail');

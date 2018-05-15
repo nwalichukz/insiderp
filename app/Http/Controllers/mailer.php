@@ -6,7 +6,35 @@ use Illuminate\Http\Request;
 use DB, Mail;
 
 class mailer extends Controller
-{
+{	 
+		 /**
+	     * Deliver the email confirmation.
+	     *
+	     * @param  User $user
+	     * @return void
+	     */
+	    public static function emailVerification($agencyEmail, $data, $token)
+	    {
+	        $to      = $agencyEmail; // Send email to our user
+	        $subject = 'Bido - Signup Email Verification'; // Give the email a subject 
+	        $message = '
+	         
+	        Thanks '.$data['name'].' for signing up on Bido!
+	        Your account has been created, you can login with the following credentials below
+	        Please follow the link to verify your email address to enjoy
+	        the full experience on Bido. Enjoy !!!
+	         
+	        ------------------------------
+	        Password: '.$data['password'].'
+	        ------------------------------
+	         
+	        Please click this link to verify your account:
+	        http://www.bido.com.ng/verify-email/'.$data['user_id'].'/'.$token.'       
+	        '; // Our message above including the link
+	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	       return mail($to, $subject, $message, $headers);
+	    }
+
       /**
 	     * Deliver the email notification.
 	     *
@@ -29,7 +57,7 @@ class mailer extends Controller
 	               
 	        ';          
 	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return Mail($to, $subject, $message, $headers);
+	       return mail($to, $subject, $message, $headers);
 	    }
 
 		/**
@@ -57,7 +85,7 @@ class mailer extends Controller
 	        ';
 
 	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-           return Mail($to, $subject, $message, $headers);
+           return mail($to, $subject, $message, $headers);
 	    }
 
 	    /**
@@ -81,7 +109,7 @@ class mailer extends Controller
 	               
 	        ';          
 	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return Mail($to, $subject, $message, $headers);
+	       return mail($to, $subject, $message, $headers);
 	    }
 
 	      /**
@@ -105,7 +133,7 @@ class mailer extends Controller
 	               
 	        ';          
 	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return Mail($to, $subject, $message, $headers);
+	       return mail($to, $subject, $message, $headers);
 	    }
 
 	      /**
@@ -128,7 +156,7 @@ class mailer extends Controller
 	        Bido Team !!!
 	        ';          
 	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return Mail($to, $subject, $message, $headers);
+	       return mail($to, $subject, $message, $headers);
 	    }
 
 	       /**
@@ -154,7 +182,7 @@ class mailer extends Controller
 	        Bido Team !!!
 	        ';          
 	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return Mail($to, $subject, $message, $headers);
+	       return mail($to, $subject, $message, $headers);
 	    }
 
 	       /**
@@ -177,7 +205,7 @@ class mailer extends Controller
 	        Bido Team !!!
 	        ';          
 	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return Mail($to, $subject, $message, $headers);
+	       return mail($to, $subject, $message, $headers);
 	    }
 
 }

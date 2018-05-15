@@ -2,7 +2,6 @@
 @section('title')
 Login | Sign up
 @endsection
-
 @section('content')
 	@include('partials.header2')
 
@@ -123,5 +122,4 @@ Login | Sign up
 	</div>
 </div>
 @include('partials.footer')
-
 @endsection

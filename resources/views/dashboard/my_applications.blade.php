@@ -29,9 +29,10 @@
                                             </div>
                                             <div class="pull-right">
                                                  @if($application->postJob->status === 'available' && $application->status === 'not-offered')
-                                                <a href="{{ url('delete-job-application/'.$application->id) }}" title="Cancel your application for this job" class="btn btn-common btn-rm"><i class="fa fa-edit"></i> Cancel application</a>
+                                                   <a href="{{ url('view-service-executing-this-job/'.$application->postJob->id) }}" title="View the service this job was offered to" class="btn btn-common btn-rm"><i class="fa fa-edit"></i> Full view</a>
+                                               
                                                 @elseif($application->postJob->status === 'unavailable' && $application->status === 'offered')
-                                                <a href="{{ url('view-service-executing-this-job/'.$application->postJob->id) }}" title="View the service this job was offered to" class="btn btn-common btn-rm"><i class="fa fa-edit"></i> Full view</a>
+                                               <a href="{{ url('cancel-offered-job-application/'.$application->postJob->id.'/'.$application->id) }}" title="Cancel your application for this job" class="btn btn-common btn-rm"><i class="fa fa-edit"></i> Cancel application</a>
                                                  @endif
                                             </div>
                                         </div>

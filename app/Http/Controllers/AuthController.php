@@ -17,7 +17,7 @@ class AuthController extends Controller
     {
        
          $suspended = ['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'suspended', 'user_level' =>'user'];
-          $banned = ['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'banned', 'user_level' =>'user'];  
+          $banned = ['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'banned', 'user_level' =>'user'];
 
         if(Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'user']))
         {   LastLoginController::login(Auth::user()->id);

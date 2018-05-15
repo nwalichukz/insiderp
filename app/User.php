@@ -51,5 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\PostJob');
     }
+    public function verify_email()
+    {
+        return $this->hasOne('App\VerifyEmail');
+    }
 
 }
