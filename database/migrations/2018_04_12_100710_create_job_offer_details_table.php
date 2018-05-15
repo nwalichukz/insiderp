@@ -22,6 +22,8 @@ class CreateJobOfferDetailsTable extends Migration
             $table->string('duration');
             $table->text('description');
             $table->string('commission');
+            $table->string('total_amount');
+            $table->string('job_category')->nullable();
             $table->string('offer_level')->default(1);
             $table->timestamp('initial_deliver_date')->nullable();
             $table->timestamps();

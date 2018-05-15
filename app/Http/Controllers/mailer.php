@@ -70,7 +70,7 @@ class mailer extends Controller
 	    {
 	        //$this->to = $agencyEmail;
 	        $to      = $userEmail; // Send email to our user
-	        $subject = 'Bido - Offer  Notification'; // Give the email a subject 
+	        $subject = 'Bido - Accept Job Offer Notification'; // Give the email a subject 
 	        $message = '
 	        Your offer has been accepted by '.$data['name'].' 
 	        Your should proceed to amke payment on or before 48 hours,
@@ -94,7 +94,7 @@ class mailer extends Controller
 	    {
 	        //$this->to = $agencyEmail;
 	        $to      = $userEmail; // Send email to our user
-	        $subject = 'Bido - Offer  Notification'; // Give the email a subject 
+	        $subject = 'Bido - Job Offer Notification'; // Give the email a subject 
 	        $message = '
 	        Your offer has been decline by '.$data['name'].' vendor.
 	        Your offer may have been decline because of '.$data['decline_reason'].' .
@@ -116,13 +116,13 @@ class mailer extends Controller
 	     *
 	     * @return void
 	     */
-	    public static function sendBidNotification($userEmail, $data)
+	    public static function acceptApplicationNotification($userEmail, $data)
 	    {
 	        //$this->to = $agencyEmail;
 	        $to      = $userEmail; // Send email to our user
-	        $subject = 'Bido - Offer  Notification'; // Give the email a subject 
+	        $subject = 'Bido - Job Application Notification'; // Give the email a subject 
 	        $message = '
-	        Your application has been accepted by '.$data['name'].'.
+	        Your application for '.$data['job_name'].' has been accepted by '.$data['name'].'.
 	        We would notify you to start the job once the payment is made. Thanks.
 
 	        Bido Team !!!

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\PostJobController;
 use App\Bidding;
 use App\Service;
+use App\User;
 use App\PostJob;
+use App\JobOfferDetail;
 use Auth;
 
 class BiddingController extends Controller
@@ -77,6 +79,29 @@ class BiddingController extends Controller
      $bid = Bidding::find($bid_id);
      $bid->status = 'offered';
      $bid->save();
+     $job_detail = new JobOfferDetail;
+     $job_detail->user_id = $job->user_id;
+     $job_detail->serivce_id = $bid->service_id;
+     $job_detail->job_name = $job->name;
+     $job_detail->offer_amount = $job->budget;
+     $job_detail->commission = $job->commission;
+     $job_detail->total_amount = $job->total_amount;
+     $job_detail->duration = $job->duration;
+     $job_detail->description = $job->job_description;
+     $job_detail->job_category = $job->job_category;
+     $job_detail->save();
+     $create = new JobApproval;
+     $create->job_offer_detail_id = $job_detail->id;
+     $create->approval_status = 'accepted';
+     $create->save();
+     $JobProgress = new JobProgress;
+     $JobProgress->job_offer_detail_id = $job_detail->id;
+     $JobProgress->save();
+     $userdetail = User::find($job_detail->user_id);
+     $service = Service::find($job_detail->service_id);
+     $user = User::find($service->user_id);
+     $data = ['name'=>$userdetail->name, 'job_name' => $job_detail->job_name];
+     mailer::acceptApplicationNotification($user->email, $data);
      return true;
      }
 
