@@ -22,9 +22,13 @@
                                         <div class="job-tag">
                                             <div class="pull-left">
                                                 <div class="meta-tag">
-                                                    <span title="The status of the job at the moment">Status: {{$application->postJob->status}}</span>
+                                                    <span class="badge" title="The status of the job at the moment">Status: {{$application->postJob->status}}</span>
                                                     <span title="Date the job was posted">Posted: {{$application->postJob->created_at->diffForHumans()}}</span>
+                                                    @if($application->postJob->status === 'unavailable' && $application->status === 'offered' && $service->id == $application->service_id)
+                                                 <span class="btn btn-primary">congrats job offered to you </span>
+                                                 @else
                                                      <span title="Date you applied for the job">Applied: {{$application->created_at->diffForHumans()}}</span>
+                                                     @endif
                                                 </div>
                                             </div>
                                             <div class="pull-right">
@@ -32,8 +36,9 @@
                                                    <a href="{{ url('view-service-executing-this-job/'.$application->postJob->id) }}" title="View the service this job was offered to" class="btn btn-common btn-rm"><i class="fa fa-edit"></i> Full view</a>
                                                
                                                 @elseif($application->postJob->status === 'unavailable' && $application->status === 'offered')
-                                               <a href="{{ url('cancel-offered-job-application/'.$application->postJob->id.'/'.$application->id) }}" title="Cancel your application for this job" class="btn btn-common btn-rm"><i class="fa fa-edit"></i> Cancel application</a>
+                                               <a href="{{ url('cancel-offered-job-application/'.$application->postJob->id.'/'.$application->id) }}" title="Cancel your application for this job" class="btn btn-common btn-rm"><i class="fa fa-close"></i></a>
                                                  @endif
+
                                             </div>
                                         </div>
                                     </div>

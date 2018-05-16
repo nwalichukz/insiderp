@@ -60,6 +60,32 @@ class mailer extends Controller
 	       return mail($to, $subject, $message, $headers);
 	    }
 
+	     /**
+	     * Deliver the email enquiry.
+	     *
+	     * @param  $user, $data
+	     * @return void
+	     */
+	    public static function emailEnquiry($userEmail, $data)
+	    {
+	        //$this->to = $agencyEmail;
+	        $to      = $userEmail; // Send email to our user
+	        $subject = 'Bido - Enquiry'; // Give the email a subject 
+	        $message = '
+	        '.$data['message'].' 
+	         
+	        ------------------------------
+	        Name: '.$data['name'].'
+	        Phone number: '.$data['phone'].'
+	        Email: '.$data['email'].'
+	        ------------------------------
+	               
+	        ';          
+	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	       return mail($to, $subject, $message, $headers);
+	    }
+
+
 		/**
 	    * This method sends a new password to the user email
 	    *

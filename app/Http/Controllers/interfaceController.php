@@ -1218,7 +1218,7 @@ public function deleteService($id)
         $service = ServiceController::getUserService(Auth::user()->id);
         $applications = BiddingController::jobBidding($service->id);
 
-        return view('dashboard.my_applications')->with('applications', $applications);
+        return view('dashboard.my_applications')->with(['applications' => $applications, 'service' => $service]);
 
     }
  /**

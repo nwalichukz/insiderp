@@ -102,3 +102,4 @@ Route::get('/all-job-offers', 'interfaceController@allJobOffers');
 Route::get('/all-ongoing-jobs', 'interfaceController@allOngoingJobs');
 Route::get('/all-jobs-completed', 'interfaceController@allJobsCompleted');
 Route::get('/verify-email/{user_id}/{token}', 'interfaceController@verifyEmail');
+Route::post('/send-enquiry', 'interfaceController@sendEquiry');

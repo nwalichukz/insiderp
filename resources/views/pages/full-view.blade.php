@@ -63,7 +63,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="#">Jobs Completed</a>
-                                                    <span class="type-posts">30</span>
+                                                    <span class="type-posts">0</span>
                                                 </li>
                                                 <li>
                                                     <a href="#">Verification Status</a>
@@ -85,7 +85,7 @@
                                 <aside>
                                     <div class="sidebar">
                                         <div class="box">
-                                            <form id="sendEquiry" onsubmit="sendEquiry(event);" action="" method="post" enctype="multipart/form-data" accept-charset="UTF-8" files="true">
+                                            <form id="sendEquiry" action="sendEnquiry" method="post" enctype="multipart/form-data" accept-charset="UTF-8" files="true">
                                                   <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <div class="form-group">
                                                     <input type="text" name="name" placeholder="Full Name" class="form-control" required>
