@@ -8,6 +8,9 @@ use App\Bidding;
 use App\Service;
 use App\User;
 use App\PostJob;
+use App\JobApproval;
+use App\JobProgress;
+use App\JobPayment;
 use App\JobOfferDetail;
 use Auth;
 
@@ -81,7 +84,7 @@ class BiddingController extends Controller
      $bid->save();
      $job_detail = new JobOfferDetail;
      $job_detail->user_id = $job->user_id;
-     $job_detail->serivce_id = $bid->service_id;
+     $job_detail->service_id = $bid->service_id;
      $job_detail->job_name = $job->name;
      $job_detail->offer_amount = $job->budget;
      $job_detail->commission = $job->commission;

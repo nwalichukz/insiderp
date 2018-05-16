@@ -3,13 +3,9 @@
     Full view - {{ $fullview->name }}
 @endsection
 @section('content')
-<<<<<<< HEAD
-    @include('partials.header2')
-=======
 @include('partials.header2')
 @include('partials.searchform')
    
->>>>>>> e37ce199f842c42fb1ebccec6332762abf25ad11
     <div id="content">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="content-area">
