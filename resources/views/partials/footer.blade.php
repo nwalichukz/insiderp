@@ -41,7 +41,7 @@
 					<div class="widget">
 						<h3 class="block-title">Like Us</h3>
 						<div class="bottom-social-icons social-icon">
-							<a class="facebook" href="http://web.facebook.com/bido"><i class="ti-facebook"></i></a>
+							<a class="facebook" href="http://web.facebook.com/ngbido"><i class="ti-facebook"></i></a>
 						</div>
 					</div>
 				</div>
