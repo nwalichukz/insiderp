@@ -213,7 +213,7 @@ class interfaceController extends Controller
  { if(Auth::check() AND Auth::user()->user_level === 'admin'){
      $admin = AdminController::get(Auth::user()->id);
      $users = User::all();
-    return view('admin.dashboard')->with(['admin'=>$admin, 'users' => $users]);
+    return view('admin.dashboard')->with(['admin'=>$admin, 'users' => $users, 'total_user' => $users->count()]);
     } else
     {
      Auth::logout();
@@ -227,10 +227,13 @@ class interfaceController extends Controller
 * returns collecion
 */
     public function adminVendors()
-    {
+    {  if(!Auth::check() AND Auth::user()->user_level !== 'admin'){
+         Auth::logout();
+         return redirect('/');  
+         }
         $admin = AdminController::get(Auth::user()->id);
         $vendors = Service::all();
-        return view('admin.vendors')->with(['admin'=>$admin, 'vendors' => $vendors]);
+        return view('admin.vendors')->with(['admin'=>$admin, 'vendors' => $vendors, 'total_vendor' => $vendors->count()]);
 
     }
     /**
@@ -239,7 +242,10 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminUserDetails($user)
-    {
+    {  if(!Auth::check() AND Auth::user()->user_level !== 'admin'){
+         Auth::logout();
+         return redirect('/');  
+         }
         $admin = AdminController::get(Auth::user()->id);
         $user = User::findOrFail($user);
         return view('admin.user-details')->with(['admin'=>$admin, 'user' => $user]);
@@ -252,7 +258,10 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobOffers()
-    {
+    {   if(!Auth::check() AND Auth::user()->user_level !== 'admin'){
+         Auth::logout();
+         return redirect('/');  
+         }
         $admin = AdminController::get(Auth::user()->id);
         $jobs = JobController::allJobs();
 
@@ -267,7 +276,10 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobsOngoing()
-    {
+    {   if(!Auth::check() AND Auth::user()->user_level !== 'admin'){
+         Auth::logout();
+         return redirect('/');  
+         }
         $admin = AdminController::get(Auth::user()->id);
         $jobs = JobController::allJobs();
         return view('admin.jobs-ongoing')->with(['admin'=>$admin, 'jobs' => $jobs]);
@@ -280,7 +292,10 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobsCompleted()
-    {
+    {   if(!Auth::check() AND Auth::user()->user_level !== 'admin'){
+         Auth::logout();
+         return redirect('/');  
+         }
         $admin = AdminController::get(Auth::user()->id);
         $jobs = JobController::allJobs();
         return view('admin.jobs-completed')->with(['admin'=>$admin, 'jobs' => $jobs]);
@@ -717,7 +732,7 @@ public function deleteService($id)
         $this->validate($request,
         [  'name'=>'required',
            'title' => 'required',
-           'phone_no'=>'required',
+           'phone_no'=>'required|numeric',
            'message' => 'required',
            ]);
    

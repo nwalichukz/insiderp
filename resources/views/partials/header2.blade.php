@@ -37,7 +37,7 @@
                                     <a href="{{ url('/post-job') }}">Post Job </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('messages') }}">Messages</a>
+                                    <a href="#">Messages</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('my-jobs') }}">
@@ -129,7 +129,7 @@
                     </li>
                 @else
                     <li>
-                        <a href="{{ url('messages') }}">Messages</a>
+                        <a href="#">Messages</a>
                     </li>
                     <li>
                         <a href="{{ url('my-jobs') }}"><i class="fa fa-angle-down"></i> My Jobs</a>

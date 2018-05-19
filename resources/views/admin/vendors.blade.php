@@ -61,15 +61,17 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
                                                 @foreach($vendors as $vendor)
+                                            <tr>
+                                                
                                                     <td scope="row">{{ $vendor->id }}</td>
                                                     <td>{{ $vendor->name }}</td>
                                                     <td>{{ $vendor->profession_title }}</td>
                                                     <td>{{ $vendor->location }}</td>
                                                     <td><a href=""><i class="fa fa-angle-right"></i> Details</a></td>
-                                                @endforeach
+                                                
                                             </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>

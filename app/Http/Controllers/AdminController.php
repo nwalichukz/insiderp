@@ -15,7 +15,7 @@ class AdminController extends Controller
      public static function get(){
      	return Service::with('user')
      					->with('view')
-                        ->paginate(9);
+                        ->paginate(15);
      }
 
       /**
@@ -26,12 +26,12 @@ class AdminController extends Controller
         return Service::where('status', 'active')
                         ->with('user')
                         ->with('view')
-                        ->paginate(9);
+                        ->paginate(15);
      }
 
      /**
      * This method makes payment
-     *
+     *    
      * @var request
      *
      * @return collection

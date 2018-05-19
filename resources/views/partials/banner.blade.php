@@ -4,9 +4,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Find the service that fits your taste</h1>
+				<h1>Find the service that meets your needs</h1>
 				<br>
-				<h2>More than <strong>12,000</strong> people are waiting to get your job done!</h2>
+				<h2>Many skilled people are waiting to get your job done!</h2>
 				<div class="content">
 					<form method="post" action="{{ route('search') }}">
 						{{ csrf_field() }}
