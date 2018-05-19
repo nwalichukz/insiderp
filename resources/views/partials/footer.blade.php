@@ -39,11 +39,9 @@
 				</div>
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="widget">
-						<h3 class="block-title">Follow Us</h3>
+						<h3 class="block-title">Like Us</h3>
 						<div class="bottom-social-icons social-icon">
-							<a class="twitter" href="../../../external.html?link=https://twitter.com/bidong"><i class="ti-twitter-alt"></i></a>
 							<a class="facebook" href="http://web.facebook.com/bido"><i class="ti-facebook"></i></a>
-							<a class="youtube" href="../../../external.html?link=https://youtube.com/"><i class="ti-youtube"></i></a>
 						</div>
 					</div>
 				</div>
