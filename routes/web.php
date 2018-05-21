@@ -102,4 +102,6 @@ Route::get('/all-job-offers', 'interfaceController@allJobOffers');
 Route::get('/all-ongoing-jobs', 'interfaceController@allOngoingJobs');
 Route::get('/all-jobs-completed', 'interfaceController@allJobsCompleted');
 Route::get('/verify-email/{user_id}/{token}', 'interfaceController@verifyEmail');
+Route::get('/delete-prev-work-img/{id}', 'interfaceController@deletePrevWorkImg');
 Route::post('/send-enquiry', 'interfaceController@sendEquiry');
+Route::get('/get-add-logo-form', 'interfaceController@addLogoForm')->name('addlogo');

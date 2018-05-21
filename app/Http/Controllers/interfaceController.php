@@ -81,7 +81,7 @@ class interfaceController extends Controller
           return redirect('admin/'.str_replace(' ', '-', strtolower($vendor->name)));
         }elseif ($auth === 'user') {
             $user = Auth::user();
-            return redirect()->back();
+            return redirect('user/'.str_replace(' ', '-', strtolower($user->name)));
         }elseif ($auth === 'suspended') {
             return redirect('suspended-banned');
         }elseif ($auth === 'banned') {
@@ -193,9 +193,15 @@ class interfaceController extends Controller
  {  if(Auth::check() AND Auth::user()->user_level === 'user'){
     $user = Auth::user();
     $service = ServiceController::getUserService($user->id);
+    if(!empty($service))
+    {
     $ongoing = JobController::ongoingJobsCount($service->id);
     $completed = JobController::completedJobsCount($service->id);
-    return view('dashboard.index')->with(['user' => $user, 'service' => $service, 'ongoing' => $ongoing, 'completed' => $completed]);
+        }else{
+            $ongoing = 0;
+            $completed = 0;
+        }
+    return view('dashboard.index')->with(['user' => $user, 'service' => $service, 'images' =>$service['images'], 'ongoing' => $ongoing, 'completed' => $completed]);
     }
     else
     {
@@ -412,16 +418,16 @@ class interfaceController extends Controller
 
      $service = ServiceController::create($request);
    
-   if(!empty($request['avatar']))
-   { $img = ImageController::userImageUpload($request);
-     $avater = new VendorLogo;
-     $avater->service_id = $service;
-     $avater->logo = $img;
-     $avater->save();
+   if($request->hasFile('avatar'))
+   { $img = ImageController::userImageUpload($request->file('avatar'));
+     $avater = new UserAvater;
+     $avater->user_id = Auth::user()->id;
+     $avater->avater = $img;
+     $save = $avater->save();
     }
      if (!empty($service)) {
          flash('Service created successfully', 'All good')->success();
-         return redirect()->back();
+         return redirect('user/'.str_replace(' ', '-', strtolower(Auth::user()->name)));
      } else {
          flash('something went wrong, service could not be created, please try again')->error();
          return redirect()->back();
@@ -520,6 +526,20 @@ class interfaceController extends Controller
         return redirect()->back(); 
         }
    }
+
+      /**
+ * This method adds avater to the
+ * @var request
+ *
+ */
+      public function addLogoForm()
+      {   if(!Auth::check()){
+         Auth::logout();
+         return redirect('/');  
+         }
+         $user = Auth::user();
+        return view('dashboard.addlogo')->with(['user' => $user]);
+      }
      /**
  * This method adds logo to the
  * @var request
@@ -554,22 +574,31 @@ class interfaceController extends Controller
  *
  */
    public function addPrevWorkImg(Request $request)
-   {
-       $user = Auth::user();
-       $img = ImageController::prevWorkImg($request['files']);
+   { $img = ImageController::PrevWorkImg($request->file('files'));
      if($img){
-             $save = new prevWorkImage;
-             $save->user_id = $user->id;
-             $save->service_id = $user->service->id;
-             $save->name = $img;
-             $save->description = $request['description'];
-             $save->save();
+     flash('Image uploaded successfully')->success();
              return redirect()->back();
          }else{
         flash('Something went wrong, image could not be uploaded')->error();
         return redirect()->back();
     }
    }
+   /**
+ * This method deletes prev work images
+ * @var request
+ *
+ */
+public function deletePrevWorkImg($id)
+{  $delete = ImageController::deletePrevWorkImg($id);
+    if($delete)
+    {   flash('Image deleted successfully')->success();
+        return redirect()->back();
+    }else{
+        flash('Something went wrong, image could not be deleted')->error();
+        return redirect()->back();
+    }
+
+}
    /**
  * This method adds prev work images to the
  * @var request

@@ -3597,3 +3597,18 @@ display:none;
 background: #FF8C00;
 border: 1px solid #fafafa;
 }
+.thumb-image{
+  width:122px;
+  height: 130px;
+  padding:1px; 
+  border-radius: 4px;
+}
+.thumb-image:hover{
+   border:1px solid #D3D3D3;
+}
+.swipebox:hover{
+  border:1px solid #D3D3D3;
+}
+.modal-body, .modal-footer{
+  background: #eee;
+}

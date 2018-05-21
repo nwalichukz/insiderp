@@ -2,7 +2,6 @@
 @section('title')
     My Applications | Bido
 @endsection
-
 @section('content')
     @include('partials.header2')
     <div id="content">

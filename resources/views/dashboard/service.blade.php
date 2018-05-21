@@ -58,7 +58,9 @@
                                 <div class="action-buttons">
                                     <div class="upload-button">
                                         <button class="btn btn-common">Choose a service logo</button>
-                                        <input id="cover_img_file" type="file" name="avatar">
+                                        <input type="file" name="avatar" onchange="readURL(this);" id="images">
+                                        <div id="image-holder" class="col-md-12"></div>
+                                         <img class="showimg" src="#" alt="" /> 
                                     </div>
                                 </div>
                             </div>

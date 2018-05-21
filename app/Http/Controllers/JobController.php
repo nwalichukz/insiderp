@@ -90,6 +90,8 @@ class JobController extends Controller
     public static function ongoingJobsCount($service_id)
     {
         $jobs = JobOfferDetail::where('service_id', $service_id)->get();
+        if(!empty($jobs))
+        {
         $count = 0;
         foreach ($jobs as $job)
         {
@@ -98,6 +100,7 @@ class JobController extends Controller
 
             return $job_progress;
         }
+     }
     }
 
     // this method returns the number of completed jobs for a service

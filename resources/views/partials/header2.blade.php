@@ -97,6 +97,9 @@
                                     <li>
                                         <a href="{{ route('editProfile') }}">Edit Profile</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('addlogo') }}">Add logo</a>
+                                    </li>
                                 <!--
                                     <li>
                                         <a href="{{-- url('manage-applications') --}}">Manage Applications</a>
@@ -125,7 +128,7 @@
                         <a href="{{ url('/register') }}"><i class="ti-user"></i> Sign up</a>
                     </li>
                     <li>
-                        <a href="{{ url('/sigin') }}"><i class="ti-lock"></i> Login</a>
+                        <a href="{{ url('/signin') }}"><i class="ti-lock"></i> Login</a>
                     </li>
                 @else
                     <li>
@@ -180,6 +183,9 @@
                             <li>
                                 <a title="edit your profile" href="{{ route('editProfile') }}">Edit Profile</a>
                             </li>
+                             <li>
+                                        <a href="{{ route('addlogo') }}">Add logo</a>
+                                    </li>
                         <!--
                                     <li>
                                         <a href="{{-- url('manage-applications') --}}">Manage Applications</a>
