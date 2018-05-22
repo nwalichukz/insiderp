@@ -6,7 +6,7 @@
 			<div class="col-md-12">
 				<h1>Find the service that meets your needs</h1>
 				<br>
-				<h2>Many skilled people are waiting to get your job done!</h2>
+				<h2>What problem do you want solved, you can find a solution</h2>
 				<div class="content">
 					<form method="post" action="{{ route('search') }}">
 						{{ csrf_field() }}
