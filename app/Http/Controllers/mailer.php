@@ -17,7 +17,7 @@ class mailer extends Controller
 	    {
 	        $to      = $agencyEmail; // Send email to our user
 	        $subject = 'Bido - Signup Email Verification'; // Give the email a subject 
-	        $message = '
+	        $data = '
 	         
 	        Thanks '.$data['name'].' for signing up on Bido!
 	        Your account has been created, you can login with the following credentials below
@@ -31,8 +31,11 @@ class mailer extends Controller
 	        Please click this link to verify your account:
 	        http://www.bido.com.ng/verify-email/'.$data['user_id'].'/'.$token.'       
 	        '; // Our message above including the link
-	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return mail($to, $subject, $message, $headers);
+	       // $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	       Mail::send('mail', $data, function($message){
+	       	$message->to($to)->subject($subject);
+	       	$message->from('askbido@gmail.com', 'Bido');
+	       });
 	    }
 
       /**
@@ -46,7 +49,7 @@ class mailer extends Controller
 	        //$this->to = $agencyEmail;
 	        $to      = $userEmail; // Send email to our user
 	        $subject = 'Bido - Signup Email Notification'; // Give the email a subject 
-	        $message = '
+	        $data = '
 	        Thanks '.$data['name'].' for signing up on Bido!
 	        Your account has been created, you can login with the following credentials below. Thanks.
 	         
@@ -56,8 +59,11 @@ class mailer extends Controller
 	        ------------------------------
 	               
 	        ';          
-	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return mail($to, $subject, $message, $headers);
+	       // $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	        Mail::send('mail', $data, function($message){
+	       	$message->to($to)->subject($subject);
+	       	$message->from('askbido@gmail.com', 'Bido');
+	       });
 	    }
 
 	     /**
@@ -71,7 +77,7 @@ class mailer extends Controller
 	        //$this->to = $agencyEmail;
 	        $to      = $userEmail; // Send email to our user
 	        $subject = 'Bido - Enquiry'; // Give the email a subject 
-	        $message = '
+	        $data = '
 	        '.$data['message'].' 
 	         
 	        ------------------------------
@@ -81,8 +87,11 @@ class mailer extends Controller
 	        ------------------------------
 	               
 	        ';          
-	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return mail($to, $subject, $message, $headers);
+	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	        Mail::send('mail', $data, function($message){
+	       	$message->to($to)->subject($subject);
+	       	$message->from('askbido@gmail.com', 'Bido');
+	       });
 	    }
 
 
@@ -100,7 +109,7 @@ class mailer extends Controller
 	      
 	        $to      = $email; // Send email to our user
 	        $subject = 'Password Reset Notification'; // Give the email a subject 
-	        $message = '
+	        $data = '
 	        Your password has been reset !!!
 	        Use this password to login and update your password thereafter if you wish.!
 	        
@@ -110,8 +119,11 @@ class mailer extends Controller
 	                
 	        ';
 
-	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-           return mail($to, $subject, $message, $headers);
+	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+            Mail::send('mail', $data, function($message){
+	       	$message->to($to)->subject($subject);
+	       	$message->from('askbido@gmail.com', 'Bido');
+	       });
 	    }
 
 	    /**
@@ -125,7 +137,7 @@ class mailer extends Controller
 	        //$this->to = $agencyEmail;
 	        $to      = $userEmail; // Send email to our user
 	        $subject = 'Bido - Accept Job Offer Notification'; // Give the email a subject 
-	        $message = '
+	        $data = '
 	        Your offer has been accepted by '.$data['name'].' 
 	        Your should proceed to amke payment on or before 48 hours,
 	        after which your offer maybe concelled without payment. Login to the app
@@ -134,9 +146,11 @@ class mailer extends Controller
 	        Bido Team !!!
 	               
 	        ';          
-	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return mail($to, $subject, $message, $headers);
-	    }
+	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	        Mail::send('mail', $data, function($message){
+	       	$message->to($to)->subject($subject);
+	       	$message->from('askbido@gmail.com', 'Bido');
+	       });	    }
 
 	      /**
 	     * Delivers accepted notification offer email.
@@ -149,7 +163,7 @@ class mailer extends Controller
 	        //$this->to = $agencyEmail;
 	        $to      = $userEmail; // Send email to our user
 	        $subject = 'Bido - Job Offer Notification'; // Give the email a subject 
-	        $message = '
+	        $data = '
 	        Your offer has been decline by '.$data['name'].' vendor.
 	        Your offer may have been decline because of '.$data['decline_reason'].' .
 	        If you are still interested in offering the job to thesame vendor then you may
@@ -158,8 +172,11 @@ class mailer extends Controller
 	        Bido Team !!!
 	               
 	        ';          
-	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return mail($to, $subject, $message, $headers);
+	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	        Mail::send('mail', $data, function($message){
+	       	$message->to($to)->subject($subject);
+	       	$message->from('askbido@gmail.com', 'Bido');
+	       });
 	    }
 
 	      /**
@@ -175,14 +192,17 @@ class mailer extends Controller
 	        //$this->to = $agencyEmail;
 	        $to      = $userEmail; // Send email to our user
 	        $subject = 'Bido - Job Application Notification'; // Give the email a subject 
-	        $message = '
+	        $data = '
 	        Your application for '.$data['job_name'].' has been accepted by '.$data['name'].'.
 	        We would notify you to start the job once the payment is made. Thanks.
 
 	        Bido Team !!!
 	        ';          
-	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return mail($to, $subject, $message, $headers);
+	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	        Mail::send('mail', $data, function($message){
+	       	$message->to($to)->subject($subject);
+	       	$message->from('askbido@gmail.com', 'Bido');
+	       });
 	    }
 
 	       /**
@@ -198,7 +218,7 @@ class mailer extends Controller
 	        //$this->to = $agencyEmail;
 	        $to      = $userEmail; // Send email to our user
 	        $subject = 'Bido - Job Payment Notification'; // Give the email a subject 
-	        $message = '
+	        $data = '
 	        Prior to the offer you accepted from '.$data['name'].'.
 	        The payment for the job has been made fully and you are to start the job immediately.
 	        The money will be transfered to you immediately the job is completed and confirmed by your client.
@@ -207,8 +227,11 @@ class mailer extends Controller
 
 	        Bido Team !!!
 	        ';          
-	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return mail($to, $subject, $message, $headers);
+	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	        Mail::send('mail', $data, function($message){
+	       	$message->to($to)->subject($subject);
+	       	$message->from('askbido@gmail.com', 'Bido');
+	       });
 	    }
 
 	       /**
@@ -223,15 +246,18 @@ class mailer extends Controller
 	        //$this->to = $agencyEmail;
 	        $to      = $userEmail; // Send email to our user
 	        $subject = 'Bido - Job Completed Notification'; // Give the email a subject 
-	        $message = '
+	        $data = '
 	        '.$data['name'].' just informed us that the job you offered her has been completed.
 	        And we want your confirmation before we pay him. If there is any issue you let us know before we pay him 
 	        if non we would pay him after 24 hour of this mail. Thank you for using Bido.
 
 	        Bido Team !!!
 	        ';          
-	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return mail($to, $subject, $message, $headers);
+	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	        Mail::send('mail', $data, function($message){
+	       	$message->to($to)->subject($subject);
+	       	$message->from('askbido@gmail.com', 'Bido');
+	       });
 	    }
 
 	       /**
@@ -244,15 +270,18 @@ class mailer extends Controller
 	      public static function sendCreateServiceNotification($userEmail, $data)
 	      {     $to      = $userEmail; // Send email to our user
 	        $subject = 'Bido - Service Creation Notification'; // Give the email a subject 
-	        $message = '
+	        $data = '
 	        '.$data['name'].' thanks for creating '.$data['service_name'].' services.
 	        We are glad you joined this great platform that lets you promote your service.
 	        Enjoy Bido...
 
 	        Bido Team !!!
 	        ';          
-	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       return mail($to, $subject, $message, $headers);
+	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	        Mail::send('mail', $data, function($message){
+	       	$message->to($to)->subject($subject);
+	       	$message->from('askbido@gmail.com', 'Bido');
+	       });
 
 	      }
 
