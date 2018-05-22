@@ -27,7 +27,19 @@ use App\Message;
 use App\PrevWorkImage;
 
 class interfaceController extends Controller
-{   
+{   /**
+    * this method protects the
+    * Auth and returns to home page
+    * and logouts out
+    *
+    */
+    public function gateKeeper()
+    {
+        if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
+    }
 
     /**
      * This method checks
@@ -216,7 +228,7 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function adminDashboard()
- { if(Auth::check() AND Auth::user()->user_level === 'admin'){
+ { if(Auth::check() || Auth::user()->user_level === 'admin'){
      $admin = AdminController::get(Auth::user()->id);
      $users = User::all();
     return view('admin.dashboard')->with(['admin'=>$admin, 'users' => $users, 'total_user' => $users->count()]);
@@ -233,7 +245,7 @@ class interfaceController extends Controller
 * returns collecion
 */
     public function adminVendors()
-    {  if(!Auth::check() AND Auth::user()->user_level !== 'admin'){
+    {  if(!Auth::check() || Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -248,7 +260,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminUserDetails($user)
-    {  if(!Auth::check() AND Auth::user()->user_level !== 'admin'){
+    {  if(!Auth::check() || Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -264,7 +276,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobOffers()
-    {   if(!Auth::check() AND Auth::user()->user_level !== 'admin'){
+    {   if(!Auth::check() || Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -282,7 +294,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobsOngoing()
-    {   if(!Auth::check() AND Auth::user()->user_level !== 'admin'){
+    {   if(!Auth::check() || Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -298,7 +310,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobsCompleted()
-    {   if(!Auth::check() AND Auth::user()->user_level !== 'admin'){
+    {   if(!Auth::check() || Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -425,11 +437,16 @@ class interfaceController extends Controller
      $avater->avater = $img;
      $save = $avater->save();
     }
+    $userEmail = Auth::user()->email;
+    $data = ['name'=>Auth::user()->name, 
+             'service_name'=>$request['service_name'],
+             ];
+    mailer::sendCreateServiceNotification($userEmail, $data);
      if (!empty($service)) {
          flash('Service created successfully', 'All good')->success();
          return redirect('user/'.str_replace(' ', '-', strtolower(Auth::user()->name)));
      } else {
-         flash('something went wrong, service could not be created, please try again')->error();
+         flash('Something went wrong, service could not be created, please try again')->error();
          return redirect()->back();
      }      
  }
@@ -501,7 +518,11 @@ class interfaceController extends Controller
  *
  */
    public function addAvatar(Request $request)
-   {$check = ImageController::deleteAvatar(Auth::user()->id); 
+   {  if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
+    $check = ImageController::deleteAvatar(Auth::user()->id); 
     if($check){
     $img = ImageController::userImageUpload($request);
    if($img)
@@ -574,7 +595,11 @@ class interfaceController extends Controller
  *
  */
    public function addPrevWorkImg(Request $request)
-   { $img = ImageController::PrevWorkImg($request->file('files'));
+   {  if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
+     $img = ImageController::PrevWorkImg($request->file('files'));
      if($img){
      flash('Image uploaded successfully')->success();
              return redirect()->back();
@@ -589,7 +614,11 @@ class interfaceController extends Controller
  *
  */
 public function deletePrevWorkImg($id)
-{  $delete = ImageController::deletePrevWorkImg($id);
+{   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
+    $delete = ImageController::deletePrevWorkImg($id);
     if($delete)
     {   flash('Image deleted successfully')->success();
         return redirect()->back();
@@ -639,14 +668,12 @@ public function deletePrevWorkImg($id)
             return redirect::back();
         }
     }
-
-    /**
+/**
  * This method changes password
  * @var request
  *
  */
-
-   public function changePassword(Request $request)
+public function changePassword(Request $request)
    { $this->validate($request,
         [  'old_password'=>'required',
            'new_password'=>'required',
@@ -665,13 +692,19 @@ public function deletePrevWorkImg($id)
    }
 
     public function editProfile()
-    {
+    {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
         $user = Auth::user();
         return view('dashboard.edit_profile', compact(['user']));
    }
 
     public function updateProfile(Request $request )
-    {
+    {    if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
         $this->validate($request, [
            'name' => 'required',
            'location' => 'required',
@@ -699,7 +732,10 @@ public function deletePrevWorkImg($id)
 * @var id
 */
 public function deleteService($id)
-{
+{    if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
     $delete = ServiceController::delete($id);
     if($delete)
     {
@@ -717,7 +753,11 @@ public function deleteService($id)
     */
 
     public function editService($id)
-    {   $category = ServiceCategoryController::category();
+    {   if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        }  
+     $category = ServiceCategoryController::category();
         $service = ServiceController::get($id);
         return view('dashboard.edit_service')->with(['service' => $service])->with(['category' =>$category]);
     }
@@ -727,7 +767,11 @@ public function deleteService($id)
     * @var id
     */
     public function updateService(Request $request)
-    {   $this->validate($request,
+    {    if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
+        $this->validate($request,
         [  'service_name'=>'required',
            'profession_title' => 'required',
            'location'=>'required',
@@ -779,7 +823,7 @@ public function deleteService($id)
 
 
     public function viewService($id)
-    {
+    {  
         $service = ServiceController::get($id);
         return view('dashboard.view_service')->with(['service' => $service]);
     }
@@ -853,7 +897,10 @@ public function deleteService($id)
     }
 
     public function browse_jobs()
-    {
+    {    if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
         $user = Auth::user();
         $jobs = PostJobController::getAvailableJob();
 
@@ -861,7 +908,10 @@ public function deleteService($id)
     }
 
     public function makeBid($post_job_id)
-    {
+    {    if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
         $make_bid = BiddingController::makeBid($post_job_id);
 
         if ($make_bid)
@@ -878,7 +928,10 @@ public function deleteService($id)
 
 
     public function myJobOffer()
-    {
+    {    if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
         $jobs = JobController::jobOffer();
         $user = UserController::getUser(Auth::user()->id);
 
@@ -887,7 +940,10 @@ public function deleteService($id)
 
 
       public function serviceJobOffers($service_id)
-    {
+    {    if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
         $jobs = JobController::myJob($service_id);
 
         return view('dashboard.job-offers')->with(['jobs' => $jobs]);
@@ -1059,7 +1115,7 @@ public function deleteService($id)
     {   if(!Auth::check()){
         Auth::logout();
         return redirect('/');
-    }   
+        }   
         $postedjob = PostJobController::getUserJobs();
         return view('dashboard.applications')->with(['jobs' => $postedjob]);
     }
@@ -1071,7 +1127,10 @@ public function deleteService($id)
      * 
      */
     public function editPostedJob($id)
-    {
+    {    if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
         $category = ServiceCategoryController::category();
         $job = PostJobController::get($id);
         return view('dashboard.editpostedjob')->with(['job' => $job, 'category' => $category]);

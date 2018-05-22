@@ -234,4 +234,26 @@ class mailer extends Controller
 	       return mail($to, $subject, $message, $headers);
 	    }
 
+	       /**
+	     * Delivers create service email notification
+	     *
+	     * @param  $userEmail, $data
+	     *
+	     * @return void
+	     */
+	      public static function sendCreateServiceNotification($userEmail, $data)
+	      {     $to      = $userEmail; // Send email to our user
+	        $subject = 'Bido - Service Creation Notification'; // Give the email a subject 
+	        $message = '
+	        '.$data['name'].' thanks for creating '.$data['service_name'].' services.
+	        We are glad you joined this great platform that lets you promote your service.
+	        Enjoy Bido...
+
+	        Bido Team !!!
+	        ';          
+	        $headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
+	       return mail($to, $subject, $message, $headers);
+
+	      }
+
 }
