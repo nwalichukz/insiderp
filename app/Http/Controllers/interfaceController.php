@@ -228,7 +228,7 @@ class interfaceController extends Controller
  * returns collecion
  */
  public function adminDashboard()
- { if(Auth::check() || Auth::user()->user_level === 'admin'){
+ { if(Auth::check() && Auth::user()->user_level === 'admin'){
      $admin = AdminController::get(Auth::user()->id);
      $users = User::all();
     return view('admin.dashboard')->with(['admin'=>$admin, 'users' => $users, 'total_user' => $users->count()]);
@@ -245,7 +245,7 @@ class interfaceController extends Controller
 * returns collecion
 */
     public function adminVendors()
-    {  if(!Auth::check() || Auth::user()->user_level !== 'admin'){
+    {  if(!Auth::check() && Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -260,7 +260,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminUserDetails($user)
-    {  if(!Auth::check() || Auth::user()->user_level !== 'admin'){
+    {  if(!Auth::check() && Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -276,7 +276,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobOffers()
-    {   if(!Auth::check() || Auth::user()->user_level !== 'admin'){
+    {   if(!Auth::check() && Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -294,7 +294,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobsOngoing()
-    {   if(!Auth::check() || Auth::user()->user_level !== 'admin'){
+    {   if(!Auth::check() && Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -310,7 +310,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobsCompleted()
-    {   if(!Auth::check() || Auth::user()->user_level !== 'admin'){
+    {   if(!Auth::check() && Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -421,7 +421,11 @@ class interfaceController extends Controller
  *
  */
  public function createService(Request $request)
- {   $this->validate($request,
+ {      if(!Auth::check()){
+        Auth::logout();
+        return redirect('/');
+        } 
+        $this->validate($request,
         [  'service_name'=>'required',
            'profession_title' => 'required',
            'location'=>'required',
@@ -431,7 +435,7 @@ class interfaceController extends Controller
      $service = ServiceController::create($request);
    
    if($request->hasFile('avatar'))
-   { $img = ImageController::userImageUpload($request->file('avatar'));
+   { $img = ImageController::userImageUpload($request);
      $avater = new UserAvater;
      $avater->user_id = Auth::user()->id;
      $avater->avater = $img;

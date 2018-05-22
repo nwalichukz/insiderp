@@ -3612,3 +3612,9 @@ border: 1px solid #fafafa;
 .modal-body, .modal-footer{
   background: #eee;
 }
+.img-thum{
+	border-radius:4px;
+}
+.img-thum:hover{
+	border:1px solid #D3D3D3;
+}

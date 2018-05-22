@@ -20,7 +20,13 @@
 							<div class="detail-company pull-right text-right">
 								<div class="img-thum">
 									@if(!empty($user->avater->avater))
-										<img src='{{ asset("images/user/". $user->avater->avater) }}' class="img-responsive" alt="avatar">
+									<a title="Change logo" href="{{ route('addlogo') }}">
+									<img src='{{ asset("images/user/". $user->avater->avater) }}' class="img-responsive" alt="avatar"> 
+									</a>
+										@else
+										<a title="Add logo" href="{{ route('addlogo') }}">
+										<img src='{{ asset("images/logo/avater.jpg") }}' class="img-responsive" alt="avatar">
+									</a>
 									@endif
 								</div>
 								<div class="name pull-rightf">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Login | Sign up
+Sign up | Bido
 @endsection
 @section('content')
 	@include('partials.header2')
