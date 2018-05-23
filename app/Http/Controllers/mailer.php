@@ -88,10 +88,10 @@ class mailer extends Controller
 	               
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	        Mail::send('mail', $data, function($message){
+	       /* Mail::send('mail', $data, function($message){
 	       	$message->to($to)->subject($subject);
 	       	$message->from('askbido@gmail.com', 'Bido');
-	       });
+	       });*/
 	    }
 
 
@@ -113,9 +113,9 @@ class mailer extends Controller
 	        Your password has been reset !!!
 	        Use this password to login and update your password thereafter if you wish.!
 	        
-	        ------------------------
-	        New Password: '.$data['password'].'
-	        ------------------------
+	        --------------------------
+	        New Password: {{$password}}
+	        --------------------------
 	                
 	        ';
 
@@ -147,10 +147,10 @@ class mailer extends Controller
 	               
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	        Mail::send('mail', $data, function($message){
+	      /*  Mail::send('mail', $data, function($message){
 	       	$message->to($to)->subject($subject);
 	       	$message->from('askbido@gmail.com', 'Bido');
-	       });	    }
+	       });	*/    }
 
 	      /**
 	     * Delivers accepted notification offer email.
@@ -173,10 +173,10 @@ class mailer extends Controller
 	               
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	        Mail::send('mail', $data, function($message){
+	       /* Mail::send('mail', $data, function($message){
 	       	$message->to($to)->subject($subject);
 	       	$message->from('askbido@gmail.com', 'Bido');
-	       });
+	       });*/
 	    }
 
 	      /**
@@ -199,10 +199,10 @@ class mailer extends Controller
 	        Bido Team !!!
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	        Mail::send('mail', $data, function($message){
+	       /* Mail::send('mail', $data, function($message){
 	       	$message->to($to)->subject($subject);
 	       	$message->from('askbido@gmail.com', 'Bido');
-	       });
+	       });*/
 	    }
 
 	       /**
@@ -228,10 +228,10 @@ class mailer extends Controller
 	        Bido Team !!!
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	        Mail::send('mail', $data, function($message){
+	       /* Mail::send('mail', $data, function($message){
 	       	$message->to($to)->subject($subject);
 	       	$message->from('askbido@gmail.com', 'Bido');
-	       });
+	       });*//
 	    }
 
 	       /**
@@ -254,10 +254,10 @@ class mailer extends Controller
 	        Bido Team !!!
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	        Mail::send('mail', $data, function($message){
+	       /* Mail::send('mail', $data, function($message){
 	       	$message->to($to)->subject($subject);
 	       	$message->from('askbido@gmail.com', 'Bido');
-	       });
+	       });*/
 	    }
 
 	       /**

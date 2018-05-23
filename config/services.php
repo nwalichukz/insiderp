@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => 'www.bido.com.ng',
-        'secret' => 'key-8092033a5b982542e3572e2ac685474f',
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
     ],
 
     'ses' => [

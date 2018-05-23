@@ -15,8 +15,10 @@ use App\Http\Controllers\JobOfferDetailController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ServiceCategoryController;
 use App\Http\Controllers\VerifyEmailController;
+use App\Mail\signupnotification;
+use App\Mail\passwordreset;
 use Validator;
-use Auth;
+use Auth, Mail;
 use App\User;
 use App\JobOfferDetail;
 use App\UserAvater;
@@ -445,7 +447,7 @@ class interfaceController extends Controller
     $data = ['name'=>Auth::user()->name, 
              'service_name'=>$request['service_name'],
              ];
-    mailer::sendCreateServiceNotification($userEmail, $data);
+    Mail::to($userEmail)->send(new CreateServiceMail($data['name'], $data['service_name']));
      if (!empty($service)) {
          flash('Service created successfully', 'All good')->success();
          return redirect('user/'.str_replace(' ', '-', strtolower(Auth::user()->name)));
@@ -661,8 +663,7 @@ public function deletePrevWorkImg($id)
           $check->save();
           $data = ['password' => $sentpassword];
          // $check->password = $sentpassword;
-
-          mailer::sendpasswordreset($request['email'], $data);
+          Mail::to($request['email'])->send(new PasswordResetMail($password));
           flash('A password has been sent to your email. Please check your email and use it to login')->success();
           return redirect('/');
        
