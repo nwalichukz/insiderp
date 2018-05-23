@@ -446,7 +446,7 @@ class interfaceController extends Controller
     }
     $userEmail = Auth::user()->email;
     $data = ['name'=>Auth::user()->name, 
-             'service_name'=>$request['service_name'],
+             'service_name'=>$request['service_name']
              ];
     Mail::to($userEmail)->send(new CreateServiceMail($data['name'], $data['service_name']));
      if (!empty($service)) {
