@@ -21,7 +21,10 @@ class signupnotification extends Mailable
      */
     public function __construct($name, $password, $id, $token)
     {
-        //
+        $this->name = $name;
+        $this->password = $password;
+        $this->id = $id;
+        $this->token = $token;
     }
 
     /**

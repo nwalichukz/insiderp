@@ -20,7 +20,8 @@ class CreateServiceMail extends Mailable
     public $service_name;
     public function __construct($name, $service_name)
     {
-        //
+        $this->name = $name;
+        $this->service_name = $service_name;
     }
 
     /**

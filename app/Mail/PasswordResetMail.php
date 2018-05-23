@@ -19,7 +19,7 @@ class PasswordResetMail extends Mailable
     public $password;
     public function __construct($password)
     {
-        //
+        $this->password = $password;
     }
 
     /**
