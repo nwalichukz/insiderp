@@ -30,6 +30,7 @@ class UserController extends Controller
      	$user->state = $request['state'];
      	$user->password = bcrypt($request['password']);
      	$user->save();
+
          $token = rand().time();
          $password = $request['password'];
          $name = $request['name'];
@@ -41,7 +42,7 @@ class UserController extends Controller
         $verify->status = 'unverified';
         $verify->save();
         Mail::to($request['email'])->send(new signupnotification($user,$verify));
-    return true;
+        return true;
      }
 
      /**
