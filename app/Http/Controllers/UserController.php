@@ -36,7 +36,7 @@ class UserController extends Controller
          $id = $user->id;
     
         $verify = new VerifyEmail;
-        $verify->user_id = $user->id;
+        $verify->user_id = $id;
         $verify->token = $token;
         $verify->status = 'unverified';
         $verify->save();

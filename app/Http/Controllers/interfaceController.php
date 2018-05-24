@@ -664,7 +664,7 @@ public function deletePrevWorkImg($id)
           $check->save();
           $data = ['password' => $sentpassword];
          // $check->password = $sentpassword;
-          Mail::to($request['email'])->send(new PasswordResetMail($password));
+          Mail::to($request['email'])->send(new PasswordResetMail($sentpassword));
           flash('A password has been sent to your email. Please check your email and use it to login')->success();
           return redirect('/');
        
@@ -1343,7 +1343,7 @@ public function deleteService($id)
     flash('User email verified successfully, thanks')->success();
     return redirect('/');
    }else{
-    flash('User email verified successfully, thanks')->error();
+    flash('Something went wrong, user email not verified successfully, please try again')->error();
     return redirect('/');
    }
  }
