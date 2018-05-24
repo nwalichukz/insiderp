@@ -40,7 +40,7 @@ class UserController extends Controller
         $verify->token = $token;
         $verify->status = 'unverified';
         $verify->save();
-        Mail::to($request['email'])->send(new signupnotification($name, $password, $id, $token));
+        Mail::to($request['email'])->send(new signupnotification($user,$verify));
     return true;
      }
 

@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\User;
+use App\VerifyEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -14,16 +16,18 @@ class signupnotification extends Mailable
      public $password;
      public $id;
      public $token;
+
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param User $user
+     * @param VerifyEmail $token
      */
-    public function __construct($name, $password, $id, $token)
+    public function __construct(User $user, VerifyEmail $token)
     {
-        $this->name = $name;
-        $this->password = $password;
-        $this->id = $id;
+        $this->name = $user->name;
+        $this->password = $user->password;
+        $this->id = $user->id;
         $this->token = $token;
     }
 
@@ -35,10 +39,11 @@ class signupnotification extends Mailable
     public function build()
     {   $subject = 'Bido - Signup Notification';
         $address = 'askbido@gmail.com';
-        $name = 'Bido';
-        return $this->view('email.signupnotification')
-                    ->subject($subject)
-                    ->replyTo($address, $name)
-                    ->from($address, $name);
+        $name_of = 'Bido';
+        return $this->subject($subject)
+            ->replyTo($address, $name_of)
+            ->from($address, $name_of)
+            ->view('email.signupnotification');
+
     }
 }
