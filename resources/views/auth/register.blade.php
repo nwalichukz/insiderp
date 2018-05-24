@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('title')
-Login | Sign up
+Sign up | Bido
 @endsection
-
 @section('content')
 	@include('partials.header2')
 
@@ -123,5 +122,4 @@ Login | Sign up
 	</div>
 </div>
 @include('partials.footer')
-
 @endsection

@@ -20,7 +20,13 @@
 							<div class="detail-company pull-right text-right">
 								<div class="img-thum">
 									@if(!empty($user->avater->avater))
-										<img src='{{ asset("images/user/". $user->avater->avater) }}' class="img-responsive" alt="avatar">
+									<a title="Change logo" href="{{ route('addlogo') }}">
+									<img src='{{ asset("images/user/". $user->avater->avater) }}' class="img-responsive" alt="avatar"> 
+									</a>
+										@else
+										<a title="Add logo" href="{{ route('addlogo') }}">
+										<img src='{{ asset("images/logo/avater.jpg") }}' class="img-responsive" alt="avatar">
+									</a>
 									@endif
 								</div>
 								<div class="name pull-rightf">
@@ -37,40 +43,34 @@
 							</div>
 						</div>
 					</div>
-
-                    {{--
+					@if(!empty($images->count()))
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="content-area">
 								<div class="clearfix">
 									<div class="box">
+
 										<div class="row">
-											<div class="col-md-4">
-												<a href="{{ asset('images/prev/157611524917044.jpg') }}" class="swipebox" title="Caption Goes Here">
-														<img class="img-responsive work" src="{{ asset('images/prev/157611524917044.jpg') }}" alt="img">
+											@foreach($images as $img)
+											<div class="col-md-3">
+												<a href="{{ asset('images/prev/'.$img->name) }}" class="" title="Caption Goes Here">
+														<img class="img-responsive work" src="{{ asset('images/prev/'.$img->name) }}" alt="img">
 													</a>
+													<br/>
+													<span><a class="btn btn-border btn-sm" href="{{url('delete-prev-work-img/'.$img->id)}}" title="delete image"><i class="fa fa-close"></i>Delete</a></span>
 											</div>
-											<div class="col-md-4">
-												<a href="{{ asset('images/prev/157611524917044.jpg') }}" class="swipebox" title="Caption Goes Here">
-													<img class="img-responsive work" src="{{ asset('images/prev/157611524917044.jpg') }}" alt="img">
-												</a>
-											</div>
-											<div class="col-md-4">
-												<a href="{{ asset('images/prev/157611524917044.jpg') }}" class="swipebox" title="Caption Goes Here">
-													<img class="img-responsive work" src="{{ asset('images/prev/157611524917044.jpg') }}" alt="img">
-												</a>
-											</div>
+											@endforeach
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-				 --}}
-
+						
+				 	@endif
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="content-area">
 							<div class="clearfix">
 								<div class="box">
-									<h4>Basic Information</h4>
+									<h6>Basic Information</h6>
 									<div class="row">
 										<div class="col-md-4">
 											<div class="dash-box dash-box-color-3">
@@ -79,7 +79,7 @@
 												</div>
 												<a href="{{ url('job-offers', $service->id) }}">
 													<div class="dash-box-body">
-														<span class="dash-box-count">5</span>
+														<span class="dash-box-count">{{ $service->jobOffer->count() }}</span>
 														<span class="dash-box-title">Job Offers</span>
 													</div>
 												</a>
@@ -96,7 +96,7 @@
 												</div>
 												<a href="{{ url('ongoing-jobs', $service->id) }}">
 													<div class="dash-box-body">
-														<span class="dash-box-count">8</span>
+														<span class="dash-box-count">{{$ongoing}}</span>
 														<span class="dash-box-title">Ongoing Jobs</span>
 													</div>
 												</a>
@@ -113,7 +113,7 @@
 												</div>
 												<a href="{{ url('completed-jobs', $service->id) }}">
 													<div class="dash-box-body">
-														<span class="dash-box-count">3</span>
+														<span class="dash-box-count">{{ $completed }}</span>
 														<span class="dash-box-title">Jobs Completed</span>
 													</div>
 												</a>
@@ -123,10 +123,14 @@
 												</div>
 											</div>
 										</div>
+										<div class="col-md-8 col-md-offset-5">
+											<a href="{{ url('my-applications') }}" class="btn btn-common">My Applications <i class="ti-arrow-right"></i></a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 				@else
@@ -151,34 +155,23 @@
 					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 					<h3 class="modal-title" id="lineModalLabel">Add previous work images</h3>
 				</div>
+				<form action="{{ route('workImages') }}" method="post" enctype="multipart/form-data" id="">
 				<div class="modal-body">
 
 					<!-- content goes here -->
-					<form action="{{ route('workImages') }}" method="post" enctype="multipart/form-data">
+					
 						{{ csrf_field() }}
 						<div class="form-group">
-							<label for="attachment">attach files:</label>
-							<input type="file" name="files[]" id="files" class="form-control">
+							<label for="attachment">Attach files:</label>
+							<input type="file" name="files[]" onchange="readURL(this);" id="images" multiple="true" />
+							<div id="image-holder" class="col-md-12"></div>
+		                    <img class="showimg" src="#" alt="" /> 
 						</div>
-
-
-						<button type="submit" class="btn btn-common">Send Preview</button>
-					</form>
-
 				</div>
 				<div class="modal-footer">
-					<div class="btn-group btn-group-justified" role="group" aria-label="group button">
-						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
-						</div>
-						<div class="btn-group btn-delete hidden" role="group">
-							<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-						</div>
-						<div class="btn-group" role="group">
-							<button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">submit</button>
-						</div>
-					</div>
+					<button type="submit" class="pull-left btn btn-common">Save</button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>

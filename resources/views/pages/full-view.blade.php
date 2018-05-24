@@ -3,8 +3,9 @@
     Full view - {{ $fullview->name }}
 @endsection
 @section('content')
-    @include('partials.header2')
-    @include('partials.footer')
+@include('partials.header2')
+@include('partials.searchform')
+   
     <div id="content">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="content-area">
@@ -14,7 +15,12 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <center>
-                                    <img src="{{ asset('assets/img/blog/author.jpg') }}" name="avatar" width="140" height="140" border="0" class="img-circle"></a>
+                                    @if(!empty($search_result->user->avater->avater))
+                                    <img src="{{ asset("images/user/".$search_result->user->avater->avater) }}" name="avatar" width="140" height="140" border="0" class="img-circle"></a>
+                                    @else
+                                    <img src="{{ asset("images/logo/logo.png") }}" alt="">
+                                    @endif
+
                                     <h3 class="media-heading">{{ ucfirst($fullview->user->name) }} <small>{{ ucfirst($fullview->user->location) }}</small></h3>
                                     <div class="social-link">
                                         <a href="#"  data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-f"></i></a>
@@ -22,11 +28,7 @@
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube"></i></a>
                                     </div>
-                                    <span><strong>Skills: </strong></span>
-                                    <span class="label label-warning">HTML5/CSS</span>
-                                    <span class="label label-info">Adobe CS 5.5</span>
-                                    <span class="label label-info">Microsoft Office</span>
-                                    <span class="label label-success">Windows XP, Vista, 7</span>
+
                                     <div class="col-md-4">
                                         <p>{{ $fullview->user->description }}</p>
                                     </div>
@@ -41,7 +43,7 @@
                                             <ul class="detail-list">
                                                 <li>
                                                     <a href="#">Service Id</a>
-                                                    <span class="type-posts">BD1246789</span>
+                                                    <span class="type-posts">BD-{{$fullview->id}}</span>
                                                 </li>
                                                 <li>
                                                     <a href="#">Profession</a>
@@ -61,7 +63,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="#">Jobs Completed</a>
-                                                    <span class="type-posts">30</span>
+                                                    <span class="type-posts">0</span>
                                                 </li>
                                                 <li>
                                                     <a href="#">Verification Status</a>
@@ -83,7 +85,7 @@
                                 <aside>
                                     <div class="sidebar">
                                         <div class="box">
-                                            <form id="sendEquiry" onsubmit="sendEquiry(event);" action="" method="post" enctype="multipart/form-data" accept-charset="UTF-8" files="true">
+                                            <form id="sendEquiry" action="sendEnquiry" method="post" enctype="multipart/form-data" accept-charset="UTF-8" files="true">
                                                   <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <div class="form-group">
                                                     <input type="text" name="name" placeholder="Full Name" class="form-control" required>
@@ -186,8 +188,8 @@
                             <div class="form-group">
                                 <label for="duration">Duration</label>
                                 <select name="duration" class="form-control" required>
-                                     <option value="1">1 day</option>
-                                     <option value="2">2 days</option>
+                                    <option value="1">1 day</option>
+                                    <option value="2">2 days</option>
                                     <option value="3">3 days</option>
                                     <option value="4">4 days</option>
                                     <option value="5">5 days</option>
@@ -241,8 +243,8 @@
                             {{ csrf_field() }}
                             <h3>Login</h3>
                             <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="text" class="form-control" name="phone_no" placeholder="Phone Number">
+                                <label for="phone">Email Address</label>
+                                <input type="text" class="form-control" name="email" placeholder="Email address e.g jon@gmail.com">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
@@ -254,7 +256,7 @@
                                         <input name="rememberme" id="rememberme" value="forever" type="checkbox"> Remember Me
                                     </label>
                                 </div>
-                                <p class="cd-form-bottom-message"><a href="#0">Lost your password?</a></p>
+                                <p class="cd-form-bottom-message"><a href="{{url("reset-password")}}">Lost your password?</a></p>
                             </div>
                             <div class="form-group">
                                 <button type="submit" value="" class="btn btn-common">Login</button>
@@ -275,4 +277,5 @@
         </div>
 
     </div>
+
 @endsection

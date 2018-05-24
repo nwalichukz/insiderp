@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\JobProgress;
 use Illuminate\Http\Request;
 use App\JobOfferDetail;
 use App\User;
@@ -65,6 +66,12 @@ class JobController extends Controller
     	
     }
 
+    public static function allJobs()
+    {
+        return JobOfferDetail::with('job_executor')->with('job_owner')->with('job_progress')
+            ->with('job_approval')->with('job_payment')->get();
+    }
+
      /**
     * This method returns all the job
     *
@@ -77,6 +84,37 @@ class JobController extends Controller
     {
     	return JobOfferDetail::where('service_id', $service_id)->with('job_owner')->with('job_progress')
                                 ->with('job_approval')->with('job_payment')->get();
+    }
+
+    // this method returns the number of ongoing jobs for a service
+    public static function ongoingJobsCount($service_id)
+    {
+        $jobs = JobOfferDetail::where('service_id', $service_id)->get();
+        if(!empty($jobs))
+        {
+        $count = 0;
+        foreach ($jobs as $job)
+        {
+            $job_progress = JobProgress::where('progress_status', 'ongoing')
+                ->where('job_offer_detail_id', $job->id)->count();
+
+            return $job_progress;
+        }
+     }
+    }
+
+    // this method returns the number of completed jobs for a service
+    public static function completedJobsCount($service_id)
+    {
+        $jobs = JobOfferDetail::where('service_id', $service_id)->get();
+        $count = 0;
+        foreach ($jobs as $job)
+        {
+            $job_progress = JobProgress::where('progress_status', 'completed')
+                ->where('job_offer_detail_id', $job->id)->count();
+
+            return $job_progress;
+        }
     }
 
       /**
@@ -98,19 +136,29 @@ class JobController extends Controller
         $Service = Service::find($job_detail->service_id);
         $data = ['name' => $Service->name,];
         $useremail = $user->email;
-        if($job_detail->duration < 30){
         $job_detail->initial_deliver_date = (new \Carbon\Carbon)->addDays($job_detail->duration);
-        }elseif($job_detail->duration == 30){
-           $job_detail->initial_deliver_date = (new \Carbon\Carbon)->addMonths(1);
-        }elseif($job_detail->duration == 60){
-            $job_detail->initial_deliver_date = (new \Carbon\Carbon)->addMonths(2);
-        }
         $job_detail->save();
         // send mail
         mailer::sendAcceptNotification($useremail, $data);
         return true;
     
       }
+
+    /**
+    * This method accepts an opplication
+    *
+    *  by a particular user/offerer
+    * @var job-offer_detail_id
+    *
+    * @return collection
+    *
+    */
+    public static function acceptApplication()
+    {
+
+    }
+
+
       //send mail and notification
 
     /**

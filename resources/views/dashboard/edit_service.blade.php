@@ -69,19 +69,9 @@
                                     <label class="control-label" for="textarea">Skill Name</label>
                                     <input class="form-control" name="skills" placeholder="Skill name, e.g. Design" value="{{ $service->skills }}" type="text">
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="control-label" for="textarea">% (1-100)</label>
-                                    <input class="form-control"name="proficiency" placeholder="Skill proficiency, e.g. 90" value="{{ $service->proficiency }}" type="text">
-                                </div>
                             </div>
                         </div>
-                        <div class="divider">
-                            <h3>Features</h3>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="textarea">Featured services</label>
-                            <input class="form-control" name="additional_service" placeholder="Feature name, e.g. Home Service" value="{{ $service->additional_service }}" type="text">
-                        </div>
+                
                         <input type="submit"class="btn btn-common" value="Update Service">
                     </form>
                 </div>

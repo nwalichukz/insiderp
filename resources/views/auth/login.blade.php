@@ -17,13 +17,13 @@ Login | Sign up
 						<div class="page-login-form">
 							<form role="form" class="login-form" action="{{ route('login') }}" method="post">
 								{{ csrf_field() }}
-								<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+								<div class="form-group{{ $errors->has('phone_no') ? ' has-error' : '' }}">
 									<div class="input-icon">
-										<i class="ti-user"></i>
-										<input type="text" id="phone_no" class="form-control" name="phone_no" placeholder="Enter Phone number">
-										@if ($errors->has('phone_no'))
+										<i class="ti-phone"></i>
+										<input type="text" id="email" class="form-control" name="email" placeholder="Email address e.g jon@gmail.com" >
+										@if ($errors->has('email'))
 				                            <span class="help-block">
-				                                <strong>{{ $errors->first('phone_no') }}</strong>
+				                                <strong>{{ $errors->first('email') }}</strong>
 				                            </span>
 				                        @endif
 									</div>
@@ -43,10 +43,10 @@ Login | Sign up
 								<div class="checkbox-item">
 									<div class="checkbox">
 										<label for="rememberme" class="rememberme">
-											<input name="rememberme" id="rememberme" value="forever" type="checkbox" {{ old('remember') ? 'checked' : '' }}> Remember Me
+											<input name="remember" id="rememberme" value="forever" type="checkbox" {{ old('remember') ? 'checked' : '' }}> Remember Me
 										</label>
 									</div>
-									<p class="cd-form-bottom-message"><a href="#0">Lost your password?</a></p>
+									<p class="cd-form-bottom-message"><a href="{{url("reset-password")}}">Lost your password?</a></p>
 								</div>
 							</form>
 						</div>
@@ -72,10 +72,5 @@ Login | Sign up
 		</div>
 	</div>
 </div>
-
-
-
 @include('partials.footer')
-
-
 @endsection

@@ -24,7 +24,9 @@
                             <br>
                             <h6>Upload a different photo...</h6>
 
-                            <input type="file" class="btn btn-default" name="avatar" required>
+                            <input type="file" class="btn btn-default" name="avatar" onchange="readURL(this);" id="images" required>
+                            <div id="image-holder" class="col-md-12"></div>
+                            <img class="showimg" src="#" alt="" />
                             <button type="submit" class="btn btn-common">Save</button>
                         </form>
                     </div>

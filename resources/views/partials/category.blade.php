@@ -14,7 +14,7 @@
 				</div>
 				
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Business">
+					<a href="search-category/Business and Consulting">
 						<div class="icon">
 							<i class="fa fa-money"></i>
 						</div>
@@ -22,7 +22,7 @@
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Education and Training">
+					<a href="search-category/Education-and-Training">
 						 <div class="icon">
 							<i class="fa fa-book"></i>
 						</div>
@@ -30,7 +30,7 @@
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Entertainment and Video Editing">
+					<a href="search-category/Entertainment-and-Video-Editing">
 						<div class="icon">
 							<i class="fa fa-microphone"></i>
 						</div>
@@ -38,7 +38,7 @@
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Events and Lifestyle">
+					<a href="search-category/Events-and-Lifestyle">
 						<div class="icon">
 							<i class="fa fa-chevron-right"></i>
 						</div>
@@ -46,7 +46,7 @@
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Programming and IT">
+					<a href="search-category/Programming-and-IT">
 						<div class="icon">
 							<i class="fa fa-laptop"></i>
 						</div>
@@ -54,7 +54,7 @@
 						</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Sewing and Makeups">
+					<a href="search-category/Sewing-and-Makeups">
 						<div class="icon">
 							<i class="fa fa-heart"></i>
 						</div>
@@ -62,7 +62,7 @@
 					</a>
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 f-category">
-					<a href="search-category/Repairs">
+					<a href="search-category/Repairs-and-Services">
 						<div class="icon">
 							<i class="fa fa-gear"></i>
 						</div>

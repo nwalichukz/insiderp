@@ -15,7 +15,7 @@ Browse Jobs | Bido
                             <div class="col-md-6">
                                 <div class="job-list">
                                     <div class="job-list-content">
-                                        <h4><a href="job-details.html">{{ $job->name }}</a><span class="full-time">&#8358; {{ $job->total_amount }}</span></h4>
+                                        <h4><a href="job-details.html">{{ $job->name }}</a><span class="full-time">&#8358; {{ $job->budget }}</span></h4>
                                         <p>{{ $job->job_description }}</p>
                                         <div class="job-tag">
                                             <div class="pull-left">
@@ -26,19 +26,21 @@ Browse Jobs | Bido
                                                 </div>
                                             </div>
                                             <div class="pull-right">
-                                                <a href="{{ url('bid/'.$job->id) }}" class="btn btn-common btn-rm">Apply</a>
+                                                <a href="{{ url('bid/'.$job->id) }}" title="Apply for this job" class="btn btn-common btn-rm">Apply</a>
+                                                <a href="{{ url('cancel-bid/'.$job->id) }}" title="Cancel job application" class="btn btn-common btn-rm">Cancel</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         @endforeach
                     </div>
 
                 @else
-                    <div class="col-md-8">
-                        <p>There are no available jobs for you at the moment</p>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="box">
+                            <p>There are no available jobs for you at the moment</p>
+                        </div>
                     </div>
                 @endif
                 <ul class="pagination">

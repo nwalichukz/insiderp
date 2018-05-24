@@ -5,9 +5,7 @@ Bido
 
 @section('content')
   @include('partials.header')
-
   @include('partials.category')
-
   @include('partials.featured')
 
 <section class="section purchase" data-stellar-background-ratio="0.5">

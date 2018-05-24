@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\mailerController;
 use App\Vendor;
 use App\User;
 use App\Message;
@@ -26,6 +27,9 @@ class MessageController extends Controller
     	$message->message = $request['message'];
     	$message->status = 'unread';
     	$message->save();
+      $data = ['name'=>$request['name'], 'phone'=>$request['phone_no'], 
+      'email'=>$request['email'], 'message'=>$request['message'], ];
+      mailer::emailEnquiry($request['service_email'], $data);
     	return true;
     }
 

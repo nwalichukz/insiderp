@@ -31,11 +31,9 @@ class ServiceController extends Controller
       $service->location = $request['location'];
       $service->service_category = $request['service_category'];
       $service->skills = $request['skills'];
-      $service->proficiency = $request['proficiency'];
     	$service->description = $request['description'];
-      $service->additional_service = $request['additional_service'];
     	$service->save();
-    return true;
+    return $service->id;
 
     }
   
@@ -55,7 +53,7 @@ class ServiceController extends Controller
     *
     */
      public static function getUserService($user_id){
-      return Service::where('user_id', $user_id)->first();
+      return Service::where('user_id', $user_id)->with('images')->first();
      }
 
     /**

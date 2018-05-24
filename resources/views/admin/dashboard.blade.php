@@ -76,7 +76,7 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->gender }}</td>
                                                 <td>{{$user->created_at->diffForHumans()}}</td>
-                                               
+                                                <td><a href=""><i class="fa fa-angle-right"></i> Details</a></td>
                                             </tr>
                                             
                                             @endforeach

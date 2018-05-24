@@ -58,7 +58,9 @@
                                 <div class="action-buttons">
                                     <div class="upload-button">
                                         <button class="btn btn-common">Choose a service logo</button>
-                                        <input id="cover_img_file" type="file" name="avatar">
+                                        <input type="file" name="avatar" onchange="readURL(this);" id="images">
+                                        <div id="image-holder" class="col-md-12"></div>
+                                         <img class="showimg" src="#" alt="" /> 
                                     </div>
                                 </div>
                             </div>
@@ -76,18 +78,7 @@
                                     <label class="control-label" for="skills">Skill Name</label>
                                     <input class="form-control" name="skills" placeholder="Skill name, e.g. Design" type="text">
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="control-label" for="proficiency">% (1-100)</label>
-                                    <input class="form-control"name="proficiency" placeholder="Skill proficiency, e.g. 90" type="text" required>
-                                </div>
                             </div>
-                        </div>
-                        <div class="divider">
-                            <h3>Features</h3>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="additional_service">Featured services</label>
-                            <input class="form-control" name="additional_service" placeholder="Feature name, e.g. Home Service" type="text">
                         </div>
                         <input type="submit"class="btn btn-common" value="Add Service">
                     </form>

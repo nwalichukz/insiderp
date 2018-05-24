@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\mailer;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\VerifyEmailController;
+use App\Mail\signupnotification;
 use App\Vendor;
+use App\VerifyEmail;
 use App\User;
 use App\UserAvater;
+use Mail;
 
 class UserController extends Controller
 {
@@ -26,15 +30,18 @@ class UserController extends Controller
      	$user->state = $request['state'];
      	$user->password = bcrypt($request['password']);
      	$user->save();
-        $emaildata = ['password'=> $request['password'],
-                    'phone_no' => $request['phone_no'],
-                    'name' => $request['name'],
-                    ];
-        if(!empty($request['email']))
-        {
-            mailer::emailNotification($request['email'], $emaildata);
-        }
-        return true;
+         $token = rand().time();
+         $password = $request['password'];
+         $name = $request['name'];
+         $id = $user->id;
+    
+        $verify = new VerifyEmail;
+        $verify->user_id = $user->id;
+        $verify->token = $token;
+        $verify->status = 'unverified';
+        $verify->save();
+        Mail::to($request['email'])->send(new signupnotification($user,$verify));
+    return true;
      }
 
      /**
@@ -73,7 +80,7 @@ class UserController extends Controller
       public static function changePassword(Request $request)
       {
         
-            $user = User::where('phone_no', $request['phone_no'])
+            $user = User::where('email', $request['email'])
                         ->where('password', bcrypt($request['old_password']))->first();
             if($user)
             {

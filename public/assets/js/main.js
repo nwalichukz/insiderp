@@ -1,3 +1,30 @@
+/**
+* This is the inbuilt method that reads the URL
+*  of any image for preview before upload
+*/
+
+function readURL(input) {
+    var files = input.files;
+    var imgPath = files[0].value;
+   // var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+    var image_holder = $("#image-holder").empty();
+     
+    if (files)/*(extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") */{
+        for(var i=0; i<files.length; i++){
+        var reader = new FileReader();
+        reader.onload = function (e) {
+        $("<img />", {
+            "src": e.target.result,
+            "class": "thumb-image"
+            }).appendTo(image_holder);
+            }
+image_holder.show();
+reader.readAsDataURL(files[i]);
+            }
+      }
+
+ }
+
 
  function sendEquiry(event){
  event.preventDefault();

@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/send-mail', function (){
+    Mail::raw('emails with mailgun is fun', function ($message){
+        $message->subject('Welcome to Bido!');
+        $message->from('support@bido.com.ng');
+        $message->to('chukznwali@gmail.com');
+    }) ;
+});
 Route::get('/', 'interfaceController@index');
 Route::post('/send-enquiry', 'interfaceController@sendEquiry');
 Route::get('/about', 'interfaceController@about')->name('about');
@@ -43,10 +53,11 @@ Route::get('/jobs-ongoing', 'interfaceController@jobsOngoing');
 Route::get('/jobs-completed', 'interfaceController@jobsCompleted');
 Route::get('/offers', 'interfaceController@offers')->name('offer');
 Route::get('/manage-applications', 'interfaceController@applications')->name('manage-applications');
+Route::get('my-applications', 'interfaceController@myApplications')->name('my-applications');
 Route::get('/service', 'interfaceController@service')->name('service');
 Route::post('/service/add', 'interfaceController@createService')->name('addService');
 Route::post('/search', 'interfaceController@postSearch')->name('search');
-Route::get('/view/{id}', 'interfaceController@fullView')->name('fullView');
+Route::get('/view-search/{id}', 'interfaceController@fullView');
 Route::get('profile/edit/', 'interfaceController@editProfile')->name('editProfile');
 Route::post('profile/update', 'interfaceController@updateProfile')->name('updateProfile');
 Route::post('/change-avatar', 'interfaceController@addAvatar')->name('updateAvatar');
@@ -79,4 +90,18 @@ Route::post('/post-enquiry', 'interfaceController@contactUs');
 Route::get('/get-all-enquiry', 'interfaceController@getAllEnquiry');
 Route::get('/get-enquiry/{id}', 'interfaceController@getEnquiry');
 Route::get('/delete-enquiry/{id}', 'interfaceController@deleteEnquiry');
-
+Route::get('/edit-posted-job/{id}', 'interfaceController@editPostedJob');
+Route::get('/delete-posted-job/{id}', 'interfaceController@deletePostedJob');
+Route::post('/update-posted-job', 'interfaceController@updatePostedJob')->name('postJobUpdate');
+Route::get('/view-applications/{id}', 'interfaceController@viewApplications');
+Route::get('/accept-job-application/{job_id}/{bid_id}', 'interfaceController@acceptApplication');
+Route::get('/cancel-offered-job-application/{job_id}/{bid_id}', 'interfaceController@cancelApplication');
+Route::get('/reset-password', 'interfaceController@resetPassword');
+Route::post('/post-reset-password', 'interfaceController@postResetPassword')->name('post-reset-password');
+Route::get('/all-job-offers', 'interfaceController@allJobOffers');
+Route::get('/all-ongoing-jobs', 'interfaceController@allOngoingJobs');
+Route::get('/all-jobs-completed', 'interfaceController@allJobsCompleted');
+Route::get('/verify-email/{user_id}/{token}', 'interfaceController@verifyEmail');
+Route::get('/delete-prev-work-img/{id}', 'interfaceController@deletePrevWorkImg');
+Route::post('/send-enquiry', 'interfaceController@sendEquiry');
+Route::get('/get-add-logo-form', 'interfaceController@addLogoForm')->name('addlogo');

@@ -2,7 +2,6 @@
 @section('title')
     Jobs Completed | Bido
 @endsection
-
 @section('content')
     @include('partials.header2')
     <div id="content">

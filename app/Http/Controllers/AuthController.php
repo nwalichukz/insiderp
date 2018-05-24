@@ -16,14 +16,14 @@ class AuthController extends Controller
      public static function authenticate(Request $request)
     {
        
-         $suspended = ['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'), 'status'=>'suspended', 'user_level' =>'user'];
-          $banned = ['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'), 'status'=>'banned', 'user_level' =>'user'];  
+         $suspended = ['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'suspended', 'user_level' =>'user'];
+          $banned = ['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'banned', 'user_level' =>'user'];
 
-        if(Auth::attempt(['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'user']))
+        if(Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'user']))
         {   LastLoginController::login(Auth::user()->id);
             return 'user';
         }
-        elseif(Auth::attempt(['phone_no'=> $request->input('phone_no'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'admin']))
+        elseif(Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'admin']))
         {   LastLoginController::login(Auth::user()->id);
             return 'admin';
         }
@@ -38,5 +38,16 @@ class AuthController extends Controller
             return 0;
         }
        
+    }
+
+    public static function checkSession()
+    {
+        if(!Auth::check())
+        {   Auth::logout();
+            return redirect('/');
+        }else{
+            true;
+        }
+
     }
 }

@@ -3584,13 +3584,7 @@ blockquote p a:hover {
   border-right: 0;
 }
 
-.search-area .form-group .form-control {
-  height: 15px;
-}
 
-.search-area button {
-  height: 15px;
-}
 .status
 {
 display:none;
@@ -3602,4 +3596,25 @@ border: 1px solid #fafafa;
 display:none;
 background: #FF8C00;
 border: 1px solid #fafafa;
+}
+.thumb-image{
+  width:122px;
+  height: 130px;
+  padding:1px; 
+  border-radius: 4px;
+}
+.thumb-image:hover{
+   border:1px solid #D3D3D3;
+}
+.swipebox:hover{
+  border:1px solid #D3D3D3;
+}
+.modal-body, .modal-footer{
+  background: #eee;
+}
+.img-thum{
+	border-radius:4px;
+}
+.img-thum:hover{
+	border:1px solid #D3D3D3;
 }

@@ -4,16 +4,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Find the service that fits your taste</h1>
+				<h1>Find the service that meets your needs</h1>
 				<br>
-				<h2>More than <strong>12,000</strong> people are waiting to get your job done!</h2>
+				<h2>What problem do you want solved, you can find a solution</h2>
 				<div class="content">
 					<form method="post" action="{{ route('search') }}">
 						{{ csrf_field() }}
 						<div class="row">
 							<div class="col-md-4 col-sm-6">
 								<div class="form-group">
-									<input class="form-control" type="text" name="profession_title" placeholder="Find Services e.g. Orange Arts">
+									<input class="form-control" type="text" name="profession_title" placeholder="Find Services e.g. graphic designer">
 									<i class="ti-time"></i>
 								</div>
 							</div>
@@ -28,14 +28,14 @@
 									<label class="styled-select">
 									<select class="dropdown-product selectpicker" name="service_category">
 										<option value="">Select Service Category</option>
-										<option>Entertainment</option>
-										<option>Business</option>
+										<option>Entertainment and Video Editing</option>
+										<option>Business and Consulting</option>
 										<option>Education and Training</option>
 										<option>Art and Design</option>
 										<option>Events and Lifestyle</option>
 										<option>Programming and IT</option>
 										<option>Sewing and Makeups</option>
-										<option>Repairs</option>
+										<option>Repairs and Services</option>
 									</select>
 									</label>
 								</div>

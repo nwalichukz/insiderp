@@ -51,7 +51,7 @@ class searchController extends Controller
     * @var request
     */
     public static function fullview($id)
-    {   
+    {
     	return $view = Service::where('id', $id)
     						->with('user')
     						->with('view')
@@ -63,15 +63,34 @@ class searchController extends Controller
      /**
     * This method searches for
     *
-    * services entered by the user
+    * services entered by the user base n category
+    *
+    * @return array
+    * @var request
+    */
+     public static function searchCategory($category)
+     {   
+     	 $query = $query = Service::where('service_category', str_replace('-', ' ', $category))
+
+     			 ->orderBy('created_at','DESC')->with('user')->with('view')->with('avater');
+     	return ['search' => $query->paginate(12), 'total_search' => $query->count()];
+     }
+
+       /**
+    * This method searches for
+    *
+    * based on related search item
     *
     * @return collection
     * @var request
     */
-     public static function searchCategory($category)
-     {
-     	 $query = Service::where('service_category', $category)
-     			 ->orderBy('created_at','DESC')->with('user')->with('view')->with('avater');
-     	return ['search' => $query->paginate(12), 'total_search' => $query->count()];
-     }
+       public static function relatedSearch($title)
+       { $query = Service::where('profession_title', 'like', '%'.$title.'%')
+                        ->orWhere('service_category', 'like', '%'.$title.'%')
+                        ->where('profession_title', '!=', $title);
+         $query->orderBy('created_at','DESC')->with('user')->with('view')->with('avater');
+
+         return ['related' => $query->paginate(6)];
+
+       }
 }
