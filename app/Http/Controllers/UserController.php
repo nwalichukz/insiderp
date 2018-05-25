@@ -12,6 +12,7 @@ use App\VerifyEmail;
 use App\User;
 use App\UserAvater;
 use Mail;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -40,7 +41,8 @@ class UserController extends Controller
         $verify->token = $token;
         $verify->status = 'unverified';
         $verify->save();
-        Mail::to($request['email'])->send(new signupnotification($name, $password, $id, $token));
+        $delay = (new \Carbon\Carbon)->now()->addSeconds(20);
+        Mail::to($request['email'])->later($delay, new signupnotification($name, $password, $id, $token));
     return true;
      }
 

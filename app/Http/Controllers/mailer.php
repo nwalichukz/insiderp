@@ -88,10 +88,6 @@ class mailer extends Controller
 	               
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       /* Mail::send('mail', $data, function($message){
-	       	$message->to($to)->subject($subject);
-	       	$message->from('askbido@gmail.com', 'Bido');
-	       });*/
 	    }
 
 
@@ -115,10 +111,8 @@ class mailer extends Controller
 	        
 	        --------------------------
 	        New Password: {{$password}}
-	        --------------------------
-	                
+	        --------------------------       
 	        ';
-
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
             Mail::send('mail', $data, function($message){
 	       	$message->to($to)->subject($subject);
@@ -139,7 +133,7 @@ class mailer extends Controller
 	        $subject = 'Bido - Accept Job Offer Notification'; // Give the email a subject 
 	        $data = '
 	        Your offer has been accepted by '.$data['name'].' 
-	        Your should proceed to amke payment on or before 48 hours,
+	        Your should proceed to make payment on or before 48 hours,
 	        after which your offer maybe concelled without payment. Login to the app
 	        to get more details. Thanks.
 
@@ -147,10 +141,7 @@ class mailer extends Controller
 	               
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	      /*  Mail::send('mail', $data, function($message){
-	       	$message->to($to)->subject($subject);
-	       	$message->from('askbido@gmail.com', 'Bido');
-	       });	*/    }
+	         }
 
 	      /**
 	     * Delivers accepted notification offer email.
@@ -173,10 +164,6 @@ class mailer extends Controller
 	               
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       /* Mail::send('mail', $data, function($message){
-	       	$message->to($to)->subject($subject);
-	       	$message->from('askbido@gmail.com', 'Bido');
-	       });*/
 	    }
 
 	      /**
@@ -198,11 +185,7 @@ class mailer extends Controller
 
 	        Bido Team !!!
 	        ';          
-	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       /* Mail::send('mail', $data, function($message){
-	       	$message->to($to)->subject($subject);
-	       	$message->from('askbido@gmail.com', 'Bido');
-	       });*/
+	        //$headers = 'From:Bido<askbido@gmail.com>' 
 	    }
 
 	       /**
@@ -228,10 +211,6 @@ class mailer extends Controller
 	        Bido Team !!!
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       /* Mail::send('mail', $data, function($message){
-	       	$message->to($to)->subject($subject);
-	       	$message->from('askbido@gmail.com', 'Bido');
-	       });*//
 	    }
 
 	       /**
@@ -254,10 +233,6 @@ class mailer extends Controller
 	        Bido Team !!!
 	        ';          
 	        //$headers = 'From:Bido<askbido@gmail.com>' . "\n"; // Set from headers
-	       /* Mail::send('mail', $data, function($message){
-	       	$message->to($to)->subject($subject);
-	       	$message->from('askbido@gmail.com', 'Bido');
-	       });*/
 	    }
 
 	       /**

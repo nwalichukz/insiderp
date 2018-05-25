@@ -18,6 +18,7 @@ use App\Http\Controllers\VerifyEmailController;
 use App\Mail\signupnotification;
 use App\Mail\PasswordResetMail;
 use App\Mail\CreateServiceMail;
+use App\Mail\MakeOfferNotification;
 use Validator;
 use Auth, Mail;
 use App\User;
@@ -248,7 +249,7 @@ class interfaceController extends Controller
 * returns collecion
 */
     public function adminVendors()
-    {  if(!Auth::check() && Auth::user()->user_level !== 'admin'){
+    {  if(!Auth::check() || Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -263,7 +264,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminUserDetails($user)
-    {  if(!Auth::check() && Auth::user()->user_level !== 'admin'){
+    {  if(!Auth::check() || Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -279,7 +280,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobOffers()
-    {   if(!Auth::check() && Auth::user()->user_level !== 'admin'){
+    {   if(!Auth::check() || Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -297,7 +298,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobsOngoing()
-    {   if(!Auth::check() && Auth::user()->user_level !== 'admin'){
+    {   if(!Auth::check() || Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -313,7 +314,7 @@ class interfaceController extends Controller
      * returns collection
      */
     public function adminJobsCompleted()
-    {   if(!Auth::check() && Auth::user()->user_level !== 'admin'){
+    {   if(!Auth::check() || Auth::user()->user_level !== 'admin'){
          Auth::logout();
          return redirect('/');  
          }
@@ -448,7 +449,8 @@ class interfaceController extends Controller
     $data = ['name'=>Auth::user()->name, 
              'service_name'=>$request['service_name']
              ];
-    Mail::to($userEmail)->send(new CreateServiceMail($data['name'], $data['service_name']));
+    $delay = (new \Carbon\Carbon)->now()->addMinutes(2);
+    Mail::to($userEmail)->later($delay, new CreateServiceMail($data['name'], $data['service_name']));
      if (!empty($service)) {
          flash('Service created successfully', 'All good')->success();
          return redirect('user/'.str_replace(' ', '-', strtolower(Auth::user()->name)));
@@ -1028,6 +1030,9 @@ public function deleteService($id)
         $job = JobOfferDetailController::create($request);
         $jobapproval = JobApprovalController::create($job);
         $jobprogress= JobProgressController::create($job);
+        $user = User::find($service->user_id);
+        $delay = (new \Carbon\Carbon)->now()->addMinutes(3);
+        Mail::to($user->email)->later($delay, new MakeOfferNotification($request['job_name'], $request['offer_amount'], $request['duration']));
         if($jobprogress)
         {
             flash('Your offer has been sent, you will receive a response from the vendor soon, thanks')->success();

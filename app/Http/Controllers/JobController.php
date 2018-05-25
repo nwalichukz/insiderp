@@ -10,7 +10,8 @@ use App\Service;
 use App\Http\Controllers\JobOfferController;
 use App\Http\Controllers\JobOfferDetailController;
 use App\Http\Controllers\mailer;
-use Auth, DB;
+use App\Mail\AcceptOfferNotification;
+use Auth, DB, Mail;
 use Carbon\Carbon;
 use App\JobApproval;
 
@@ -136,10 +137,11 @@ class JobController extends Controller
         $Service = Service::find($job_detail->service_id);
         $data = ['name' => $Service->name,];
         $useremail = $user->email;
-        $job_detail->initial_deliver_date = (new \Carbon\Carbon)->addDays($job_detail->duration);
+        $job_detail->initial_deliver_date = (new \Carbon\Carbon)->now()->addDays($job_detail->duration);
         $job_detail->save();
         // send mail
-        mailer::sendAcceptNotification($useremail, $data);
+        $delay = (new \Carbon\Carbon)->now()->addMinutes(3);
+        Mail::to($useremail)->later($delay, new AcceptOfferNotification($name, $job_name));
         return true;
     
       }
