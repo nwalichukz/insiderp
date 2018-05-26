@@ -23,7 +23,7 @@ class signupnotification extends Mailable
      * @param User $user
      * @param VerifyEmail $token
      */
-    public function __construct(User $user, VerifyEmail $token)
+    public function __construct($name, $password, $id, $token)
     {
         $this->name = $user->name;
         $this->password = $user->password;
