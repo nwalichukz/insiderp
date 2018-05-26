@@ -8,7 +8,11 @@
 	        ------------------------------
 
 	        Please click this link to verify your account:
+<<<<<<< HEAD
 	        http://www.bido.com.ng/verify-email/'{{$id}}'/'{{$token}} 
+=======
+	        http://www.bido.com.ng/verify-email/'{{$id}}'/'{{$token}}'
+>>>>>>> 1609247fb1c3214c6d4682ac75bee51a814e5710
 
 	        <h4>Bido Team !!! </h4>
 	               

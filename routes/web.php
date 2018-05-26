@@ -22,7 +22,7 @@ Route::get('/send-mail', function (){
     Mail::raw('emails with mailgun is fun', function ($message){
         $message->subject('Welcome to Bido!');
         $message->from('support@bido.com.ng');
-        $message->to('mamahemeka84@gmail.com');
+        $message->to('flashup4all@gmail.com');
     }) ;
 });
 Route::get('/', 'interfaceController@index');

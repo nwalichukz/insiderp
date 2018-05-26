@@ -31,6 +31,7 @@ class UserController extends Controller
      	$user->state = $request['state'];
      	$user->password = bcrypt($request['password']);
      	$user->save();
+
          $token = rand().time();
          $password = $request['password'];
          $name = $request['name'];
@@ -44,6 +45,7 @@ class UserController extends Controller
         $delay = (new \Carbon\Carbon)->now()->addSeconds(20);
         Mail::to($request['email'])->later($delay, new signupnotification($name, $password, $id, $token));
     return true;
+
      }
 
      /**
