@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class AcceptOfferNotification extends Mailable
+class AcceptApplicationNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,12 +16,11 @@ class AcceptOfferNotification extends Mailable
      *
      * @return void
      */
-    public $name, $job_name, $amount;
-    public function __construct($name)
+    public $job_name, $user;
+    public function __construct($job_name, $user)
     {
-        $this->name = $name;
         $this->job_name = $job_name;
-        $this->amount = $amount;
+        $this->user = $user;
     }
 
     /**
@@ -31,10 +30,10 @@ class AcceptOfferNotification extends Mailable
      */
     public function build()
     {
-        $subject = 'Bido - Accept Job Offer Notification';
+        $subject = 'Bido - Accept Job Application';
         $address = 'askbido@gmail.com';
         $name = 'Bido';
-        return $this->view('email.acceptoffernotification')
+        return $this->view('email.acceptapplication')
                     ->subject($subject)
                     ->replyTo($address, $name)
                     ->from($address, $name);

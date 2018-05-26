@@ -86,6 +86,9 @@ class ServiceController extends Controller
        	if(!empty($request['location'])){
        	$update->location = $request['location'];
        	}
+          if(!empty($request['status'])){
+        $update->status = $request['status'];
+        }
        	if(!empty($request['description'])){
        	$update->description =$request['description'];
        	}

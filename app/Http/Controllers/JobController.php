@@ -141,7 +141,7 @@ class JobController extends Controller
         $job_detail->save();
         // send mail
         $delay = (new \Carbon\Carbon)->now()->addMinutes(3);
-        Mail::to($useremail)->later($delay, new AcceptOfferNotification($name, $job_name));
+        Mail::to($useremail)->later($delay, new AcceptOfferNotification($data['name'], $job_detail->job_name, $job_detail->total_amount));
         return true;
     
       }

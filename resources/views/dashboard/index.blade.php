@@ -25,7 +25,7 @@
 									</a>
 										@else
 										<a title="Add logo" href="{{ route('addlogo') }}">
-										<img src='{{ asset("images/logo/avater.jpg") }}' class="img-responsive" alt="avatar">
+										<img src='{{ asset("images/logo/avatar.jpeg") }}' class="img-responsive" alt="avatar">
 									</a>
 									@endif
 								</div>

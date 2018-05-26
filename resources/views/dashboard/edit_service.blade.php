@@ -48,6 +48,7 @@
                             <label class="control-label" for="textarea">Location</label>
                             <input type="text" name="location" class="form-control" placeholder="Location" value="{{ $service->location }}">
                         </div>
+                        
                         <div class="form-group">
                             <label class="control-label" for="select2">Service Category</label>
                             <select name="service_category" class="form-control select">
@@ -57,6 +58,19 @@
                                 @endforeach
                             </select>
                         </div>
+                            @if(Auth::user()->user_level === 'admin')
+                         <div class="form-group">
+                            <label class="control-label" for="select2">Select Status</label>
+                            <select name="status" class="form-control select">
+                                <option value="{{$service->status}}">{{$service->status}}</option>
+                                
+                                <option value="home-ads">home-ads</option>
+                                <option value="active">active</option>
+                            
+                            </select>
+                        </div>
+                        @endif
+
                         <div class="form-group">
                             <label class="control-label" for="textarea">Description</label>
                             <textarea name="description" class="form-control" rows="7">{{ $service->description }}</textarea>

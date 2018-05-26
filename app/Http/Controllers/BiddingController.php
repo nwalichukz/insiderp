@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\PostJobController;
+use App\Mail\AcceptApplicationNotification;
 use App\Bidding;
 use App\Service;
 use App\User;
@@ -12,7 +13,7 @@ use App\JobApproval;
 use App\JobProgress;
 use App\JobPayment;
 use App\JobOfferDetail;
-use Auth;
+use Auth, Mail;
 
 class BiddingController extends Controller
 {
@@ -104,7 +105,8 @@ class BiddingController extends Controller
      $service = Service::find($job_detail->service_id);
      $user = User::find($service->user_id);
      $data = ['name'=>$userdetail->name, 'job_name' => $job_detail->job_name];
-     mailer::acceptApplicationNotification($user->email, $data);
+     $delay = (new \Carbon\Carbon)->now()->addMinutes(3);
+     Mail::to($user->email)->later($delay, new AcceptApplicationNotification($data['job_name'], $data['name']));
      return true;
      }
 

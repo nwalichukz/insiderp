@@ -68,7 +68,8 @@
                                                     <td>{{ $vendor->name }}</td>
                                                     <td>{{ $vendor->profession_title }}</td>
                                                     <td>{{ $vendor->location }}</td>
-                                                    <td><a href=""><i class="fa fa-angle-right"></i> Details</a></td>
+                                                    <td><a href="{{ url('service/edit', $vendor->id) }}">
+                                                        <i class="fa fa-angle-right"></i> Details</a></td>
                                                 
                                             </tr>
                                             @endforeach

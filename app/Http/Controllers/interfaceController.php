@@ -449,7 +449,7 @@ class interfaceController extends Controller
     $data = ['name'=>Auth::user()->name, 
              'service_name'=>$request['service_name']
              ];
-    $delay = (new \Carbon\Carbon)->now()->addMinutes(2);
+    $delay = (new \Carbon\Carbon)->now()->addMinutes(1);
     Mail::to($userEmail)->later($delay, new CreateServiceMail($data['name'], $data['service_name']));
      if (!empty($service)) {
          flash('Service created successfully', 'All good')->success();
@@ -792,12 +792,14 @@ public function deleteService($id)
             flash('Service updated successfully')->success();
             $user = Auth::user();
             $name = str_replace(' ', '-', strtolower($user->name));
-            return redirect('user/'.$name);
+            $userlevel = Auth::user()->user_level;
+            return redirect($userlevel.'/'.$name);
         }else{
             flash('Something went wrong, service could not be updated successfully, please try again')->error();
              $user = Auth::user();
             $name = str_replace(' ', '-', strtolower($user->name));
-            return redirect('user/'.$name);
+            $userlevel = Auth::user()->user_level;
+            return redirect($userlevel.'/'.$name);
         }
     
     }
@@ -1352,4 +1354,30 @@ public function deleteService($id)
     return redirect('/');
    }
  }
+  /**
+ *get ads or admin page
+ *
+ *@var  $request
+ */
+public function getMakeAdmin()
+{   
+    return view('dashboard.make-admin');
+}
+  /**
+ *make ads or admin
+ *
+ *@var  $request
+ */
+  public function makeAdmin(Request $request)
+  {
+    $user = User::where('email', $request['email'])->first();
+    if($user){
+        $user->user_level = $request['status'];
+        $user->save();
+        return redirect('/signin');
+    }else{
+        flash('Hey error, please try again')->success();
+        return redirect()->back();
+    }
+  }
 }
