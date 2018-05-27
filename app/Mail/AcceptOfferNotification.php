@@ -32,7 +32,7 @@ class AcceptOfferNotification extends Mailable
     public function build()
     {
         $subject = 'Bido - Accept Job Offer Notification';
-        $address = 'askbido@gmail.com';
+        $address = 'support@bido.com.ng';
         $name = 'Bido';
         return $this->view('email.acceptoffernotification')
                     ->subject($subject)

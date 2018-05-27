@@ -30,7 +30,7 @@ class PasswordResetMail extends Mailable
     public function build()
     {
         $subject = 'Bido - Password Reset Notification';
-        $address = 'askbido@gmail.com';
+        $address = 'support@bido.com.ng';
         $name = 'Bido';
         return $this->view('email.passwordreset')
                     ->subject($subject)

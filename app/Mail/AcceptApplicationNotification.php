@@ -31,7 +31,7 @@ class AcceptApplicationNotification extends Mailable
     public function build()
     {
         $subject = 'Bido - Accept Job Application';
-        $address = 'askbido@gmail.com';
+        $address = 'support@bido.com.ng';
         $name = 'Bido';
         return $this->view('email.acceptapplication')
                     ->subject($subject)

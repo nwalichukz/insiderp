@@ -38,7 +38,7 @@ class signupnotification extends Mailable
      */
     public function build()
     {   $subject = 'Bido - Signup Notification';
-        $address = 'askbido@gmail.com';
+        $address = 'support@bido.com.ng';
         $name_of = 'Bido';
         return $this->subject($subject)
             ->replyTo($address, $name_of)

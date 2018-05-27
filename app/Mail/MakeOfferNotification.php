@@ -33,7 +33,7 @@ class MakeOfferNotification extends Mailable
     public function build()
     {
          $subject = 'Bido - Job Offer Notification';
-        $address = 'askbido@gmail.com';
+        $address = 'support@bido.com.ng';
         $name = 'Bido';
         return $this->view('email.makeoffer')
                     ->subject($subject)
