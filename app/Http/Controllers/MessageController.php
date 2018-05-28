@@ -8,6 +8,9 @@ use App\Vendor;
 use App\User;
 use App\Message;
 use App\Service;
+use App\Mail\Enquiry;
+use Mail;
+use Carbon\Carbon;
 
 class MessageController extends Controller
 {
@@ -29,7 +32,8 @@ class MessageController extends Controller
     	$message->save();
       $data = ['name'=>$request['name'], 'phone'=>$request['phone_no'], 
       'email'=>$request['email'], 'message'=>$request['message'], ];
-      mailer::emailEnquiry($request['service_email'], $data);
+      $delay = (new \Carbon\Carbon)->now()->addMinutes(2);
+      Mail::to($request['service_email'])->later($delay, new Enquiry($data['name'], $data['phone'], $data['email'], $data['message']));
     	return true;
     }
 

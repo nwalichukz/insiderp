@@ -44,7 +44,6 @@
                                 </div>
                             </div>
                         @endforeach
-			
 			<div class="col-md-12 col-md-offset-5">
 				<h3><a class="" href=""> View More <i class="ti-arrow-right"></i></a></h3>
 			</div>

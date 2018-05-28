@@ -85,7 +85,7 @@
                                 <aside>
                                     <div class="sidebar">
                                         <div class="box">
-                                            <form id="sendEquiry" action="sendEnquiry" method="post" enctype="multipart/form-data" accept-charset="UTF-8" files="true">
+                                            <form id="sendEquiry" action="{{ url('send-enquiry') }}" method="post" enctype="multipart/form-data" accept-charset="UTF-8" files="true">
                                                   <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <div class="form-group">
                                                     <input type="text" name="name" placeholder="Full Name" class="form-control" required>
