@@ -15,7 +15,7 @@
 			<p>
 				
 			</p>
-			<center><a href="http://www.bido.com.ng/signin" title="click to go back to letnote home page"><button style="background:#0000FF;">Go to Letnote home pge</button> </a></center>
+			<center><a href="http://www.bido.com.ng/signin" title="click to go back to letnote login page"><button style="background:#0000FF;">Go to Letnote login page</button> </a></center>
 			<br/>
 			<h3 style="font-style:italic; font-size:1.5em;">Bido Team !!!</h3>
 		</div>

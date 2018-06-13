@@ -668,7 +668,7 @@ public function deletePrevWorkImg($id)
          // $check->password = $sentpassword;
           Mail::to($request['email'])->send(new PasswordResetMail($sentpassword));
           flash('A password has been sent to your email. Please check your email and use it to login')->success();
-          return redirect('/');
+          return redirect()->back();
        
         }else{
         // return response()->json(['error' => 'Email not registered in this platform. Please check if email is correct and try again']);
