@@ -31,7 +31,7 @@ class Service extends Model
     }
 
      public function logo() {
-      return $this->hasOne('App\VendorLogo', 'service_id');
+      return $this->hasOne('App\VendorLogo');
     }
 
      public function avater() {

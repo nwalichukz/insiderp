@@ -15,7 +15,7 @@
 							<div class="header-content pull-left">
 								<h3><a href="#">{{ $service->name }}</a></h3>
 								<p><span>Date Created: {{ $service->created_at->diffForHumans() }}</span></p>
-								<p>Amount: <strong class="price">$7000 - $7500</strong></p>
+								<p>Status: <strong class="price">{{$service->user->status}}</strong></p>
 							</div>
 							<div class="detail-company pull-right text-right">
 								<div class="img-thum">
@@ -56,7 +56,7 @@
 														<img class="img-responsive work" src="{{ asset('images/prev/'.$img->name) }}" alt="img">
 													</a>
 													<br/>
-													<span><a class="btn btn-border btn-sm" href="{{url('delete-prev-work-img/'.$img->id)}}" title="delete image"><i class="fa fa-close"></i>Delete</a></span>
+													<span><a class="btn btn-border btn-sm" href="{{url('delete-prev-work-img/'.$img->id)}}" title="delete image"><i class="fa fa-close"></i> Delete</a></span>
 											</div>
 											@endforeach
 										</div>
@@ -157,9 +157,7 @@
 				</div>
 				<form action="{{ route('workImages') }}" method="post" enctype="multipart/form-data" id="">
 				<div class="modal-body">
-
 					<!-- content goes here -->
-					
 						{{ csrf_field() }}
 						<div class="form-group">
 							<label for="attachment">Attach files:</label>

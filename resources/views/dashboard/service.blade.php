@@ -68,7 +68,7 @@
 
                         <div class="form-group">
                             <label class="control-label" for="description">Description</label>
-                            <textarea name="description" class="form-control" rows="5" required></textarea>
+                            <textarea name="description" max="360" class="form-control" rows="5" required></textarea>
                         </div>
 
                         <div class="divider"><h3>Skills</h3></div>

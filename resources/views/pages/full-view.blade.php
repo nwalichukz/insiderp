@@ -15,24 +15,24 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <center>
-                                    @if(!empty($search_result->user->avater->avater))
-                                    <img src="{{ asset("images/user/".$search_result->user->avater->avater) }}" name="avatar" width="140" height="140" border="0" class="img-circle"></a>
+                                    @if(!empty($fullview->user->avater->avater))
+                                    <img src="{{ asset("images/user/".$fullview->user->avater->avater) }}" name="avatar" width="" height="232" border="0" class="img-circle"></a>
                                     @else
-                                    <img src="{{ asset("images/logo/logo.png") }}" alt="">
+                                    <img src="{{ asset("images/logo/logo.png") }}" alt="default image" width="250" height="250" border="0" class="img-circle">>
                                     @endif
-
+                                   
                                     <h3 class="media-heading">{{ ucfirst($fullview->user->name) }} <small>{{ ucfirst($fullview->user->location) }}</small></h3>
                                     <div class="social-link">
-                                        <a href="#"  data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-f"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube"></i></a>
+                                       @if(!empty($fullview->user->facebook)) <a href="http://www.facebook.com/{{$fullview->user->facebook}}"  data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-f"></i></a> @endif
+                                       @if(!empty($fullview->user->twitter))  <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>@endif
+                                        @if(!empty($fullview->user->instagram)) <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>@endif
+                                       @if(!empty($fullview->user->youtube))  <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube"></i></a>@endif
                                     </div>
-
-                                    <div class="col-md-4">
-                                        <p>{{ $fullview->user->description }}</p>
+                                    </center>
+                                    <div class="col-md-12" style="border-radius:4px; height:150px; border:1px solid #808080;">
+                                       <p style="text-align:justify;"> {{ substr(ucfirst(strtolower($fullview->description)), 0, 360)}} <//p>
                                     </div>
-                                </center>
+                                
                             </div>
                             <br>
                             <div class="col-md-4">
@@ -85,6 +85,7 @@
                                 <aside>
                                     <div class="sidebar">
                                         <div class="box">
+                                            <p>Contact {{ $fullview->name }}</p>
                                             <form id="sendEquiry" action="{{ url('send-enquiry') }}" method="post" enctype="multipart/form-data" accept-charset="UTF-8" files="true">
                                                   <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <div class="form-group">
@@ -104,7 +105,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-common">Send</button>
-                                                    <p>Send an enquiry to {{ $fullview->name }}</p>
+                                                    
                                                 </div>
                                             </form>
                                         </div>
@@ -124,7 +125,7 @@
                             @if($fullview->images->count() > 0)
                                 @foreach($fullview->images as $image)
                                     <div class="col-md-4">
-                                        <a href="{{ asset('images/prev/'.$image->name) }}" class="swipebox" title="Caption Goes Here">
+                                        <a href="{{ asset('images/prev/'.$image->name) }}" class="swipebox" title="This image is the previous work done">
                                             <img class="img-responsive img-thumbnail img-raised preview" src="{{ asset('images/prev/'.$image->name) }}" alt="img">
                                         </a>
                                     </div>
