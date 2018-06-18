@@ -9,8 +9,9 @@
 					<div class="widget">
 						<h3 class="block-title"><img src="{{ asset("images/watermark/logo.png") }}" class="img-responsive" alt="Bido"></h3>
 						<div class="textwidget">
-							<p>Bido is a skill portal, where you can find the best 
-								skill that suits your demand from the very best available...</p>
+							<p>Bido reprents excellence and passion for creativity. Bido promotes
+								very talented and skilled individuals who use this platform solve
+								problems they care so much about and getting rewarded for their skills and talents.</p>
 						</div>
 					</div>
 				</div>
@@ -63,3 +64,4 @@
 	</div>
 
 </footer>
+bidd0@he@d123

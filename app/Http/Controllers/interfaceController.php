@@ -637,6 +637,16 @@ public function deletePrevWorkImg($id)
     }
 
 }
+
+  /**
+ * This method adds prev work images to the
+ * @var request
+ *
+ */
+   public function SuccessEmail()
+   {  return view('pages.email-reset-success');
+   }
+
    /**
  * This method adds prev work images to the
  * @var request
@@ -667,8 +677,7 @@ public function deletePrevWorkImg($id)
           $data = ['password' => $sentpassword];
          // $check->password = $sentpassword;
           Mail::to($request['email'])->send(new PasswordResetMail($sentpassword));
-          flash('A password has been sent to your email. Please check your email and use it to login')->success();
-          return redirect()->back();
+          return redirect('/success-email-sent');
        
         }else{
         // return response()->json(['error' => 'Email not registered in this platform. Please check if email is correct and try again']);
@@ -1376,7 +1385,7 @@ public function getMakeAdmin()
         $user->save();
         return redirect('/signin');
     }else{
-        flash('Hey error, please try again')->success();
+        flash('Hey error, please try again')->error();
         return redirect()->back();
     }
   }

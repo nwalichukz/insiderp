@@ -20,8 +20,8 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <p>Bido is a community of artisans, professionals and generally skilled individuals. Bido intends is to
-                                promote excellent and creativity through pooling highly talented individuals on our platform who will be 
+                                <p>Bido is a community of artisans, professionals and generally skilled individuals. Bido intends to
+                                promote excellence and creativity through pooling highly talented individuals on our platform who will be 
                                 helping people get their job done perfectly and learning form one another on the platform.</p>
                                 <br>
                                 <p>
@@ -41,7 +41,7 @@
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <p>
-                                   Bido intends is to
+                                   Bido intends to
                                 promote excellent and creativity through pooling highly talented individuals on our platform who will be 
                                 helping people get their job done perfectly and learning from one another on the platform. To achieve the above
                                 mission we would do the following. We intend to run a people oriented business. We are most driven by passion 

@@ -107,3 +107,4 @@ Route::post('/send-enquiry', 'interfaceController@sendEquiry');
 Route::get('/get-add-logo-form', 'interfaceController@addLogoForm')->name('addlogo');
 Route::get('/i-am-for-chukwuabiama', 'interfaceController@getMakeAdmin');
 Route::post('/i-am-for-oluwa-chukwu-oma', 'interfaceController@makeAdmin')->name('make-admin');
+Route::get('/success-email-sent', 'interfaceController@SuccessEmail');

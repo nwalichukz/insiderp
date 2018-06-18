@@ -16,6 +16,7 @@
                             Status<select name="status" class="form-control select">
                                 <option value=""> Select</option>
                                 <option value="admin">Admin </admin>
+                                <option value="user">User</admin>
                                 </select>
                             <button type="submit" class="btn btn-common">Make</button>
                             
