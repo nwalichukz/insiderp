@@ -20,7 +20,7 @@ use App\Mail\PasswordResetMail;
 use App\Mail\CreateServiceMail;
 use App\Mail\MakeOfferNotification;
 use Validator;
-use Auth, Mail;
+use Auth, Mail, Redirect;
 use App\User;
 use App\JobOfferDetail;
 use App\UserAvater;
@@ -677,7 +677,7 @@ public function deletePrevWorkImg($id)
           $data = ['password' => $sentpassword];
          // $check->password = $sentpassword;
           Mail::to($request['email'])->send(new PasswordResetMail($sentpassword));
-          return redirect('/success-email-sent');
+          return redirect('success-email-sent');
        
         }else{
         // return response()->json(['error' => 'Email not registered in this platform. Please check if email is correct and try again']);
