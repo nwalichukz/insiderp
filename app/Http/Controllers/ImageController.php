@@ -48,9 +48,9 @@ class ImageController extends Controller
     public static function prevWorkImg($files)
     {
         foreach ($files as $file) {
-          $watermark = Image::make('images/watermark/watermark.png')->greyscale()->resize(100, 40);
+            $watermark = Image::make('images/watermark/watermark.png')->greyscale()->resize(100, 40);
             $filename = rand().time().'.'.$file->getClientOriginalExtension();
-            $path = public_path('images/prev/'.$filename);
+            $path = public_path('images/user/'.$filename);
             $avatar = Image::make($file->getRealPath())->resize(450, 450)->sharpen(16)->encode('png')
             ->insert($watermark, 'bottom-right', 10, 10)->save($path);
             $user = Auth::user();
@@ -127,7 +127,7 @@ class ImageController extends Controller
     {   $image = prevWorkImage::where('id', $id)->first();
         if(!empty($image))
         {
-            unlink('images/prev/'.$image->name);
+            unlink('images/user/'.$image->name);
             $image->delete();
             return true;
         }else{
