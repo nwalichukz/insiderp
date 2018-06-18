@@ -18,7 +18,7 @@
                                     @if(!empty($fullview->user->avater->avater))
                                     <img src="{{ asset("images/user/".$fullview->user->avater->avater) }}" name="avatar" width="" height="232" border="0" class="img-circle"></a>
                                     @else
-                                    <img src="{{ asset("images/logo/logo.png") }}" alt="default image" width="250" height="250" border="0" class="img-circle">>
+                                    <img src="{{ asset("images/logo/logo.png") }}" alt="default image" width="250" height="250" border="0" class="img-circle">
                                     @endif
                                    
                                     <h3 class="media-heading">{{ ucfirst($fullview->user->name) }} <small>{{ ucfirst($fullview->user->location) }}</small></h3>
@@ -30,7 +30,7 @@
                                     </div>
                                     </center>
                                     <div class="col-md-12" style="border-radius:4px; height:150px; border:1px solid #808080;">
-                                       <p style="text-align:justify;"> {{ substr(ucfirst(strtolower($fullview->description)), 0, 360)}} <//p>
+                                       <p style="text-align:justify;"> {{ substr(ucfirst(strtolower($fullview->description)), 0, 360)}} </p>
                                     </div>
                                 
                             </div>

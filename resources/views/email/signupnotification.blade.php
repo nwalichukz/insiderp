@@ -5,7 +5,7 @@
 <body style="font-size:1.4em; align:center; background:#EEE;">
 <center>
 	<div style="width:800px; background:#fff; ">
-		<h2 style="background:#0000CD; color:#FFF; height:38px; padding: 0 0 0 10px">Welcome {{name}}!!! </h2>
+		<h2 style="background:#0000CD; color:#FFF; height:38px; padding: 0 0 0 10px">Welcome {{name}} </h2>
 		<div style="padding: 0 10px 10px 10px;">
 		<p style="text-align:justify;">
 			Thanks for signing up on Bido.. <br/>
