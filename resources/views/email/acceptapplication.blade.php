@@ -3,7 +3,7 @@
 <head>
 <title>Signup notification </title>
 </head>
-<body style="font-size:1.4em; align:center; background:#EEE;">
+<body style="font-size:1.1em; align:center; background:#EEE;">
 <center>
 	<div style="width:800px; background:#fff; ">
 		<h2 style="background:#0000CD; color:#FFF; height:38px; padding: 0 0 0 10px">Accept Application Notification</h2>

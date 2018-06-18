@@ -2,9 +2,9 @@
 <head>
 <title>Signup notification </title>
 </head>
-<body style="font-size:1.4em; align:center; background:#EEE;">
+<body style="font-size:1.1em; align:center; background:#EEE;">
 <center>
-	<div style="width:800px; background:#fff; ">
+	<div style="width:700px; background:#fff; ">
 		<h2 style="background:#0000CD; color:#FFF; height:38px; padding: 0 0 0 10px">Welcome {{name}} </h2>
 		<div style="padding: 0 10px 10px 10px;">
 		<p style="text-align:justify;">
@@ -12,7 +12,7 @@
 			 Please follow the link to verify your email address to enjoy
 	        the full experience on Bido. Enjoy !!!
 			</p>
-			<hr/><strong><p style="text-align:justify;">Your password</strong>: {{$password}}</p> <hr/>
+			<hr/><p style="text-align:justify;">Your password: {{$password}}</p> <hr/>
 			<p>
 				
 			</p>
