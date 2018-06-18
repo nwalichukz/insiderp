@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Vendor;
 use App\UserAvater;
 use App\VendorLogo;
-use App\prevWorkImage;
+use App\PrevWorkImage;
 use Image, Auth;
 
 class ImageController extends Controller
@@ -55,7 +55,7 @@ class ImageController extends Controller
             ->insert($watermark, 'bottom-right', 10, 10)->save($path);
             $user = Auth::user();
             // $img = ImageController::prevWorkImg($data);
-             $save = 'App\prevWorkImage';
+             $save = new PrevWorkImage;
              $save->user_id = $user->id;
              $save->service_id = $user->service->id;
              $save->name = $filename;
