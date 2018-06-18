@@ -50,12 +50,12 @@ class ImageController extends Controller
         foreach ($files as $file) {
             $watermark = Image::make('images/watermark/watermark.png')->greyscale()->resize(100, 40);
             $filename = rand().time().'.'.$file->getClientOriginalExtension();
-            $path = public_path('images/prev/'.$filename);
+            $path = public_path('/images/prev/'.$filename);
             $avatar = Image::make($file->getRealPath())->resize(450, 450)->sharpen(16)->encode('png')
             ->insert($watermark, 'bottom-right', 10, 10)->save($path);
             $user = Auth::user();
             // $img = ImageController::prevWorkImg($data);
-             $save = new prevWorkImage;
+             $save = 'App\prevWorkImage';
              $save->user_id = $user->id;
              $save->service_id = $user->service->id;
              $save->name = $filename;
