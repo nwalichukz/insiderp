@@ -1,103 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Basic Page Needs
-================================================== -->
-<meta charset="utf-8">
-<title>@yield('title')</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<!-- Mobile Specific Metas
-================================================== -->
-<meta name="description" content="What do you want done? Find the skill that best suits your demand from the very
- selected best here!!!">
-<meta name="keywords" content="web developer, graphic designer, tailors, dj, mc, dancers, writers, authors,
-cooks, entrepreneur, programmer, logo designer, makeup artist, artists, plumbers, gen man,
- mechanic, electrician, technician, architects,
-">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
+    <title>@if(!empty($title))
+	    {{ $title }}
+		@else
+		Luba.com.ng
+		@endif</title>
 
-<!-- CSS
-================================================== -->
+    <!-- Styles -->
+   <script src="{{ URL('js/jquery.js') }}" type="text/Javascript"> </script>
+    <script src="{{ URL('bootstrap/js/bootstrap.min.js') }}" type="text/Javascript"> </script>
+    <link rel="stylesheet" href="{{url('bootstrap/css/bootstrap.min.css') }}" type="text/css">
+    <!--<link href="/css/app.css" rel="stylesheet">-->
+     <link href="{{asset('css/orientStyle.css')}}" rel="stylesheet">
 
-<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/css/jasny-bootstrap.min.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/css/material-kit.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/fonts/font-awesome.min.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/fonts/themify-icons.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/extras/animate.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/extras/owl.carousel.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/extras/owl.theme.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/extras/settings.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/css/slicknav.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/css/swipebox.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" type="text/css">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/colors/red.css') }}" media="screen" />
-<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
 </head>
 <body>
-<div id="wrapper">
-	@yield('content')
-    
-<!-- Back To Top Button -->
-<a href="#" class="back-to-top">
-	<i class="ti-arrow-up"></i>
-</a>
-<div id="loading">
-	<div id="loading-center">
-		<div id="loading-center-absolute">
-			<div class="object" id="object_one"></div>
-			<div class="object" id="object_two"></div>
-			<div class="object" id="object_three"></div>
-			<div class="object" id="object_four"></div>
-			<div class="object" id="object_five"></div>
-			<div class="object" id="object_six"></div>
-			<div class="object" id="object_seven"></div>
-			<div class="object" id="object_eight"></div>
-		</div>
-	</div>
-</div>
+    <nav id="header" class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
 
-</div>
-<!-- Wrapper / End -->
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                   <!-- <img class="logoImg" src="{{asset('images/logo/orientLogo.jpg')}}" />-->
+                    <p class="logoText">Luba</p>
+                </a>
+               
+            </div>
+             
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    &nbsp;
+                </ul>
 
-<!-- Scripts
-================================================== -->
-<script type="text/javascript" src="{{ asset('assets/js/jquery-min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/material.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/material-kit.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/jquery.parallax.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/waypoints.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/jasny-bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/form-validator.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/contact-form-script.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.revolution.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.tools.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.swipebox.min.js') }}"></script>
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                       <!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
 
-<script>
-    $('#flash-overlay-modal').modal();
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
 
-    $('div.alert').not('.alert-important').delay(6000).fadeOut(350);
-    ( function( $ ) {
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-        $( '.swipebox' ).swipebox();
+    @yield('content')
 
-    } )( jQuery );
-
-</script>
-
+    <!-- Scripts -->
+<div class="col-md-12">
+<hr/>
+<nav class="footer"><a href="{{url('/')}}">Home</a> |<a href=""> Terms </a>|<a href=""> Privacy</a> | <a href="{{url('/contact')}}">Contact us</a></nav>
+ <nav class="footer"><a title="Go to letnote website" href="https://www.letnote.com.ng">Developed by Letnote </a></nav>
+   </div>
 </body>
 </html>

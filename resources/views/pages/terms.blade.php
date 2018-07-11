@@ -1,326 +1,70 @@
-@extends('layouts.app')
-@section('title')
-{{ $title }}
-@endsection
+@extends('layouts.pagestemplate')
 @section('content')
-@include('partials.header2')
-<div id="content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
+<div class="container">
+    <div class="row">
+<div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Terms</div>
+                <div class="panel-body">
 
-                <div class="panel-group" id="accordion">
 
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    Terms and conditions
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <p>PLEASE READ THESE IMPORTANT INFORMATION, NOTICES, WARNINGS, YOUR RIGHTS AND OBLIGATIONS WHEN 
-                                USING BIDO.COM.NG.
-                               WE ENCOURAGE YOU TO READ IT CAREFULLY!!!.
-                                    .
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+<p>Terms and Conditions of Use.  If you do not agree with the Terms and Conditions of Use or do not wish to be bound by them, you can refrain from using the website.
+We grant you a non-transferable, revocable and non-exclusive licence to use this Site, in accordance with the Terms and Conditions of Use, for such things as: shopping for personal items sold on the site, gathering prior information regarding our products and services and making purchases. Commercial use or use on behalf of any third party is prohibited, except as explicitly permitted by us in advance.
+These Terms and Conditions of Use specifically prohibit actions such as:  </p>
+<ul>
+<li>     accessing our servers or internal computer systems</li>
+<li>        Interfering in any way with the functionality of this website</li>
+<li>       gathering or altering any underlying software code</li>
+<li>      Infringing any intellectual property rights.   </li>
+<li>     This list is non-exhaustive and similar actions are also strictly prohibited.</li>
+</ul>
+<p>Any breach of these Terms and Conditions of Use shall result in the immediate revocation of the license granted in this paragraph without prior notice to you. Should we determine at our sole discretion that you are in breach of
+ any of these conditions, we reserve the right to deny you access to this website and its contents and do so without prejudice to any available remedies at law or otherwise.</p>
+ <p>
+Certain services and related features that may be made available on the Site may require registration. Should you choose to register for such services or related features, 
+you agree to provide accurate and current information about yourself, and to promptly update such information if there are any changes. Every user of the Site is solely responsible for keeping passwords and other account identifiers safe and secure.</p>
+<p>
+The account owner is entirely responsible for all activities that occur under such password or account. Furthermore, you must notify us of any unauthorized use of your password or account. The Site shall not be responsible or 
+liable, directly or indirectly, in any way for any loss or damage of any kind incurred as a result of, or in connection with, your failure to comply with this section.</p>
+<p>
+During the registration process you agree to receive promotional emails from the Site. You can subsequently opt out of receiving such promotional e-mails by 
+clicking on the link at the bottom of any promotional email. </p>
+<p>
+Anything that you submit to the Site and/or provide to us, including but not limited to, questions, reviews, comments, and suggestions 
+(collectively, "Submissions") will become our sole and exclusive property and shall not be returned to you. </p>
+<p>In addition to the rights applicable to any Submission, when you post comments or reviews to the Site,
+you also grant us the right to use the name that you submit, in connection with such review, comment, or other content. </p>
+<p>
+You shall not use a false e-mail address, pretend to be someone other than yourself or otherwise mislead us or third parties 
+as to the origin of any Submissions. We may, but shall not be obligated to, remove or edit any Submissions. </p>
+<p>
+We may include links to third party websites at any time.  However, the existence of a link to another website should not be consider
+ as an affiliation or a partnership with a third party or viewed as an endorsement of a particular website unless explicitly stated otherwise.</p>
+ <p>
+In the event the user follows a link to another website, he or she does so at his or her own risk.  We accept no responsibility for any content, including, but not limited to, 
+information, products and services, available on third party websites. </p>
+<p>
+Creating a link to this website is strictly forbidden without our prior written consent.  
+Furthermore, we reserve the right to revoke our consent without notice or justification. </p>
+<p>
+Any unauthorized use of the material and content of this website is strictly prohibited and you agree not to, or 
+facilitate any third party to, copy, reproduce, transmit, publish, display, distribute, commercially exploit or 
+create derivative works of such material and content. </p>
+<p>
+Any personal information collected in relation to the use of this website will be held and used in accordant with our Privacy Policy,
+ which is available on our Site. </p>
+<p>Assigning or sub-contracting any of your rights or obligations under these Terms and Conditions of Use 
+	to any third party is prohibited unless agreed upon in writing by the seller. </p>
+<p>We reserve the right to transfer, assign or sub-contract the benefit of the whole or part of
+ any rights or obligations under these Terms and Conditions of Use to any third party.</p>
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne2">
-                                    Bido?
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne2" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>
-                                Bido is a community of artisans, professionals and generally skilled individuals. Bido intends to
-                                promote excellence and creativity through pooling highly talented individuals on our platform who will be 
-                                helping people get their job done perfectly and learning form one another on the platform.</p>
-                                <br>
-                                <p>
-                                    .
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                    Our Mission
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>
-                                   Bido intends to
-                                promote excellence and creativity through pooling highly talented individuals on our platform who will be 
-                                helping people get their job done perfectly and learning from one another on the platform. To achieve the above
-                                mission we would do the following. We intend to run a people oriented business. We are most driven by passion 
-                                to see talents been engaged to the good use in the society.</p>
-                                <br>
-                                <ol>
-                                    <li>Innovation</li>
-                                    <li>Constant Improvement</li>
-                                    <li>People first business approach </li>
-                                    <li>Forward thinking and simplicity approach to issues</li>
 
-                                </ol>
-                                <p> </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                    Our vision?
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>
-                                    Bido want to become a leading force in providing skilled people and professionals
-                                    a platform to market their skills !!!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                    Application
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseFour" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>
-                                    Each registration is for a single user only. 
-            You must not share your username and password with any other person or with multiple users on this system.
-            You undertake that all information provided by you for the purposes of registering with us is accurate and complete.
-            You accept sole responsibility for all use of and for keeping secret any account username and password that
-            may have been given to you or chosen by you for use on this Site. You will notify us immediately of any
-            unauthorised use of them or any other breach of security of this Site of which you become aware.
-                                </p>
-                                <br>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-                                     Denying acces to the site 
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseFive" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>
-                                     We reserve the full right to deny users access from this Site and/or restrict
-            or disable their access or use of any or all elements of our services, 
-            on a permanent or temporary basis at our sole discretion.
-             Any such user shall be notified and must not then attempt to use this Site under 
-             any other name or through any other user. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+
 
                 </div>
-
-            </div>
-            <div class="col-md-6">
-
-                <div class="panel-group" id="accordion">
-              
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo2">
-                                      Liablity
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo2" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>
-                    Nothing in these Terms and conditions will be deemed to exclude our liability to you for death, 
-                loss of property or personal injury arising from our negligence, or for fraudulent misrepresentation. 
-                We will not be liable for any failures due to software or Internet errors or unavailability,
-                 or any other circumstances beyond our reasonable control. When you use the "send emquiry forms" 
-                 on this Site to enquire about a service, your details (including your email address, phone number) will be sent by 
-                 email directly to the vendors, marketing the service
-                  that you are enquiring about. We do not accept any liability for any subsequent communications that you receive directly from that vendor.
-                  Consequently we do not accept any responsibility for communications between the users of the site and any vendors outside the platform
-                  hiring.
-                Please if you do not agree with this terms and conditions then, you must not use this site (www.bido.com.ng). 
-                                </p>
-                               
-                               </div>
-                        </div>
-                    </div>
-                
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive5">
-                                    Cancellation of Projects
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseFive5" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>
-                                Cancellation of an ongoing job attracts penalty. When a project is cancelled by the the client the money 
-                                paid would not be returned totally to him depending on the number of days that the project has been ongoing.
-                                The amount to refund will be determined  by the number of days divided by the amount paid multiply by how many days
-                                the job has been ongoing. Then when the vendor cancels the job she losses everything and the money returned to the
-                                client minus the bank charges for the transactions. Also the vendors reputation would be affected negatively. And such
-                                subsequent behaviour may attract suspension.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                       <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive6">
-                                    Unable to complete a project within the duration time
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseFive6" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>When a vendor is unable to complete a project within the agreed time duration she/he risks the chance
-                                    of lossiing the whole money for the job unless he applies for time extension and if approved by the client.
-                                    Otherwise he losses the whole money !!!
-
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive7">
-                                    Commission
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseFive7" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>We charge very affordable commission for cordinating any project on this platform. This commission
-                                    is subject to change. The commission will be paid by the clients only.
-                                </p>      
-
-               <table class="table table-striped">
-                                            <thead class="thead-inverse">
-                                            <tr>
-                                                <th>From ( &#8358; )</th>
-                                                <td>  </td>  
-                                                <th>To ( &#8358; )</th>
-                                                <th>Commission ( &#8358; ) </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                            <td>1000</td>
-                                                  <td>-</td>     
-                                                <td scope="row">5000</td>
-                                                <td>275 </td>
-                                            </tr>
-                                             <tr>
-                                            <td>5001</td>
-                                                  <td>-</td>     
-                                                <td scope="row">10000</td>
-                                                <td>375 </td>
-                                            </tr>
-                                             <tr>
-                                            <td>10001</td>
-                                                  <td>-</td>     
-                                                <td scope="row">30000</td>
-                                                <td>475 </td>
-                                            </tr>
-                                               <tr>
-                                            <td>30001</td>
-                                                  <td>-</td>     
-                                                <td scope="row">50000</td>
-                                                <td>568 </td>
-
-                                            </tr>
-                                               <tr>
-                                            <td>50001</td>
-                                                  <td>-</td>     
-                                                <td scope="row">100000</td>
-                                                <td>970 </td>
-
-                                            </tr>
-                                               <tr>
-                                            <td>100001</td>
-                                                  <td>-</td>     
-                                                <td scope="row">200000</td>
-                                                <td>1435 </td>
-
-                                            </tr>
-                                               <tr>
-                                            <td>200001</td>
-                                                  <td>-</td>     
-                                                <td scope="row">500000</td>
-                                                <td>17880 </td>
-
-                                            </tr>
-                                               <tr>
-                                            <td>500001</td>
-                                                  <td>-</td>     
-                                                <td scope="row">Infinite</td>
-                                                <td>2233</td>
-
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                            </div>
-                        </div>
-                    </div>
-
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive8">
-                                    Payments
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseFive8" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>Payments must be made to the account number that will be sent to your email from this platform. 
-                                    Once the payment is made you can notify us through our contact or support page to quicken any process
-                                    involving the transaction.
-                                                               </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 </div>
 
-@include('partials.footer')
 @endsection

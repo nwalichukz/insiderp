@@ -1,0 +1,205 @@
+@inject('Helper', 'App\HelperClass')
+@extends('layouts.indextemplate')
+@section('content')
+<div class="container">
+    <div class="row">
+	        <div class="col-md-10" style="margin:0 20px 0 20px;">
+            <div class="col-md-3 con">
+               <h4 class="titles"> Lead Story </h4>
+            <hr/>
+       <ul class="lead-story-header">
+       <a href="searchCategory/Electrical-Fittings"><li>Electrical Fittings </li> </a>
+      <a href="searchCategory/Industrial-Materials"> <li> Industrial Materials</li> </a>
+       <a href="searchCategory/Telecommunication-and-Networking"> <li>Telecommunication and Networking </li> </a>
+       <a href="searchCategory/Switches-and-Socket"> <li> Switches and Socket</li> </a>
+       <a href="searchCategory/Generators-and-Accessories"><li> Generators and Accessories</li></a>
+       </ul>
+     </div>
+			     <div class="col-lg-7 col-md-7" style="margin:0;">
+            <div style="border:1px solid #f1f1f1;" id="panel-heading" class="panel panel-primary">
+              <div id="index-sutitle" class="panel-heading">@if(!empty($category)){{$category}} Page @else Trending Posts @endif</div>
+              <div class="panel-body" >
+              	
+              <!-- Ya just loop it here -->
+            <div id="mainContent">
+
+      <!-- yes oh here start loop -->
+      @if($trending->count() > 1)
+      @foreach($trending as $trend)
+                <div class="col-md-10 col-lg-10 avatarwrapper">
+                   <div class="media-left">
+                            <div class="figure-block">
+                                <figure class="item-thumb">
+                                    <a href="{{ url('/post-full-view/'.$trend->id) }}" title="The user name and the page this posted">
+                                    @if(!empty($Helper->postAvatar($trend->user_id)->name))
+                                   <img src="{{asset("images/user/".$Helper->postAvatar($trend->user_id)->name)}}" class="img-circle imgcircle" alt="thumb">
+                                   @else
+                                    <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
+                                   @endif
+                                    <span class=""><span >{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}</span> /<span style="color:#FF8C00;">{{$trend->category}} </span>
+                                    </a>
+                                </figure>
+                            </div>
+                        </div>
+                        @if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
+                        @if($trend->status ==='active')
+                       <a href="{{url('/block-post/'.$trend->id) }}"> <i title="Block this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
+                       @else
+                       <a href="{{url('/unblock-post/'.$trend->id)}}"> <i title="unblock this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
+                       @endif
+                        <a href="{{url('/get-edit')}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
+                        @endif
+
+                     </div>
+
+                    <div class="container1 col-md-10 col-lg-12 panel">
+                      @if(!empty($Helper->postImage($trend->id)->name))
+                      <div style="border:1px solid #fff;" class="col-md-3 col-lg-4" style="width:100px; float:left; height:170px;">
+                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:160px;" >
+                     </div>
+                     <div style="border:1px solid #fff;" class="col-md-9 col-lg-8">
+                  <div class="media-body media-midd">
+                    <div class="my-description">
+                  <p style="font-size:1.2em;">
+                    {{$Helper->get_words($trend->post)}}
+                     </p>
+                     
+                      <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
+                    </div>
+                  </div>
+                  </div>
+                  @else
+                  <div class="media-body media-middle">
+                    <div class="my-description">
+                  <p style="font-size:1.2em;">
+                    {{$Helper->get_words($trend->post)}}
+                     </p>
+                     
+                      <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
+                    </div>
+                  </div>
+                  @endif
+                </div>
+                <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="postBox">
+                <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$trend->rank}}</i> </span>
+                <span class="col-md-3" title="Total number of times this post is viewed" aria-hidden="true">
+                  <i class="likedata time-date">
+                  @if(!empty($Helper->postView($trend->id)->view))
+                  {{$Helper->postView($trend->id)->view}} views @endif
+                </i>
+                  </span>
+                <a href="{{url("post-like/".$trend->user_id.'/'.$trend->id)}}" >
+                <span class="like glyphicon glyphicon-thumbs-up col-md-3" title="Like this post" aria-hidden="true"><i class="likedata time-date" onclick="postLike(event);" id="{{$trend->id}}"> Like</i></span> 
+              </a>
+                  <span class="pull-right time-date" title="Total number of comments for this post">
+                    @if($Helper->commentCount($trend->id) > 1)
+                  {{ $Helper->commentCount($trend->id) }} comments
+                  @elseif($Helper->commentCount($trend->id) == 1)
+                  {{$Helper->commentCount($trend->id) }} comment
+                  @elseif($Helper->commentCount($trend->id) > 5)
+                  $comment = $Helper->commentCount($trend->id)/2
+                  {{$comment}} k comments
+                  @else
+                  {{$Helper->commentCount($trend->id)}} comments
+                  @endif
+                </span>
+                </div>
+
+                <!--- comment box -->
+                @if(!empty($Helper->comment($trend->id)))
+                <div id="commentBox">
+                @foreach($Helper->comment($trend->id) as $comment)
+                <div class= "col-md-12" >
+                <div class="col-md-1">
+                   <a href="{{ url('#') }}">
+                @if(!empty($Helper->commenterAvatar($comment->user_id)->name))
+                  <img src="{{asset("images/user/".$Helper->commenterAvatar($comment->user_id)->name)}}" class="img-circle imgcircle" alt="thumb">
+                  @else
+                   <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
+                  @endif
+                  </a>
+                </div>
+                 <div class="container2 col-md-9">
+                  <p style="font-size:1.2em;">
+                    <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
+                {{ucfirst($comment->comment)}}
+                     </p>
+                </div>
+                <div>
+                 <div class="col-md-12" id="likeBox">
+                <i class="col-md-1" ></i> 
+                <span class="glyphicon glyphicon-thumbs-up col-md-2 likedata commentlike" title="Total number likes for this comment" aria-hidden="true">
+                <i class="likedata time-date" id="{{$comment->id}}">Like</i> </span>
+                <i class="col-md-3 time-date" title="The time this comment was posted">{{date('j/n \'y', strtotime($comment->created_at))}} </i> 
+                 <i class="col-md-3 glyphicon glyphicon-thumbs-up " aria-hidden="true"> 3 </i>
+              </div>
+                </div>
+              </div>
+              @endforeach
+            </div>
+              @endif
+  
+              <!--- comment form -->
+              @if(Auth::check())
+              <div class="col-md-12 commentform">
+                 <div class="col-md-1 commentimg">
+                 <a href="{{ url('#') }}">
+                  @if(!empty($Helper->postAvatar(Auth::user()->id)->name))
+                  <img src="{{asset("images/user/".$Helper->postAvatar(Auth::user()->id)->name)}}" class="img-circle imgcircle" alt="thumb">
+                  @else
+                  <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
+                  @endif
+                </a>
+                </div>
+                <div clas="col-md-10 col-lg-10">             
+                <form id="commentForm" name="commentForm" onsubmit="postComment(event);" action="{{url('/post-comment')}}" method="post">
+                   {{ csrf_field() }}
+                  <input type="hidden" id="postid" name="post_id" value="{{$trend->id}}">
+                 <div class="col-sm-9">
+                    <div class="form-group">
+                        <textarea name="comment" id="commentarea" style="border-radius:25px;" class="form-control" rows="1" autofocus="true" value="{{ old('description') }}" placeholder="write a comment" required></textarea>
+                    </div>
+                    <button type="submit" class="pull-right btn"><i class="glyphicon glyphicon-send"></i></button>
+                    @if($Helper->commentCount($trend->id) > 2)
+                    <a href="">View more Comments </a>
+                    @endif
+                </div>
+                 </form>
+            </div>
+        </div>
+        @endif
+         <!---yes stop loop here  -->
+         @endforeach
+          @if(!Auth::check())
+        <div class="col-md-6 col-lg-6">
+         <p><a href="#" data-toggle="modal" data-target="#loginModalAny" data-placement="top"> Login </a> or
+          <a href="#"data-toggle="modal" data-target="#signupModalAny" data-placement="top" data-toggle="modal" data-target="#addPostModal" data-placement="top"> register</a> to like or comment on any post </p>
+        </div>
+        @endif
+          @else
+      
+          <div class="col-md-12">
+            <p syle="font-size:1.3em;">No posts for this page yet please try another page.</p>
+             </div>
+          @endif
+          </div>
+          </div>
+          </div>
+                </div>
+        <div class="con col-md-2">
+			 <!-- pentalk pages -->
+            <h4 class="titles"> Bido Pages </h4>
+            <hr/>  
+			 <ul class="lead-story-header">
+			 	@foreach($cat as $category)
+			 <a href="{{url("/page/".$category->name)}}"><li>{{$category->name}} </li> </a>
+       @endforeach
+			 </ul>
+			 </div>
+            </div>
+				  <br/><br/> 
+			</div>
+        </div>
+    </div>
+</div>
+@endsection

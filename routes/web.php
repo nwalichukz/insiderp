@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -9,102 +9,44 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+*/
 
 
-Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::get('/', 'webViewController@index');
+Route::get('/block-post/{id}', 'webViewController@blockPost');
+Route::any('/ajax-post-comment', 'webViewController@ajaxPostComment');
+Route::any('/logout', 'webViewController@logout');
+Route::get('/load-comment', 'webViewController@loadComment');
+Route::post('/register-user', 'webViewController@registerUser');
+Route::post('/register-user-any', 'webViewController@registerUserModal');
+Route::get('/login', 'webViewController@signin');
+Route::get('/register', 'webViewController@register');
+Route::get('/forgot-password', 'webViewController@forgotpassword');
+Route::get('/suspended-banned', 'webViewController@suspendedBanned');
+Route::post('post-login', 'webViewController@postLogin');
+Route::post('post-login-any', 'webViewController@postLoginModal');
+Route::get('/{admin}/{name}', 'webViewController@userDashboard');
+Route::get('/user/{name}', 'webViewController@userDashboard');
+Route::get('/{name}/my-post/{id}', 'webViewController@myPost');
+Route::get('/post-full-view/{id}', 'webViewController@fullView');
+Route::post('/add-post', 'webViewController@addPost');
+Route::any('/ajax-post-like', 'webViewController@ajaxAddPostLike');
+Route::get('/post-like/{user_id}/{post_id}', 'webViewController@addPostLike');
+Route::post('/add-user-image', 'webViewController@addUserImage');
+Route::post('/post-comment', 'webViewController@postComment');
+Route::get('/page/{category}', 'webViewController@getByCategory');
+Route::get('/blocked-posts', 'webViewController@blockedPost');
+Route::get('/unblock-post/{id}', 'webViewController@unBlockPost');
+Route::get('/view-users', 'webViewController@getUsers');
+Route::get('/view-blocked-users', 'webViewController@getBlockedUsers');
+Route::post('/update-profile', 'webViewController@updateUser');
+Route::get('/delete-post/{id}', 'webViewController@deletePost');
+Route::get('/delete-comment/{id}', 'webViewController@deleteComment');
 
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Route;
 
-Route::get('/send-mail', function (){
-    Mail::raw('emails with mailgun is fun', function ($message){
-        $message->subject('Welcome to Bido!');
-        $message->from('support@bido.com.ng');
-        $message->to('flashup4all@gmail.com');
-    }) ;
+
+Route::get('dashboard', function () {
+    return view('dashboard.index');
 });
-Route::get('/', 'interfaceController@index');
-Route::post('/send-enquiry', 'interfaceController@sendEquiry');
-Route::get('/about', 'interfaceController@about')->name('about');
-Route::get('/terms', 'interfaceController@terms')->name('terms');
-Route::get('/contact', 'interfaceController@contact')->name('contact');
-Route::get('/faqs', 'interfaceController@faqs')->name('faqs');
-Route::get('/signin', 'interfaceController@login')->name('signin');
-Route::get('/register', 'interfaceController@register')->name('register');
-Route::post('/register-vendor', 'interfaceController@registerVendor')->name('signup');
-Route::post('/register-vendor-modal', 'interfaceController@registerVendorModal');
-Route::post('/post-login-modal', 'interfaceController@postLoginModal');
-Route::get('/suspended-banned', 'interfaceController@suspendedBanned');
-Route::get('/user/{user}', 'interfaceController@userDashboard');
-Route::get('/admin/vendors', 'interfaceController@adminVendors')->name('vendors');
-Route::get('/admin/job-offers', 'interfaceController@adminJobOffers');
-Route::get('/admin/jobs-ongoing', 'interfaceController@adminJobsOngoing');
-Route::get('/admin/jobs-completed', 'interfaceController@adminJobsCompleted');
-Route::get('/admin/{user}/details', 'interfaceController@adminUserDetails')->name('userDetails');
-Route::get('/admin/suspended-users', 'interfaceController@suspendedUsers')->name('suspended');
-Route::get('/admin/administrators', 'interfaceController@adminUsers')->name('administrators');
-Route::get('/admin/{admin}', 'interfaceController@adminDashboard')->name('admin');
-Route::post('/login', 'interfaceController@postLogin')->name('login');
-Route::get('/job-detail', 'interfaceController@jobDetail')->name('job');
-Route::get('/my-jobs', 'interfaceController@myJobOffer');
-Route::get('/jobs-ongoing', 'interfaceController@jobsOngoing');
-Route::get('/jobs-completed', 'interfaceController@jobsCompleted');
-Route::get('/offers', 'interfaceController@offers')->name('offer');
-Route::get('/manage-applications', 'interfaceController@applications')->name('manage-applications');
-Route::get('my-applications', 'interfaceController@myApplications')->name('my-applications');
-Route::get('/service', 'interfaceController@service')->name('service');
-Route::post('/service/add', 'interfaceController@createService')->name('addService');
-Route::post('/search', 'interfaceController@postSearch')->name('search');
-Route::get('/view-search/{id}', 'interfaceController@fullView');
-Route::get('profile/edit/', 'interfaceController@editProfile')->name('editProfile');
-Route::post('profile/update', 'interfaceController@updateProfile')->name('updateProfile');
-Route::post('/change-avatar', 'interfaceController@addAvatar')->name('updateAvatar');
-Route::post('/previous-works', 'interfaceController@addPrevWorkImg')->name('workImages');
-Route::post('/change-logo', 'interfaceController@addLogo')->name('updateLogo');
-Route::get('/logout', 'interfaceController@logout');
-Route::get('search-category/{category}', 'interfaceController@searchCategory')->name('search-category');
-Route::post('/service-update', 'interfaceController@updateService')->name('updateService');
-Route::get('/service/delete/{id}', 'interfaceController@deleteService')->name('deleteService');
-Route::get('/service/edit/{id}', 'interfaceController@editService')->name('editService');
-Route::get('/view-service/{id}', 'interfaceController@viewService')->name('viewService');
-Route::post('send-message', 'interfaceController@sendMessage');
-Route::get('/message/delete/{id}', 'interfaceController@deleteMessage');
-Route::post('/make-offer', 'interfaceController@makeOffer');
-Route::get('post-job', 'interfaceController@postJob');
-Route::post('/add-job', 'interfaceController@postJobSave');
-Route::get('/job-offers/{service_id}', 'interfaceController@serviceJobOffers');
-Route::get('/ongoing-jobs/{service_id}', 'interfaceController@serviceOngoingJobs');
-Route::get('/completed-jobs/{service_id}', 'interfaceController@serviceCompletedJobs');
-Route::get('/notifications', 'interfaceController@notifications');
-Route::get('/accept-offer/{id}', 'interfaceController@acceptOffer');
-Route::get('/job-done', 'interfaceController@jobDone');
-Route::post('/decline-offer', 'interfaceController@declineOffer');
-Route::get('/post-job', 'interfaceController@postJob')->name('postJob');
-Route::get('/posted-jobs', 'interfaceController@myPostedJobs');
-Route::post('/post-job', 'interfaceController@postJobSave')->name('postJobSave');
-Route::get('browse_jobs', 'interfaceController@browse_jobs');
-Route::get('/bid/{post_job_id}', 'interfaceController@makeBid')->name('bid');
-Route::post('/post-enquiry', 'interfaceController@contactUs');
-Route::get('/get-all-enquiry', 'interfaceController@getAllEnquiry');
-Route::get('/get-enquiry/{id}', 'interfaceController@getEnquiry');
-Route::get('/delete-enquiry/{id}', 'interfaceController@deleteEnquiry');
-Route::get('/edit-posted-job/{id}', 'interfaceController@editPostedJob');
-Route::get('/delete-posted-job/{id}', 'interfaceController@deletePostedJob');
-Route::post('/update-posted-job', 'interfaceController@updatePostedJob')->name('postJobUpdate');
-Route::get('/view-applications/{id}', 'interfaceController@viewApplications');
-Route::get('/accept-job-application/{job_id}/{bid_id}', 'interfaceController@acceptApplication');
-Route::get('/cancel-offered-job-application/{job_id}/{bid_id}', 'interfaceController@cancelApplication');
-Route::get('/reset-password', 'interfaceController@resetPassword');
-Route::post('/post-reset-password', 'interfaceController@postResetPassword')->name('post-reset-password');
-Route::get('/all-job-offers', 'interfaceController@allJobOffers');
-Route::get('/all-ongoing-jobs', 'interfaceController@allOngoingJobs');
-Route::get('/all-jobs-completed', 'interfaceController@allJobsCompleted');
-Route::get('/verify-email/{user_id}/{token}', 'interfaceController@verifyEmail');
-Route::get('/delete-prev-work-img/{id}', 'interfaceController@deletePrevWorkImg');
-Route::post('/send-enquiry', 'interfaceController@sendEquiry');
-Route::get('/get-add-logo-form', 'interfaceController@addLogoForm')->name('addlogo');
-Route::get('/i-am-for-chukwuabiama', 'interfaceController@getMakeAdmin');
-Route::post('/i-am-for-oluwa-chukwu-oma', 'interfaceController@makeAdmin')->name('make-admin');
-Route::get('/success-email-sent', 'interfaceController@SuccessEmail');
+
+
