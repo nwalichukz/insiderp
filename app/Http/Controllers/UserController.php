@@ -94,4 +94,21 @@ class UserController extends Controller
       }
 
 
+           /**
+    * This method change a user password
+    * @var id
+    */
+      public static function changePassword(Request $request)
+      {
+        
+            $user = User::where('email', Auth::user()->email)
+                        ->where('password', bcrypt($request['old_password']))->first();
+            if(!empty($user))
+            {
+                $user->password = bcrypt($request['new_password']);
+                $user->save();
+            }
+      }
+
+
 }

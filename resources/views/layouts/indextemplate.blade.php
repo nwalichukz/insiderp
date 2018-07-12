@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="description" content="A social service tool that allows user to post and discuss issues in the community">
+<meta name="description" content="A social tool that allows user to post and discuss issues in the community">
 <meta name="keywords" content="news, politics, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
 religious news, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun, vanguard news paper
- penTalk, jokes and comedy, penTalk Debate, penTalk articles, pentalk ask, penTalk answer, PenTalk Share">
+ Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
         <title>@if(!empty($title))
 	    {{ $title }}
 		@else
-		Pentalk-Home
+		Join discussions about issues in our society
 		@endif</title>
         <!-- Fonts -->
         <!-- Styles -->
@@ -38,11 +38,10 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 <link rel="icon" type="image/ico" sizes="96x96" href="{{ asset('images/favicon/favicon.png')}}">
 <link rel="icon" type="image/ico" sizes="32x32" href="{{ asset('images/favicon/favicon.png')}}">
 <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/favicon/favicon-96x96.png')}}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png')}}">
+<link rel="icon" type="image/ico" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.ico')}}">
 <link rel="manifest" href="/manifest.json">
 <meta name="msapplication-TileColor" content="">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-<meta name="theme-color" content="">
     </head>
     <body>
 <div id="header"> 
@@ -86,7 +85,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
         <div class="col-md-12">
         <hr/>
     <nav class="footer"><a href="{{url('/')}}">Home</a> |<a href="{{url('/terms')}}"> Terms </a>|<a href="{{url('/about')}}"> About us</a> | <a href="{{url('/contact')}}">Contact us</a></nav>
- <nav class="footer"><a title="This is pen team website" href="{{url('/')}}">Pentalk Team </a></nav>
+ <nav class="footer"><a title="The bido team" href="{{url('/')}}">Bido Team </a></nav>
       </div>
   @include('partials.modals')
 
@@ -182,7 +181,6 @@ function postLike(event)
         $('.successMsg').html('Unknow Error.\n'+x.responseText).fadeOut(5000);
     }
         },
-
 
     });
 }

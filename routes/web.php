@@ -42,6 +42,14 @@ Route::get('/view-blocked-users', 'webViewController@getBlockedUsers');
 Route::post('/update-profile', 'webViewController@updateUser');
 Route::get('/delete-post/{id}', 'webViewController@deletePost');
 Route::get('/delete-comment/{id}', 'webViewController@deleteComment');
+Route::get('/success-email-sent', 'webViewController@SuccessEmail');
+Route::post('/change-password', 'webViewController@changePassword');
+Route::post('/invite-friends', 'webViewController@inviteFriends');
+Route::post('/reset-password', 'webViewController@postResetPassword');
+Route::get('/contact', 'webViewController@contact');
+Route::get('/about', 'webViewController@about');
+Route::get('/terms', 'webViewController@terms');
+
 
 
 

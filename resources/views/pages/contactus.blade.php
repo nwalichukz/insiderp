@@ -1,4 +1,4 @@
-@extends('layouts.pagestemplate')
+@extends('layouts.indextemplate')
 @section('content')
 <div class="col-lg-3 col-md-3"> </div>
 <div class="col-lg-6 col-md-6">
@@ -18,7 +18,7 @@
                                    
                                <!-- <div class="panel panel-default">-->
                                 
-                                <form class="form-light mt-20" id='post-ajax' action="send_mail" role="form" method="POST">
+                                <form class="form-light mt-20" id='post-ajax-contactus' action="{{ url('/send_mail') }}" role="form" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                <br/>
@@ -59,15 +59,14 @@
                     <br/>
                     <address class="email-phone">
                     You can also reach us through<br/>
-                    Email: chikeluventures@gmail.com.com<br/>
-                    Phone no: 
+                    Email: askbido@gmail.com<br/>
+                    Phone no: 07065119492
                     </address>
                     </div>
                      </div>
                 </div>
                 
     </div>
-
 </div>
 <div class="col-lg-3 col-md-3"> </div>
 @endsection

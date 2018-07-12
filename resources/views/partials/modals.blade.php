@@ -56,17 +56,17 @@
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                     <h3 class="modal-title" id="lineModalLabel">Invite a firend to Join Pentalk</h3>
                 </div>
-                <form action="invite-a-friend" method="post" enctype="multipart/form-data" id="">
+                <form action="{{ url('/invite-friends') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
-                    <input type="text" name="invitefriend1" class="form-control" placeholder="Enter emaiil address of the person" required>
+                    <input type="text" name="email1" class="form-control" placeholder="Enter emaiil address of the person" required>
                 </div>
                 <div class="form-group">
 
-                    <input type="text" name="invitefriend2" class="form-control" placeholder="Enter emaiil address of the person">
+                    <input type="text" name="email2" class="form-control" placeholder="Enter emaiil address of the person">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="invitefriend3" class="form-control" placeholder="Enter emaiil address of the person">
+                    <input type="text" name="email3" class="form-control" placeholder="Enter emaiil address of the person">
                 </div>
                
                 <div class="modal-footer">
@@ -86,7 +86,7 @@
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                     <h3 class="modal-title" id="lineModalLabel">Change Password</h3>
                 </div>
-                <form action="#" method="post" enctype="multipart/form-data" id="">
+                <form action="{{url('/change-password')}}" method="post" enctype="multipart/form-data" id="">
                     {{ csrf_field() }}
                     <div class="form-group">
                     <input type="text" name="oldpassword" class="form-control" placeholder="Enter old password">
@@ -95,7 +95,7 @@
                     <input type="text" name="newpassword" class="form-control" placeholder="Enter new password">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="password_confirmation" class="form-control" placeholder="Re-type new password">
+                    <input type="text" name="newpassword_confirmation" class="form-control" placeholder="Re-type new password">
                 </div>
              
                 <div class="modal-footer">

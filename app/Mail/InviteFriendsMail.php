@@ -29,7 +29,7 @@ class InviteFriendsMail extends Mailable
      */
     public function build()
     {
-        $subject = 'Bido - Special Invitation';
+        $subject = 'Special Invitation';
         $address = 'support@bido.com.ng';
         $name = 'Bido';
         return $this->view('email.invite-friends')

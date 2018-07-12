@@ -7,7 +7,7 @@
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                     <h3 class="modal-title" id="lineModalLabel">Reset password</h3>
                 </div>
-                <form action="{{URL('forgotPassword')}}" method="post" enctype="multipart/form-data" id="">
+                <form action="{{URL('reset-password')}}" method="post" enctype="multipart/form-data" id="">
                     <div class="form-group">
                     <input type="text" name="email" class="form-control" placeholder="Enter your emaiil address">
                 </div>

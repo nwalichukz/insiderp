@@ -14,6 +14,7 @@ use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\ViewController;
+use Carbon\Carbon;
 use App\PostImage;
 use App\Post;
 use App\User;
@@ -227,21 +228,27 @@ class WebViewController extends Controller
     	}
     }
 
-       /**
-    * This method change a user password
-    * @var id
-    */
-      public static function changePassword(Request $request)
-      {
-        
-            $user = User::where('email', $request['email'])
-                        ->where('password', bcrypt($request['old_password']))->first();
-            if($user)
-            {
-                $user->password = bcrypt($request['new_password']);
-                $user->save();
-            }
-      }
+ /**
+ * This method changes password
+ * @var request
+ *
+ */
+public function changePassword(Request $request)
+   { $this->validate($request,
+        [  'oldpassword'=>'required',
+           'newpassword'=>'required|string|min:6|confirmed',
+           ]);
+ 
+   $changepswd = UserController::changePassword($request);
+   if($changepswd)
+   {
+    flash('Password changed successfully')->success();
+    return redirect()->back();
+   }else{
+    flash('Something went wrong, password could noe be changed, please try again')->error();
+    return redirect()->back();
+   }
+}
 
       // add post likes
       public static function addPostLike($user_id, $post_id){
@@ -405,4 +412,81 @@ class WebViewController extends Controller
         return redirect()->back();
       }
     }
+
+    //send invitation for friends
+    public function inviteFriends(Request $request)
+    {    if(Auth::check()){
+         if(!empty($request['email1'])){
+         $delay_one = (new \Carbon\Carbon)->now()->addMinutes(1);
+         Mail::to($request['email1'])->later($delay, new CreateServiceMail(Auth::user()->name));
+        }
+
+         if(!empty($request['email2'])){
+         $delay_two = (new \Carbon\Carbon)->now()->addMinutes(2);
+         Mail::to($request['email2'])->later($delay, new CreateServiceMail(Auth::user()->name));
+        }
+
+         if(!empty($request['email3'])){
+         $delay_one = (new \Carbon\Carbon)->now()->addMinutes(3);
+         Mail::to($request['email3'])->later($delay, new CreateServiceMail(Auth::user()->name));
+        }
+          return redirect()->back();
+          flash('Friends invitation sent successfully')->success();
+        }else{
+          Auth::logout();
+          return redirect('/');
+          
+        }
+
+    }
+
+      // send password reset
+     public function postResetPassword(Request $request)
+    {   $this->validate($request,
+        [  'email'=>'required|email',
+          
+           ]);
+        $sentpassword = mt_rand(100000, 1000000);
+        $dbpassword =bcrypt($sentpassword);
+        $data = [ 'password' => $sentpassword
+                        ];
+         $check = User::where('email', $request['email'])->first();
+         if($check){
+          $check->password = $dbpassword;
+          $check->save();
+          $data = ['password' => $sentpassword];
+         // $check->password = $sentpassword;
+          Mail::to($request['email'])->send(new PasswordResetMail($sentpassword));
+          return redirect('success-email-sent');
+       
+        }else{
+        // return response()->json(['error' => 'Email not registered in this platform. Please check if email is correct and try again']);
+            flash('Email not registered in this platform. Please check if email is correct and try again')->error();
+            return redirect::back();
+        }
+    }
+
+    // password reset success page
+    public function SuccessEmail()
+   {  
+    return view('pages.email-reset-success');
+   }
+
+    // return contact us page
+    public function contact()
+   {  $category = CategoryController::getCategory();
+    return view('pages.contactus')->with(['cat'=> $category]);
+   }
+
+   // return about us page
+    public function about()
+     {  $category = CategoryController::getCategory();
+    return view('pages.aboutus')->with(['cat'=> $category]);
+   }
+
+   // return contact us page
+    public function terms()
+   {  $category = CategoryController::getCategory();
+    return view('pages.terms')->with(['cat'=> $category]);
+   }
 }
