@@ -9,24 +9,38 @@
                     <h3 class="modal-title" id="lineModalLabel">Post</h3>
                 </div>
                 <form action="{{url('add-post')}}" method="post" enctype="multipart/form-data" id="">
-                    @if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
+                
                     <div class="form-group">
-                        <input type="text" name="title" class="form-control" placeholder="Enter the title of the article" required>
+                        <input type="text" name="title" class="form-control" placeholder="Enter the title of the post max of ten words" required>
                     </div>
-                    @endif
+                    
                     <div class="form-group">
                     <textarea name="post" rows="3" class="form-control" placeholder="Share your thought on anything you care about" max:"350"></textarea>
                 </div>
                      <div class="form-group">
                     <select name="category" class="form-control">
                         <option value="">Select Category</option>
-                        <option >Technology</option>
+                        <option >Politics</option>
+                        <option >Education</option>
                         <option >Sports</option>
+                        <option >Religion</option>
                         <option >Romance</option>
-                        <option >Business</option>
-                        <option >Betting</option>
+                        <option >Technology</option>
+                        <option >Entertainment</option>
+                        <option >Culture</option>
                         <option >Travel</option>
-                        <option >Tourism</option>
+                         <option >Betting</option>
+                         <option >Tourism</option>
+                         <option >Jokes</option>
+                         <option >Foreign</option>
+                         <option >Events</option>
+                         <option >Fashion</option>
+                         <option >Birthdays</option>
+                         <option >CarTalk</option>
+                        <option >Entrepreneurship</option>
+                       
+                        <option >Travel</option>
+                        
                     </select>
                 </div>
                 <div class="modal-body">
@@ -86,16 +100,16 @@
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                     <h3 class="modal-title" id="lineModalLabel">Change Password</h3>
                 </div>
-                <form action="{{url('/change-password')}}" method="post" enctype="multipart/form-data" id="">
+                <form action="{{url('/change-password')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
-                    <input type="text" name="oldpassword" class="form-control" placeholder="Enter old password">
+                    <input type="text" name="oldpassword" class="form-control" placeholder="Enter old password" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="newpassword" class="form-control" placeholder="Enter new password">
+                    <input type="text" name="newpassword" class="form-control" placeholder="Enter new password" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="newpassword_confirmation" class="form-control" placeholder="Re-type new password">
+                    <input type="text" name="newpassword_confirmation" class="form-control" placeholder="Re-type new password" required>
                 </div>
              
                 <div class="modal-footer">
@@ -126,7 +140,13 @@
                 <div class="form-group">
                     <input type="text" name="user_name" class="form-control" value="@if(!empty(Auth::check())){{Auth::user()->user_name}}@endif" >
                 </div>
-             
+                @if(Auth::check())
+    @if(Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')
+    <div class="form-group">
+                    <textarea name="description" class="form-control" rows="2">{{Auth::user()->description}} </textarea>
+                </div>
+                @endif
+                @endif
                 <div class="modal-footer">
                     <button type="submit" class="pull-left btn btn-common">Update</button>
                 </div>

@@ -27,6 +27,9 @@ class PostController extends Controller
        $create->category = $request['category'];
        $create->status = 'active';
        $create->user_id = Auth::user()->id;
+       $create->publisher_level = Auth::user()->user_level;
+       $create->title = $request['title'];
+       $create->post_importance = 'normal';
        $create->save();
        PostViewController::create($create->id);
        return ['success'=>'true', 'id' =>$create->id];
@@ -140,6 +143,19 @@ class PostController extends Controller
         $add->save();
     }
 
+      /**
+    * get lead story
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function leadStory(){
+    return Post::where('publisher_level', 'editor')->first();
+       
+    }
+
+
      /**
     * adds to rank
     *
@@ -177,7 +193,31 @@ class PostController extends Controller
         return Post::where('user_id', $id)->where('status', 'active')->orderBy('created_at', 'DESC')
                          ->with('comment')->with('postimage')->with('user')
                         ->with('avatar')->limit(50)->paginate(10);
-
     
+    }
+
+    /**
+    * autosuggest ajax
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function autosuggest($title)
+    {
+        return Post::where('title', 'LIKE', $title.'%')->get();
+    }
+
+    /**
+    * search
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function search($title)
+    {
+        return Post::where('title', 'LIKE', $title.'%')->paginate(10);
+                       /* ->orWhere('post', 'LIKE', '%'.$title.'%')*/
     }
 }

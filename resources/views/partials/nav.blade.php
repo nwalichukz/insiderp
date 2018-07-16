@@ -21,11 +21,11 @@
                                @if(Auth::check())
                                 @if(Auth::user()->user_level==='admin' || Auth::user()->user_level ==='editor')
                                 <li><a href="{{url('/blocked-posts')}}">view blocked post </li>
-                                 <li> <a href="{{url('/view-users')}}">View users</a> </li>
-                                 <li> <a href="{{url('/view-blocked-users')}}">View blocked users</a> </li>
                                  <li> <a href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Article</a> </li>
                                 @endif
                                  @if(Auth::user()->user_level === 'admin')
+                                  <li> <a href="{{url('/view-users')}}">View users</a> </li>
+                                 <li> <a href="{{url('/view-blocked-users')}}">View blocked users</a> </li>
                                 @endif
                                 @endif
                                 <li>
@@ -40,18 +40,7 @@
                                     </form>
                                 </li>
 
-              <nav class="footer1">
-              <li style="list-type:none;" class="dropdown">
-               <a style="text-decoration:none;" href="#" class="dropdown-toggle" data-toggle="dropdown" title="Forums or pages">
-                PenTalk Pages <span class="caret"></span>
-               </a>
-               <ul class="dropdown-menu" role="menu">
-                @foreach($cat as $category)
-                   <a href="#"> <li style="margin-left: 12px;">{{$category->name}} </li> </a>
-                    @endforeach
-                    
-                </ul> </li>
-               </nav> 
+               
 
                             </ul>
                         </li>

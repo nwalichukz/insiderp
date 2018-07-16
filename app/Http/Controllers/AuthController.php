@@ -19,9 +19,9 @@ class AuthController extends Controller
         {   //LastLoginController::login(Auth::user()->id);
             return 'user';
         }
-        elseif(Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'main']))
+        elseif(Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'admin']))
         {   //LastLoginController::login(Auth::user()->id);
-            return 'main';
+            return 'admin';
         }
         elseif(Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'suspended', 'user_level' =>'user']))
         {
@@ -32,7 +32,7 @@ class AuthController extends Controller
         }
         elseif(Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'editor']))
         {   //LastLoginController::login(Auth::user()->id);
-            return 'user';
+            return 'editor';
         }
         else{
             return false;

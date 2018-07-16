@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ImageController;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -23,6 +24,7 @@ class UserController extends Controller
    	$create->status = 'active';
    	$create->user_name = $request['user_name'];
    	$create->email = $request['email'];
+    $create->description = $request['description'];
    	$create->save();
     return true;
    }
@@ -99,14 +101,15 @@ class UserController extends Controller
     * @var id
     */
       public static function changePassword(Request $request)
-      {
-        
-            $user = User::where('email', Auth::user()->email)
-                        ->where('password', bcrypt($request['old_password']))->first();
+      {   $user = User::where('email', Auth::user()->email)
+                        ->where('password', bcrypt($request['oldpassword']))->first();
             if(!empty($user))
             {
-                $user->password = bcrypt($request['new_password']);
+                $user->password = bcrypt($request['newpassword']);
                 $user->save();
+                return true;
+            }else{
+              return false;
             }
       }
 

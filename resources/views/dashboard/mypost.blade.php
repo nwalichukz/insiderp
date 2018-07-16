@@ -1,7 +1,7 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.usertemplate')
 @section('content')
-<div class="col-md-7 col-lg-7 panel" id="centerDiv">
+<div class="col-md-6 col-lg-6 panel" id="centerDiv">
 		<div class="item-wrap">
 			<!-- yes oh here start loop -->
       @if($trending->count() >= 1)
@@ -18,11 +18,8 @@
                                    @endif
                                     <span class=""><span style=";">{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}</span> /<span style="color:#FF8C00;">{{$trend->category}} </span>
                                     </a>
-                                    
                                 </figure>
-
-                            </div>
-
+                            </div> 
                         </div>
         
                        <a href="{{url('/delete-post/'.$trend->id)}}"> <i title="Delete this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
@@ -35,26 +32,32 @@
               			 	<img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:200px;" alt="">
               			 </div>
               			 <div style="border:1px solid #fff;" class="col-md-9 col-lg-8">
-              		<div class="media-body media-midd">
-              			<div class="my-description">
+              		
+                       @if(!empty($trend->title))
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     @else
+                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                     @endif
               		<p style="font-size:1.2em;">
-              			{{$Helper->get_words($trend->post)}}
+              			{{$Helper->get_words($trend->post, 23)}}
               			 </p>
               			 
               			 	<span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
-              			</div>
-              		</div>
+              		
               		</div>
               		@else
-              		<div class="media-body media-middle">
-              			<div class="my-description">
+              		
+                       @if(!empty($trend->title))
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     @else
+                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                     @endif
               		<p style="font-size:1.2em;">
-              			{{$Helper->get_words($trend->post)}} 
+              			{{$Helper->get_words($trend->post, 23)}} 
               			 </p>
               			 
               			 	<span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
-              			</div>
-              		</div>
+              		
               		@endif
               	</div>
               	 <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="postBox">
@@ -93,7 +96,7 @@
               			 </p>
               	</div>
               	<div>
-                  <div class="col-md-12 col-lg-12" id="likeBox">
+                  <div class="col-md-12" id="likeBox">
                 <i class="col-md-1" ></i> 
                 <span class="glyphicon glyphicon-thumbs-up col-md-2 likedata time-date commentlike" title="Total number likes for this comment" aria-hidden="true">
                 <i class="likedata time-date" id="{{$comment->id}}">Like</i> </span>

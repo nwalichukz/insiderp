@@ -26,11 +26,14 @@
                         </div>
                         @if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
                         @if($trend->status ==='active')
-                       <a href="{{url('/block-post/'.$trend->id) }}"> <i title="Block this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
+                       <a href="{{url('/block-post/'.$trend->id) }}"> <i title="Block this post" class="time-date trash glyphicon glyphicon-ban-circle pull-right"> </i> </a>
                        @else
-                       <a href="{{url('/unblock-post/'.$trend->id)}}"> <i title="unblock this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
+                       <a href="{{url('/unblock-post/'.$trend->id)}}"> <i title="unblock this post" class="time-date trash glyphicon glyphicon-trash pull-right"> </i> </a>
                        @endif
-                        <a href="{{url('/get-edit')}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
+                        @endif
+                      @if(Auth::check() && (Auth::user()->id === $trend->user_id))
+                       <a href="{{url('/delete-post/'.$trend->id) }}" class="time-date pull-right trash"> X </a>
+                      <a href="{{url('/get-edit')}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
                         @endif
 
                      </div>
@@ -43,8 +46,13 @@
                      <div style="border:1px solid #fff;" class="col-md-9 col-lg-8">
                   <div class="media-body media-midd">
                     <div class="my-description">
+                       @if(!empty($trend->title))
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     @else
+                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                     @endif
                   <p style="font-size:1.2em;">
-                    {{$Helper->get_words($trend->post)}}
+                    {{$Helper->get_words($trend->post, 24)}}
                      </p>
                      
                       <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
@@ -54,8 +62,13 @@
                   @else
                   <div class="media-body media-middle">
                     <div class="my-description">
+                       @if(!empty($trend->title))
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     @else
+                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                     @endif
                   <p style="font-size:1.2em;">
-                    {{$Helper->get_words($trend->post)}}
+                    {{$Helper->get_words($trend->post, 24)}}
                      </p>
                      
                       <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
@@ -110,11 +123,16 @@
                 </div>
                 <div>
                  <div class="col-md-12" id="likeBox">
-                <i class="col-md-1" ></i> 
-                <span class="glyphicon glyphicon-thumbs-up col-md-2 likedata commentlike" title="Total number likes for this comment" aria-hidden="true">
+                <i class="col-md-2" ></i>
+                <a href="#"> 
+                <span class="col-md-2 likedata commentlike" title="Total number likes for this comment" aria-hidden="true">
                 <i class="likedata time-date" id="{{$comment->id}}">Like</i> </span>
-                <i class="col-md-3 time-date" title="The time this comment was posted">{{date('j/n \'y', strtotime($comment->created_at))}} </i> 
-                 <i class="col-md-3 glyphicon glyphicon-thumbs-up " aria-hidden="true"> 3 </i>
+              </a>
+                <i class="col-md-2 time-date" title="The time this comment was posted">{{date('j/n \'y', strtotime($comment->created_at))}} </i> 
+                 <i class="col-md-2 glyphicon glyphicon-thumbs-up " aria-hidden="true">3</i>
+                 @if(Auth::check() && (Auth::user()->id === $comment->user_id))
+                 <a href="{{url('/delete-comment/'.$comment->id)}}"> <i class="col-md-1 glyphicon glyphicon-trash time-date" aria-hidden="true"></i> </a>
+                  @endif
               </div>
                 </div>
               </div>
@@ -123,7 +141,7 @@
               @endif
   
               <!--- comment form -->
-              @if(Auth::check())
+              @if(Auth::check() && !Auth::check())
               <div class="col-md-12 commentform">
                  <div class="col-md-1 commentimg">
                  <a href="{{ url('#') }}">

@@ -60,7 +60,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!--<img class="logoImg" src="{{asset('images/logo/orientLogo.jpg')}}" />-->
                     <p class="logoText">BIDO</p>
-                </a> 
+                </a>
             </div> 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
@@ -78,6 +78,19 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
     </nav>
 </div>
 <br/>
+<div class="col-md-6 center-block">
+    <form method="POST" action="{{url('/post-search')}}"> 
+         {{ csrf_field() }}
+        <div class="form-group">
+            <div class="">
+     <input type="text" onkeyup="autocomplet();" name="name" id="search" class="name" value="{{old('name')}}"> 
+     <div id="content" class="col-md-12"> </div>
+     <button type="submit" class="searchbtn">
+   <span class="glyphicon glyphicon-search"> </span> </button>
+</div>
+</div>
+    </form>
+    </div>
 
 
     @yield('content')
@@ -110,7 +123,51 @@ $.ajax({
     method: 'GET',
     data: {post_id:post_id, comment:comment},
     success:function(data){
-    $('#commentBox').load(" #commentBox");
+    $('#commentID').load(" #commentID");
+    },
+        error:function(x,e) {
+    if (x.status==0) {
+        $('.status').hide();
+        $('.successMsg').show();
+       $('.successMsg').html('You are offline!!\n Please Check Your Network.').fadeOut(600);
+    } else if(x.status==404) {
+        $('.status').hide();
+        $('.successMsg').show();
+       $('.successMsg').html('Requested URL not found.').fadeOut(6000);
+    } else if(x.status==500) {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Internel Server Error.').fadeOut(6000);
+    } else if(e=='parsererror') {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Error.\nParsing JSON Request failed.').fadeOut(6000);
+    } else if(e=='timeout'){
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Request Time out.').fadeOut(6000);
+    } else {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Unknow Error.\n'+x.responseText).fadeOut(50000);
+    }
+        },
+
+    });
+}
+
+function postCommentTwo(event){
+event.preventDefault();
+var form = document.getElementById('commentForm');
+var formData = new FormData(form);
+var post_id = $('#postid').val();
+var comment = $('#commentarea').val();
+$.ajax({
+    url: "{{ url('/ajax-post-comment') }}",
+    method: 'GET',
+    data: {post_id:post_id, comment:comment},
+    success:function(data){
+    $('#mainContent').load(" #mainContent");
     },
         error:function(x,e) {
     if (x.status==0) {
@@ -184,6 +241,44 @@ function postLike(event)
 
     });
 }
+
+/**
+* This method handles the autocomplete for 
+* the home pages and search page
+*
+*/
+function autocomplet(){
+    // get the input value
+        var keyword = $('#search').val();
+        //var type = $('#frent').val();
+
+    if (keyword != '') {
+        $.ajax({
+            url: "{{ url('/autosuggest') }}",
+            type: 'GET',
+            data: {keyword:keyword, type:type},
+            success:function(data){
+            $('#content').show();
+            $('#content').html(data);
+            }
+  });
+       } else {
+
+        $('#content').hide();
+ }
+     }
+
+/**
+* This function handles the set item for the autosuggest
+*  when clicked it sets the item to the input text used for the search
+*/
+    function set_item(item) {
+    // change input value
+    $("#search").val(item);
+    // hide proposition list
+    $("#content").hide();
+};
+
 
 </script>
 </body>

@@ -7,7 +7,7 @@ class HelperClass{
 
 	public function comment($post_id)
 	{
-		return DB::table('comments')->where('post_id', $post_id)->orderBy('comment_rank', 'DESC')->orderBy('created_at', 'ASC')->limit(2)->get();
+		return DB::table('comments')->where('post_id', $post_id)->orderBy('comment_rank', 'DESC')->orderBy('created_at', 'DESC')->limit(2)->get();
 	}
 
 	//comment for full page
@@ -64,10 +64,16 @@ class HelperClass{
 		return DB::table('post_views')->where('post_id', $id)->first();
 	}
 
-
-   function get_words($sentence, $count = 30) {
+  // get some words for the body
+   function get_words($sentence, $count) {
 	  preg_match("/(?:\w+(?:\W+|$)){0,$count}/", $sentence, $matches);
 	  return $matches[0]. " ...";
+	}
+
+	// get some words for title
+	 function get_title($sentence, $count) {
+	  preg_match("/(?:\w+(?:\W+|$)){0,$count}/", $sentence, $matches);
+	  return $matches[0];
 	}
 
 }

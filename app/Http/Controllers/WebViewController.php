@@ -30,7 +30,8 @@ class WebViewController extends Controller
 	public function index(){
     $trending = PostController::getTrending();
      $category = CategoryController::getCategory();
-      return view('home')->with(['trending'=>$trending, 'cat'=>$category]);
+     $lead = PostController::leadStory();
+      return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead]);
 	}
 
 	/* * This method checks
@@ -103,14 +104,15 @@ class WebViewController extends Controller
         ]);
        
         $auth = AuthController::authenticate($request);
-        if($auth === 'main'){
-            $vendor =  Auth::user();
-            return redirect($vendor->user_level.'/'.str_replace(' ', '-', strtolower($vendor->name)));
-          //return redirect($vendor->user_level.'/'.str_replace(' ', '-', strtolower($vendor->name)));
-        }elseif ($auth === 'user') {
-            $user = Auth::user();
-            //flash('Login Successful')->success();
+        if($auth === 'user'){
+            $user =  Auth::user();
             return redirect($user->user_level.'/'.str_replace(' ', '-', strtolower($user->name)));
+        }elseif ($auth === 'editor') {
+            $editor = Auth::user();
+            return redirect($editor->user_level.'/'.str_replace(' ', '-', strtolower($editor->name)));
+        }elseif ($auth === 'admin') {
+            $admin = Auth::user();
+            return redirect($admin->user_level.'/'.str_replace(' ', '-', strtolower($admin->name)));
         }elseif ($auth === 'suspended'){
             return redirect('suspended-banned');
         }elseif ($auth === 'banned') {
@@ -122,7 +124,6 @@ class WebViewController extends Controller
         }
    
     }
-
        /**
      * This method logins the user and redirect back
      * to the previous page
@@ -182,8 +183,7 @@ class WebViewController extends Controller
 
     // user dashboard
     public static function UserDashboard(){
-    	if(Auth::check() AND (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor')){
-   		 $user = Auth::user();
+    	if(Auth::check() AND (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
    		 $trending = PostController::getTrending();
    		 $category = CategoryController::getCategory();
    		 return view('dashboard.index')->with(['cat' =>$category, 'trending'=>$trending]);
@@ -197,10 +197,13 @@ class WebViewController extends Controller
     //my post
     public static function myPost($name, $id)
     { 
-      if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor')){
+      if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
         $mypost = PostController::getByUser($id);
         $category = CategoryController::getCategory();
         return view('dashboard.mypost')->with(['trending'=>$mypost, 'cat'=>$category]);
+      }else{
+        Auth::logout();
+        return redirect()->back();
       }
     }
 
@@ -221,7 +224,7 @@ class WebViewController extends Controller
     	if($post['success'])
     	{
     		flash('post added successfully')->success();
-    		return redirect(Auth::user()->name.'/mp-post/'.Auth::user()->id);
+    		return redirect(Auth::user()->name.'/my-post/'.Auth::user()->id);
     	}else{
     		flash('Something went wrong, post not added successfully. Please try again')->error();
     		return redirect()->back();
@@ -234,11 +237,11 @@ class WebViewController extends Controller
  *
  */
 public function changePassword(Request $request)
-   { $this->validate($request,
+   { 
+    $this->validate($request,
         [  'oldpassword'=>'required',
            'newpassword'=>'required|string|min:6|confirmed',
            ]);
- 
    $changepswd = UserController::changePassword($request);
    if($changepswd)
    {
@@ -264,7 +267,9 @@ public function changePassword(Request $request)
 
       // add user image
       public static function addUserImage(Request $request){
-      	if($request->hasFile('avatar')){
+      	if($request->hasFile('avatar') && Auth::check()){
+        $check = ImageController::deleteAvatar(Auth::user()->id);
+        if($check){
       	$img = ImageController::userImageUpload($request);
       	$userimg = new UserImage;
       	$userimg->user_id = Auth::user()->id;
@@ -272,6 +277,10 @@ public function changePassword(Request $request)
       	$userimg->save();
       	flash('Image uploaded successfully')->success();
       	return redirect()->back();
+      }else{
+        flash('Something went wrong, Image not uploaded successfully')->error();
+        return redirect()->back();
+      }
       		}else{
       			return redirect()->back();
       		}
@@ -338,7 +347,8 @@ public function changePassword(Request $request)
       public function getByCategory($category)
       {  $bycat = PostController::getByCategory($category);
          $cat = CategoryController::getCategory();
-        return view('home')->with(['trending'=>$bycat, 'category'=>$category, 'cat'=>$cat]);
+         $lead = PostController::leadStory();
+        return view('home')->with(['trending'=>$bycat, 'category'=>$category, 'cat'=>$cat, 'lead'=>$lead]);
       }
 
       // post full view
@@ -415,7 +425,11 @@ public function changePassword(Request $request)
 
     //send invitation for friends
     public function inviteFriends(Request $request)
-    {    if(Auth::check()){
+    {     $this->validate($request,
+        [  'email'=>'required|email',
+          
+           ]);
+        if(Auth::check()){
          if(!empty($request['email1'])){
          $delay_one = (new \Carbon\Carbon)->now()->addMinutes(1);
          Mail::to($request['email1'])->later($delay, new CreateServiceMail(Auth::user()->name));
@@ -427,7 +441,7 @@ public function changePassword(Request $request)
         }
 
          if(!empty($request['email3'])){
-         $delay_one = (new \Carbon\Carbon)->now()->addMinutes(3);
+         $delay_three = (new \Carbon\Carbon)->now()->addMinutes(3);
          Mail::to($request['email3'])->later($delay, new CreateServiceMail(Auth::user()->name));
         }
           return redirect()->back();
@@ -489,4 +503,19 @@ public function changePassword(Request $request)
    {  $category = CategoryController::getCategory();
     return view('pages.terms')->with(['cat'=> $category]);
    }
+
+   //autosuggest
+   public function autosuggest(Request $request){
+    $auto = PostController::autosuggest($request['keyword']);
+    return view('pages.autosuggest')->with(['words'=>$auto]);
+   }
+
+   // search
+   public function search(Request $request){
+    $search = PostController::search($request['name']);
+     $category = CategoryController::getCategory();
+     $lead = PostController::leadStory();
+      return view('home')->with(['trending'=>$search, 'cat'=>$category, 'lead'=>$lead, 'search'=>$search]);
+  }
+
 }

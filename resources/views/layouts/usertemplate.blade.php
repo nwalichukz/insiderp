@@ -185,14 +185,14 @@ function postLike(event)
             <nav class="footer1">  <a href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Post<a/> </nav>
            <nav class="footer1"> <a href="#" data-toggle="modal" data-target="#inviteFriendModal" data-placement="top" title="invite a friend to join pentalk">Invite a friend <a/></nav> 
            <nav class="footer1"> <a href="#" data-toggle="modal" data-target="#changePasswordModal" data-placement="top" title="change your password">change password <a/></nav> 
-           <nav class="footer1"> <a href="{{url(Auth::user()->name.'/my-post/'.Auth::user()->id)}}" title="view all post by me">My Posts <a/></nav> 
+           <nav class="footer1"> <a href="{{url(str_replace(' ', '-', strtolower(Auth::user()->name)).'/my-post/'.Auth::user()->id)}}" title="view all post by me">My Posts <a/></nav> 
               <nav class="footer1">   <a href="#" data-toggle="modal" data-target="#editProfileModal" data-placement="top" title="Edit your profile">Edit Profile<a/></nav>
                 <nav class="footer1">   <a href="#" data-toggle="modal" data-target="#addUserImageModal" data-placement="top" title="Edit your profile">Add Profile Image<a/></nav>
                 @if(Auth::check())
                @if(Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor')
                                 <nav class="footer1"> <a href="{{url('/blocked-posts')}}">View blocked posts</a> </nav>
-                                <nav class="footer1"> <a href="{{url('/view-users')}}">View users</a> </nav>
-                                <nav class="footer1"> <a href="{{url('/view-blocked-users')}}">View blocked users</a> </nav>
+                               @if(Auth::user()->user_level==='admin') <nav class="footer1"> <a href="{{url('/view-users')}}">View users</a> </nav> 
+                                <nav class="footer1"> <a href="{{url('/view-blocked-users')}}">View blocked users</a> </nav>@endif
                                  <nav class="footer1"> <a href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Article</a> </nav>
                                 <nav class="footer1">
                                     <a href="{{ url('/logout') }}"
@@ -244,6 +244,131 @@ if (key == 13) {
 $('#commentForm').submit(); // Submit form code
 }
 });
+
+function postComment(event){
+event.preventDefault();
+var form = document.getElementById('commentForm');
+var formData = new FormData(form);
+var post_id = $('#postid').val();
+var comment = $('#commentarea').val();
+$.ajax({
+    url: "{{ url('/ajax-post-comment') }}",
+    method: 'GET',
+    data: {post_id:post_id, comment:comment},
+    success:function(data){
+    $('#commentID').load(" #commentID");
+    },
+        error:function(x,e) {
+    if (x.status==0) {
+        $('.status').hide();
+        $('.successMsg').show();
+       $('.successMsg').html('You are offline!!\n Please Check Your Network.').fadeOut(600);
+    } else if(x.status==404) {
+        $('.status').hide();
+        $('.successMsg').show();
+       $('.successMsg').html('Requested URL not found.').fadeOut(6000);
+    } else if(x.status==500) {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Internel Server Error.').fadeOut(6000);
+    } else if(e=='parsererror') {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Error.\nParsing JSON Request failed.').fadeOut(6000);
+    } else if(e=='timeout'){
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Request Time out.').fadeOut(6000);
+    } else {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Unknow Error.\n'+x.responseText).fadeOut(50000);
+    }
+        },
+
+    });
+}
+
+
+function postLike(event)
+{   event.preventDefault();
+    var target = event.target || event.srcElement;
+    var id = event.target.id;
+   $.ajax({
+    url: "{{url('ajax-post-like')}}",
+    type: 'GET',
+    data: {id:id},
+    success:function(){
+   $('#mainContent').load(" #mainContent"); 
+    },
+        error:function(x,e) {
+    if (x.status==0) {
+        $('.status').hide();
+        $('.successMsg').show();
+       $('.successMsg').html('You are offline!!\n Please Check Your Network.').fadeOut(6000);
+    } else if(x.status==404) {
+        $('.status').hide();
+        $('.successMsg').show();
+       $('.successMsg').html('Requested URL not found.').fadeOut(6000);
+    } else if(x.status==500) {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Internel Server Error.').fadeOut(6000);
+    } else if(e=='parsererror') {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Error.\nParsing JSON Request failed.').fadeOut(6000);
+    } else if(e=='timeout'){
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Request Time out.').fadeOut(6000);
+    } else {
+        $('.status').hide();
+        $('.successMsg').show();
+        $('.successMsg').html('Unknow Error.\n'+x.responseText).fadeOut(5000);
+    }
+        },
+
+    });
+}
+
+/**
+* This method handles the autocomplete for 
+* the home pages and search page
+*
+*/
+function autocomplet(){
+    // get the input value
+        var keyword = $('#search').val();
+        //var type = $('#frent').val();
+
+    if (keyword != '') {
+        $.ajax({
+            url: "{{ url('/autosuggest') }}",
+            type: 'GET',
+            data: {keyword:keyword, type:type},
+            success:function(data){
+            $('#content').show();
+            $('#content').html(data);
+            }
+  });
+       } else {
+
+        $('#content').hide();
+ }
+     }
+
+/**
+* This function handles the set item for the autosuggest
+*  when clicked it sets the item to the input text used for the search
+*/
+    function set_item(item) {
+    // change input value
+    $("#search").val(item);
+    // hide proposition list
+    $("#content").hide();
+};
+
 
 </script>
 </body>
