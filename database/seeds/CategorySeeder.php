@@ -11,9 +11,7 @@ class CategorySeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        
-          DB::table('categories')->insert([
+    {DB::table('categories')->insert([
             ['name' => 'Politics',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
@@ -55,7 +53,7 @@ class CategorySeeder extends Seeder
                 'updated_at' => Carbon::now(),],
                 ['name' => 'Events',
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),],,
+                'updated_at' => Carbon::now(),],
                 ['name' => 'Fashion',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
@@ -68,7 +66,7 @@ class CategorySeeder extends Seeder
                 ['name' => 'Entrepreneurship',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-        ]);
+                ]);
   
     }
 }
