@@ -32,10 +32,10 @@ class PostViewController extends Controller
     public static function add($post_id)
     {
     	$add = PostView::where('post_id', $post_id)->first();
-    	if(empty($add->count()))
+    	if(empty($add))
     	{ 
     	$create = new PostView;
-    	//$create->post_id = $post_id;
+    	$create->post_id = $post_id;
     	$create->view = 1;
     	$create->save();
     	}else{

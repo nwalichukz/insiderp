@@ -25,6 +25,8 @@ Route::get('/load-comment', 'webViewController@loadComment');
 Route::get('/post-full-view/{id}', 'webViewController@fullView');
 Route::post('/register-user-any', 'webViewController@registerUserModal');
 Route::get('/login', 'webViewController@signin');
+Route::get('/edit-post/{post_id}', 'webViewController@getEditPost');
+Route::post('/update-post', 'webViewController@updatePost');
 Route::get('/page/{category}', 'webViewController@getByCategory');
 Route::get('/register', 'webViewController@register');
 Route::get('/forgot-password', 'webViewController@forgotpassword');

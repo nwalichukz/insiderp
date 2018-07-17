@@ -76,4 +76,17 @@ class HelperClass{
 	  return $matches[0];
 	}
 
+	 /**
+    * gets related posts for a post
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function relatedPost($title)
+    {
+        return DB::table('posts')->where('title', 'LIKE', $title.'%')
+                    ->orWhere('title', 'LIKE', '%'.$title.'%')->orderBy('rank', 'DESC')->limit(10)->get();
+    }
+
 }

@@ -208,6 +208,20 @@ class PostController extends Controller
         return Post::where('title', 'LIKE', $title.'%')->get();
     }
 
+        /**
+    * autosuggest ajax
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function relatedPost($title)
+    {
+        return Post::where('title', 'LIKE', $title.'%')
+                    ->orWhere('title', 'LIKE', '%'.$title.'%')->orderBy('rank', 'DESC')->get();
+    }
+
+
     /**
     * search
     *
@@ -217,7 +231,8 @@ class PostController extends Controller
     */
     public static function search($title)
     {
-        return Post::where('title', 'LIKE', $title.'%')->paginate(10);
+        return Post::where('title', 'LIKE', $title.'%')
+                    ->where('status', 'active')->orderBy('rank', 'DESC')->paginate(10);
                        /* ->orWhere('post', 'LIKE', '%'.$title.'%')*/
     }
 }

@@ -518,4 +518,31 @@ public function changePassword(Request $request)
       return view('home')->with(['trending'=>$search, 'cat'=>$category, 'lead'=>$lead, 'search'=>$search]);
   }
 
+   // get edit post page
+  public function getEditPost($id){
+    if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
+      $edit = PostController::get($id);
+      return view('dashboard.edit_post')->with(['data'=>$edit]);
+    }else{
+      Auth::logout();
+      return redirect('/');
+    }
+  }
+
+  // update post
+  public function updatePost(Request $request){
+    if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
+    $update = PostController::update($request);
+    if($request){
+      flash('Post updated successfully')->success();
+      return redirect()->back();
+       }else{
+        flash('Something went wrong, post updated successfully. Please try again')->error();
+      return redirect()->back();
+       }
+    }else{
+      Auth::logout();
+      return redirect('/');
+    }
+  }
 }

@@ -11,7 +11,7 @@
     <img src="{{asset("images/post/".$Helper->postImage($lead->id)->name)}}" style="width:100%; height:150px;" >
       @endif
 
-    <A href="#"> <h4> {{$lead->title}} </h4> </a>
+    <a href="#"> <h4> {{$lead->title}} </h4> </a>
      </div>
 			     <div class="col-lg-7 col-md-7" style="margin:0;">
             <div style="border:1px solid #f1f1f1;" id="panel-heading" class="panel panel-primary">
@@ -57,9 +57,9 @@
                      </div>
                      <div class="col-md-8">
                       @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"><h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                      <a href="{{url('/post-full-view/'.$trend->id)}}"><h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
                      @endif
                   <p style="font-size:1.1em;">
                     {{$Helper->get_words($trend->post, 23)}}

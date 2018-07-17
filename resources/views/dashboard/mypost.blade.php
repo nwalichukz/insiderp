@@ -23,7 +23,7 @@
                         </div>
         
                        <a href="{{url('/delete-post/'.$trend->id)}}"> <i title="Delete this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
-                        <a href="{{url('/get-edit-post'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
+                        <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
 
                      </div>
                     <div class="container1 col-md-10 col-lg-12 panel">

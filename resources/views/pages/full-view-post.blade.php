@@ -2,7 +2,21 @@
 @extends('layouts.indextemplate')
 @section('content')
 <div class="container">
-<div class="col-md-6 panel" id="centerDiv" style="">
+       <div class="col-md-3 con">
+               <h4 class="titles"> Related Posts </h4>
+            <hr/>
+
+      <a href="" class="time-date"> </a>
+     
+     
+      <img src="" style="width:100%; height:150px;">
+    
+    
+
+    <A href="#"> <h4> </h4> </a>
+     </div>
+<div class="col-md-6 panel" id="centerDiv">
+     
             <!-- yes oh here start loop -->
                 <div class="col-md-10 col-lg-10 avatarwrapper">
                    <div class="media-left">
@@ -21,7 +35,7 @@
                         </div>
                      </div>
 
-                    <div style="color:#000;" class="container1 col-md-10 col-lg-12">
+                    <div class="container1 col-md-10 col-lg-12">
                       @if(!empty($Helper->postImage($trend->id)->name))
                       <div style="border:1px solid #fff;" class="col-md-3 col-lg-4" style="width:100px; float:left; height:200px; margin:0 5px 0 5px;">
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;" />
@@ -44,7 +58,7 @@
                      @else
                       <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
                      @endif                  
-                  <p style="font-size:1.3em;">
+                  <p style="font-size:1.2em;">
                     {{$trend->post}}
                      </p>
                      

@@ -17,8 +17,10 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('status');
+            $table->string('post_importance');
             $table->string('category')->nullable();
-            $table->string('access_level')->default('public')->nullable();
+            $table->string('publisher_level');
+            $table->text('title');
             $table->text('post');
             $table->integer('rank')->unsigned()->default(0);
             $table->timestamps();

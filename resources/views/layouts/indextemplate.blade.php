@@ -81,9 +81,9 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 <div class="col-md-6 center-block">
     <form method="POST" action="{{url('/post-search')}}"> 
          {{ csrf_field() }}
-        <div class="form-group">
-            <div class="">
-     <input type="text" onkeyup="autocomplet();" name="name" id="search" class="name" value="{{old('name')}}"> 
+<div class="form-group">
+     <div class="">
+     <input type="search" onkeyup="autocomplet()" name="name" id="search" class="name" value="{{old('name')}}" autofocus> 
      <div id="content" class="col-md-12"> </div>
      <button type="submit" class="searchbtn">
    <span class="glyphicon glyphicon-search"> </span> </button>
@@ -156,49 +156,6 @@ $.ajax({
     });
 }
 
-function postCommentTwo(event){
-event.preventDefault();
-var form = document.getElementById('commentForm');
-var formData = new FormData(form);
-var post_id = $('#postid').val();
-var comment = $('#commentarea').val();
-$.ajax({
-    url: "{{ url('/ajax-post-comment') }}",
-    method: 'GET',
-    data: {post_id:post_id, comment:comment},
-    success:function(data){
-    $('#mainContent').load(" #mainContent");
-    },
-        error:function(x,e) {
-    if (x.status==0) {
-        $('.status').hide();
-        $('.successMsg').show();
-       $('.successMsg').html('You are offline!!\n Please Check Your Network.').fadeOut(600);
-    } else if(x.status==404) {
-        $('.status').hide();
-        $('.successMsg').show();
-       $('.successMsg').html('Requested URL not found.').fadeOut(6000);
-    } else if(x.status==500) {
-        $('.status').hide();
-        $('.successMsg').show();
-        $('.successMsg').html('Internel Server Error.').fadeOut(6000);
-    } else if(e=='parsererror') {
-        $('.status').hide();
-        $('.successMsg').show();
-        $('.successMsg').html('Error.\nParsing JSON Request failed.').fadeOut(6000);
-    } else if(e=='timeout'){
-        $('.status').hide();
-        $('.successMsg').show();
-        $('.successMsg').html('Request Time out.').fadeOut(6000);
-    } else {
-        $('.status').hide();
-        $('.successMsg').show();
-        $('.successMsg').html('Unknow Error.\n'+x.responseText).fadeOut(50000);
-    }
-        },
-
-    });
-}
 
 function postLike(event)
 {   event.preventDefault();
@@ -247,10 +204,8 @@ function postLike(event)
 * the home pages and search page
 *
 */
-function autocomplet(){
-    // get the input value
+function autocomplet(event){
         var keyword = $('#search').val();
-        //var type = $('#frent').val();
 
     if (keyword != '') {
         $.ajax({
@@ -264,7 +219,7 @@ function autocomplet(){
   });
        } else {
 
-        $('#content').hide();
+    $('#content').hide();
  }
      }
 
