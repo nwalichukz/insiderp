@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Http/Controllers/UserImage;
 use Image, Auth;
 
 class ImageController extends Controller
@@ -75,8 +76,7 @@ class ImageController extends Controller
       {
         $image = UserImage::where('user_id', $id)->first();
         if(!empty($image))
-        {   
-            unlink('images/user/'.$image->logo);
+        {   unlink('images/user/'.$image->logo);
             $image->delete();
             return true;
         }else{
