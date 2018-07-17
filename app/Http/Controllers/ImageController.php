@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Http\Controllers\UserImage;
+use App\UserImage;
 use Image, Auth;
 
 class ImageController extends Controller
