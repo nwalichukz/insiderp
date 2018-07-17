@@ -12,55 +12,52 @@ use App\Http\Controllers\CategoryController;
 */
 
 
-Route::get('/', 'webViewController@index');
-Route::get('/delete-comment/{id}', 'webViewController@deleteComment');
-Route::post('/post-search', 'webViewController@search');
-Route::get('/block-post/{id}', 'webViewController@blockPost');
-Route::any('/ajax-post-comment', 'webViewController@ajaxPostComment');
-Route::get('/{name}/my-post/{id}', 'webViewController@myPost');
-Route::any('/logout', 'webViewController@logout');
-Route::post('/register-user', 'webViewController@registerUser');
-Route::get('/delete-post/{id}', 'webViewController@deletePost');
-Route::get('/load-comment', 'webViewController@loadComment');
-Route::get('/post-full-view/{id}', 'webViewController@fullView');
-Route::post('/register-user-any', 'webViewController@registerUserModal');
-Route::get('/login', 'webViewController@signin');
-Route::get('/edit-post/{post_id}', 'webViewController@getEditPost');
-Route::post('/update-post', 'webViewController@updatePost');
-Route::get('/page/{category}', 'webViewController@getByCategory');
-Route::get('/register', 'webViewController@register');
-Route::get('/forgot-password', 'webViewController@forgotpassword');
-Route::get('/suspended-banned', 'webViewController@suspendedBanned');
-Route::post('post-login', 'webViewController@postLogin');
-Route::post('post-login-any', 'webViewController@postLoginModal');
-Route::get('/{admin}/{name}', 'webViewController@userDashboard');
-Route::get('/user/{name}', 'webViewController@userDashboard');
+Route::get('/', 'WebViewController@index');
+Route::get('/delete-comment/{id}', 'WebViewController@deleteComment');
+Route::post('/post-search', 'WebViewController@search');
+Route::get('/block-post/{id}', 'WebViewController@blockPost');
+Route::any('/ajax-post-comment', 'WebViewController@ajaxPostComment');
+Route::get('/{name}/my-post/{id}', 'WebViewController@myPost');
+Route::any('/logout', 'WebViewController@logout');
+Route::post('/register-user', 'WebViewController@registerUser');
+Route::get('/delete-post/{id}', 'WebViewController@deletePost');
+Route::get('/load-comment', 'WebViewController@loadComment');
+Route::get('/post-full-view/{id}', 'WebViewController@fullView');
+Route::post('/register-user-any', 'WebViewController@registerUserModal');
+Route::get('/login', 'WebViewController@signin');
+Route::get('/edit-post/{post_id}', 'WebViewController@getEditPost');
+Route::post('/update-post', 'WebViewController@updatePost');
+Route::get('/page/{category}', 'WebViewController@getByCategory');
+Route::get('/register', 'WebViewController@register');
+Route::get('/forgot-password', 'WebViewController@forgotpassword');
+Route::get('/suspended-banned', 'WebViewController@suspendedBanned');
+Route::post('post-login', 'WebViewController@postLogin');
+Route::post('post-login-any', 'WebViewController@postLoginModal');
+Route::get('/{admin}/{name}', 'WebViewController@userDashboard');
+Route::get('/user/{name}', 'WebViewController@userDashboard');
 
-Route::post('/add-post', 'webViewController@addPost');
-Route::any('/ajax-post-like', 'webViewController@ajaxAddPostLike');
-Route::get('/post-like/{user_id}/{post_id}', 'webViewController@addPostLike');
-Route::post('/add-user-image', 'webViewController@addUserImage');
-Route::post('/post-comment', 'webViewController@postComment');
-Route::get('/blocked-posts', 'webViewController@blockedPost');
-Route::get('/unblock-post/{id}', 'webViewController@unBlockPost');
-Route::get('/view-users', 'webViewController@getUsers');
-Route::get('/view-blocked-users', 'webViewController@getBlockedUsers');
-Route::post('/update-profile', 'webViewController@updateUser');
-Route::get('/success-email-sent', 'webViewController@SuccessEmail');
-Route::post('/change-password', 'webViewController@changePassword');
-Route::post('/invite-friends', 'webViewController@inviteFriends');
-Route::post('/reset-password', 'webViewController@postResetPassword');
-Route::get('/contact', 'webViewController@contact');
-Route::get('/about', 'webViewController@about');
-Route::get('/terms', 'webViewController@terms');
-Route::any('/autosuggest', 'webViewController@autosuggest');
-
-
+Route::post('/add-post', 'WebViewController@addPost');
+Route::any('/ajax-post-like', 'WebViewController@ajaxAddPostLike');
+Route::get('/post-like/{user_id}/{post_id}', 'WebViewController@addPostLike');
+Route::post('/add-user-image', 'WebViewController@addUserImage');
+Route::post('/post-comment', 'WebViewController@postComment');
+Route::get('/blocked-posts', 'WebViewController@blockedPost');
+Route::get('/unblock-post/{id}', 'WebViewController@unBlockPost');
+Route::get('/view-users', 'WebViewController@getUsers');
+Route::get('/view-blocked-users', 'WebViewController@getBlockedUsers');
+Route::post('/update-profile', 'WebViewController@updateUser');
+Route::get('/success-email-sent', 'WebViewController@SuccessEmail');
+Route::post('/change-password', 'WebViewController@changePassword');
+Route::post('/invite-friends', 'WebViewController@inviteFriends');
+Route::post('/reset-password', 'WebViewController@postResetPassword');
+Route::get('/contact', 'WebViewController@contact');
+Route::get('/about', 'WebViewController@about');
+Route::get('/terms', 'WebViewController@terms');
+Route::any('/autosuggest', 'WebViewController@autosuggest');
 
 
 
-Route::get('dashboard', function () {
-    return view('dashboard.index');
-});
+
+
 
 
