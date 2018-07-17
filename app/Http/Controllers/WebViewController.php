@@ -268,7 +268,7 @@ public function changePassword(Request $request)
       // add user image
       public static function addUserImage(Request $request){
       	if($request->hasFile('avatar') && Auth::check()){
-        $check = ImageController::deleteAvatar(Auth::user()->id);
+        $check = true;//ImageController::deleteAvatar(Auth::user()->id);
         if($check){
       	$img = ImageController::userImageUpload($request);
       	$userimg = new UserImage;
