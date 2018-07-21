@@ -92,11 +92,15 @@ class UserController extends Controller
         {
           $user->user_name = $request['user_name'];
         }
+          if(!empty($request['user_level']))
+        {
+          $user->user_level = $request['user_level'];
+        }
         $user->save();
       }
 
 
-           /**
+    /**
     * This method change a user password
     * @var id
     */
@@ -112,6 +116,21 @@ class UserController extends Controller
               return false;
             }
       }
+
+    /**
+    * This method checks for unique user name
+    * @var id
+    *
+    **/
+    public function checkUnique($name){
+      $check = User::where('user_name', $name)->first();
+      if(!empty($user)){
+        return 'The user name is taken please try another one';
+      }else{
+        return 'Not taken';
+      }
+
+    }
 
 
 }

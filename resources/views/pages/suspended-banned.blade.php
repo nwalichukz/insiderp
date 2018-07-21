@@ -8,10 +8,9 @@
                     <h3 class="modal-title" id="lineModalLabel">Account not active</h3>
                 </div>
                <p style="text-align:justify; font-size:1.2em;">Your account has been temporarily suspended for our terms violations. Please you can contact the 
-                admin at askpentalk@gmail.com or you make a complaint through our contact page. Thanks.</p>
-                 <div class="modal-footer">
-                    
-                    <br/>
+                admin at askbido@gmail.com or you make a complaint through our contact page. Thanks.</p>
+                 <div class="modal-footer">  
+                <br/>
                 </div>
             </div>
         </div>

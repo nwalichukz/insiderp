@@ -17,7 +17,8 @@
                     <input type="text" name="email" class="form-control" placeholder="Enter your email" required>
                 </div>
                  <div class="form-group">
-                    <input type="text" name="user_name" class="form-control" placeholder="Enter a user name (optional)" required>
+                    <input type="text" name="user_name" onkeyup="checkUnique();" id="user-name" class="form-control" placeholder="Enter a user name must be unique" required>
+                    <div id="content" class="col-md-12"> </div>
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" class="form-control" placeholder="Enter password min of 6 characters" required>

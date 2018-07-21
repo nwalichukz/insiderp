@@ -68,13 +68,15 @@
                 </div>
                 <div style="margin-bottom:8px;" class="col-md-10" id="likeBox">
                 <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$trend->rank}}</i> </span>
-                <span class="glyphicon glyphicon-eye col-md-3" title="Total number of times this post is viewed" aria-hidden="true"><i class="likedata"> 
+                <span class="col-md-3" title="Total number of times this post is viewed" aria-hidden="true"><i class="likedata"> 
                   @if(!empty($Helper->postView($trend->id)->view))
-                  {{$Helper->postView($trend->id)->view}} @endif
-                  <i class="likedata glyphicon glyphicon-record"></i></i> </span>
+                  {{$Helper->postView($trend->id)->view}} views @endif
+                   </span>
+                   @if(Auth::check())
                 <a href="{{url("post-like/".$trend->user_id.'/'.$trend->id)}}">
                 <span class="like glyphicon glyphicon-thumbs-up col-md-3" title="Like this post" aria-hidden="true"><i class="likedata" onclick="postLike(event);" id="{{$trend->id}}"> Like</i></span> 
               </a>
+              @endif
                   <span class="pull-right" title="Total number of comments for this post">
                     @if($Helper->commentCount($trend->id) > 1)
                   {{ $Helper->commentCount($trend->id) }} comments

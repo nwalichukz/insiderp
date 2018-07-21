@@ -43,7 +43,7 @@ class PostController extends Controller
     * @var instance
     */
     public static function get($id)
-    {
+    {   PostViewController::add($id);
     	return Post::where('status', 'active')->where('id', $id)->first();
     }
 
@@ -127,7 +127,24 @@ class PostController extends Controller
     * @var instance
     */
     public static function update(Request $request){
-    	return Post::where('id', $request['id'])->update($request->all())->save();
+    	$edit = Post::find($request['id']);
+        if(!empty($request->title)){
+            $edit->title = $request['title'];
+        }
+
+          if(!empty($request->post)){
+            $edit->post = $request['post'];
+        }
+
+          if(!empty($request->category)){
+            $edit->category = $request['category'];
+        }
+
+          if(!empty($request->post_importance)){
+            $edit->post_importance = $request['post_importance'];
+        }
+
+        $edit->save();
     }
 
      /**
@@ -151,7 +168,7 @@ class PostController extends Controller
     * @var instance
     */
     public static function leadStory(){
-    return Post::where('publisher_level', 'editor')->first();
+    return Post::where('post_importance', 'lead')->first();
        
     }
 

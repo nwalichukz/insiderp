@@ -31,6 +31,8 @@
                         <option >Travel</option>
                          <option >Betting</option>
                          <option >Tourism</option>
+                          <option >Jobs</option>
+                          <option >NYSC</option>
                          <option >Jokes</option>
                          <option >Foreign</option>
                          <option >Events</option>
@@ -38,7 +40,7 @@
                          <option >Birthdays</option>
                          <option >CarTalk</option>
                         <option >Entrepreneurship</option>
-                       
+                         <option >Health</option>
                         <option >Travel</option>
                         
                     </select>
@@ -141,9 +143,24 @@
                     <input type="text" name="user_name" class="form-control" value="@if(!empty(Auth::check())){{Auth::user()->user_name}}@endif" >
                 </div>
                 @if(Auth::check())
-    @if(Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')
-    <div class="form-group">
+                 @if(Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')
+                    <div class="form-group">
                     <textarea name="description" class="form-control" rows="2">{{Auth::user()->description}} </textarea>
+                </div>
+                @endif
+                @endif
+
+            @if(Auth::check())
+             @if(Auth::user()->user_level === 'admin')
+                    <div class="form-group">
+                    <select name="category" class="form-control">
+                        <option value="{{Auth::user()->user_level}}">{{Auth::user()->user_level}}</option>
+                        <option value="user" >User</option>
+                        <option value="editor" >Editor</option>
+                        <option value="suspended" >suspend</option>
+                        <option value="admin" >Admin</option>
+                        <option value="banned" >Banned</option>                        
+                    </select>
                 </div>
                 @endif
                 @endif
@@ -203,7 +220,7 @@
                     <input type="text" name="email" class="form-control" placeholder="Enter your email" required>
                 </div>
                  <div class="form-group">
-                    <input type="text" name="user_name" class="form-control" placeholder="Enter a user name (optional)" required>
+                    <input type="text" name="user_name" class="form-control" placeholder="Enter a user name must be unique" required>
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" class="form-control" placeholder="Enter password min of 6 characters" required>

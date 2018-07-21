@@ -1,6 +1,6 @@
   @foreach($words as $title)
   <?php
-  $locatn->town = ucwords(strtolower($locatn->town));
+  $title->title = ucwords(strtolower($title->title));
   ?>
   <a href="{{asset('/post-full-view/'.$title->id)}}" onclick="set_item({{$title->title}})">
   {{$title->title}}

@@ -74,23 +74,28 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
         </div>
 <div class="successMsg col-md-4 col-lg-4 center-block">
 </div>
+
 @include('partials.errors')
+
     </nav>
 </div>
 <br/>
+@if(empty($title))
 <div class="col-md-6 center-block">
     <form method="POST" action="{{url('/post-search')}}"> 
          {{ csrf_field() }}
 <div class="form-group">
-     <div class="">
-     <input type="search" onkeyup="autocomplet()" name="name" id="search" class="name" value="{{old('name')}}" autofocus> 
-     <div id="content" class="col-md-12"> </div>
+     <div class="searchinputwrapper">
+     <input onkeyup="autocomplet()" type="text" name="name" id="search" class="name" value="{{old('name')}}" autofocus> 
+     <div id="content" class="col-md-11"> </div>
+
      <button type="submit" class="searchbtn">
    <span class="glyphicon glyphicon-search"> </span> </button>
-</div>
+    </div>
 </div>
     </form>
     </div>
+    @endif
 
 
     @yield('content')
@@ -204,7 +209,7 @@ function postLike(event)
 * the home pages and search page
 *
 */
-function autocomplet(event){
+function autocomplet(){
         var keyword = $('#search').val();
 
     if (keyword != '') {
@@ -223,6 +228,51 @@ function autocomplet(event){
  }
      }
 
+
+     /**
+* This method handles the autocomplete for check
+* user name availabilty
+* the home pages and search page
+*
+*/
+function checkUnique(){
+    var keyword = $('#user-name').val();
+    if (keyword != '') {
+        $.ajax({
+            url: "{{ url('/check-availability') }}",
+            type: 'GET',
+            data: {keyword:keyword, type:type},
+            success:function(data){
+            $('#content').show();
+            $('#content').html(data);
+            }
+  });
+       } else {
+
+    $('#content').hide();
+ }
+     }
+
+
+
+$('#user-name').onkeyup(
+var keyword = $('#user-name').val();
+
+ if (keyword != '') {
+    $.ajax({
+            url: "{{ url('/check-availability') }}",
+            type: 'GET',
+            data: {keyword:keyword, type:type},
+            success:function(data){
+            $('#content').show();
+            $('#content').html(data);
+            }
+  });
+       } else {
+
+    $('#content').hide();
+ });
+
 /**
 * This function handles the set item for the autosuggest
 *  when clicked it sets the item to the input text used for the search
@@ -234,6 +284,25 @@ function autocomplet(event){
     $("#content").hide();
 };
 
+// autocomplete
+
+$('#search').onkeyup(
+    var keyword = $('#search').val();
+
+    if (keyword != '') {
+        $.ajax({
+            url: "{{ url('/autosuggest') }}",
+            type: 'GET',
+            data: {keyword:keyword, type:type},
+            success:function(data){
+            $('#content').show();
+            $('#content').html(data);
+            }
+  });
+       } else {
+
+    $('#content').hide();
+ });
 
 </script>
 </body>

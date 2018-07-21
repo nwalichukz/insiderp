@@ -59,6 +59,31 @@ class ImageController extends Controller
 
     }
 
+      /**
+     * @access public
+     *
+     * @static
+     * 
+     * @var $requuest
+     * 
+     * @return bool
+     */
+    public static function optionImageUpload(Request $request)
+    {
+        if ($request->hasFile('image'))
+        {    
+            $file = $request->file('image');
+            $filename = rand().time().'.'.$file->getClientOriginalExtension();
+            $path = public_path('images/option/'.$filename);
+            $avatar = Image::make($file->getRealPath())->resize(80, 100)->sharpen(16)->encode('png')->save($path);
+            return $filename;
+        }
+        else{
+            return false;
+        }
+
+    }
+
      /**
       * This method checks if a particlar
       * user has logo and deletes it from DB

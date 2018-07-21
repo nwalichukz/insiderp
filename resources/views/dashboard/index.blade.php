@@ -33,7 +33,7 @@
                         @endif
                       @if(Auth::check() && (Auth::user()->id === $trend->user_id))
                        <a href="{{url('/delete-post/'.$trend->id) }}" class="time-date pull-right trash"> X </a>
-                      <a href="{{url('/edit-post'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
+                      <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
                         @endif
 
                      </div>

@@ -19,6 +19,7 @@ Route::get('/block-post/{id}', 'WebViewController@blockPost');
 Route::any('/ajax-post-comment', 'WebViewController@ajaxPostComment');
 Route::get('/{name}/my-post/{id}', 'WebViewController@myPost');
 Route::any('/logout', 'WebViewController@logout');
+Route::get('/edit-user/{id}', 'WebViewController@getUser');
 Route::post('/register-user', 'WebViewController@registerUser');
 Route::get('/delete-post/{id}', 'WebViewController@deletePost');
 Route::get('/load-comment', 'WebViewController@loadComment');
@@ -35,7 +36,7 @@ Route::post('post-login', 'WebViewController@postLogin');
 Route::post('post-login-any', 'WebViewController@postLoginModal');
 Route::get('/{admin}/{name}', 'WebViewController@userDashboard');
 Route::get('/user/{name}', 'WebViewController@userDashboard');
-
+Route::any('/check-availability', 'WebViewController@checkAvailability');
 Route::post('/add-post', 'WebViewController@addPost');
 Route::any('/ajax-post-like', 'WebViewController@ajaxAddPostLike');
 Route::get('/post-like/{user_id}/{post_id}', 'WebViewController@addPostLike');

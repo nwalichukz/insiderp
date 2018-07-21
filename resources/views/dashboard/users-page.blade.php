@@ -33,7 +33,7 @@
                     @endif
               			 </p>
                       <a href="{{url('/block-user/'.$trend->id)}}"> <i title="Block the user" class="trash glyphicon glyphicon-trash "> </i> </a>
-                        <a href="#"> <i title="Delete this post" class="edit glyphicon glyphicon-edit "> </i> </a>
+                        <a href="{{url('/edit-user/'.$trend->id)}}"> <i title="Edit this user" class="edit glyphicon glyphicon-edit "> </i> </a>
           <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
               	</div>
          <!---yes stop loop here  -->

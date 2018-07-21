@@ -1,6 +1,6 @@
 @extends('layouts.indextemplate')
 @section('content')
-<div id="content">
+<div id="conten">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -11,7 +11,7 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    Terms and conditions
+                                    Our terms of use?
                                 </a>
                             </h4>
                         </div>
@@ -201,16 +201,7 @@
                             </div>
                         </div>
                     </div>
-
-                   
-                     
-
-
-
-
-                  
                 </div>
-
             </div>
         </div>
     </div>

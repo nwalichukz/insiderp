@@ -191,8 +191,11 @@ function postLike(event)
                 @if(Auth::check())
                @if(Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor')
                                 <nav class="footer1"> <a href="{{url('/blocked-posts')}}">View blocked posts</a> </nav>
-                               @if(Auth::user()->user_level==='admin') <nav class="footer1"> <a href="{{url('/view-users')}}">View users</a> </nav> 
-                                <nav class="footer1"> <a href="{{url('/view-blocked-users')}}">View blocked users</a> </nav>@endif
+                               @if(Auth::user()->user_level==='admin') 
+                               <nav class="footer1"> <a href="{{url('/view-users')}}">View users</a> </nav> 
+                                <nav class="footer1"> <a href="{{url('/view-blocked-users')}}">View blocked users</a> </nav>
+                                
+                                @endif
                                  <nav class="footer1"> <a href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Article</a> </nav>
                                 <nav class="footer1">
                                     <a href="{{ url('/logout') }}"

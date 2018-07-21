@@ -45,6 +45,7 @@ class WebViewController extends Controller
      $this->validate($request,
         [  'email'=>'unique:users',
            'name'=>'required',
+           'user_name' => 'unique:users',
            'password' => 'required|string|min:6|confirmed',
            ]);
  
@@ -73,6 +74,7 @@ class WebViewController extends Controller
      $this->validate($request,
         [  'email'=>'unique:users',
            'name'=>'required',
+           'user_name'=> 'unique:users',
            'password' => 'required|string|min:6|confirmed',
            ]);
  
@@ -156,14 +158,16 @@ class WebViewController extends Controller
     }
      // register a user
     public static function register(){
+      $title = "Register";
       $category = CategoryController::getCategory();
-    	return view('pages.register')->with(['cat'=>$category]);
+    	return view('pages.register')->with(['cat'=>$category, 'title'=>$title]);
     }
 
     // signins in a user
     public static function signin(){
+      $title = "Login";
       $category = CategoryController::getCategory();
-    	return view('pages.signin')->with(['cat'=>$category]);
+    	return view('pages.signin')->with(['cat'=>$category, 'title'=>$title]);
     }
      // logout
     public static function logout(){
@@ -173,12 +177,14 @@ class WebViewController extends Controller
 
      // forgot password
     public static function forgotpassword(){
-    	return view('pages.forgot-password');
+      $title = "Forgot Password";
+    	return view('pages.forgot-password')->with(['title'=>$title]);
     }
 
      // suspended-banned
     public static function suspendedBanned(){
-    	return view('pages.suspended-banned');
+      $title = "Accout suspended or banned";
+    	return view('pages.suspended-banned')->with(['title'=>$title]);
     }
 
     // user dashboard
@@ -355,7 +361,6 @@ public function changePassword(Request $request)
       public function fullView($id)
       {  $category = CategoryController::getCategory();
         $trend = PostController::get($id);
-        PostViewController::add($id);
         return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category]);
       }
 
@@ -388,7 +393,7 @@ public function changePassword(Request $request)
         $update = UserController::update($request);
         $category = CategoryController::getCategory();
         if($update){
-          flash('user updates successfully')->success();
+          flash('user updated successfully')->success();
           return redirect()->back();
         }else{
           flash('Something, went wrong user was not updated successfully')->error();
@@ -426,7 +431,7 @@ public function changePassword(Request $request)
     //send invitation for friends
     public function inviteFriends(Request $request)
     {     $this->validate($request,
-        [  'email'=>'required|email',
+        [  'email1'=>'required|email',
           
            ]);
         if(Auth::check()){
@@ -488,20 +493,23 @@ public function changePassword(Request $request)
 
     // return contact us page
     public function contact()
-   {  $category = CategoryController::getCategory();
-    return view('pages.contactus')->with(['cat'=> $category]);
+   {  $title = "Contact us";
+   $category = CategoryController::getCategory();
+    return view('pages.contactus')->with(['cat'=> $category, 'title'=>$title]);
    }
 
    // return about us page
     public function about()
-     {  $category = CategoryController::getCategory();
-    return view('pages.aboutus')->with(['cat'=> $category]);
+    { $title = "About Bido"; 
+      $category = CategoryController::getCategory();
+    return view('pages.aboutus')->with(['cat'=> $category, 'title'=>$title]);
    }
 
    // return contact us page
     public function terms()
-   {  $category = CategoryController::getCategory();
-    return view('pages.terms')->with(['cat'=> $category]);
+   { $title = "Terms and Condition";
+      $category = CategoryController::getCategory();
+    return view('pages.terms')->with(['cat'=> $category, 'title'=>$title]);
    }
 
    //autosuggest
@@ -535,7 +543,7 @@ public function changePassword(Request $request)
     $update = PostController::update($request);
     if($request){
       flash('Post updated successfully')->success();
-      return redirect()->back();
+      return redirect(Auth::user()->name.'/my-post/'.Auth::user()->id);
        }else{
         flash('Something went wrong, post updated successfully. Please try again')->error();
       return redirect()->back();
@@ -544,5 +552,17 @@ public function changePassword(Request $request)
       Auth::logout();
       return redirect('/');
     }
+  }
+
+  //check availabilty
+  public function checkAvalability(Request $request){
+    return UserController::checkUnique($request['keyword']);
+  }
+
+  // get user
+  public function getUser($id){
+    $user = UserController::get($id);
+    $category = CategoryController::getCategory();
+    return view('dashboard.edit_user')->with(['user'=>$user, 'cat'=>$category]);
   }
 }

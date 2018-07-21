@@ -62,7 +62,7 @@ text-decoration: none;
 text-transform: uppercase;
  }
  .email-phone{
-  color: #FFF;
+  color: #000;
  }
 .m-b-md {
 margin-bottom: 30px;
@@ -80,6 +80,27 @@ width: 80%;
 margin: 0 0 0 10px;
 height: 40px;
 padding:0 0 0 0;
+}
+#content{
+margin: 0;
+border-top:0;
+border-bottom: 1px solid #D3D3D3;
+border-left:1px solid #D3D3D3;
+border-right:1px solid #D3D3D3;
+padding: 0 10px;
+display: none;
+z-index: 9999;
+background-color: #FFF;
+position: absolute;
+width:80%;
+}
+#content a{
+color: #696969;
+font-size: 1.2em;
+width: 100%;
+}
+#content a:hover{
+  color: #000;
 }
 .homeTitle{
 color:#000;
@@ -450,4 +471,7 @@ text-align: center;
   margin:0 0 13px 0;
   border: 1px solid #eee;
   border-radius: 5px;
+}
+.searchinputwrapper{
+
 }

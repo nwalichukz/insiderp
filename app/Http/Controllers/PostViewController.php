@@ -40,7 +40,6 @@ class PostViewController extends Controller
     	$create->save();
     	}else{
     	$add->view = $add->view+1;
-        $add->view --;
     	$add->save();
     	}
     }

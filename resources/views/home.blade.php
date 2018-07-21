@@ -47,7 +47,7 @@
                        @else
                        <a href="{{url('/unblock-post/'.$trend->id)}}"> <i title="unblock this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
                        @endif
-                        <a href="{{url('/get-edit')}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
+                        <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
                         @endif
 
                      </div>
@@ -118,7 +118,7 @@
                 <div id="commentBox">
                 <div class= "col-md-12" >
                 <div class="col-md-1">
-                   <a href="{{ url('#') }}">
+                   <a href="#">
                 @if(!empty($Helper->commenterAvatar($comment->user_id)->name))
                   <img src="{{asset("images/user/".$Helper->commenterAvatar($comment->user_id)->name)}}" class="img-circle imgcircle" alt="thumb">
                   @else

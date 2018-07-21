@@ -1,6 +1,6 @@
 @extends('layouts.indextemplate')
 @section('content')
-<div id="content">
+<div id="conten">
     <div class="container">
         <div class="row">
             <div class="col-md-6 center-block">
@@ -21,7 +21,7 @@
                                   among the youths.</p>
                                 <br>
                                 <p>
-                                    .
+                        
                                 </p>
                             </div>
                         </div>
@@ -45,6 +45,7 @@
                                 <br>
                                 <ol>
                                     <li>Innovation</li>
+                                    <li>Excellence</li>
                                     <li>Constant Improvement</li>
                                     <li>People first business approach </li>
                                     <li>Forward thinking and simplicity approach to issues</li>
@@ -72,6 +73,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
