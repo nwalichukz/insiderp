@@ -229,7 +229,7 @@ function autocomplet(){
      }
 
 
-     /**
+/**
 * This method handles the autocomplete for check
 * user name availabilty
 * the home pages and search page

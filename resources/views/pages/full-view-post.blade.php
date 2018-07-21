@@ -137,7 +137,7 @@
                 </a>
                 </div>
                 <div clas="col-md-10 col-lg-10">             
-                <form id="commentForm" name="commentForm" onsubmit="postComment(event);" action="#" method="post">
+                <form id="commentForm" name="commentForm" onsubmit="postComment(event);" action="{{url('/post-comment')}}" method="post">
                    {{ csrf_field() }}
                   <input type="hidden" name="post_id" id="postid" value="{{$trend->id}}">
                  <div class="col-sm-9">

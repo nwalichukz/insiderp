@@ -137,7 +137,7 @@
                 <i class="col-md-3" ></i>
                 @if(Auth::check()) 
                 <span class="col-md-1 likedata commentlike"  aria-hidden="true">
-                <a href="#"><i class="likedata time-date" title="like this comment" id="{{$comment->id}}">Like</i> </a> </span>
+                <a href="{{url("post-like/".$trend->user_id.'/'.$trend->id)}}"><i class="likedata time-date" title="like this comment" onclick="postLike(event);" id="{{$comment->id}}">Like</i> </a> </span>
                 @endif
                 <i class="col-md-2 time-date" title="The time this comment was posted">{{date('j/n \'y', strtotime($comment->created_at))}} </i> 
                  <i class="col-xs-3 col-sm-3 col-md-3 glyphicon glyphicon-thumbs-up" title="Total number of likes for this comment" aria-hidden="true">3 </i>
