@@ -14,6 +14,8 @@ use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\Mail\InviteFriendsMail;
+use App\Http\Controllers\Mail\PasswordResetMail;
 use Carbon\Carbon;
 use App\PostImage;
 use App\Post;
@@ -437,17 +439,17 @@ public function changePassword(Request $request)
         if(Auth::check()){
          if(!empty($request['email1'])){
          $delay_one = (new \Carbon\Carbon)->now()->addMinutes(1);
-         Mail::to($request['email1'])->later($delay_one, new CreateServiceMail(Auth::user()->name));
+         Mail::to($request['email1'])->later($delay_one, new InviteFriendsMail(Auth::user()->name));
         }
 
          if(!empty($request['email2'])){
          $delay_two = (new \Carbon\Carbon)->now()->addMinutes(2);
-         Mail::to($request['email2'])->later($delay_one, new CreateServiceMail(Auth::user()->name));
+         Mail::to($request['email2'])->later($delay_one, new InviteFriendsMail(Auth::user()->name));
         }
 
          if(!empty($request['email3'])){
          $delay_three = (new \Carbon\Carbon)->now()->addMinutes(3);
-         Mail::to($request['email3'])->later($delay_two, new CreateServiceMail(Auth::user()->name));
+         Mail::to($request['email3'])->later($delay_two, new InviteFriendsMail(Auth::user()->name));
         }
           return redirect()->back();
           flash('Friends invitation sent successfully')->success();
