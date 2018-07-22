@@ -10,7 +10,7 @@
                 <form action="{{url('/post-login')}}" method="post" enctype="multipart/form-data">
                      {{ csrf_field() }}
                     <div class="form-group">
-                    <input type="text" name="email" class="form-control" placeholder="Enter emaiil addrss">
+                    <input type="text" name="email" class="form-control" placeholder="Enter email address">
                 </div>
                 <div class="form-group">
 
