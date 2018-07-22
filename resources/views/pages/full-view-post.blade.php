@@ -6,12 +6,9 @@
                <h4 class="titles"> Related Posts </h4>
             <hr/>
 
-      <a href="" class="time-date"> </a>
+      <a href="#" class="time-date"> </a>
      
-     
-      <img src="" style="width:100%; height:150px;">
-    
-    
+      <img src="#" style="width:100%; height:150px;">
 
     <A href="#"> <h4> </h4> </a>
      </div>
@@ -28,7 +25,7 @@
                                    @else
                                     <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb"/>
                                    @endif
-                                    <span>{{$Helper->user($trend->user_id)->user_name}}</span><span style="color:#FF8C00;">{{$trend->category}} </span>
+                                    <span>{{$Helper->user($trend->user_id)->user_name}}/</span><span style="color:#FF8C00;">{{$trend->category}} </span>
                                     </a>
                                 </figure>
                             </div>
@@ -37,7 +34,7 @@
 
                     <div class="container1 col-md-10 col-lg-12">
                       @if(!empty($Helper->postImage($trend->id)->name))
-                      <div style="border:1px solid #fff;" class="col-md-3 col-lg-4" style="width:100px; float:left; height:200px; margin:0 5px 0 5px;">
+                      <div style="border:1px solid #fff;" class="col-md-3 col-lg-4" style="width:100px; width:100%; height:150px; margin:0 5px 0 5px;">
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;" />
                      </div>
                      <div style="border:1px solid #fff;" class="col-md-9">

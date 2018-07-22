@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="description" content="A social tool that allows user to post and discuss issues in the community">
-<meta name="keywords" content="news, politics, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
+<meta name="description" content="A platform that allows you get involved on issues thta affect us and our society eg news, politics, sports
+Jobs, Housing, health.">
+<meta name="keywords" content="politics, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
 religious news, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun, vanguard news paper
  Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">
 <meta charset="utf-8">

@@ -7,12 +7,11 @@
             <div class="col-md-3 con">
                <h4 class="titles"> Lead Story </h4>
             <hr/>
-            @if(Auth::check() && !Auth::check())
+
       @if(!empty($Helper->postImage($lead->id)->name))
     <img src="{{asset("images/post/".$Helper->postImage($lead->id)->name)}}" style="width:100%; height:150px;" >
 
     <a href="#"> <h4> {{$lead->title}} </h4> </a>
-    @endif
     @endif
      </div>
 			     <div class="col-lg-7 col-md-7" style="margin:0;">
@@ -147,8 +146,7 @@
               </div>
               @endforeach
               @endif
-  
-              <!--- comment form -->
+          <!--- comment form -->
 
     
          <!---yes stop loop here  -->
