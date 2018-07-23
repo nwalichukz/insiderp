@@ -13,7 +13,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
         <title>@if(!empty($title))
 	    {{ $title }}
 		@else
-		Join discussions about issues in our society
+		News, debate, opinions, get involved your views matter and count.
 		@endif</title>
         <!-- Fonts -->
         <!-- Styles -->

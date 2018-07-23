@@ -39,7 +39,7 @@ class PostLikeController extends Controller
         $create = new PostLike;
         $create->post_id = $id;
         $create->user_id = Auth::user()->id;
-        $create->like_post +1;
+        $create->like_post = 1;
         $create->save();
         PostController::rank($id);
      }else{

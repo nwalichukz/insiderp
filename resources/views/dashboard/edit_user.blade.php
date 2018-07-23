@@ -32,12 +32,20 @@
             @if(Auth::check())
              @if(Auth::user()->user_level === 'admin')
                     <div class="form-group">
-                    <select name="category" class="form-control">
+                    <select name="user_level" class="form-control">
                         <option value="{{$user->user_level}}">{{$user->user_level}}</option>
                         <option value="user" >User</option>
                         <option value="editor" >Editor</option>
                         <option value="suspended" >suspend</option>
                         <option value="admin" >Admin</option>
+                        <option value="banned" >Banned</option>                        
+                    </select>
+                </div>
+                  <div class="form-group">
+                    <select name="status" class="form-control">
+                        <option value="{{$user->status}}">{{$user->status}}</option>
+                        <option value="active" >Active</option>
+                        <option value="suspended" >suspend</option>
                         <option value="banned" >Banned</option>                        
                     </select>
                 </div>
