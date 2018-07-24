@@ -7,11 +7,12 @@
             <div class="col-md-3 con">
                <h4 class="titles"> Lead Post </h4>
             <hr/>
-
+       @if(!empty($lead->title))
       @if(!empty($Helper->postImage($lead->id)->name))
     <img src="{{asset("images/post/".$Helper->postImage($lead->id)->name)}}" style="width:100%; height:150px;" >
 
     <a href="{{ url('/post-full-view/'.$lead->id) }}"> <h4> {{$lead->title}} </h4> </a>
+    @endif
     @endif
      </div>
 			     <div class="col-md-7">
@@ -26,8 +27,7 @@
       @if($trending->count() > 0)
       @foreach($trending as $trend)
                 <div class="col-md-10 col-lg-10 avatarwrapper">
-                  
-                                <figure class="item-thumb">
+                                  <figure class="item-thumb">
                                     <a href="{{ url('/post-full-view/'.$trend->id) }}" title="The user name and the page this article was posted to">
                                     @if(!empty($Helper->postAvatar($trend->user_id)->name))
                                    <img src="{{asset("images/user/".$Helper->postAvatar($trend->user_id)->name)}}" class="img-circle imgcircle" alt="thumb">

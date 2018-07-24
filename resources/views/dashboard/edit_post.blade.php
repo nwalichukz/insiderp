@@ -61,7 +61,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <select name="voting_status" class="form-control" required>
+                    <select name="voting_status" class="form-control">
                         <option value="{{$data->voting_status}}">{{$data->voting_status}}</option>
                         <option >open</option>
                         <option >closed</option>

@@ -364,6 +364,7 @@ public function changePassword(Request $request)
       public function fullView($id)
       {  $category = CategoryController::getCategory();
         $trend = PostController::get($id);
+        PostController::rank($id);
         return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category]);
       }
 
