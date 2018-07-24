@@ -5,7 +5,7 @@
     <div class="row">
 	        <div class="col-md-10" style="margin:0 20px 0 20px;">
             <div class="col-md-3 con">
-               <h4 class="titles"> Lead Story </h4>
+               <h4 class="titles"> Lead Post </h4>
             <hr/>
 
       @if(!empty($Helper->postImage($lead->id)->name))

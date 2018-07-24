@@ -32,9 +32,9 @@
                         </div>
                      </div>
 
-                    <div class="container1 col-md-10">
+                    <div class="container1 col-md-12">
                       @if(!empty($Helper->postImage($trend->id)->name))
-                      <div style="border:1px solid #fff;" class="col-md-4" style="width:100%; height:150px;">
+                      <div style="border:1px solid #fff;" class="col-md-9" style="width:100%; height:150px;">
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;" />
                      </div>
                      <div style="border:1px solid #fff;" class="col-md-12">
