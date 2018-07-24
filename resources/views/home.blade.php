@@ -61,7 +61,7 @@
                       <a href="{{url('/post-full-view/'.$trend->id)}}"><h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
                      @endif
                   <p style="font-size:1.1em;">
-                    {{$Helper->get_words($trend->post, 23)}}
+                    {{$Helper->get_words($trend->post, 23)}}  <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
                      </p>
                      
                   <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span> 
@@ -74,7 +74,7 @@
                       <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
                      @endif
                   <p style="font-size:1.1em;">
-                    {{$Helper->get_words($trend->post, 23)}}
+                    {{$Helper->get_words($trend->post, 23)}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
                      </p>
                      
                       <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
