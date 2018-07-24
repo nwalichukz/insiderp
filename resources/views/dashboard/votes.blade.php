@@ -4,7 +4,7 @@
 <div class="col-md-6 col-lg-6 panel" id="centerDiv">
 		<div class="item-wrap">
 			<!-- yes oh here start loop -->
-      @if($trending->count() >= 0)
+      @if($trending->count() > 0)
 			@foreach($trending as $trend)
               	<div class="col-md-10">
               		 <div class="media-left">
@@ -29,7 +29,7 @@
                     <div class="container1 col-md-10 col-lg-12 panel">
                     	@if(!empty($Helper->postImage($trend->id)->name))
                     	<div style="border:1px solid #fff;" class="col-md-3 col-lg-4" style="width:100px; float:left; height:1780px; margin:0 5px 0 5px;">
-              			 	<img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%;" alt="">
+              			 	<img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:200px;" alt="">
               			 </div>
               			 <div style="border:1px solid #fff;" class="col-md-9 col-lg-8">
               		
@@ -38,7 +38,7 @@
                      @else
                       <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
                      @endif
-              	   	<p style="font-size:1.2em;">
+              		<p style="font-size:1.2em;">
               			{{$Helper->get_words($trend->post, 23)}}
               			 </p>
               			 
@@ -60,11 +60,11 @@
               		
               		@endif
               	</div>
-              	 <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="{{$trend->id}}">
+              	 <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="postBox">
                 <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$trend->rank}}</i> </span>
                 <span class="glyphicon glyphicon-eye col-md-3" title="Total number of times this post is viewed" aria-hidden="true"><i class="likedata">
                   @if(!empty($Helper->postView($trend->id)->view))
-                  {{$Helper->postView($trend->id)->view}} views @endif</i> </span>
+                  {{$Helper->postView($trend->id)->view}} @endif<i class="likedata glyphicon glyphicon-record"></i></i> </span>
                 <a href="{{url("post-like/".$trend->user_id.'/'.$trend->id)}}" >
                 <span class="like glyphicon glyphicon-thumbs-up col-md-3" title="Like this post" aria-hidden="true"><i class="likedata" onclick="postLike(event);" id="{{$trend->id}}"> Like</i></span> 
               </a>
@@ -119,10 +119,14 @@
               	</div>
               </div>
               @endforeach
+              @else
+              <div class="center-block">
+                No votes set up for now
+              </div>
               @endif
        
-              <!--- comment form -->
-           @if(Auth::check())
+            <!--- comment form -->
+           @if(Auth::check() && !Auth::check())
               <div class="col-md-12 commentform">
                  <div class="col-md-1 commentimg">
                  <a href="{{ url('#') }}">

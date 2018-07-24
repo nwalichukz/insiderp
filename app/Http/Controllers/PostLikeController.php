@@ -43,7 +43,7 @@ class PostLikeController extends Controller
         $create->save();
         PostController::rank($id);
      }else{
-        return false;
+        return "You liked this post";
      }
     }
 

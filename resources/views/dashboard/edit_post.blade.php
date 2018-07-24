@@ -21,7 +21,7 @@
                     <div class="form-group">
                     <textarea name="post" rows="3" class="form-control" placeholder="Share your thought on anything you care about" max:"350" required>{{$data->post}}</textarea>
                 </div>
-                @if(Auth::check() && Auth::user()->user_level === 'admin')
+                
                      <div class="form-group">
                     <select name="category" class="form-control" required>
                         <option value="{{$data->category}}">{{$data->category}}</option>
@@ -49,7 +49,8 @@
                         <option >Travel</option>
                     </select>
                 </div>
-                @endif
+  
+                @if(Auth::check() && Auth::user()->user_level === 'admin')
                 <div class="form-group">
                     <select name="post_importance" class="form-control" required>
                         <option value="{{$data->post_importance}}">{{$data->post_importance}}</option>
@@ -59,6 +60,14 @@
                         <option >Predictions</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <select name="voting_status" class="form-control" required>
+                        <option value="{{$data->voting_status}}">{{$data->voting_status}}</option>
+                        <option >open</option>
+                        <option >closed</option>
+                    </select>
+                </div>
+                 @endif
                 <div class="modal-body">
                     <!-- content goes here -->
                         {{ csrf_field() }}

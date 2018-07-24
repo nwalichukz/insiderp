@@ -15,7 +15,7 @@
                     </div>
                     
                     <div class="form-group">
-                    <textarea name="post" rows="3" class="form-control" placeholder="Share your thought on anything you care about" max:"350"></textarea>
+                    <textarea name="post" rows="3" class="form-control" placeholder="Share your thought on anything you care about" required></textarea>
                 </div>
                      <div class="form-group">
                     <select name="category" class="form-control">

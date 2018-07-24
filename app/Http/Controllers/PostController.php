@@ -144,6 +144,10 @@ class PostController extends Controller
             $edit->post_importance = $request['post_importance'];
         }
 
+         if(!empty($request->voting_status)){
+            $edit->voting_status = $request['voting_status'];
+        }
+
         $edit->save();
     }
 
@@ -199,7 +203,7 @@ class PostController extends Controller
                     ->with('avatar')->limit(50)->paginate(10);
         
     }
-       /**
+    /**
     * gets post by logined user
     *
     * @var request
@@ -210,6 +214,19 @@ class PostController extends Controller
         return Post::where('user_id', $id)->where('status', 'active')->orderBy('created_at', 'DESC')
                          ->with('comment')->with('postimage')->with('user')
                         ->with('avatar')->limit(50)->paginate(10);
+    
+    }
+
+    /**
+    * gets votes
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function geVotes(){
+        return Post::where('status', 'active')->where('post_importance', 'votes')->orderBy('created_at', 'DESC')
+                                                    ->limit(50)->paginate(10);
     
     }
 

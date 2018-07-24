@@ -55,6 +55,7 @@ Route::get('/contact', 'WebViewController@contact');
 Route::get('/about', 'WebViewController@about');
 Route::get('/terms', 'WebViewController@terms');
 Route::any('/autosuggest', 'WebViewController@autosuggest');
+Route::get('/view-votes', 'WebViewController@getVote');
 
 
 

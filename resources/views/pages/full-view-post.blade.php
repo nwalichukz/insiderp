@@ -3,14 +3,14 @@
 @section('content')
 <div class="container">
        <div class="col-md-3 con">
-               <h4 class="titles"> Related Posts </h4>
+               <h4 class="titles"> Sponsored </h4>
             <hr/>
 
       <a href="#" class="time-date"> </a>
      
-      <img src="#" style="width:100%; height:150px;">
+      <img src="{{asset('/images/avatar/letnote.jpg')}}" style="width:100%; height:150px;">
 
-    <A href="#"> <h4> </h4> </a>
+    <a href="http://www.letnote.com.ng"><h4>Find houses for rent or sale in nigeria</h4> </a>
      </div>
 <div class="col-md-6 panel" id="centerDiv">
      
@@ -32,12 +32,12 @@
                         </div>
                      </div>
 
-                    <div class="container1 col-md-10 col-lg-12">
+                    <div class="container1 col-md-10">
                       @if(!empty($Helper->postImage($trend->id)->name))
-                      <div style="border:1px solid #fff;" class="col-md-3 col-lg-4" style="width:100px; width:100%; height:150px; margin:0 5px 0 5px;">
+                      <div style="border:1px solid #fff;" class="col-md-4" style="width:100%; height:150px;">
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;" />
                      </div>
-                     <div style="border:1px solid #fff;" class="col-md-9">
+                     <div style="border:1px solid #fff;" class="col-md-12">
                       @if(!empty($trend->title))
                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
                      @else
@@ -96,7 +96,7 @@
                   @endif
                   </a>
                 </div>
-                 <div class="container2 col-md-9">
+                 <div class="container2 col-md-8">
                   <div class="media-body media-middle">
                     <div class="my-description">
                   <p style="font-size:1.2em;">
@@ -139,7 +139,7 @@
                   <input type="hidden" name="post_id" id="postid" value="{{$trend->id}}">
                  <div class="col-sm-9">
                     <div class="form-group">
-                        <textarea name="comment" id="commentarea" style="border-radius:25px;" class="form-control" rows="1" autofocus="true" value="{{ old('description') }}" placeholder="write a comment" required></textarea>
+                        <textarea name="comment" id="commentarea" style="border-radius:25px;" class="form-control" rows="1" autofocus="true" value="{{ old('comment') }}" placeholder="write a comment" required></textarea>
                     </div>
                     <button type="submit" class="pull-right btn"><i class="glyphicon glyphicon-send"></i></button>
                 </div>
@@ -147,8 +147,9 @@
             </div>
         </div>
         @else
-  
+   
         <div class="col-md-9 center-block logincomment">
+
          <p>  </br><a href="#" data-toggle="modal" data-target="#loginModalAny" data-placement="top"> Login </a> or
           <a href="#"data-toggle="modal" data-target="#signupModalAny" data-placement="top" data-toggle="modal" data-target="#addPostModal" data-placement="top"> register</a> to like or comment on any post </p>
         </div>

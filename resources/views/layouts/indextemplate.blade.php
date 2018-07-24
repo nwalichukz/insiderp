@@ -172,7 +172,7 @@ function postLike(event)
     type: 'GET',
     data: {id:id},
     success:function(){
-   $('#postBox').load(" #postBox"); 
+   $('#'+id).load(" #"+id); 
     },
         error:function(x,e) {
     if (x.status==0) {

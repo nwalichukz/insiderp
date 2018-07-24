@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('status');
             $table->string('post_importance');
             $table->string('category')->nullable();
+            $table->string('voting_status')->nullable()->default('open');
             $table->string('publisher_level');
             $table->text('title');
             $table->text('post');

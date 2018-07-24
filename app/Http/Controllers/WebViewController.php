@@ -232,7 +232,8 @@ class WebViewController extends Controller
     	if($post['success'])
     	{
     		flash('post added successfully')->success();
-    		return redirect(Auth::user()->name.'/my-post/'.Auth::user()->id);
+        $name = str_replace(' ', '-', strtolower(Auth::user()->name));
+    		return redirect($name.'/my-post/'.Auth::user()->id);
     	}else{
     		flash('Something went wrong, post not added successfully. Please try again')->error();
     		return redirect()->back();
@@ -566,5 +567,17 @@ public function changePassword(Request $request)
     $user = UserController::get($id);
     $category = CategoryController::getCategory();
     return view('dashboard.edit_user')->with(['user'=>$user, 'cat'=>$category]);
+  }
+
+    // get votes
+  public function getVote(){
+    if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
+        $mypost = PostController::getVotes();
+        $category = CategoryController::getCategory();
+        return view('dashboard.votes')->with(['trending'=>$mypost, 'cat'=>$category]);
+      }else{
+        Auth::logout();
+        return redirect()->back();
+      }
   }
 }

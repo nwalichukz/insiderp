@@ -25,6 +25,7 @@
                                 @endif
                                  @if(Auth::user()->user_level === 'admin')
                                   <li> <a href="{{url('/view-users')}}">View users</a> </li>
+                                  <li> <a href="{{url('/view-votes')}}">View votes</a> </li>
                                  <li> <a href="{{url('/view-blocked-users')}}">View blocked users</a> </li>
                                 @endif
                                 @endif

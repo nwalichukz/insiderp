@@ -7,7 +7,7 @@
             <div id="mainContent">
 
       <!-- yes oh here start loop -->
-      @if($trending->count() > 1)
+      @if($trending->count() > 0)
       @foreach($trending as $trend)
                 <div class="col-md-10 col-lg-10 avatarwrapper">
                    <div class="media-left">

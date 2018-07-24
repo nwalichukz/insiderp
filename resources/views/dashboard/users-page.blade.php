@@ -4,7 +4,7 @@
 <div class="col-md-7 col-lg-7 panel" id="centerDiv">
 		<div class="item-wrap">
 			<!-- yes oh here start loop -->
-      @if($trending->count() >= 1)
+      @if($trending->count() >= 0)
       <div class="col-md-6 center-block">
         <p> Total user : {{$trending->count()}} </p>
        </div>
