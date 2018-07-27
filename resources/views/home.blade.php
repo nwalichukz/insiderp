@@ -203,6 +203,9 @@
             </div>
 				  <br/><br/> 
 			</div>
+      <div class="col-md-4 center-block">
+          {{$trending->links()}}
+      </div>
         </div>
     </div>
 </div>

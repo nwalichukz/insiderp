@@ -200,7 +200,7 @@ class PostController extends Controller
     public static function getTrending(){
         return Post::where('status', 'active')->orderBy('rank', 'DESC')
                     ->with('comment')->with('postimage')->with('user')
-                    ->with('avatar')->limit(50)->paginate(10);
+                    ->with('avatar')->limit(110)->paginate(10);
         
     }
     /**
