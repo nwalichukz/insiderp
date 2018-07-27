@@ -39,9 +39,9 @@
                      </div>
                      <div style="border:1px solid #fff;" class="col-md-12">
                       @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif                
                   <p style="font-size:1.2em;">
                     {{ucfirst($trend->post)}}
@@ -51,9 +51,9 @@
                   </div>
                   @else
                    @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif                  
                   <p style="font-size:1.2em;">
                     {{ucfirst($trend->post)}}

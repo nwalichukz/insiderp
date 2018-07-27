@@ -11,7 +11,7 @@
       @if(!empty($Helper->postImage($lead->id)->name))
     <img src="{{asset("images/post/".$Helper->postImage($lead->id)->name)}}" style="width:100%; height:150px;" >
 
-    <a href="{{ url('/post-full-view/'.$lead->id) }}"> <h4> {{$lead->title}} </h4> </a>
+    <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_replace(' ', '-', strtolower($lead->title))) }}"> <h4> {{$lead->title}} </h4> </a>
     @endif
     @endif
      </div>
@@ -28,7 +28,7 @@
       @foreach($trending as $trend)
                 <div class="col-md-10 col-lg-10 avatarwrapper">
                                   <figure class="item-thumb">
-                                    <a href="{{ url('/post-full-view/'.$trend->id) }}" title="The user name and the page this article was posted to">
+                                    <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="The user name and the page this article was posted to">
                                     @if(!empty($Helper->postAvatar($trend->user_id)->name))
                                    <img src="{{asset("images/user/".$Helper->postAvatar($trend->user_id)->name)}}" class="img-circle imgcircle" alt="thumb">
                                    @else
@@ -56,15 +56,15 @@
                      </div>
                      <div class="col-md-8">
                       @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}}</h4></a>
+                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}}</h4></a>
                      @else
                       <a href="{{ url('/post-full-view/'.$trend->id) }}"><h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
                   <p style="font-size:1.1em;">
-                    {{ucfirst($Helper->get_words($trend->post, 23))}}  <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
+                    {{ucfirst($Helper->get_words($trend->post, 23))}}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($lead->title))) }}" title="click to read full details"> more </a>
                      </p>
                      
-                  <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span> 
+                  <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span> 
                   </div>
                   @else
       
@@ -74,10 +74,10 @@
                       <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
                   <p style="font-size:1.1em;">
-                    {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
+                    {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="click to read full details"> more </a>
                      </p>
                      
-                      <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
+                      <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
                   @endif
                 </div>
 
@@ -127,7 +127,7 @@
                     <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
                 {{ucfirst($comment->comment)}}
                      </p>
-                     <span class="time-date pull-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}} </span>
+                     <span class="time-date pull-right">{{date('d/m \'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                 </div>
                 <div>
                  <div class="col-md-12" id="likeBox">

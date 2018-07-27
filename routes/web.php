@@ -25,7 +25,7 @@ Route::get('/edit-user/{id}', 'WebViewController@getUser');
 Route::post('/register-user', 'WebViewController@registerUser');
 Route::get('/delete-post/{id}', 'WebViewController@deletePost');
 Route::get('/load-comment', 'WebViewController@loadComment');
-Route::get('/post-full-view/{id}', 'WebViewController@fullView');
+Route::get('/post-full-view/{id}/{title}', 'WebViewController@fullView');
 Route::post('/register-user-any', 'WebViewController@registerUserModal');
 Route::get('/login', 'WebViewController@signin');
 Route::get('/edit-post/{post_id}', 'WebViewController@getEditPost');
