@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="description" content="A platform that allows you get involved on issues thta affect us and our society eg news, politics, sports
-Jobs, Housing, health.">
+<meta name="description" content="A platform that allows you get involved in discussing those issues that affect us and our society especially in Nigeria">
 <meta name="keywords" content="politics, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
 religious news, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun, vanguard news paper
  Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">
@@ -13,7 +12,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
         <title>@if(!empty($title))
 	    {{ $title }}
 		@else
-		News, debate, opinions, get involved your views matter and count.
+		News, debates, opinions, get involved your views matter and help make our socirty better!
 		@endif</title>
         <!-- Fonts -->
         <!-- Styles -->
