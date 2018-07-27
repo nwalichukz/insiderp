@@ -31,7 +31,7 @@
                         <option >Travel</option>
                          <option >Betting</option>
                          <option >Tourism</option>
-                          <option >Jobs</option>
+                          <option >Job</option>
                           <option >NYSC</option>
                          <option >Jokes</option>
                          <option >Foreign</option>
