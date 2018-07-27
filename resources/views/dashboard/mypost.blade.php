@@ -34,12 +34,12 @@
               			 <div style="border:1px solid #fff;" class="col-md-9 col-lg-8">
               		
                        @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
               	   	<p style="font-size:1.2em;">
-              			{{$Helper->get_words($trend->post, 23)}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
+              			{{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
               			 </p>
               			 
               			 	<span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
@@ -48,20 +48,20 @@
               		@else
               		
                        @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
               		<p style="font-size:1.2em;">
-              			{{$Helper->get_words($trend->post, 23)}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
+              			{{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
               			 </p>
               			 
               			 	<span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
-              		
+                		
               		@endif
               	</div>
               	 <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="{{$trend->id}}">
-                <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$trend->rank}}</i> </span>
+                <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$Helper->getLikes($trend->id)}}</i> </span>
                 <span class="glyphicon glyphicon-eye col-md-3" title="Total number of times this post is viewed" aria-hidden="true"><i class="likedata">
                   @if(!empty($Helper->postView($trend->id)->view))
                   {{$Helper->postView($trend->id)->view}} views @endif</i> </span>
@@ -111,9 +111,7 @@
                  <a href="{{url('/unblock-comment/'.$comment->id)}}"> <i title="Edit this comment" class="glyphicon glyphicon-edit time-date"> </i> </a>
              </span>
              <i class="col-md-2 glyphicon glyphicon-thumbs-up" aria-hidden="true"> </i>
-             @if($trend->post_importance==='vote')
-              <a href="{{url('/add-option/'.$trend->id)}}"> <i title="Add option to this post" class="time-date">add option </i> </a>
-              @endif
+            
               </div>
              @endif
               	</div>
@@ -122,7 +120,7 @@
               @endif
        
               <!--- comment form -->
-           @if(Auth::check() && !Auth::check())
+           @if(Auth::check())
               <div class="col-md-12 commentform">
                  <div class="col-md-1 commentimg">
                  <a href="{{ url('#') }}">

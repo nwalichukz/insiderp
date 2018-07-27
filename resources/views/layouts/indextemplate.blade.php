@@ -172,7 +172,7 @@ function postLike(event)
     type: 'GET',
     data: {id:id},
     success:function(){
-   $('#'+id).load(" #"+id); 
+   $('#likeBox').load(" #likeBox"); 
     },
         error:function(x,e) {
     if (x.status==0) {
@@ -202,6 +202,19 @@ function postLike(event)
     }
         },
 
+    });
+}
+
+
+
+function countView(event)
+{   var target = event.target || event.srcElement;
+    var id = event.target.id;
+   $.ajax({
+    url: "{{url('count-view')}}",
+    type: 'GET',
+    data: {id:id},
+     
     });
 }
 

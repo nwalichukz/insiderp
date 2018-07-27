@@ -78,10 +78,7 @@ class ImageController extends Controller
             $avatar = Image::make($file->getRealPath())->resize(80, 100)->sharpen(16)->encode('png')->save($path);
             return $filename;
         }
-        else{
-            return false;
-        }
-
+       
     }
 
      /**

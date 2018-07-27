@@ -1,14 +1,13 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.usertemplate')
 @section('content')
-  <div class="modal fade" role="dialog">
+  <div class="col-md-6" >
         <div class="modal-dialog">
             <div class="modal-content" style="padding:10px;">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h3 class="modal-title" id="lineModalLabel">Add Option</h3>
+                <h3 class="modal-title" id="lineModalLabel">Add Option</h3>
                 </div>
-                <form action="{{url('add-option')}}" method="post" enctype="multipart/form-data" id="">
+                <form action="{{url('post-option')}}" method="post" enctype="multipart/form-data">
                 
                     <div class="form-group">
                        <input type="hidden" name="id" value="{{$post_id}}" required>
@@ -16,7 +15,7 @@
                     </div>
                     
                     <div class="form-group">
-                    <textarea name="description" rows="3" class="form-control" placeholder="description" ></textarea>
+                    <textarea name="description" rows="3" class="form-control" placeholder="write something about this option" required></textarea>
                 </div>
                     
                 <div class="modal-body">

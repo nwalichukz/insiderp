@@ -38,14 +38,14 @@
 <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/favicon/favicon-96x96.png')}}">
 <link rel="icon" type="image/ico" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.ico')}}">
 <link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="msapplication-TileColor">
+<meta name="msapplication-TileImage">
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
 
-        function postComment(event){
+function postComment(event){
 event.preventDefault();
 var form = document.getElementById('commentForm');
 var formData = new FormData(form);
@@ -181,23 +181,23 @@ function postLike(event)
      <div id="sidediv" >
      <div id="panel" class="panel hidden-xs col-md-3">
       <ul>
-         <nav class="footer1">  <a href="{{url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Trending <a/> </nav>
-            <nav class="footer1">  <a href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Post<a/> </nav>
-           <nav class="footer1"> <a href="#" data-toggle="modal" data-target="#inviteFriendModal" data-placement="top" title="invite a friend to join pentalk">Invite a friend <a/></nav> 
-           <nav class="footer1"> <a href="#" data-toggle="modal" data-target="#changePasswordModal" data-placement="top" title="change your password">change password <a/></nav> 
-           <nav class="footer1"> <a href="{{url(str_replace(' ', '-', strtolower(Auth::user()->name)).'/my-post/'.Auth::user()->id)}}" title="view all post by me">My Posts <a/></nav> 
-              <nav class="footer1">   <a href="#" data-toggle="modal" data-target="#editProfileModal" data-placement="top" title="Edit your profile">Edit Profile<a/></nav>
-                <nav class="footer1">   <a href="#" data-toggle="modal" data-target="#addUserImageModal" data-placement="top" title="Edit your profile">Add Profile Image<a/></nav>
+         <nav class="footer1">  <a href="{{url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Trending </a> </nav>
+            <nav class="footer1">  <a href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Post</a> </nav>
+           <nav class="footer1"> <a href="#" data-toggle="modal" data-target="#inviteFriendModal" data-placement="top" title="invite a friend to join pentalk">Invite a friend </a></nav> 
+           <nav class="footer1"> <a href="#" data-toggle="modal" data-target="#changePasswordModal" data-placement="top" title="change your password">change password </a></nav> 
+           <nav class="footer1"> <a href="{{url(str_replace(' ', '-', strtolower(Auth::user()->name)).'/my-post/'.Auth::user()->id)}}" title="view all post by me">My Posts </a></nav> 
+              <nav class="footer1">   <a href="#" data-toggle="modal" data-target="#editProfileModal" data-placement="top" title="Edit your profile">Edit Profile</a></nav>
+                <nav class="footer1">   <a href="#" data-toggle="modal" data-target="#addUserImageModal" data-placement="top" title="Edit your profile">Add Profile Image</a></nav>
                 @if(Auth::check())
                @if(Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor')
                                 <nav class="footer1"> <a href="{{url('/blocked-posts')}}">View blocked posts</a> </nav>
                                @if(Auth::user()->user_level==='admin') 
                                <nav class="footer1"> <a href="{{url('/view-users')}}">View users</a> </nav> 
+                                <nav class="footer1"> <a href="{{url('/view-votes')}}">View votes</a> </nav>
                                 <nav class="footer1"> <a href="{{url('/view-blocked-users')}}">View blocked users</a> </nav>
                                 
                                 @endif
-                                 <nav class="footer1"> <a href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Article</a> </nav>
-                                <nav class="footer1">
+                              <nav class="footer1">
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -370,8 +370,7 @@ function autocomplet(){
     $("#search").val(item);
     // hide proposition list
     $("#content").hide();
-};
-
+}
 
 </script>
 </body>

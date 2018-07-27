@@ -47,12 +47,12 @@
                   <div class="media-body media-midd">
                     <div class="my-description">
                        @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
                   <p style="font-size:1.2em;">
-                    {{$Helper->get_words($trend->post, 23)}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
+                    {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
                      </p>
                      
                       <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
@@ -63,12 +63,12 @@
                   <div class="media-body media-middle">
                     <div class="my-description">
                        @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
                   <p style="font-size:1.2em;">
-                    {{$Helper->get_words($trend->post, 23)}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
+                    {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
                      </p>
                      
                       <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
@@ -77,7 +77,7 @@
                   @endif
                 </div>
                 <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="postBox">
-                <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$trend->rank}}</i> </span>
+                <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$Helper->getLikes($trend->id)}}</i> </span>
                 <span class="col-md-3" title="Total number of times this post is viewed" aria-hidden="true">
                   <i class="likedata time-date">
                   @if(!empty($Helper->postView($trend->id)->view))
@@ -119,17 +119,18 @@
                   <p style="font-size:1.2em;">
                     <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
                 {{ucfirst($comment->comment)}}
+
                      </p>
+                     <span class="time-date pull-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}} </span>
                 </div>
                 <div>
                  <div class="col-md-12" id="likeBox">
                 <i class="col-md-2" ></i>
-                <a href="#"> 
-                <span class="col-md-2 likedata commentlike" title="Total number likes for this comment" aria-hidden="true">
-                <i class="likedata time-date" id="{{$comment->id}}">Like</i> </span>
+                <a href='{{url("comment-like/".$comment->id)}}'> 
+                <span class="col-md-3 likedata commentlike" title="Like this comment, total number likes for this comment" aria-hidden="true">
+                <i class="likedata time-date" id="{{$comment->id}}">{{$Helper->commentLike($comment->id)}} Like</i> </span>
               </a>
-                <i class="col-md-2 time-date" title="The time this comment was posted">{{date('j/n \'y', strtotime($comment->created_at))}} </i> 
-                 <i class="col-md-2 glyphicon glyphicon-thumbs-up " aria-hidden="true">3</i>
+               
                  @if(Auth::check() && (Auth::user()->id === $comment->user_id))
                  <a href="{{url('/delete-comment/'.$comment->id)}}"> <i class="col-md-1 glyphicon glyphicon-trash time-date" aria-hidden="true"></i> </a>
                   @endif
@@ -141,7 +142,7 @@
               @endif
   
               <!--- comment form -->
-              @if(Auth::check() && !Auth::check())
+              @if(Auth::check())
               <div class="col-md-12 commentform">
                  <div class="col-md-1 commentimg">
                  <a href="{{ url('#') }}">
@@ -153,12 +154,12 @@
                 </a>
                 </div>
                 <div clas="col-md-10 col-lg-10">             
-                <form id="commentForm" name="commentForm" onsubmit="postComment(event);" action="{{url('/post-comment')}}" method="post">
+                <form id="commentForm" name="commentForm" action="{{url('/post-comment')}}" method="post">
                    {{ csrf_field() }}
                   <input type="hidden" id="postid" name="post_id" value="{{$trend->id}}">
                  <div class="col-sm-9">
                     <div class="form-group">
-                        <textarea name="comment" id="commentarea" style="border-radius:25px;" class="form-control" rows="1" autofocus="true" value="{{ old('description') }}" placeholder="write a comment" required></textarea>
+                        <textarea name="comment" id="commentarea" style="border-radius:25px;" class="form-control" rows="1" autofocus="true" value="{{ old('description') }}" placeholder="Leave a comment" required></textarea>
                     </div>
                     <button type="submit" class="pull-right btn"><i class="glyphicon glyphicon-send"></i></button>
                     @if($Helper->commentCount($trend->id) > 2)

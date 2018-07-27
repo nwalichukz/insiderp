@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Http\Controllers\ImageController;
 use Auth, DB, Mail;
 use App\Option;
 
@@ -20,7 +21,14 @@ class OptionController extends Controller
     	$create->post_id = $request['id'];
     	$create->description = $request['description'];
     	$create->save();
-    	return $create->id;
+    	if(!empty($request['image'])){
+    	$img = ImageController::optionImageUpload($request);
+    	$image = new OptionImage;
+    	$image->option_id = $create->id;
+    	$image->name = $img;
+    	$image->save();
+    	}
+    	return true;
     }
 
     /**

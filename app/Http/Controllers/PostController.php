@@ -43,7 +43,7 @@ class PostController extends Controller
     * @var instance
     */
     public static function get($id)
-    {   PostViewController::add($id);
+    {   //PostViewController::add($id);
     	return Post::where('status', 'active')->where('id', $id)->first();
     }
 
@@ -224,7 +224,7 @@ class PostController extends Controller
     *
     * @var instance
     */
-    public static function geVotes(){
+    public static function votes(){
         return Post::where('status', 'active')->where('post_importance', 'votes')->orderBy('created_at', 'DESC')
                                                     ->limit(50)->paginate(10);
     

@@ -12,6 +12,7 @@ use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\PostViewController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CommentLikeController;
 use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\ViewController;
 use App\Mail\InviteFriendsMail;
@@ -367,7 +368,10 @@ public function changePassword(Request $request)
         PostController::rank($id);
         return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category]);
       }
-
+      // count view
+      public function countView(Request $request){
+        PostViewController::add($request['id']);
+      }
 
       // get all users
       public function getUsers()
@@ -376,7 +380,10 @@ public function changePassword(Request $request)
         $user = UserController::getAll();
         $category = CategoryController::getCategory();
         return view('dashboard.users-page')->with(['trending'=>$user, 'cat'=>$category]);
-        }
+        }else{
+        Auth::logout();
+        return redirect('/');
+      }
     }
 
 
@@ -387,7 +394,10 @@ public function changePassword(Request $request)
         $user = UserController::getAllBlocked();
         $category = CategoryController::getCategory();
         return view('dashboard.users-page')->with(['trending'=>$user, 'cat'=>$category]);
-        }
+        }else{
+        Auth::logout();
+        return redirect('/');
+      }
     }
 
       // update user users
@@ -404,7 +414,10 @@ public function changePassword(Request $request)
           return redirect()->back();
         }
         
-        }
+        }else{
+        Auth::logout();
+        return redirect('/');
+      }
     }
 
     //delete post
@@ -415,7 +428,7 @@ public function changePassword(Request $request)
         return redirect()->back();
       }else{
         Auth::logout();
-        return redirect()->back();
+        return redirect('/');
       }
     }
 
@@ -428,7 +441,7 @@ public function changePassword(Request $request)
         return redirect()->back();
       }else{
         Auth::logout();
-        return redirect()->back();
+        return redirect('/');
       }
     }
 
@@ -572,13 +585,36 @@ public function changePassword(Request $request)
 
     // get votes
   public function getVote(){
-    if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
-        $mypost = PostController::getVotes();
+    if(Auth::check() && (Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
+        $mypost = PostController::votes();
         $category = CategoryController::getCategory();
         return view('dashboard.votes')->with(['trending'=>$mypost, 'cat'=>$category]);
       }else{
         Auth::logout();
-        return redirect()->back();
+        return redirect('/');
       }
+  }
+
+  // post like comment
+  public function likeComment($comment_id){
+   return CommentLikeController::likeComment($comment_id);
+  }
+
+  // add option
+  public function addOption($id){
+    return view('dashboard.add-option')->with(['post_id'=>$id]);
+  }
+
+   // post option
+  public function postOption(Request $request){
+     $this->validate($request,
+        [  'name'=>'required',
+            'description'=>'required',
+          
+           ]);
+    $create = OptionController::create($request);
+    if($create){
+      return redirect('/view-votes');
+    }
   }
 }

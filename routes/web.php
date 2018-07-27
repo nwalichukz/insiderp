@@ -14,11 +14,13 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', 'WebViewController@index');
 Route::get('/delete-comment/{id}', 'WebViewController@deleteComment');
+Route::get('/comment-like/{id}', 'WebViewController@likeComment');
 Route::post('/post-search', 'WebViewController@search');
 Route::get('/block-post/{id}', 'WebViewController@blockPost');
 Route::any('/ajax-post-comment', 'WebViewController@ajaxPostComment');
 Route::get('/{name}/my-post/{id}', 'WebViewController@myPost');
 Route::any('/logout', 'WebViewController@logout');
+Route::get('/add-option/{id}', 'WebViewController@addOption');
 Route::get('/edit-user/{id}', 'WebViewController@getUser');
 Route::post('/register-user', 'WebViewController@registerUser');
 Route::get('/delete-post/{id}', 'WebViewController@deletePost');
@@ -56,6 +58,9 @@ Route::get('/about', 'WebViewController@about');
 Route::get('/terms', 'WebViewController@terms');
 Route::any('/autosuggest', 'WebViewController@autosuggest');
 Route::get('/view-votes', 'WebViewController@getVote');
+Route::any('/count-view', 'WebViewController@countView');
+Route::post('/post-option', 'WebViewController@postOption');
+
 
 
 

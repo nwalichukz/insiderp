@@ -7,8 +7,7 @@
       @if($trending->count() > 0)
 			@foreach($trending as $trend)
               	<div class="col-md-10">
-              		 <div class="media-left">
-                            <div class="figure-block">
+              		 
                                 <figure class="item-thumb">
                                     <a href="{{ url('/post-full-view/'.$trend->id) }}" title="The user name and the page this posted">
                                     @if(!empty($Helper->postAvatar($trend->user_id)->name))
@@ -19,8 +18,7 @@
                                     <span class=""><span style=";">{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}</span> /<span style="color:#FF8C00;">{{$trend->category}} </span>
                                     </a>
                                 </figure>
-                            </div> 
-                        </div>
+                          
         
                        <a href="{{url('/delete-post/'.$trend->id)}}"> <i title="Delete this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
                         <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
@@ -57,14 +55,18 @@
               			 </p>
               			 
               			 	<span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
+                         @if($trend->post_importance==='votes')
+                    <a href="{{url('/add-option/'.$trend->id)}}">
+                     <i title="Add option to this post" class="time-date">add option </i> </a>
+                   @endif
               		
               		@endif
               	</div>
               	 <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="postBox">
-                <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$trend->rank}}</i> </span>
+                <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$Helper->getLikes($trend->id)}}</i> </span>
                 <span class="glyphicon glyphicon-eye col-md-3" title="Total number of times this post is viewed" aria-hidden="true"><i class="likedata">
                   @if(!empty($Helper->postView($trend->id)->view))
-                  {{$Helper->postView($trend->id)->view}} @endif<i class="likedata glyphicon glyphicon-record"></i></i> </span>
+                  {{$Helper->postView($trend->id)->view}} views @endif</span>
                 <a href="{{url("post-like/".$trend->user_id.'/'.$trend->id)}}" >
                 <span class="like glyphicon glyphicon-thumbs-up col-md-3" title="Like this post" aria-hidden="true"><i class="likedata" onclick="postLike(event);" id="{{$trend->id}}"> Like</i></span> 
               </a>
@@ -75,6 +77,17 @@
                   {{$Helper->commentCount($trend->id) }} comment
                   @endif</span>
               	</div>
+                <!--vote form -->
+                <div class="col-md-12 votediv">
+                  @if($Helper->getOption($trend->id)->count() > 0)
+                  @foreach($Helper->getOption($trend->id) as $option)
+                  <div class="col-md-3 option">
+                    {{$option->name}} <br/>
+                    <a href="#" class="badge" title="{{$option->sescription}}">vote </a>
+                  </div>
+                  @endforeach
+                  @endif
+                </div>
 
               	<!--- comment box -->
               	  @if(!empty($Helper->comment($trend->id)))
@@ -119,10 +132,6 @@
               	</div>
               </div>
               @endforeach
-              @else
-              <div class="center-block">
-                No votes set up for now
-              </div>
               @endif
        
             <!--- comment form -->
@@ -138,7 +147,7 @@
                 </a>
                 </div>
                 <div clas="col-md-10 col-lg-10">             
-                <form id="commentForm" name="commentForm" onsubmit="postComment(event);" action="{{url('/post-comment')}}" method="post">
+                <form id="commentForm" name="commentForm"  action="{{url('/post-comment')}}" method="post">
                    {{ csrf_field() }}
                   <input type="hidden" id="postid" name="post_id" value="{{$trend->id}}">
                  <div class="col-sm-9">
@@ -153,9 +162,14 @@
                  </form>
             </div>
         </div>
+       
         @endif
          <!---yes stop loop here  -->
          @endforeach
+          @else
+        <div class="col-md-6 center-block">
+          No votes posted yet
+        </div>
          @endif
            @if(!Auth::check())
         <div class="col-md-12">

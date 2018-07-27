@@ -34,7 +34,7 @@
                                    @else
                                     <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
                                    @endif
-                                    <span class=""><span >{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}</span> /<span style="color:#FF8C00;">{{$trend->category}} </span>
+                                  {{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}/<span style="color:#FF8C00;">{{$trend->category}} </span>
                                     </a>
                                 </figure>
                           
@@ -56,12 +56,12 @@
                      </div>
                      <div class="col-md-8">
                       @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"><h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     <a href='{{ url("/post-full-view/".$trend->id) }}'><h4>{{ucfirst($Helper->get_title($trend->title, 10))}}</h4> </a>
                      @else
-                      <a href="{{url('/post-full-view/'.$trend->id)}}"><h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                      <a href="{{url('/post-full-view/'.$trend->id)}}"><h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
                   <p style="font-size:1.1em;">
-                    {{$Helper->get_words($trend->post, 23)}}  <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
+                    {{ucfirst($Helper->get_words($trend->post, 23))}}  <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
                      </p>
                      
                   <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span> 
@@ -69,21 +69,20 @@
                   @else
       
                    @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->title, 10)}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{$Helper->get_title($trend->post, 10)}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
                   <p style="font-size:1.1em;">
-                    {{$Helper->get_words($trend->post, 23)}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
+                    {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
                      </p>
                      
                       <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
-                   
-                 
                   @endif
                 </div>
+
                 <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="postBox">
-                <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$trend->rank}}</i> </span>
+                <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$Helper->getLikes($trend->id)}}</i> </span>
                 <span class="col-md-3" title="Total number of times this post is viewed" aria-hidden="true">
                   <i class="likedata time-date">
                   @if(!empty($Helper->postView($trend->id)->view))
@@ -128,23 +127,48 @@
                     <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
                 {{ucfirst($comment->comment)}}
                      </p>
+                     <span class="time-date pull-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}} </span>
                 </div>
                 <div>
                  <div class="col-md-12" id="likeBox">
                 <i class="col-md-3" ></i>
                 @if(Auth::check()) 
-                <span class="col-md-1 likedata commentlike"  aria-hidden="true">
-                <a href="{{url("post-like/".$trend->user_id.'/'.$trend->id)}}"><i class="likedata time-date" title="like this comment" onclick="postLike(event);" id="{{$comment->id}}">Like</i> </a> </span>
+                <span class="col-md-3 likedata commentlike"  aria-hidden="true">
+                <a href='{{url("comment-like/".$comment->id)}}'><i class="likedata time-date" title="like this comment" onclick="commentLike(event);" id="{{$comment->id}}">{{$Helper->commentLike($comment->id)}} Like</i> </a> </span>
                 @endif
-                <i class="col-md-2 time-date" title="The time this comment was posted">{{date('j/n \'y', strtotime($comment->created_at))}} </i> 
-                 <i class="col-xs-3 col-sm-3 col-md-3 glyphicon glyphicon-thumbs-up" title="Total number of likes for this comment" aria-hidden="true">3 </i>
-              </div>
+                
+               </div>
                 </div>
               </div>
               </div>
               @endforeach
               @endif
           <!--- comment form -->
+          @if(Auth::check())
+              <div class="col-md-12 commentform">
+              <div class="col-md-1 commentimg">
+              <a href="{{ url('#') }}">
+              @if(!empty($Helper->postAvatar(Auth::user()->id)->name))
+              <img src="{{asset("images/user/".$Helper->postAvatar(Auth::user()->id)->name)}}" class="img-circle imgcircle" alt="thumb">
+              @else
+              <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
+              @endif
+                </a>
+                </div>
+                <div clas="col-md-9">             
+                <form id="commentForm" name="commentForm" action="{{url('/post-comment')}}" method="post">
+                   {{ csrf_field() }}
+                  <input type="hidden" name="post_id" id="postid" value="{{$trend->id}}">
+                 <div class="col-sm-9">
+                    <div class="form-group">
+                        <textarea name="comment" id="commentarea" style="border-radius:25px;" class="form-control" rows="1" autofocus="true" value="{{ old('comment') }}" placeholder="Leave a comment" required></textarea>
+                    </div>
+                    <button type="submit" class="pull-right btn"><i class="glyphicon glyphicon-send"></i></button>
+                </div>
+                 </form>
+            </div>
+        </div>
+        @endif
 
     
          <!---yes stop loop here  -->

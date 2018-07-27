@@ -54,10 +54,10 @@
                 <div class="form-group">
                     <select name="post_importance" class="form-control" required>
                         <option value="{{$data->post_importance}}">{{$data->post_importance}}</option>
-                        <option >Normal</option>
-                        <option >Lead</option>
-                        <option >Votes</option>
-                        <option >Predictions</option>
+                        <option value="normal" >Normal</option>
+                        <option value="lead" >Lead</option>
+                        <option value ="votes">Votes</option>
+                        <option value="predictions" >Predictions</option>
                     </select>
                 </div>
                 <div class="form-group">

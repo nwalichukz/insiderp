@@ -89,4 +89,37 @@ class HelperClass{
                     ->orWhere('title', 'LIKE', '%'.$title.'%')->orderBy('rank', 'DESC')->limit(10)->get();
     }
 
+    /**
+	* likes a post by a user
+	*
+	* @var user_id, post_id
+	*
+	* @return response
+	*/
+	public static function getLikes($post_id){
+	 return PostLike::where('post_id', $post_id)->count();
+	}
+
+	 /**
+	* likes a comment by a user
+	*
+	* @var user_id, post_id
+	*
+	* @return response
+	*/
+	public static function commentLike($comment_id){
+	 return CommentLike::where('comment_id', $comment_id)->count();
+	}
+
+	/**
+	* likes a comment by a user
+	*
+	* @var user_id, post_id
+	*
+	* @return response
+	*/
+	public static function getOption($post_id){
+	 return Option::where('post_id', $post_id)->get();
+	}
+
 }
