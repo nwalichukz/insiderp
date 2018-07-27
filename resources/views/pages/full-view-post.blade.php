@@ -1,7 +1,7 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.indextemplate')
 @section('content')
-<div class="container" id="g{{$trend->id}}" onLoad="countView(event);">
+<div class="container" onLoad="countView(event);">
        <div class="col-md-3 con">
                <h4 class="titles"> Sponsored </h4>
             <hr/>

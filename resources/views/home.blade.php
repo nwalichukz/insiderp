@@ -56,9 +56,9 @@
                      </div>
                      <div class="col-md-8">
                       @if(!empty($trend->title))
-                     <a href='{{ url("/post-full-view/".$trend->id) }}'><h4>{{ucfirst($Helper->get_title($trend->title, 10))}}</h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}}</h4></a>
                      @else
-                      <a href="{{url('/post-full-view/'.$trend->id)}}"><h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id) }}"><h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
                   <p style="font-size:1.1em;">
                     {{ucfirst($Helper->get_words($trend->post, 23))}}  <a href="{{ url('/post-full-view/'.$trend->id) }}" title="click to read full details"> more </a>
@@ -69,7 +69,7 @@
                   @else
       
                    @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                     <a href='{{ url("/post-full-view/".$trend->id) }}'> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                      @else
                       <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
