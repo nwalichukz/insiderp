@@ -41,7 +41,8 @@ class WebViewController extends Controller
     $trending = PostController::getLatest();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest']);
+      return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest', 
+        'fulltitle'=>'Latest posts - news, opinions, articles, questions, get involved your views matter and help make our society better!']);
   }
 
 	/* * This method checks
@@ -365,7 +366,7 @@ public function changePassword(Request $request)
       {  $bycat = PostController::getByCategory($category);
          $cat = CategoryController::getCategory();
          $lead = PostController::leadStory();
-        return view('home')->with(['trending'=>$bycat, 'category'=>$category, 'cat'=>$cat, 'lead'=>$lead]);
+        return view('home')->with(['trending'=>$bycat, 'category'=>$category, 'cat'=>$cat, 'lead'=>$lead, 'fulltitle'=>$category. '- Bido']);
       }
 
       // post full view
