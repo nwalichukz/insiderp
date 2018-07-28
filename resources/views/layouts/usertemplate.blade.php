@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="description" content="A social tool that allows you get involved in discussing those issues that affect us and our society especially in Nigeria.">
+<meta name="description" content="A social tool that allow users post news, opinions, articles, questions and get involved in discussing 
+those issues that affect us and our society especially in Nigeria.">
 <meta name="keywords" content="politics, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
 religious news, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun, vanguard news paper
  Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">

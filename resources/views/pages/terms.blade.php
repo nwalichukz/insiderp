@@ -37,7 +37,8 @@
                         <div id="collapseOne2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <p>
-                                A social tool that allows user to post and discuss issues in the community. A user generated content
+                                A social tool that allow users post news, opinions, articles, questions and get involved in discussing 
+                                    those issues that affect us and our society especially in Nigeria. A user generated content
                                   platform that is moderated. This platform is targeted at encoraging national discussion and conversation especially
                                   among the youths..</p>
                                 <br>
@@ -141,12 +142,7 @@
                     Nothing in these Terms and conditions will be deemed to exclude our liability to you for death, 
                 loss of property or personal injury arising from our negligence, or for fraudulent misrepresentation. 
                 We will not be liable for any failures due to software or Internet errors or unavailability,
-                 or any other circumstances beyond our reasonable control. When you use the "send emquiry forms" 
-                 on this Site to enquire about a service, your details (including your email address, phone number) will be sent by 
-                 email directly to the vendors, marketing the service
-                  that you are enquiring about. We do not accept any liability for any subsequent communications that you receive directly from that vendor.
-                  Consequently we do not accept any responsibility for communications between the users of the site and any vendors outside the platform
-                  hiring.
+                 or any other circumstances beyond our reasonable control.
                 Please if you do not agree with this terms and conditions then, you must not use this site (www.bido.com.ng). 
                                 </p>
                                
@@ -165,8 +161,8 @@
                         <div id="collapseFive5" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <p>
-                                Some contents are prohibited from this platform and we may block you from using this
-                                platform if such contents are posted. These contents maybe blocked or the user may be suspended from
+                                Some contents types are not allowed to be posted on this platform and we may block you from using this
+                                platform if such contents are posted through your account. These following contents maybe blocked or the user may be suspended from
                                 using the platform.
                                 <ul>
                                 	<li>Nude Photos </li>
@@ -185,14 +181,14 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-                                     Denying acces to the site 
+                                     Denying access to the site 
                                 </a>
                             </h4>
                         </div>
                         <div id="collapseFive" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <p>
-                                     We reserve the full right to deny users access from this Site and/or restrict
+                        We reserve the full right to deny users access from this Site and/or restrict
             or disable their access or use of any or all elements of our services, 
             on a permanent or temporary basis at our sole discretion.
              Any such user shall be notified and must not then attempt to use this Site under 
@@ -206,5 +202,4 @@
         </div>
     </div>
 </div>
-
 @endsection

@@ -16,7 +16,8 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <p>A social tool that allows user to post and discuss issues in the community. A user generated content
+                                <p>A social tool that allow users post news, opinions, articles, questions and get involved in discussing 
+                                those issues that affect us and our society especially in Nigeria A user generated content
                                   platform that is moderated. This platform is targeted at encoraging national discussion and conversation especially
                                   among the youths.</p>
                                 <br>

@@ -26,7 +26,7 @@
       <!-- yes oh here start loop -->
       @if($trending->count() > 0)
       @foreach($trending as $trend)
-                <div class="col-md-10 col-lg-10 avatarwrapper">
+                <div class="col-md-10 avatarwrapper">
                                   <figure class="item-thumb">
                                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="The user name and the page this article was posted to">
                                     @if(!empty($Helper->postAvatar($trend->user_id)->name))
@@ -49,7 +49,7 @@
 
                      </div>
 
-                    <div class="container1 col-md-12 panel">
+                    <div class="container1 col-md-11 panel">
                       @if(!empty($Helper->postImage($trend->id)->name))
                       <div class="col-md-4" style="float:left;">
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:150px;" >
@@ -58,7 +58,7 @@
                       @if(!empty($trend->title))
                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}}</h4></a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"><h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"><h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
                   <p style="font-size:1.1em;">
                     {{ucfirst($Helper->get_words($trend->post, 23))}}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($lead->title))) }}" title="click to read full details"> more </a>
@@ -69,9 +69,9 @@
                   @else
       
                    @if(!empty($trend->title))
-                     <a href='{{ url("/post-full-view/".$trend->id) }}'> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                     <a href='{{ url("/post-full-view/".$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}'> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
                      @endif
                   <p style="font-size:1.1em;">
                     {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="click to read full details"> more </a>
