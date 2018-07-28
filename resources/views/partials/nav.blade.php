@@ -1,8 +1,15 @@
       <ul class="nav navbar-nav navbar-right">
+                  <li class="login"> <a href="{{url("/latest")}}">latest  </a></li>
+                  <li class="login"> <a href="{{url("/page/Sports")}}">sports  </a></li>
+                 <li class="login"> <a href="{{url("/page/Politics")}}">politics  </a></li>
+                 <li class="login"> <a href="{{url("/page/Education")}}">education  </a></li>
+                 <li class="login"> <a href="{{url("/page/Romance")}}">romance </a></li>
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li class="login"><a href="{{ url('/login') }}">Login</a></li>
                         <li class="login"><a href="{{ url('/register') }}">Sign up</a></li>
+
+
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -46,4 +53,5 @@
                             </ul>
                         </li>
                     @endif
+                
                 </ul>

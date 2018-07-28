@@ -178,7 +178,7 @@ class PostController extends Controller
 
 
      /**
-    * adds to rank
+    * gets the trendig
     *
     * @var request
     *
@@ -192,6 +192,20 @@ class PostController extends Controller
 
     /**
     * adds to rank
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function getLatest(){
+        return Post::where('status', 'active')->orderBy('created_at', 'DESC')
+                    ->with('comment')->with('postimage')->with('user')
+                    ->with('avatar')->limit(110)->paginate(10);
+        
+    }
+
+     /**
+    * gets latest
     *
     * @var request
     *

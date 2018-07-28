@@ -60,6 +60,7 @@ Route::any('/autosuggest', 'WebViewController@autosuggest');
 Route::get('/view-votes', 'WebViewController@getVote');
 Route::any('/count-view', 'WebViewController@countView');
 Route::post('/post-option', 'WebViewController@postOption');
+Route::get('/latest', 'WebViewController@latest');
 
 
 

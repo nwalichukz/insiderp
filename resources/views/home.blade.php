@@ -17,7 +17,7 @@
      </div>
 			     <div class="col-md-7">
             <div style="border:1px solid #f1f1f1;" id="panel-heading" class="panel panel-primary">
-              <div id="index-sutitle" class="panel-heading">@if(!empty($category)){{$category}} Page @elseif(!empty($search)) About {{$search->count()}} Search Results @else Trending Posts @endif</div>
+              <div id="index-sutitle" class="panel-heading">@if(!empty($category)){{$category}} Posts @elseif(!empty($search)) About {{$search->count()}} Search Results @else Trending Posts @endif</div>
               <div class="panel-body">
               	
               <!-- Ya just loop it here -->

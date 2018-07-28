@@ -37,6 +37,13 @@ class WebViewController extends Controller
       return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead]);
 	}
 
+  public function latest(){
+    $trending = PostController::getLatest();
+     $category = CategoryController::getCategory();
+     $lead = PostController::leadStory();
+      return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest']);
+  }
+
 	/* * This method checks
      *
      *
