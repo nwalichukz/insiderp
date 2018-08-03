@@ -31,7 +31,7 @@
                        <a href="{{url('/unblock-post/'.$trend->id)}}"> <i title="unblock this post" class="time-date trash glyphicon glyphicon-trash pull-right"> </i> </a>
                        @endif
                         @endif
-                      @if((Auth::check() && (Auth::user()->id === $trend->user_id)) || (Auth::check() && (Auth::user()->id === 'admin')))
+                      @if((Auth::check() && (Auth::user()->id === $trend->user_id)) || (Auth::check() && (Auth::user()->user_level === 'admin')))
                        <a href="{{url('/delete-post/'.$trend->id) }}" class="time-date pull-right trash"> X </a>
                       <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
                         @endif

@@ -203,7 +203,7 @@ class WebViewController extends Controller
     // user dashboard
     public static function UserDashboard(){
     	if(Auth::check() AND (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
-   		 $trending = PostController::getTrending();
+   		 $trending = PostController::getLatest();
    		 $category = CategoryController::getCategory();
    		 return view('dashboard.index')->with(['cat' =>$category, 'trending'=>$trending]);
 
