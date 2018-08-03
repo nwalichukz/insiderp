@@ -30,19 +30,21 @@ use Auth, DB, Mail;
 
 class WebViewController extends Controller
 {     //the home page
-	public function index(){
+	public function latest(){
     $trending = PostController::getTrending();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead]);
+      return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Trending',
+      'fulltitle'=>'Trending - news, opinions, articles, questions, get involved your views matter and help make our society better!']);
 	}
 
-  public function latest(){
+  public function index(){
     $trending = PostController::getLatest();
+    $trendpost = PostController::getTrendPost();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
       return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest', 
-        'fulltitle'=>'Latest posts - news, opinions, articles, questions, get involved your views matter and help make our society better!']);
+        'trendpost'=>$trendpost]);
   }
 
 	/* * This method checks
@@ -430,8 +432,7 @@ public function changePassword(Request $request)
 
     //delete post
     public function deletePost($id)
-    {  return $id;
-      if(Auth::check()){
+    {  if(Auth::check()){
         $delete = PostController::delete($id);
         return redirect()->back();
       }else{

@@ -11,7 +11,6 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-
 Route::get('/', 'WebViewController@index');
 Route::get('/delete-comment/{id}', 'WebViewController@deleteComment');
 Route::get('/comment-like/{id}', 'WebViewController@likeComment');
@@ -60,7 +59,7 @@ Route::any('/autosuggest', 'WebViewController@autosuggest');
 Route::get('/view-votes', 'WebViewController@getVote');
 Route::any('/count-view', 'WebViewController@countView');
 Route::post('/post-option', 'WebViewController@postOption');
-Route::get('/latest', 'WebViewController@latest');
+Route::get('/trending-posts', 'WebViewController@latest');
 
 
 

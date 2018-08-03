@@ -15,7 +15,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
         @elseif(!empty($fulltitle))
         {{ $fulltitle }}
 		@else
-		Post news, opinions, articles, questions, get involved your views matter and help make our society better!
+		Bido - Post news, opinions, articles, questions, get involved your views matter and help make our society better!
 		@endif</title>
         <!-- Fonts -->
         <!-- Styles -->
@@ -83,24 +83,6 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 
     </nav>
 </div>
-<br/>
-@if(empty($title))
-<div class="col-md-6 center-block">
-    <form method="POST" action="{{url('/post-search')}}"> 
-         {{ csrf_field() }}
-<div class="form-group">
-     <div class="searchinputwrapper">
-     <input onkeyup="autocomplet()" type="text" name="name" id="search" class="name" value="{{old('name')}}" autofocus> 
-     <div id="content" class="col-md-11"> </div>
-
-     <button type="submit" class="searchbtn">
-   <span class="glyphicon glyphicon-search"> </span> </button>
-    </div>
-</div>
-    </form>
-    </div>
-    @endif
-
 
     @yield('content')
       

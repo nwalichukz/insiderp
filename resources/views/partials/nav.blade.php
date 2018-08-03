@@ -1,5 +1,5 @@
       <ul class="nav navbar-nav navbar-right">
-                  <li class="login"> <a href="{{url("/latest")}}">latest  </a></li>
+                  <li class="login"> <a href="{{url("/trending-posts")}}">Trending  </a></li>
                   <li class="login"> <a href="{{url("/page/Sports")}}">sports  </a></li>
                  <li class="login"> <a href="{{url("/page/Politics")}}">politics  </a></li>
                  <li class="login"> <a href="{{url("/page/Education")}}">education  </a></li>

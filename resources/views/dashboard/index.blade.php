@@ -31,7 +31,7 @@
                        <a href="{{url('/unblock-post/'.$trend->id)}}"> <i title="unblock this post" class="time-date trash glyphicon glyphicon-trash pull-right"> </i> </a>
                        @endif
                         @endif
-                      @if(Auth::check() && (Auth::user()->id === $trend->user_id))
+                      @if((Auth::check() && (Auth::user()->id === $trend->user_id)) || (Auth::check() && (Auth::user()->id === 'admin')))
                        <a href="{{url('/delete-post/'.$trend->id) }}" class="time-date pull-right trash"> X </a>
                       <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
                         @endif
@@ -147,9 +147,9 @@
                  <div class="col-md-1 commentimg">
                  <a href="{{ url('#') }}">
                   @if(!empty($Helper->postAvatar(Auth::user()->id)->name))
-                  <img src="{{asset("images/user/".$Helper->postAvatar(Auth::user()->id)->name)}}" class="img-circle imgcircle" alt="thumb">
+                  <img src="{{asset("images/user/".$Helper->postAvatar(Auth::user()->id)->name)}}" class="img-circle imgcircle" alt="user image">
                   @else
-                  <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
+                  <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="avatar image">
                   @endif
                 </a>
                 </div>

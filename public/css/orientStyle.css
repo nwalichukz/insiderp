@@ -29,6 +29,10 @@ top: 18px;
 .login{
   font-size: 0.9em;
 }
+.trending{
+  font-size: 1em;
+  color: #777;
+}
  .content {
  text-align: center;
  }
@@ -100,9 +104,12 @@ margin-right: auto;
 }
 #search{
 width: 80%;
-margin: 0 0 0 10px;
-height: 40px;
+border: 1px solid #D3D3D3;
+height: 38px;
 padding:0 0 0 0;
+}
+.trendBox{
+  margin: 0 0 5px 0;
 }
 .homeTitle{
 color:#000;

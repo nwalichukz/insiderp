@@ -157,6 +157,9 @@
           <a href="#"data-toggle="modal" data-target="#signupModalAny" data-placement="top" data-toggle="modal" data-target="#addPostModal" data-placement="top"> register</a> to like or comment on any post </p>
         </div>
         @endif
+        <div class="col-md-7 center-block">
+          {{ $trending->links()}}
+        </div>
         </div>  
     </div>
 @endsection

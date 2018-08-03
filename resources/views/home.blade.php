@@ -3,19 +3,48 @@
 @section('content')
 <div class="container">
     <div class="row">
-	        <div class="col-md-10" style="margin:0 20px 0 20px;">
+	        <div class="col-md-10" style="margin:10px 20px 0 20px;">
             <div class="col-md-3 con">
+            <div class="col-md-12 trendBox con">
                <h4 class="titles"> Lead Post </h4>
             <hr/>
        @if(!empty($lead->title))
       @if(!empty($Helper->postImage($lead->id)->name))
     <img src="{{asset("images/post/".$Helper->postImage($lead->id)->name)}}" style="width:100%; height:150px;" >
 
-    <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_replace(' ', '-', strtolower($lead->title))) }}"> <h4> {{$lead->title}} </h4> </a>
+    <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_replace(' ', '-', strtolower($lead->title))) }}"> <h4> {{$Helper->get_title(ucfirst(strtolower($lead->title)), 10)}} </h4> </a>
     @endif
     @endif
      </div>
+     <br/>
+        @if(!empty($trendpost))
+          <div class="col-md-12 con" style="border:1px solid #eee;">
+               <h4 class="titles"> Trending </h4>
+            <hr/>      
+            @foreach($trendpost as $post)
+    <a href="{{ url('/post-full-view/'.$post->id.'/'.str_replace(' ', '-', strtolower($post->title))) }}"> <h4 class="trending"> {{$Helper->get_title(ucfirst(strtolower($post->title)), 10)}} </h4> </a>
+    @endforeach
+     </div>
+     @endif
+   </div>
 			     <div class="col-md-7">
+      @if(empty($title))
+    <div class="col-md-12 center-block">
+    <form method="POST" action="{{url('/post-search')}}"> 
+         {{ csrf_field() }}
+      <div class="form-group">
+     <div class="searchinputwrapper">
+     <input onkeyup="autocomplet()" type="text" name="name" id="search" class="name" value="{{old('name')}}" autofocus> 
+     <div id="content" class="col-md-11"> </div>
+
+     <button type="submit" class="searchbtn">
+   <span class="glyphicon glyphicon-search"> </span> </button>
+    </div>
+</div>
+    </form>
+    </div>
+    @endif
+
             <div style="border:1px solid #f1f1f1;" id="panel-heading" class="panel panel-primary">
               <div id="index-sutitle" class="panel-heading">@if(!empty($category)){{$category}} Posts @elseif(!empty($search)) About {{$search->count()}} Search Results @else Trending Posts @endif</div>
               <div class="panel-body">
@@ -203,7 +232,7 @@
             </div>
 				  <br/><br/> 
 			</div>
-      <div class="col-md-4 center-block">
+      <div class="col-md-6 center-block">
           {{$trending->links()}}
       </div>
         </div>
