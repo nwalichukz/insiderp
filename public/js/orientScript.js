@@ -207,28 +207,3 @@ $.ajax({
     });
 }
 
-/**
-* This method handles the autocomplete for 
-* the home pages and search page
-*
-*/
-    function autocomplet(){
-    // get the input value
-        var keyword = $('#search').val();
-        var type = $('#frent').val();
-    
-    if (keyword != '') {
-        $.ajax({
-            url: 'autosuggest',
-            type: 'POST',
-            cache: false,
-            data: {keyword:keyword, _token:$('input[name=_token]').val(), type:type},
-            success:function(data){
-            $('#content').show();
-            $('#content').html(data);
-            }
-  });
-       } else {
-
-        $('#content').hide();
-    } }

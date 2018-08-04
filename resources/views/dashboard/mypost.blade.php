@@ -28,8 +28,8 @@
                      </div>
                     <div class="container1 col-md-10 col-lg-12 panel">
                     	@if(!empty($Helper->postImage($trend->id)->name))
-                    	<div style="border:1px solid #fff;" class="col-md-3 col-lg-4" style="width:100px; float:left; height:1780px; margin:0 5px 0 5px;">
-              			 	<img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%;" alt="">
+                    	<div style="border:1px solid #fff;" class="col-md-3 col-lg-4" style="width:100px; float:left; height:170px; margin:0 5px 0 5px;">
+              			 	<img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%;" alt="Image for this post">
               			 </div>
               			 <div style="border:1px solid #fff;" class="col-md-9 col-lg-8">
               		
@@ -42,7 +42,7 @@
               			{{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="click to read full details"> more </a>
               			 </p>
               			 
-              			 	<span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
+              			 	<span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
               		
               		</div>
               		@else
@@ -56,7 +56,7 @@
               			{{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="click to read full details"> more </a>
               			 </p>
               			 
-              			 	<span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
+              			 	<span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
                 		
               		@endif
               	</div>
@@ -89,8 +89,8 @@
                   @endif
                     </a>
               	</div>
-              	 <div class="container2 col-md-9">	
-              		<p style="font-size:1.3em;">
+              	 <div class="col-md-9">	
+              		<p style="font-size:1.3em;" class="container2">
               			<a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
           			   {{ucfirst($comment->comment)}}
               			 </p>
@@ -100,7 +100,7 @@
                 <i class="col-md-1" ></i> 
                 <span class="glyphicon glyphicon-thumbs-up col-md-2 likedata time-date commentlike" title="Total number likes for this comment" aria-hidden="true">
                 <i class="likedata time-date" id="{{$comment->id}}">Like</i> </span>
-                <i class="col-md-2 time-date" title="The time this comment was posted">{{date('j/n \'y', strtotime($comment->created_at))}} </i> 
+                <i class="col-md-4 time-date" title="The time this comment was posted">{{date('d F \'y \a\t h:i:a', strtotime($comment->created_at))}} </i> 
               @if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
                 <span class="col-md-2">
                   @if($trend->status ==='active')
@@ -110,7 +110,6 @@
                  @endif
                  <a href="{{url('/unblock-comment/'.$comment->id)}}"> <i title="Edit this comment" class="glyphicon glyphicon-edit time-date"> </i> </a>
              </span>
-             <i class="col-md-2 glyphicon glyphicon-thumbs-up" aria-hidden="true"> </i>
             
               </div>
              @endif

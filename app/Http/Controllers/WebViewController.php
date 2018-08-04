@@ -375,7 +375,7 @@ public function changePassword(Request $request)
       public function fullView($id)
       {  $category = CategoryController::getCategory();
         $trend = PostController::get($id);
-        PostController::rank($id);
+        PostViewController::add($id);
         return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category, 'fulltitle'=>$trend->title]);
       }
       // count view
@@ -461,19 +461,20 @@ public function changePassword(Request $request)
           
            ]);
         if(Auth::check()){
+          $delay = (new \Carbon\Carbon)->now()->addSeconds(1);
          if(!empty($request['email1'])){
-         $delay_one = (new \Carbon\Carbon)->now()->addMinutes(1);
-         Mail::to($request['email1'])->later($delay_one, new InviteFriendsMail(Auth::user()->name));
+         
+         Mail::to($request['email1'])->later($delay, new InviteFriendsMail(Auth::user()->name));
         }
 
          if(!empty($request['email2'])){
-         $delay_two = (new \Carbon\Carbon)->now()->addMinutes(2);
-         Mail::to($request['email2'])->later($delay_one, new InviteFriendsMail(Auth::user()->name));
+         
+         Mail::to($request['email2'])->later($delay, new InviteFriendsMail(Auth::user()->name));
         }
 
          if(!empty($request['email3'])){
-         $delay_three = (new \Carbon\Carbon)->now()->addMinutes(3);
-         Mail::to($request['email3'])->later($delay_two, new InviteFriendsMail(Auth::user()->name));
+         
+         Mail::to($request['email3'])->later($delay, new InviteFriendsMail(Auth::user()->name));
         }
           return redirect()->back();
           flash('Friends invitation sent successfully')->success();

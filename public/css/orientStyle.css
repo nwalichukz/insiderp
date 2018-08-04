@@ -119,7 +119,7 @@ text-align:center;
 margin: -8px 0 5px 0;
 }
 .searchbtn{
-height:40px;
+height:38px;
 margin-left: -5px;
 width: 45px;
 background-color:#3299CC;
@@ -161,7 +161,10 @@ width: 100%;
   text-decoration: none;
   color:#000;
 }
-
+a:active{
+border-bottom: 1px solid #EEE;
+border-top: 1px solid #FFF;
+}
 .panel-default> .panel-heading{
   background-color: #6682d8;
   border-bottom: 1px solid #008080; 
@@ -405,8 +408,8 @@ text-align: center;
 .container2 {
     background-color: #f8f8f8;
     border-radius: 45px;
-    padding: 10px 15px 0 10px;
-    margin: 10px 10px 10px 10px;
+    padding: 10px 15px 15px 15px;
+    margin: 10px 10px 5px 10px;
 }
 .hidden-submit {
     border: 0 none;

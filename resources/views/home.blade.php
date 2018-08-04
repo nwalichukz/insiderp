@@ -36,9 +36,9 @@
      <div class="searchinputwrapper">
      <input onkeyup="autocomplet()" type="text" name="name" id="search" class="name" value="{{old('name')}}" autofocus> 
      <div id="content" class="col-md-11"> </div>
-
      <button type="submit" class="searchbtn">
-   <span class="glyphicon glyphicon-search"> </span> </button>
+   <span class="glyphicon glyphicon-search"> </span>
+    </button>
     </div>
 </div>
     </form>
@@ -84,26 +84,22 @@
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:150px;" >
                      </div>
                      <div class="col-md-8">
-                      @if(!empty($trend->title))
+                     
                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}}</h4></a>
-                     @else
-                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"><h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
-                     @endif
-                  <p style="font-size:1.1em;">
-                    {{ucfirst($Helper->get_words($trend->post, 23))}}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($lead->title))) }}" title="click to read full details"> more </a>
+                   
+                  <p style="font-size:1.1em; color:#000;">
+                    {!!ucfirst($Helper->get_words($trend->post, 23))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($lead->title))) }}" title="click to read full details"> more </a>
                      </p>
                      
                   <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span> 
                   </div>
                   @else
       
-                   @if(!empty($trend->title))
+                   
                      <a href='{{ url("/post-full-view/".$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}'> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
-                     @else
-                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
-                     @endif
-                  <p style="font-size:1.1em;">
-                    {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="click to read full details"> more </a>
+                   
+                  <p style="font-size:1.1em; color:#000;">
+                    {!!ucfirst($Helper->get_words($trend->post, 23))!!} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="click to read full details"> more </a>
                      </p>
                      
                       <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
@@ -115,24 +111,25 @@
                 <span class="col-md-3" title="Total number of times this post is viewed" aria-hidden="true">
                   <i class="likedata time-date">
                   @if(!empty($Helper->postView($trend->id)->view))
-                  {{$Helper->postView($trend->id)->view}} views @endif
+                  @if($Helper->postView($trend->id)->view > 1)
+                  {{$Helper->postView($trend->id)->view}} views 
+                  @else
+                  {{$Helper->postView($trend->id)->view}} view
+                  @endif
+                  @endif
                 </i>
                   </span>
                   @if(Auth::check())
                 <a href="{{url("post-like/".$trend->user_id.'/'.$trend->id)}}" >
-                <span class="like glyphicon glyphicon-thumbs-up col-md-3" title="Like this post" aria-hidden="true"><i class="likedata time-date" onclick="postLike(event);" id="{{$trend->id}}"> Like</i></span> 
+                <span class="like glyphicon glyphicon-thumbs-up col-md-3" title="Like this post" aria-hidden="true">
+                  <i class="likedata time-date" onclick="postLike(event);" id="{{$trend->id}}"> Like</i></span> 
               </a>
               @endif
                   <span class="pull-right time-date" title="Total number of comments for this post">
                     @if($Helper->commentCount($trend->id) > 1)
                   {{ $Helper->commentCount($trend->id) }} comments
-                  @elseif($Helper->commentCount($trend->id) == 1)
-                  {{$Helper->commentCount($trend->id) }} comment
-                  @elseif($Helper->commentCount($trend->id) > 5)
-                  $comment = $Helper->commentCount($trend->id)/2
-                  {{$comment}} k comments
                   @else
-                  {{$Helper->commentCount($trend->id)}} comments
+                  {{$Helper->commentCount($trend->id) }} comment
                   @endif
                 </span>
                 </div>
@@ -151,19 +148,21 @@
                   @endif
                   </a>
                 </div>
-                 <div class="container2 col-md-9">
-                  <p style="font-size:1.2em;">
+                 <div class="col-md-9">
+                  <p style="font-size:1.2em;" class="container2">
                     <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
-                {{ucfirst($comment->comment)}}
+                {!!ucfirst($comment->comment)!!}
                      </p>
-                     <span class="time-date pull-right">{{date('d/m \'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
+                     <span class="time-date pull-right">{{date('d F \'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                 </div>
                 <div>
                  <div class="col-md-12" id="likeBox">
                 <i class="col-md-3" ></i>
                 @if(Auth::check()) 
                 <span class="col-md-3 likedata commentlike"  aria-hidden="true">
-                <a href='{{url("comment-like/".$comment->id)}}'><i class="likedata time-date" title="like this comment" onclick="commentLike(event);" id="{{$comment->id}}">{{$Helper->commentLike($comment->id)}} Like</i> </a> </span>
+                <a href='{{url("comment-like/".$comment->id)}}'>
+                <i class="likedata time-date" title="like this comment" onclick="commentLike(event);" id="{{$comment->id}}">
+                  {{$Helper->commentLike($comment->id)}} Like</i> </a> </span>
                 @endif
                 
                </div>

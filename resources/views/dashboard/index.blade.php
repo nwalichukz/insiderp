@@ -46,32 +46,28 @@
                      <div style="border:1px solid #fff;" class="col-md-9 col-lg-8">
                   <div class="media-body media-midd">
                     <div class="my-description">
-                       @if(!empty($trend->title))
+                      
                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
-                     @else
-                      <a href="{{ url('/post-full-view/'.$trend->id) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
-                     @endif
+                    
                   <p style="font-size:1.2em;">
                     {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="click to read full details"> more </a>
                      </p>
                      
-                      <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
+                      <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
                     </div>
                   </div>
                   </div>
                   @else
                   <div class="media-body media-middle">
                     <div class="my-description">
-                       @if(!empty($trend->title))
+                       
                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
-                     @else
-                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
-                     @endif
+                    
                   <p style="font-size:1.2em;">
                     {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="click to read full details"> more </a>
                      </p>
                      
-                      <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
+                      <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
                     </div>
                   </div>
                   @endif
@@ -115,13 +111,13 @@
                   @endif
                   </a>
                 </div>
-                 <div class="container2 col-md-9">
-                  <p style="font-size:1.2em;">
+                 <div class="col-md-9">
+                  <p style="font-size:1.2em;" class="container2 ">
                     <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
                 {{ucfirst($comment->comment)}}
 
                      </p>
-                     <span class="time-date pull-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}} </span>
+                     <span class="time-date pull-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}} </span>
                 </div>
                 <div>
                  <div class="col-md-12" id="likeBox">

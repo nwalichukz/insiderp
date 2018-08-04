@@ -1,12 +1,11 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.indextemplate')
 @section('content')
-<div class="container" onload="countView(event);">
+
+<div class="container" style="margin:25px 0px 0 0px;" onload="countView(event);">
        <div class="col-md-3 con">
                <h4 class="titles"> Sponsored </h4>
             <hr/>
-
-      <a href="#" class="time-date"> </a>
      
       <img src="{{asset('/images/avatar/letnote.jpg')}}" style="width:100%; height:150px;">
 
@@ -21,7 +20,7 @@
                                 <figure class="item-thumb">
                                     <a href="{{ url('#') }}" title="The user name and the page this  post was posted to">
                                     @if(!empty($Helper->postAvatar($trend->user_id)->name))
-                                   <img src="{{asset("images/user/".$Helper->postAvatar($trend->user_id)->name)}}" class="img-circle imgcircle" alt="thumb"/>
+                                   <img src="{{asset("images/user/".$Helper->postAvatar($trend->user_id)->name)}}" class="img-circle imgcircle" alt="user image"/>
                                    @else
                                     <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb"/>
                                    @endif
@@ -35,26 +34,23 @@
                     <div class="panel container1 col-md-12">
                       @if(!empty($Helper->postImage($trend->id)->name))
                       <div style="border:1px solid #fff;" class="col-md-9" style="width:100%; height:150px;">
-                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;" />
+                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;">
                      </div>
                      <div style="border:1px solid #fff;" class="col-md-12">
-                      @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
-                     @else
-                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
-                     @endif                
+                    
+                     <a href="{{url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title)))}}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                                    
                   <p style="font-size:1.2em;">
-                    {{ucfirst($trend->post)}}
+                    {!! ucfirst($trend->post) !!}
                      </p>
                       <span class="time-right">{{date('d F, Y', strtotime($trend->created_at))}}</span>
                 
                   </div>
                   @else
-                   @if(!empty($trend->title))
+            
                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
-                     @else
-                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
-                     @endif                  
+                     
+                                      
                   <p style="font-size:1.2em;">
                     {{ucfirst($trend->post)}}
                      </p>
@@ -92,17 +88,17 @@
                 @if(!empty($Helper->commenterAvatar($comment->user_id)->name))
                   <img src="{{asset("images/user/".$Helper->commenterAvatar($comment->user_id)->name)}}" class="img-circle imgcircle" alt="thumb">
                   @else
-                   <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
+                   <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb avatar">
                   @endif
                   </a>
                 </div>
-                 <div class="container2 col-md-8">
+                 <div class="col-md-8">
                   
-                  <p style="font-size:1.2em;">
+                  <p style="font-size:1.2em;" class="container2">
                     <a href="#"><span>{{$Helper->commenter($comment->user_id)->user_name}}</span></a> 
                 {{ucfirst($comment->comment)}}
                      </p>
-                    <span class="time-date pull-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}} </span>
+                    <span class="time-date pull-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}} </span>
                     
                 </div>
                 <div class="col-md-12">

@@ -24,10 +24,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 <script src="{{ URL('js/orientScript.js') }}" type="text/Javascript"> </script>
     <link rel="stylesheet" href="{{url('bootstrap/css/bootstrap.min.css') }}" type="text/css">
     <!--<link href="/css/app.css" rel="stylesheet">-->
-     <link href="{{asset('css/orientStyle.css')}}" rel="stylesheet">
-        <style>
-           
-        </style>
+ <link href="{{asset('css/orientStyle.css')}}" rel="stylesheet">
 <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-57x57.png') }}">
 <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('images/favicon/apple-icon-60x60.png') }}">
 <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/favicon/apple-icon-72x72.png') }}">
@@ -46,7 +43,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 <meta name="msapplication-TileColor" content="">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     </head>
-    <body>
+<body>
 <div id="header"> 
 <nav  class="navbar navbar-default navbar-static-top">
         <div class="container">
@@ -67,11 +64,9 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
             </div> 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-
                 <ul class="nav navbar-nav">
                     &nbsp;
                 </ul>
-
                 <!-- Right Side Of Navbar -->
               @include('partials.nav')
             </div>

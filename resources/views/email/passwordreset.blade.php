@@ -4,7 +4,7 @@
 </head>
 <body style="font-size:1em; align:center; background:#EEE;">
 	<center>
-		<div style="width:700px; background:#FFF; border:1px solid #D3D3D3; ">
+		<div style="width:600px; background:#FFF; border:1px solid #D3D3D3; ">
 			<div>
 	</div>
 		<div style="padding: 0 10px 10px 10px;">
