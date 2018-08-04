@@ -464,17 +464,17 @@ public function changePassword(Request $request)
           $delay = (new \Carbon\Carbon)->now()->addSeconds(1);
          if(!empty($request['email1'])){
          
-         Mail::to($request['email1'])->later($delay, new InviteFriendsMail(Auth::user()->name));
+         Mail::to($request['email1'])->send(new InviteFriendsMail(Auth::user()->name));
         }
 
          if(!empty($request['email2'])){
          
-         Mail::to($request['email2'])->later($delay, new InviteFriendsMail(Auth::user()->name));
+         Mail::to($request['email2'])->send(new InviteFriendsMail(Auth::user()->name));
         }
 
          if(!empty($request['email3'])){
          
-         Mail::to($request['email3'])->later($delay, new InviteFriendsMail(Auth::user()->name));
+         Mail::to($request['email3'])->send(new InviteFriendsMail(Auth::user()->name));
         }
           return redirect()->back();
           flash('Friends invitation sent successfully')->success();

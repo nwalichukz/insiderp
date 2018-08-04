@@ -172,7 +172,7 @@ class PostController extends Controller
     * @var instance
     */
     public static function leadStory(){
-    return Post::where('post_importance', 'lead')->first();
+    return Post::where('post_importance', 'lead')->latest()->first();
        
     }
 
