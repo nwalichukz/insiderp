@@ -36,7 +36,7 @@
                         <option value="{{$user->user_level}}">{{$user->user_level}}</option>
                         <option value="user" >User</option>
                         <option value="editor" >Editor</option>
-                        <option value="suspended" >suspend</option>
+                        <option value="suspended">suspend</option>
                         <option value="admin" >Admin</option>
                         <option value="banned" >Banned</option>                        
                     </select>

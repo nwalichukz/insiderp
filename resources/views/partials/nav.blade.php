@@ -6,8 +6,8 @@
                  <li class="login"> <a href="{{url("/page/Romance")}}">romance </a> </li>
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li class="login"><a href="{{ url('/login') }}">Login</a></li>
-                        <li class="login"><a href="{{ url('/register') }}">Sign up</a></li>
+                        <li class="login"><a href="{{ url('/login') }}">login</a></li>
+                        <li class="login"><a href="{{ url('/register') }}">sign up</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

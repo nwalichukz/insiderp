@@ -1,6 +1,6 @@
 @extends('layouts.indextemplate')
 @section('content')
-<div id="conten">
+<div id="conten" style="margin-top: 38px;">
     <div class="container">
         <div class="row">
             <div class="col-md-6">

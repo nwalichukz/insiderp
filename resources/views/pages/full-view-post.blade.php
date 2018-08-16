@@ -2,7 +2,7 @@
 @extends('layouts.indextemplate')
 @section('content')
 
-<div class="container" style="margin:25px 0px 0 0px;" onload="countView(event);">
+<div class="container" style="margin-letf:auto; margin-right:auto; margin-top:38px;" onload="countView(event);">
        <div class="col-md-3 con">
                <h4 class="titles"> Sponsored </h4>
             <hr/>

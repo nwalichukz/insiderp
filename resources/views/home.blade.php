@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-	        <div class="col-md-10" style="margin:10px 20px 0 20px;">
+	        <div class="col-md-10" style="margin:20px 20px 0 20px;">
             <div class="col-md-3 con">
-            <div class="col-md-12 trendBox con">
+            <div class="col-md-12 leadBox">
                <h4 class="titles"> Lead Post </h4>
             <hr/>
        @if(!empty($lead->title))
@@ -16,9 +16,9 @@
     @endif
     @endif
      </div>
-     <br/>
+
         @if(!empty($trendpost))
-          <div class="col-md-12 con" style="border:1px solid #eee;">
+          <div class="col-md-12 trendBox">
                <h4 class="titles"> Trending </h4>
             <hr/>      
             @foreach($trendpost as $post)
@@ -27,16 +27,19 @@
      </div>
      @endif
    </div>
-			     <div class="col-md-7">
-      @if(empty($title))
-    <div class="col-md-12 center-block">
+   
+
+			     <div class="">
+
+              @if(empty($title))
+    <div class="col-md-7">
     <form method="POST" action="{{url('/post-search')}}"> 
          {{ csrf_field() }}
       <div class="form-group">
      <div class="searchinputwrapper">
-     <input onkeyup="autocomplet()" type="text" name="name" id="search" class="name" value="{{old('name')}}" autofocus> 
-     <div id="content" class="col-md-11"> </div>
-     <button type="submit" class="searchbtn">
+     <input onkeyup="autocomplet()" type="text" name="name" id="search" class="name" placeholder="Find any news or articles" value="{{old('name')}}" autofocus> 
+     <div id="content" class="col-md-12"> </div>
+     <button type="submit" class="searchbtn" id="btnsearch">
    <span class="glyphicon glyphicon-search"> </span>
     </button>
     </div>
@@ -44,8 +47,8 @@
     </form>
     </div>
     @endif
-
-            <div style="border:1px solid #f1f1f1;" id="panel-heading" class="panel panel-primary">
+<div class="col-md-7">
+            <div style="border:1px solid #f1f1f1; " id="panel-heading" class="panel panel-primary">
               <div id="index-sutitle" class="panel-heading">@if(!empty($category)){{$category}} Posts @elseif(!empty($search)) About {{$search->count()}} Search Results @else Trending Posts @endif</div>
               <div class="panel-body">
               	
@@ -78,12 +81,12 @@
 
                      </div>
 
-                    <div class="container1 col-md-11 panel">
+                    <div class="container1 col-md-12 panel" style="padding:0 0px 0 0;">
                       @if(!empty($Helper->postImage($trend->id)->name))
-                      <div class="col-md-4" style="float:left;">
+                      <div class="col-md-4" style="float:left; padding:0;">
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:150px;" >
                      </div>
-                     <div class="col-md-8">
+                     <div class="col-md-8" style="padding:0 0 0 10px;">
                      
                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}}</h4></a>
                    
@@ -149,7 +152,7 @@
                   </a>
                 </div>
                  <div class="col-md-9">
-                  <p style="font-size:1.2em;" class="container2">
+                  <p style="font-size:1em;" class="container2">
                     <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
                 {!!ucfirst($comment->comment)!!}
                      </p>
@@ -217,7 +220,8 @@
           
           </div>
           </div>
-                </div>
+          </div>
+        </div>
         <div class="con col-md-2">
 			 <!-- pentalk pages -->
             <h4 class="titles"> Bido Pages </h4>

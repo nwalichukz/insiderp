@@ -1,6 +1,6 @@
 @extends('layouts.indextemplate')
 @section('content')
-<div class="container">
+<div class="container" style="margin-top: 38px;">
     <div class="row">
 
       @if(session('status'))

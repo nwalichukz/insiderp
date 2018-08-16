@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\PostController;
 use App\PostView;
 use Auth;
 class PostViewController extends Controller
@@ -41,5 +42,6 @@ class PostViewController extends Controller
     	}else{
     	$add->increment('view');
     	} 
+        PostController::rank($post_id);
     }
 }

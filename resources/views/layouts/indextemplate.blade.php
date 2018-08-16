@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124060018-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124060018-1');
+</script>
+
+    
 <meta name="description" content="A social tool that allow users post news, opinions, articles, questions and get involved in discussing 
 those issues that affect us and our society especially in Nigeria">
 <meta name="keywords" content="politics, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
@@ -40,7 +51,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/favicon/favicon-96x96.png')}}">
 <link rel="icon" type="image/ico" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.ico')}}">
 <link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="">
+<meta name="msapplication-TileColor">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     </head>
 <body>
@@ -185,8 +196,6 @@ function postLike(event)
     });
 }
 
-
-
 function countView(event)
 {   var target = event.target || event.srcElement;
     var id = event.target.id;
@@ -204,6 +213,7 @@ function countView(event)
 *
 */
 function autocomplet(){
+        $('#btnsearch').show();
         var keyword = $('#search').val();
 
     if (keyword != '') {
@@ -219,6 +229,7 @@ function autocomplet(){
        } else {
 
     $('#content').hide();
+    $('#btnsearch').hide();
  }
      }
 
@@ -250,6 +261,7 @@ function checkUnique(){
 
 
 $('#user-name').onkeyup(
+$('#btnsearch').show();
 var keyword = $('#user-name').val();
 
  if (keyword != '') {

@@ -1,7 +1,7 @@
 @extends('layouts.indextemplate')
 @section('content')
 <div class="col-lg-3 col-md-3"> </div>
-<div class="col-lg-6 col-md-6">
+<div class="col-lg-6 col-md-6" >
     <div class="contact-page-div">
         <div class="contact-error">
            @if ($errors->any())

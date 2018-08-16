@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124060018-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124060018-1');
+</script>
+
 <meta name="description" content="A social tool that allow users post news, opinions, articles, questions and get involved in discussing 
 those issues that affect us and our society especially in Nigeria.">
 <meta name="keywords" content="politics, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
@@ -142,6 +152,31 @@ function postLike(event)
     });
 }
 
+/**
+* This method handles the autocomplete for 
+* the home pages and search page
+*
+*/
+function autocomplet(){
+        $('#btnsearch').show();
+        var keyword = $('#search').val();
+
+    if (keyword != '') {
+        $.ajax({
+            url: "{{ url('/autosuggest') }}",
+            type: 'GET',
+            data: {keyword:keyword, type:type},
+            success:function(data){
+            $('#content').show();
+            $('#content').html(data);
+            }
+  });
+       } else {
+
+    $('#content').hide();
+    $('#btnsearch').hide();
+ }
+     }
     </script>
 </head>
 <body>

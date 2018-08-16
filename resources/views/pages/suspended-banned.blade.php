@@ -1,6 +1,6 @@
 @extends('layouts.indextemplate')
 @section('content')
- <div role="dialog" aria-labelledby="modalLabel">
+ <div role="dialog" aria-labelledby="modalLabel" style="margin-top: 38px;">
         <div class="modal-dialog">
             <div class="modal-content" style="padding:10px;">
                 <div class="modal-header">

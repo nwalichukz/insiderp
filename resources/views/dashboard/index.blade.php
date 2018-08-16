@@ -2,6 +2,22 @@
 @extends('layouts.usertemplate')
 @section('content')
 <div class="container">
+      @if(empty($title))
+    <div class="col-md-6">
+    <form method="POST" action="{{url('/post-search')}}"> 
+         {{ csrf_field() }}
+      <div class="form-group">
+     <div class="searchinputwrapper">
+     <input onkeyup="autocomplet()" type="text" name="name" id="search" class="name" placeholder="Find any news or articles" value="{{old('name')}}" autofocus> 
+     <div id="content" class="col-md-12"> </div>
+     <button type="submit" class="searchbtn" id="btnsearch">
+   <span class="glyphicon glyphicon-search"> </span>
+    </button>
+    </div>
+</div>
+    </form>
+    </div>
+    @endif
 <div class="col-md-6 col-lg-6 panel" id="centerDiv">
 	     <!-- Ya just loop it here -->
             <div id="mainContent">
@@ -19,7 +35,7 @@
                                    @else
                                     <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
                                    @endif
-                                    <span class=""><span >{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}</span> /<span style="color:#FF8C00;">{{$trend->category}} </span>
+                                    <span >{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}</span> /<span style="color:#FF8C00;">{{$trend->category}} </span>
                                     </a>
                                 </figure>
                             </div>
@@ -33,17 +49,19 @@
                         @endif
                       @if((Auth::check() && (Auth::user()->id === $trend->user_id)) || (Auth::check() && (Auth::user()->user_level === 'admin')))
                        <a href="{{url('/delete-post/'.$trend->id) }}" class="time-date pull-right trash"> X </a>
-                      <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
+                      <a href="{{url('/edit-post/'.$trend->id)}}">
+                      <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i>
+                      </a>
                         @endif
 
                      </div>
 
                     <div class="container1 col-md-10 col-lg-12 panel">
                       @if(!empty($Helper->postImage($trend->id)->name))
-                      <div style="border:1px solid #fff;" class="col-md-3 col-lg-4" style="width:100px; float:left; height:170px;">
+                      <div style="border:1px solid #fff; padding:0;" class="col-md-3 col-lg-4" style="width:100px; float:left; height:170px;">
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:160px;" >
                      </div>
-                     <div style="border:1px solid #fff;" class="col-md-9 col-lg-8">
+                     <div style="border:1px solid #fff; padding:0 0 0 10px;" class="col-md-9 col-lg-8">
                   <div class="media-body media-midd">
                     <div class="my-description">
                       
@@ -112,7 +130,7 @@
                   </a>
                 </div>
                  <div class="col-md-9">
-                  <p style="font-size:1.2em;" class="container2 ">
+                  <p style="font-size:1em;" class="container2 ">
                     <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
                 {{ucfirst($comment->comment)}}
 
