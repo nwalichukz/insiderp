@@ -84,7 +84,7 @@
                     <div class="container1 col-md-12 panel" style="padding:0 0px 0 0;">
                       @if(!empty($Helper->postImage($trend->id)->name))
                       <div class="col-md-4" style="float:left; padding:0;">
-                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:150px;" >
+                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:200px;" >
                      </div>
                      <div class="col-md-8" style="padding:0 0 0 10px;">
                      
