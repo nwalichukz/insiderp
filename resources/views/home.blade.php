@@ -91,7 +91,7 @@
                      <a href="{{url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-'))}}"><h4>{{ucfirst($Helper->get_title($trend->title, 10))}}</h4></a>
                    
                   <p style="font-size:1.1em; color:#000;">
-                    {!!ucfirst($Helper->get_words($trend->post, 23))!!} @if(count($Helper->get_words($trend->post, 23))>23) <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($lead->title), '-')) }}" title="click to read full details"> more </a> @endif
+                    {!!ucfirst($Helper->get_words($trend->post, 23))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($lead->title), '-')) }}" title="click to read full details"> more </a> 
                      </p>
                      
                   <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span> 
@@ -101,7 +101,7 @@
                   <a href='{{ url("/post-full-view/".$trend->id."/".str_slug(strtolower($trend->title), '-')) }}'> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                    
                   <p style="font-size:1.1em; color:#000;">
-                    {!!ucfirst($Helper->get_words($trend->post, 23))!!} @if(count($Helper->get_words($trend->post, 23))>23) <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a> @endif
+                    {!!ucfirst($Helper->get_words($trend->post, 23))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a> 
                      </p>
                      
                       <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
