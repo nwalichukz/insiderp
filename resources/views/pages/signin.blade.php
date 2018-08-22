@@ -4,7 +4,7 @@
         <div class="modal-dialog">
             <div class="modal-content" style="padding:10px;">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    
                     <h3 class="modal-title" id="lineModalLabel">Login</h3>
                 </div>
                 <form action="{{url('/post-login')}}" method="post" enctype="multipart/form-data">

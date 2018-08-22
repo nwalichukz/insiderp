@@ -19,7 +19,7 @@
                     </div>
                     
                     <div class="form-group">
-                    <textarea name="post" rows="3" class="form-control" placeholder="Share your thought on anything you care about" max:"350" required>{{$data->post}}</textarea>
+                    <textarea name="post" rows="3" id="textPost" class="form-control" placeholder="Share your thought on anything you care about" max:"350" required>{{$data->post}}</textarea>
                 </div>
                 
                      <div class="form-group">

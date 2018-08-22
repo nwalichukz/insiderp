@@ -38,7 +38,7 @@
                      </div>
                      <div style="border:1px solid #fff;" class="col-md-12">
                     
-                     <a href="{{url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title)))}}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                     <a href="{{url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-'))}}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                                     
                   <p style="font-size:1.2em;">
                     {!! ucfirst($trend->post) !!}
@@ -48,11 +48,11 @@
                   </div>
                   @else
             
-                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                      
                                       
                   <p style="font-size:1.2em;">
-                    {{ucfirst($trend->post)}}
+                    {!!ucfirst($trend->post)!!}
                      </p>
                      
                       <span class="time-right">{{ $trend->created_at->diffForHumans()}}</span>

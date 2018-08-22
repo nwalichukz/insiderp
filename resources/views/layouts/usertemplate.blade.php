@@ -10,6 +10,7 @@
 
   gtag('config', 'UA-124060018-1');
 </script>
+ <script src="{{url('ckeditor/ckeditor.js')}}"></script>
 
 <meta name="description" content="A social tool that allow users post news, opinions, articles, questions and get involved in discussing 
 those issues that affect us and our society especially in Nigeria.">

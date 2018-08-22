@@ -15,8 +15,11 @@
                     </div>
                     
                     <div class="form-group">
-                    <textarea name="post" rows="3" class="form-control" placeholder="Share your thought on anything you care about" required></textarea>
+                    <textarea name="post" rows="3" id="textPost" class="form-control" placeholder="Share your thought on anything you care about" required></textarea>
                 </div>
+                 <script type="text/javascript">
+                     CKEDITOR.replace( 'textPost' );
+                </script>
                      <div class="form-group">
                     <select name="category" class="form-control">
                         <option value="">Select Category</option>
@@ -59,6 +62,7 @@
                     <button type="submit" class="pull-left btn btn-common">Post</button>
                 </div>
                 </form>
+
             </div>
         </div>
     </div>

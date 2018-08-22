@@ -41,7 +41,10 @@
               			 </p>
               			 
               			 	<span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
-              		
+              		       @if($trend->post_importance==='votes')
+                    <a href="{{url('/add-option/'.$trend->id)}}">
+                     <i title="Add option to this post" class="time-date">add option </i> </a>
+                   @endif
               		</div>
               		@else
               		

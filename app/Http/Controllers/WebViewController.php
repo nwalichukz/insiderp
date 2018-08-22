@@ -432,7 +432,8 @@ public function changePassword(Request $request)
 
     //delete post
     public function deletePost($id)
-    {  if(Auth::check()){
+    { $id_user = PostController::get($id); 
+      if(Auth::check() && (Auth::user()->user_level === 'admin' || Auth::user()->id === $id_user)){
         $delete = PostController::delete($id);
         return redirect()->back();
       }else{
@@ -444,8 +445,8 @@ public function changePassword(Request $request)
 
     //delete comment
     public function deleteComment($id)
-    {
-      if(Auth::check()){
+    { $id_user = CommentController::get($id); 
+      if(Auth::check() && (Auth::user()->user_level === 'admin' || Auth::user()->id === $id_user)){
         $delete = CommentController::delete($id);
         return redirect()->back();
       }else{
@@ -457,7 +458,7 @@ public function changePassword(Request $request)
     //send invitation for friends
     public function inviteFriends(Request $request)
     {     $this->validate($request,
-        [  'email1'=>'required|email',
+        [ 'email1'=>'required|email',
           
            ]);
         if(Auth::check()){

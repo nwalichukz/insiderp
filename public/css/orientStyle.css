@@ -70,6 +70,7 @@ padding:0 5px 5px 14px;
   background: #ffffff;
   padding: 3px 10px 10px 8px;
   margin: 0 0 10px 0;
+  position: relative;
 }
 .headNav{
 margin-left:30px; 
@@ -168,13 +169,13 @@ width: 100%;
   background-color:#008080;
 }
 .btn{
-  background-color: #EEE;
+  background-color: #3299CC;
   color: #000;
   border-radius:4px; 
 }
 .btn:hover{
-  background-color: #f1f1f1;
-  border:1px solid  #808080;
+  background-color: #3299CC;
+  border:1px solid #3299CC;
   text-decoration: none;
   color:#000;
 }

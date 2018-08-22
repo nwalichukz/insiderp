@@ -12,7 +12,7 @@
       @if(!empty($Helper->postImage($lead->id)->name))
     <img src="{{asset("images/post/".$Helper->postImage($lead->id)->name)}}" style="width:100%; height:150px;" >
 
-    <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_replace(' ', '-', strtolower($lead->title))) }}"> <h4> {{$Helper->get_title(ucfirst(strtolower($lead->title)), 10)}} </h4> </a>
+    <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}"> <h4> {{$Helper->get_title(ucfirst(strtolower($lead->title)), 10)}} </h4> </a>
     @endif
     @endif
      </div>
@@ -22,7 +22,7 @@
                <h4 class="titles"> Trending </h4>
             <hr/>      
             @foreach($trendpost as $post)
-    <a href="{{ url('/post-full-view/'.$post->id.'/'.str_replace(' ', '-', strtolower($post->title))) }}"> <h4 class="trending"> {{$Helper->get_title(ucfirst(strtolower($post->title)), 10)}} </h4> </a>
+    <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"> <h4 class="trending"> {{$Helper->get_title(ucfirst(strtolower($post->title)), 10)}} </h4> </a>
     @endforeach
      </div>
      @endif
@@ -60,7 +60,7 @@
       @foreach($trending as $trend)
                 <div class="col-md-10 avatarwrapper">
                                   <figure class="item-thumb">
-                                    <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="The user name and the page this article was posted to">
+                                    <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="The user name and the page this article was posted to">
                                     @if(!empty($Helper->postAvatar($trend->user_id)->name))
                                    <img src="{{asset("images/user/".$Helper->postAvatar($trend->user_id)->name)}}" class="img-circle imgcircle" alt="thumb">
                                    @else
@@ -84,25 +84,24 @@
                     <div class="container1 col-md-12 panel" style="padding:0 0px 0 0;">
                       @if(!empty($Helper->postImage($trend->id)->name))
                       <div class="col-md-4" style="float:left; padding:0;">
-                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:200px;" >
+                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;" >
                      </div>
                      <div class="col-md-8" style="padding:0 0 0 10px;">
                      
-                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}"> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}}</h4></a>
+                     <a href="{{url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-'))}}"><h4>{{ucfirst($Helper->get_title($trend->title, 10))}}</h4></a>
                    
                   <p style="font-size:1.1em; color:#000;">
-                    {!!ucfirst($Helper->get_words($trend->post, 23))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($lead->title))) }}" title="click to read full details"> more </a>
+                    {!!ucfirst($Helper->get_words($trend->post, 23))!!} @if(count($Helper->get_words($trend->post, 23))>23) <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($lead->title), '-')) }}" title="click to read full details"> more </a> @endif
                      </p>
                      
                   <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span> 
                   </div>
                   @else
       
-                   
-                     <a href='{{ url("/post-full-view/".$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}'> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                  <a href='{{ url("/post-full-view/".$trend->id."/".str_slug(strtolower($trend->title), '-')) }}'> <h4> {{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
                    
                   <p style="font-size:1.1em; color:#000;">
-                    {!!ucfirst($Helper->get_words($trend->post, 23))!!} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_replace(' ', '-', strtolower($trend->title))) }}" title="click to read full details"> more </a>
+                    {!!ucfirst($Helper->get_words($trend->post, 23))!!} @if(count($Helper->get_words($trend->post, 23))>23) <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a> @endif
                      </p>
                      
                       <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
