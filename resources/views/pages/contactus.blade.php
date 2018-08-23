@@ -18,33 +18,26 @@
                                    
                                <!-- <div class="panel panel-default">-->
                                 
-                                <form class="form-light mt-20" id='post-ajax-contactus' action="{{ url('/send_mail') }}" role="form" method="POST">
+                                <form class="form-light mt-20" id='post-ajax-contactus' action="{{ url('#') }}" role="form" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                <br/>
-                                <input type="text" class="form-control" placeholder="Your name" name='userName'>
+                                <input type="text" class="form-control" placeholder="Your name" name='name' required>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                
                                     <div class="form-group">
                                        
-                                        <input type="email" class="form-control" placeholder="Email address" name='userEmail'>
+                                        <input type="email" class="form-control" placeholder="Your email address" name='email' required>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                       
-                                        <input type="text" class="form-control" placeholder="Phone number" name='userPhone'>
-                                    </div>
-                                </div>
+                               
+        
+                            <div class="form-group">
+                               
+                                <input type="text" class="form-control" placeholder="The Subject of your message" name='subject' required>
                             </div>
                             <div class="form-group">
                                
-                                <input type="text" class="form-control" placeholder="The Subject of your message" name='subject'>
-                            </div>
-                            <div class="form-group">
-                               
-                                <textarea class="form-control" id="message" placeholder="Write your message here..." style="height:100px;" name="message"></textarea>
+                                <textarea class="form-control" id="message" placeholder="Write your message here..." style="height:100px;" name="message" required></textarea>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">

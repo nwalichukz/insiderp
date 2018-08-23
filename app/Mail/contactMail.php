@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class InviteFriendsMail extends Mailable
+class contactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,10 +16,12 @@ class InviteFriendsMail extends Mailable
      *
      * @return void
      */
-    public $name;
-    public function __construct($name)
-    {
-        $this->name = $name;
+    public function __construct($name, $email, $subject, $message)
+    {  $this->name = $name;
+        $this->email = $email;
+        $this->subject = $subject;
+        $this->message =  $message;
+        //
     }
 
     /**
@@ -29,10 +31,9 @@ class InviteFriendsMail extends Mailable
      */
     public function build()
     {
-        $subject = 'Special invitation to join bido';
         $address = 'support@bido.com.ng';
         $name = 'Bido';
-        return $this->view('email.invite-friends')
+        return $this->view('email.contact')
                     ->subject($subject)
                     ->replyTo($address, $name)
                     ->from($address, $name);
