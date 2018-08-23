@@ -58,14 +58,14 @@
 
                     <div class="container1 col-md-10 col-lg-12 panel">
                       @if(!empty($Helper->postImage($trend->id)->name))
-                      <div style="border:1px solid #fff; padding:0;" class="col-md-3 col-lg-4" style="width:100px; float:left; height:170px;">
+                      <div style="border:1px solid #fff; padding:0;" class="col-md-3" style="width:100px; float:left; height:170px;">
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:160px;" >
                      </div>
                      <div style="border:1px solid #fff; padding:0 0 0 10px;" class="col-md-9 col-lg-8">
                   <div class="media-body media-midd">
                     <div class="my-description">
                       
-                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{title_case($Helper->get_title($trend->title, 10))}} </h4> </a>
                     
                   <p style="font-size:1.2em;">
                     {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a>
@@ -79,7 +79,7 @@
                   <div class="media-body media-middle">
                     <div class="my-description">
                        
-                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{title_case($Helper->get_title($trend->title, 10))}} </h4> </a>
                     
                   <p style="font-size:1.2em;">
                     {{ucfirst($Helper->get_words($trend->post, 23))}} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a>

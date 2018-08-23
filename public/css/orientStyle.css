@@ -170,7 +170,7 @@ width: 100%;
 }
 .btn{
   background-color: #3299CC;
-  color: #000;
+  color: #FFF;
   border-radius:4px; 
 }
 .btn:hover{
@@ -215,7 +215,8 @@ font-family: "san-serif";
 color: #2F4F4F;
 }
 .alert{
-padding: px;border: 1px solid #D3D3D3; border-radius: 4px;
+padding: px;border: 1px solid #D3D3D3;
+border-radius: 4px;
 background-color: #F5F5F5;
 }
 #centerDiv{

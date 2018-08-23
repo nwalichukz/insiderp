@@ -33,8 +33,8 @@
 
                     <div class="panel container1 col-md-12">
                       @if(!empty($Helper->postImage($trend->id)->name))
-                      <div style="border:1px solid #fff;" class="col-md-9" style="width:100%; height:150px;">
-                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;">
+                      <div style="border:1px solid #fff;" class="col-md-9" style="width:; height:;">
+                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:; height:;">
                      </div>
                      <div style="border:1px solid #fff;" class="col-md-12">
                     
@@ -65,6 +65,7 @@
                   @if(!empty($Helper->postView($trend->id)->view))
                   {{$Helper->postView($trend->id)->view}} views @endif
                    </span>
+                   
                    @if(Auth::check())
                 <a href="{{url("post-like/".$trend->user_id.'/'.$trend->id)}}">
                 <span class="like glyphicon glyphicon-thumbs-up col-md-3" title="Like this post" aria-hidden="true"><i class="likedata" onclick="postLike(event);" id="{{$trend->id}}"> Like</i></span> 
@@ -77,7 +78,15 @@
                   {{$Helper->commentCount($trend->id) }} comment
                   @endif</span>
                 </div>
-
+                <div class="col-md-12">
+                 <a href="https://www.facebook.com/sharer/sharer.php?u=" title="share this article on facebook">
+                  <img src="{{asset("images/avatar/facebook.png")}}" style="width:30px;" >
+                  Share on Facebook</a> 
+                    <a href="https://twitter.com/home?status=" title="share this article on twitter">
+                      <img src="{{asset("images/avatar/twitter.png")}}" style="width:30px;" >
+                      Share on Twitter</a>
+        
+                  </div>
                 <!--- comment box -->
                 <div id="commentID">
                 @if(!empty($Helper->commentAll($trend->id)))
@@ -110,6 +119,7 @@
                 <div class="col-md-1">
                 
              </div>
+
                 </div>
               </div>
               @endforeach

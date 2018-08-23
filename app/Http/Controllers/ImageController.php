@@ -24,7 +24,7 @@ class ImageController extends Controller
             $file = $request->file('avatar');
             $filename = rand().time().'.'.$file->getClientOriginalExtension();
             $path = public_path('images/user/'.$filename);
-            $avatar = Image::make($file->getRealPath())->resize(36, 36)->sharpen(16)->encode('png')->save($path);
+            $avatar = Image::make($file->getRealPath())->resize(36, 36)->save($path);
             return $filename;
         }
         else{
@@ -50,7 +50,7 @@ class ImageController extends Controller
             $file = $request->file('image');
             $filename = rand().time().'.'.$file->getClientOriginalExtension();
             $path = public_path('images/post/'.$filename);
-            $avatar = Image::make($file->getRealPath())->resize(350, 180)->sharpen(16)->encode('png')->save($path);
+            $avatar = Image::make($file->getRealPath())->resize(300, 180)->save($path);
             return $filename;
         }
         else{
@@ -75,7 +75,7 @@ class ImageController extends Controller
             $file = $request->file('image');
             $filename = rand().time().'.'.$file->getClientOriginalExtension();
             $path = public_path('images/option/'.$filename);
-            $avatar = Image::make($file->getRealPath())->resize(80, 100)->sharpen(16)->encode('png')->save($path);
+            $avatar = Image::make($file->getRealPath())->resize(80, 100)->encode('png')->save($path);
             return $filename;
         }
        
