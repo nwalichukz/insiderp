@@ -32,10 +32,10 @@
                                 <p><span class="time-right time-date-fullview">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span> </p>
                     <div class="col-md-12">
                  <a href="https://www.facebook.com/sharer/sharer.php?u=" title="share this article on facebook">
-                  <img src="{{asset("images/avatar/facebook.png")}}" class="twitter-facebook" >
+                  <img src="{{asset("images/avatar/facebook.png")}}" class="twitter-facebook" style="width:20px;">
                   Share </a> 
 
-                    <a href="https://twitter.com/home?status=" title="share this article on twitter">
+                    <a href="https://twitter.com/home?status=" title="share this article on twitter" style="width:20px;">
                       <img src="{{asset("images/avatar/twitter.png")}}" class="twitter-facebook" >
                       Share </a>
                   </div>
