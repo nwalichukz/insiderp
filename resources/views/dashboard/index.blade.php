@@ -38,6 +38,7 @@
                                     <span >{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}</span> /<span style="color:#FF8C00;">{{$trend->category}} </span>
                                     </a>
                                 </figure>
+                            <p> <span class="time-right time-date-fullview">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span></p>
                             </div>
                         </div>
                         @if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
@@ -71,7 +72,6 @@
                     {!!ucfirst($Helper->get_words($trend->post, 23))!!} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a>
                      </p>
                      
-                      <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
                     </div>
                   </div>
                   </div>
@@ -85,7 +85,6 @@
                     {!!ucfirst($Helper->get_words($trend->post, 23))!!} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a>
                      </p>
                      
-                      <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
                     </div>
                   </div>
                   @endif

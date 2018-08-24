@@ -27,10 +27,7 @@
      </div>
      @endif
    </div>
-   
-
 			     <div class="">
-
               @if(empty($title))
     <div class="col-md-7">
     <form method="POST" action="{{url('/post-search')}}"> 
@@ -50,8 +47,7 @@
 <div class="col-md-7">
             <div style="border:1px solid #f1f1f1; " id="panel-heading" class="panel panel-primary">
               <div id="index-sutitle" class="panel-heading">@if(!empty($category)){{$category}} Posts @elseif(!empty($search)) About {{$search->count()}} Search Results @else Trending Posts @endif</div>
-              <div class="panel-body">
-              	
+              <div class="panel-body">	
               <!-- Ya just loop it here -->
             <div id="commentID">
 
@@ -59,6 +55,7 @@
       @if($trending->count() > 0)
       @foreach($trending as $trend)
                 <div class="col-md-10 avatarwrapper">
+                                   <div class="media-left">
                                   <figure class="item-thumb">
                                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="The user name and the page this article was posted to">
                                     @if(!empty($Helper->postAvatar($trend->user_id)->name))
@@ -69,7 +66,8 @@
                                   {{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}/<span style="color:#FF8C00;">{{$trend->category}} </span>
                                     </a>
                                 </figure>
-                          
+                          <p> <span class="time-right time-date-fullview">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span></p>
+                        </div>
                         @if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
                         @if($trend->status ==='active')
                        <a href="{{url('/block-post/'.$trend->id) }}"> <i title="Block this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
@@ -78,7 +76,6 @@
                        @endif
                         <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
                         @endif
-
                      </div>
 
                     <div class="container1 col-md-12 panel" style="padding:0 0px 0 0;">
@@ -94,7 +91,6 @@
                     {!!ucfirst($Helper->get_words($trend->post, 23))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($lead->title), '-')) }}" title="click to read full details"> more </a> 
                      </p>
                      
-                  <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span> 
                   </div>
                   @else
       
@@ -104,7 +100,6 @@
                     {!!ucfirst($Helper->get_words($trend->post, 23))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a> 
                      </p>
                      
-                      <span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
                   @endif
                 </div>
 

@@ -14,8 +14,10 @@
 <div class="col-md-6 panel" id="centerDiv">
      
             <!-- yes oh here start loop -->
+
                 <div class="col-md-10 col-lg-10 avatarwrapper">
                    <div class="media-left">
+
                             <div class="figure-block">
                                 <figure class="item-thumb">
                                     <a href="{{ url('#') }}" title="The user name and the page this  post was posted to">
@@ -27,8 +29,19 @@
                                     <span>{{$Helper->user($trend->user_id)->user_name}}/</span><span style="color:#FF8C00;">{{$trend->category}} </span>
                                     </a>
                                 </figure>
-                            </div>
+                                <p><span class="time-right time-date-fullview">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span> </p>
+                    <div class="col-md-12">
+                 <a href="https://www.facebook.com/sharer/sharer.php?u=" title="share this article on facebook">
+                  <img src="{{asset("images/avatar/facebook.png")}}" class="twitter-facebook" >
+                  Share </a> 
+
+                    <a href="https://twitter.com/home?status=" title="share this article on twitter">
+                      <img src="{{asset("images/avatar/twitter.png")}}" class="twitter-facebook" >
+                      Share </a>
+                  </div>
                         </div>
+                        </div>
+                         <hr/ id="hr-fullview">
                      </div>
 
                     <div class="panel container1 col-md-12">
@@ -38,24 +51,21 @@
                      </div>
                      <div style="border:1px solid #fff;" class="col-md-12">
                     
-                     <a href="{{url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-'))}}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
-                                    
-                  <p style="font-size:1.2em;">
+          
+                      <h3>{{title_case($Helper->get_title($trend->title, 10))}} </h3>          
+                  <p style="font-size:1.3em;">
                     {!! ucfirst($trend->post) !!}
                      </p>
-                      <span class="time-right">{{date('d F, Y', strtotime($trend->created_at))}}</span>
                 
                   </div>
                   @else
             
-                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                     <h3>{{title_case($Helper->get_title($trend->title, 10))}} </h3> 
                      
                                       
-                  <p style="font-size:1.2em;">
+                  <p style="font-size:1.3em;">
                     {!!ucfirst($trend->post)!!}
                      </p>
-                     
-                      <span class="time-right">{{ $trend->created_at->diffForHumans()}}</span>
           
                   @endif
                 </div>
@@ -78,15 +88,7 @@
                   {{$Helper->commentCount($trend->id) }} comment
                   @endif</span>
                 </div>
-                <div class="col-md-12">
-                 <a href="https://www.facebook.com/sharer/sharer.php?u=" title="share this article on facebook">
-                  <img src="{{asset("images/avatar/facebook.png")}}" style="width:30px;" >
-                  Share on Facebook</a> 
-                    <a href="https://twitter.com/home?status=" title="share this article on twitter">
-                      <img src="{{asset("images/avatar/twitter.png")}}" style="width:30px;" >
-                      Share on Twitter</a>
-        
-                  </div>
+                
                 <!--- comment box -->
                 <div id="commentID">
                 @if(!empty($Helper->commentAll($trend->id)))
@@ -152,9 +154,7 @@
             </div>
         </div>
         @else
-   
         <div class="col-md-9 center-block logincomment">
-
          <p>  </br><a href="#" data-toggle="modal" data-target="#loginModalAny" data-placement="top"> Login </a> or
           <a href="#"data-toggle="modal" data-target="#signupModalAny" data-placement="top" data-toggle="modal" data-target="#addPostModal" data-placement="top"> register</a> to like or comment on any post </p>
         </div>

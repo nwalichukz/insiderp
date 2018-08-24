@@ -520,7 +520,16 @@ text-align: center;
 .time-right {
     float: right;
     color: #aaa;
-    font-size: 1em;
+    font-size: 0.8em;
+}
+.time-date-fullview{
+  margin: -8px 0 10px 38px;
+}
+.twitter-facebook{
+  width:20px;
+}
+#hr-fullview{
+  margin-bottom: -10px;
 }
 .item-footer{
   background: #f1f1f1;
