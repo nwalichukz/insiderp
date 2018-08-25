@@ -536,7 +536,7 @@ public function changePassword(Request $request)
           'message' => 'required',          
            ]);
        $delay = (new \Carbon\Carbon)->now()->addMinutes(2);
-      Mail::to('askbido@gmail.com')->later($delay, new contactmail($request['name'], $request['phone'], $request['subject'], $request['message']));
+      Mail::to('askbido@gmail.com')->later($delay, new contactmail($request['name'], $request['email'], $request['subject'], $request['message']));
     }
 
     // password reset success page
