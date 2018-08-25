@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class contactMail extends Mailable
+class ViewNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,14 +16,14 @@ class contactMail extends Mailable
      *
      * @return void
      */
-    public $name, $email, $subject, $message;
+    public $name, $title, $post_id, $view;
     
-    public function __construct($name, $email, $subject, $message)
-    {  $this->name = $name;
-        $this->email = $email;
-        $this->subject = $subject;
-        $this->message =  $message;
-        //
+    public function __construct($name, $title, $post_id, $view)
+    {
+       $this->name = $name;
+       $this->title = $title;
+       $this->post_id = $post_id;
+       $this->view = $view;
     }
 
     /**
@@ -33,11 +33,12 @@ class contactMail extends Mailable
      */
     public function build()
     {
+        $subject = 'Your post is doing well';
         $address = 'support@bido.com.ng';
-        $name = 'Contact form - Bido';
-        return $this->view('email.contactmail')
+        $name = 'Bido';
+        return $this->view('email.viewnotification')
                     ->subject($subject)
-                    ->replyTo($email, $name)
+                    ->replyTo($address, $name)
                     ->from($address, $name);
     }
 }

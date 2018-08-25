@@ -17,12 +17,15 @@ use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\ViewController;
 use App\Mail\InviteFriendsMail;
 use App\Mail\PasswordResetMail;
+use App\Mail\ViewNotification;
+use App\Mail\contactmail;
 use Carbon\Carbon;
 use App\PostImage;
 use App\Post;
 use App\User;
 use App\Comment;
 use App\View;
+use App\PostView;
 use App\PostLike;
 use App\CommentLike;
 use App\UserImage;
@@ -477,8 +480,9 @@ public function changePassword(Request $request)
          
          Mail::to($request['email3'])->send(new InviteFriendsMail(Auth::user()->name));
         }
+         flash('Friends invitation sent successfully')->success();
           return redirect()->back();
-          flash('Friends invitation sent successfully')->success();
+         
         }else{
           Auth::logout();
           return redirect('/');
@@ -486,7 +490,14 @@ public function changePassword(Request $request)
         }
 
     }
-
+       // send view notifcation mail
+    public static function sendViewNotificationMail($post_id){
+      $post = Post::where('id', $post_id)->first();
+      $user = User::where('id', $post->user_id)->first();
+      $view = PostView::where('post_id', $post_id)->first();
+      $delay = (new \Carbon\Carbon)->now()->addMinutes(1);
+      Mail::to($user->email)->later($delay, new ViewNotification($user->name, $post->title, $post_id, $view->view));
+    }
       // send password reset
      public function postResetPassword(Request $request)
     {   $this->validate($request,
@@ -511,6 +522,21 @@ public function changePassword(Request $request)
             flash('Email not registered in this platform. Please check if email is correct and try again')->error();
             return redirect::back();
         }
+    }
+    /**
+    * This method sends a mail to contact form
+    *
+    *
+    */
+    public function sendContact(Request $request){
+        $this->validate($request,
+        [ 'email'=>'required|email',
+          'phone'=>'required|num|min:7',
+          'subject'=>'required',
+          'message' => 'required',          
+           ]);
+       $delay = (new \Carbon\Carbon)->now()->addMinutes(2);
+      Mail::to('askbido@gmail.com')->later($delay, new contactmail($request['name'], $request['phone'], $request['subject'], $request['message']));
     }
 
     // password reset success page

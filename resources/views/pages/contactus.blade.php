@@ -18,7 +18,7 @@
                                    
                                <!-- <div class="panel panel-default">-->
                                 
-                                <form class="form-light mt-20" id='post-ajax-contactus' action="{{ url('#') }}" role="form" method="POST">
+                                <form class="form-light mt-20" id='post-ajax-contactus' action="{{ url('send-enquiry') }}" role="form" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                <br/>
