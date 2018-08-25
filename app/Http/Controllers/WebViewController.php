@@ -531,7 +531,7 @@ public function changePassword(Request $request)
     public function sendContact(Request $request){
         $this->validate($request,
         [ 'email'=>'required|email',
-          'phone'=>'required|num|min:7',
+          'name'=>'required|min:2',
           'subject'=>'required',
           'message' => 'required',          
            ]);
