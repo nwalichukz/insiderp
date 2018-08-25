@@ -13,7 +13,7 @@
 			 Name: <strong>{{$name}} </strong> <br/>
 			 Email: <strong>{{$email}} </strong> <br/>
 			 Subject: <strong>{{$subject}} </strong> <br/>	
-			 Message : 		{!! $message !!}
+			 Message : 		{!! $content !!}
 			</p>
 			
 	
