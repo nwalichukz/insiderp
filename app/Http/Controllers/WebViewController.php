@@ -18,7 +18,7 @@ use App\Http\Controllers\ViewController;
 use App\Mail\InviteFriendsMail;
 use App\Mail\PasswordResetMail;
 use App\Mail\ViewNotification;
-use App\Mail\contactmail;
+use App\Mail\contactMail;
 use Carbon\Carbon;
 use App\PostImage;
 use App\Post;
