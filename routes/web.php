@@ -61,6 +61,7 @@ Route::any('/count-view', 'WebViewController@countView');
 Route::post('/post-option', 'WebViewController@postOption');
 Route::get('/trending-posts', 'WebViewController@latest');
 Route::post('/send-enquiry', 'WebViewController@sendContact');
+Route::get('/contact-sent', 'WebViewController@contactSent');
 
 
 

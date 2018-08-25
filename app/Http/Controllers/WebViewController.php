@@ -537,12 +537,19 @@ public function changePassword(Request $request)
            ]);
        $delay = (new \Carbon\Carbon)->now()->addMinutes(2);
       Mail::to('askbido@gmail.com')->later($delay, new contactMail($request['name'], $request['email'], $request['subject'], $request['message']));
+      return redirect('email-thanks');
     }
 
     // password reset success page
     public function SuccessEmail()
    {  
     return view('pages.email-reset-success');
+   }
+
+    // contact sent page
+    public function contactSent()
+   {  
+    return view('pages.contact-page-thanks');
    }
 
     // return contact us page
