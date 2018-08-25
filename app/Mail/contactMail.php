@@ -32,12 +32,13 @@ class contactMail extends Mailable
      * @return $this
      */
     public function build()
-    {   $subject = 'Contact form page';
+    {   $subject = $this->subject;
+        $email = $this->email;
         $address = 'support@bido.com.ng';
         $name = 'Contact form - Bido';
         return $this->view('email.contactmail')
                     ->subject($subject)
-                    ->replyTo($address, $name)
+                    ->replyTo($email, $name)
                     ->from($address, $name);
     }
 }
