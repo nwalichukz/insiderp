@@ -42,7 +42,7 @@ class PostViewController extends Controller
     	$create->save();
     	}else{
         $add->increment('view');
-        if($add->view == 25 || 26 || 50 || 51  || 75 || 76 || 100 || 101 || 125 || 126 || 150 || 151 || 200 || 250 || 300 || 450 || 500 || 600 || 700 || 800 || 900 || 1000)
+        if($add->view === 25 || 26 || 50 || 51  || 75 || 76 || 100 || 101 || 125 || 126 || 150 || 151 || 200 || 250 || 300 || 450 || 500 || 600 || 700 || 800 || 900 || 1000)
         {
            WebViewController::sendViewNotificationMail($post_id);
         }

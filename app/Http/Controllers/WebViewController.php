@@ -494,9 +494,9 @@ public function changePassword(Request $request)
     public static function sendViewNotificationMail($post_id){
       $post = Post::where('id', $post_id)->first();
       $user = User::where('id', $post->user_id)->first();
-      $view = PostView::where('post_id', $post_id)->first();
+      $noview = PostView::where('post_id', $post_id)->first();
       $delay = (new \Carbon\Carbon)->now()->addMinutes(1);
-      Mail::to($user->email)->later($delay, new ViewNotification($user->name, $post->title, $post_id, $view->view));
+      Mail::to($user->email)->later($delay, new ViewNotification($user->name, $post->title, $post_id, $noview->view));
     }
       // send password reset
      public function postResetPassword(Request $request)
