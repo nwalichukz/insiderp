@@ -16,14 +16,14 @@ class ViewNotification extends Mailable
      *
      * @return void
      */
-    public $name, $title, $post_id, $view;
-    
-    public function __construct($name, $title, $post_id, $view)
+    public $name, $title, $post_id, $view_no;
+
+    public function __construct($name, $title, $post_id, $view_no)
     {
        $this->name = $name;
        $this->title = $title;
        $this->post_id = $post_id;
-       $this->view = $view;
+       $this->view = $view_no;
     }
 
     /**
