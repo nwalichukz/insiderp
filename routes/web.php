@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', 'WebViewController@index');
+Route::get('/post/{user_name}', 'WebViewController@userPost');
 Route::get('/delete-comment/{id}', 'WebViewController@deleteComment');
 Route::get('/comment-like/{id}', 'WebViewController@likeComment');
 Route::post('/post-search', 'WebViewController@search');
@@ -62,6 +63,7 @@ Route::post('/post-option', 'WebViewController@postOption');
 Route::get('/trending-posts', 'WebViewController@latest');
 Route::post('/send-enquiry', 'WebViewController@sendContact');
 Route::get('/contact-sent', 'WebViewController@contactSent');
+Route::get('/account-success', 'WebViewController@accountSuccess');
 
 
 

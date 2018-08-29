@@ -31,6 +31,7 @@ use App\CommentLike;
 use App\UserImage;
 use Auth, DB, Mail;
 
+
 class WebViewController extends Controller
 {     //the home page
 	public function latest(){
@@ -40,8 +41,8 @@ class WebViewController extends Controller
       return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Trending',
       'fulltitle'=>'Trending - news, opinions, articles, questions, get involved your views matter and help make our society better!']);
 	}
-
-  public function index(){
+    // this method returns the latest post
+  public function index(Request $request){
     $trending = PostController::getLatest();
     $trendpost = PostController::getTrendPost();
      $category = CategoryController::getCategory();
@@ -50,7 +51,22 @@ class WebViewController extends Controller
         'trendpost'=>$trendpost]);
   }
 
-	/* * This method checks
+  /**
+  * posts for a particular user
+  *
+  * @var $user_name
+  *
+  */
+  public function userPost($user_name){
+     $user = UserController::getByUserName($user_name);
+     $trending = PostController::getByUserName($user_name);
+     $trendpost = PostController::getTrendPost();
+     $category = CategoryController::getCategory();
+     $lead = PostController::leadStory();
+      return view('pages.users-posts')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>$user->user_name, 
+        'trendpost'=>$trendpost, 'user'=>$user, 'fulltitle'=> $user->user_name.' posts-Bido']);
+  }
+  	/* * This method checks
      *
      *
      * @param Request $request
@@ -69,8 +85,8 @@ class WebViewController extends Controller
             
             if($user)
             {
-                flash("Account created successfully, login with the password and email")->success();
-                return redirect('/login');
+                //flash("Account created successfully, login with the password and email")->success();
+                return redirect('/account-success');
 
             }else{
                 flash('Something went wrong user could not be created')->error();
@@ -339,7 +355,7 @@ public function changePassword(Request $request)
       { 
         $blocked = PostController::blockedPost();
         $category = CategoryController::getCategory();
-        return view('dashboard.index')->with(['trending'=>$blocked, 'cat'=>$category]);
+        return view('dashboard.index')->with(['trending'=>$blocked, 'cat'=>$category, 'title'=>'Blocked posts - Bido']);
       }
 
       // block post
@@ -371,7 +387,7 @@ public function changePassword(Request $request)
       {  $bycat = PostController::getByCategory($category);
          $cat = CategoryController::getCategory();
          $lead = PostController::leadStory();
-        return view('home')->with(['trending'=>$bycat, 'category'=>$category, 'cat'=>$cat, 'lead'=>$lead, 'fulltitle'=>$category. '- Bido']);
+        return view('home')->with(['trending'=>$bycat, 'category'=>$category, 'cat'=>$cat, 'lead'=>$lead, 'fulltitle'=>$category. ' - Bido']);
       }
 
       // post full view
@@ -550,6 +566,12 @@ public function changePassword(Request $request)
     public function contactSent()
    {  
     return view('pages.contact-page-thanks');
+   }
+
+   // account created success page
+    public function accountSuccess()
+   {  
+    return view('pages.account-created-success');
    }
 
     // return contact us page

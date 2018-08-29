@@ -1,9 +1,9 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.usertemplate')
 @section('content')
-<div class="col-md-6 col-lg-6" id="centerDiv">
+<div class="col-md-5" id="centerDiv">
 <div class="" tabindex="" role="dialog" aria-labelledby="">
-        <div class="modal-dialog">
+        <div class="">
             <div class="modal-content" style="padding:10px;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"></button>
@@ -52,7 +52,7 @@
                 @endif
                 @endif
                 <div class="modal-footer">
-                    <button type="submit" class="pull-left btn btn-common">Update</button>
+                    <button type="submit" class="pull-right btn btn-common">Update</button>
                 </div>
                 </form>
             </div>

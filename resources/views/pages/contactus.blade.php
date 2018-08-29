@@ -2,19 +2,10 @@
 @section('content')
 <div class="col-lg-3 col-md-3"> </div>
 <div class="col-lg-6 col-md-6" >
-    <div class="contact-page-div">
-        <div class="contact-error">
-           @if ($errors->any())
-             <div class ="alert alert-warning">
-            <ul class="info">
-                @foreach ($errors->all() as $error)
-                    <li class="alert errors">{{ $error }}</li>
-                @endforeach
-            </ul>
-              </div>
-        @endif                  
-        </div>
-                                        <div class=" col-md-9 col-sm-9 contact-div center-block">
+    <div class="contact-page-div" style="margin-top: 38px;">
+
+            <center><h2>Contact us</h2></center>
+                                        <div class=" col-md-9 col-sm-9 contact-div center-block panel">
                                    
                                <!-- <div class="panel panel-default">-->
                                 

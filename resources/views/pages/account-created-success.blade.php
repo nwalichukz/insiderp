@@ -4,12 +4,12 @@
         <div class="modal-dialog">
             <div class="modal-content" style="padding:10px;">
                 <div class="modal-header">
-           <h3 class="modal-title" id="lineModalLabel">Email Reset Successfully</h3>
+           <h3 class="modal-title" id="lineModalLabel">Account Created Successfully</h3>
                 </div>
-               <p style="text-align:justify; font-size:1.2em;">A reset password has been sent to your email address please check your mail.</p>
+               <p style="text-align:justify; font-size:1.2em;">Account created successfully. Thanks for joining us. Enjoy !!!</p>
               
                  <div class="modal-footer">  
-                <a style="color:#2F4F4F;" href="{{url('/')}}" title="click to go back to bido home page"><button>continue </button></a>
+                <a style="color:#2F4F4F;" href="{{url('/login')}}" title="click to go back to bido home page"><button>continue </button></a>
                 <br/>
                 </div>
             </div>

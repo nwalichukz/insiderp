@@ -78,6 +78,61 @@ $.fn.modal.Constructor.prototype.enforceFocus = function() {
         </div>
     </div>
 
+
+    <!-- modal for sharing a story -->
+
+    <div class="modal fade" id="addPostStoryModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="padding:10px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h3 class="modal-title" id="lineModalLabel">Share a story</h3>
+                </div>
+                <form action="{{url('add-post')}}" method="post" enctype="multipart/form-data" id="">
+                
+                    <div class="form-group">
+                        <input type="text" name="title" class="form-control" placeholder="Enter the title of the story max of ten words" required>
+                    </div>
+                    
+                    <div class="form-group">
+                    <textarea name="post" rows="3" id="shareStory" class="form-control" placeholder="Stories inspire, encourage, teach and unite us. Share a story !!!" required></textarea>
+                </div>
+                 <script type="text/javascript">
+                     CKEDITOR.replace( '' );
+
+$.fn.modal.Constructor.prototype.enforceFocus = function() {
+  modal_this = this
+  $(document).on('focusin.modal', function (e) {
+    if (modal_this.$element[0] !== e.target && !modal_this.$element.has(e.target).length 
+    && !$(e.target.parentNode).hasClass('cke_dialog_ui_input_select') 
+    && !$(e.target.parentNode).hasClass('cke_dialog_ui_input_text')) {
+      modal_this.$element.focus()
+    }
+  })
+};
+</script>
+<input type="hidden" name="category" value="Story">
+            
+                <div class="modal-body">
+                    <!-- content goes here -->
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="attachment">Share with image:</label>
+                            <input type="file" name="image" onchange="readURL(this);" id="images" multiple="true" />
+                            <div id="image-holder" class="col-md-12"></div>
+                            <img class="showimg" src="#" alt="" /> 
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="pull-left btn btn-common">Share</button>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
     <!-- modal for inviting friends -->
 
     <div class="modal fade" id="inviteFriendModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">

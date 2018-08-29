@@ -10,8 +10,9 @@
 		<div style="padding: 0 10px 10px 10px;">
 		<p style="text-align:justify; font-size:1.2em;">
 			<strong>{{$name}} </strong>invited you to join Bido.  <br/>
-			 Bido is a social tool that allow users post news, opinions, articles, questions and get involved in discussing 
-			those issues that affect us and our society especially in Nigeria.
+			 Bido is a social tool that allow users post news, opinions, articles, questions, share an experience and get involved in discussing 
+			those issues that affect us and our society especially in Nigeria. Try out Bido today by sharing any story or an experience that you believe
+			will benefit people like you.
 			</p>
 			<a href="http://www.bido.com.ng/register" title="click to Join">
 				<center>

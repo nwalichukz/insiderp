@@ -52,7 +52,7 @@
                      <div style="border:1px solid #fff;" class="col-md-12">
                     
           
-                      <h3>{{title_case($Helper->get_title($trend->title, 10))}} </h3>          
+                      <h3>{{title_case($Helper->get_title($trend->title, 12))}} </h3>          
                   <p style="font-size:1.3em;">
                     {!! ucfirst($trend->post) !!}
                      </p>

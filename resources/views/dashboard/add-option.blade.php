@@ -1,7 +1,7 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.usertemplate')
 @section('content')
-  <div class="col-md-6" >
+  <div class="col-md-5" >
         <div class="modal-dialog">
             <div class="modal-content" style="padding:10px;">
                 <div class="modal-header">

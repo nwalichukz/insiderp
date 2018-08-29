@@ -1,7 +1,7 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.usertemplate')
 @section('content')
-<div class="col-md-6 col-lg-6 panel" id="centerDiv">
+<div class="col-md-5 col-lg-5 panel" id="centerDiv">
 		<div class="item-wrap">
 			<!-- yes oh here start loop -->
       @if($trending->count() >= 0)
@@ -19,45 +19,38 @@
                                     <span class=""><span style=";">{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}</span> /<span style="color:#FF8C00;">{{$trend->category}} </span>
                                     </a>
                                 </figure>
+                                <span class="time-right time-date-fullview">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
                             </div> 
                         </div>
         
-                       <a href="{{url('/delete-post/'.$trend->id)}}"> <i title="Delete this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
-                        <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
+                      <a href="{{url('/delete-post/'.$trend->id)}}"> <i title="Delete this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
+                      <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
 
                      </div>
                     <div class="container1 col-md-10 col-lg-12 panel">
                     	@if(!empty($Helper->postImage($trend->id)->name))
-                    	<div style="border:1px solid #fff;" class="col-md-3" style="width:100px; float:left; height:170px;">
+                    	<div style="border:1px solid #fff;" class="col-md-4" style="width:100px; float:left; height:170px;">
               			 	<img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:160px" alt="Image for this post">
               			 </div>
-              			 <div style="border:1px solid #fff; padding:0 0 0 10px" class="col-md-9 col-lg-8">
-              		
-                       @if(!empty($trend->title))
+              			 <div style="border:1px solid #fff; padding:0 0 0 10px" class="col-md-8">
+              	
                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
-                     @else
-                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
-                     @endif
+                    
               	   	<p style="font-size:1.2em;">
               			{!!ucfirst($Helper->get_words($trend->post, 23))!!} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a>
               			 </p>
-              			 
-              			 	<span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
-              		
               		</div>
               		@else
               		
                        @if(!empty($trend->title))
-                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 10))}} </h4> </a>
+                     <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{ucfirst($Helper->get_title($trend->title, 12))}} </h4> </a>
                      @else
-                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 10))}} </h4> </a>
+                      <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}"> <h4>{{ucfirst($Helper->get_title($trend->post, 12))}} </h4> </a>
                      @endif
               		<p style="font-size:1.2em;">
               			{!!ucfirst($Helper->get_words($trend->post, 23))!!} <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a>
               			 </p>
-              			 
-              			 	<span class="time-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span>
-                		
+              
               		@endif
               	</div>
               	 <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="{{$trend->id}}">
@@ -110,14 +103,12 @@
                  @endif
                  <a href="{{url('/unblock-comment/'.$comment->id)}}"> <i title="Edit this comment" class="glyphicon glyphicon-edit time-date"> </i> </a>
              </span>
-            
               </div>
              @endif
               	</div>
               </div>
               @endforeach
               @endif
-       
               <!--- comment form -->
            @if(Auth::check())
               <div class="col-md-12 commentform">

@@ -1,7 +1,7 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.usertemplate')
 @section('content')
-<div class="col-md-7 col-lg-7 panel" id="centerDiv">
+<div class="col-md-6 panel" id="centerDiv">
 		<div class="item-wrap">
 			<!-- yes oh here start loop -->
       @if($trending->count() >= 0)

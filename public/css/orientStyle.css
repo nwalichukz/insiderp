@@ -93,7 +93,8 @@ text-decoration: none;
 text-transform: uppercase;
  }
  .email-phone{
-  color: ;
+  color: #000;
+  font-size: 1.2em;
  }
 .m-b-md {
 margin-bottom: 30px;
@@ -119,7 +120,7 @@ border-radius: 5px;
 }
 .trendBox, .leadBox{
   margin: 5px 0 5px 0;
-  background: #F5F5F5;
+  background: #F8F8FF;
   border: 1px solid #F8F8FF
 }
 .homeTitle{
@@ -128,6 +129,10 @@ font-size:1.6em;
 font-family:"san-serif";
 text-align:center;
 margin: -8px 0 5px 0;
+}
+.post-text{
+  font-size: 1.2em;
+  color: #000;
 }
 .searchbtn{
 height:38px;
@@ -177,10 +182,9 @@ width: 100%;
   background-color: #3299CC;
   border:1px solid #3299CC;
   text-decoration: none;
-  color:#000;
+  color:#FFF;
 }
 a:active{
-border-bottom: 1px solid #EEE;
 border-top: 1px solid #FFF;
 }
 .panel-default> .panel-heading{
@@ -220,7 +224,8 @@ border-radius: 4px;
 background-color: #F5F5F5;
 }
 #centerDiv{
-  margin-left: 10px;
+  margin: 0px 0 0 10px;
+  padding: 10px 0 10px 0;
 }
 .article-title{
   margin:0 0 0 0;
@@ -423,6 +428,20 @@ text-align: center;
     padding: 10px 1px 0px 1px;
     margin: 10px 10px 5px 10px;
 }
+.container1:hover{
+  border: 1px solid #EEE;
+}
+.post-text>body>p {
+    color:#000;
+    font-size: 1.2em;
+}
+.post-text>body>p>ol>li{
+  color:#000;
+    font-size: 1.2em;
+}
+.trendtext{
+  font-size: 1.1em;
+}
 /* comment box */
 .container2 {
     background-color: #f8f8f8;
@@ -512,6 +531,10 @@ text-align: center;
 .imgcircle{
   width:33px;
   height:33px;  
+}
+.imgcircle-userpost{
+  width:40px;
+  height:40px;  
 }
 .avatarwrapper{
   margin-top:23px;

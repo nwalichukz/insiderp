@@ -29,7 +29,7 @@
                    <div class="media-left">
                             <div class="figure-block">
                                 <figure class="item-thumb">
-                                    <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="The user name and the page this posted">
+                                    <a href="{{ url('/post/'.$Helper->user($trend->user_id)->user_name) }}" title="The user name and the page this posted">
                                     @if(!empty($Helper->postAvatar($trend->user_id)->name))
                                    <img src="{{asset("images/user/".$Helper->postAvatar($trend->user_id)->name)}}" class="img-circle imgcircle" alt="thumb">
                                    @else

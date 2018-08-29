@@ -236,8 +236,21 @@ class PostController extends Controller
     */
     public static function getByUser($id){
         return Post::where('user_id', $id)->where('status', 'active')->orderBy('created_at', 'DESC')
-                         ->with('comment')->with('postimage')->with('user')
-                        ->with('avatar')->limit(1000)->paginate(30);
+                                    ->limit(1000)->paginate(30);
+    
+    }
+
+     /**
+    * gets post by user_name
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function getByUserName($user_name){
+        $user = UserController::getByUserName($user_name);
+        return Post::where('user_id', $user->id)->where('status', 'active')->orderBy('created_at', 'DESC')
+                                    ->limit(1000)->paginate(30);
     
     }
 

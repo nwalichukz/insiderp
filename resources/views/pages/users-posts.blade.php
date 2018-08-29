@@ -15,18 +15,19 @@
     @endif
     @endif
      </div>
-    @if(!empty($trendpost))
-    <div class="col-md-12 trendBox">
-    <h4 class="titles"> Trending </h4>
-     <hr/>      
-    @foreach($trendpost as $post)
-    <a class="trendtext" href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"> <h4 class="trending"> {{$Helper->get_title(ucfirst(strtolower($post->title)), 10)}} </h4> </a>
+
+        @if(!empty($trendpost))
+          <div class="col-md-12 trendBox">
+               <h4 class="titles"> Trending </h4>
+            <hr/>      
+            @foreach($trendpost as $post)
+    <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"> <h4 class="trending"> {{$Helper->get_title(ucfirst(strtolower($post->title)), 10)}} </h4> </a>
     @endforeach
      </div>
      @endif
    </div>
-		<div class="">
-    @if(empty($title))
+			     <div class="">
+              @if(empty($title))
     <div class="col-md-7">
     <form method="POST" action="{{url('/post-search')}}"> 
          {{ csrf_field() }}
@@ -43,29 +44,30 @@
     </div>
     @endif
 <div class="col-md-7">
-            <div style="border:1px solid #f1f1f1;" id="panel-heading" class="panel panel-primary">
+            <div style="border:1px solid #f1f1f1; " id="panel-heading" class="panel panel-primary">
               <div id="index-sutitle" class="panel-heading">@if(!empty($category)){{$category}} Posts @elseif(!empty($search)) About {{$search->count()}} Search Results @else Trending Posts @endif</div>
               <div class="panel-body">	
               <!-- Ya just loop it here -->
             <div id="commentID">
-              
-      <!-- yes oh here start loop -->
-      @if($trending->count() > 0)
-      @foreach($trending as $trend)
-                <div class="col-md-10 avatarwrapper">
-                                   <div class="media-left">
+
+                      <!-- yes oh here start loop -->
+                      <div class="media-left">
                                   <figure class="item-thumb">
-                                    <a href="{{ url('/post/'.$Helper->user($trend->user_id)->user_name) }}" title="View all posts by {{$Helper->user($trend->user_id)->user_name}}">
-                                    @if(!empty($Helper->postAvatar($trend->user_id)->name))
-                                   <img src="{{asset("images/user/".$Helper->postAvatar($trend->user_id)->name)}}" class="img-circle imgcircle" alt="thumb">
+                                   @if(!empty($Helper->postAvatar($user->id)->name))
+                                   <img src="{{asset("images/user/".$Helper->postAvatar($user->id)->name)}}" class="img-circle imgcircle-userpost" alt="thumb">
                                    @else
                                     <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
                                    @endif
-                                  {{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}/<span style="color:#FF8C00;">{{$trend->category}} </span>
-                                    </a>
+                                  <span style="font-size:1.3em;">{{ucfirst(strtolower($Helper->user($user->id)->user_name))}} </span>
                                 </figure>
-                          <p> <span class="time-right time-date-fullview">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span></p>
+
+                          <p> <span class="time-right time-date-fullview">Joined on: {{date('d F \'y \a\t h:i:a', strtotime($user->created_at))}}</span></p>
+
                         </div>
+                        <hr style="margin-bottom:-10px;">
+      @if($trending->count() > 0)
+      @foreach($trending as $trend)
+                <div class="col-md-10 avatarwrapper">
                         @if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
                         @if($trend->status ==='active')
                        <a href="{{url('/block-post/'.$trend->id) }}"> <i title="Block this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
@@ -76,22 +78,27 @@
                         @endif
                      </div>
 
-                    <div class="container1 col-md-12 panel post-text" style="padding:0 0px 0 0;">
+                    <div class="container1 col-md-12 panel" style="padding:0 0px 0 0;">
                       @if(!empty($Helper->postImage($trend->id)->name))
                       <div class="col-md-4" style="float:left; padding:0;">
-                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;">
+                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;" >
                      </div>
-                     <div class="col-md-8" style="padding:0 0 0 10px;">
+                     <div class="post-text col-md-8" style="padding:0 0 0 10px;">
                      
-                     <a href="{{url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-'))}}"><h4>{{title_case(strtolower($Helper->get_title($trend->title, 12)))}}</h4></a>
+                     <a href="{{url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-'))}}"><h4>{{title_case(strtolower($Helper->get_title($trend->title, 10)))}}</h4></a>
                    
-                    {!!ucfirst($Helper->get_words($trend->post, 22))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($lead->title), '-')) }}" title="click to read full details"> more </a>  
+                    {!!ucfirst($Helper->get_words($trend->post, 30))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($lead->title), '-')) }}" title="click to read full details"> more </a> 
                      
+                      <p> <span class="time-right time-date-fullview">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span></p>
                   </div>
                   @else
-                  <a href='{{ url("/post-full-view/".$trend->id."/".str_slug(strtolower($trend->title), '-')) }}'> <h4> {{title_case($Helper->get_title($trend->title, 12))}} </h4> </a>
-                    {!!ucfirst($Helper->get_words($trend->post, 22))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a> 
-                    @endif
+      
+                  <a href='{{ url("/post-full-view/".$trend->id."/".str_slug(strtolower($trend->title), '-')) }}'> <h4> {{title_case($Helper->get_title($trend->title, 10))}} </h4> </a>
+                   
+                    {!!ucfirst($Helper->get_words($trend->post, 30))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a> 
+                     
+                      <p> <span class="time-right time-date-fullview pull-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</span></p>
+                  @endif
                 </div>
 
                 <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="postBox">
@@ -121,6 +128,7 @@
                   @endif
                 </span>
                 </div>
+
                 <!--- comment box -->
                 @if(!empty($Helper->comment($trend->id)))
                 @foreach($Helper->comment($trend->id) as $comment)
@@ -139,8 +147,8 @@
                   <p style="font-size:1em;" class="container2">
                     <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
                 {!!ucfirst($comment->comment)!!}
-                  </p>
-                <span class="time-date pull-right">{{date('d F \'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
+                     </p>
+                     <span class="time-date pull-right">{{date('d F \'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                 </div>
                 <div>
                  <div class="col-md-12" id="likeBox">
