@@ -176,6 +176,8 @@ class WebViewController extends Controller
             return redirect()->back();
         }elseif ($auth === 'user') {
             return redirect()->back();
+        }elseif ($auth === 'editor') {
+            return redirect()->back();
         }elseif ($auth === 'suspended') {
             return redirect('suspended-banned');
         }elseif ($auth === 'banned') {
