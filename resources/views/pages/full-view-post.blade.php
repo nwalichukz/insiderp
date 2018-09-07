@@ -44,7 +44,7 @@
                          <hr/ id="hr-fullview">
                      </div>
 
-                    <div class="panel container1 col-md-12">
+                    <div class="panel container1 col-md-11">
                       @if(!empty($Helper->postImage($trend->id)->name))
                       <div style="border:1px solid #fff;" class="col-md-9" style="width:; height:;">
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:; height:;">
@@ -60,7 +60,7 @@
                   </div>
                   @else
             
-                     <h3>{{title_case($Helper->get_title($trend->title, 10))}} </h3> 
+                     <h3>{{title_case($Helper->get_title($trend->title, 12))}} </h3> 
                      
                                       
                   <p style="font-size:1.3em;">

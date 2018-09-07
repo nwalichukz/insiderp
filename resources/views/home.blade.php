@@ -20,7 +20,7 @@
     <h4 class="titles"> Trending </h4>
      <hr/>      
     @foreach($trendpost as $post)
-    <a class="trendtext" href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"> <h4 class="trending"> {{$Helper->get_title(ucfirst(strtolower($post->title)), 10)}} </h4> </a>
+    <a class="trendtext" href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"> <h4 class="trending"> {{$Helper->get_title(ucfirst(strtolower($post->title)), 13)}} </h4> </a>
     @endforeach
      </div>
      @endif

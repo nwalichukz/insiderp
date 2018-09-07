@@ -116,7 +116,8 @@ class PostController extends Controller
     */
     public static function getByCategory($category)
     {
-    	return Post::where('status', 'active')->where('category', $category)->paginate(25);
+    	return Post::where('status', 'active')->where('category', $category)
+                ->orderBy('created_at', 'DESC')->paginate(25);
     }
 
     /**
