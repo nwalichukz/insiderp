@@ -65,6 +65,10 @@ Route::get('/trending-posts', 'WebViewController@latest');
 
 
 
+Route::get('/template', function () {
+    return view('template.t-home');
+});
+
 
 
 

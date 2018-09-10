@@ -11,7 +11,7 @@
     <title>@if(!empty($title))
 	    {{ $title }}
 		@else
-		Luba.com.ng
+		Bido.com.ng
 		@endif</title>
 
     <!-- Styles -->
@@ -43,7 +43,7 @@
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                    <!-- <img class="logoImg" src="{{asset('images/logo/orientLogo.jpg')}}" />-->
-                    <p class="logoText">Luba</p>
+                    <p class="logoText">Bido</p>
                 </a>
                
             </div>
