@@ -27,7 +27,7 @@
                       <a href="{{url('/edit-post/'.$trend->id)}}"> <i title="Edit this post" class="edit glyphicon glyphicon-edit pull-right"> </i> </a>
 
                      </div>
-                    <div class="container1 col-md-10 col-lg-12 panel">
+                    <div class="container1 col-md-11 panel">
                     	@if(!empty($Helper->postImage($trend->id)->name))
                     	<div style="border:1px solid #fff;" class="col-md-4" style="width:100px; float:left; height:170px;">
               			 	<img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:160px" alt="Image for this post">

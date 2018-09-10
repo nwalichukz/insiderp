@@ -10,7 +10,7 @@
             <hr/>
        @if(!empty($lead->title))
       @if(!empty($Helper->postImage($lead->id)->name))
-    <img src="{{asset("images/post/".$Helper->postImage($lead->id)->name)}}" style="width:100%; height:150px;">
+    <img src="{{asset("images/post/".$Helper->postImage($lead->id)->name)}}" style="width:100%;">
     <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}"> <h4> {{$Helper->get_title(ucfirst(strtolower($lead->title)), 10)}} </h4> </a>
     @endif
     @endif
@@ -52,6 +52,7 @@
       <!-- yes oh here start loop -->
       @if($trending->count() > 0)
       @foreach($trending as $trend)
+      <div class="postcover">
                 <div class="col-md-10 avatarwrapper">
                                    <div class="media-left">
                                   <figure class="item-thumb">
@@ -68,7 +69,7 @@
                         </div>
                         @if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
                         @if($trend->status ==='active')
-                       <a href="{{url('/block-post/'.$trend->id) }}"> <i title="Block this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
+                       <a href="{{url('/block-post/'.$trend->id) }}"><i title="Block this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
                        @else
                        <a href="{{url('/unblock-post/'.$trend->id)}}"> <i title="unblock this post" class="trash glyphicon glyphicon-trash pull-right"> </i> </a>
                        @endif
@@ -77,20 +78,20 @@
                      </div>
 
                     <div class="container1 col-md-12 panel post-text" style="padding:0 0px 0 0;">
+                    
                       @if(!empty($Helper->postImage($trend->id)->name))
-                      <div class="col-md-4" style="float:left; padding:0;">
-                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; height:180px;">
+                      <a href="{{url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-'))}}"><h4>{{title_case(strtolower($Helper->get_title($trend->title, 12)))}}</h4></a>
+                      <div class="col-md-12" style="float:left; padding:0; width:100%;">
+                      <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:100%; max-height:300px;">
                      </div>
-                     <div class="col-md-8" style="padding:0 0 0 10px;">
-                     
-                     <a href="{{url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-'))}}"><h4>{{title_case(strtolower($Helper->get_title($trend->title, 12)))}}</h4></a>
+                     <div class="col-md-12" style="padding:0 0 0 7px;">
                    
-                    {!!ucfirst($Helper->get_words($trend->post, 22))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($lead->title), '-')) }}" title="click to read full details"> more </a>  
+                    {!!ucfirst($Helper->get_words($trend->post, 35))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($lead->title), '-')) }}" title="click to read full details"> more </a>  
                      
                   </div>
                   @else
                   <a href='{{ url("/post-full-view/".$trend->id."/".str_slug(strtolower($trend->title), '-')) }}'> <h4> {{title_case($Helper->get_title($trend->title, 12))}} </h4> </a>
-                    {!!ucfirst($Helper->get_words($trend->post, 22))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a> 
+                    {!!ucfirst($Helper->get_words($trend->post, 32))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a> 
                     @endif
                 </div>
 
@@ -136,24 +137,23 @@
                   </a>
                 </div>
                  <div class="col-md-9">
-                  <p style="font-size:1em;" class="container2">
-                    <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
-                {!!ucfirst($comment->comment)!!}
-                  </p>
-                <span class="time-date pull-right">{{date('d F \'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
+                  <span style="font-size:1em;" class="container2">
+                 <a href="#">{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</a> 
+                {{ucfirst($comment->comment)}}
+
+                  </span>
+                
                 </div>
-                <div>
-                 <div class="col-md-12" id="likeBox">
-                <i class="col-md-3" ></i>
+                 <div class="col-md-12 comment-date" id="likeBox">
+                <i class="col-md-1"></i>
                 @if(Auth::check()) 
-                <span class="col-md-3 likedata commentlike"  aria-hidden="true">
+                <span class="col-md-2 likedata commentlike"  aria-hidden="true">
                 <a href='{{url("comment-like/".$comment->id)}}'>
                 <i class="likedata time-date" title="like this comment" onclick="commentLike(event);" id="{{$comment->id}}">
                   {{$Helper->commentLike($comment->id)}} Like</i> </a> </span>
                 @endif
-                
+                <span class="time-date">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                </div>
-                </div>
               </div>
               </div>
               @endforeach
@@ -184,8 +184,7 @@
             </div>
         </div>
         @endif
-
-    
+    </div>
          <!---yes stop loop here  -->
          @endforeach
           @if(!Auth::check())
@@ -207,7 +206,7 @@
           </div>
         </div>
         <div class="con col-md-2">
-			 <!-- pentalk pages -->
+			 <!-- bido pages -->
             <h4 class="titles"> Bido Pages </h4>
             <hr/>  
 			 <ul class="lead-story-header">

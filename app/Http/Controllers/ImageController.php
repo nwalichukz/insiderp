@@ -50,7 +50,7 @@ class ImageController extends Controller
             $file = $request->file('image');
             $filename = rand().time().'.'.$file->getClientOriginalExtension();
             $path = public_path('images/post/'.$filename);
-            $avatar = Image::make($file->getRealPath())->resize(300, 180)->save($path);
+            $avatar = Image::make($file->getRealPath())->resize(400, 200)->save($path);
             return $filename;
         }
         else{

@@ -18,7 +18,7 @@
     </form>
     </div>
     @endif
-<div class="col-md-6 col-lg-6 panel" id="centerDiv">
+<div class="col-md-6 panel" id="centerDiv">
 	     <!-- Ya just loop it here -->
             <div id="mainContent">
 
@@ -75,7 +75,7 @@
                      </p>
                   @endif
                 </div>
-                <div style="margin-bottom:8px;" class="col-md-10 col-lg-10" id="postBox">
+                <div style="margin-bottom:9px;" class="col-md-10" id="postBox">
                 <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$Helper->getLikes($trend->id)}}</i> </span>
                 <span class="col-md-3" title="Total number of times this post is viewed" aria-hidden="true">
                   <i class="likedata time-date">
@@ -115,24 +115,28 @@
                   </a>
                 </div>
                  <div class="col-md-9">
-                  <p style="font-size:1em;" class="container2 ">
+                  <span style="font-size:1em;" class="container2 ">
                     <a href="#"><span>{{ucfirst(strtolower($Helper->commenter($comment->user_id)->user_name))}}</span></a> 
                 {{ucfirst($comment->comment)}}
 
-                     </p>
-                     <span class="time-date pull-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}} </span>
+                     </span>
+                    
                 </div>
                 <div>
-                 <div class="col-md-12" id="likeBox">
-                <i class="col-md-2" ></i>
+                 <div class="col-md-12 comment-date" id="likeBox">
+                <i class="col-md-1" ></i>
                 <a href='{{url("comment-like/".$comment->id)}}'> 
-                <span class="col-md-3 likedata commentlike" title="Like this comment, total number likes for this comment" aria-hidden="true">
+                <span class="col-md-1 likedata commentlike" title="Like this comment, total number likes for this comment" aria-hidden="true">
                 <i class="likedata time-date" id="{{$comment->id}}">{{$Helper->commentLike($comment->id)}} Like</i> </span>
               </a>
                
                  @if(Auth::check() && (Auth::user()->id === $comment->user_id))
-                 <a href="{{url('/delete-comment/'.$comment->id)}}"> <i class="col-md-1 glyphicon glyphicon-trash time-date" aria-hidden="true"></i> </a>
+                 <a href="{{url('/delete-comment/'.$comment->id)}}">
+                  <i class="col-md-1 glyphicon glyphicon-trash time-date" aria-hidden="true"></i> </a>
                   @endif
+                <span class="time-date">
+                  {{date('d\'y \a\t h:i:a', strtotime($trend->created_at))}} 
+                </span>
               </div>
                 </div>
               </div>

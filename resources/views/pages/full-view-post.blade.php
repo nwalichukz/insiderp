@@ -44,9 +44,9 @@
                          <hr/ id="hr-fullview">
                      </div>
 
-                    <div class="panel container1 col-md-11">
+                    <div class="panel container1 col-md-11" style="padding:0 0px 0 0;">
                       @if(!empty($Helper->postImage($trend->id)->name))
-                      <div style="border:1px solid #fff;" class="col-md-9" style="width:; height:;">
+                      <div style="border:1px solid #fff;" class="col-md-12">
                       <img src="{{asset("images/post/".$Helper->postImage($trend->id)->name)}}" style="width:; height:;">
                      </div>
                      <div style="border:1px solid #fff;" class="col-md-12">
@@ -69,7 +69,7 @@
           
                   @endif
                 </div>
-                <div style="margin-bottom:8px;" class="col-md-10" id="likeBox">
+                <div style="margin-bottom:12px;" class="col-md-10" id="likeBox">
                 <span class="glyphicon glyphicon-thumbs-up col-md-3" title="Total number likes for this post" aria-hidden="true"><i class="likedata"> {{$Helper->getLikes($trend->id)}}</i> </span>
                 <span class="col-md-3" title="Total number of times this post is viewed" aria-hidden="true"><i class="likedata"> 
                   @if(!empty($Helper->postView($trend->id)->view))
@@ -105,23 +105,17 @@
                 </div>
                  <div class="col-md-8">
                   
-                  <p style="font-size:1.2em;" class="container2">
+                  <span style="font-size:1.2em;" class="container2">
                     <a href="#"><span>{{$Helper->commenter($comment->user_id)->user_name}}</span></a> 
                 {{ucfirst($comment->comment)}}
-                     </p>
-                    <span class="time-date pull-right">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}} </span>
-                    
+                     </span>                    
                 </div>
-                <div class="col-md-12">
-                <div class="col-md-2"></div> 
+                <div class="col-md-12 comment-date">
+                <div class="col-md-1"></div> 
                 <a href='{{url("comment-like/".$comment->id)}}'>
-                <span class="glyphicon glyphicon-thumbs-up col-md-3 likedata commentlike time-date" title="like for this comment" aria-hidden="true">
+                <span class="glyphicon glyphicon-thumbs-up col-md-2 likedata commentlike time-date" title="like for this comment" aria-hidden="true">
                 <i class="likedata">{{$Helper->commentLike($comment->id)}}</i> </span></a>
-                
-                <div class="col-md-1">
-                
-             </div>
-
+              <span class="time-date">{{date('d\'y \a\t h:i:a', strtotime($trend->created_at))}} </span>
                 </div>
               </div>
               @endforeach
