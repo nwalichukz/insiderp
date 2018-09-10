@@ -77,7 +77,7 @@
                         @endif
                      </div>
 
-                    <div class="container1 col-md-12 panel post-text" style="padding:0 0px 0 0;">
+                    <div class="container1 col-md-12 post-text" style="padding:0 0px 0 0;">
                     
                       @if(!empty($Helper->postImage($trend->id)->name))
                       <a href="{{url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-'))}}"><h4>{{title_case(strtolower($Helper->get_title($trend->title, 12)))}}</h4></a>
