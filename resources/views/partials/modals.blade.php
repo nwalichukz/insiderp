@@ -56,7 +56,10 @@ $.fn.modal.Constructor.prototype.enforceFocus = function() {
                         <option >Entrepreneurship</option>
                          <option >Health</option>
                         <option >Travel</option>
-                        
+                        <option >Literature Review</option>
+                        <option >Art and Craft</option>
+                        <option >Campus Gist</option>
+
                     </select>
                 </div>
                 <div class="modal-body">
