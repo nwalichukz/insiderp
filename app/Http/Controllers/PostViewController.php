@@ -9,7 +9,7 @@ use App\PostView;
 use Auth;
 class PostViewController extends Controller
 {
-      /**
+    /**
     * This method creates a view  to the
     *
     * view table
@@ -42,12 +42,14 @@ class PostViewController extends Controller
     	$create->save();
     	}else{
         $add->increment('view'); 
-        PostController::rank($post_id);
-        /*if($add->view === 25 || 26 || 50 || 51  || 75 || 76 || 100 || 101 || 125 || 126 || 150 || 151 || 200 || 250 || 300 || 450 || 500 || 600 || 700 || 800 || 900 || 1000)
+        
+        /* $milestone_view = array(25, 50, 51, 75, 100, 125, 150, 200, 250, 300, 450, 500, 600, 700, 800, 900, 1000, 1200, 1500, 1900, 2500, 3000, 4000, 4500, 5000)
+
+        if(in_array($add->view, $milestone_view))
         {
            WebViewController::sendViewNotificationMail($post_id);
         }*/
-        
         }
+    PostController::rank($post_id);
     }
 }

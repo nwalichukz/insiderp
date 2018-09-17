@@ -125,7 +125,8 @@ border-radius: 5px;
 }
 .postcover{
    background: #F8F8FF;
-   margin-bottom: 20px;
+   margin-bottom: 10px;
+   padding: 10px 0 10px 0;
 }
 .homeTitle{
 color:#000;
