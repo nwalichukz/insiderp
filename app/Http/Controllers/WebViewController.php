@@ -685,4 +685,17 @@ public function changePassword(Request $request)
       return redirect('/view-votes');
     }
   }
+  /**
+  * This method adds items to the category
+  *
+  * table
+  *
+  *
+  */
+  public function addSeed(){
+    DB::table('categories')->insert([['name' => 'Literature Review', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
+                                     ['name' => 'Art and Craft', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
+                                     ['name' => 'Campus Gist', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],]);
+    return redirect('/');
+  }
 }

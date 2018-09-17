@@ -50,8 +50,21 @@ class ImageController extends Controller
             $file = $request->file('image');
             $filename = rand().time().'.'.$file->getClientOriginalExtension();
             $path = public_path('images/post/'.$filename);
-            $avatar = Image::make($file->getRealPath())->resize(400, 200)->save($path);
+            $width = Image::make($file->getRealPath())->width();
+            $height = Image::make($file->getRealPath())->height();
+            if($width > 400 && $height > 200){
+            Image::make($file->getRealPath())->resize(400, 200)->save($path);
             return $filename;
+           }/*elseif($width > 400 && $height < 200){
+            Image::make($file->getRealPath())->resize(400, null)->save($path);
+            return $filename;
+         }elseif($width < 400 && $height > 200){
+            Image::make($file->getRealPath())->resize(null, 200)->save($path);
+            return $filename;
+        }*/else{
+            Image::make($file->getRealPath())->save($path);
+            return $filename;
+          }
         }
         else{
             return false;

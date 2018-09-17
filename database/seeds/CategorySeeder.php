@@ -75,6 +75,15 @@ class CategorySeeder extends Seeder
                 ['name' => 'Entrepreneurship',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
+                 ['name' => 'Literature Review',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),],
+                 ['name' => 'Art and Craft',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),],
+                 ['name' => 'Campus Gist',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),],
                 ]);
   
     }

@@ -86,7 +86,7 @@
                      </div>
                      <div class="col-md-12" style="padding:0 0 0 7px;">
                    
-                    {!!ucfirst($Helper->get_words($trend->post, 35))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($lead->title), '-')) }}" title="click to read full details"> more </a>  
+                    {!!ucfirst($Helper->get_words($trend->post, 35))!!}  <a href="{{ url('/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')) }}" title="click to read full details"> more </a>  
                      
                   </div>
                   @else
