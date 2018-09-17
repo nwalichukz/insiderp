@@ -29,8 +29,8 @@ class InviteFriendsMail extends Mailable
      */
     public function build()
     {
-        $subject = 'Special Invitation';
-        $address = 'askbido@gmail.com';
+        $subject = 'Special invitation to join bido';
+        $address = 'support@bido.com.ng';
         $name = 'Bido';
         return $this->view('email.invite-friends')
                     ->subject($subject)

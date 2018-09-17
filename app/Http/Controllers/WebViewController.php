@@ -17,16 +17,20 @@ use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\ViewController;
 use App\Mail\InviteFriendsMail;
 use App\Mail\PasswordResetMail;
+use App\Mail\ViewNotification;
+use App\Mail\contactMail;
 use Carbon\Carbon;
 use App\PostImage;
 use App\Post;
 use App\User;
 use App\Comment;
 use App\View;
+use App\PostView;
 use App\PostLike;
 use App\CommentLike;
 use App\UserImage;
 use Auth, DB, Mail;
+
 
 class WebViewController extends Controller
 {     //the home page
@@ -34,20 +38,35 @@ class WebViewController extends Controller
     $trending = PostController::getTrending();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Trending',
+      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Trending',
       'fulltitle'=>'Trending - news, opinions, articles, questions, get involved your views matter and help make our society better!']);
 	}
-
-  public function index(){
+    // this method returns the latest post
+  public function index(Request $request){
     $trending = PostController::getLatest();
     $trendpost = PostController::getTrendPost();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest', 
+      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest',
         'trendpost'=>$trendpost]);
   }
 
-	/* * This method checks
+  /**
+  * posts for a particular user
+  *
+  * @var $user_name
+  *
+  */
+  public function userPost($user_name){
+     $user = UserController::getByUserName($user_name);
+     $trending = PostController::getByUserName($user_name);
+     $trendpost = PostController::getTrendPost();
+     $category = CategoryController::getCategory();
+     $lead = PostController::leadStory();
+      return view('pages.users-posts')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>$user->user_name, 
+        'trendpost'=>$trendpost, 'user'=>$user, 'fulltitle'=> $user->user_name.' posts-Bido']);
+  }
+  	/* * This method checks
      *
      *
      * @param Request $request
@@ -66,8 +85,8 @@ class WebViewController extends Controller
             
             if($user)
             {
-                flash("Account created successfully, login with the password and email")->success();
-                return redirect('/login');
+                //flash("Account created successfully, login with the password and email")->success();
+                return redirect('/account-success');
 
             }else{
                 flash('Something went wrong user could not be created')->error();
@@ -154,9 +173,11 @@ class WebViewController extends Controller
        
         $auth = AuthController::authenticate($request);
         if($auth === 'admin'){
-            return redirect()->back();
+            return response()->json(null, 200);
         }elseif ($auth === 'user') {
-            return redirect()->back();
+            return response()->json(null, 200);
+        }elseif ($auth === 'editor') {
+            return response()->json(null, 200);
         }elseif ($auth === 'suspended') {
             return redirect('suspended-banned');
         }elseif ($auth === 'banned') {
@@ -205,7 +226,7 @@ class WebViewController extends Controller
     	if(Auth::check() AND (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
    		 $trending = PostController::getLatest();
    		 $category = CategoryController::getCategory();
-   		 return view('dashboard.index')->with(['cat' =>$category, 'trending'=>$trending]);
+   		 return view('dashboard.index')->with(['cat' =>$category, 'posts'=>$trending]);
 
 		}else{
       Auth::logout();
@@ -219,7 +240,7 @@ class WebViewController extends Controller
       if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
         $mypost = PostController::getByUser($id);
         $category = CategoryController::getCategory();
-        return view('dashboard.mypost')->with(['trending'=>$mypost, 'cat'=>$category]);
+        return view('dashboard.mypost')->with(['posts'=>$mypost, 'cat'=>$category]);
       }else{
         Auth::logout();
         return redirect()->back();
@@ -336,7 +357,7 @@ public function changePassword(Request $request)
       { 
         $blocked = PostController::blockedPost();
         $category = CategoryController::getCategory();
-        return view('dashboard.index')->with(['trending'=>$blocked, 'cat'=>$category]);
+        return view('dashboard.index')->with(['trending'=>$blocked, 'cat'=>$category, 'title'=>'Blocked posts - Bido']);
       }
 
       // block post
@@ -368,7 +389,7 @@ public function changePassword(Request $request)
       {  $bycat = PostController::getByCategory($category);
          $cat = CategoryController::getCategory();
          $lead = PostController::leadStory();
-        return view('home')->with(['trending'=>$bycat, 'category'=>$category, 'cat'=>$cat, 'lead'=>$lead, 'fulltitle'=>$category. '- Bido']);
+        return view('home')->with(['posts'=>$bycat, 'category'=>$category, 'cat'=>$cat, 'lead'=>$lead, 'fulltitle'=>$category. ' - Bido']);
       }
 
       // post full view
@@ -387,9 +408,9 @@ public function changePassword(Request $request)
       public function getUsers()
       {  if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
           {
-        $user = UserController::getAll();
+        $users = UserController::getAll();
         $category = CategoryController::getCategory();
-        return view('dashboard.users-page')->with(['trending'=>$user, 'cat'=>$category]);
+        return view('dashboard.users-page')->with(['users'=>$users, 'cat'=>$category]);
         }else{
         Auth::logout();
         return redirect('/');
@@ -432,7 +453,8 @@ public function changePassword(Request $request)
 
     //delete post
     public function deletePost($id)
-    {  if(Auth::check()){
+    { $id_user = PostController::get($id); 
+      if(Auth::check() && (Auth::user()->user_level === 'admin' || Auth::user()->id === $id_user)){
         $delete = PostController::delete($id);
         return redirect()->back();
       }else{
@@ -444,8 +466,8 @@ public function changePassword(Request $request)
 
     //delete comment
     public function deleteComment($id)
-    {
-      if(Auth::check()){
+    { $id_user = CommentController::get($id); 
+      if(Auth::check() && (Auth::user()->user_level === 'admin' || Auth::user()->id === $id_user)){
         $delete = CommentController::delete($id);
         return redirect()->back();
       }else{
@@ -457,7 +479,7 @@ public function changePassword(Request $request)
     //send invitation for friends
     public function inviteFriends(Request $request)
     {     $this->validate($request,
-        [  'email1'=>'required|email',
+        [ 'email1'=>'required|email',
           
            ]);
         if(Auth::check()){
@@ -476,8 +498,9 @@ public function changePassword(Request $request)
          
          Mail::to($request['email3'])->send(new InviteFriendsMail(Auth::user()->name));
         }
+         flash('Friends invitation sent successfully')->success();
           return redirect()->back();
-          flash('Friends invitation sent successfully')->success();
+         
         }else{
           Auth::logout();
           return redirect('/');
@@ -485,7 +508,14 @@ public function changePassword(Request $request)
         }
 
     }
-
+       // send view notifcation mail
+    public static function sendViewNotificationMail($post_id){
+      $post = Post::where('id', $post_id)->first();
+      $user = User::where('id', $post->user_id)->first();
+      $noview = PostView::where('post_id', $post_id)->first();
+      $delay = (new \Carbon\Carbon)->now()->addMinutes(1);
+      Mail::to($user->email)->later($delay, new ViewNotification($user->name, $post->title, $post_id, $noview->view));
+    }
       // send password reset
      public function postResetPassword(Request $request)
     {   $this->validate($request,
@@ -511,11 +541,39 @@ public function changePassword(Request $request)
             return redirect::back();
         }
     }
+    /**
+    * This method sends a mail to contact form
+    *
+    *
+    */
+    public function sendContact(Request $request){
+        $this->validate($request,
+        [ 'email'=>'required|email',
+          'name'=>'required',
+          'subject'=>'required',
+          'message' => 'required',          
+           ]);
+       $delay = (new \Carbon\Carbon)->now()->addMinutes(2);
+      Mail::to('askbido@gmail.com')->later($delay, new contactMail($request['name'], $request['email'], $request['subject'], $request['message']));
+      return redirect('contact-sent');
+    }
 
     // password reset success page
     public function SuccessEmail()
    {  
     return view('pages.email-reset-success');
+   }
+
+    // contact sent page
+    public function contactSent()
+   {  
+    return view('pages.contact-page-thanks');
+   }
+
+   // account created success page
+    public function accountSuccess()
+   {  
+    return view('pages.account-created-success');
    }
 
     // return contact us page
@@ -550,7 +608,7 @@ public function changePassword(Request $request)
     $search = PostController::search($request['name']);
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['trending'=>$search, 'cat'=>$category, 'lead'=>$lead, 'search'=>$search]);
+      return view('home')->with(['posts'=>$search, 'cat'=>$category, 'lead'=>$lead, 'search'=>$search]);
   }
 
    // get edit post page
@@ -570,7 +628,7 @@ public function changePassword(Request $request)
     $update = PostController::update($request);
     if($request){
       flash('Post updated successfully')->success();
-      return redirect(Auth::user()->name.'/my-post/'.Auth::user()->id);
+      return redirect(str_slug(Auth::user()->name).'/my-post/'.Auth::user()->id);
        }else{
         flash('Something went wrong, post updated successfully. Please try again')->error();
       return redirect()->back();

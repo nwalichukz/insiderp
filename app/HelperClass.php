@@ -66,7 +66,7 @@ class HelperClass{
 
   // get some words for the body
    function get_words($sentence, $count) {
-	  preg_match("/(?:\w+(?:\W+|$)){0,$count}/", $sentence, $matches);
+	  preg_match("/<*(?:\w+(?:\W+|$)){0,$count}/", $sentence, $matches);
 	  return $matches[0]. " ...";
 	}
 

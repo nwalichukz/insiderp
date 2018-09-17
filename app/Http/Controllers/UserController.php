@@ -40,6 +40,19 @@ class UserController extends Controller
     	return User::where('id', $id)->first();
     }
 
+    /**
+    * This method returns a user 
+    *
+    * by user_name
+    *
+    * @return response
+    *
+    * @var id
+    */
+    public static function getByUserName($user_name){
+      return User::where('user_name', $user_name)->first();
+    }
+
      /**
     * This method deletes a user
     *

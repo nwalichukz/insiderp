@@ -15,3 +15,5 @@ let tailwindcss = require('tailwindcss');
 mix.postCss('resources/assets/css/bido.css', 'public/css', [
     tailwindcss('./tailwind.js'),
   ]);
+
+mix.js('resources/assets/js/app.js', 'public/js');

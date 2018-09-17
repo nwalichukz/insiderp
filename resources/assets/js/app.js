@@ -14,8 +14,11 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import VModal from 'vue-js-modal';
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.use(VModal);
+
+Vue.component('login', require('./components/Login.vue'));
 
 const app = new Vue({
     el: '#app'

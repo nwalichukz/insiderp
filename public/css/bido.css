@@ -681,17 +681,70 @@ table {
   }
 }
 
-.nav-li {
-  margin-right: 1rem;
-}
-
-.nav-li a {
+a {
   text-decoration: none;
   color: #777;
 }
 
-.nav-li a:hover {
+a:hover {
   color: #22292f;
+}
+
+.nav-li {
+  margin-right: 1rem;
+}
+
+.post-image img {
+  max-height: 200px;
+}
+
+.dropdown-item {
+  text-decoration: none;
+  display: block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  border-bottom-width: 1px;
+  color: #3d4852;
+  background-color: #fff;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  color: #fff;
+  background-color: #3490dc;
+}
+
+.modal-button {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #3490dc;
+  color: #fff;
+  border-radius: .25rem;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+}
+
+.modal-button:hover {
+  background-color: #2779bd;
+}
+
+.modal-input {
+  width: 100%;
+  padding: .75rem;
+  border-width: 1px;
+  border-radius: .25rem;
+}
+
+.modal-select {
+  padding: .25rem;
+  border-radius: .25rem;
+  background-color: #fff;
+  color: #22292f;
+  border-width: 1px;
 }
 
 /**
@@ -3688,6 +3741,10 @@ table {
   margin: 2.5rem;
 }
 
+.m-11 {
+  margin: 2.75rem;
+}
+
 .m-12 {
   margin: 3rem;
 }
@@ -3808,6 +3865,16 @@ table {
 .mx-10 {
   margin-left: 2.5rem;
   margin-right: 2.5rem;
+}
+
+.my-11 {
+  margin-top: 2.75rem;
+  margin-bottom: 2.75rem;
+}
+
+.mx-11 {
+  margin-left: 2.75rem;
+  margin-right: 2.75rem;
 }
 
 .my-12 {
@@ -4032,6 +4099,22 @@ table {
 
 .ml-10 {
   margin-left: 2.5rem;
+}
+
+.mt-11 {
+  margin-top: 2.75rem;
+}
+
+.mr-11 {
+  margin-right: 2.75rem;
+}
+
+.mb-11 {
+  margin-bottom: 2.75rem;
+}
+
+.ml-11 {
+  margin-left: 2.75rem;
 }
 
 .mt-12 {
@@ -10174,6 +10257,10 @@ table {
     margin: 2.5rem;
   }
 
+  .sm\:m-11 {
+    margin: 2.75rem;
+  }
+
   .sm\:m-12 {
     margin: 3rem;
   }
@@ -10294,6 +10381,16 @@ table {
   .sm\:mx-10 {
     margin-left: 2.5rem;
     margin-right: 2.5rem;
+  }
+
+  .sm\:my-11 {
+    margin-top: 2.75rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .sm\:mx-11 {
+    margin-left: 2.75rem;
+    margin-right: 2.75rem;
   }
 
   .sm\:my-12 {
@@ -10518,6 +10615,22 @@ table {
 
   .sm\:ml-10 {
     margin-left: 2.5rem;
+  }
+
+  .sm\:mt-11 {
+    margin-top: 2.75rem;
+  }
+
+  .sm\:mr-11 {
+    margin-right: 2.75rem;
+  }
+
+  .sm\:mb-11 {
+    margin-bottom: 2.75rem;
+  }
+
+  .sm\:ml-11 {
+    margin-left: 2.75rem;
   }
 
   .sm\:mt-12 {
@@ -16630,6 +16743,10 @@ table {
     margin: 2.5rem;
   }
 
+  .md\:m-11 {
+    margin: 2.75rem;
+  }
+
   .md\:m-12 {
     margin: 3rem;
   }
@@ -16750,6 +16867,16 @@ table {
   .md\:mx-10 {
     margin-left: 2.5rem;
     margin-right: 2.5rem;
+  }
+
+  .md\:my-11 {
+    margin-top: 2.75rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .md\:mx-11 {
+    margin-left: 2.75rem;
+    margin-right: 2.75rem;
   }
 
   .md\:my-12 {
@@ -16974,6 +17101,22 @@ table {
 
   .md\:ml-10 {
     margin-left: 2.5rem;
+  }
+
+  .md\:mt-11 {
+    margin-top: 2.75rem;
+  }
+
+  .md\:mr-11 {
+    margin-right: 2.75rem;
+  }
+
+  .md\:mb-11 {
+    margin-bottom: 2.75rem;
+  }
+
+  .md\:ml-11 {
+    margin-left: 2.75rem;
   }
 
   .md\:mt-12 {
@@ -23086,6 +23229,10 @@ table {
     margin: 2.5rem;
   }
 
+  .lg\:m-11 {
+    margin: 2.75rem;
+  }
+
   .lg\:m-12 {
     margin: 3rem;
   }
@@ -23206,6 +23353,16 @@ table {
   .lg\:mx-10 {
     margin-left: 2.5rem;
     margin-right: 2.5rem;
+  }
+
+  .lg\:my-11 {
+    margin-top: 2.75rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .lg\:mx-11 {
+    margin-left: 2.75rem;
+    margin-right: 2.75rem;
   }
 
   .lg\:my-12 {
@@ -23430,6 +23587,22 @@ table {
 
   .lg\:ml-10 {
     margin-left: 2.5rem;
+  }
+
+  .lg\:mt-11 {
+    margin-top: 2.75rem;
+  }
+
+  .lg\:mr-11 {
+    margin-right: 2.75rem;
+  }
+
+  .lg\:mb-11 {
+    margin-bottom: 2.75rem;
+  }
+
+  .lg\:ml-11 {
+    margin-left: 2.75rem;
   }
 
   .lg\:mt-12 {
@@ -29542,6 +29715,10 @@ table {
     margin: 2.5rem;
   }
 
+  .xl\:m-11 {
+    margin: 2.75rem;
+  }
+
   .xl\:m-12 {
     margin: 3rem;
   }
@@ -29662,6 +29839,16 @@ table {
   .xl\:mx-10 {
     margin-left: 2.5rem;
     margin-right: 2.5rem;
+  }
+
+  .xl\:my-11 {
+    margin-top: 2.75rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .xl\:mx-11 {
+    margin-left: 2.75rem;
+    margin-right: 2.75rem;
   }
 
   .xl\:my-12 {
@@ -29886,6 +30073,22 @@ table {
 
   .xl\:ml-10 {
     margin-left: 2.5rem;
+  }
+
+  .xl\:mt-11 {
+    margin-top: 2.75rem;
+  }
+
+  .xl\:mr-11 {
+    margin-right: 2.75rem;
+  }
+
+  .xl\:mb-11 {
+    margin-bottom: 2.75rem;
+  }
+
+  .xl\:ml-11 {
+    margin-left: 2.75rem;
   }
 
   .xl\:mt-12 {

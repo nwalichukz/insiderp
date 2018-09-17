@@ -1,7 +1,7 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.usertemplate')
 @section('content')
-<div class="col-md-6 col-lg-6 panel" id="centerDiv">
+<div class="col-md-5 panel" id="centerDiv">
 		<div class="item-wrap">
 			<!-- yes oh here start loop -->
       @if($trending->count() > 0)
@@ -41,7 +41,10 @@
               			 </p>
               			 
               			 	<span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
-              		
+              		       @if($trend->post_importance==='votes')
+                    <a href="{{url('/add-option/'.$trend->id)}}">
+                     <i title="Add option to this post" class="time-date">add option </i> </a>
+                   @endif
               		</div>
               		@else
               		

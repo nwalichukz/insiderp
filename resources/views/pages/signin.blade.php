@@ -1,28 +1,30 @@
 @extends('layouts.indextemplate')
 @section('content')
- <div style="margin-top: 38px;">
-        <div class="modal-dialog">
-            <div class="modal-content" style="padding:10px;">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h3 class="modal-title" id="lineModalLabel">Login</h3>
-                </div>
-                <form action="{{url('/post-login')}}" method="post" enctype="multipart/form-data">
-                     {{ csrf_field() }}
-                    <div class="form-group">
-                    <input type="text" name="email" class="form-control" placeholder="Enter email address">
-                </div>
-                <div class="form-group">
+    <div class="container mx-auto mt-16 h-full flex items-center justify-center">
+        <div class="w-full md:w-1/2 lg:w-1/3">
+            <div class="font-hairline text-2xl text-center mb-6">Login Here</div>
 
-                    <input type="password" name="password" class="form-control" placeholder="Enter password">
-                </div>
-               
-                <div class="modal-footer">
-                    <a href="{{url('/forgot-password')}}">Forgot password </a>
-                    <button type="submit" class="pull-left btn btn-common">Login</button>
-                </div>
+            <div class="bg-white border-t-8 border-blue rounded flex justify-center py-8 mx-2 lg:mx-0 mb-6">
+                <form action="{{url('/post-login')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="mb-4">
+                        <label for="email" class="block font-base tracking-wide text-black mb-1">Email Address</label>
+                        <input type="email" name="email" placeholder="Email Address" class="appearance-none font-normal border border-solid w-68 py-3 px-3 rounded focus:border-indigo">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="block font-base tracking-wide text-black mb-1">Password</label>
+                        <input type="password" name="password" placeholder="Password" class="appearance-none font-normal border border-solid w-68 py-3 px-3 rounded focus:border-indigo">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div><input type="submit" value="Login" class="appearance-none border py-3 px-6 rounded shadow bg-white text-black hover:bg-blue hover:text-white hover:rounded-lg tracking-wide"></div>
+                        <div><a href="{{url('/forgot-password')}}" class="font-bold text-sm hover:text-black tracking-wide">Forgot password?</a></div>
+                    </div>
                 </form>
             </div>
+            <div class="text-center text-blue font-bold text-sm tracking-wide">Don't have an account? &middot; <a href="{{ url('register') }}" class="hover:text-black">Create Account.</a></div>
+
         </div>
+
     </div>
-    @endsection
+@endsection

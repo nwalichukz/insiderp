@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +14,7 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', 'WebViewController@index');
+Route::get('/post/{user_name}', 'WebViewController@userPost');
 Route::get('/delete-comment/{id}', 'WebViewController@deleteComment');
 Route::get('/comment-like/{id}', 'WebViewController@likeComment');
 Route::post('/post-search', 'WebViewController@search');
@@ -60,13 +63,16 @@ Route::get('/view-votes', 'WebViewController@getVote');
 Route::any('/count-view', 'WebViewController@countView');
 Route::post('/post-option', 'WebViewController@postOption');
 Route::get('/trending-posts', 'WebViewController@latest');
+Route::post('/send-enquiry', 'WebViewController@sendContact');
+Route::get('/contact-sent', 'WebViewController@contactSent');
+Route::get('/account-success', 'WebViewController@accountSuccess');
 
 
 
 
 
-Route::get('/template', function () {
-    return view('template.t-home');
+Route::get('/t-login', function () {
+    return view('template.t-login');
 });
 
 

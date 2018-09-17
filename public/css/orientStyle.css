@@ -70,6 +70,7 @@ padding:0 5px 5px 14px;
   background: #ffffff;
   padding: 3px 10px 10px 8px;
   margin: 0 0 10px 0;
+  position: relative;
 }
 .headNav{
 margin-left:30px; 
@@ -92,7 +93,8 @@ text-decoration: none;
 text-transform: uppercase;
  }
  .email-phone{
-  color: ;
+  color: #000;
+  font-size: 1.2em;
  }
 .m-b-md {
 margin-bottom: 30px;
@@ -118,8 +120,12 @@ border-radius: 5px;
 }
 .trendBox, .leadBox{
   margin: 5px 0 5px 0;
-  background: #F5F5F5;
+  background: #F8F8FF;
   border: 1px solid #F8F8FF
+}
+.postcover{
+   background: #F8F8FF;
+   margin-bottom: 20px;
 }
 .homeTitle{
 color:#000;
@@ -127,6 +133,10 @@ font-size:1.6em;
 font-family:"san-serif";
 text-align:center;
 margin: -8px 0 5px 0;
+}
+.post-text{
+  font-size: 1.2em;
+  color: #000;
 }
 .searchbtn{
 height:38px;
@@ -168,18 +178,17 @@ width: 100%;
   background-color:#008080;
 }
 .btn{
-  background-color: #EEE;
-  color: #000;
+  background-color: #3299CC;
+  color: #FFF;
   border-radius:4px; 
 }
 .btn:hover{
-  background-color: #f1f1f1;
-  border:1px solid  #808080;
+  background-color: #3299CC;
+  border:1px solid #3299CC;
   text-decoration: none;
-  color:#000;
+  color:#FFF;
 }
 a:active{
-border-bottom: 1px solid #EEE;
 border-top: 1px solid #FFF;
 }
 .panel-default> .panel-heading{
@@ -214,11 +223,13 @@ font-family: "san-serif";
 color: #2F4F4F;
 }
 .alert{
-padding: px;border: 1px solid #D3D3D3; border-radius: 4px;
+padding: px;border: 1px solid #D3D3D3;
+border-radius: 4px;
 background-color: #F5F5F5;
 }
 #centerDiv{
-  margin-left: 10px;
+  margin: 0px 0 0 10px;
+  padding: 10px 0 10px 0;
 }
 .article-title{
   margin:0 0 0 0;
@@ -303,7 +314,7 @@ display:none;
 }
 .logoText{
   font-family: Arial, Helvetica, sans-serif;
-  color: #;
+  font-style:italic;
   font-size: 1.6em;
   font-weight: bold;
 }
@@ -350,8 +361,8 @@ carousel slider style on full detail page
 }
 
 .logotext{
-font-size: 1.3em;
-font-weight: 400;
+font-size: 1em;
+font-weight: 200;
 font-family: "san-serif";
 }
 
@@ -417,9 +428,23 @@ text-align: center;
 /* Chat containers */
 .container1 {
     border: 1px thin #F0F0F0;
-    background-color: #fff;
+    background-color: #;
     padding: 10px 1px 0px 1px;
-    margin: 10px 10px 5px 10px;
+    margin: 10px 0px 5px 2px;
+}
+.container1:hover{
+  border: 1px solid #EEE;
+}
+.post-text>body>p {
+    color:#000;
+    font-size: 1.2em;
+}
+.post-text>body>p>ol>li{
+  color:#000;
+    font-size: 1.2em;
+}
+.trendtext{
+  font-size: 1.2em;
 }
 /* comment box */
 .container2 {
@@ -509,9 +534,11 @@ text-align: center;
 }
 .imgcircle{
   width:33px;
-  height:33px;
-  padding: px;
-  margin-right: px;
+  height:33px;  
+}
+.imgcircle-userpost{
+  width:40px;
+  height:40px;  
 }
 .avatarwrapper{
   margin-top:23px;
@@ -520,7 +547,16 @@ text-align: center;
 .time-right {
     float: right;
     color: #aaa;
-    font-size: 1em;
+    font-size: 0.8em;
+}
+.time-date-fullview{
+  margin: -8px 0 10px 38px;
+}
+.twitter-facebook{
+  width:20px;
+}
+#hr-fullview{
+  margin-bottom: -10px;
 }
 .item-footer{
   background: #f1f1f1;
@@ -530,11 +566,23 @@ text-align: center;
   border-radius: 6px;
 }
 .time-date{
-  font-size: 0.8em;
+  font-size: 0.65em;
+}
+.comment-date{
+  margin-bottom: 11px;
 }
 .container-user{
   background:#F1F1F1;
   margin:0 0 13px 0;
   border: 1px solid #eee;
   border-radius: 5px;
+}
+@media only screen and (max-width: 768px) {
+    body {
+        color: #000;
+        font-size: 1.3em;
+    }
+  .trendtext{
+  font-size: 1.2em;
+}
 }

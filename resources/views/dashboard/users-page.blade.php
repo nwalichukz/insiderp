@@ -1,49 +1,40 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.usertemplate')
 @section('content')
-<div class="col-md-7 col-lg-7 panel" id="centerDiv">
-		<div class="item-wrap">
-			<!-- yes oh here start loop -->
-      @if($trending->count() >= 0)
-      <div class="col-md-6 center-block">
-        <p> Total user : {{$trending->count()}} </p>
-       </div>
-			@foreach($trending as $trend)
-              	<div class="col-md-10 col-lg-10">
-              		 <div class="media-left">
-                            <div class="figure-block">
-                                <figure class="item-thumb">
-                                    <a href="{{ url('/') }}" title="The user name and the page this posted">
-                                    @if(!empty($Helper->userimage($trend->id)->name))
-                                   <img src="{{asset("images/user/".$Helper->userimage($trend->id)->name)}}" class="img-circle imgcircle" alt="thumb">
-                                   @else
-                                    <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
-                                   @endif
-                                    <span class=""><span>{{$trend->name}}</span> /<span style="color:#FF8C00;">{{$trend->user_name}} </span>
-                                    </a>
-                                </figure>
-                            </div>
+    <div class="mt-116 flex justify-center px-3">
+        <div class="w-full md:w-2/5">
+            <div class="text-center mb-4">Total Users : {{ $users->count() }}</div>
+
+            @foreach($users as $user)
+                <div class="user bg-white flex items-start justify-between p-4 rounded-lg">
+                    <div>
+                        <a href="{{ url('/') }}" title="The user name and the page this posted" class="flex items-center">
+                            @if(!empty($Helper->userimage($user->id)->name))
+                                <img src="{{asset("images/user/".$Helper->userimage($user->id)->name)}}" class="img-circle imgcircle" alt="thumb">
+                            @else
+                                <img src='{{asset("images/avatar/avatar.png")}}' class="img-circle imgcircle" alt="thumb">
+                            @endif
+                            <span class="ml-2"><span>{{$user->name}}</span> /<span style="color:#FF8C00;">{{$user->user_name}} </span></span>
+                        </a>
+                    </div>
+                    <div>
+                        <p>
+                            @if(!empty($trend->description))
+                                {{$trend->description}}
+                            @endif
+                        </p>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($user->created_at))}}</span>
                         </div>
-                      
-                     </div>
-                    <div class="container-user col-md-10 col-lg-12">
-              		<p style="font-size:1.4em; text-align:justify; color:#000;">
-                    @if(!empty($trend->description))
-              			{{$trend->description}}
-                    @endif
-              			 </p>
-                      <a href="{{url('/block-user/'.$trend->id)}}"> <i title="Block the user" class="trash glyphicon glyphicon-trash "> </i> </a>
-                        <a href="{{url('/edit-user/'.$trend->id)}}"> <i title="Edit this user" class="edit glyphicon glyphicon-edit "> </i> </a>
-          <span class="time-right">{{date('d F \'y \a\t h:i', strtotime($trend->created_at))}}</span>
-              	</div>
-         <!---yes stop loop here  -->
-         @endforeach
-         @else
-         <div class="center-block col-md-4">
-          <p>
-              No user yet
-          </p></div>
-         @endif
-        </div>  
-</div>
+                        <div class="flex items-center">
+                            <div class="mr-3"><a href="{{url('/block-user/'.$user->id)}}"> <i title="Block the user" class="fa fa-recycle "> </i> </a></div>
+                            <div class="mr-3"><a href="{{url('/edit-user/'.$user->id)}}"> <i title="Edit this user" class="fa fa-edit"> </i> </a></div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection

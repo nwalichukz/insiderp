@@ -24,10 +24,11 @@ class AuthController extends Controller
             return 'admin';
         }
         elseif(Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'suspended', 'user_level' =>'user']))
-        {
+        {   Auth::logout();
             return 'suspended';
         }
         elseif(Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'banned', 'user_level' =>'user'])){
+            Auth::logout();
         	return 'banned';
         }
         elseif(Auth::attempt(['email'=> $request->input('email'), 'password'=> $request->input('password'), 'status'=>'active', 'user_level' =>'editor']))
