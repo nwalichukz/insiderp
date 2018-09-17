@@ -38,7 +38,7 @@ class WebViewController extends Controller
     $trending = PostController::getTrending();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Trending',
+      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Trending',
       'fulltitle'=>'Trending - news, opinions, articles, questions, get involved your views matter and help make our society better!']);
 	}
     // this method returns the latest post
@@ -47,7 +47,7 @@ class WebViewController extends Controller
     $trendpost = PostController::getTrendPost();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest', 
+      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest',
         'trendpost'=>$trendpost]);
   }
 
@@ -173,11 +173,11 @@ class WebViewController extends Controller
        
         $auth = AuthController::authenticate($request);
         if($auth === 'admin'){
-            return redirect()->back();
+            return response()->json(null, 200);
         }elseif ($auth === 'user') {
-            return redirect()->back();
+            return response()->json(null, 200);
         }elseif ($auth === 'editor') {
-            return redirect()->back();
+            return response()->json(null, 200);
         }elseif ($auth === 'suspended') {
             return redirect('suspended-banned');
         }elseif ($auth === 'banned') {
@@ -226,7 +226,7 @@ class WebViewController extends Controller
     	if(Auth::check() AND (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
    		 $trending = PostController::getLatest();
    		 $category = CategoryController::getCategory();
-   		 return view('dashboard.index')->with(['cat' =>$category, 'trending'=>$trending]);
+   		 return view('dashboard.index')->with(['cat' =>$category, 'posts'=>$trending]);
 
 		}else{
       Auth::logout();
@@ -240,7 +240,7 @@ class WebViewController extends Controller
       if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
         $mypost = PostController::getByUser($id);
         $category = CategoryController::getCategory();
-        return view('dashboard.mypost')->with(['trending'=>$mypost, 'cat'=>$category]);
+        return view('dashboard.mypost')->with(['posts'=>$mypost, 'cat'=>$category]);
       }else{
         Auth::logout();
         return redirect()->back();
@@ -389,7 +389,7 @@ public function changePassword(Request $request)
       {  $bycat = PostController::getByCategory($category);
          $cat = CategoryController::getCategory();
          $lead = PostController::leadStory();
-        return view('home')->with(['trending'=>$bycat, 'category'=>$category, 'cat'=>$cat, 'lead'=>$lead, 'fulltitle'=>$category. ' - Bido']);
+        return view('home')->with(['posts'=>$bycat, 'category'=>$category, 'cat'=>$cat, 'lead'=>$lead, 'fulltitle'=>$category. ' - Bido']);
       }
 
       // post full view
@@ -408,9 +408,9 @@ public function changePassword(Request $request)
       public function getUsers()
       {  if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
           {
-        $user = UserController::getAll();
+        $users = UserController::getAll();
         $category = CategoryController::getCategory();
-        return view('dashboard.users-page')->with(['trending'=>$user, 'cat'=>$category]);
+        return view('dashboard.users-page')->with(['users'=>$users, 'cat'=>$category]);
         }else{
         Auth::logout();
         return redirect('/');
@@ -608,7 +608,7 @@ public function changePassword(Request $request)
     $search = PostController::search($request['name']);
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['trending'=>$search, 'cat'=>$category, 'lead'=>$lead, 'search'=>$search]);
+      return view('home')->with(['posts'=>$search, 'cat'=>$category, 'lead'=>$lead, 'search'=>$search]);
   }
 
    // get edit post page
@@ -628,7 +628,7 @@ public function changePassword(Request $request)
     $update = PostController::update($request);
     if($request){
       flash('Post updated successfully')->success();
-      return redirect(Auth::user()->name.'/my-post/'.Auth::user()->id);
+      return redirect(str_slug(Auth::user()->name).'/my-post/'.Auth::user()->id);
        }else{
         flash('Something went wrong, post updated successfully. Please try again')->error();
       return redirect()->back();

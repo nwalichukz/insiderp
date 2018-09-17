@@ -1,18 +1,18 @@
 @extends('layouts.indextemplate')
 @section('content')
- <div role="dialog" aria-labelledby="modalLabel" style="margin-top: 38px;">
-        <div class="modal-dialog">
-            <div class="modal-content" style="padding:10px;">
-                <div class="modal-header">
-           <h3 class="modal-title" id="lineModalLabel">Account Created Successfully</h3>
-                </div>
-               <p style="text-align:justify; font-size:1.2em;">Account created successfully. Thanks for joining us. Enjoy !!!</p>
-              
-                 <div class="modal-footer">  
-                <a style="color:#2F4F4F;" href="{{url('/login')}}" title="click to go back to bido home page"><button>continue </button></a>
+<div class="mt-6 flex justify-center">
+    <div class="w-1/2 bg-white rounded shadow p-4">
+        <div class="container mx-auto">
+            <div class="mb-3 border-b">
+                <h3 class="modal-title">Account Created Successfully</h3>
+            </div>
+            <p class="text-center text-xl">Account created successfully. Thanks for joining us. Enjoy !!!</p>
+
+            <div class="modal-footer">
+                <a class="modal-button" href="{{url('/login')}}" title="click to go back to bido home page"><button>continue </button></a>
                 <br/>
-                </div>
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection

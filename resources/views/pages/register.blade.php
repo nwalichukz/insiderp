@@ -1,38 +1,44 @@
 @extends('layouts.indextemplate')
 @section('content')
+    <div class="container mx-auto mt-16 h-full flex items-center justify-center">
+        <div class="w-full md:w-1/2 lg:w-1/3">
+            <div class="font-hairline text-2xl text-center mb-6">Sign up Here</div>
 
-  <div role="dialog" aria-labelledby="modalLabel" style="margin-top: 38px;">
-        <div class="modal-dialog">
-            <div class="modal-content" style="padding:10px;">
-                <div class="modal-header">
-
-                    <h3 class="modal-title" id="lineModalLabel">Signup</h3>
-                </div>
+            <div class="bg-white border-t-8 border-blue rounded flex justify-center py-8 mx-2 lg:mx-0 mb-6">
                 <form action="{{url('register-user')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <div class="form-group">
-                    <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
+                    <div class="mb-4">
+                        <label for="email" class="block font-base tracking-wide text-black mb-1">Full Name</label>
+                        <input type="text" name="name" placeholder="Full Name" class="appearance-none font-normal border border-solid w-68 py-3 px-3 rounded focus:border-blue" required>
+                    </div>
 
-                    <input type="text" name="email" class="form-control" placeholder="Enter your email" required>
-                </div>
-                 <div class="form-group">
-                    <input type="text" name="user_name" onkeyup="checkUnique();" id="user-name" class="form-control" placeholder="Enter a user name must be unique" required>
-                    <div id="content" class="col-md-12"> </div>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder="Enter password min of 6 characters" required>
-                </div>
-                 <div class="form-group">
-                    <input type="password" name="password_confirmation" class="form-control" placeholder="Re-type the password above" required>
-                </div>
-               
-                <div class="modal-footer">
-                    <button type="submit" class="pull-left btn btn-common">Signup</button>
-                </div>
+                    <div class="mb-4">
+                        <label for="email" class="block font-base tracking-wide text-black mb-1">Email Address</label>
+                        <input type="email" name="email" placeholder="Email Address" class="appearance-none font-normal border border-solid w-68 py-3 px-3 rounded focus:border-blue" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="email" class="block font-base tracking-wide text-black mb-1">Username</label>
+                        <input type="text" name="user_name" placeholder="Enter a user name must be unique" onkeyup="checkUnique();" class="appearance-none font-normal border border-solid w-68 py-3 px-3 rounded focus:border-blue" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="block font-base tracking-wide text-black mb-1">Password</label>
+                        <input type="password" name="password" placeholder="Password" class="appearance-none font-normal border border-solid w-68 py-3 px-3 rounded focus:border-blue" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="block font-base tracking-wide text-black mb-1">Confirm Password</label>
+                        <input type="password" name="password_confirmation" placeholder="Confirm Password" class="appearance-none font-normal border border-solid w-68 py-3 px-3 rounded focus:border-blue" required>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <div><input type="submit" value="Sign up" class="appearance-none border py-3 px-6 rounded shadow bg-white text-black hover:bg-blue hover:text-white hover:rounded-lg tracking-wide"></div>
+                    </div>
                 </form>
             </div>
+            <div class="text-center text-blue font-bold text-sm tracking-wide">Have an account? &middot; <a href="{{ url('login') }}" class="hover:text-black">Login.</a></div>
         </div>
+
     </div>
 @endsection

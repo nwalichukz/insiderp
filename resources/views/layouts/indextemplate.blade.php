@@ -10,6 +10,8 @@
 
   gtag('config', 'UA-124060018-1');
 </script>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
  <script src="{{url('ckeditor/ckeditor.js')}}"></script> 
 <meta name="description" content="A social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing 
 those issues that affect us and our society especially in Nigeria">
@@ -29,12 +31,15 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 		@endif</title>
         <!-- Fonts -->
         <!-- Styles -->
-<script src="{{ URL('js/jquery.js') }}" type="text/Javascript"> </script>
-<script src="{{ URL('bootstrap/js/bootstrap.min.js') }}" type="text/Javascript"> </script>
-<script src="{{ URL('js/orientScript.js') }}" type="text/Javascript"> </script>
-    <link rel="stylesheet" href="{{url('bootstrap/css/bootstrap.min.css') }}" type="text/css">
-    <!--<link href="/css/app.css" rel="stylesheet">-->
- <link href="{{asset('css/orientStyle.css')}}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" type="text/Javascript"> </script>
+    <script src="{{ asset('js/orientScript.js') }}" type="text/Javascript"> </script>
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/b.css')  }}" type="text/css">
+    <link href="{{ asset('css/bido.css') }}" rel="stylesheet">
+    <link href="{{asset('css/orientStyle.css')}}" rel="stylesheet">
+    <link href="{{asset('css/fonts.min.css')}}" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-57x57.png') }}">
 <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('images/favicon/apple-icon-60x60.png') }}">
 <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/favicon/apple-icon-72x72.png') }}">
@@ -54,50 +59,66 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     </head>
 <body>
-<div id="header"> 
-<nav  class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <!--<img class="logoImg" src="{{asset('images/logo/orientLogo.jpg')}}" />-->
-                    <p class="logoText">BIDO</p>
-                </a>
-            </div> 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    &nbsp;
-                </ul>
-                <!-- Right Side Of Navbar -->
-              @include('partials.nav')
+<div id="app" class="">
+    <div class="navbar navbar-fixed-top bg-white border-b border-grey py-2">
+        <div class="container mx-auto flex items-center justify-between flex-wrap px-4">
+            <div>
+                <a href="{{ url('/') }}" class="logoText">BIDO</a>
             </div>
+            <div class="block sm:hidden">
+                <button @click="toggle" class="flex items-center px-3 py-2 border rounded">
+                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+                </button>
+            </div>
+            <div :class="open ? 'block w-full': 'hidden'" class="sm:flex sm:items-center sm:w-auto">
+                <div> @include('partials.nav') </div>
+            </div>
+
         </div>
-<div class="successMsg col-md-4 col-lg-4 center-block">
-</div>
-
-@include('partials.errors')
-
-    </nav>
-</div>
-
+    </div>
     @yield('content')
+</div>
       
         <div class="col-md-12">
         <hr/>
-    <nav class="footer"><a href="{{url('/')}}">Home</a> |<a href="{{url('/terms')}}"> Terms </a>|<a href="{{url('/about')}}"> About us</a> | <a href="{{url('/contact')}}">Contact us</a></nav>
+    <nav class="footer"><a href="{{url('/')}}">Home</a> |<!-- <a href="{{url('/terms')}}"> Terms </a>| --><a href="{{url('/about')}}"> About us</a> | <a href="{{url('/contact')}}">Contact us</a></nav>
  <nav class="footer"><a title="The bido team" href="{{url('/')}}">Bido Team </a></nav>
       </div>
-  @include('partials.modals')
 
+<script type="text/x-template" id="dropdown-link-template">
+    <div class="relative">
+        <div role="button" class="inline-block select-none" @click="open = !open">
+            <slot name="link"></slot>
+        </div>
+        <div class="absolute pin-l mt-px" v-show="open">
+            <slot name="dropdown"></slot>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('dropdown-link', {
+        template: '#dropdown-link-template',
+        data() {
+            return {
+                open: false
+            }
+        }
+    });
+
+    new Vue({
+        el: "#app",
+        data: {
+            open: false,
+        },
+
+        methods: {
+            toggle() {
+                this.open = !this.open
+            }
+        },
+    });
+</script>
+<scrip src="{{ asset('js/modals.js') }}"></scrip>
 <script>
     $('#flash-overlay-modal').modal();
 

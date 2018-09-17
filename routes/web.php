@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,6 +71,10 @@ Route::get('/account-success', 'WebViewController@accountSuccess');
 
 
 
+
+Route::get('/t-login', function () {
+    return view('template.t-login');
+});
 
 
 
