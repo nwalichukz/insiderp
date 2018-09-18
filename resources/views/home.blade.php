@@ -39,10 +39,11 @@
                 @if($posts->count() > 0)
                     @include('partials.post-item')
                 @else
-                <div class="bg-white text-center rounded py-3 px-4">Ahhh!... No posts yet</div>
+                <div class="bg-white text-center rounded py-3 px-4">Ahhh!... No posts yet, sorry. Try again.</div>
                 @endif
 
             </div>
+            {{--
             <div class="w-full md:w-1/4">
                 <div class="bg-white py-3 px-4">
                     <div class="mb-2 text-lg">Bido Pages</div>
@@ -56,7 +57,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
