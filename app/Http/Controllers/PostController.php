@@ -54,7 +54,7 @@ class PostController extends Controller
     */
     public static function getAll()
     {
-    	return Post::where('status', 'active')->paginate(25);
+    	return Post::where('status', 'active')->paginate(35);
     }
 
      /**
@@ -104,7 +104,7 @@ class PostController extends Controller
     */
     public static function blockedPost()
     {
-        return Post::where('status', '!=', 'active')->paginate(10);
+        return Post::where('status', '!=', 'active')->paginate(30);
     }
 
        /**
@@ -117,7 +117,7 @@ class PostController extends Controller
     public static function getByCategory($category)
     {
     	return Post::where('status', 'active')->where('category', $category)
-                ->orderBy('created_at', 'DESC')->paginate(25);
+                ->orderBy('created_at', 'DESC')->paginate(35);
     }
 
     /**
@@ -200,7 +200,7 @@ class PostController extends Controller
     */
     public static function getLatest(){
         return Post::where('status', 'active')->orderBy('created_at', 'DESC')
-                       ->limit(250)->paginate(25);
+                       ->limit(250)->paginate(35);
         
     }
 
@@ -213,7 +213,7 @@ class PostController extends Controller
     */
     public static function getTrending(){
         return Post::where('status', 'active')->orderBy('rank', 'DESC')
-                    ->limit(250)->paginate(25);
+                    ->limit(250)->paginate(35);
         
     }
 
@@ -304,7 +304,7 @@ class PostController extends Controller
     public static function search($title)
     {
         return Post::where('title', 'LIKE', $title.'%')
-                    ->where('status', 'active')->orderBy('rank', 'DESC')->paginate(25);
+                    ->where('status', 'active')->orderBy('rank', 'DESC')->paginate(35);
                        /* ->orWhere('post', 'LIKE', '%'.$title.'%')*/
     }
 }

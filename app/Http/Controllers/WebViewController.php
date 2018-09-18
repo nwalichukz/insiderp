@@ -60,7 +60,7 @@ class WebViewController extends Controller
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
       return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest',
-        'trendpost'=>$trendpost]);
+        'trendpost'=>$trendpost,]);
   }
 
   /**
