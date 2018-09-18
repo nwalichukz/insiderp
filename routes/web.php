@@ -66,11 +66,8 @@ Route::get('/trending-posts', 'WebViewController@latest');
 Route::post('/send-enquiry', 'WebViewController@sendContact');
 Route::get('/contact-sent', 'WebViewController@contactSent');
 Route::get('/account-success', 'WebViewController@accountSuccess');
-//Route::get('/add-seed', 'WebViewController@addSeed');
-
-
-
-
+Route::get('/add-seed', 'WebViewController@addSeed');
+Route::get('/delete-seed', 'WebViewController@deleteSeed');
 
 Route::get('/t-login', function () {
     return view('template.t-login');

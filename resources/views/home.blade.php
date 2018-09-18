@@ -24,7 +24,8 @@
                             <p class="text-xl underline text-left px-4">Trending Posts</p>
                             <div class="post py-3 px-4 text-lg">
                                 @foreach($trendpost as $post)
-                                    <p class="mb-2"><a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}">{{$Helper->get_title(ucfirst(strtolower($post->title)), 13)}}</a></p>
+                                    <p class="mb-2">
+                                      <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}">{{$Helper->get_title(ucfirst(strtolower($post->title)), 13)}}</a></p>
                                 @endforeach
                             </div>
                         </div>
@@ -58,5 +59,4 @@
             </div>
         </div>
     </div>
-
 @endsection

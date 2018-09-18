@@ -33,7 +33,14 @@ use Auth, DB, Mail;
 
 
 class WebViewController extends Controller
-{     //the home page
+{
+ /**
+  * This method returns the latest post
+  *
+  * for the app
+  *
+  * @return view
+  */
 	public function latest(){
     $trending = PostController::getTrending();
      $category = CategoryController::getCategory();
@@ -41,7 +48,12 @@ class WebViewController extends Controller
       return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Trending',
       'fulltitle'=>'Trending - news, opinions, articles, questions, get involved your views matter and help make our society better!']);
 	}
-    // this method returns the latest post
+    /**
+  * This method returns the home page
+  *
+  * for the app
+  *
+  */
   public function index(Request $request){
     $trending = PostController::getLatest();
     $trendpost = PostController::getTrendPost();
@@ -693,9 +705,21 @@ public function changePassword(Request $request)
   *
   */
   public function addSeed(){
-    DB::table('categories')->insert([['name' => 'Literature Review', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
-                                     ['name' => 'Art and Craft', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
-                                     ['name' => 'Campus Gist', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],]);
+    DB::table('categories')->insert([['name' => 'Story', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
+                                     ['name' => 'Literature Review', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
+                                          ]);
     return redirect('/');
   }
+
+   /**
+  * This method deletes items to the category
+  *
+  * table
+  *
+  *
+  */
+   public function deleteSeed(){
+    DB::table('categories')->where('name', 'Literature Review')->delete();
+    return redirect('/');
+   }
 }
