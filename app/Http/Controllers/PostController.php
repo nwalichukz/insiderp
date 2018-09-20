@@ -200,7 +200,7 @@ class PostController extends Controller
     */
     public static function getLatest(){
         return Post::where('status', 'active')->orderBy('created_at', 'DESC')
-                       ->limit(1000)->paginate(5);
+                       ->limit(1000)->paginate(39);
         
     }
 
