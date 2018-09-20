@@ -41,8 +41,9 @@
                 @else
                 <div class="bg-white text-center rounded py-3 px-4">Ahhh!... No posts yet, sorry. Try again.</div>
                 @endif
-
+                <div class="mt-4">{{ $posts->links() }}</div>
             </div>
+
             {{--
             <div class="w-full md:w-1/4">
                 <div class="bg-white py-3 px-4">

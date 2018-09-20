@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="my-3">You need to be logged in to add a comment... <login></login></div>
+                            
                         @endif
 
                         <div class="comments bg-white">
@@ -163,12 +163,12 @@
                                                         </div>
 
                                                         <div>
-                                                            <span class="text-xs text-grey-dark">{{date('d\'y \a\t h:i:a', strtotime($trend->created_at))}} </span>
+                                                            <span class="text-xs text-grey-dark">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                                                         </div>
                                                     @else
                                                         <div>
                                                             <div class="text-left text-xs text-grey-dark">
-                                                                <span class="text-sm">{{date('d\'y \a\t h:i:a', strtotime($trend->created_at))}} </span>
+                                                                <span class="text-sm">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                                                             </div>
                                                         </div>
                                                     @endif
@@ -178,6 +178,15 @@
                                         </div>
                                     @endforeach
                                     <div>Login to like or comment</div>
+
+                                    <div class="mt-2">@if(!empty($related)) 
+                                        <h3 class="my-2">Related Posts </h3>
+                                        @foreach ($related as $relatedpost)
+                                       <ul class="list-reset"><li> 
+                                        <a class="text-blue" href="{{ url('/post-full-view/'.$relatedpost->id.'/'.str_slug(strtolower($relatedpost->title), '-')) }}" title="click to read full details"> {{$relatedpost->title}} </a></li> </ul>
+                                        @endforeach
+                                        @endif
+                                    </div>
                                 @endif
                             </div>
                         </div>

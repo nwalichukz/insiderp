@@ -200,7 +200,7 @@ class PostController extends Controller
     */
     public static function getLatest(){
         return Post::where('status', 'active')->orderBy('created_at', 'DESC')
-                       ->limit(250)->paginate(35);
+                       ->limit(1000)->paginate(5);
         
     }
 
@@ -213,7 +213,7 @@ class PostController extends Controller
     */
     public static function getTrending(){
         return Post::where('status', 'active')->orderBy('rank', 'DESC')
-                    ->limit(250)->paginate(35);
+                    ->limit(1000)->paginate(35);
         
     }
 
@@ -290,7 +290,7 @@ class PostController extends Controller
     public static function relatedPost($title)
     {
         return Post::where('title', 'LIKE', $title.'%')
-                    ->orWhere('title', 'LIKE', '%'.$title.'%')->orderBy('rank', 'DESC')->get();
+                    ->orWhere('title', 'LIKE', '%'.$title.'%')->orderBy('rank', 'DESC')->distinct()->limit(7)->get();
     }
 
 

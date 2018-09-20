@@ -408,8 +408,9 @@ public function changePassword(Request $request)
       public function fullView($id)
       {  $category = CategoryController::getCategory();
         $trend = PostController::get($id);
+        $related = PostController::relatedPost($trend->title);
         PostViewController::add($id);
-        return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category, 'fulltitle'=>$trend->title]);
+        return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category, 'fulltitle'=>$trend->title, 'related'=>$related]);
       }
       // count view
       public function countView(Request $request){

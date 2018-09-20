@@ -108,7 +108,7 @@
                 </div>
             </div>
         @else
-            <div class="my-3">You need to be logged in to add a comment... <login></login></div>
+            
         @endif
 
         <div class="comments bg-white">
@@ -143,12 +143,12 @@
                                         </div>
 
                                         <div>
-                                            <span class="text-xs text-grey-dark">{{date('d\'y \a\t h:i:a', strtotime($post->created_at))}} </span>
+                                            <span class="text-xs text-grey-dark">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                                         </div>
                                     @else
                                         <div>
                                             <div class="text-left text-xs text-grey-dark">
-                                                <span class="text-sm">{{date('d\'y \a\t h:i:a', strtotime($post->created_at))}} </span>
+                                                <span class="text-sm">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                                             </div>
                                         </div>
                                     @endif

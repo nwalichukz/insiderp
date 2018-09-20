@@ -6,12 +6,10 @@
         <div class="mb-2 border-b text-black capitalize text-xl py-3 px-4">{{ $data->title }}</div>
         <div class="px-4">
             <form action="{{url('update-post')}}" method="post" enctype="multipart/form-data" id="">
-
                 <div class="mb-3">
                     <input type="text" name="title" class="modal-input" value="{{$data->title}}" required>
                     <input type="hidden" name="id"  value="{{$data->id}}" required>
                 </div>
-
                 <div class="mb-3">
                     <textarea name="post" id="textPost" class="modal-input" placeholder="Share your thought on anything you care about" required>{{$data->post}}</textarea>
                 </div>
@@ -41,6 +39,9 @@
                         <option >Entrepreneurship</option>
                         <option >Health</option>
                         <option >Travel</option>
+                        <option >Literature Review</option>
+                        <option >Art and Craft</option>
+                        <option >Campus Gist</option>
                     </select>
                 </div>
 
