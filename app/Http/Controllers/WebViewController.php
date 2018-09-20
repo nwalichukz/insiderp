@@ -639,7 +639,14 @@ public function changePassword(Request $request)
   public function updatePost(Request $request){
     if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
     $update = PostController::update($request);
-    if($request){
+    if($request->hasFile('image')){
+        $img = ImageController::postImageUpload($request);
+        $postimg = new PostImage;
+        $postimg->post_id = $request['id'];
+        $postimg->name = $img;
+        $postimg->save();
+      }
+    if($update){
       flash('Post updated successfully')->success();
       return redirect(str_slug(Auth::user()->name).'/my-post/'.Auth::user()->id);
        }else{

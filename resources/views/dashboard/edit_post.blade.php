@@ -66,9 +66,15 @@
                 <div class="modal-body">
                     <!-- content goes here -->
                     {{ csrf_field() }}
+                    <div class="">
+                            <label for="attachment">Add image:</label>
+                            <input type="file" name="image" onchange="readURL(this);" id="images" multiple="true" class="p-1 bg-white text-black" />
+                            <div id="image-holder" class="w-full"></div>
+                            <img class="showimg" src="#" alt="" class="rounded shadow" />
+                        </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="modal-button">Update</button>
+                    <button type="submit" class="modal-button">Done editing</button>
                 </div>
             </form>
         </div>
