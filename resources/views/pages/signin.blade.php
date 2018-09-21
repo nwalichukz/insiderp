@@ -2,7 +2,7 @@
 @section('content')
     <div class="container mx-auto mt-16 h-full flex items-center justify-center">
         <div class="w-full md:w-1/2 lg:w-1/3">
-            <div class="font-hairline text-2xl text-center mb-6">Login</div>
+            <div class="font-hairline text-2xl text-center mb-6">Login to Bido</div>
 
             <div class="bg-white border-t-8 border-blue rounded flex justify-center py-8 mx-2 lg:mx-0 mb-6">
                 <form action="{{url('/post-login')}}" method="post" enctype="multipart/form-data">
