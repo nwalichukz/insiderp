@@ -1,5 +1,6 @@
 @extends('layouts.indextemplate')
 @section('content')
+<br><br>
 <div class="mt-6 flex justify-center">
     <div class="w-1/2 bg-white rounded shadow p-4">
         <div class="container mx-auto">
@@ -15,4 +16,5 @@
         </div>
     </div>
 </div>
+<br>
 @endsection
