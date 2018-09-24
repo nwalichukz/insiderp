@@ -20,7 +20,7 @@
             <div slot="dropdown" class="bg-white shadow rounded border overflow-hidden">
                 <a class="dropdown-item" href="{{url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Dashboard </a>
                 <a class="dropdown-item" href="{{url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Trending</a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Post</a>
+                <a class="dropdown-item" href="{{url('/get-add-post')}}" title="post to public">Add Post</a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#inviteFriendModal" data-placement="top" title="invite a friend to join Bido">Invite a friend </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePasswordModal" data-placement="top" title="change your password">change password </a>
                 <a class="dropdown-item" href="{{url(Auth::user()->name.'/my-post/'.Auth::user()->id)}}">My Posts</a>

@@ -730,4 +730,19 @@ public function changePassword(Request $request)
     DB::table('categories')->where('name', 'Literature Review')->delete();
     return redirect('/');
    }
+
+     /**
+  * This method thta adds post form
+  *
+  *
+  *
+  */
+   public function postForm(){
+    if(Auth::check()){
+      return view('dashboard.add-post');
+    }else{
+      Auth::logout();
+      return redirect('/');
+    }
+   }
 }
