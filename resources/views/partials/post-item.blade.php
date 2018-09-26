@@ -46,14 +46,14 @@
         </div>
         <div class="post-body mt-6 mb-3">
             @if(!empty($Helper->postImage($post->id)->name))
-            <div class="text-lg capitalize mb-3"><a href="{{url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-'))}}" class="text-blue-light hover:text-blue-dark hover:underline">{{title_case(strtolower($Helper->get_title($post->title, 12)))}}</a></div>
+            <div class="text-lg capitalize mb-3"><a href="{{url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-'))}}" class="text-blue-light hover:text-blue-dark hover:underline">{{title_case(strtolower($Helper->get_title($post->title, 15)))}}</a></div>
             <div class="post-image mb-3"><img src="{{asset("images/post/".$Helper->postImage($post->id)->name)}}" alt="" class="w-full"></div>
             <div class="post-text">
                 {!!ucfirst($Helper->get_words($post->post, 30))!!}  <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}" title="click to read full details" class="text-blue"> more </a>
             </div>
             @else
             <div class="post-text">
-                <a href='{{ url("/post-full-view/".$post->id."/".str_slug(strtolower($post->title), '-')) }}'> <h4> {{title_case($Helper->get_title($post->title, 12))}} </h4> </a>
+                <a href='{{ url("/post-full-view/".$post->id."/".str_slug(strtolower($post->title), '-')) }}'> <h4> {{title_case($Helper->get_title($post->title, 15))}} </h4> </a>
                 {!!ucfirst($Helper->get_words($post->post, 25))!!}  <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}" title="click to read full details"> more </a>
             </div>
             @endif
