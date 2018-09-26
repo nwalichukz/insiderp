@@ -288,10 +288,10 @@ class PostController extends Controller
     *
     * @var instance
     */
-    public static function relatedPost($title)
+    public static function relatedPost($title, $category=null)
     {
-        return Post::where('title', 'LIKE', $title.'%')
-                    ->orWhere('title', 'LIKE', '%'.$title.'%')->orderBy('rank', 'DESC')->distinct()->limit(7)->get();
+        return Post::where('title', 'LIKE', $title.'%')->where('title', '!==', $title)
+                    ->orWhere('category', $category)->orderBy('rank', 'DESC')->distinct()->limit(7)->get();
     }
 
 

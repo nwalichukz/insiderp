@@ -55,7 +55,7 @@
 
                                 <div class="px-4 mb-3">
                                     <div class="mb-2">
-                                        <h3>{{title_case($Helper->get_title($trend->title, 12))}} </h3>
+                                        <h3>{{title_case($Helper->get_title($trend->title, 30))}} </h3>
                                     </div>
 
                                     <div>
@@ -67,7 +67,7 @@
                             @else
                                 <div class="px-4 mb-3">
                                     <div class="mb-2">
-                                        <h3>{{title_case($Helper->get_title($trend->title, 12))}} </h3>
+                                        <h3>{{title_case($Helper->get_title($trend->title, 30))}} </h3>
                                     </div>
 
                                     <div>

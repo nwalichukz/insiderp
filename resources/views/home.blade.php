@@ -44,6 +44,7 @@
                 <div class="mt-4">{{ $posts->links() }}</div>
             </div>
            <div></div>
+           {{--
             <div class="w-full md:w-1/4">
                 <div class="bg-white py-3 px-4">
                     <div class="mb-2 text-lg">Bido Pages</div>
@@ -59,6 +60,7 @@
                     </div>
                 </div>
             </div> 
+            --}}
 
         </div>
     </div>
