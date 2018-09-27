@@ -1,9 +1,9 @@
 <ul class="list-reset flex-grow sm:flex sm:items-center text-sm pt-3">
-    <li class="nav-li"> <a href="{{url("/trending-posts")}}">Trending  </a></li>
-    <li class="nav-li"> <a href="{{url("/page/Sports")}}">sports  </a> </li>
-    <li class="nav-li"> <a href="{{url("/page/Politics")}}">politics  </a> </li>
-    <li class="nav-li"> <a href="{{url("/page/Education")}}">education  </a> </li>
-    <li class="nav-li"> <a href="{{url("/page/Romance")}}">romance </a> </li>
+    <li class="nav-li"> <a title="The trending posts" href="{{url("/trending-posts")}}">Trending  </a></li>
+    <li class="nav-li"> <a title="get sports updates" href="{{url("/page/Sports")}}">sports  </a> </li>
+    <li class="nav-li"> <a title="Read political posts" href="{{url("/page/Politics")}}">politics  </a> </li>
+    <li class="nav-li"> <a title="Your education posts" href="{{url("/page/Education")}}">education  </a> </li>
+    <li class="nav-li"> <a title="click to view posted jobs" href="{{url("/page/Job")}}">Jobs </a> </li>
 
     <!-- Authentication Links -->
     @if (Auth::guest())
@@ -23,7 +23,7 @@
                 <a class="dropdown-item" href="{{url('/get-add-post')}}" title="post to public">Add Post</a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#inviteFriendModal" data-placement="top" title="invite a friend to join Bido">Invite a friend </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePasswordModal" data-placement="top" title="change your password">change password </a>
-                <a class="dropdown-item" href="{{url(Auth::user()->name.'/my-post/'.Auth::user()->id)}}">My Posts</a>
+                <a class="dropdown-item" href="{{url(str_slug(Auth::user()->name).'/my-post/'.Auth::user()->id)}}">My Posts</a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editProfileModal" data-placement="top" title="Edit your profile">Edit Profile</a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addUserImageModal" data-placement="top" title="Edit your profile">Add Profile Image</a><br/>
                 @if(Auth::check())

@@ -151,6 +151,7 @@ class PostController extends Controller
         }
 
         $edit->save();
+        return true;
     }
 
      /**
@@ -200,7 +201,7 @@ class PostController extends Controller
     * @var instance
     */
     public static function getLatest(){
-        return Post::where('status', 'active')->orderBy('created_at', 'DESC')
+        return Post::where('status', 'active')->where('category', '!=', 'Job')->orderBy('created_at', 'DESC')
                        ->limit(1000)->paginate(39);
         
     }
@@ -290,7 +291,7 @@ class PostController extends Controller
     */
     public static function relatedPost($title, $category=null)
     {
-        return Post::where('title', 'LIKE', $title.'%')->where('title', '!==', $title)
+        return Post::where('title', 'LIKE', $title.'%')->where('title', '!=', $title)
                     ->orWhere('category', $category)->orderBy('rank', 'DESC')->distinct()->limit(7)->get();
     }
 
@@ -305,7 +306,7 @@ class PostController extends Controller
     public static function search($title)
     {
         return Post::where('title', 'LIKE', $title.'%')
-                    ->where('status', 'active')->orderBy('rank', 'DESC')->paginate(35);
+                    ->where('status', 'active')->orderBy('rank', 'DESC')->paginate(39);
                        /* ->orWhere('post', 'LIKE', '%'.$title.'%')*/
     }
 }
