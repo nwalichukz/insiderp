@@ -2,14 +2,14 @@
 @extends('layouts.usertemplate')
 @section('content')
 
-<div class="mt-14 px-3">
+<div class="mt-16 px-3">
     <div class="sm:flex sm:items-start">
         <div class="w-full md:w-1/4 lg:w-1/4 mb-3">
             <div class="bg-white py-3 px-4 shadow rounded">
                 <ul class="list-reset">
                     <li class="text-sm mb-2">  <a href="{{url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Trending </a> </li>
                     <li class="text-sm mb-2">  <a href="#" data-toggle="modal" data-target="#addPostStoryModal" data-placement="top" title="share a story"><button style="background:#F8F8FF; color:#000; border-radius:7px;">Share story</button></a> </li>
-                    <li class="text-sm mb-2">  <a href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Post</a> </li>
+                    <add-post></add-post>
                     <li class="text-sm mb-2"> <a href="#" data-toggle="modal" data-target="#inviteFriendModal" data-placement="top" title="invite a friend to join Bido">Invite a friend </a></li>
                     <li class="text-sm mb-2"> <a href="#" data-toggle="modal" data-target="#changePasswordModal" data-placement="top" title="change your password">change password </a></li>
                     <li class="text-sm mb-2"> <a href="{{url(str_replace(' ', '-', strtolower(Auth::user()->name)).'/my-post/'.Auth::user()->id)}}" title="view all post by me">My Posts </a></li>

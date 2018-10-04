@@ -31,11 +31,28 @@
                         </div>
                     </div>
                 @endif
+
+                <div class="bg-white rounded px-4 py-4 mb-4">
+                    <div class="text-xl text-left border-b-2 pb-2 px-4 mb-4">Bido Pages</div>
+
+                    <dropdown-link class="px-4">
+                        <span slot="link" class="appearance-none flex items-center inline-block font-medium" style="color: #777777;">
+                          <span class="mr-1">All Pages</span>
+                          <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                          </svg>
+                        </span>
+                        <div slot="dropdown" class="bg-white shadow rounded border overflow-hidden mx-3">
+                            <a class="dropdown-item" href="{{url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Loop through pages </a>
+                        </div>
+                    </dropdown-link>
+                </div>
             </div>
             <div class="w-full md:w-2/5 md:mx-4">
                 @if(empty($title))
                     @include('partials.search-bar')
                 @endif
+                @include('partials.featured')
                 @if($posts->count() > 0)
                     @include('partials.post-item')
                 @else
@@ -43,7 +60,7 @@
                 @endif
 
             </div>
-            {{--
+            
             <div class="w-full md:w-1/4">
                 <div class="bg-white py-3 px-4">
                     <div class="mb-2 text-lg">Bido Pages</div>
@@ -57,7 +74,7 @@
                         </ul>
                     </div>
                 </div>
-            </div> --}}
+            </div> 
         </div>
     </div>
 @endsection

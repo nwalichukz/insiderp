@@ -19,6 +19,7 @@ import VModal from 'vue-js-modal';
 Vue.use(VModal);
 
 Vue.component('login', require('./components/Login.vue'));
+Vue.component('add-post', require('./components/AddPost.vue'));
 
 const app = new Vue({
     el: '#app'
