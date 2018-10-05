@@ -1,4 +1,4 @@
-<div class="search flex items-center mb-3 relative">
+<div class="search flex items-center mb-2 relative">
     <form action="{{url('/post-search')}}" method="POST"class="w-full">
         {{ csrf_field() }}
         <input onkeyup="autocomplet()" type="text" name="name"  placeholder="Find any news or articles" class="w-full py-3 px-8 rounded" value="{{old('name')}}" autofocus>

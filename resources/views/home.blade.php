@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </div>
-                       <div class="bg-white rounded px-4 py-4 mb-4">
+                <div class="bg-white rounded px-4 py-4 mb-4">
 
                     <dropdown-link class="px-4">
                         <span slot="link" class="appearance-none flex items-center inline-block font-medium" style="color: #777777;">
