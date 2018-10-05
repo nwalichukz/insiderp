@@ -1,5 +1,5 @@
-<div class="bg-grey-lightest p-3 rounded mb-4">
-    <div class="text-sm border-b px-3 pb-2 mb-3">Featured posts</div>
+<div class="bg-grey-lightest p-2 rounded mb-4">
+    <div class="text-sm border-b px-3 pb-2 mb-1">Featured posts</div>
     
     <div class="flex items-center justify-center mr-1">
          @foreach($featured as $feature)
@@ -8,7 +8,7 @@
                 <div class="mb-1">
                     <img src="{{asset("images/post/".$Helper->postImage($feature->id)->name)}}" alt="The image for the featured post" class="w-full rounded">
                 </div>
-                <div class="text-xs p-1">{{$Helper->get_title(title_case(strtolower($feature->title)), 10)}} </div>
+                <div class="text-xs p-1">{{$Helper->get_title(title_case(strtolower($feature->title)), 6)}}... </div>
             </a>
         </div>
         @endforeach
