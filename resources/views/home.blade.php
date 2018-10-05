@@ -4,7 +4,7 @@
     <div class="mt-11">
         <div class="container mx-auto md:flex md:items-start p-3">
             <div class="w-full md:w-1/4 mb-2">
-                <div class="bg-white rounded px-4 py-4 mb-4">
+                <div class="bg-white rounded px-4 py-4 mb-2">
                     <div class="lead-post bg-grey-lighter py-3 mb-3">
                         <p class="text-xl underline text-left px-4">Lead Post  </p>
 
@@ -18,11 +18,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-white rounded px-4 py-4 mb-4">
+                <div class="bg-white rounded px-4 py-4 mb-2">
 
                     <dropdown-link class="px-4">
                         <span slot="link" class="appearance-none flex items-center inline-block font-medium" style="color: #777777;">
-                          <span class="mr-1">Bido Pages</span>
+                          <span class="mr-1 text-black">Bido Pages</span>
                           <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                           </svg>
@@ -32,7 +32,7 @@
                            <ul class="list-reset flex flex-wrap">
                             @foreach($cat as $category)
                             <li class="mb-1 mr-1">
-                            <a href="{{url("/page/".$category->name)}}" class="text-base text-grey-dark hover:text-blue-dark mb-2">{{$category->name}}, </a>
+                            <a href="{{url("/page/".$category->name)}}" class="text-base text-black hover:text-blue-dark mb-2">{{$category->name}}, </a>
                           </li>
                             @endforeach
                         </ul>
