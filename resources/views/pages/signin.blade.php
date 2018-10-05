@@ -2,18 +2,17 @@
 @section('content')
     <div class="container mx-auto mt-16 h-full flex items-center justify-center">
         <div class="w-full md:w-1/2 lg:w-1/3">
-            <div class="font-hairline text-2xl text-center mb-6">Login Here</div>
+            <div class="font-hairline text-2xl text-center mb-6">Login to Bido</div>
 
             <div class="bg-white border-t-8 border-blue rounded flex justify-center py-8 mx-2 lg:mx-0 mb-6">
                 <form action="{{url('/post-login')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="mb-4">
-                        <label for="email" class="block font-base tracking-wide text-black mb-1">Email Address</label>
+        
                         <input type="email" name="email" placeholder="Email Address" class="appearance-none font-normal border border-solid w-68 py-3 px-3 rounded focus:border-indigo">
                     </div>
 
                     <div class="mb-4">
-                        <label for="password" class="block font-base tracking-wide text-black mb-1">Password</label>
                         <input type="password" name="password" placeholder="Password" class="appearance-none font-normal border border-solid w-68 py-3 px-3 rounded focus:border-indigo">
                     </div>
                     <div class="flex items-center justify-between">

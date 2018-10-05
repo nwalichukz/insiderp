@@ -52,8 +52,8 @@ class ImageController extends Controller
             $path = public_path('images/post/'.$filename);
             $width = Image::make($file->getRealPath())->width();
             $height = Image::make($file->getRealPath())->height();
-            if($width > 400 && $height > 200){
-            Image::make($file->getRealPath())->resize(400, 200)->save($path);
+            if($width > 400 && $height > 240){
+            Image::make($file->getRealPath())->resize(400, 240)->save($path);
             return $filename;
            }/*elseif($width > 400 && $height < 200){
             Image::make($file->getRealPath())->resize(400, null)->save($path);

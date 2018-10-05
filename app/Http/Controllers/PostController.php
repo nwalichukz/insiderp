@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ImageController;
 use App\Post;
 use App\Comment;
+use Carbon\Carbon;
 use App\UserImage;
 use App\User;
 use Auth, DB, Mail;
@@ -150,6 +151,7 @@ class PostController extends Controller
         }
 
         $edit->save();
+        return true;
     }
 
      /**
@@ -199,8 +201,8 @@ class PostController extends Controller
     * @var instance
     */
     public static function getLatest(){
-        return Post::where('status', 'active')->orderBy('created_at', 'DESC')
-                       ->limit(250)->paginate(35);
+        return Post::where('status', 'active')->where('category', '!=', 'Job')->orderBy('created_at', 'DESC')
+                       ->limit(1000)->paginate(39);
         
     }
 
@@ -213,7 +215,7 @@ class PostController extends Controller
     */
     public static function getTrending(){
         return Post::where('status', 'active')->orderBy('rank', 'DESC')
-                    ->limit(250)->paginate(35);
+                    ->limit(1000)->paginate(35);
         
     }
 
@@ -287,10 +289,10 @@ class PostController extends Controller
     *
     * @var instance
     */
-    public static function relatedPost($title)
+    public static function relatedPost($title, $category=null)
     {
-        return Post::where('title', 'LIKE', $title.'%')
-                    ->orWhere('title', 'LIKE', '%'.$title.'%')->orderBy('rank', 'DESC')->get();
+        return Post::where('title', 'LIKE', $title.'%')->where('title', '!=', $title)
+                    ->orWhere('category', $category)->orderBy('rank', 'DESC')->distinct()->limit(7)->get();
     }
 
 
@@ -304,7 +306,7 @@ class PostController extends Controller
     public static function search($title)
     {
         return Post::where('title', 'LIKE', $title.'%')
-                    ->where('status', 'active')->orderBy('rank', 'DESC')->paginate(35);
+                    ->where('status', 'active')->orderBy('rank', 'DESC')->paginate(39);
                        /* ->orWhere('post', 'LIKE', '%'.$title.'%')*/
     }
 }

@@ -58,7 +58,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 <meta name="msapplication-TileColor">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     </head>
-<body>
+<body class="font-serif">
 <div id="app">
     <div class="navbar navbar-fixed-top bg-white border-b border-grey py-2">
         <div class="container mx-auto flex items-center justify-between flex-wrap px-4">

@@ -1,6 +1,5 @@
 
 <!-- modal for adding post -->
-
     <div class="modal fade" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" style="padding:10px;">

@@ -6,12 +6,13 @@
             <div class="w-full md:w-1/4 mb-2">
                 <div class="bg-white rounded px-4 py-4 mb-4">
                     <div class="lead-post bg-grey-lighter py-3 mb-3">
-                        <p class="text-xl underline text-left px-4">Lead Post</p>
+                        <p class="text-xl underline text-left px-4">Lead Post  </p>
+
                         <div class="trending py-3 px-4">
                             @if(!empty($lead->title))
                                 @if(!empty($Helper->postImage($lead->id)->name))
                                     <img src="{{asset("images/post/".$Helper->postImage($lead->id)->name)}}" alt="post Image" class="mb-3">
-                                    <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="text-lg text-blue hover:underline hover:text-blue-dark">{{$Helper->get_title(ucfirst(strtolower($lead->title)), 10)}}</a>
+                                    <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="text-lg text-blue hover:underline hover:text-blue-dark">{{$Helper->get_title(title_case(strtolower($lead->title)), 10)}}</a>
                                 @endif
                             @endif
                         </div>
@@ -58,23 +59,28 @@
                 @else
                 <div class="bg-white text-center rounded py-3 px-4">Ahhh!... No posts yet, sorry. Try again.</div>
                 @endif
-
+                <div class="mt-4">{{ $posts->links() }}</div>
             </div>
-            
+
+           <div></div>
+           {{--
             <div class="w-full md:w-1/4">
                 <div class="bg-white py-3 px-4">
                     <div class="mb-2 text-lg">Bido Pages</div>
                     <div class="border-b mb-2"></div>
-
                     <div class="bd-links px-3">
                         <ul class="list-reset flex flex-wrap">
                             @foreach($cat as $category)
-                            <li class="mb-1 mr-1"><a href="{{url("/page/".$category->name)}}" class="text-base text-blue-light hover:text-blue-dark mb-2">{{$category->name}}, </a></li>
+                            <li class="mb-1 mr-1">
+                            <a href="{{url("/page/".$category->name)}}" class="text-base text-blue-light hover:text-blue-dark mb-2">{{$category->name}}, </a>
+                          </li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
             </div> 
+
+            --}}
         </div>
     </div>
 @endsection

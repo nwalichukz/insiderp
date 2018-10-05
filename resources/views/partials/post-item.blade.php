@@ -24,7 +24,7 @@
                       </svg>
                     </span>
 
-                        <div slot="dropdown" class="bg-white shadow rounded border overflow-hidden -ml-24       ">
+                        <div slot="dropdown" class="bg-white shadow rounded border overflow-hidden -ml-24">
                             @if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
                                 @if($post->status ==='active')
                                     <a class="dropdown-item" href="{{url('/block-post/'.$post->id) }}">Block post</a>
@@ -46,15 +46,15 @@
         </div>
         <div class="post-body mt-6 mb-3">
             @if(!empty($Helper->postImage($post->id)->name))
-            <div class="text-lg capitalize mb-3"><a href="{{url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-'))}}" class="text-blue-light hover:text-blue-dark hover:underline">{{title_case(strtolower($Helper->get_title($post->title, 12)))}}</a></div>
+            <div class="text-lg capitalize mb-3"><a href="{{url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-'))}}" class="text-blue-light hover:text-blue-dark hover:underline">{{title_case(strtolower($Helper->get_title($post->title, 19)))}}</a></div>
             <div class="post-image mb-3"><img src="{{asset("images/post/".$Helper->postImage($post->id)->name)}}" alt="" class="w-full"></div>
             <div class="post-text">
-                {!!ucfirst($Helper->get_words($post->post, 35))!!}  <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}" title="click to read full details" class="text-blue"> more </a>
+                {!!ucfirst($Helper->get_words($post->post, 30))!!}  <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}" title="click to read full details" class="text-blue"> more </a>
             </div>
             @else
             <div class="post-text">
-                <a href='{{ url("/post-full-view/".$post->id."/".str_slug(strtolower($post->title), '-')) }}'> <h4> {{title_case($Helper->get_title($post->title, 12))}} </h4> </a>
-                {!!ucfirst($Helper->get_words($post->post, 32))!!}  <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}" title="click to read full details"> more </a>
+                <a href='{{ url("/post-full-view/".$post->id."/".str_slug(strtolower($post->title), '-')) }}'> <h4> {{title_case($Helper->get_title($post->title, 19))}} </h4> </a>
+                {!!ucfirst($Helper->get_words($post->post, 25))!!}  <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}" title="click to read full details"> more </a>
             </div>
             @endif
         </div>
@@ -108,7 +108,7 @@
                 </div>
             </div>
         @else
-            <div class="my-3">You need to be logged in to add a comment... <login></login></div>
+            
         @endif
 
         <div class="comments bg-white">
@@ -143,12 +143,12 @@
                                         </div>
 
                                         <div>
-                                            <span class="text-xs text-grey-dark">{{date('d\'y \a\t h:i:a', strtotime($post->created_at))}} </span>
+                                            <span class="text-xs text-grey-dark">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                                         </div>
                                     @else
                                         <div>
                                             <div class="text-left text-xs text-grey-dark">
-                                                <span class="text-sm">{{date('d\'y \a\t h:i:a', strtotime($post->created_at))}} </span>
+                                                <span class="text-sm">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                                             </div>
                                         </div>
                                     @endif

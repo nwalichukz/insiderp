@@ -408,8 +408,9 @@ public function changePassword(Request $request)
       public function fullView($id)
       {  $category = CategoryController::getCategory();
         $trend = PostController::get($id);
+        $related = PostController::relatedPost($trend->title, $trend->category);
         PostViewController::add($id);
-        return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category, 'fulltitle'=>$trend->title]);
+        return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category, 'fulltitle'=>$trend->title, 'related'=>$related]);
       }
       // count view
       public function countView(Request $request){
@@ -638,7 +639,14 @@ public function changePassword(Request $request)
   public function updatePost(Request $request){
     if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
     $update = PostController::update($request);
-    if($request){
+    if($request->hasFile('image')){
+        $img = ImageController::postImageUpload($request);
+        $postimg = new PostImage;
+        $postimg->post_id = $request['id'];
+        $postimg->name = $img;
+        $postimg->save();
+      }
+    if($update){
       flash('Post updated successfully')->success();
       return redirect(str_slug(Auth::user()->name).'/my-post/'.Auth::user()->id);
        }else{
@@ -721,5 +729,20 @@ public function changePassword(Request $request)
    public function deleteSeed(){
     DB::table('categories')->where('name', 'Literature Review')->delete();
     return redirect('/');
+   }
+
+     /**
+  * This method thta adds post form
+  *
+  *
+  *
+  */
+   public function postForm(){
+    if(Auth::check()){
+      return view('dashboard.add-post');
+    }else{
+      Auth::logout();
+      return redirect('/');
+    }
    }
 }
