@@ -6,7 +6,8 @@
             <div class="w-full md:w-1/4 mb-2">
                 <div class="bg-white rounded px-4 py-4 mb-4">
                     <div class="lead-post bg-grey-lighter py-3 mb-3">
-                        <p class="text-xl underline text-left px-4">Lead Post</p>
+                        <p class="text-xl underline text-left px-4">Lead Post  </p>
+
                         <div class="trending py-3 px-4">
                             @if(!empty($lead->title))
                                 @if(!empty($Helper->postImage($lead->id)->name))
