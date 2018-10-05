@@ -1,5 +1,5 @@
-<div class="bg-grey-lightest p-2 rounded mb-4">
-    <div class="text-sm border-b px-3 pb-2 mb-1">Featured posts</div>
+<div class="bg-grey-lightest p-2 rounded mb-2">
+    <div class="text-sm border-b px-3 pb-2">Featured posts</div>
     
     <div class="flex items-center justify-center mr-1">
          @foreach($featured as $feature)
