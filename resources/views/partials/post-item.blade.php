@@ -1,5 +1,5 @@
 <div class="bg-grey-light">
-    <div class="bg-blue text-white rounded py-4 px-4">@if(!empty($category)) {{ $category }} Posts @elseif(!empty($search)) About {{ $search->count() }} Search Results @else Trending Posts @endif</div>
+    <div class="bg-blue text-white rounded py-4 px-4">@if(!empty($topcategory)){{ $topcategory }} Posts @elseif(!empty($search)) About {{ $search->count() }} Search Results @else Trending Posts @endif</div>
 
     @foreach($posts as $post)
     <div class="posts bg-white rounded-b shadow-md py-3 px-4 mb-3">
@@ -47,7 +47,7 @@
         <div class="post-body mt-6 mb-3">
             @if(!empty($Helper->postImage($post->id)->name))
             <div class="text-lg capitalize mb-3"><a href="{{url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-'))}}" class="text-blue-light hover:text-blue-dark hover:underline">{{title_case(strtolower($Helper->get_title($post->title, 19)))}}</a></div>
-            <div class="post-image mb-3"><img src="{{asset("images/post/".$Helper->postImage($post->id)->name)}}" alt="" class="w-full"></div>
+            <div class="post-image mb-3"><img src="{{asset("images/post/".$Helper->postImage($post->id)->name)}}" alt="post image" class="w-full"></div>
             <div class="post-text">
                 {!!ucfirst($Helper->get_words($post->post, 30))!!}  <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}" title="click to read full details" class="text-blue"> more </a>
             </div>

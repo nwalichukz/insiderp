@@ -149,8 +149,8 @@ class PostController extends Controller
          if(!empty($request->voting_status)){
             $edit->voting_status = $request['voting_status'];
         }
-
         $edit->save();
+
         return true;
     }
 
@@ -203,6 +203,20 @@ class PostController extends Controller
     public static function getLatest(){
         return Post::where('status', 'active')->where('category', '!=', 'Job')->orderBy('created_at', 'DESC')
                        ->limit(1000)->paginate(39);
+        
+    }
+
+
+    /**
+    * gets the featured posts
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function featuredPost(){
+        return Post::where('status', 'active')->where('post_importance', 'featured')->orderBy('created_at', 'DESC')
+                       ->limit(3)->get();
         
     }
 

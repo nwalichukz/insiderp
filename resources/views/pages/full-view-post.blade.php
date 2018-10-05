@@ -12,7 +12,7 @@
                         <a href="http://www.letnote.com.ng"><h4>Find houses for rent or sale in nigeria</h4> </a>
                     </div>
                 </div>
-            </div>
+            </div> 
             <div class="w-full md:w-1/2">
                 <div class="full-view-item">
                     <div class="bg-white py-3 px-4">
@@ -30,12 +30,12 @@
                                     <a href="#" class="text-blue">{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}/<span class="text-orange">{{$trend->category}}</span></a>
                                     <div class="text-xs text-grey-dark my-2">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</div>
                                     <div class="flex -ml-1">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u=" title="share this article on facebook" class="flex items-center mr-3">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u= " title="share this article on facebook" class="flex items-center mr-3">
                                             <img src="{{asset("images/avatar/facebook.png")}}" class="twitter-facebook" style="width:20px;">
                                             <span class="ml-1 text-sm">Share</span>
                                         </a>
 
-                                        <a href="https://twitter.com/home?status=" title="share this article on twitter" style="width:20px;" class="flex items-center">
+                                        <a href="https://twitter.com/home?status= " title="share this article on twitter" style="width:20px;" class="flex items-center">
                                             <img src="{{asset("images/avatar/twitter.png")}}" class="twitter-facebook" >
                                             <span class="ml-1  text-sm">Share</span>
                                         </a>

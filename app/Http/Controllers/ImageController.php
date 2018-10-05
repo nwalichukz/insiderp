@@ -55,13 +55,7 @@ class ImageController extends Controller
             if($width > 400 && $height > 240){
             Image::make($file->getRealPath())->resize(400, 240)->save($path);
             return $filename;
-           }/*elseif($width > 400 && $height < 200){
-            Image::make($file->getRealPath())->resize(400, null)->save($path);
-            return $filename;
-         }elseif($width < 400 && $height > 200){
-            Image::make($file->getRealPath())->resize(null, 200)->save($path);
-            return $filename;
-        }*/else{
+           }else{
             Image::make($file->getRealPath())->save($path);
             return $filename;
           }

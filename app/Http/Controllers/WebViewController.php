@@ -45,7 +45,8 @@ class WebViewController extends Controller
     $trending = PostController::getTrending();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Trending',
+     $featured = PostController::featuredPost();
+      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'featured'=>$featured, 'topcategory'=>'Trending',
       'fulltitle'=>'Trending - news, opinions, articles, questions, get involved your views matter and help make our society better!']);
 	}
     /**
@@ -59,8 +60,9 @@ class WebViewController extends Controller
     $trendpost = PostController::getTrendPost();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest',
-        'trendpost'=>$trendpost,]);
+     $featured = PostController::featuredPost();
+      return view('home')->with(['posts'=>$trending, 'topcategory'=>'Latest', 'cat'=>$category, 'lead'=>$lead, 'featured'=>$featured,
+        'trendpost'=>$trendpost]);
   }
 
   /**
@@ -75,7 +77,7 @@ class WebViewController extends Controller
      $trendpost = PostController::getTrendPost();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('pages.users-posts')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>$user->user_name, 
+      return view('pages.users-posts')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'topcategory'=>$user->user_name, 
         'trendpost'=>$trendpost, 'user'=>$user, 'fulltitle'=> $user->user_name.' posts-Bido']);
   }
   	/* * This method checks
@@ -646,7 +648,7 @@ public function changePassword(Request $request)
         $postimg->name = $img;
         $postimg->save();
       }
-    if($update){
+    if($update == true){
       flash('Post updated successfully')->success();
       return redirect(str_slug(Auth::user()->name).'/my-post/'.Auth::user()->id);
        }else{
