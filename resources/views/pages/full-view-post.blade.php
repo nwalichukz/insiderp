@@ -183,7 +183,7 @@
                                         <h3 class="my-2">Related Posts </h3>
                                         @foreach ($related as $relatedpost)
                                        <ul class="list-reset"><li> 
-                                        <a class="text-blue" href="{{ url('/post-full-view/'.$relatedpost->id.'/'.str_slug(strtolower($relatedpost->title), '-')) }}" title="click to read full details"> {{$relatedpost->title}} </a></li> </ul>
+                                        <a class="text-blue" href="{{ url('/post-full-view/'.$relatedpost->id.'/'.str_slug(strtolower($relatedpost->title), '-')) }}" title="click to read full details"> {{$Helper->get_title(title_case(strtolower($relatedpost->title)), 25)}} </a></li> </ul>
                                         @endforeach
                                         @endif
                                     </div>
