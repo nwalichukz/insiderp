@@ -32,7 +32,7 @@
                            <ul class="list-reset flex flex-wrap">
                             @foreach($cat as $category)
                             <li class="mb-1 mr-1">
-                            <a href="{{url("/page/".$category->name)}}" class="text-base text-black hover:text-blue-dark mb-2">{{$category->name}}, </a>
+                            <a href="{{url("/page/".$category->name)}}" title='View all Posts about {{$category->name}}' class="text-base text-black hover:text-blue-dark mb-2">{{$category->name}}, </a>
                           </li>
                             @endforeach
                         </ul>
@@ -72,24 +72,7 @@
             </div>
 
            <div></div>
-           {{--
-            <div class="w-full md:w-1/4">
-                <div class="bg-white py-3 px-4">
-                    <div class="mb-2 text-lg">Bido Pages</div>
-                    <div class="border-b mb-2"></div>
-                    <div class="bd-links px-3">
-                        <ul class="list-reset flex flex-wrap">
-                            @foreach($cat as $category)
-                            <li class="mb-1 mr-1">
-                            <a href="{{url("/page/".$category->name)}}" class="text-base text-blue-light hover:text-blue-dark mb-2">{{$category->name}}, </a>
-                          </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div> 
-
-            --}}
+    
         </div>
     </div>
 @endsection

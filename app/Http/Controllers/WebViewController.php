@@ -30,6 +30,8 @@ use App\PostLike;
 use App\CommentLike;
 use App\UserImage;
 use Auth, DB, Mail;
+use App\Category;
+//use Spatie\Sitemap\SitemapGenerator;
 
 
 class WebViewController extends Controller
@@ -77,8 +79,8 @@ class WebViewController extends Controller
      $trendpost = PostController::getTrendPost();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('pages.users-posts')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'topcategory'=>$user->user_name, 
-        'trendpost'=>$trendpost, 'user'=>$user, 'fulltitle'=> $user->user_name.' posts-Bido']);
+      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'topcategory'=>$user->user_name, 
+        'trendpost'=>$trendpost, 'user'=>$user, 'fulltitle'=> $user->user_name.' posts - Bido']);
   }
   	/* * This method checks
      *
@@ -715,7 +717,7 @@ public function changePassword(Request $request)
   *
   */
   public function addSeed(){
-    DB::table('categories')->insert([['name' => 'Story', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
+    DB::table('categories')->insert([['name' => 'Food', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
                                      ['name' => 'Literature Review', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
                                           ]);
     return redirect('/');
@@ -747,4 +749,16 @@ public function changePassword(Request $request)
       return redirect('/');
     }
    }
+
+      /**
+  * This method that returns sitemap
+  *
+  * @return view
+  *
+  */
+  public function sitemap(){
+    $post = Post::where('status', 'active')->limit(50000)->get();
+    $page = Category::all();
+    return view('sitemap.sitemap')->with(['posts'=>$post, 'pages'=>$page]);//->header('Content-Type', 'text/xml');
+  }
 }

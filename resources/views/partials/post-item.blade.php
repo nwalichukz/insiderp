@@ -11,7 +11,7 @@
                     <img src="{{asset("images/avatar/avatar.png")}}" alt="" class="h-10 rounded-full mr-3">
                 @endif
                 <div>
-                    <a href="#" class="text-blue">{{ucfirst(strtolower($Helper->user($post->user_id)->user_name))}}/<span class="text-orange">{{$post->category}}</span></a>
+                    <a href="{{url('/post/'.$Helper->user($post->user_id)->user_name)}}" title='view all post by {{$Helper->user($post->user_id)->user_name}}' class="text-blue">{{ucfirst(strtolower($Helper->user($post->user_id)->user_name))}}/<span class="text-orange">{{$post->category}}</span></a>
                     <div class="text-xs text-grey-dark mt-1">{{date('d F \'y \a\t h:i:a', strtotime($post->created_at))}}</div>
                 </div>
             </div>
