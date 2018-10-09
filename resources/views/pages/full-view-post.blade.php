@@ -185,18 +185,6 @@
                 </div>
             </div>
 
-               {{-- <div class="w-full md:w-1/4 ml-3">
-                <div class="bg-white shadow rounded py-3 px-4">
-                    <div class="border-b text-lg font-base mb-3">Sponsored</div>
-                    <div>
-                        <img src="{{asset('/images/avatar/letnote.jpg')}}" class="w-full mb-3" style="height:150px;">
-
-                        <a href="http://www.letnote.com.ng"><h4>Find houses for rent or sale in nigeria</h4> </a>
-                    </div>
-                </div>
-            </div> --}}
-
-
         </div>
     </div>
 @endsection
