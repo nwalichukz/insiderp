@@ -92,7 +92,7 @@
                         @if(!empty($Helper->postAvatar($post->user_id)->name))
                             <img src="{{asset("images/user/".$Helper->postAvatar($post->user_id)->name)}}" class="h-8 rounded-full mr-3" alt="user image"/>
                         @else
-                            <img src='{{asset("images/avatar/avatar.png")}}' class="h-8 rounded-full mr-3" alt="thumb"/>
+                            <img src='{{asset("images/avatar/avatar.png")}}' class="h-8 rounded-full mr-3" alt="thumb avatar"/>
                         @endif
                     </a>
                 </div>

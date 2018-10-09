@@ -13,23 +13,29 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
  <script src="{{url('ckeditor/ckeditor.js')}}"></script> 
-<meta name="description" content="A social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing 
+ @if(!empty($pg))
+<meta name="description" content="{!!ucfirst($Helper->get_words($trend->post, 43))!!}">
+ @else
+<meta name="description" content="Bido is a social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing 
 those issues that affect us and our society especially in Nigeria">
+@endif
 <meta name="keywords" content="politics, share a story, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
-religious news, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun review, 
+religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun review, 
  Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">
 <meta charset="utf-8">
 <meta name="google-site-verification" content="r-KmW3txqodD-zMvufoJWY8MbPWnzqoHD1vjHoW5GV0" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>@if(!empty($title))
+    <title>
+        @if(!empty($title))
 	    {{ $title }}
         @elseif(!empty($fulltitle))
         {{ $fulltitle }}
 		@else
 		Bido - Post news, opinions, articles, questions, get involved your views matter and help make our society better!
-		@endif</title>
+		@endif
+    </title>
         <!-- Fonts -->
         <!-- Styles -->
     <script src="{{ asset('js/app.js') }}" type="text/Javascript"> </script>

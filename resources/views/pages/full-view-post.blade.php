@@ -2,17 +2,8 @@
 @extends('layouts.indextemplate')
 @section('content')
     <div class="mt-16">
-        <div class="container mx-auto md:flex md:flex-wrap px-3">
-            <div class="w-full md:w-1/4 mr-4 mb-4">
-                <div class="bg-white shadow rounded py-3 px-4">
-                    <div class="border-b text-lg font-base mb-3">Sponsored</div>
-                    <div>
-                        <img src="{{asset('/images/avatar/letnote.jpg')}}" class="w-full mb-3" style="height:150px;">
+        <div class="container mx-auto md:flex md:flex-wrap px-3 justify-center">
 
-                        <a href="http://www.letnote.com.ng"><h4>Find houses for rent or sale in nigeria</h4> </a>
-                    </div>
-                </div>
-            </div> 
             <div class="w-full md:w-1/2">
                 <div class="full-view-item">
                     <div class="bg-white py-3 px-4">
@@ -183,7 +174,7 @@
                                         <h3 class="my-2">Related Posts </h3>
                                         @foreach ($related as $relatedpost)
                                        <ul class="list-reset"><li> 
-                                        <a class="text-blue" href="{{ url('/post-full-view/'.$relatedpost->id.'/'.str_slug(strtolower($relatedpost->title), '-')) }}" title="click to read full details"> {{$Helper->get_title(title_case(strtolower($relatedpost->title)), 25)}} </a></li> </ul>
+                                        <a class="text-blue text-sm" href="{{ url('/post-full-view/'.$relatedpost->id.'/'.str_slug(strtolower($relatedpost->title), '-')) }}" title="click to read full details"> {{$Helper->get_title(title_case(strtolower($relatedpost->title)), 25)}} </a></li> </ul>
                                         @endforeach
                                         @endif
                                     </div>
@@ -193,6 +184,19 @@
                     </div>
                 </div>
             </div>
+
+               {{-- <div class="w-full md:w-1/4 ml-3">
+                <div class="bg-white shadow rounded py-3 px-4">
+                    <div class="border-b text-lg font-base mb-3">Sponsored</div>
+                    <div>
+                        <img src="{{asset('/images/avatar/letnote.jpg')}}" class="w-full mb-3" style="height:150px;">
+
+                        <a href="http://www.letnote.com.ng"><h4>Find houses for rent or sale in nigeria</h4> </a>
+                    </div>
+                </div>
+            </div> --}}
+
+
         </div>
     </div>
 @endsection
