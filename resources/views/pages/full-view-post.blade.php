@@ -27,7 +27,7 @@
 
                             <div>
                                 <div>
-                                    <a href="#" class="text-blue">{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}/<span class="text-orange">{{$trend->category}}</span></a>
+                                    <a href="{{url('/post/'.$Helper->user($trend->user_id)->user_name)}}" title='view all post by {{$Helper->user($trend->user_id)->user_name}}' class="text-blue">{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}/<span class="text-orange">{{$trend->category}}</span></a>
                                     <div class="text-xs text-grey-dark my-2">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</div>
                                     <div class="flex -ml-1">
                                         <a href="https://www.facebook.com/sharer/sharer.php?u= " title="share this article on facebook" class="flex items-center mr-3">

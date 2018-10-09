@@ -757,7 +757,7 @@ public function changePassword(Request $request)
   *
   */
   public function sitemap(){
-    $post = Post::where('status', 'active')->limit(50000)->get();
+    $post = Post::where('status', 'active')->limit(50000)->orderBy('created_at', 'DESC')->get();
     $page = Category::all();
     return view('sitemap.sitemap')->with(['posts'=>$post, 'pages'=>$page]);//->header('Content-Type', 'text/xml');
   }
