@@ -19,6 +19,7 @@ those issues that affect us and our society especially in Nigeria">
 religious news, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun review, 
  Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">
 <meta charset="utf-8">
+<meta name="google-site-verification" content="r-KmW3txqodD-zMvufoJWY8MbPWnzqoHD1vjHoW5GV0" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
