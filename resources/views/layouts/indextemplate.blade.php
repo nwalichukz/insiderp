@@ -14,7 +14,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
  <script src="{{url('ckeditor/ckeditor.js')}}"></script> 
  @if(!empty($pg))
-<meta name="description" content="{!!ucfirst($Helper->get_words($trend->post, 43))!!}">
+<meta name="description" content="{{ucfirst($Helper->get_words($trend->post, 100))}}">
  @else
 <meta name="description" content="Bido is a social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing 
 those issues that affect us and our society especially in Nigeria">

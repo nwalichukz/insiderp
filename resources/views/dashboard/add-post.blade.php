@@ -43,6 +43,7 @@
                         <option >Literature Review</option>
                         <option >Art and Craft</option>
                         <option >Campus Gist</option>
+                        <option >Food</option>
 
                     </select>
                 </div>
@@ -51,7 +52,7 @@
                         {{ csrf_field() }}
                         <div class="">
                             <label for="attachment">Post with image:</label>
-                            <input type="file" name="image" onchange="readURL(this);" id="images" multiple="true" class="p-1 bg-white text-black" />
+                            <input type="file" name="image[]" onchange="readURL(this);" id="images" multiple="true" class="p-1 bg-white text-black" />
                             <div id="image-holder" class="w-full"></div>
                             <img class="showimg" src="#" alt="" class="rounded shadow" />
                         </div>

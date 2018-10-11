@@ -43,11 +43,11 @@ class ImageController extends Controller
      * 
      * @return bool
      */
-    public static function postImageUpload(Request $request)
+    public static function postImageUpload($image)
     {
-        if ($request->hasFile('image'))
+        if (!empty($image))
         {    
-            $file = $request->file('image');
+            $file = $image;//$request->file('image');
             $filename = rand().time().'.'.$file->getClientOriginalExtension();
             $path = public_path('images/post/'.$filename);
             $width = Image::make($file->getRealPath())->width();

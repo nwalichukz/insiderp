@@ -270,13 +270,15 @@ class WebViewController extends Controller
            'category' => 'required',
            ]);
     	$post = PostController::create($request);
-    	if($request->hasFile('image')){
-    		$img = ImageController::postImageUpload($request);
+    	if(!empty($request['image'])){
+        foreach($request['image'] as $file){
+    		$img = ImageController::postImageUpload($file);
     		$postimg = new PostImage;
     		$postimg->post_id = $post['id'];
     		$postimg->name = $img;
     		$postimg->save();
-    	}
+    	  }  
+          }
     	if($post['success'])
     	{
     		flash('post added successfully')->success();
