@@ -29,9 +29,9 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
 
     <title>
         @if(!empty($title))
-	    {{ $title }}
+	    {{ title_case($title) }}
         @elseif(!empty($fulltitle))
-        {{ $fulltitle }}
+        {{ title_case($fulltitle) }}
 		@else
 		Bido - Post news, opinions, articles, questions, get involved your views matter and help make our society better!
 		@endif
