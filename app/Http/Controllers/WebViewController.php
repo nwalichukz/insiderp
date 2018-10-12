@@ -30,6 +30,8 @@ use App\PostLike;
 use App\CommentLike;
 use App\UserImage;
 use Auth, DB, Mail;
+use App\Category;
+//use Spatie\Sitemap\SitemapGenerator;
 
 
 class WebViewController extends Controller
@@ -45,7 +47,8 @@ class WebViewController extends Controller
     $trending = PostController::getTrending();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Trending',
+     $featured = PostController::featuredPost();
+      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'featured'=>$featured, 'topcategory'=>'Trending',
       'fulltitle'=>'Trending - news, opinions, articles, questions, get involved your views matter and help make our society better!']);
 	}
     /**
@@ -59,8 +62,9 @@ class WebViewController extends Controller
     $trendpost = PostController::getTrendPost();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>'Latest',
-        'trendpost'=>$trendpost,]);
+     $featured = PostController::featuredPost();
+      return view('home')->with(['posts'=>$trending, 'topcategory'=>'Latest', 'cat'=>$category, 'lead'=>$lead, 'featured'=>$featured,
+        'trendpost'=>$trendpost]);
   }
 
   /**
@@ -75,8 +79,8 @@ class WebViewController extends Controller
      $trendpost = PostController::getTrendPost();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-      return view('pages.users-posts')->with(['trending'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'category'=>$user->user_name, 
-        'trendpost'=>$trendpost, 'user'=>$user, 'fulltitle'=> $user->user_name.' posts-Bido']);
+      return view('home')->with(['posts'=>$trending, 'cat'=>$category, 'lead'=>$lead, 'topcategory'=>$user->user_name, 
+        'trendpost'=>$trendpost, 'user'=>$user, 'fulltitle'=> $user->user_name.' posts - Bido']);
   }
   	/* * This method checks
      *
@@ -266,13 +270,15 @@ class WebViewController extends Controller
            'category' => 'required',
            ]);
     	$post = PostController::create($request);
-    	if($request->hasFile('image')){
-    		$img = ImageController::postImageUpload($request);
+    	if(!empty($request['image'])){
+        foreach($request['image'] as $file){
+    		$img = ImageController::postImageUpload($file);
     		$postimg = new PostImage;
     		$postimg->post_id = $post['id'];
     		$postimg->name = $img;
     		$postimg->save();
-    	}
+    	  }  
+          }
     	if($post['success'])
     	{
     		flash('post added successfully')->success();
@@ -410,7 +416,7 @@ public function changePassword(Request $request)
         $trend = PostController::get($id);
         $related = PostController::relatedPost($trend->title, $trend->category);
         PostViewController::add($id);
-        return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category, 'fulltitle'=>$trend->title, 'related'=>$related]);
+        return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category, 'fulltitle'=>$trend->title, 'related'=>$related, 'pg'=>'fullView']);
       }
       // count view
       public function countView(Request $request){
@@ -646,7 +652,7 @@ public function changePassword(Request $request)
         $postimg->name = $img;
         $postimg->save();
       }
-    if($update){
+    if($update == true){
       flash('Post updated successfully')->success();
       return redirect(str_slug(Auth::user()->name).'/my-post/'.Auth::user()->id);
        }else{
@@ -713,7 +719,7 @@ public function changePassword(Request $request)
   *
   */
   public function addSeed(){
-    DB::table('categories')->insert([['name' => 'Story', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
+    DB::table('categories')->insert([['name' => 'Food', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
                                      ['name' => 'Literature Review', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
                                           ]);
     return redirect('/');
@@ -745,4 +751,16 @@ public function changePassword(Request $request)
       return redirect('/');
     }
    }
+
+      /**
+  * This method that returns sitemap
+  *
+  * @return view
+  *
+  */
+  public function sitemap(){
+    $post = Post::where('status', 'active')->limit(50000)->orderBy('created_at', 'DESC')->get();
+    $page = Category::all();
+    return view('sitemap.sitemap')->with(['posts'=>$post, 'pages'=>$page]);//->header('Content-Type', 'text/xml');
+  }
 }

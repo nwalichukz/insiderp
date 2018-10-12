@@ -2,17 +2,8 @@
 @extends('layouts.indextemplate')
 @section('content')
     <div class="mt-16">
-        <div class="container mx-auto md:flex md:flex-wrap px-3">
-            <div class="w-full md:w-1/4 mr-4 mb-4">
-                <div class="bg-white shadow rounded py-3 px-4">
-                    <div class="border-b text-lg font-base mb-3">Sponsored</div>
-                    <div>
-                        <img src="{{asset('/images/avatar/letnote.jpg')}}" class="w-full mb-3" style="height:150px;">
+        <div class="container mx-auto md:flex md:flex-wrap px-3 justify-center">
 
-                        <a href="http://www.letnote.com.ng"><h4>Find houses for rent or sale in nigeria</h4> </a>
-                    </div>
-                </div>
-            </div>
             <div class="w-full md:w-1/2">
                 <div class="full-view-item">
                     <div class="bg-white py-3 px-4">
@@ -27,15 +18,15 @@
 
                             <div>
                                 <div>
-                                    <a href="#" class="text-blue">{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}/<span class="text-orange">{{$trend->category}}</span></a>
+                                    <a href="{{url('/post/'.$Helper->user($trend->user_id)->user_name)}}" title='view all post by {{$Helper->user($trend->user_id)->user_name}}' class="text-blue">{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}/<span class="text-orange">{{$trend->category}}</span></a>
                                     <div class="text-xs text-grey-dark my-2">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</div>
                                     <div class="flex -ml-1">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u=" title="share this article on facebook" class="flex items-center mr-3">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u= " title="share this article on facebook" class="flex items-center mr-3">
                                             <img src="{{asset("images/avatar/facebook.png")}}" class="twitter-facebook" style="width:20px;">
                                             <span class="ml-1 text-sm">Share</span>
                                         </a>
 
-                                        <a href="https://twitter.com/home?status=" title="share this article on twitter" style="width:20px;" class="flex items-center">
+                                        <a href="https://twitter.com/home?status= " title="share this article on twitter" style="width:20px;" class="flex items-center">
                                             <img src="{{asset("images/avatar/twitter.png")}}" class="twitter-facebook" >
                                             <span class="ml-1  text-sm">Share</span>
                                         </a>
@@ -183,7 +174,7 @@
                                         <h3 class="my-2">Related Posts </h3>
                                         @foreach ($related as $relatedpost)
                                        <ul class="list-reset"><li> 
-                                        <a class="text-blue" href="{{ url('/post-full-view/'.$relatedpost->id.'/'.str_slug(strtolower($relatedpost->title), '-')) }}" title="click to read full details"> {{$relatedpost->title}} </a></li> </ul>
+                                        <a class="text-blue text-sm" href="{{ url('/post-full-view/'.$relatedpost->id.'/'.str_slug(strtolower($relatedpost->title), '-')) }}" title="click to read full details"> {{$Helper->get_title(title_case(strtolower($relatedpost->title)), 25)}} </a></li> </ul>
                                         @endforeach
                                         @endif
                                     </div>
@@ -193,6 +184,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection

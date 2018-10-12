@@ -1,5 +1,5 @@
 <div class="bg-grey-light">
-    <div class="bg-blue text-white rounded py-4 px-4">@if(!empty($category)) {{ $category }} Posts @elseif(!empty($search)) About {{ $search->count() }} Search Results @else Trending Posts @endif</div>
+    <div class="bg-blue text-white rounded py-4 px-4">@if(!empty($topcategory)){{ $topcategory }} Posts @elseif(!empty($search)) About {{ $search->count() }} Search Results @else Trending Posts @endif</div>
 
     @foreach($posts as $post)
     <div class="posts bg-white rounded-b shadow-md py-3 px-4 mb-3">
@@ -11,7 +11,7 @@
                     <img src="{{asset("images/avatar/avatar.png")}}" alt="" class="h-10 rounded-full mr-3">
                 @endif
                 <div>
-                    <a href="#" class="text-blue">{{ucfirst(strtolower($Helper->user($post->user_id)->user_name))}}/<span class="text-orange">{{$post->category}}</span></a>
+                    <a href="{{url('/post/'.$Helper->user($post->user_id)->user_name)}}" title='view all post by {{$Helper->user($post->user_id)->user_name}}' class="text-blue">{{ucfirst(strtolower($Helper->user($post->user_id)->user_name))}}/<span class="text-orange">{{$post->category}}</span></a>
                     <div class="text-xs text-grey-dark mt-1">{{date('d F \'y \a\t h:i:a', strtotime($post->created_at))}}</div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
         <div class="post-body mt-6 mb-3">
             @if(!empty($Helper->postImage($post->id)->name))
             <div class="text-lg capitalize mb-3"><a href="{{url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-'))}}" class="text-blue-light hover:text-blue-dark hover:underline">{{title_case(strtolower($Helper->get_title($post->title, 19)))}}</a></div>
-            <div class="post-image mb-3"><img src="{{asset("images/post/".$Helper->postImage($post->id)->name)}}" alt="" class="w-full"></div>
+            <div class="post-image mb-3"><img src="{{asset("images/post/".$Helper->postImage($post->id)->name)}}" alt="post image" class="w-full"></div>
             <div class="post-text">
                 {!!ucfirst($Helper->get_words($post->post, 30))!!}  <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}" title="click to read full details" class="text-blue"> more </a>
             </div>
@@ -92,7 +92,7 @@
                         @if(!empty($Helper->postAvatar($post->user_id)->name))
                             <img src="{{asset("images/user/".$Helper->postAvatar($post->user_id)->name)}}" class="h-8 rounded-full mr-3" alt="user image"/>
                         @else
-                            <img src='{{asset("images/avatar/avatar.png")}}' class="h-8 rounded-full mr-3" alt="thumb"/>
+                            <img src='{{asset("images/avatar/avatar.png")}}' class="h-8 rounded-full mr-3" alt="thumb avatar"/>
                         @endif
                     </a>
                 </div>

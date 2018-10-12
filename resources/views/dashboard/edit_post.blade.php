@@ -52,7 +52,7 @@
                             <option value="normal" >Normal</option>
                             <option value="lead" >Lead</option>
                             <option value ="votes">Votes</option>
-                            <option value="predictions" >Predictions</option>
+                            <option value="featured" >Featured</option>
                         </select>
                     </div>
                     {{--<div class="mb-3">

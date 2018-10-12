@@ -12,7 +12,7 @@
 </script>
  <script src="{{url('ckeditor/ckeditor.js')}}"></script>
 
-<meta name="description" content="A social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing 
+<meta name="description" content="Bido is a social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing 
 those issues that affect us and our society especially in Nigeria.">
 <meta name="keywords" content="politics, share a stroy, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
 religious news, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun, vanguard news paper

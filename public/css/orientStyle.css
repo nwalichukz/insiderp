@@ -139,6 +139,9 @@ margin: -8px 0 5px 0;
   font-size: 1.2em;
   color: #000;
 }
+.little-title{
+  font-size: 0.6em;
+}
 .searchbtn{
 height:38px;
 margin: 1px 0 2px 0;
@@ -620,13 +623,4 @@ ul.pagination li.disabled {
     padding: 8px 8px;
     border: 1px solid #ddd;
     margin: 4px;
-}
-@media only screen and (max-width: 768px) {
-    body {
-        color: #000;
-        font-size: 1.2em;
-    }
-  .trendtext{
-  font-size: 1.2em;
-}
 }
