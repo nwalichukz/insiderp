@@ -39,11 +39,19 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
         <!-- Fonts -->
         <!-- Styles -->
     <script src="{{ asset('js/app.js') }}" type="text/Javascript"> </script>
+    <script src="{{ asset('bootstrap/js/bootstrap.js') }}" type="text/Javascript"> </script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}" type="text/Javascript"> </script>
+    <script src="{{ asset('js/popup-gallery.js') }}" type="text/Javascript"> </script>
+    <script src="{{ asset('js/images-grid.js') }}" type="text/Javascript"> </script>
+
     <script src="{{ asset('js/orientScript.js') }}" type="text/Javascript"> </script>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/b.css')  }}" type="text/css">
     <link href="{{ asset('css/bido.css') }}" rel="stylesheet">
     <link href="{{asset('css/orientStyle.css')}}" rel="stylesheet">
     <link href="{{asset('css/fonts.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/magnific-popup.css')}}" rel="stylesheet">
+    <link href="{{asset('css/images-grid.css.css')}}" rel="stylesheet">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -93,10 +101,9 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
     <nav class="footer"><a href="{{url('/')}}">Home</a> |<!-- <a href="{{url('/terms')}}"> Terms </a>| --><a href="{{url('/about')}}"> About us</a> | <a href="{{url('/contact')}}">Contact us</a></nav>
  <nav class="footer"><a title="The bido team" href="{{url('/')}}">Bido Team </a></nav>
       </div>
-
 <script type="text/x-template" id="dropdown-link-template">
-    <div class="relative">
-        <div role="button" class="inline-block select-none" @click="open = !open">
+    <div class="relative drop">
+        <div role="button" class="inline-block select-none" @click="toggle">
             <slot name="link"></slot>
         </div>
         <div class="absolute pin-l mt-px" v-show="open">
@@ -111,23 +118,25 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
             return {
                 open: false
             }
-        }
-    });
-
-    new Vue({
-        el: "#app",
-        data: {
-            open: false,
         },
-
         methods: {
             toggle() {
-                this.open = !this.open
+                this.open = !this.open;
+                let $dropdown = $('.drop');
+                document.addEventListener('keydown', (e) => {
+                    if (this.open && e.keyCode === 27) {
+                        this.open = !this.open;
+                    }
+                });
+
             }
         },
     });
+    var app = new Vue({
+        el: '#app'
+    })
 </script>
-<scrip src="{{ asset('js/modals.js') }}"></scrip>
+<script src="{{ asset('js/modals.js') }}"></script>
 <script>
     $('#flash-overlay-modal').modal();
 

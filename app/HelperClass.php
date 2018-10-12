@@ -37,8 +37,14 @@ class HelperClass{
 	// the post image
 	public function postImage($post_id)
 	{
-		return DB::table('post_images')->where('post_id', $post_id)->first();
+		return DB::table('post_images')->where('post_id', $post_id)->get();
 	}
+
+    // the post image
+    public function postImageFirst($post_id)
+    {
+        return DB::table('post_images')->where('post_id', $post_id)->first();
+    }
 
 	// the comment counter
 	public function commentCount($post_id)
