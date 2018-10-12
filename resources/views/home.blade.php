@@ -44,7 +44,7 @@
                           </svg>
                         </span>
                         <div slot="dropdown" class="bg-white shadow rounded border overflow-hidden mx-3">
-                            <a class="dropdown-item" href="{{url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Loop through pages </a>
+                            <a class="dropdown-item" href="{{ url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name))) }}">Loop through pages </a>
                         </div>
                     </dropdown-link>
                 </div>
