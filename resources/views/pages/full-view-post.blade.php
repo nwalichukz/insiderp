@@ -47,17 +47,27 @@
 
                         <div class="shadow mb-6 pb-2">
                             @if(!empty($Helper->postImage($trend->id)))
-                                <div class="my-2">
-                                    <div class="flex flex-wrap items-center" id="images">
-                                        @foreach($Helper->postImage($trend->id) as $image)
-                                            <div class="w-1/2 px-1">
-                                                <a href="{{ asset('images/post/'.$image->name) }}">
-                                                    <img src="{{ asset('images/post/'.$image->name) }}" alt="" class="image-link">
-                                                </a>
-                                            </div>
-                                        @endforeach    
+                                @if($Helper->postImage($trend->id)->count() == 1)
+                                    <div class="my-2">
+                                        <img src="{{ asset('images/post/'.$Helper->postImageFirst($trend->id)->name) }}"
+                                             alt="" class="w-full image-link">
                                     </div>
-                                </div>
+                                @else
+                                    <div class="my-2">
+                                        <div class="post-images flex flex-wrap">
+
+                                        </div>
+                                        {{--<div class="flex flex-wrap items-center" id="images">--}}
+                                        {{--@foreach($Helper->postImage($trend->id) as $image)--}}
+                                        {{--<div class="w-1/2 px-1">--}}
+                                        {{--<a href="{{ asset('images/post/'.$image->name) }}">--}}
+                                        {{--<img src="{{ asset('images/post/'.$image->name) }}" alt="" class="image-link">--}}
+                                        {{--</a>--}}
+                                        {{--</div>--}}
+                                        {{--@endforeach    --}}
+                                        {{--</div>--}}
+                                    </div>
+                                @endif
 
                                 <div class="px-4 mb-3">
                                     <div class="mb-2">
@@ -152,14 +162,18 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="post_id" id="postid" value="{{$trend->id}}">
                                         <div class="flex items-center">
-                                            <div class="w-full mr-3"><textarea name="comment" rows="1"
-                                                                               value="{{ old('comment') }}"
-                                                                               placeholder="Enter your comment here.."
-                                                                               class="w-full rounded-full py-2 px-4 border bg-grey-lightest"
-                                                                               required></textarea></div>
+                                            <div class="w-full mr-3">
+                                                <textarea name="comment" rows="2"
+                                                          value="{{ old('comment') }}"
+                                                          placeholder="Enter your comment here.."
+                                                          class="w-full  py-2 px-4 border-b-2 border-grey bg-grey-lightest focus:bg-white focus:border-blue focus:outline-none"
+                                                          required></textarea>
+                                            </div>
                                             <div>
                                                 <button class="py-2 px-4 rounded bg-blue text-white hover:bg-blue-dark"
-                                                        type="submit"><i class="fa fa-comment"></i></button>
+                                                        type="submit"
+                                                ><i class="fa fa-comment"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </form>
@@ -265,5 +279,16 @@
 
         </div>
     </div>
-
+    <script>
+        $(document).ready(function () {
+            $('.post-images').imagesGrid({
+                images: [
+                    @foreach($Helper->postImage($trend->id) as $image)
+                        '{{ asset('images/post/'.$image->name) }}',
+                    @endforeach
+                ],
+                cells: 2
+            });
+        });
+    </script>
 @endsection

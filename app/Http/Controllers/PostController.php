@@ -216,7 +216,7 @@ class PostController extends Controller
     */
     public static function featuredPost(){
         return Post::where('status', 'active')->where('post_importance', 'featured')->orderBy('created_at', 'DESC')
-                       ->limit(3)->get();
+                       ->limit(4)->get();
         
     }
 
