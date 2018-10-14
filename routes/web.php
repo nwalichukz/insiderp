@@ -70,7 +70,7 @@ Route::get('/account-success', 'WebViewController@accountSuccess');
 //Route::get('/delete-seed', 'WebViewController@deleteSeed');
 Route::get('/get-add-post', 'WebViewController@postForm');
 Route::get('/sitemap', 'WebViewController@sitemap');
-
+Route::get('post-front-page', 'PostController@frontPost');
 Route::get('/t-login', function () {
     return view('template.t-login');
 });

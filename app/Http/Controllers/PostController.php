@@ -217,7 +217,26 @@ class PostController extends Controller
     */
     public static function featuredPost(){
         return Post::where('status', 'active')->where('post_importance', 'featured')->orderBy('created_at', 'DESC')
-                       ->limit(3)->get();
+                       ->limit(9)->get();
+        
+    }
+
+     /**
+    * updates of front page
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function frontPost(){
+        $post = Post::where('status', 'active')->where('post_importance', '!=', 'featured')->where('publisher_level', 'admin')
+                    ->orWhere('publisher_level', 'editor')->get();
+                    foreach ($post as $posts) {
+                        $posts->post_importance = 'front-page';
+                        $posts->save();
+                    }
+        return redirect('/');
+                    
         
     }
 

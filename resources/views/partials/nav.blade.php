@@ -29,11 +29,11 @@
                 @if(Auth::check())
                     @if(Auth::user()->user_level==='admin' || Auth::user()->user_level ==='editor')
                         <a class="dropdown-item" href="{{url('/blocked-posts')}}">view blocked post </a>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Article</a>
+                       <!-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addPostModal" data-placement="top" title="post to public">Add Article</a> -->
                     @endif
                     @if(Auth::user()->user_level === 'admin')
                         <a class="dropdown-item" href="{{url('/view-users')}}">View users</a>
-                        <a class="dropdown-item" href="{{url('/view-votes')}}">View votes</a>
+                        <!--<a class="dropdown-item" href="{{url('/view-votes')}}">View votes</a> -->
                         <a class="dropdown-item" href="{{url('/view-blocked-users')}}">View blocked users</a>
                     @endif
                 @endif
