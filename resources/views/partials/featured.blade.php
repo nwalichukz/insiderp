@@ -8,7 +8,7 @@
                 <div class="mb-1">
                     <img src="{{asset("images/post/".$Helper->postImageFirst($feature->id)->name)}}" alt="The image for the featured post" class="w-full rounded">
                 </div>
-                <div class="text-xs p-1 flex flex-wrap">{{$Helper->get_title(title_case(strtolower($feature->title)), 6)}}... </div>
+                <div class="text-xs p-1 flex flex-wrap">{{$Helper->get_title(title_case(strtolower($feature->title)), 8)}}... </div>
             </a>
         </div>
 

@@ -264,7 +264,7 @@ class WebViewController extends Controller
     }
 
       // suspended-banned
-    protected function addPost(Request $request){
+    public function addPost(Request $request){
     	$this->validate($request,
         [  'post'=>'required',
            'category' => 'required',
@@ -645,12 +645,14 @@ public function changePassword(Request $request)
   public function updatePost(Request $request){
     if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
     $update = PostController::update($request);
-    if($request->hasFile('image')){
-        $img = ImageController::postImageUpload($request);
+    if(!empty($request['image'])){
+      foreach ($request['image'] as $file) {
+        $img = ImageController::postImageUpload($file);
         $postimg = new PostImage;
         $postimg->post_id = $request['id'];
         $postimg->name = $img;
         $postimg->save();
+          }
       }
     if($update == true){
       flash('Post updated successfully')->success();

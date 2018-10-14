@@ -52,7 +52,7 @@
                                         @foreach($Helper->postImage($trend->id) as $image)
                                             <div class="w-1/2 px-1">
                                                 <a href="{{ asset('images/post/'.$image->name) }}">
-                                                    <img src="{{ asset('images/post/'.$image->name) }}" alt="" class="image-link">
+                                                    <img src="{{ asset('images/post/'.$image->name) }}" alt="post image" class="image-link">
                                                 </a>
                                             </div>
                                         @endforeach    

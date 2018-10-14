@@ -30,7 +30,8 @@ class PostController extends Controller
        $create->user_id = Auth::user()->id;
        $create->publisher_level = Auth::user()->user_level;
        $create->title = $request['title'];
-       $create->post_importance = 'normal';
+       if(Auth::user()->user_level === 'admin' || Auth::user()->user_level === 'editor')
+        {$create->post_importance = 'front-page';}else{$create->post_importance = 'normal';}
        $create->save();
        PostViewController::create($create->id);
        return ['success'=>'true', 'id' =>$create->id];
@@ -201,7 +202,7 @@ class PostController extends Controller
     * @var instance
     */
     public static function getLatest(){
-        return Post::where('status', 'active')->where('category', '!=', 'Job')->orderBy('created_at', 'DESC')
+        return Post::where('status', 'active')->where('post_importance', 'front-page')->where('category', '!=', 'Job')->orderBy('created_at', 'DESC')
                        ->limit(1000)->paginate(45);
         
     }
