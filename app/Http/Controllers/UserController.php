@@ -71,7 +71,17 @@ class UserController extends Controller
     *
     */
      public static function getAll(){
-     	return User::where('status', 'active')->orderBy('created_at', 'DESC')->paginate('20');
+     	return User::where('status', 'active')->orderBy('created_at', 'DESC')->paginate(20);
+     }
+
+    /**
+    * This method returns all user
+    *
+    * @return collection
+    *
+    */
+     public static function getAllUser(){
+      return User::where('status', 'active')->get();
      }
 
      /**
@@ -81,7 +91,7 @@ class UserController extends Controller
     *
     */
      public static function getAllBlocked(){
-      return User::where('status', '!=', 'active')->orderBy('created_at', 'DESC')->paginate('20');
+      return User::where('status', '!=', 'active')->orderBy('created_at', 'DESC')->paginate(20);
      }
 
      /**

@@ -1,6 +1,6 @@
 @extends('layouts.indextemplate')
 @section('content')
-    <div class="mt-6 flex justify-center">
+    <div class="mt-20 flex justify-center">
         <div class="w-1/2 bg-white rounded shadow p-4">
             <div class="container mx-auto">
                 <div class="mb-3 border-b">

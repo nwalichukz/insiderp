@@ -19,6 +19,7 @@ use App\Mail\InviteFriendsMail;
 use App\Mail\PasswordResetMail;
 use App\Mail\ViewNotification;
 use App\Mail\contactMail;
+use App\Mail\BulktMail;
 use Carbon\Carbon;
 use App\PostImage;
 use App\Post;
@@ -66,6 +67,7 @@ class WebViewController extends Controller
       return view('home')->with(['posts'=>$trending, 'topcategory'=>'Latest', 'cat'=>$category, 'lead'=>$lead, 'featured'=>$featured,
         'trendpost'=>$trendpost]);
   }
+
 
   /**
   * posts for a particular user
@@ -247,7 +249,26 @@ class WebViewController extends Controller
 		}else{
       Auth::logout();
       return redirect('/');
+      }
+
     }
+    /**
+  * This method returns the latest post
+  *
+  * not posted by the editor or admin
+  *
+  * @return view
+  */
+    public static function generalPost(){
+      if(Auth::check() AND (Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
+       $trending = PostController::getLatestGeneral();
+       $category = CategoryController::getCategory();
+       return view('dashboard.index')->with(['cat' =>$category, 'posts'=>$trending]);
+
+    }else{
+      Auth::logout();
+      return redirect('/');
+      }
 
     }
     //my post
@@ -577,6 +598,26 @@ public function changePassword(Request $request)
       return redirect('contact-sent');
     }
 
+     /**
+    * This method sends a mail to all
+    *
+    * the user registered
+    *
+    */
+    public function sendBulkMail(Request $request){
+        $this->validate($request,
+        [ 'subject'=>'required',
+          'content' => 'required',          
+           ]);
+       $delay = (new \Carbon\Carbon)->now()->addMinutes(2);
+       $user = UserController::getAllUser();
+       foreach ($user as $users) {
+        
+      Mail::to($users->email)->later($delay, new BulkMail($request['subject'], $request['content'], $users->name));
+       }
+      return redirect()->back();
+    }
+
     // password reset success page
     public function SuccessEmail()
    {  
@@ -748,6 +789,21 @@ public function changePassword(Request $request)
    public function postForm(){
     if(Auth::check()){
       return view('dashboard.add-post');
+    }else{
+      Auth::logout();
+      return redirect('/');
+    }
+   }
+
+  /**
+  * This method that gets mail form
+  *
+  *
+  *
+  */
+   public function getMail(){
+    if(Auth::check()){
+      return view('dashboard.get-mail');
     }else{
       Auth::logout();
       return redirect('/');
