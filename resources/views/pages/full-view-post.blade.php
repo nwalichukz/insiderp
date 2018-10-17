@@ -242,7 +242,7 @@
                                                         </div>
 
                                                         <div>
-                                                            <span class="text-xs text-grey-dark">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
+                                                            <span class="text-xs text-grey-dark">{{date('d/n\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                                                         </div>
                                                     @else
                                                         <div>
