@@ -6,7 +6,7 @@
         <div class="mb-2 border-b text-black capitalize text-xl py-3 px-4">Add Mail</div>
         <div class="px-4">
            <form action="{{url('send-bulk-mail')}}" method="post" enctype="multipart/form-data" id="">
-                
+                 {{ csrf_field() }}
                     <div class="mb-3">
                         <input type="text" name="subject" class="modal-input" placeholder="Enter the subject of the mail here" required>
                     </div>
