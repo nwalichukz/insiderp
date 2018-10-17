@@ -56,7 +56,7 @@ class PostController extends Controller
     */
     public static function getAll()
     {
-    	return Post::where('status', 'active')->paginate(35);
+    	return Post::where('status', 'active')->paginate(50);
     }
 
      /**

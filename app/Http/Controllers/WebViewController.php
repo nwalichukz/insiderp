@@ -93,9 +93,9 @@ class WebViewController extends Controller
 	 public function registerUser(Request $request)
 		 {   
      $this->validate($request,
-        [  'email'=>'unique:users',
+        [  'email'=>'required|email|unique:users',
            'name'=>'required',
-           'user_name' => 'unique:users',
+           'user_name' => 'required|unique:users',
            'password' => 'required|string|min:6|confirmed',
            ]);
  
@@ -122,9 +122,9 @@ class WebViewController extends Controller
      public function registerUserModal(Request $request)
  {   
      $this->validate($request,
-        [  'email'=>'unique:users',
+        [  'email'=>'required|email|unique:users',
            'name'=>'required',
-           'user_name'=> 'unique:users',
+           'user_name'=> 'required|unique:users',
            'password' => 'required|string|min:6|confirmed',
            ]);
  
