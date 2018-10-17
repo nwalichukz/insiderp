@@ -71,7 +71,17 @@ class UserController extends Controller
     *
     */
      public static function getAll(){
-     	return User::where('status', 'active')->orderBy('created_at', 'DESC')->get();
+     	return User::where('status', 'active')->orderBy('created_at', 'DESC')->paginate(30);
+     }
+
+      /**
+    * This method returns the number of users
+    *
+    * @return collection
+    *
+    */
+     public static function countUser(){
+      return User::where('status', 'active')->count();
      }
 
     /**

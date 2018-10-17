@@ -449,8 +449,9 @@ public function changePassword(Request $request)
       {  if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
           {
         $users = UserController::getAll();
+        $usercount = UserController::countUser();
         $category = CategoryController::getCategory();
-        return view('dashboard.users-page')->with(['users'=>$users->paginate(20), 'cat'=>$category, 'total_users'=>$users->count()]);
+        return view('dashboard.users-page')->with(['users'=>$users, 'cat'=>$category, 'total_users'=>$usercount,]);
         }else{
         Auth::logout();
         return redirect('/');
