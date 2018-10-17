@@ -19,7 +19,7 @@ use App\Mail\InviteFriendsMail;
 use App\Mail\PasswordResetMail;
 use App\Mail\ViewNotification;
 use App\Mail\contactMail;
-use App\Mail\BulktMail;
+use App\Mail\BulkMail;
 use Carbon\Carbon;
 use App\PostImage;
 use App\Post;
