@@ -113,7 +113,7 @@
                 <div class="flex items-center">
                     @include('template.icons.view')
                     @if(!empty($Helper->postView($post->id)->view))
-                        {{$Helper->postView($post->id)->view}}
+                        {{number_format($Helper->postView($post->id)->view)}}
                     @endif
                 </div>
                 <div class="flex items-center">
