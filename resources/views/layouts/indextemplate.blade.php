@@ -14,6 +14,13 @@
 
         gtag('config', 'UA-124060018-1');
     </script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9014370716858075",
+    enable_page_level_ads: true
+  });
+</script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{url('ckeditor/ckeditor.js')}}"></script>
