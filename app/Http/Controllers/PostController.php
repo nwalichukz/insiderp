@@ -56,7 +56,7 @@ class PostController extends Controller
     */
     public static function getAll()
     {
-    	return Post::where('status', 'active')->paginate(50);
+    	return Post::where('status', 'active')->paginate(35);
     }
 
      /**
@@ -208,7 +208,7 @@ class PostController extends Controller
     }
 
     public static function getLatestGeneral(){
-        return Post::where('status', 'active')->where('publisher_level', '!=', 'admin')->orWhere('publisher_level', '!=', 'editor')->orderBy('created_at', 'DESC')
+        return Post::where('status', 'active')->where('publisher_level', '!==', 'admin')->orWhere('publisher_level', '!==', 'editor')->orderBy('created_at', 'DESC')
                       ->limit(1000)->paginate(30);  
                    
     }

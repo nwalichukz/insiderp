@@ -1,7 +1,7 @@
 @inject('Helper', 'App\HelperClass')
 @extends('layouts.usertemplate')
 @section('content')
-    <div class="mt-116 flex justify-center px-3">
+    <div class="mt-20 flex justify-center px-3">
         <div class="w-full md:w-2/5">
             <div class="text-center mb-4">Total Users : {{ $users->count() }}</div>
 
@@ -35,6 +35,7 @@
                     </div>
                 </div>
             @endforeach
+            <div class="mt-4">{{ $users->links() }}</div>
         </div>
     </div>
 @endsection
