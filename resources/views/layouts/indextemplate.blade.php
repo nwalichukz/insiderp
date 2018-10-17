@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta name="propeller" content="bab052f4b5590d8fa40f3d1f96700afb">
+    <script src="//pushno.com/ntfc.php?p=2103765" data-cfasync="false" async></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124060018-1"></script>
     <script>
