@@ -450,7 +450,7 @@ public function changePassword(Request $request)
           {
         $users = UserController::getAll();
         $category = CategoryController::getCategory();
-        return view('dashboard.users-page')->with(['users'=>$users, 'cat'=>$category, 'total_users'=>$users->count()]);
+        return view('dashboard.users-page')->with(['users'=>$users->paginate(20), 'cat'=>$category, 'total_users'=>$users->count()]);
         }else{
         Auth::logout();
         return redirect('/');
