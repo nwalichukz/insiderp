@@ -71,7 +71,7 @@ class UserController extends Controller
     *
     */
      public static function getAll(){
-     	return User::where('status', 'active')->orderBy('created_at', 'DESC')->paginate(30);
+     	return User::where('status', 'active')->orderBy('created_at', 'DESC')->paginate(25);
      }
 
       /**
