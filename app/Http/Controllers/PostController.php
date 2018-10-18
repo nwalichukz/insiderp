@@ -203,7 +203,7 @@ class PostController extends Controller
     */
     public static function getLatest(){
         return Post::where('status', 'active')->where('post_importance', 'front-page')->where('category', '!=', 'Job')->orderBy('created_at', 'DESC')
-                       ->limit(1000)->paginate(45);
+                       ->limit(1000)->simplePaginate(20);
         
     }
 

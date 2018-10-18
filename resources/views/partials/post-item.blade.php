@@ -128,7 +128,7 @@
                 <div class="comment-area flex items-center justify-between my-3">
                     <div class="w-1/6 lg:pl-10">
                         <a href="#">
-                            @if(!empty($Helper->postAvatar($post->user_id)->name))
+                            @if(!empty($Helper->postAvatar(Auth::user()->id)->name))
                                 <img src="{{asset("images/user/".$Helper->postAvatar($post->user_id)->name)}}"
                                      class="h-8 rounded-full mr-3" alt="user image"/>
                             @else
