@@ -27,7 +27,7 @@
         <meta name="description" content="Bido is a social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing
 those issues that affect us and our society especially in Nigeria">
     @endif
-    <meta name="keywords" content="politics, share a story, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
+    <meta name="keywords" content="Web forum, Bido forum, politics, share a story, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
 religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun review, 
  Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">
     <meta charset="utf-8">
