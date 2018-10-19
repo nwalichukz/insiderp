@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="propeller" content="bab052f4b5590d8fa40f3d1f96700afb">
-    <script src="//pushno.com/ntfc.php?p=2103765" data-cfasync="false" async></script>
+   
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124060018-1"></script>
     <script>
@@ -22,7 +21,7 @@
     <script src="{{url('ckeditor/ckeditor.js')}}"></script>
     @if(!empty($pg))
         <meta name="description"
-              content="{!!strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($trend->post, 100))))!!}">
+              content="{!!strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($trend->post, 150))))!!}">
     @else
         <meta name="description" content="Bido is a social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing
 those issues that affect us and our society especially in Nigeria">
@@ -81,6 +80,31 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <!-- PopAds.net Popunder Code for www.bido.com.ng -->
+<script type="text/javascript" data-cfasync="false">
+/*<![CDATA[/* */
+  var _pop = _pop || [];
+  _pop.push(['siteId', 2926617]);
+  _pop.push(['minBid', 0]);
+  _pop.push(['popundersPerIP', 0]);
+  _pop.push(['delayBetween', 0]);
+  _pop.push(['default', false]);
+  _pop.push(['defaultPerDay', 0]);
+  _pop.push(['topmostLayer', false]);
+  (function() {
+    var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+    var s = document.getElementsByTagName('script')[0]; 
+    pa.src = '//c1.popads.net/pop.js';
+    pa.onerror = function() {
+      var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+      sa.src = '//c2.popads.net/pop.js';
+      s.parentNode.insertBefore(sa, s);
+    };
+    s.parentNode.insertBefore(pa, s);
+  })();
+/*]]>/* */
+</script>
+<!-- PopAds.net Popunder Code End -->
 </head>
 <body class="font-serif">
 <div id="app">

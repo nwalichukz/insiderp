@@ -624,3 +624,12 @@ ul.pagination li.disabled {
     border: 1px solid #ddd;
     margin: 4px;
 }
+.post-images {
+    position: relative;
+}
+.post-images .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+}

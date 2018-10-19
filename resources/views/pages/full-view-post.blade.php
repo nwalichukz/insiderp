@@ -50,23 +50,16 @@
 
                                 @if($Helper->postImage($trend->id)->count() == 1)
                                     <div class="my-2">
+                                        
                                         <img src="{{ asset('images/post/'.$Helper->postImageFirst($trend->id)->name) }}"
                                              alt="" class="w-full image-link">
                                     </div>
                                 @else
                                     <div class="my-2">
                                         <div class="post-images flex flex-wrap">
+                                            <span>Delete </span>
 
                                         </div>
-                                        {{--<div class="flex flex-wrap items-center" id="images">--}}
-                                        {{--@foreach($Helper->postImage($trend->id) as $image)--}}
-                                        {{--<div class="w-1/2 px-1">--}}
-                                        {{--<a href="{{ asset('images/post/'.$image->name) }}">--}}
-                                        {{--<img src="{{ asset('images/post/'.$image->name) }}" alt="" class="image-link">--}}
-                                        {{--</a>--}}
-                                        {{--</div>--}}
-                                        {{--@endforeach    --}}
-                                        {{--</div>--}}
                                     </div>
                                 @endif
 
