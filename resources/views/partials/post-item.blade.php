@@ -85,7 +85,7 @@
                 @else
                     <div class="post-text overflow-x-auto">
                         <a href='{{ url("/post-full-view/".$post->id."/".str_slug(strtolower($post->title), '-')) }}'>
-                            <h4> {{title_case($Helper->get_title($post->title, 19))}} </h4></a>
+                            <h4 class="text-blue-light hover:text-blue-dark hover:underline"> {{title_case($Helper->get_title($post->title, 19))}} </h4></a>
                         {!!ucfirst($Helper->get_words($post->post, 25))!!} <a
                                 href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
                                 title="click to read full details"> more </a>
