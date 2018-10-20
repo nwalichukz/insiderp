@@ -53,7 +53,7 @@ class ImageController extends Controller
             $width = Image::make($file->getRealPath())->width();
             $height = Image::make($file->getRealPath())->height();
             if($width > 400 && $height > 300){
-            Image::make($file->getRealPath())->resize(400, 300)->save($path);
+            Image::make($file->getRealPath())->resize(400, 320)->save($path);
             return $filename;
            }else{
             Image::make($file->getRealPath())->save($path);
