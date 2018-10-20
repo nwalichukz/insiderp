@@ -18,6 +18,21 @@
                            class="text-blue">{{ucfirst(strtolower($Helper->user($post->user_id)->user_name))}}/<span
                                     class="text-orange">{{$post->category}}</span></a>
                         <div class="text-xs text-grey-dark mt-1">{{date('d F \'y \a\t h:i:a', strtotime($post->created_at))}}</div>
+                           <div class="flex -ml-1 mt-1">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{'www.bido.com.ng/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
+                                           title="share this article on facebook" class="flex items-center mr-3">
+                                            <img src="{{asset("images/avatar/facebook.png")}}" class="twitter-facebook"
+                                                 style="width:16px;">
+                                            <span class="ml-1 text-sm">Share</span>
+                                        </a>
+
+                                        <a href="https://twitter.com/home?status={{'www.bido.com.ng/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
+                                           title="share this article on twitter" style="width:16px;"
+                                           class="flex items-center">
+                                            <img src="{{asset("images/avatar/twitter.png")}}" class="twitter-facebook">
+                                            <span class="ml-1  text-sm">Share</span>
+                                        </a>
+                                    </div>
                     </div>
                 </div>
                 <div>
@@ -113,7 +128,7 @@
                 <div class="flex items-center">
                     @include('template.icons.view')
                     @if(!empty($Helper->postView($post->id)->view))
-                        {{$Helper->postView($post->id)->view}}
+                        {{number_format($Helper->postView($post->id)->view)}}
                     @endif
                 </div>
                 <div class="flex items-center">
@@ -128,8 +143,8 @@
                 <div class="comment-area flex items-center justify-between my-3">
                     <div class="w-1/6 lg:pl-10">
                         <a href="#">
-                            @if(!empty($Helper->postAvatar($post->user_id)->name))
-                                <img src="{{asset("images/user/".$Helper->postAvatar($post->user_id)->name)}}"
+                            @if(!empty($Helper->postAvatar(Auth::user()->id)->name))
+                                <img src="{{asset("images/user/".$Helper->postAvatar(Auth::user()->id)->name)}}"
                                      class="h-8 rounded-full mr-3" alt="user image"/>
                             @else
                                 <img src='{{asset("images/avatar/avatar.png")}}' class="h-8 rounded-full mr-3"
@@ -216,7 +231,7 @@
                                             </div>
 
                                             <div>
-                                                <span class="text-xs text-grey-dark">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
+                                                <span class="text-xs text-grey-dark">{{date('d/n\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                                             </div>
                                         @else
                                             <div>

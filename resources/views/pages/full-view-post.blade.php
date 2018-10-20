@@ -47,6 +47,7 @@
 
                         <div class="mb-6 pb-2">
                             @if(!empty($Helper->postImage($trend->id)))
+<<<<<<< HEAD
                                 <div class="swiper-container mb-4 shadow" style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
                                     <div class="swiper-wrapper">
                                         @foreach($Helper->postImage($trend->id) as $postImage)
@@ -60,6 +61,23 @@
 
                                         <div class="swiper-scrollbar"></div>
                                 </div>
+=======
+
+                                @if($Helper->postImage($trend->id)->count() == 1)
+                                    <div class="my-2">
+                                        
+                                        <img src="{{ asset('images/post/'.$Helper->postImageFirst($trend->id)->name) }}"
+                                             alt="" class="w-full image-link">
+                                    </div>
+                                @else
+                                    <div class="my-2">
+                                        <div class="post-images flex flex-wrap">
+                                            <span>Delete </span>
+
+                                        </div>
+                                    </div>
+                                @endif
+>>>>>>> 533ad20ce4dc75a65b9b198b3db6c2e3d69b00cc
 
                                 <div class="px-4 mb-3">
                                     <div class="mb-2">
@@ -124,7 +142,7 @@
                             <div class="flex items-center">
                                 @include('template.icons.view')
                                 @if(!empty($Helper->postView($trend->id)->view))
-                                    {{$Helper->postView($trend->id)->view}}
+                                    {{number_format($Helper->postView($trend->id)->view)}}
                                 @endif
                             </div>
                             <div class="flex items-center">
@@ -233,12 +251,12 @@
                                                         </div>
 
                                                         <div>
-                                                            <span class="text-xs text-grey-dark">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
+                                                            <span class="text-xs text-grey-dark">{{date('d/n\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                                                         </div>
                                                     @else
                                                         <div>
                                                             <div class="text-left text-xs text-grey-dark">
-                                                                <span class="text-sm">{{date('d\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
+                                                                <span class="text-sm">{{date('d/n\'y \a\t h:i:a', strtotime($comment->created_at))}} </span>
                                                             </div>
                                                         </div>
                                                     @endif

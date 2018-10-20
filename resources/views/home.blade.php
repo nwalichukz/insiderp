@@ -10,7 +10,7 @@
 
                         <div class="trending py-3 px-4">
                             @if(!empty($lead->title))
-                                @if(!empty($Helper->postImage($lead->id)->name))
+                                @if(!empty($Helper->postImageFirst($lead->id)->name))
                                     <img src="{{asset("images/post/".$Helper->postImageFirst($lead->id)->name)}}" alt="post image" class="mb-3">
                                     <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="text-lg text-blue hover:underline hover:text-blue-dark">{{$Helper->get_title(title_case(strtolower($lead->title)), 10)}}</a>
                                 @endif

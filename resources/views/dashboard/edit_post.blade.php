@@ -51,7 +51,7 @@
                             <option value="{{$data->post_importance}}">{{$data->post_importance}}</option>
                             <option value="normal" >Normal</option>
                             <option value="lead" >Lead</option>
-                            <option value ="votes">Votes</option>
+                            <option value ="front-page">Front Page</option>
                             <option value="featured" >Featured</option>
                         </select>
                     </div>
@@ -63,12 +63,20 @@
                         </select>
                     </div>--}}
                 @endif
+                 @if(Auth::check() && Auth::user()->user_level === 'editor')
+                    <div class="mb-3">
+                        <select name="post_importance" class="modal-select" required>
+                            <option value="{{$data->post_importance}}">{{$data->post_importance}}</option>
+                            <option value ="front-page">Front Page</option>
+                        </select>
+                    </div>
+                @endif
                 <div class="modal-body">
                     <!-- content goes here -->
                     {{ csrf_field() }}
                     <div class="">
                             <label for="attachment">Add image:</label>
-                            <input type="file" name="image" onchange="readURL(this);" id="images" multiple="true" class="p-1 bg-white text-black" />
+                            <input type="file" name="image[]" onchange="readURL(this);" id="images" multiple="true" class="p-1 bg-white text-black" />
                             <div id="image-holder" class="w-full"></div>
                             <img class="showimg" src="#" alt="" class="rounded shadow" />
                         </div>

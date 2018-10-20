@@ -12,7 +12,7 @@
                         <input type="hidden" name="id" class="modal-input" value="{{$user->id}}">
                     </div>
                     <div class="mb-3">
-                        <input type="text" name="email" class="modal-input" value="{{$user->email}}" disabled>
+                        <input type="text" name="email" class="modal-input" value="{{$user->email}}">
                     </div>
                     <div class="mb-3">
                         <input type="text" name="user_name" class="modal-input" value="{{$user->user_name}}" disabled>

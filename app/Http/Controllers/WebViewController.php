@@ -19,6 +19,7 @@ use App\Mail\InviteFriendsMail;
 use App\Mail\PasswordResetMail;
 use App\Mail\ViewNotification;
 use App\Mail\contactMail;
+use App\Mail\BulkMail;
 use Carbon\Carbon;
 use App\PostImage;
 use App\Post;
@@ -67,6 +68,7 @@ class WebViewController extends Controller
         'trendpost'=>$trendpost]);
   }
 
+
   /**
   * posts for a particular user
   *
@@ -91,9 +93,9 @@ class WebViewController extends Controller
 	 public function registerUser(Request $request)
 		 {   
      $this->validate($request,
-        [  'email'=>'unique:users',
+        [  'email'=>'required|email|unique:users',
            'name'=>'required',
-           'user_name' => 'unique:users',
+           'user_name' => 'required|unique:users',
            'password' => 'required|string|min:6|confirmed',
            ]);
  
@@ -120,9 +122,9 @@ class WebViewController extends Controller
      public function registerUserModal(Request $request)
  {   
      $this->validate($request,
-        [  'email'=>'unique:users',
+        [  'email'=>'required|email|unique:users',
            'name'=>'required',
-           'user_name'=> 'unique:users',
+           'user_name'=> 'required|unique:users',
            'password' => 'required|string|min:6|confirmed',
            ]);
  
@@ -247,7 +249,26 @@ class WebViewController extends Controller
 		}else{
       Auth::logout();
       return redirect('/');
+      }
+
     }
+    /**
+  * This method returns the latest post
+  *
+  * not posted by the editor or admin
+  *
+  * @return view
+  */
+    public static function generalPost(){
+      if(Auth::check() AND (Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
+       $trending = PostController::getLatestGeneral();
+       $category = CategoryController::getCategory();
+       return view('dashboard.index')->with(['cat' =>$category, 'posts'=>$trending]);
+
+    }else{
+      Auth::logout();
+      return redirect('/');
+      }
 
     }
     //my post
@@ -264,7 +285,7 @@ class WebViewController extends Controller
     }
 
       // suspended-banned
-    protected function addPost(Request $request){
+    public function addPost(Request $request){
     	$this->validate($request,
         [  'post'=>'required',
            'category' => 'required',
@@ -428,8 +449,9 @@ public function changePassword(Request $request)
       {  if(Auth::check() && (Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor'))
           {
         $users = UserController::getAll();
+        $usercount = UserController::countUser();
         $category = CategoryController::getCategory();
-        return view('dashboard.users-page')->with(['users'=>$users, 'cat'=>$category]);
+        return view('dashboard.users-page')->with(['users'=>$users, 'cat'=>$category, 'total_users'=>$usercount,]);
         }else{
         Auth::logout();
         return redirect('/');
@@ -577,6 +599,26 @@ public function changePassword(Request $request)
       return redirect('contact-sent');
     }
 
+     /**
+    * This method sends a mail to all
+    *
+    * the user registered
+    *
+    */
+    public function sendBulkMail(Request $request){
+        $this->validate($request,
+        [ 'subject'=>'required',
+          'content' => 'required',          
+           ]);
+       $delay = (new \Carbon\Carbon)->now()->addMinutes(2);
+       $user = UserController::getAllUser();
+       foreach ($user as $users) {
+        
+      Mail::to($users->email)->later($delay, new BulkMail($request['subject'], $request['content'], $users->name));
+       }
+      return redirect()->back();
+    }
+
     // password reset success page
     public function SuccessEmail()
    {  
@@ -645,12 +687,14 @@ public function changePassword(Request $request)
   public function updatePost(Request $request){
     if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
     $update = PostController::update($request);
-    if($request->hasFile('image')){
-        $img = ImageController::postImageUpload($request);
+    if(!empty($request['image'])){
+      foreach ($request['image'] as $file) {
+        $img = ImageController::postImageUpload($file);
         $postimg = new PostImage;
         $postimg->post_id = $request['id'];
         $postimg->name = $img;
         $postimg->save();
+          }
       }
     if($update == true){
       flash('Post updated successfully')->success();
@@ -719,8 +763,7 @@ public function changePassword(Request $request)
   *
   */
   public function addSeed(){
-    DB::table('categories')->insert([['name' => 'Food', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
-                                     ['name' => 'Literature Review', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
+    DB::table('categories')->insert([['name' => 'Literature', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
                                           ]);
     return redirect('/');
   }
@@ -746,6 +789,21 @@ public function changePassword(Request $request)
    public function postForm(){
     if(Auth::check()){
       return view('dashboard.add-post');
+    }else{
+      Auth::logout();
+      return redirect('/');
+    }
+   }
+
+  /**
+  * This method that gets mail form
+  *
+  *
+  *
+  */
+   public function getMail(){
+    if(Auth::check()){
+      return view('dashboard.get-mail');
     }else{
       Auth::logout();
       return redirect('/');
