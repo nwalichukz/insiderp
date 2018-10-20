@@ -36,19 +36,17 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 
     <!-- Styles -->
     <!-- Styles -->
+    link href="{{asset('css/swiper.min.css')}}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" type="text/Javascript"></script>
-    <script src="{{ asset('bootstrap/js/bootstrap.js') }}" type="text/Javascript"></script>
-    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}" type="text/Javascript"></script>
-    <script src="{{ asset('js/popup-gallery.js') }}" type="text/Javascript"></script>
-    <script src="{{ asset('js/images-grid.js') }}" type="text/Javascript"></script>
+
+    <script src="{{ asset('js/swiper.min.js') }}" type="text/Javascript"></script>
 
     <script src="{{ asset('js/orientScript.js') }}" type="text/Javascript"></script>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/b.css')  }}" type="text/css">
     <link href="{{ asset('css/bido.css') }}" rel="stylesheet">
     <link href="{{asset('css/orientStyle.css')}}" rel="stylesheet">
     <link href="{{asset('css/fonts.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/magnific-popup.css')}}" rel="stylesheet">
-    <link href="{{asset('css/images-grid.css')}}" rel="stylesheet">
+
 
     <!-- Scripts -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-57x57.png') }}">
@@ -90,14 +88,14 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
                 <a href="{{ url('/') }}" class="logoText">BIDO</a>
             </div>
             <div class="block sm:hidden">
-                <button @click="drop" class="flex items-center px-3 py-2 border rounded">
+                <button @click="toggle" class="flex items-center px-3 py-2 border rounded">
                     <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>
                             Menu</title>
                         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
                     </svg>
                 </button>
             </div>
-            <div :class="on ? 'block w-full': 'hidden'" class="sm:flex sm:items-center sm:w-auto">
+            <div :class="open ? 'block w-full': 'hidden'" class="sm:flex sm:items-center sm:w-auto">
                 <div> @include('partials.nav') </div>
             </div>
 
@@ -150,17 +148,16 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
     });
 
     new Vue({
-        el: "#app",
+        el: '#app',
         data: {
-            on: false,
+            open: false,
         },
-
         methods: {
-            drop() {
-                this.on = !this.on
+            toggle() {
+                this.open = !this.open
             }
-        },
-    });
+        }
+    })
 </script>
 
 <div class="col-md-12">

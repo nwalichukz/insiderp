@@ -242,7 +242,7 @@ class PostController extends Controller
                         $posts->save();
                     }
         return redirect('/');
-                    
+
         
     }
 
