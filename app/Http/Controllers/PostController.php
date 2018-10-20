@@ -267,7 +267,7 @@ class PostController extends Controller
     * @var instance
     */
     public static function getTrendPost(){
-        return Post::where('status', 'active')->orderBy('rank', 'DESC')->orderBy('created_at', 'DESC')->limit(10)->get();
+        return Post::where('status', 'active')->orderBy('created_at', 'DESC')->orderBy('rank', 'DESC')->limit(10)->get();
         
     }
     /**
