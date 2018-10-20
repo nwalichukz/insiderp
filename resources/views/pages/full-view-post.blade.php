@@ -45,29 +45,21 @@
                         </div>
                         <hr>
 
-                        <div class="shadow mb-6 pb-2">
+                        <div class="mb-6 pb-2">
                             @if(!empty($Helper->postImage($trend->id)))
-                                @if($Helper->postImage($trend->id)->count() == 1)
-                                    <div class="my-2">
-                                        <img src="{{ asset('images/post/'.$Helper->postImageFirst($trend->id)->name) }}"
-                                             alt="" class="w-full image-link">
+                                <div class="swiper-container mb-4 shadow" style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
+                                    <div class="swiper-wrapper">
+                                        @foreach($Helper->postImage($trend->id) as $postImage)
+                                            <img src="{{ asset('images/post/'.$postImage->name) }}" alt="Post Image" class="w-full swiper-slide">
+                                        @endforeach
                                     </div>
-                                @else
-                                    <div class="my-2">
-                                        <div class="post-images flex flex-wrap">
+                                        <div class="swiper-pagination"></div>
 
-                                        </div>
-                                        {{--<div class="flex flex-wrap items-center" id="images">--}}
-                                        {{--@foreach($Helper->postImage($trend->id) as $image)--}}
-                                        {{--<div class="w-1/2 px-1">--}}
-                                        {{--<a href="{{ asset('images/post/'.$image->name) }}">--}}
-                                        {{--<img src="{{ asset('images/post/'.$image->name) }}" alt="" class="image-link">--}}
-                                        {{--</a>--}}
-                                        {{--</div>--}}
-                                        {{--@endforeach    --}}
-                                        {{--</div>--}}
-                                    </div>
-                                @endif
+                                        <div class="swiper-button-prev"></div>
+                                        <div class="swiper-button-next"></div>
+
+                                        <div class="swiper-scrollbar"></div>
+                                </div>
 
                                 <div class="px-4 mb-3">
                                     <div class="mb-2">
@@ -280,15 +272,23 @@
         </div>
     </div>
     <script>
-        $(document).ready(function () {
-            $('.post-images').imagesGrid({
-                images: [
-                    @foreach($Helper->postImage($trend->id) as $image)
-                        '{{ asset('images/post/'.$image->name) }}',
-                    @endforeach
-                ],
-                cells: 2
+        // Template slider jQuery script
+
+        $(document).ready(function() {
+            let swiper = new Swiper('.swiper-container', {
+                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                speed: 300,
+                pagination: {
+                    el: '.swiper-pagination',
+                    dynamicBullets: true,
+                },
             });
+
         });
+
     </script>
 @endsection

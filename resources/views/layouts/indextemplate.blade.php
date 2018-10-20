@@ -44,19 +44,18 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
     </title>
     <!-- Fonts -->
     <!-- Styles -->
+
+    <link href="{{asset('css/swiper.min.css')}}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" type="text/Javascript"></script>
-    <script src="{{ asset('bootstrap/js/bootstrap.js') }}" type="text/Javascript"></script>
-    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}" type="text/Javascript"></script>
-    <script src="{{ asset('js/popup-gallery.js') }}" type="text/Javascript"></script>
-    <script src="{{ asset('js/images-grid.js') }}" type="text/Javascript"></script>
+
+    <script src="{{ asset('js/swiper.min.js') }}" type="text/Javascript"></script>
 
     <script src="{{ asset('js/orientScript.js') }}" type="text/Javascript"></script>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/b.css')  }}" type="text/css">
     <link href="{{ asset('css/bido.css') }}" rel="stylesheet">
     <link href="{{asset('css/orientStyle.css')}}" rel="stylesheet">
     <link href="{{asset('css/fonts.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/magnific-popup.css')}}" rel="stylesheet">
-    <link href="{{asset('css/images-grid.css')}}" rel="stylesheet">
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -142,8 +141,16 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
             }
         },
     });
-    var app = new Vue({
-        el: '#app'
+    new Vue({
+        el: '#app',
+        data: {
+            open: false,
+        },
+        methods: {
+            toggle() {
+                this.open = !this.open
+            }
+        }
     })
 </script>
 <script src="{{ asset('js/modals.js') }}"></script>
