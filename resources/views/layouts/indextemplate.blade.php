@@ -119,7 +119,7 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
     <hr/>
     <nav class="footer"><a href="{{url('/')}}">Home</a> |<!-- <a href="{{url('/terms')}}"> Terms </a>| --><a
                 href="{{url('/about')}}"> About us</a> | <a href="{{url('/contact')}}">Contact us</a></nav>
-    <nav class="footer"><a title="The bido team" href="https://www.facebook.com/ngbido">Follow us facebook </a></nav>
+    <nav class="footer"><a title="follow us of facebook" href="https://www.facebook.com/ngbido">Follow us facebook </a></nav>
 </div>
 <script type="text/x-template" id="dropdown-link-template">
     <div class="relative drop">
