@@ -153,6 +153,7 @@ function readURL(input) {
             }).appendTo(image_holder);
             }
 image_holder.show();
+$('#imgcaption').show();
 reader.readAsDataURL(files[i]);
             }
       }

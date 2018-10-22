@@ -335,6 +335,9 @@ display:none;
 .showimg:hover, .thumb-image:hover, .img:hover{
    border:1px solid #D3D3D3;
 }
+#imgcaption{
+  display:none;
+}
 .paginate{
 text-align: center;
 }
