@@ -776,7 +776,7 @@ public function changePassword(Request $request)
   *
   */
    public function deleteSeed(){
-    DB::table('categories')->where('name', 'Tourism')->delete();
+    DB::table('categories')->where(['name' => 'Jokes'])->delete();
     return redirect('/');
    }
 
