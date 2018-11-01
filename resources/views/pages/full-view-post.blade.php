@@ -249,7 +249,10 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                    <div>Login to like or comment</div>
+                                     <!--Fb comments goes in here -->
+                    <div class="fb-comments" data-href="http://{{'www.bido.com.ng/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')}}"
+                     data-numposts='10' data-width="100%"></div>
+                                   <br>
 
                                     <div class="mt-2">@if(!empty($related))
                                             <h3 class="my-2">Related Posts </h3>

@@ -10,10 +10,9 @@
                         Bido?
                     </h4>
                     <div class="mt-2">
-                        <p>A social tool that allow users post news, opinions, articles, questions and get involved in discussing
-                            those issues that affect us and our society especially in Nigeria A user generated content
-                            platform that is moderated. This platform is targeted at encoraging national discussion and conversation especially
-                            among the youths.</p>
+                        <p>What is bido? Bido is a social tool developed to enable users make post on relevant information, news, share ideas,
+                            opinions and articles targeted at getting the audience informed and connected with one another through their discussions 
+                            and contributions on the platform.</p>
                     </div>
                 </div>
 
@@ -23,20 +22,17 @@
                     </h4>
                     <div class="mt-2">
                         <p class="mb-2">
-                            To create an environment that will encourage discussion of issues in our society. Our main focus is
-                            to spark important discussions in the society among the youths. To encourage Nigerian youths to engage in
-                            social discussions about issues in Nigeria. To achieve
-                            this we would be engaging our business through the following:
+                            To create an enabling environments that reinvents how people connect, share and get involved in social discussions.
                         </p>
 
-                        <ol>
+                    <!--    <ol>
                             <li>Innovation</li>
                             <li>Excellence</li>
                             <li>Constant Improvement</li>
                             <li>People first business approach </li>
                             <li>Forward thinking and simplicity approach to issues</li>
 
-                        </ol>
+                        </ol> -->
                     </div>
                 </div>
 
@@ -46,8 +42,7 @@
                     </h4>
                     <div class="mt-2">
                         <p>
-                            To build an institution that promotes discussion about issues in our society
-                            and encourage people to take responsibility towards addressing them.
+                            To build an institution that promotes social discussions.
                         </p>
                     </div>
                 </div>

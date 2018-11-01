@@ -89,6 +89,16 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
 
 </head>
 <body class="font-serif">
+    <!--fb comments plugin -->
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=283429275621504&version=v3.2';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+ <!--end fb comments plugin section -->
 <div id="app">
     <div class="navbar navbar-fixed-top bg-white border-b border-grey py-2">
         <div class="container mx-auto flex items-center justify-between flex-wrap px-4">
