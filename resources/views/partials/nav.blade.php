@@ -21,11 +21,11 @@
                 <a class="dropdown-item" href="{{url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Dashboard </a>
                 <a class="dropdown-item" href="{{url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Trending</a>
                 <a class="dropdown-item" href="{{url('/get-add-post')}}" title="post to public">Add Post</a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#inviteFriendModal" data-placement="top" title="invite a friend to join Bido">Invite a friend </a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePasswordModal" data-placement="top" title="change your password">change password </a>
+                <a class="dropdown-item" href="{{url('/get-invite-friend')}}" data-toggle="modal" data-target="#inviteFriendModal" data-placement="top" title="invite a friend to join Bido">Invite a friend </a>
+                <a class="dropdown-item" href="{{url('/get-change-password')}}" data-toggle="modal" data-target="#changePasswordModal" data-placement="top" title="change your password">change password </a>
                 <a class="dropdown-item" href="{{url(str_slug(Auth::user()->name).'/my-post/'.Auth::user()->id)}}">My Posts</a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editProfileModal" data-placement="top" title="Edit your profile">Edit Profile</a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addUserImageModal" data-placement="top" title="Edit your profile">Add Profile Image</a><br/>
+                <a class="dropdown-item" href="{{url('/get-edit-profile')}}" data-toggle="modal" data-target="#editProfileModal" data-placement="top" title="Edit your profile">Edit Profile</a>
+                <a class="dropdown-item" href="{{url('/get-add-user-img')}}" data-toggle="modal" data-target="#addUserImageModal" data-placement="top" title="Edit your profile">Add Profile Image</a><br/>
                 @if(Auth::check())
                     @if(Auth::user()->user_level==='admin' || Auth::user()->user_level ==='editor')
                         <a class="dropdown-item" href="{{url('/blocked-posts')}}">view blocked post </a>

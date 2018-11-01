@@ -27,24 +27,14 @@
                         <option >Entertainment</option>
                         <option >Culture</option>
                         <option >Opinion</option>
-                        <option >Travel</option>
-                         <option >Betting</option>
                           <option >Job</option>
                           <option >NYSC</option>
-                         <option >Jokes</option>
                          <option >Foreign</option>
-                         <option >Events</option>
                          <option >Fashion</option>
-                         <option >Birthdays</option>
                          <option >CarTalk</option>
                         <option >Entrepreneurship</option>
                          <option >Health</option>
-                        <option >Travel</option>
                         <option >Literature</option>
-                        <option >Art and Craft</option>
-                        <option >Campus Gist</option>
-                        <option >Food</option>
-
                     </select>
                 </div>
                 <div class="modal-body">
