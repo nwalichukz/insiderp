@@ -3,7 +3,7 @@
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124060018-1"></script>
-    <script>
+   <!-- <script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -13,7 +13,7 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-124060018-1');
-    </script>
+    </script> -->
     <script src="{{url('ckeditor/ckeditor.js')}}"></script>
 
     <meta name="description" content="Bido is a social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing
