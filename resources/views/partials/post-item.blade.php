@@ -79,7 +79,7 @@
                                 src="{{asset("images/post/".$Helper->postImageFirst($post->id)->name)}}"
                                 alt="post image" class="w-full"></div>
                     <div class="post-text overflow-x-auto">
-                        <div class="text-lg">{!!ucfirst($Helper->get_words($post->post, 30))!!} </div>
+                        <div class="text-lg">{!!ucfirst($Helper->get_words($post->post, 20))!!} </div>
                         <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
                            title="click to read full details" class="text-blue"> more </a>
                     </div>
@@ -87,7 +87,7 @@
                     <div class="post-text overflow-x-auto">
                         <a href='{{ url("/post-full-view/".$post->id."/".str_slug(strtolower($post->title), '-')) }}'>
                             <h4 class="text-blue-light hover:text-blue-dark hover:underline"> {{title_case($Helper->get_title($post->title, 19))}} </h4></a>
-                        {!!ucfirst($Helper->get_words($post->post, 25))!!} <a
+                        {!!ucfirst($Helper->get_words($post->post, 19))!!} <a
                                 href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
                                 title="click to read full details"> more </a>
                     </div>
