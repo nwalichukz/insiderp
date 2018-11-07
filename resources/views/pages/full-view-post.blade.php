@@ -47,7 +47,7 @@
 
                         <div class="mb-6 pb-2">
                             @if(!empty($Helper->postImage($trend->id)))
-<<<<<<< HEAD
+
                                 <div class="swiper-container mb-4 shadow" style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
                                     <div class="swiper-wrapper">
                                         @foreach($Helper->postImage($trend->id) as $postImage)
@@ -61,23 +61,7 @@
 
                                         <div class="swiper-scrollbar"></div>
                                 </div>
-=======
 
-                                @if($Helper->postImage($trend->id)->count() == 1)
-                                    <div class="my-2">
-                                        
-                                        <img src="{{ asset('images/post/'.$Helper->postImageFirst($trend->id)->name) }}"
-                                             alt="" class="w-full image-link">
-                                    </div>
-                                @else
-                                    <div class="my-2">
-                                        <div class="post-images flex flex-wrap">
-                                            <span>Delete </span>
-
-                                        </div>
-                                    </div>
-                                @endif
->>>>>>> 533ad20ce4dc75a65b9b198b3db6c2e3d69b00cc
 
                                 <div class="px-4 mb-3">
                                     <div class="mb-2">
@@ -265,7 +249,10 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                    <div>Login to like or comment</div>
+                                     <!--Fb comments goes in here -->
+                    <div class="fb-comments" data-href="http://{{'www.bido.com.ng/post-full-view/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')}}"
+                     data-numposts='10' data-width="100%"></div>
+                                   <br>
 
                                     <div class="mt-2">@if(!empty($related))
                                             <h3 class="my-2">Related Posts </h3>

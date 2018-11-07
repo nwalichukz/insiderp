@@ -69,9 +69,13 @@ Route::get('/trending-posts', 'WebViewController@latest');
 Route::post('/send-enquiry', 'WebViewController@sendContact');
 Route::get('/contact-sent', 'WebViewController@contactSent');
 Route::get('/account-success', 'WebViewController@accountSuccess');
-//Route::get('/add-seed', 'WebViewController@addSeed');
-//Route::get('/delete-seed', 'WebViewController@deleteSeed');
+Route::get('/add-seed', 'WebViewController@addSeed');
+Route::get('/delete-seed', 'WebViewController@deleteSeed');
 Route::get('/get-add-post', 'WebViewController@postForm');
+Route::get('/get-add-user-img', 'WebViewController@getAddUserImg');
+Route::get('/get-edit-profile', 'WebViewController@getEditProfile');
+Route::get('/get-change-password', 'WebViewController@getChangePassword');
+Route::get('/get-invite-friend', 'WebViewController@getInviteFriend');
 Route::get('/sitemap', 'WebViewController@sitemap');
 //Route::get('post-front-page', 'PostController@frontPost');
 Route::get('/t-login', function () {

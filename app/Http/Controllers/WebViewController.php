@@ -763,7 +763,7 @@ public function changePassword(Request $request)
   *
   */
   public function addSeed(){
-    DB::table('categories')->insert([['name' => 'Literature', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
+    DB::table('categories')->insert([['name' => 'Opinion', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
                                           ]);
     return redirect('/');
   }
@@ -776,14 +776,14 @@ public function changePassword(Request $request)
   *
   */
    public function deleteSeed(){
-    DB::table('categories')->where('name', 'Literature Review')->delete();
+    DB::table('categories')->where(['name' => 'Food'])->delete();
     return redirect('/');
    }
 
      /**
-  * This method thta adds post form
+  * This method that adds post form
   *
-  *
+  * @return view
   *
   */
    public function postForm(){
@@ -795,10 +795,70 @@ public function changePassword(Request $request)
     }
    }
 
+      /**
+  * This method adds user image form
+  *
+  * @return view
+  *
+  */
+   public function getAddUserImg(){
+    if(Auth::check()){
+      return view('dashboard.add-user-image');
+    }else{
+      Auth::logout();
+      return redirect('/');
+    }
+   }
+
+  /**
+  * This method adds edit profile form
+  *
+  * @return view
+  *
+  */
+   public function getEditProfile(){
+    if(Auth::check()){
+      return view('dashboard.edit-profile');
+    }else{
+      Auth::logout();
+      return redirect('/');
+    }
+   }
+
+    /**
+  * This method returns change password form
+  *
+  * @return view
+  *
+  */
+   public function getChangePassword(){
+    if(Auth::check()){
+      return view('dashboard.change-password');
+    }else{
+      Auth::logout();
+      return redirect('/');
+    }
+   }
+
+     /**
+  * This method returns invite friend form
+  *
+  * @return view
+  *
+  */
+   public function getInviteFriend(){
+    if(Auth::check()){
+      return view('dashboard.invite-friend');
+    }else{
+      Auth::logout();
+      return redirect('/');
+    }
+   }
+
   /**
   * This method that gets mail form
   *
-  *
+  * @return view
   *
   */
    public function getMail(){

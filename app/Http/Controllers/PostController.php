@@ -208,7 +208,7 @@ class PostController extends Controller
     }
 
     public static function getLatestGeneral(){
-        return Post::where('status', 'active')->where('publisher_level', '!==', 'admin')->orWhere('publisher_level', '!==', 'editor')->orderBy('created_at', 'DESC')
+        return Post::where('status', 'active')->where('publisher_level', 'user')->orderBy('created_at', 'DESC')
                       ->limit(1000)->paginate(30);  
                    
     }
@@ -267,7 +267,8 @@ class PostController extends Controller
     * @var instance
     */
     public static function getTrendPost(){
-        return Post::where('status', 'active')->orderBy('created_at', 'DESC')->orderBy('rank', 'DESC')->limit(10)->get();
+        return Post::where('status', 'active')->whereDate('created_at', '>=', Carbon::now()->subWeek())
+                    ->orderBy('rank', 'DESC')->limit(10)->get();
         
     }
     /**

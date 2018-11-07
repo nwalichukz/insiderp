@@ -3,7 +3,7 @@
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124060018-1"></script>
-    <script>
+   <!-- <script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -13,7 +13,7 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-124060018-1');
-    </script>
+    </script> -->
     <script src="{{url('ckeditor/ckeditor.js')}}"></script>
 
     <meta name="description" content="Bido is a social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing
@@ -81,6 +81,16 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 </script>
 </head>
 <body class="font-serif">
+<!--fb comments plugin -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=283429275621504&version=v3.2';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+ <!--end fb comments plugin section -->
 <div id="app">
     <div class="navbar navbar-fixed-top bg-white border-b border-grey py-2">
         <div class="container mx-auto flex items-center justify-between flex-wrap px-4">

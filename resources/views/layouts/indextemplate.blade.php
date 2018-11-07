@@ -4,7 +4,7 @@
    
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124060018-1"></script>
-    <script>
+   <!-- <script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -14,7 +14,7 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-124060018-1');
-    </script>
+    </script> -->
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -26,7 +26,7 @@
         <meta name="description" content="Bido is a social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing
 those issues that affect us and our society especially in Nigeria">
     @endif
-    <meta name="keywords" content="Web forum, Bido forum, politics, share a story, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
+    <meta name="keywords" content="Web forum, Bido forum, politics, share a story, betting, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
 religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun review, 
  Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">
     <meta charset="utf-8">
@@ -40,8 +40,8 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
         @elseif(!empty($fulltitle))
             {{ title_case($fulltitle) }}
         @else
-            Bido - Post news, opinions, articles, questions, get involved your views matter and help make our society
-            better!
+            Post news, opinions, articles, questions, get involved your views matter and help make our society better!
+            
         @endif
     </title>
     <!-- Fonts -->
@@ -89,6 +89,16 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
 
 </head>
 <body class="font-serif">
+    <!--fb comments plugin -->
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=283429275621504&version=v3.2';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+ <!--end fb comments plugin section -->
 <div id="app">
     <div class="navbar navbar-fixed-top bg-white border-b border-grey py-2">
         <div class="container mx-auto flex items-center justify-between flex-wrap px-4">
@@ -118,7 +128,7 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
     <hr/>
     <nav class="footer"><a href="{{url('/')}}">Home</a> |<!-- <a href="{{url('/terms')}}"> Terms </a>| --><a
                 href="{{url('/about')}}"> About us</a> | <a href="{{url('/contact')}}">Contact us</a></nav>
-    <nav class="footer"><a title="The bido team" href="https://www.facebook.com/ngbido">Follow us facebook </a></nav>
+    <nav class="footer"><a title="follow us of facebook" href="https://www.facebook.com/ngbido">Follow us facebook </a></nav>
 </div>
 <script type="text/x-template" id="dropdown-link-template">
     <div class="relative drop">

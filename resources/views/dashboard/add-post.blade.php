@@ -14,7 +14,7 @@
                     <div class="mb-3">
                     <textarea name="post" rows="3" id="textPost" class="modal-input" placeholder="Share your thought on anything you care about" required></textarea>
                 </div>
-    
+                
                      <div class="mb-3">
                     <select name="category" class="modal-select">
                         <option value="">Select Category</option>
@@ -26,37 +26,30 @@
                         <option >Technology</option>
                         <option >Entertainment</option>
                         <option >Culture</option>
-                        <option >Travel</option>
-                         <option >Betting</option>
-                         <option >Tourism</option>
+                        <option >Opinion</option>
                           <option >Job</option>
                           <option >NYSC</option>
-                         <option >Jokes</option>
                          <option >Foreign</option>
-                         <option >Events</option>
                          <option >Fashion</option>
-                         <option >Birthdays</option>
                          <option >CarTalk</option>
                         <option >Entrepreneurship</option>
                          <option >Health</option>
-                        <option >Travel</option>
-                        <option >Literature Review</option>
-                        <option >Art and Craft</option>
-                        <option >Campus Gist</option>
-                        <option >Food</option>
-
+                        <option >Literature</option>
                     </select>
                 </div>
                 <div class="modal-body">
                     <!-- content goes here -->
                         {{ csrf_field() }}
                         <div class="">
-                            <label for="attachment">Post with image:</label>
+                            <label for="attachment">Add image:</label>
                             <input type="file" name="image[]" onchange="readURL(this);" id="images" multiple="true" class="p-1 bg-white text-black" />
                             <div id="image-holder" class="w-full"></div>
-                            <img class="showimg" src="#" alt="" class="rounded shadow" />
+
                         </div>
                 </div>
+                <div id="imgcaption" class="mb-3">
+                     <input type="text" name="image_caption" class="modal-input" placeholder="Enter the image(s) description or caption">
+                   </div>
                 <div class="modal-footer">
                     <button type="submit" class="modal-button">Post</button>
                 </div>

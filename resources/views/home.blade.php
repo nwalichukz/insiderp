@@ -12,7 +12,7 @@
                             @if(!empty($lead->title))
                                 @if(!empty($Helper->postImageFirst($lead->id)->name))
                                     <img src="{{asset("images/post/".$Helper->postImageFirst($lead->id)->name)}}" alt="post image" class="mb-3">
-                                    <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="text-lg text-blue hover:underline hover:text-blue-dark">{{$Helper->get_title(title_case(strtolower($lead->title)), 10)}}</a>
+                                    <a href="{{ url('/post-full-view/'.$lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="text-md text-blue hover:underline hover:text-blue-dark">{{$Helper->get_title(title_case(strtolower($lead->title)), 10)}}</a>
                                 @endif
                             @endif
                         </div>
@@ -45,7 +45,7 @@
                     <div class="bg-white rounded px-4 py-4 mb-4">
                         <div class="trending-posts bg-grey-lighter py-3 mb-4">
                             <p class="text-xl underline text-left px-4">Trending Posts</p>
-                            <div class="post py-3 px-4 text-lg">
+                            <div class="post py-3 px-4 text-md">
                                 @foreach($trendpost as $post)
                                     <p class="mb-2">
                                       <a href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}">{{$Helper->get_title(ucfirst(strtolower($post->title)), 13)}}</a></p>
