@@ -144,7 +144,7 @@
                 <div class="px-4 py-3">
                     <!--Fb comments goes in here -->
                     <div class="fb-comments" data-href="http://{{'www.bido.com.ng/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
-                     data-numposts='2' data-width="100%"></div>
+                     data-numposts='2' ></div>
                 </div>
             </div>
         </div>
