@@ -4,19 +4,14 @@
    
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124060018-1"></script>
-   <!-- <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-124060018-1');
-    </script> -->
-
-    <!-- CSRF Token -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9714650655827566",
+    enable_page_level_ads: true
+  });
+</script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{url('ckeditor/ckeditor.js')}}"></script>
     @if(!empty($pg))
