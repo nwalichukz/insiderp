@@ -36,7 +36,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
 
     <!-- Styles -->
     <!-- Styles -->
-    link href="{{asset('css/swiper.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/swiper.min.css')}}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" type="text/Javascript"></script>
 
     <script src="{{ asset('js/swiper.min.js') }}" type="text/Javascript"></script>

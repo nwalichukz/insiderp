@@ -2,7 +2,7 @@
 @extends('layouts.indextemplate')
 @section('content')
     <div class="mt-11">
-        <div class="container mx-auto md:flex md:items-start p-3">
+        <div class="container mx-auto md:flex md:justify-center md:items-start p-3">
             <div class="w-full md:w-1/4 mb-2">
                 <div class="bg-white rounded px-4 py-4 mb-2">
                     <div class="lead-post bg-grey-lighter py-3 mb-3">
@@ -56,7 +56,7 @@
                 @endif
 
             </div>
-            <div class="w-full md:w-2/5 md:mx-4">
+            <div class="w-full md:w-1/2 md:mx-4">
                 @if(empty($title))
                     @include('partials.search-bar')
                 @endif
@@ -75,4 +75,33 @@
     
         </div>
     </div>
+
+   <script>
+        // Template slider jQuery script
+
+        $(document).ready(function() {
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 3,
+                spaceBetween: 10,
+                slidesPerGroup: 3,
+                loop: true,
+                loopFillGroupWithBlank: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                // navigation: {
+                //     nextEl: '.swiper-button-next',
+                //     prevEl: '.swiper-button-prev',
+                // },
+            });
+
+        });
+
+    </script>
 @endsection
