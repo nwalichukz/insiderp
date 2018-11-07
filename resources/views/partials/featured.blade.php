@@ -7,7 +7,7 @@
                         <img src="{{ asset("images/post/".$Helper->postImageFirst($feature->id)->name) }}" alt="The image for the featured post">
                     </div>
                     <div class="px-4 py-4 flex flex-wrap">
-                        {{$Helper->get_title(title_case(strtolower($feature->title)), 10)}}
+                        <span class="text-sm">{{$Helper->get_title(title_case(strtolower($feature->title)), 10)}}</span>
                     </div>
                 </div>
             </div>
