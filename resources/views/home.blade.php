@@ -18,6 +18,7 @@
                         </div>
                     </div>
                 </div>
+               
                 <div class="bg-white rounded px-4 py-4 mb-2">
 
                     <dropdown-link class="px-4">
@@ -54,6 +55,18 @@
                         </div>
                     </div>
                 @endif
+                   <!--Ads begin section-->
+                   <div class="bg-white rounded px-4 py-4 mb-2">
+                    <div class="lead-post bg-grey-lighter py-3 mb-3">
+                        <p class="text-xl underline text-left px-4">Sponsored</p>
+                        <div class="trending py-3 px-4">
+                                    <img src="{{asset("images/avatar/ads1.jpeg")}}" style="height:300px;" alt="post image" class="mb-3">
+                                    
+                        </div>
+                    </div>
+                </div>
+
+                <!--Ads end -->
 
             </div>
             <div class="w-full md:w-1/2 md:mx-4">
