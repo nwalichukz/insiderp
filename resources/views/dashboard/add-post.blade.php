@@ -20,13 +20,16 @@
                         <option value="">Select Category</option>
                         <option >Politics</option>
                         <option >Education</option>
+                        <option >Opinion</option>
+                        <option >Business</option>
                         <option >Sports</option>
                         <option >Religion</option>
+                        <option >Travel</option>
                         <option >Romance</option>
                         <option >Technology</option>
                         <option >Entertainment</option>
                         <option >Culture</option>
-                        <option >Opinion</option>
+                        <option >Lifesytle</option>
                           <option >Job</option>
                           <option >NYSC</option>
                          <option >Foreign</option>
@@ -37,6 +40,25 @@
                         <option >Literature</option>
                     </select>
                 </div>
+                @if(Auth::check() && Auth::user()->user_level === 'admin')
+                    <div class="mb-3">
+                        <select name="post_importance" class="modal-select" required>
+                           <!-- <option value="normal" >Normal</option>-->
+                            <option value="lead" >Lead story</option>
+                            <option value ="front-page">Latest News</option>
+                            <option value="featured" >Featured</option>
+                            <option value="business-front" >Business Front page</option>
+                            <option value="foreign-front" >Foreign front page</option>
+                        </select>
+                    </div>
+                    {{--<div class="mb-3">
+                        <select name="voting_status" class="modal-select">
+                            <option value="{{$data->voting_status}}">{{$data->voting_status}}</option>
+                            <option >open</option>
+                            <option >closed</option>
+                        </select>
+                    </div>--}}
+                @endif
                 <div class="modal-body">
                     <!-- content goes here -->
                         {{ csrf_field() }}

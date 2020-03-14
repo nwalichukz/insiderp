@@ -18,8 +18,8 @@
         <meta name="description"
               content="{!!strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($trend->post, 150))))!!}">
     @else
-        <meta name="description" content="Bido is a social tool that allow users post news, opinions, articles, questions, share a story or an experience and get involved in discussing
-those issues that affect us and our society especially in Nigeria">
+        <meta name="description" content="The Southeast Post is an independent online news website, featuring opinions, world news...
+Discussing the issues that affect us and our society especially in Nigeria.">
     @endif
     <meta name="keywords" content="Web forum, Bido forum, politics, share a story, betting, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
 religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun review, 
@@ -35,7 +35,7 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
         @elseif(!empty($fulltitle))
             {{ title_case($fulltitle) }}
         @else
-            Post news, opinions, articles, questions, get involved your views matter and help make our society better!
+            Political Analysis, news, opinions, articles, questions, get involved your views matter and help make our society better!
             
         @endif
     </title>
@@ -93,7 +93,7 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
     <div class="navbar navbar-fixed-top bg-white border-b border-grey py-2">
         <div class="container mx-auto flex items-center justify-between flex-wrap px-4">
             <div>
-                <a href="{{ url('/') }}" class="logoText">BIDO</a>
+                <a href="{{ url('/') }}" class="logoText">The Southeast Post</a>
             </div>
             <div class="block sm:hidden">
                 <button @click="toggle" class="flex items-center px-3 py-2 border rounded">

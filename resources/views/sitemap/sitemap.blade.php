@@ -3,26 +3,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <url>
-    <loc>http://www.bido.com.ng/</loc>
-    <lastmod>2018-10-08</lastmod>
+    <loc>https://www.southeastpost.com</loc>
+    <lastmod>2020-03-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.0</priority>
   </url>
   <url>
-    <loc>http://www.bido.com.ng/about</loc>
-    <lastmod>2018-10-08</lastmod>
+    <loc>https://www.southeastpost.com/about</loc>
+    <lastmod>2020-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
     <url>
-    <loc>http://www.bido.com.ng/contact</loc>
-    <lastmod>2018-10-08</lastmod>
+    <loc>https://www.southeastpost.com/contact</loc>
+    <lastmod>2020-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   @foreach ($posts as $post)
   <url>
-    <loc>http://www.bido.com.ng/post-full-view/{{$post->id}}/{{str_slug(strtolower($post->title), '-')}}</loc>
+    <loc>https://www.southeastpost.com/post-full-view/{{$post->id}}/{{str_slug(strtolower($post->title), '-')}}</loc>
     <lastmod>{{$post->updated_at}}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.1</priority>
@@ -30,7 +30,7 @@
   @endforeach
   @foreach ($pages as $page)
   <url>
-    <loc>http://www.bido.com.ng/page/{{$page->name}}</loc>
+    <loc>https://www.southeastpost.com/category/{{$page->name}}</loc>
     <lastmod>{{$page->updated_at}}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.2</priority>

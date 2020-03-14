@@ -7,12 +7,11 @@
             <div class="px-4">
                 <div class="mb-4">
                     <h4 class="text-xl font-normal underline">
-                        Bido?
+                        The Southeast Post?
                     </h4>
                     <div class="mt-2">
-                        <p>What is bido? Bido is a social tool developed to enable users make post on relevant information, news, share ideas,
-                            opinions and articles targeted at getting the audience informed and connected with one another through their discussions 
-                            and contributions on the platform.</p>
+                        <p>The Southeast Post is an independent online news website, featuring opinions,  Political analysis, sports, world news...
+Discussing the issues that affect us and our society especially in Nigeria... We promote social discusssions about important issues in our society.</p>
                     </div>
                 </div>
 
@@ -22,7 +21,7 @@
                     </h4>
                     <div class="mt-2">
                         <p class="mb-2">
-                            To create an enabling environments that reinvents how people connect, share and get involved in social discussions.
+                           Sharing the truth through unbiased news reporting.
                         </p>
 
                     <!--    <ol>
@@ -42,7 +41,7 @@
                     </h4>
                     <div class="mt-2">
                         <p>
-                            To build an institution that promotes social discussions.
+                            To build an institution that promotes social discussions and tells our own story.
                         </p>
                     </div>
                 </div>

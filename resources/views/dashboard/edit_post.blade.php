@@ -26,7 +26,7 @@
                         <option >Entertainment</option>
                         <option >Culture</option>
                         <option >Travel</option>
-                        <option >Betting</option>
+                        <option >Opinion</option>
                         <option >Tourism</option>
                         <option >Job</option>
                         <option >NYSC</option>

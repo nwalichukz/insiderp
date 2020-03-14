@@ -56,7 +56,7 @@ class CategorySeeder extends Seeder
                 ['name' => 'Events',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                ['name' => 'Gossip',
+                ['name' => 'Business',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
                 ['name' => 'Movies',

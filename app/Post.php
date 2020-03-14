@@ -11,7 +11,7 @@ class Post extends Model
     }
 
      public function postimage(){
-        return $this->hasOne('App\PostImage');
+        return $this->hasOne('App\PostImage', 'post_id');
     }
 
     public function comment(){

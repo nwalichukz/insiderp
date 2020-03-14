@@ -30,8 +30,9 @@ class PostController extends Controller
        $create->user_id = Auth::user()->id;
        $create->publisher_level = Auth::user()->user_level;
        $create->title = $request['title'];
-       if(Auth::user()->user_level === 'admin' || Auth::user()->user_level === 'editor')
-        {$create->post_importance = 'front-page';}else{$create->post_importance = 'normal';}
+      /* if(Auth::user()->user_level === 'admin' || Auth::user()->user_level === 'editor')
+        {$create->post_importance = 'front-page';}else{$create->post_importance = 'normal';}*/
+        $create->post_importance = $request['post_importance'];
        $create->save();
        PostViewController::create($create->id);
        return ['success'=>'true', 'id' =>$create->id];
@@ -46,7 +47,19 @@ class PostController extends Controller
     */
     public static function get($id)
     {   //PostViewController::add($id);
-    	return Post::where('status', 'active')->where('id', $id)->first();
+    	return Post::where('status', 'active')->with(['postimage'])->where('id', $id)->first();
+    }
+
+     /**
+    * returns posts with images
+    *
+    * @var id
+    *
+    * @var instance
+    */
+    public static function getPost()
+    {   //PostViewController::add($id);
+    	return Post::where('status', 'active')->with(['postimage'])->limit(8)->get();
     }
 
      /**
@@ -119,7 +132,34 @@ class PostController extends Controller
     public static function getByCategory($category)
     {
     	return Post::where('status', 'active')->where('category', $category)
-                ->orderBy('created_at', 'DESC')->paginate(35);
+                            ->orderBy('rank', 'DESC')->with(['postimage'])->skip(1)->take(2)->get();
+    }
+
+    /**
+    * returns a aprticular post by category
+    *
+    * @var category
+    *
+    * @var instance
+    */
+    public static function getByCategoryFrmThree($category)
+    {
+        return Post::where('status', 'active')->where('category', $category)
+                            ->orderBy('rank', 'DESC')->with(['postimage'])->skip(3)->take(10)->simplePaginate();
+    }
+
+    
+       /**
+    * returns a aprticular latest post by category
+    *
+    * @var category
+    *
+    * @var instance
+    */
+    public static function latestByCategory($category)
+    {
+    	return Post::where('status', 'active')->where('category', $category)
+                ->orderBy('created_at', 'DESC')->with(['postimage'])->latest()->first();
     }
 
     /**
@@ -176,9 +216,32 @@ class PostController extends Controller
     * @var instance
     */
     public static function leadStory(){
-    return Post::where('post_importance', 'lead')->latest()->first();
+    return Post::where('post_importance', 'lead')->with(['postimage'])->latest()->first();
        
     }
+
+      /**
+    * get business front
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function businessFront(){
+        return Post::where('post_importance', 'business-front')->with(['postimage'])->latest()->first();
+           
+        }
+ /**
+    * get business front
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function foreignFront(){
+        return Post::where('post_importance', 'foreign-front')->with(['postimage'])->latest()->first();
+           
+        }
 
 
      /**
@@ -202,13 +265,14 @@ class PostController extends Controller
     * @var instance
     */
     public static function getLatest(){
-        return Post::where('status', 'active')->where('post_importance', 'front-page')->where('category', '!=', 'Job')->orderBy('created_at', 'DESC')
-                       ->limit(1000)->simplePaginate(20);
+        return Post::where('status', 'active')->where('post_importance', 'front-page')
+                ->with(['postimage'])->orderBy('created_at', 'DESC')->limit(4)
+                ->simplePaginate(4);
         
     }
 
     public static function getLatestGeneral(){
-        return Post::where('status', 'active')->where('publisher_level', 'user')->orderBy('created_at', 'DESC')
+        return Post::where('status', 'active')->with(['postimage'])->orderBy('created_at', 'DESC')
                       ->limit(1000)->paginate(30);  
                    
     }
@@ -222,8 +286,62 @@ class PostController extends Controller
     * @var instance
     */
     public static function featuredPost(){
-        return Post::where('status', 'active')->where('post_importance', 'featured')->orderBy('created_at', 'DESC')
-                       ->limit(9)->get();
+        return Post::where('status', 'active')->where('post_importance', 'featured')->orWhere('category', 'Opinion')->with(['postimage'])->orderBy('created_at', 'DESC')
+                       ->limit(7)->get();
+        
+    }
+
+     /**
+    * gets the sport posts
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function sportPost(){
+        return Post::where('status', 'active')->where('category', 'Sports')->orWhere('category', 'Entertainment')->with(['postimage'])->orderBy('created_at', 'DESC')
+                       ->limit(5)->get();
+        
+    }
+
+    /**
+    * gets the Lifestyle posts
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function lifestylePost(){
+        return Post::where('status', 'active')->where('category', 'Lifestyle')->orWhere('post_importance', 'featured')->with(['postimage'])->orderBy('created_at', 'DESC')
+                       ->limit(5)->get();
+        
+    }
+
+    /**
+    * gets the Foreign posts
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function foreignPost(){
+        return Post::where('status', 'active')->where('category', 'Foreign')
+                           ->where('post_importance', '!=', 'foreign-front')->with(['postimage'])->orderBy('created_at', 'DESC')
+                             ->limit(4)->get();
+        
+    }
+
+     /**
+    * gets the business posts
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function businessPost(){
+        return Post::where('status', 'active')->where('category', 'Business')->orWhere('category', 'Entrepreneurship')
+                           ->where('post_importance', '!=', 'business-front')->with(['postimage'])->orderBy('created_at', 'DESC')
+                             ->limit(4)->get();
         
     }
 
@@ -236,7 +354,7 @@ class PostController extends Controller
     */
     public static function frontPost(){
         $post = Post::where('status', 'active')->where('post_importance', '!=', 'featured')->where('publisher_level', 'admin')
-                    ->orWhere('publisher_level', 'editor')->get();
+                    ->orWhere('publisher_level', 'editor')->with(['postimage'])->get();
                     foreach ($post as $posts) {
                         $posts->post_importance = 'front-page';
                         $posts->save();
@@ -247,15 +365,15 @@ class PostController extends Controller
     }
 
      /**
-    * gets latest
+    * gets latest{popular}
     *
     * @var request
     *
     * @var instance
     */
     public static function getTrending(){
-        return Post::where('status', 'active')->orderBy('rank', 'DESC')
-                    ->limit(1000)->paginate(35);
+        return Post::where('status', 'active')->with(['postimage'])->orderBy('rank', 'DESC')
+                    ->limit(5)->paginate(5);
         
     }
 
@@ -267,7 +385,7 @@ class PostController extends Controller
     * @var instance
     */
     public static function getTrendPost(){
-        return Post::where('status', 'active')->whereDate('created_at', '>=', Carbon::now()->subWeek())
+        return Post::where('status', 'active')->whereDate('created_at', '>=', Carbon::now()->subWeek())->with(['postimage'])
                     ->orderBy('rank', 'DESC')->limit(10)->get();
         
     }
@@ -279,7 +397,7 @@ class PostController extends Controller
     * @var instance
     */
     public static function getByUser($id){
-        return Post::where('user_id', $id)->where('status', 'active')->orderBy('created_at', 'DESC')
+        return Post::where('user_id', $id)->where('status', 'active')->with(['postimage'])->orderBy('created_at', 'DESC')
                                     ->limit(1000)->paginate(30);
     
     }
@@ -293,7 +411,7 @@ class PostController extends Controller
     */
     public static function getByUserName($user_name){
         $user = UserController::getByUserName($user_name);
-        return Post::where('user_id', $user->id)->where('status', 'active')->orderBy('created_at', 'DESC')
+        return Post::where('user_id', $user->id)->where('status', 'active')->with(['postimage'])->orderBy('created_at', 'DESC')
                                     ->limit(1000)->paginate(30);
     
     }
@@ -332,8 +450,8 @@ class PostController extends Controller
     */
     public static function relatedPost($title, $category=null)
     {
-        return Post::where('title', 'LIKE', $title.'%')->where('title', '!=', $title)
-                    ->orWhere('category', $category)->orderBy('rank', 'DESC')->distinct()->limit(7)->get();
+        return Post::where('title', 'LIKE', $title.'%')->where('title', '!==', $title)
+                    ->orWhere('category', $category)->orderBy('rank', 'DESC')->with(['postimage'])->distinct()->limit(4)->get();
     }
 
 
@@ -347,7 +465,7 @@ class PostController extends Controller
     public static function search($title)
     {
         return Post::where('title', 'LIKE', $title.'%')
-                    ->where('status', 'active')->orderBy('rank', 'DESC')->paginate(39);
+                    ->where('status', 'active')->with(['postimage'])->orderBy('rank', 'DESC')->paginate(39);
                        /* ->orWhere('post', 'LIKE', '%'.$title.'%')*/
     }
 }

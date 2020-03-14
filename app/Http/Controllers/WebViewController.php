@@ -61,11 +61,21 @@ class WebViewController extends Controller
   public function index(Request $request){
     $trending = PostController::getLatest();
     $trendpost = PostController::getTrendPost();
+    $popular = PostController::getTrending();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
      $featured = PostController::featuredPost();
-      return view('home')->with(['posts'=>$trending, 'topcategory'=>'Latest', 'cat'=>$category, 'lead'=>$lead, 'featured'=>$featured,
-        'trendpost'=>$trendpost]);
+     $busfront = PostController::businessFront();
+     $foreign = PostController::foreignFront();
+     $sport = PostController::sportPost();
+     $lifestyle = PostController::lifestylePost();
+     $foreignpost = PostController::foreignPost();
+     $businesspost = PostController::businessPost();
+      return view('new-index')->with(['posts'=>$trending, 'topcategory'=>'Latest', 'cat'=>$category,
+                              'lead'=>$lead, 'featured'=>$featured, 'trendpost'=>$trendpost,
+                              'busfront'=>$busfront, 'foreign'=>$foreign, 'sport'=>$sport, 'lifestyle'=>$lifestyle,
+                              'foreignpost'=>$foreignpost, 'businesspost'=>$businesspost, 'popularpost'=>$popular
+                              ]);
   }
 
 
@@ -158,13 +168,13 @@ class WebViewController extends Controller
         $auth = AuthController::authenticate($request);
         if($auth === 'user'){
             $user =  Auth::user();
-            return redirect($user->user_level.'/'.str_replace(' ', '-', strtolower($user->name)));
+            return redirect('dashboard/'.$user->user_level.'/'.str_replace(' ', '-', strtolower($user->name)));
         }elseif ($auth === 'editor') {
             $editor = Auth::user();
-            return redirect($editor->user_level.'/'.str_replace(' ', '-', strtolower($editor->name)));
+            return redirect('dashboard/'.$editor->user_level.'/'.str_replace(' ', '-', strtolower($editor->name)));
         }elseif ($auth === 'admin') {
             $admin = Auth::user();
-            return redirect($admin->user_level.'/'.str_replace(' ', '-', strtolower($admin->name)));
+            return redirect('dashboard/'.$admin->user_level.'/'.str_replace(' ', '-', strtolower($admin->name)));
         }elseif ($auth === 'suspended'){
             return redirect('suspended-banned');
         }elseif ($auth === 'banned') {
@@ -296,7 +306,8 @@ class WebViewController extends Controller
     		$img = ImageController::postImageUpload($file);
     		$postimg = new PostImage;
     		$postimg->post_id = $post['id'];
-    		$postimg->name = $img;
+        $postimg->name = $img;
+        $postimg->description = $request['image_caption'];
     		$postimg->save();
     	  }  
           }
@@ -427,17 +438,23 @@ public function changePassword(Request $request)
       public function getByCategory($category)
       {  $bycat = PostController::getByCategory($category);
          $cat = CategoryController::getCategory();
+         $latest = PostController::latestByCategory($category);
+         $by_cat = PostController::getByCategory($category);
          $lead = PostController::leadStory();
-        return view('home')->with(['posts'=>$bycat, 'category'=>$category, 'cat'=>$cat, 'lead'=>$lead, 'fulltitle'=>$category. ' - Bido']);
+         $frmthree = PostController::getByCategoryFrmThree($category);
+        return view('pages.category-fullview')->with(['posts'=>$bycat, 'category'=>$category, 'cat'=>$cat, 
+        'lead'=>$lead, 'by_cat'=>$by_cat, 'more'=>$frmthree, 'fulltitle'=>$category. ' - The Southeast Post', 'latest'=>$latest]);
       }
 
       // post full view
       public function fullView($id)
-      {  $category = CategoryController::getCategory();
+      {  $category = CategoryController::getCategory();  
         $trend = PostController::get($id);
+        $gpost = PostController::getPost();
+        $bycat = PostController::getByCategory($trend->category);
         $related = PostController::relatedPost($trend->title, $trend->category);
         PostViewController::add($id);
-        return view('pages.full-view-post')->with(['trend'=>$trend, 'cat'=>$category, 'fulltitle'=>$trend->title, 'related'=>$related, 'pg'=>'fullView']);
+        return view('pages.new-fullview')->with(['trend'=>$trend, 'getpost'=>$gpost, 'cat'=>$category, 'bycat'=>$bycat, 'fulltitle'=>$trend->title, 'related'=>$related, 'pg'=>'fullView']);
       }
       // count view
       public function countView(Request $request){
@@ -646,7 +663,7 @@ public function changePassword(Request $request)
 
    // return about us page
     public function about()
-    { $title = "About Bido"; 
+    { $title = "About The Southeast Post"; 
       $category = CategoryController::getCategory();
     return view('pages.aboutus')->with(['cat'=> $category, 'title'=>$title]);
    }
