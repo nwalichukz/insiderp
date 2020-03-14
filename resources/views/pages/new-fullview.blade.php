@@ -134,6 +134,9 @@ hentry category-business tag-books tag-instagram tag-travel no-sidebar single-st
 <i class="feather-tag"></i>
 Tags: </span>
 <div class="fox-term-list">
+                  <!--Fb comments goes in here -->
+                  <div class="fb-comments" data-href="http://{{'www.southeastpost.com/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')}}"
+                     data-numposts='10'>
 <!--<ul><li><a href="" rel="tag">Books</a></li><li><a href="" rel="tag">Instagram</a></li><li><a href="l" rel="tag">Travel</a></li></ul>-->
 </div>
 </div>
@@ -250,7 +253,8 @@ custom-thumbnail hover-logo hover-dark thumbnail-acute" itemscope itemtype="http
 <div class="single-section single-component single-comment-section">
 <div id="comments" class="comments-area single-section single-component">
 <div id="respond" class="comment-respond">
-<h3 id="reply-title" class="comment-reply-title single-heading"><i class="feather-edit-2"></i>Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3><form action="../../../external.html?link=https://fox.withemes.com/times/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published.</p><p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Write your comment..."></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" value="" size="30" placeholder="Name" /></p>
+<h3 id="reply-title" class="comment-reply-title single-heading"><i class="feather-edit-2"></i>Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3>
+<form action="#" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published.</p><p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Write your comment..."></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" value="" size="30" placeholder="Name" /></p>
 <p class="comment-form-email"><input id="email" name="email" type="email" value="" size="30" placeholder="Email" /></p>
 <p class="comment-form-url"><input id="url" name="url" type="url" value="" size="30" placeholder="Website" /></p>
 <p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
