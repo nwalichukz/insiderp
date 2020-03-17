@@ -30,9 +30,14 @@ class PostController extends Controller
        $create->user_id = Auth::user()->id;
        $create->publisher_level = Auth::user()->user_level;
        $create->title = $request['title'];
-      /* if(Auth::user()->user_level === 'admin' || Auth::user()->user_level === 'editor')
-        {$create->post_importance = 'front-page';}else{$create->post_importance = 'normal';}*/
-        $create->post_importance = $request['post_importance'];
+       $create->guest_name = $request['guest_name'];
+       $create->guest_description = $request['guest_description'];
+       if(Auth::user()->user_level === 'admin' || Auth::user()->user_level === 'editor')
+        {$create->post_importance = $request['post_importance'];
+         }else{
+            $create->post_importance = 'normal';
+        }
+       // $create->post_importance = $request['post_importance'];
        $create->save();
        PostViewController::create($create->id);
        return ['success'=>'true', 'id' =>$create->id];

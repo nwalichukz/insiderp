@@ -22,6 +22,8 @@ class CreatePostsTable extends Migration
             $table->string('publisher_level');
             $table->string('post_importance');
             $table->text('post');
+            $table->string('guest_name')->nullable();
+            $table->text('guest_description')->nullable();
             $table->integer('rank')->unsigned()->default(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

@@ -51,6 +51,13 @@
                             <option value="foreign-front" >Foreign front page</option>
                         </select>
                     </div>
+                    <div class="mb-3">
+                        Fill this if the publishing is for a guest writer
+                        <input type="text" name="guest_name" class="modal-input" placeholder="Enter guest writer's name (optional)">
+                    </div>
+                    <div class="mb-3">
+                    <textarea name="guest_description" rows="3" id="" class="modal-input" placeholder="Enter the description of the guest (optional)"></textarea>
+                </div>
                     {{--<div class="mb-3">
                         <select name="voting_status" class="modal-select">
                             <option value="{{$data->voting_status}}">{{$data->voting_status}}</option>
@@ -70,7 +77,8 @@
                         </div>
                 </div>
                 <div id="imgcaption" class="mb-3">
-                     <input type="text" name="image_caption" class="modal-input" placeholder="Enter the image(s) description or caption">
+                     <textarea name="image_caption" rows="3" id="" class="modal-input" placeholder="Enter the image(s) description or caption"></textarea>
+                    
                    </div>
                 <div class="modal-footer">
                     <button type="submit" class="modal-button">Post</button>

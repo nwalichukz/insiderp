@@ -4,6 +4,7 @@
 <!-- Mirrored from fox.withemes.com/times/ by HTTrack Website Copier/3.x [XR&CO'2017], Fri, 28 Feb 2020 08:15:17 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
+<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/favicon.png') }}">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="{{url('ckeditor/ckeditor.js')}}"></script>
@@ -14,7 +15,7 @@
         <meta name="description" content="The Southeast Post is a Nigerian based independent online news website, featuring opinions, Latest news, world news, political analysis... Discussing the issues that affect us and our society especially in Nigeria.">
     @endif
 <link rel="profile" href="../../external.html?link=http://gmpg.org/xfn/11">
-  <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/favicon.png') }}">
+  
 <!--[if lt IE 9]>
 	<script src="https://fox.withemes.com/times/wp-content/themes/fox/js/html5.js"></script>
 	<![endif]-->
@@ -23,11 +24,7 @@
 @else
 <title>The Southeast post &#8211; Nigeria News, Political Analysis, Business news, World news, Opinions...</title>
 @endif
-<link rel='dns-prefetch' href='../../external.html?link=http://fonts.googleapis.com/' />
-<link rel='dns-prefetch' href='../../external.html?link=http://s.w.org/' />
-<link href='../../external.html?link=https://fonts.gstatic.com/' crossorigin rel='preconnect' />
-<link rel="alternate" type="application/rss+xml" title="The Fox Times &raquo; Feed" href="feed/index.html" />
-<link rel="alternate" type="application/rss+xml" title="The Fox Times &raquo; Comments Feed" href="comments/feed/index.html" />
+
 <script type="text/javascript">
 			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/fox.withemes.com\/times\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
 			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
@@ -46,6 +43,9 @@ img.emoji {
 	padding: 0 !important;
 }
 </style>
+
+
+
 <link rel='stylesheet' id='wp-block-library-css' href="{{ asset('wp-includes/css/dist/block-library/style.min9dff.css') }}" type='text/css' media='all' />
 <link rel='stylesheet' id='contact-form-7-css' href="{{ asset('wp-content/plugins/contact-form-7/includes/css/stylesb62d.css') }}" type='text/css' media='all' />
 <link rel='stylesheet' id='fox-demo-css' href="{{ asset('wp-content/plugins/fox-demo/style9dff.css') }}" type='text/css' media='all' />
@@ -193,8 +193,14 @@ elementor-default elementor-kit-1713 elementor-page elementor-page-775" itemscop
 <li id="menu-item-23" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-23 mega mega-item"><a href="{{ url('category/Opinion/index')}}">Opinion</a></li>
 <li id="menu-item-24" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-24 mega mega-item"><a href="{{ url('category/Business/index')}}">Business</a></li>
 <li id="menu-item-28" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-28 mega mega-item"><a href="{{ url('category/Sports/index')}}">Sports</a></li>
-<li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31 mega mega-item"><a href="{{ url('category/Travel/index')}}}">Travel</a></li>
-@include('partials.auth-nav')
+<li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31 mega mega-item"><a href="{{ url('category/Travel/index')}}">Travel</a></li>
+@if (Auth::guest())
+<li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31 mega mega-item"><a href="{{ url('/login') }}">login</a></li>
+ <li class="nav-li"><a href="{{ url('/register') }}">sign up</a></li>
+	@else
+	<li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31 mega mega-item"><a class="dropdown-item" style="font:blue;" href="{{url('/dashboard/'.Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Dashboard </a></li>
+	
+@endif
 </ul></div>
 </nav>
 </div>

@@ -9,7 +9,7 @@ hentry category-business tag-books tag-instagram tag-travel no-sidebar single-st
 <div class="container">
 <div class="post-item-header align-left">
 <div class="entry-categories meta-categories standalone-categories post-header-section">
-<a href='{{ url("category/".$trend->category)}}' rel="tag">{{$trend->category}}</a>
+<a href='{{ url("category/".$trend->category."/index")}}' rel="tag">{{$trend->category}}</a>
 </div>
 <h1 class="post-item-title wi-post-title fox-post-title post-header-section post-title size-normal" itemprop="headline">
 {{title_case($Helper->get_title($trend->title, 30))}} 
@@ -19,7 +19,7 @@ hentry category-business tag-books tag-instagram tag-travel no-sidebar single-st
 </div>-->
 <div class="post-item-meta wi-meta fox-meta post-header-section ">
 <div class="entry-date meta-time machine-time time-short">
-	<time class="published" itemprop="datePublished" datetime="2018-05-16T00:00:00+00:00">{{date('d F \'y \a\t h:i:a', strtotime($trend->created_at))}}</time>
+	<time class="published" itemprop="datePublished" datetime="2018-05-16T00:00:00+00:00">{{$trend->created_at->diffForHumans()}}</time>
 	
 </div> 
 <div class="fox-meta-author entry-author meta-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
@@ -31,13 +31,32 @@ hentry category-business tag-books tag-instagram tag-travel no-sidebar single-st
     </a>
     <span class="byline"> by <span class="author vcard">
 <a class="url fn" itemprop="url" rel="author" href="">
-<span itemprop="name">{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}</span></a></span></span>
+<span itemprop="name">
+  @if(empty($trend->guest_name))
+
+  {{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}
+
+ @else
+
+  {{ $trend->guest_name}}
+
+ @endif</span></a></span></span>
 @else
 <img src='{{asset("images/avatar/avatar.png")}}' style="width:40px; height:40px; border-radius: 50%;" class="h-10 rounded-full mr-3"
   alt="thumb"/>
   <span class="byline"> by <span class="author vcard">
 <a class="url fn" itemprop="url" rel="author" href="">
-<span itemprop="name">{{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}</span></a></span></span>
+<span itemprop="name">
+  @if(empty($trend->guest_name))
+
+  {{ucfirst(strtolower($Helper->user($trend->user_id)->user_name))}}
+
+ @else
+
+  {{ $trend->guest_name}}
+
+ @endif
+</span></a></span></span>
   @endif
 </div>
 </div>
@@ -49,17 +68,20 @@ hentry category-business tag-books tag-instagram tag-travel no-sidebar single-st
 <div class="thumbnail-container">
 <div class="container">
 <div class="thumbnail-main">
+  @if(!empty($trend->postimage->name))
 <figure class="fox-figure post-thumbnail post-thumbnail-standard hover-none thumbnail-acute" itemscope itemtype="https://schema.org/ImageObject">
 <span class="image-element">
-@if(!empty($trend->postimage->name))
-<img width="100%" height="900" src='{{ asset("/images/post/".$trend->postimage->name)}}' class="attachment-full size-full" alt="" data-lazy="false"
+
+<img width="80%" max-height="500px" src='{{ asset("/images/post/".$trend->postimage->name)}}' class="attachment-full size-full" alt="" data-lazy="false"
   sizes="(max-width: 1440px) 100vw, 1440px" />
-  @endif
+ 
 </span>
    
 <figcaption class="fox-figcaption">
-    
-    <a href="{{ url('/')}}"> </a> </figcaption></figure>
+    {{$trend->postimage->description}}
+<a href="#"> </a> </figcaption>
+</figure>
+@endif
 </div>
 </div>
 </div>
@@ -71,7 +93,7 @@ hentry category-business tag-books tag-instagram tag-travel no-sidebar single-st
 <div class="single-body">
 <div class="single-section single-main-content">
 <div class="container entry-container">
-<div class="dropcap-content columnable-content entry-content">
+<div style="font-size: 1.4em; padding: 13px; text-align: justify; font-family: sans-serif;" class="dropcap-content columnable-content entry-content">
 
 <br>
 {!! ucfirst($trend->post)  !!}
@@ -250,6 +272,8 @@ custom-thumbnail hover-logo hover-dark thumbnail-acute" itemscope itemtype="http
 </div>
 </div>
 </div>-->
+<!--The beginning of comment section -->
+<!--
 <div class="single-section single-component single-comment-section">
 <div id="comments" class="comments-area single-section single-component">
 <div id="respond" class="comment-respond">
@@ -262,7 +286,8 @@ custom-thumbnail hover-logo hover-dark thumbnail-acute" itemscope itemtype="http
 <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
 </p></form> </div>
 </div>
-</div>
+</div> -->
+<!-- The end of comment section -->
 </div>
 </div>
 </div>
