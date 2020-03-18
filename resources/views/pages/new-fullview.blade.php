@@ -95,7 +95,6 @@ hentry category-business tag-books tag-instagram tag-travel no-sidebar single-st
 <div class="container entry-container">
 <div style="font-size: 1.4em; padding: 13px; font-family: sans-serif;" class="dropcap-content columnable-content entry-content">
 
-<br>
 {!! ucfirst($trend->post)  !!}
 <br>
 </div>
@@ -107,26 +106,26 @@ hentry category-business tag-books tag-instagram tag-travel no-sidebar single-st
 <span class="share-label"><i class="fa fa-share-alt"></i>Share this</span>
 <ul>
 <li class="li-share-facebook">
-<a href="https://www.facebook.com/sharer/sharer.php?u={{ url($trend->id.'/'.str_slug(strtolower($trend->title), '-')) }} " target="blank" title="Facebook" class="share share-facebook">
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://{{'www.southeastpost.com/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')}}" target="blank" title="Facebook" class="share share-facebook">
 <i class="fab fa-facebook-f"></i>
 <span>Facebook</span>
 </a>
 </li>
 
 <li class="li-share-twitter">
-<a href="https://twitter.com/home?status={{ url($trend->id.'/'.str_slug(strtolower($trend->title), '-')) }} " target="blank" title="Twitter" class="share share-twitter">
+<a href="https://twitter.com/home?status=https://{{'www.southeastpost.com/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')}} " target="blank" title="Twitter" class="share share-twitter">
 <i class="fab fa-twitter"></i>
 <span>Twitter</span>
 </a>
 </li>
 <li class="li-share-pinterest">
-<a href="https://pinterest.com/pin/create/button/?url={{ url($trend->id.'/'.str_slug(strtolower($trend->title), '-')) }} " target="blank" title="Pinterest" class="share share-pinterest">
+<a href="https://pinterest.com/pin/create/button/?url=https://{{'www.southeastpost.com/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')}} " target="blank" title="Pinterest" class="share share-pinterest">
 <i class="fab fa-pinterest-p"></i>
 <span>Pinterest</span>
 </a>
 </li>
 <li class="li-share-linkedin">
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ url($trend->id.'/'.str_slug(strtolower($trend->title), '-')) }} " target="blank" title="Linkedin" class="share share-linkedin">
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://{{'www.southeastpost.com/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')}}" target="blank" title="Linkedin" class="share share-linkedin">
 <i class="fab fa-linkedin-in"></i>
 <span>Linkedin</span>
 </a>
@@ -139,7 +138,7 @@ hentry category-business tag-books tag-instagram tag-travel no-sidebar single-st
 </li>-->
 
 <li class="li-share-reddit">
-<a href="https://www.reddit.com/submit?url={{ url($trend->id.'/'.str_slug(strtolower($trend->title), '-')) }} " title="Reddit" class="share share-reddit">
+<a href="https://www.reddit.com/submit?url=https://{{'www.southeastpost.com/'.$trend->id.'/'.str_slug(strtolower($trend->title), '-')}} " title="Reddit" class="share share-reddit">
 <i class="fab fa-reddit-alien"></i>
 <span>Reddit</span>
 </a>

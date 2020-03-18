@@ -158,7 +158,7 @@
 	<div class="post-item-header list-header">
 	<h2 class="post-item-title wi-post-title fox-post-title post-header-section list-title size-tiny" itemprop="headline">
 	<a href="{{ url($fe->id.'/'.str_slug(strtolower($fe->title), '-')) }}" rel="bookmark">
-	{{$Helper->get_title(title_case(strtolower($fe->title)), 10)}}
+	{{$Helper->get_title(title_case(strtolower($fe->title)), 20)}}
 	</a>
 	</h2>
 </div>
