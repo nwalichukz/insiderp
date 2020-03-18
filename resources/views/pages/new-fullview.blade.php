@@ -189,7 +189,9 @@ custom-thumbnail hover-logo hover-dark thumbnail-acute" itemscope itemtype="http
     @if(!empty($relatedpost->postimage->name))
     <img width="480" height="384" src='{{asset("images/post/".$relatedpost->postimage->name)}}' class="attachment-thumbnail-medium size-thumbnail-medium" alt="" data-lazy="false" />
     @endif
-    <span class="height-element" style="padding-bottom:80%;"></span><span class="image-overlay"></span><span class="image-logo" style="width:40%"><img width="600" height="125" src="../wp-content/uploads/sites/23/2019/10/times-white.png" class="attachment-full size-full" alt="" srcset="https://fox.withemes.com/times/wp-content/uploads/sites/23/2019/10/times-white.png 600w, https://fox.withemes.com/times/wp-content/uploads/sites/23/2019/10/times-white-300x63.png 300w, https://fox.withemes.com/times/wp-content/uploads/sites/23/2019/10/times-white-60x13.png 60w, https://fox.withemes.com/times/wp-content/uploads/sites/23/2019/10/times-white-480x100.png 480w" sizes="(max-width: 600px) 100vw, 600px" /></span></a></span></figure>
+    <span class="height-element" style="padding-bottom:80%;"></span><span class="image-overlay"></span>
+    <span class="image-logo" style="width:40%">
+    <img width="600" height="125" src="" class="attachment-full size-full" alt="" srcset="" sizes="(max-width: 600px) 100vw, 600px" /></span></a></span></figure>
 <div class="grid-body post-item-body">
 <div class="post-item-header grid-header">
 <h3 class="post-item-title wi-post-title fox-post-title post-header-section grid-title size-tiny" itemprop="headline">
