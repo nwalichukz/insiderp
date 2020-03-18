@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 
-<!-- Mirrored from fox.withemes.com/times/ by HTTrack Website Copier/3.x [XR&CO'2017], Fri, 28 Feb 2020 08:15:17 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/favicon.png') }}">
 <meta charset="UTF-8">
@@ -14,15 +13,14 @@
     @else
         <meta name="description" content="The Southeast Post is a Nigerian based independent online news website, featuring opinions, Latest news, world news, political analysis... Discussing the issues that affect us and our society especially in Nigeria.">
     @endif
-<link rel="profile" href="../../external.html?link=http://gmpg.org/xfn/11">
-  
+
 <!--[if lt IE 9]>
 	<script src="https://fox.withemes.com/times/wp-content/themes/fox/js/html5.js"></script>
 	<![endif]-->
 <script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
 @if(!empty($fulltitle)) <title> {{title_case($fulltitle)}} - The Southeast Post </title>
 @else
-<title>The Southeast post &#8211; Breaking News, Nigeria News, Political Analysis, Business news, World news, Opinions...</title>
+<title>The Southeast post &#8211; Breaking News, Nigeria News, Political Analysis, Business news, World news, Opinions and more</title>
 @endif
 
 <script type="text/javascript">
@@ -59,7 +57,7 @@ img.emoji {
  .wi-mainnav ul.menu ul > li:hover > a, .wi-mainnav ul.menu ul li.current-menu-item > a,
   .wi-mainnav ul.menu ul li.current-menu-ancestor > a, .submenu-dark .wi-mainnav ul.menu ul li:hover > a,
    .submenu-dark .wi-mainnav ul.menu ul li.current-menu-item > a, .submenu-dark .wi-mainnav ul.menu ul
-	li.current-menu-ancestor > a, .related-title a:hover, .page-links > a:hover, .widget_archive a:hover, 
+	li.current-menu-ancestor > a, .related-title a:hover, .page-links > a:hover, .widget_archive a:hover,
 	.widget_nav_menu a:hover, .widget_meta a:hover, .widget_recent_entries a:hover, .widget_categories a:hover,
 	 .tagcloud a:hover, .header-cart a:hover, .woocommerce .star-rating span:before, .null-instagram-feed .clear a:hover, .widget a.readmore:hover{color:#21759b}html .mejs-controls .mejs-time-rail .mejs-time-current, .dropcap-color, .style--dropcap-color .enable-dropcap .dropcap-content:first-letter, .style--dropcap-color p.has-drop-cap:not(:focus):first-letter, .fox-btn.btn-primary, button.btn-primary, input.btn-primary[type="button"], input.btn-primary[type="reset"], input.btn-primary[type="submit"], .social-list.style-black a:hover, .post-item-thumbnail:hover .video-indicator-solid, a.more-link:hover, .post-newspaper .related-thumbnail, .style--slider-navtext .flex-direction-nav a:hover, .review-item.overall .review-score, #respond #submit:hover, .wpcf7-submit:hover, #footer-search .submit:hover, .woocommerce .widget_price_filter .ui-slider .ui-slider-range, .woocommerce .widget_price_filter .ui-slider .ui-slider-handle, .woocommerce span.onsale, .woocommerce ul.products li.product .onsale, .woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover, .woocommerce a.add_to_cart_button:hover, .woocommerce #review_form #respond .form-submit input:hover{background-color:#21759b}.review-item.overall .review-score, .partial-content, .null-instagram-feed .clear a:hover{border-color:#21759b}.reading-progress-wrapper::-webkit-progress-value{background-color:#21759b}.reading-progress-wrapper::-moz-progress-value{background-color:#21759b}.main-header.has-logo-center .container{height:100px}.sticky-header-background{opacity:1}.header-search-wrapper .search-btn{font-size:20px}#footer-logo img{width:120px}#backtotop{color:#111111;background-color:#f0f0f0;border-color:#f0f0f0}#backtotop:hover{color:#111111;background-color:#ffffff;border-color:#dddddd}body{color:#444444}h1, h2, h3, h4, h5, h6{color:#000000}a{color:#21759b}a:hover{color:#21759b}.fox-logo, .min-logo-text, .mobile-logo-text{color:#000000}.wi-mainnav ul.menu > li > a{color:#111111}.wi-mainnav ul.menu > li:hover > a{color:#999999}.wi-mainnav ul.menu > li.current-menu-item > a, .wi-mainnav ul.menu > li.current-menu-ancestor > a{color:#999999;background-color:#ffffff}.wi-mainnav ul.menu > li.menu-item-has-children > a:after, .wi-mainnav ul.menu > li.mega > a:after{color:#cccccc}.wi-mainnav ul.menu ul{background-color:#ffffff;color:#444444}.wi-mainnav ul.menu > li > ul > .caret{color:#eaeaea}.wi-mainnav ul.menu ul li:hover > a, .wi-mainnav ul.menu .post-nav-item-title:hover a, .wi-mainnav ul.menu > li.mega ul ul a:hover{color:#111111}.wi-mainnav ul.menu ul li:hover > a, .wi-mainnav ul.menu > li.mega ul ul a:hover{background-color:#f0f0f0}.wi-mainnav ul.menu ul > li, .mega-sep{border-color:#ffffff}.post-item-title a:hover{color:#595959;text-decoration:none}.post-item-meta{color:#aaaaaa}.post-item-meta a{color:#aaaaaa}.post-item-meta a:hover{color:#111111}.standalone-categories a{color:#111111}.single .single-main-content{color:#000000}.widget-title{text-align:left}table, td, th, .fox-input, input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea, textarea, select, .style--tag-block .fox-term-list a, .fox-slider-rich, .pagination-inner, .post-sep, .blog-related, .blog-related .line, .post-newspaper .related-area, .post-list-sep, .single-authorbox-section, .post-nav-simple, #footer-widgets, #footer-bottom, #offcanvas-bg, .commentlist ul.children, .offcanvas-element,  .hero-half,.commentlist li + li > .comment-body, .classic-main-header-top .container, .related-heading, .comments-title, .comment-reply-title, .style--header-sticky-element-border .header-sticky-element.before-sticky,
     .widget_archive ul, .widget_nav_menu ul, .widget_meta ul, .widget_recent_entries ul, .widget_categories ul,
@@ -87,10 +85,24 @@ img.emoji {
 <link rel="alternate" type="application/json+oembed" href="{{ asset('wp-json/oembed/1.0/embedf7a8.json')}}" />
 <link rel="alternate" type="text/xml+oembed" href="{{ asset('wp-json/oembed/1.0/embeda68a')}}" />
 <style id="color-preview"></style>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151738156-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-151738156-1');
+        </script>
+
+
+        <script data-ad-client="ca-pub-9051751424373663" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 </head>
 
-<body class="home page-template-default page page-id-775 no-sidebar layout-wide style--header-sticky-element-border 
-submenu-light style--dropcap-default dropcap-style-default style--tag-plain style--blockquote-no-icon style--link-2 
+<body class="home page-template-default page page-id-775 no-sidebar layout-wide style--header-sticky-element-border
+submenu-light style--dropcap-default dropcap-style-default style--tag-plain style--blockquote-no-icon style--link-2
 elementor-default elementor-kit-1713 elementor-page elementor-page-775" itemscope itemtype="https://schema.org/WebPage">
 <div id="wi-all" class="fox-outer-wrapper fox-all wi-all">
 <div id="wi-wrapper" class="fox-wrapper wi-wrapper">
@@ -133,7 +145,9 @@ elementor-default elementor-kit-1713 elementor-page elementor-page-775" itemscop
 <div id="logo-area" class="fox-logo-area fox-header-logo">
 <div id="wi-logo" class="fox-logo-container">
 <h1 class="wi-logo-main fox-logo logo-type-text" id="site-logo" style="font-family: Times;">
-<a href="{{url('/')}}" rel="home">
+
+<a href="{{ url('/') }}" rel="home">
+
 <span class="text-logo">The Southeast Post</span>
 </a>
 </h1>
@@ -199,7 +213,7 @@ elementor-default elementor-kit-1713 elementor-page elementor-page-775" itemscop
  <li class="nav-li"><a href="{{ url('/register') }}">sign up</a></li>
 	@else
 	<li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31 mega mega-item"><a class="dropdown-item" style="font:blue;" href="{{url('/dashboard/'.Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Dashboard </a></li>
-	
+
 @endif
 </ul></div>
 </nav>
@@ -208,7 +222,7 @@ elementor-default elementor-kit-1713 elementor-page elementor-page-775" itemscop
 </div>
 </header>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" 
+<script async defer crossorigin="anonymous"
 src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=283429275621504&autoLogAppEvents=1">
 </script>
 <div id="masthead-mobile" class="masthead-mobile">
@@ -392,7 +406,7 @@ And also Promoting discussions on the issues that affect us and our society espe
 </ul> -->
 </li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-529 mega mega-item">
-	
+
 <!--<ul class="sub-menu">
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-530"><a href="#">Example</a><span class="indicator"></span>
 <ul class="sub-menu">

@@ -2,14 +2,19 @@
 <html lang="en">
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124060018-1"></script>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-9714650655827566",
-    enable_page_level_ads: true
-  });
-</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151738156-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-151738156-1');
+    </script>
+
+
+    <script data-ad-client="ca-pub-9051751424373663" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
     <script src="{{url('ckeditor/ckeditor.js')}}"></script>
 
     <meta name="description" content="The Southeast Post is an independent online news website, featuring opinions, world news...

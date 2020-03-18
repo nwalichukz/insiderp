@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
@@ -11,7 +12,8 @@ class CategorySeeder extends Seeder
      * @return void
      */
     public function run()
-    {DB::table('categories')->insert([
+    {
+        DB::table('categories')->insert([
             ['name' => 'Politics',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
@@ -39,55 +41,55 @@ class CategorySeeder extends Seeder
             ['name' => 'Culture',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-             ['name' => 'Travel',
+            ['name' => 'Travel',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-             ['name' => 'Betting',
+            ['name' => 'Betting',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-              ['name' => 'Tourism',
+            ['name' => 'Tourism',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-              ['name' => 'Jokes',
+            ['name' => 'Jokes',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                 ['name' => 'Health',
+            ['name' => 'Health',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                 ['name' => 'Job',
+            ['name' => 'Job',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                 ['name' => 'NYSC',
+            ['name' => 'NYSC',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-               ['name' => 'Foreign',
+            ['name' => 'Foreign',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                ['name' => 'Events',
+            ['name' => 'Events',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                ['name' => 'Fashion',
+            ['name' => 'Fashion',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                 ['name' => 'Birthdays',
+            ['name' => 'Birthdays',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                ['name' => 'CarTalk',
+            ['name' => 'CarTalk',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                ['name' => 'Entrepreneurship',
+            ['name' => 'Entrepreneurship',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                 ['name' => 'Literature Review',
+            ['name' => 'Literature Review',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                 ['name' => 'Art and Craft',
+            ['name' => 'Art and Craft',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                 ['name' => 'Campus Gist',
+            ['name' => 'Campus Gist',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),],
-                ]);
-  
+        ]);
+
     }
 }

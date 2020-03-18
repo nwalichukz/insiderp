@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124060018-1"></script>
 
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-9714650655827566",
-    enable_page_level_ads: true
-  });
-</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151738156-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-151738156-1');
+    </script>
+
+
+    <script data-ad-client="ca-pub-9051751424373663" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{url('ckeditor/ckeditor.js')}}"></script>
     @if(!empty($pg))
@@ -22,7 +25,7 @@
 Discussing the issues that affect us and our society especially in Nigeria.">
     @endif
     <meta name="keywords" content="Web forum, Bido forum, politics, share a story, betting, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
-religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun review, 
+religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun review,
  Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">
     <meta charset="utf-8">
     <meta name="google-site-verification" content="r-KmW3txqodD-zMvufoJWY8MbPWnzqoHD1vjHoW5GV0"/>
@@ -36,7 +39,7 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
             {{ title_case($fulltitle) }}
         @else
             Political Analysis, news, opinions, articles, questions, get involved your views matter and help make our society better!
-            
+
         @endif
     </title>
     <!-- Fonts -->
