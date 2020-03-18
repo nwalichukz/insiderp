@@ -22,7 +22,7 @@
 <script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
 @if(!empty($fulltitle)) <title> {{title_case($fulltitle)}} - The Southeast Post </title>
 @else
-<title>The Southeast post &#8211; Nigeria News, Political Analysis, Business news, World news, Opinions...</title>
+<title>The Southeast post &#8211; Breaking News, Nigeria News, Political Analysis, Business news, World news, Opinions...</title>
 @endif
 
 <script type="text/javascript">
@@ -107,7 +107,7 @@ elementor-default elementor-kit-1713 elementor-page elementor-page-775" itemscop
 <span>Facebook</span>
 </a>
  </li>
-<li class="li-twitter">
+<!--<li class="li-twitter">
 <a href="https://www.twitter.com" target="_blank" rel="alternate" title="Twitter">
 <i class="fab fa-twitter"></i>
 <span>Twitter</span>
@@ -119,7 +119,7 @@ elementor-default elementor-kit-1713 elementor-page elementor-page-775" itemscop
 <i class="fab fa-whatsapp"></i>
 <span>WhatsApp</span>
 </a>
-</li>
+</li>-->
 
 </ul>
 </div>
@@ -133,7 +133,7 @@ elementor-default elementor-kit-1713 elementor-page elementor-page-775" itemscop
 <div id="logo-area" class="fox-logo-area fox-header-logo">
 <div id="wi-logo" class="fox-logo-container">
 <h1 class="wi-logo-main fox-logo logo-type-text" id="site-logo" style="font-family: Times;">
-<a href="index.html" rel="home">
+<a href="{{url('/')}}" rel="home">
 <span class="text-logo">The Southeast Post</span>
 </a>
 </h1>
@@ -220,7 +220,7 @@ src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=283429
 </a>
 </div>
 <h4 id="mobile-logo" class="mobile-logo mobile-logo-text">
-<a href="index.html" rel="home" style="font-family: Times;">
+<a href="{{url('/')}}" rel="home" style="font-family: Times;">
 <span class="text-logo">THE SOUTHEAST POST</span>
 </a>
 </h4>
@@ -230,7 +230,7 @@ src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=283429
 <div class="masthead-mobile-bg"></div>
 </div>
 <div id="masthead-mobile-height"></div>
-<br><br>
+<br>
 <!--the body of the home page -->
 @yield('content')
 <!-- The end of the body -->
@@ -247,8 +247,8 @@ src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=283429
 </a>
 </div>
 </div><div id="text-4" class="widget widget_text"> <div class="textwidget">
-<p>The Southeast Post is an independent online news website, featuring opinions, world news...
-Discussing the issues that affect us and our society especially in Nigeria.</p>
+<p>The Southeast Post is a Nigerian based independent online news website, featuring Breaking News, Nigeria News, Political Analysis, Business news, World news, Opinions and more
+And also Promoting discussions on the issues that affect us and our society especially in Nigeria.</p>
 <p>Contact Us: <a href=" "><span class="__cf_email__" data-cfemail="23465b424e534f4663474c4e424a4d0d404c4e">[contactsepost@gmail.com]</span></a></p>
 </div>
 </div><div id="social-3" class="widget widget_social"><style type="text/css">#social-id-5e58cc1f7101e a{color:#111111;background:#f0f0f0;border-color:#f0f0f0}#social-id-5e58cc1f7101e a:hover{color:#111111;background:#ffffff;border-color:#eaeaea}</style>

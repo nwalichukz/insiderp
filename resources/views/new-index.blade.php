@@ -43,7 +43,7 @@
 	<span class="image-element">
 		<a href="{{ url($lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="post-link">
 		@if(!empty($lead->postimage->name))
-		<img width="720" height="480" src='{{asset("/images/post/".$lead->postimage->name)}}' class="attachment-thumbnail-large size-thumbnail-large" alt="" data-lazy="false" sizes="(max-width: 720px) 100vw, 720px" />
+		<img width="720" title="{{$lead->postimage->description}}" height="480" src='{{asset("/images/post/".$lead->postimage->name)}}' class="attachment-thumbnail-large size-thumbnail-large" alt="" data-lazy="false" sizes="(max-width: 720px) 100vw, 720px" />
 		@endif
 		<span class="height-element" style="padding-bottom:66.666666666667%;"></span></a></span></figure>
 	
@@ -59,14 +59,20 @@
 	 <img alt='author' src='{{asset("images/avatar/avatar.png")}}' 
 	 class='avatar avatar-80 photo' height='80' width='80' /></a><span class="byline"> By <span class="author vcard">
 		 <a class="url fn" itemprop="url" rel="author" href="{{ url($lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}">
-	<span itemprop="name">{{ucfirst(strtolower($Helper->user($lead->user_id)->user_name))}}</span></a></span></span></div>
+	<span itemprop="name">
+	@if(empty($lead->guest_name))
+	{{ucfirst(strtolower($Helper->user($lead->user_id)->user_name))}}
+	@else
+     {{$lead->guest_name}}
+	@endif
+	</span></a></span></span></div>
 	</div>
-	<h2 class="post-item-title wi-post-title fox-post-title post-header-section grid-title size-medium weight-300" itemprop="headline">
+	<h1 style="font-weight:bold;" class="post-item-title wi-post-title fox-post-title post-header-section grid-title size-medium weight-300" itemprop="headline">
 	<a href="{{ url($lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" rel="bookmark">
-	{{$Helper->get_title(title_case(strtolower($lead->title)), 10)}}
+	{{$Helper->get_title(title_case(strtolower($lead->title)), 20)}}
 	</a>
-	</h2></div><div class="post-item-excerpt entry-excerpt excerpt-size-normal grid-content" itemprop="text">
-	{{strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($lead->post, 60))))}}.
+	</h1></div><div class="post-item-excerpt entry-excerpt excerpt-size-normal grid-content" itemprop="text">
+	{{strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($lead->post, 35))))}}.
 	<a href="{{ url($lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="readmore fox-btn btn-tiny btn-primary">Read More</a>
 	</div>
 	</div>
@@ -74,6 +80,7 @@
 	</article>	
 	@endif
 	</div>
+
 
 	<div class="post-group-col post-group-col-small article-small-wrapper">
 		<!--the latest news -->
