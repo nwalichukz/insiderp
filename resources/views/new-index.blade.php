@@ -69,10 +69,10 @@
 	</div>
 	<h1 style="font-weight:bold;" class="post-item-title wi-post-title fox-post-title post-header-section grid-title size-medium weight-300" itemprop="headline">
 	<a href="{{ url($lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" rel="bookmark">
-	{{$Helper->get_title(title_case(strtolower($lead->title)), 20)}}
+	{{$Helper->get_title(title_case(strtolower($lead->title)), 30)}}
 	</a>
 	</h1></div><div class="post-item-excerpt entry-excerpt excerpt-size-normal grid-content" itemprop="text">
-	{{strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($lead->post, 35))))}}.
+	{{strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($lead->post, 40))))}}.
 	<a href="{{ url($lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="readmore fox-btn btn-tiny btn-primary">Read More</a>
 	</div>
 	</div>
@@ -97,7 +97,7 @@
 	<div class="post-item-header list-header">
 	<h2 class="post-item-title wi-post-title fox-post-title post-header-section list-title size-small" itemprop="headline">
 	<a href="{{ url($tr->id.'/'.str_slug(strtolower($tr->title), '-')) }}" rel="bookmark">
-	{{$Helper->get_title(title_case(strtolower($tr->title)), 15)}}
+	{{$Helper->get_title(title_case(strtolower($tr->title)), 30)}}
 	</a>
 	</h2>
 	<div class="post-item-meta wi-meta fox-meta post-header-section ">
@@ -158,7 +158,7 @@
 	<div class="post-item-header list-header">
 	<h2 class="post-item-title wi-post-title fox-post-title post-header-section list-title size-tiny" itemprop="headline">
 	<a href="{{ url($fe->id.'/'.str_slug(strtolower($fe->title), '-')) }}" rel="bookmark">
-	{{$Helper->get_title(title_case(strtolower($fe->title)), 20)}}
+	{{$Helper->get_title(title_case(strtolower($fe->title)), 30)}}
 	</a>
 	</h2>
 </div>
@@ -244,10 +244,10 @@ thumbnail-acute" itemscope itemtype=""><span class="image-element">
 </div>
 <h2 class="post-item-title wi-post-title fox-post-title post-header-section grid-title size-normal weight-700" itemprop="headline">
 <a href="{{ url($busfront->id.'/'.str_slug(strtolower($busfront->title), '-')) }}" rel="bookmark">
-{{$Helper->get_title(title_case(strtolower($busfront->title)), 10)}}
+{{$Helper->get_title(title_case(strtolower($busfront->title)), 30)}}
 </a>
 </h2></div><div class="post-item-excerpt entry-excerpt excerpt-size-normal grid-content" itemprop="text">
- {{strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($busfront->post, 13))))}}
+ {{strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($busfront->post, 30))))}}
 <a href="{{ url($busfront->id.'/'.str_slug(strtolower($busfront->title), '-')) }}" class="readmore fox-btn btn-tiny btn-primary">Read More</a>
 </div>
 </div>
@@ -266,7 +266,7 @@ thumbnail-acute" itemscope itemtype=""><span class="image-element">
 <div class="post-item-header list-header">
 <h2 class="post-item-title wi-post-title fox-post-title post-header-section list-title size-tiny" itemprop="headline">
 <a href="{{ url($bpost->id.'/'.str_slug(strtolower($bpost->title), '-')) }}" rel="bookmark">
-{{$Helper->get_title(title_case(strtolower($bpost->title)), 15)}}
+{{$Helper->get_title(title_case(strtolower($bpost->title)), 30)}}
 </a>
 </h2></div><div class="post-item-excerpt entry-excerpt excerpt-size-normal list-content" itemprop="text">
 
@@ -332,7 +332,7 @@ thumbnail-acute" itemscope itemtype=""><span class="image-element">
 </div>
 <h2 class="post-item-title wi-post-title fox-post-title post-header-section grid-title size-medium" itemprop="headline">
 <a href="{{ url($foreign->id.'/'.str_slug(strtolower($foreign->title), '-')) }}" rel="bookmark">
-{{$Helper->get_title(title_case(strtolower($foreign->title)), 15)}}
+{{$Helper->get_title(title_case(strtolower($foreign->title)), 30)}}
 </a>
 </h2></div><div class="post-item-excerpt entry-excerpt excerpt-size-normal grid-content" itemprop="text">
 {{strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($foreign->post, 40))))}}
@@ -355,7 +355,7 @@ list-mobile-layout-list post-1399 post type-post status-publish format-standard 
 <div class="post-item-header list-header">
 <h2 class="post-item-title wi-post-title fox-post-title post-header-section list-title size-tiny" itemprop="headline">
 <a href="{{ url($fpost->id.'/'.str_slug(strtolower($fpost->title), '-')) }}" rel="bookmark">
-{{$Helper->get_title(title_case(strtolower($fpost->title)), 15)}}
+{{$Helper->get_title(title_case(strtolower($fpost->title)), 30)}}
 </a>
 </h2></div>
 <div class="post-item-excerpt entry-excerpt excerpt-size-normal list-content" itemprop="text">
@@ -422,7 +422,7 @@ class="attachment-thumbnail-medium size-thumbnail-medium" alt="" data-lazy="fals
 
 <a href="{{ url($popular->id.'/'.str_slug(strtolower($popular->title), '-')) }}" rel="bookmark">
 
-{{$Helper->get_title(title_case(strtolower($popular->title)), 15)}}
+{{$Helper->get_title(title_case(strtolower($popular->title)), 30)}}
 </a>
 </h2></div>
 
@@ -513,7 +513,7 @@ class="attachment-thumbnail-medium size-thumbnail-medium" alt="" data-lazy="fals
 <div class="post-item-header grid-header">
 <h2 class="post-item-title wi-post-title fox-post-title post-header-section grid-title size-tiny" itemprop="headline">
 <a href="{{ url($sp->id.'/'.str_slug(strtolower($sp->title), '-')) }}" rel="bookmark">
-{{$Helper->get_title(title_case(strtolower($sp->title)), 15)}}
+{{$Helper->get_title(title_case(strtolower($sp->title)), 30)}}
 </a>
 </h2></div>
 <div class="post-item-excerpt entry-excerpt excerpt-size-small grid-content" itemprop="text">
@@ -592,7 +592,7 @@ class="attachment-thumbnail-medium size-thumbnail-medium" alt="" data-lazy="fals
 	<div class="post-item-header grid-header">
 	<h2 class="post-item-title wi-post-title fox-post-title post-header-section grid-title size-tiny" itemprop="headline">
 	<a href="{{ url($style->id.'/'.str_slug(strtolower($style->title), '-')) }}" rel="bookmark">
-	{{$Helper->get_title(title_case(strtolower($style->title)), 15)}}
+	{{$Helper->get_title(title_case(strtolower($style->title)), 30)}}
 	</a>
 	</h2></div><div class="post-item-excerpt entry-excerpt excerpt-size-small grid-content" itemprop="text">
 	
