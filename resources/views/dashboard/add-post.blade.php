@@ -43,7 +43,7 @@
                 @if(Auth::check() && Auth::user()->user_level === 'admin')
                     <div class="mb-3">
                         <select name="post_importance" class="modal-select" required>
-                           <!-- <option value="normal" >Normal</option>-->
+                           <option value="normal" >Normal</option>
                             <option value="lead" >Lead story</option>
                             <option value ="front-page">Latest News</option>
                             <option value="featured" >Featured</option>

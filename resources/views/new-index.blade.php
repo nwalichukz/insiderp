@@ -601,7 +601,7 @@ class="attachment-thumbnail-medium size-thumbnail-medium" alt="" data-lazy="fals
 	<div class="entry-date meta-time machine-time time-short">
 		<time class="published" itemprop="datePublished" datetime="2014-11-24T00:00:00+00:00">{{$style->created_at->diffForHumans()}}</time>
 		<time class="updated" itemprop="dateModified" datetime="2019-10-03T02:47:00+00:00">{{$style->updated_at->diffForHumans()}}</time></div>
-		 <a href="the-post/index.html#comments" class="comment-link">
+		 <a href="#" class="comment-link">
 		 <span class="comment-num"></span> <span class="comment-icon">
 		 	<i class=""></i></span></a>
 	</div>
