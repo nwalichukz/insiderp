@@ -210,7 +210,7 @@ elementor-default elementor-kit-1713 elementor-page elementor-page-775" itemscop
 <li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31 mega mega-item"><a href="{{ url('category/Travel/index')}}">Travel</a></li>
 @if (Auth::guest())
 <li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31 mega mega-item"><a href="{{ url('/login') }}">login</a></li>
- <li class="nav-li"><a href="{{ url('/register') }}">sign up</a></li>
+ <!--<li class="nav-li"><a href="{{ url('/register') }}">sign up</a></li> -->
 	@else
 	<li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31 mega mega-item"><a class="dropdown-item" style="font:blue;" href="{{url('/dashboard/'.Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Dashboard </a></li>
 

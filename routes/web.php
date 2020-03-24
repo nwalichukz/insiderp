@@ -34,7 +34,7 @@ Route::get('/login', 'WebViewController@signin');
 Route::get('/edit-post/{post_id}', 'WebViewController@getEditPost');
 Route::post('/update-post', 'WebViewController@updatePost');
 Route::get('/category/{category}/index', 'WebViewController@getByCategory');
-Route::get('/register', 'WebViewController@register');
+//Route::get('/register', 'WebViewController@register');
 Route::get('/forgot-password', 'WebViewController@forgotpassword');
 Route::get('/suspended-banned', 'WebViewController@suspendedBanned');
 Route::post('post-login', 'WebViewController@postLogin');
