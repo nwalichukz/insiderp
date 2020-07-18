@@ -318,8 +318,10 @@ class WebViewController extends Controller
         $name = str_replace(' ', '-', strtolower(Auth::user()->name));
     		return redirect($name.'/my-post/'.Auth::user()->id);
     	}catch(Exception $e){
-    		flash('Something went wrong, post not added successfully. Please try again')->error();
-    		return redirect()->back();
+        return $e->getMessage();
+        flash('Something went wrong, post not added successfully. Please try again')->error();
+       
+    		//return redirect()->back();
     	}
     }
 
