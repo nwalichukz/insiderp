@@ -18,37 +18,24 @@
                      <div class="mb-3">
                     <select name="category" class="modal-select">
                         <option value="">Select Category</option>
-                        <option >Politics</option>
-                        <option >Education</option>
-                        <option >Opinion</option>
-                        <option >Business</option>
-                        <option >Sports</option>
-                        <option >Religion</option>
-                        <option >Travel</option>
-                        <option >Romance</option>
-                        <option >Technology</option>
-                        <option >Entertainment</option>
-                        <option >Culture</option>
-                        <option >Lifesytle</option>
-                          <option >Job</option>
-                          <option >NYSC</option>
-                         <option >Foreign</option>
-                         <option >Fashion</option>
-                         <option >CarTalk</option>
-                        <option >Entrepreneurship</option>
-                         <option >Health</option>
-                        <option >Literature</option>
+                        @if(!empty($Helper->category()))
+									@foreach($Helper->category() as $cat)
+                                    <option >{{$cat->name}}</option>
+									@endforeach
+									@endif
+
+                       
+                      
                     </select>
                 </div>
                 @if(Auth::check() && Auth::user()->user_level === 'admin')
                     <div class="mb-3">
                         <select name="post_importance" class="modal-select" required>
-                           <option value="normal" >Normal</option>
+                           <option value="latest" >Normal</option>
                             <option value="lead" >Lead story</option>
-                            <option value ="front-page">Latest News</option>
-                            <option value="featured" >Featured</option>
-                            <option value="business-front" >Business Front page</option>
-                            <option value="foreign-front" >Foreign front page</option>
+                            <option value ="side-lead">Side Lead</option>
+                            <option value="opinion-index" >Opinion Index</option>
+                           
                         </select>
                     </div>
                     <div class="mb-3">

@@ -55,7 +55,7 @@
 							
 							<!--KF SELLING ADD OVERLAY START-->
 							<div class="kf_selling_add overlay">
-								<h3>Mazinna your best</h3>
+								<h3>InsiderPerspective your best</h3>
 								<h3>place for reading</h3>
 								<h3>great articles.</h3>
 								<a class="theam_btn_large theam_bg_color" href="#">Welcome</a>

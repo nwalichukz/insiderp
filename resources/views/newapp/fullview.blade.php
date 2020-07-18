@@ -13,7 +13,7 @@
 							<li><a href="#"><i class="fa fa-calendar-check-o"></i>{{$trend->created_at->diffForHumans()}}</a></li>
 							<li><a href="#"><i class="fa fa-user"></i>@if(!empty($trend->guest_name))
 							{{$trend->guest_name}} @else
-							Mazinna @endif</a></li>
+							InsiderPost @endif</a></li>
 							<li><a href="#"><i class="fa fa-eye"></i>{{$trend->rank}} views</a></li>
 						</ul>
 					</div>
@@ -94,6 +94,7 @@
 								<div class="kf_leave_comment">
 									<h3 class="comment_title">Leave A Reply</h3>
 									<form method="POST" action="{{url('/post-comment')}}">
+									<input type="hidden" name="post_id" id="postid" value="{{$trend->id}}">
 									   {{ csrf_field() }}
 									<div class="row">
 										<div class="col-md-6">
@@ -161,15 +162,16 @@
 										<li>
 											<div class="kf_blog_modren">
 												<figure>
-													<img src='{{asset("/images/post/".$cat->postimage->name)}}' alt="">
+													<img src='{{asset("/images/post/".$cat->postimage->name)}}' style="height:230px;" alt="Post image">
 												</figure>
 												<div class="kf_blog_modren_text">
 													<h6>{{$Helper->get_title(title_case(strtolower($cat->title)), 15)}}</h6>
 													<ul class="bit_meta meta_2 meta_4">
-														<li><a href="{{ url($cat->id.'/'.str_slug(strtolower($cat->title), '-')) }}"><i class="fa fa-user"></i>
+														<li><a href="{{ url($cat->id.'/'.str_slug(strtolower($cat->title), '-')) }}">
 														@if(!empty($cat->guest_name))
-														{{$cat->guest_name}} @else
-														Mazinna @endif
+														<i class="fa fa-user"></i>
+														{{$cat->guest_name}}
+														 @endif
 														</a></li>
 														
 													</ul>

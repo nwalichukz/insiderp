@@ -299,6 +299,19 @@ class PostController extends Controller
         
     }
 
+     /**
+    * adds to rank
+    *
+    * @var request
+    *
+    * @var instance
+    */
+    public static function getDashboardLatest(){
+        return Post::where('status', 'active')
+                ->with(['postimage'])->orderBy('created_at', 'DESC')->paginate(30);
+        
+    }
+
       /**
     * adds to rank
     *
@@ -440,7 +453,7 @@ class PostController extends Controller
     */
     public static function getTrendPost(){
         return Post::where('status', 'active')->whereDate('created_at', '>=', Carbon::now()->subWeek())->with(['postimage'])
-                    ->orderBy('rank', 'DESC')->limit(10)->get();
+                    ->orderBy('rank', 'DESC')->paginate(20);
         
     }
     /**

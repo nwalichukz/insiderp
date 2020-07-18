@@ -1,5 +1,5 @@
 <ul class="list-reset flex-grow sm:flex sm:items-center text-xs pt-3">
-    <li class="nav-li"> <a title="The trending posts" href="{{url('/trending-posts')}}">Trending </a></li>
+    <li class="nav-li"> <a title="The trending posts" href="{{url('/get-add-post')}}">Add Post </a></li>
     <li class="nav-li"> <a title="get sports updates" href="{{url('/category/Sports/index')}}">sports  </a> </li>
     <li class="nav-li"> <a title="Read political posts" href="{{url('/category/Politics/index')}}">politics  </a> </li>
     <li class="nav-li"> <a title="Your education posts" href="{{url('/category/Education/index')}}">education  </a> </li>

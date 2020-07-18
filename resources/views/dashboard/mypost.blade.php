@@ -61,7 +61,7 @@
                         <div class="post-body mt-6 mb-3">
                             @if(!empty($Helper->postImageFirst($post->id)->name))
                                 <div class="text-lg capitalize mb-3"><a
-                                            href="{{url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-'))}}"
+                                            href="{{url($post->id.'/'.str_slug(strtolower($post->title), '-'))}}"
                                             class="text-blue-light hover:text-blue-dark hover:underline">{{title_case(strtolower($Helper->get_title($post->title, 19)))}}</a>
                                 </div>
                                 <div class="post-image mb-3"><img
@@ -69,15 +69,15 @@
                                             alt="" class="w-full"></div>
                                 <div class="post-text overflow-x-auto">
                                     {!!ucfirst($Helper->get_words($post->post, 35))!!} <a
-                                            href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
+                                            href="{{ url($post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
                                             title="click to read full details" class="text-blue"> more </a>
                                 </div>
                             @else
                                 <div class="post-text overflow-x-auto">
-                                    <a href='{{ url("/post-full-view/".$post->id."/".str_slug(strtolower($post->title), '-')) }}'>
+                                    <a href='{{ url($post->id."/".str_slug(strtolower($post->title), '-')) }}'>
                                         <h4> {{title_case($Helper->get_title($post->title, 19))}} </h4></a>
                                     {!!ucfirst($Helper->get_words($post->post, 32))!!} <a
-                                            href="{{ url('/post-full-view/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
+                                            href="{{ url($post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
                                             title="click to read full details"> more </a>
                                 </div>
                             @endif

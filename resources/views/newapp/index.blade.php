@@ -14,12 +14,12 @@
                                 @if(!empty($Helper->postImageFirst($lead->id)->name))
                         <div class="kf_bit_fig">
                             <figure class="overlay">
-                            <img src="{{asset('images/post/'.$Helper->postImageFirst($lead->id)->name)}}" alt="post image" class="mb-3" style="max-height:500px;">
+                            <img src="{{asset('images/post/'.$Helper->postImageFirst($lead->id)->name)}}" alt="post image" class="mb-3" style="height:500px;">
                                 <figcaption class="bit_caption">
                                     <a class="theam_btn margin-bottom" href='{{ url("category/".$lead->category."/index")}}'>{{$lead->category}}</a>
                                     <h2>
                                     <a href="{{ url($lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="text-md text-blue hover:underline hover:text-blue-dark">
-                                    {{$Helper->get_title(title_case(strtolower($lead->title)), 10)}}</a>
+                                    {{$Helper->get_title(title_case(strtolower($lead->title)), 13)}}</a>
                                     </h2>
                                     <br/>
                                     <br/>
@@ -40,12 +40,12 @@
                             @foreach($sidelead as $sl)
                             <div class="kf_bit_fig">
                                 <figure class="overlay">
-                                    <img src="{{asset('images/post/'.$Helper->postImageFirst($sl->id)->name)}}" alt="">
+                                    <img src="{{asset('images/post/'.$Helper->postImageFirst($sl->id)->name)}}" alt="" style="height:246px;">
                                     <figcaption class="bit_caption">
                                         <a class="theam_btn margin-bottom" href="{{ url('category/'.$sl->category.'/index')}}">{{$sl->category}}</a>
                                         <h3>
                                         <a href="{{ url($sl->id.'/'.str_slug(strtolower($sl->title), '-')) }}" class="text-md text-blue hover:underline hover:text-blue-dark">
-                                    {{$Helper->get_title(title_case(strtolower($sl->title)), 10)}}</a>
+                                    {{$Helper->get_title(title_case(strtolower($sl->title)), 13)}}</a>
                                     
                                     </h3>
                                     <br/>
@@ -84,12 +84,12 @@
                 <div class="col-md-4">
                     <div class="kf_bit_fig fig_2">
                         <figure class="overlay">
-                            <img src="{{asset('images/post/'.$Helper->postImageFirst($post->id)->name)}}" alt="post image" style="max-height:260px;">
+                            <img src="{{asset('images/post/'.$Helper->postImageFirst($post->id)->name)}}" alt="post image" style="height:260px;">
                             <figcaption class="bit_caption">
                                 <a class="theam_color" href="{{ url('category/'.$post->category.'/index')}}">{{$post->category}}</a>
                                 <h4>
                                 <a href="{{ url($post->id.'/'.str_slug(strtolower($post->title), '-')) }}" class="text-md text-blue hover:underline hover:text-blue-dark">
-                                    {{$Helper->get_title(title_case(strtolower($post->title)), 10)}}</a>
+                                    {{$Helper->get_title(title_case(strtolower($post->title)), 13)}}</a>
                             </h4>
                             <br/>
                             <br/>
@@ -172,7 +172,7 @@
                                             </figure>
                                             <div class="kf_blog_modren_text">
                                                 <h6 style="font-size:1em;"><a  href="{{ url($latest->id.'/'.str_slug(strtolower($latest->title), '-')) }}">
-                                                {{$Helper->get_title(title_case(strtolower($latest->title)), 13)}}
+                                                {{$Helper->get_title(title_case(strtolower($latest->title)), 16)}}
                                                 </a></h6>
                                                 <!--<ul class="bit_meta meta_2 meta_4">
                                                     <li><a href="#"><i class="fa fa-calendar-check-o"></i>John Throat</a></li>
@@ -205,7 +205,7 @@
                             <div class="kf_blog_medium grid">
                                 <figure>
                                     <img src="{{asset('images/post/'.$Helper->postImageFirst($bpost->id)->name)}}" alt="post image"
-                                     style="max-height:200px; max-width:250px;">
+                                     style="height:230px; max-width:250px;">
                                 </figure>
                                 <div class="kf_blog_text">
                                     <h6><a href="{{ url($latest->id.'/'.str_slug(strtolower($bpost->title), '-')) }}">
@@ -218,7 +218,7 @@
                     @endif
                     </div>
                     
-                    <div class="kf_banner_add add_2 overlay">
+                    <!--<div class="kf_banner_add add_2 overlay">
                         <div class="kf_add_text">
                             <h5>Best Business,<br>News Magazine</h5>
                         </div>
@@ -226,7 +226,7 @@
                             <h3>The Home to your</h3>
                             <span>Timeless Piece</span>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <!--KF MAGZAINE ROW END-->						
             </div>

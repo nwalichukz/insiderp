@@ -21,7 +21,7 @@ class UserController extends Controller
    	$create->name = $request['name'];
    	$create->password = bcrypt($request['password']);
    	$create->user_level = 'admin';
-   	$create->status = 'not-active';
+   	$create->status = 'active';
    	$create->user_name = $request['user_name'];
    	$create->email = $request['email'];
     $create->description = $request['description'];

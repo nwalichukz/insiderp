@@ -1,6 +1,6 @@
 <div class="bg-grey-light">
     <div class="bg-blue text-white rounded py-4 px-4">@if(!empty($topcategory)){{ $topcategory }}
-        Posts @elseif(!empty($search)) About {{ $search->count() }} Search Results @else Trending Posts @endif</div>
+        Posts @elseif(!empty($search)) About {{ $search->count() }} Search Results @else Latest Posts @endif</div>
 
     @foreach($posts as $post)
         <div class="posts bg-white rounded-b shadow-md py-3 px-4 mb-3">
@@ -20,14 +20,14 @@
                         <div class="text-xs text-grey-dark mt-1">{{date('d F \'y \a\t h:i:a', strtotime($post->created_at))}}</div>
                         <hr>
                            <div class="flex -ml-1 mt-1">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{'www.bido.com.ng/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{'www.insiderperspective.com/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
                                            title="share this article on facebook" class="flex items-center mr-3">
                                             <img src="{{asset("images/avatar/facebook-posts.png")}}" class="twitter-facebook"
                                                  style="width:16px;">
                                             <span class="ml-1 text-sm">Share</span>
                                         </a>
 
-                                        <a href="https://twitter.com/home?status={{'www.bido.com.ng/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
+                                        <a href="https://twitter.com/home?status={{'www.insiderperspective.com/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
                                            title="share this article on twitter" style="width:16px;"
                                            class="flex items-center">
                                             <img src="{{asset("images/avatar/twitter-posts.png")}}" class="twitter-facebook">
@@ -143,7 +143,7 @@
             <div class="comments bg-white">
                 <div class="px-4 py-3">
                     <!--Fb comments goes in here -->
-                    <div class="fb-comments" data-href="http://{{'www.bido.com.ng/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
+                    <div class="fb-comments" data-href="http://{{'www.insiderperspective.com/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
                      data-numposts='2' ></div>
                 </div>
             </div>

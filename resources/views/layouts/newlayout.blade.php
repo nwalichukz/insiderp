@@ -34,7 +34,7 @@
 	<meta property="og:title" content=" {{ title_case($fulltitle) }}">
             
         @else
-            InsiderPerspective
+            
 	<meta property="og:title" content=" InsiderPerspective">
         @endif
 
@@ -80,7 +80,7 @@
 						<div class="row">
 							<div class="col-md-7">
 								<div class="kf_top_left_text">
-									<span>Trending</span>
+									<span><a href="{{url('/')}}">InsiderPerspective</a></span>
 									<div class="top-news-slide">
 										<!--<div>
 											<p>BlogMag Launches Bitcoin Essay Series With Author</p>
@@ -99,6 +99,15 @@
 										<li><a href="https://www.twitter.com/share?url{{url()->full()}}"><i class="fa fa-twitter"></i></a></li>
 										<li><a href="https://www.linkedin.com/shareArticle?url={{url()->full()}}"><i class="fa fa-linkedin"></i></a></li>
 										<!--<li><a href="#"><i class="fa fa-rss"></i></a></li>-->
+										@if(Auth::guest())
+									   <li><a href="{{ url('/login') }}">login</a></li>
+							     	   <!--<li class="nav-li"><a href="{{ url('/register') }}">sign up</a></li> -->
+										@else
+								      <li>
+								      <a style="font:blue;" href="{{url('/dashboard/'.Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}"> <i class="fa fa-dashboard"></i></a></li>
+									  <li><a href="{{ url('/logout') }}">logout</a></li>
+
+								   @endif
 									</ul>
 									<div class="top_drop_btn">
 										<div class="dropdown">
@@ -127,7 +136,7 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="kf_logo">
-								<a href="{{url('/')}}" style="font-size:2em; color:#000; font-family:cursive;">
+								<a href="{{url('/')}}" style="font-size:2em; color:#000; font-family:cursive; font-weight:bold;">
 								InsiderPerspective
 								<img src="" alt=""></a>
 							</div>

@@ -76,7 +76,8 @@
     <div class="navbar navbar-fixed-top bg-white border-b border-grey py-2">
         <div class="container mx-auto flex items-center justify-between flex-wrap px-4">
             <div>
-                <a href="{{ url('/') }}" class="logoText">InsiderPerspective</a>
+                <a href="{{ url('/') }}" class="logoText" style="font-size:2em; color:#000; font-family:cursive; font-weight:bold;">
+                InsiderPerspective</a>
             </div>
             <div class="block sm:hidden">
                 <button @click="toggle" class="flex items-center px-3 py-2 border rounded">

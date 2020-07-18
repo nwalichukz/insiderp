@@ -113,7 +113,7 @@ class WebViewController extends Controller
  
             $user = UserController::create($request);
             
-            if($user)
+            if(!empty($user))
             {
                 //flash("Account created successfully, login with the password and email")->success();
                 return redirect('/account-success');
@@ -253,8 +253,8 @@ class WebViewController extends Controller
 
     // user dashboard
     public static function UserDashboard(){
-    	if(Auth::check() AND (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
-   		 $trending = PostController::getLatest();
+    	if(Auth::check() && (Auth::user()->user_level === 'user' || Auth::user()->user_level === 'editor' || Auth::user()->user_level === 'admin')){
+   		 $trending = PostController::getDashboardLatest();
    		 $category = CategoryController::getCategory();
    		 return view('dashboard.index')->with(['cat' =>$category, 'posts'=>$trending]);
 
@@ -296,7 +296,7 @@ class WebViewController extends Controller
       }
     }
 
-      // suspended-banned
+      // add post
     public function addPost(Request $request){
     	$this->validate($request,
         [  'post'=>'required',
