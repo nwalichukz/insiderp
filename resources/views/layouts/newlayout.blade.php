@@ -203,7 +203,7 @@
 									
 								</li>
 								<li class="menu-item kode-parent-menu"><a href="{{url('/category/Money/index')}}">Money</a></li>
-								<li class="menu-item kode-parent-menu"><a href="{{url('/category/Career Guide/index')}}">Career Guide</a>
+								<li class="menu-item kode-parent-menu"><a href="{{url('/category/Business/index')}}">Business</a>
 									
 								</li>
 							
