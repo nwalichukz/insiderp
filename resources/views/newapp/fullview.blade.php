@@ -30,7 +30,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-9">
-							<div class="kf_detail_list">
+							<div class="kf_detail_list" style="font-size:2em;">
 								{!!$trend->post!!}
 								
 								
@@ -162,7 +162,7 @@
 										<li>
 											<div class="kf_blog_modren">
 												<figure>
-													<img src='{{asset("/images/post/".$cat->postimage->name)}}' style="height:230px;" alt="Post image">
+													<img src='{{asset("/images/post/".$cat->postimage->name)}}' style="height:230px; width:100%;" alt="Post image">
 												</figure>
 												<div class="kf_blog_modren_text">
 													<h6>{{$Helper->get_title(title_case(strtolower($cat->title)), 15)}}</h6>

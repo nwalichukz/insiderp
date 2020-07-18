@@ -141,6 +141,12 @@ class PostController extends Controller
                             ->orderBy('created_at', 'DESC')->with(['postimage'])->paginate(15);
     }
 
+    public static function ByCategory($category)
+    {
+    	return Post::where('status', 'active')->where('category', 'LIKE', $category)
+                            ->orderBy('created_at', 'DESC')->with(['postimage'])->limit(3)->get();
+    }
+
      /**
     * return a search item from category or post
     *

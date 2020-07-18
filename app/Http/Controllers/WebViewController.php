@@ -465,7 +465,7 @@ public function changePassword(Request $request)
       {  $category = CategoryController::getCategory(); 
         $trend = PostController::get($id);
         $gpost = PostController::getPost();
-        $bycat = PostController::getByCategory($trend->category);
+        $bycat = PostController::ByCategory($trend->category);
         $related = PostController::relatedPost($trend->title, $trend->category);
         PostViewController::add($id);
         return view('newapp.fullview')->with(['trend'=>$trend, 'getpost'=>$gpost, 'cat'=>$category,
