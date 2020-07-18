@@ -14,6 +14,9 @@
         <meta name="description" content="The Southeast Post is a Nigerian based independent online news website, featuring opinions, Latest news, world news, political analysis... Discussing the issues that affect us and our society especially in Nigeria.">
     @endif
 
+	@if(!empty($trend->postimage->name))
+    <meta property="og:image" content='{{ asset("/images/post/".$trend->postimage->name)}}'>
+    @endif
 <!--[if lt IE 9]>
 	<script src="https://fox.withemes.com/times/wp-content/themes/fox/js/html5.js"></script>
 	<![endif]-->

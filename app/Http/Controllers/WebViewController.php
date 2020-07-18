@@ -60,21 +60,23 @@ class WebViewController extends Controller
   */
   public function index(Request $request){
     $trending = PostController::getLatest();
-    $trendpost = PostController::getTrendPost();
-    $popular = PostController::getTrending();
+    //$trendpost = PostController::getTrendPost();
+     $popular = PostController::getTrending();
      $category = CategoryController::getCategory();
      $lead = PostController::leadStory();
-     $featured = PostController::featuredPost();
-     $busfront = PostController::businessFront();
-     $foreign = PostController::foreignFront();
-     $sport = PostController::sportPost();
-     $lifestyle = PostController::lifestylePost();
-     $foreignpost = PostController::foreignPost();
      $businesspost = PostController::businessPost();
-      return view('new-index')->with(['posts'=>$trending, 'topcategory'=>'Latest', 'cat'=>$category,
-                              'lead'=>$lead, 'featured'=>$featured, 'trendpost'=>$trendpost,
-                              'busfront'=>$busfront, 'foreign'=>$foreign, 'sport'=>$sport, 'lifestyle'=>$lifestyle,
-                              'foreignpost'=>$foreignpost, 'businesspost'=>$businesspost, 'popularpost'=>$popular
+     //$featured = PostController::featuredPost();
+     $opinionindex = PostController::opinionIndex();
+     $morelatest = PostController::getMoreLatest();
+     $sidelead = PostController::sideLead();
+    // $foreign = PostController::foreignFront();
+    // $sport = PostController::sportPost();
+    // $lifestyle = PostController::lifestylePost();
+    // $foreignpost = PostController::foreignPost();
+    // $businesspost = PostController::businessPost();
+      return view('newapp.index')->with(['posts'=>$trending, 'topcategory'=>'Latest', 'cat'=>$category,
+                              'lead'=>$lead, 'opindex'=>$opinionindex, 'sidelead'=>$sidelead, 
+                              'businesspost'=>$businesspost, 'popularpost'=>$popular, 'morelatest'=>$morelatest
                               ]);
   }
 
@@ -439,22 +441,34 @@ public function changePassword(Request $request)
       {  $bycat = PostController::getByCategory($category);
          $cat = CategoryController::getCategory();
          $latest = PostController::latestByCategory($category);
-         $by_cat = PostController::getByCategory($category);
-         $lead = PostController::leadStory();
-         $frmthree = PostController::getByCategoryFrmThree($category);
-        return view('pages.category-fullview')->with(['posts'=>$bycat, 'category'=>$category, 'cat'=>$cat, 
-        'lead'=>$lead, 'by_cat'=>$by_cat, 'more'=>$frmthree, 'fulltitle'=>$category. ' - The Southeast Post', 'latest'=>$latest]);
+        return view('newapp.pagesindex')->with(['posts'=>$bycat, 'category'=>$category, 'cat'=>$cat, 
+         'fulltitle'=>$category. ' - InsiderPerspective', 'latest'=>$latest]);
       }
+       // returns search terms
+      public function getSearchTerm(Request $request){
+              $search = $request['search'];
+              return redirect('search/'.$search);
+      }
+
+          // return posts by search
+          public function Makesearch($search)
+          {  $bycat = PostController::Makesearch($search);
+             $cat = CategoryController::getCategory();
+            // $latest = PostController::latestByCategory($category);
+            return view('newapp.search')->with(['posts'=>$bycat, 'category'=>$search, 'cat'=>$cat, 
+             'fulltitle'=>$search. ' - InsiderPerspective']);
+          }
 
       // post full view
       public function fullView($id)
-      {  $category = CategoryController::getCategory();  
+      {  $category = CategoryController::getCategory(); 
         $trend = PostController::get($id);
         $gpost = PostController::getPost();
         $bycat = PostController::getByCategory($trend->category);
         $related = PostController::relatedPost($trend->title, $trend->category);
         PostViewController::add($id);
-        return view('pages.new-fullview')->with(['trend'=>$trend, 'getpost'=>$gpost, 'cat'=>$category, 'bycat'=>$bycat, 'fulltitle'=>$trend->title, 'related'=>$related, 'pg'=>'fullView']);
+        return view('newapp.fullview')->with(['trend'=>$trend, 'getpost'=>$gpost, 'cat'=>$category,
+                     'bycat'=>$bycat, 'comment', 'fulltitle'=>$trend->title, 'related'=>$related, 'pg'=>'fullView']);
       }
       // count view
       public function countView(Request $request){
@@ -658,14 +672,14 @@ public function changePassword(Request $request)
     public function contact()
    {  $title = "Contact us";
    $category = CategoryController::getCategory();
-    return view('pages.contactus')->with(['cat'=> $category, 'title'=>$title]);
+    return view('newapp.contact-us')->with(['cat'=> $category, 'title'=>$title]);
    }
 
    // return about us page
     public function about()
     { $title = "About The Southeast Post"; 
       $category = CategoryController::getCategory();
-    return view('pages.aboutus')->with(['cat'=> $category, 'title'=>$title]);
+    return view('newapp.about-us')->with(['cat'=> $category, 'title'=>$title]);
    }
 
    // return contact us page

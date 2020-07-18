@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    public function comments_post(){
-    	return $this->hasOne('App\Post');
+    public function post(){
+    	return $this->belongsTo('App\Post');
     }
 
     public function reply(){

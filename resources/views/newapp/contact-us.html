@@ -1,0 +1,167 @@
+@inject('Helper', 'App\HelperClass')
+@extends('layouts.newlayout')
+@section('content')
+		
+		<!--CONTENT START-->
+		<div class="content">
+			<div class="kf_contact_map">
+				<div id="map-canvas" class="map-canvas"></div>
+			</div>
+			<div class="kf_contact_wrap">
+				<!--CONTAINER START-->
+				<div class="container">
+					<div class="kf_about_text">
+						<div class="section_heading hdg_2">
+							<h2>Contact Us</h2>
+							<span></span>
+						</div>
+						<p>Sed cursus eget risus non vestibulum. Sed in molestie elit, vitae leo metus, sed imperdiet lorem fermentum et metus, sed imperdiet non vestibulum. Sed in molestie elit, vitae condimentum jusnean vulputate leo metus, sed imperdiet lorem fermentum et metus, sed imperdiet ursus eget risus non vestibulum. Sed in molestie elit, vitae condimentum justo. Aenean vulputate leo metus, sed imperdiet lorem fermentum et metus, sed imperdiet .</p>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="kf_contact_info">
+								<ul>
+									<li>
+										<div class="kf_contact_list">
+											<span><i class="fa fa-envelope"></i></span>
+											<div class="kf_contact_info_txet">
+												<h5>Mail</h5>
+												<a href="#">help@blogdesk.com</a>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="kf_contact_list">
+											<span><i class="fa fa-phone"></i></span>
+											<div class="kf_contact_info_txet">
+												<h5>Phone</h5>
+												<a href="#">+92 - 334 - 2797084</a>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="kf_contact_list">
+											<span><i class="fa fa-map-marker"></i></span>
+											<div class="kf_contact_info_txet">
+												<h5>Address</h5>
+												<a href="#">30 Ab 1 Johar Town F2 Block D, USA</a>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="kf_leave_comment">
+								<div class="section_heading hdg_2">
+									<h2>Leave Message</h2>
+									<span></span>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="kf_commet_field">
+											<input placeholder="Your Name" name="author" type="text" value="" data-default="Name*" size="30" required>
+										</div>
+										<div class="kf_commet_field">
+											<input placeholder="Your Email" name="author" type="text" value="" data-default="Name*" size="30" required>
+										</div>
+										<div class="kf_commet_field">
+											<input placeholder="Your Phone" name="author" type="text" value="" data-default="Name*" size="30" required>
+										</div>
+										<p class="form-submit contact"><input name="submit" type="submit" class="theam_btn_large" value="Send Us Now"></p>
+									</div>
+									<div class="col-md-6">
+										<div class="kf_textarea contact">
+											<textarea placeholder="Your Message" name="comment"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--CONTAINER END-->
+			</div>	
+			<!--KF INSTAGRAM WRAP START-->
+			<div class="kf_instagram_wrap">
+				<div class="instagram-slide">
+					<div>
+						<div class="kf_instagram_fig">
+							<figure>
+								<img src="extra-images/slide.jpg" alt="">
+							</figure>
+						</div>
+					</div>
+					<div>
+						<div class="kf_instagram_fig">
+							<figure>
+								<img src="extra-images/slide1.jpg" alt="">
+							</figure>
+						</div>
+					</div>
+					<div>
+						<div class="kf_instagram_fig">
+							<figure>
+								<img src="extra-images/slide2.jpg" alt="">
+							</figure>
+						</div>
+					</div>
+					<div>
+						<div class="kf_instagram_fig">
+							<figure>
+								<img src="extra-images/slide3.jpg" alt="">
+							</figure>
+						</div>
+					</div>
+					<div>
+						<div class="kf_instagram_fig">
+							<figure>
+								<img src="extra-images/slide4.jpg" alt="">
+							</figure>
+						</div>
+					</div>
+					<div>
+						<div class="kf_instagram_fig">
+							<figure>
+								<img src="extra-images/slide5.jpg" alt="">
+							</figure>
+						</div>
+					</div>
+					<div>
+						<div class="kf_instagram_fig">
+							<figure>
+								<img src="extra-images/slide5.jpg" alt="">
+							</figure>
+						</div>
+					</div>
+				</div>
+				<a class="kf_instagram_btn theam_btn_large theam_bg_color" href="#">Follow @ Instagram</a>
+			</div>
+			<!--KF INSTAGRAM WRAP END-->
+			
+			<!--KF NEWSLETTER WRAP START-->
+			<div class="kf_newsletter_wrap">
+				<div class="container">
+					<div class="kf_newsletter_text">
+						<h2>Stay Connected With Us</h2>
+						<ul class="top_icon icon_2">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-rss"></i></a></li>
+						</ul>
+						<div class="kf_comment_form">
+							<h4>Post Your Comment</h4>
+							<form method="post" class="comment_form">
+								<div class="kf_commet_field">
+									<input placeholder="Your Email" name="url" type="text" value="" required>
+								</div>
+								<p class="form-submit"><input name="submit" type="submit" class="theam_btn" value="Submit"></p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--KF NEWSLETTER WRAP END-->
+		</div>
+	@endsection

@@ -3,17 +3,8 @@
 <head>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151738156-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+  
 
-        gtag('config', 'UA-151738156-1');
-    </script>
-
-
-    <script data-ad-client="ca-pub-9051751424373663" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{url('ckeditor/ckeditor.js')}}"></script>
@@ -21,12 +12,9 @@
         <meta name="description"
               content="{!!strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($trend->post, 150))))!!}">
     @else
-        <meta name="description" content="The Southeast Post is an independent online news website, featuring opinions, world news...
-Discussing the issues that affect us and our society especially in Nigeria.">
+        <meta name="description" content="">
     @endif
-    <meta name="keywords" content="Web forum, Bido forum, politics, share a story, betting, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
-religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun review,
- Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">
+    <meta name="keywords" content="">
     <meta charset="utf-8">
     <meta name="google-site-verification" content="r-KmW3txqodD-zMvufoJWY8MbPWnzqoHD1vjHoW5GV0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,11 +22,11 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
 
     <title>
         @if(!empty($title))
-            {{ title_case($title) }}
+            {{ title_case($title) }} - InsiderPerspective
         @elseif(!empty($fulltitle))
-            {{ title_case($fulltitle) }}
+            {{ title_case($fulltitle) }} - InsiderPerspective
         @else
-            Political Analysis, news, opinions, articles, questions, get involved your views matter and help make our society better!
+            InsiderPerspectiver!
 
         @endif
     </title>
@@ -96,7 +84,7 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
     <div class="navbar navbar-fixed-top bg-white border-b border-grey py-2">
         <div class="container mx-auto flex items-center justify-between flex-wrap px-4">
             <div>
-                <a href="{{ url('/') }}" class="logoText">The Southeast Post</a>
+                <a href="{{ url('/') }}" class="logoText">InsiderPerspective</a>
             </div>
             <div class="block sm:hidden">
                 <button @click="toggle" class="flex items-center px-3 py-2 border rounded">
@@ -121,7 +109,7 @@ religious news, food, enterpreneurship, Jobs, wolrd news, Dating and romance, ni
     <hr/>
     <nav class="footer"><a href="{{url('/')}}">Home</a> |<!-- <a href="{{url('/terms')}}"> Terms </a>| --><a
                 href="{{url('/about')}}"> About us</a> | <a href="{{url('/contact')}}">Contact us</a></nav>
-    <nav class="footer"><a title="follow us of facebook" href="https://www.facebook.com/ngbido">Follow us facebook </a></nav>
+    <nav class="footer"><a title="follow us of facebook" href="https://www.facebook.com/insiderperspective">Follow us facebook </a></nav>
 </div>
 <script type="text/x-template" id="dropdown-link-template">
     <div class="relative drop">

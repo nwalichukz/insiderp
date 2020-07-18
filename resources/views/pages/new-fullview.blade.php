@@ -106,14 +106,14 @@ hentry category-business tag-books tag-instagram tag-travel no-sidebar single-st
 <span class="share-label"><i class="fa fa-share-alt"></i>Share this</span>
 <ul>
 <li class="li-share-facebook">
-<a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="blank" title="Facebook" class="share share-facebook">
+<a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" title="Facebook" class="share share-facebook">
 <i class="fab fa-facebook-f"></i>
 <span>Facebook</span>
 </a>
 </li>
 
 <li class="li-share-twitter">
-<a href="https://twitter.com/home?status={{ url()->current() }}" target="blank" title="Twitter" class="share share-twitter">
+<a href="https://twitter.com/home?status={{ url()->current() }}"  title="Twitter" class="share share-twitter">
 <i class="fab fa-twitter"></i>
 <span>Twitter</span>
 </a>

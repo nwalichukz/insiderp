@@ -92,7 +92,7 @@ class HelperClass{
     public static function relatedPost($title)
     {
         return DB::table('posts')->where('title', 'LIKE', $title.'%')
-                    ->orWhere('title', 'LIKE', '%'.$title.'%')->orderBy('rank', 'DESC')->limit(10)->get();
+                   				 ->orWhere('title', 'LIKE', '%'.$title.'%')->orderBy('rank', 'DESC')->limit(10)->get();
     }
 
     /**
@@ -126,6 +126,17 @@ class HelperClass{
 	*/
 	public static function getOption($post_id){
 	 return Option::where('post_id', $post_id)->get();
+	}
+
+	/**
+	* categories
+	*
+	* @var 
+	*
+	* @return collection
+	*/
+	public static function category(){
+		return Category::where('id', '!=', null)->get();
 	}
 
 }

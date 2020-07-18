@@ -9,20 +9,22 @@
                 <ul class="list-reset">
                     <li class="text-sm mb-2">  <a href="{{url(Auth::user()->user_level.'/'.str_replace(' ', '-', strtolower(Auth::user()->name)))}}">Trending </a> </li>
                     <li class="text-sm mb-2">  <a href="#" data-toggle="modal" data-target="#addPostStoryModal" data-placement="top" title="share a story"><button style="background:#F8F8FF; color:#000; border-radius:7px;">Share story</button></a> </li>
-                    <add-post></add-post>
-                    <li class="text-sm mb-2"> <a href="#" data-toggle="modal" data-target="#inviteFriendModal" data-placement="top" title="invite a friend to join Bido">Invite a friend </a></li>
+                    
+                    
                     <li class="text-sm mb-2"> <a href="#" data-toggle="modal" data-target="#changePasswordModal" data-placement="top" title="change your password">change password </a></li>
-                    <li class="text-sm mb-2"> <a href="{{url(str_replace(' ', '-', strtolower(Auth::user()->name)).'/my-post/'.Auth::user()->id)}}" title="view all post by me">My Posts </a></li>
+                   
                     <li class="text-sm mb-2">   <a href="#" data-toggle="modal" data-target="#editProfileModal" data-placement="top" title="Edit your profile">Edit Profile</a></li>
                     <li class="text-sm mb-2">   <a href="#" data-toggle="modal" data-target="#addUserImageModal" data-placement="top" title="Edit your profile">Add Profile Image</a></li>
                     @if(Auth::check())
                         @if(Auth::user()->user_level==='admin' || Auth::user()->user_level==='editor')
+                        <li class="text-sm mb-2"> <a href="{{url('/get-add-post')}}" data-toggle="modal" data-target="#changePasswordModal" data-placement="top" title="change your password">Add Post </a></li>
                             <li class="text-sm mb-2"> <a href="{{url('/blocked-posts')}}">View blocked posts</a> </li>
                             @if(Auth::user()->user_level==='admin')
                                 <li class="text-sm mb-2"> <a href="{{url('/view-users')}}">View users</a> </li>
                                 <li class="text-sm mb-2"> <a href="{{url('/view-votes')}}">View votes</a> </li>
                                 <li class="text-sm mb-2"> <a href="{{url('/view-blocked-users')}}">View blocked users</a> </li>
-
+                                <li class="text-sm mb-2"> <a href="{{url(str_replace(' ', '-', strtolower(Auth::user()->name)).'/my-post/'.Auth::user()->id)}}" title="view all post by me">My Posts </a></li>
+                                <li class="text-sm mb-2"> <a href="#" data-toggle="modal" data-target="#inviteFriendModal" data-placement="top" title="invite a friend to join Bido">Invite a friend </a></li>
                             @endif
                             <li class="text-sm mb-2">
                                 <a href="{{ url('/logout') }}"

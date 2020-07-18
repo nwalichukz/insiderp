@@ -3,25 +3,12 @@
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151738156-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-151738156-1');
-    </script>
-
-
-    <script data-ad-client="ca-pub-9051751424373663" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+   
 
     <script src="{{url('ckeditor/ckeditor.js')}}"></script>
 
-    <meta name="description" content="The Southeast Post is an independent online news website, featuring opinions, world news...
-Discussing the issues that affect us and our society especially in Nigeria.">
-    <meta name="keywords" content="Web forum, Bido forum, politics, share a stroy, latest news, sports news, discussion forum, entertainment, president buhari, carTalk,
-religious news, wolrd news, Dating and romance, nigerian senate, local news, trending posts, newspaper review, daily sun, vanguard news paper
- Bido, jokes and comedy, Bido Debate, Bido articles, bido ask, bido answer, bido Share">
+    <meta name="description" content="InsiderPerspective is the best you can get insider perspective of different topics.">
+    <meta name="keywords" content="InsiderPerspective">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +19,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
     <title>@if(!empty($title))
             {{ $title }}
         @else
-            The Southeast Post - @if(!empty(Auth::check())){{Auth::user()->name}} @else Dashboard @endif
+            InsiderPerspective - @if(!empty(Auth::check())){{Auth::user()->name}} @else Dashboard @endif
         @endif</title>
 
     <!-- Styles -->
@@ -89,7 +76,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
     <div class="navbar navbar-fixed-top bg-white border-b border-grey py-2">
         <div class="container mx-auto flex items-center justify-between flex-wrap px-4">
             <div>
-                <a href="{{ url('/') }}" class="logoText">The Southeast Post</a>
+                <a href="{{ url('/') }}" class="logoText">InsiderPerspective</a>
             </div>
             <div class="block sm:hidden">
                 <button @click="toggle" class="flex items-center px-3 py-2 border rounded">
@@ -169,7 +156,7 @@ religious news, wolrd news, Dating and romance, nigerian senate, local news, tre
     <nav class="footer"><a href="{{url('/')}}">Home</a> |<!-- <a href="{{url('/terms')}}"> Terms </a>| --><a
                 href="{{url('/about')}}"> About us</a> |<a href="{{ URL('/logout') }}"> Logout</a> | <a
                 href="{{url('/contact')}}">Contact us</a></nav>
-    <nav class="footer"><a title="Go to letnote website" href="{{url('/')}}"> </a></nav>
+    <nav class="footer"><a title="Go to home page" href="{{url('/')}}"> </a></nav>
 </div>
 @include('partials.modals')
 

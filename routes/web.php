@@ -22,19 +22,24 @@ Route::get('/block-post/{id}', 'WebViewController@blockPost');
 Route::any('/ajax-post-comment', 'WebViewController@ajaxPostComment');
 Route::get('/{name}/my-post/{id}', 'WebViewController@myPost');
 Route::any('/logout', 'WebViewController@logout');
+Route::get('/edit-post/{post_id}', 'WebViewController@getEditPost');
 Route::get('/add-option/{id}', 'WebViewController@addOption');
 Route::get('/edit-user/{id}', 'WebViewController@getUser');
 Route::post('/register-user', 'WebViewController@registerUser');
 Route::get('/delete-post/{id}', 'WebViewController@deletePost');
 Route::get('/load-comment', 'WebViewController@loadComment');
-Route::get('/post-full-view/{id}/{title}', 'WebViewController@fullView');
+//Route::get('/post-full-view/{id}/{title}', 'WebViewController@fullView');
+Route::post('/post-search', 'WebViewController@getSearchTerm');
+Route::get('/search/{search}', 'WebViewController@Makesearch')->name('search');
 Route::get('/{id}/{title}', 'WebViewController@fullView');
 Route::post('/register-user-any', 'WebViewController@registerUserModal');
 Route::get('/login', 'WebViewController@signin');
-Route::get('/edit-post/{post_id}', 'WebViewController@getEditPost');
+
 Route::post('/update-post', 'WebViewController@updatePost');
+
 Route::get('/category/{category}/index', 'WebViewController@getByCategory');
-//Route::get('/register', 'WebViewController@register');
+
+Route::get('/register', 'WebViewController@register');
 Route::get('/forgot-password', 'WebViewController@forgotpassword');
 Route::get('/suspended-banned', 'WebViewController@suspendedBanned');
 Route::post('post-login', 'WebViewController@postLogin');

@@ -20,7 +20,11 @@ class CommentController extends Controller
        $create->post_id = $request['post_id'];
        $create->comment = $request['comment'];
        $create->status = 'active';
+       $create->email = $request['email'];
+       $create->name = $request['name'];
+       if(Auth::check()){
        $create->user_id = Auth::user()->id;
+        }
        $create->save();
        return true;
     }
