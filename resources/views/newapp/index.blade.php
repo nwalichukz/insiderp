@@ -153,7 +153,7 @@
                                     </ul>
                                 </figure>
                                 <div class="kf_blog_text">
-                                    <h4>{{$Helper->get_title(title_case(strtolower($opindex->title)), 30)}}</h4>
+                                    <h4><a href="{{ url($opindex->id.'/'.str_slug(strtolower($opindex->title), '-')) }}">{{$Helper->get_title(title_case(strtolower($opindex->title)), 30)}}</a></h4>
                                     <p>{{strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($opindex->post, 40))))}}.</p>	
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                                     <li>
                                         <div class="kf_blog_modren">
                                             <figure class="overlay">
-                                                <img src="{{asset('images/post/'.$Helper->postImageFirst($latest->id)->name)}}" alt="post image" style="max-height: 110px; max-width:100px;">
+                                                <img src="{{asset('images/post/'.$Helper->postImageFirst($latest->id)->name)}}" alt="post image" style="max-height: 105px; max-width:100px;">
                                             </figure>
                                             <div class="kf_blog_modren_text">
                                                 <h6 style="font-size:1em;"><a  href="{{ url($latest->id.'/'.str_slug(strtolower($latest->title), '-')) }}">
@@ -267,11 +267,11 @@
                                         @foreach($popularpost as $popular)
                                         <div class="kf_tabs_des">
                                             <figure class="overlay"> 
-                                                <img src="{{asset('images/post/'.$Helper->postImageFirst($popular->id)->name)}}" alt="" style="max-height:210px; max-width:200px;"/>
+                                                <img src="{{asset('images/post/'.$Helper->postImageFirst($popular->id)->name)}}" alt="" style="max-height:180px; max-width:200px;"/>
                                             </figure>
                                             <div class="kf_tabs_text">
                                                 <a href="{{ url($popular->id.'/'.str_slug(strtolower($popular->title), '-')) }}"> </a>
-                                                <h6>{{$Helper->get_title(title_case(strtolower($popular->title)), 20)}}</h6>
+                                                <h6>{{$Helper->get_title(title_case(strtolower($popular->title)), 15)}}</h6>
                                             </div>
                                         </div>
                                         @endforeach

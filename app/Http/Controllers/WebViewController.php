@@ -299,26 +299,25 @@ class WebViewController extends Controller
       // add post
     public function addPost(Request $request){
     	$this->validate($request,
-        [  'post'=>'required',
+        [  'post'=>'required|min:50',
            'category' => 'required',
+           'image' => 'required',
+           'title' => 'required|min:3'
            ]);
-    	$post = PostController::create($request);
-    	if(!empty($request['image'])){
-        foreach($request['image'] as $file){
-    		$img = ImageController::postImageUpload($file);
+           try{
+         DB::transaction(function() use ($request){
+      	$post = PostController::create($request);        
+    		$img = ImageController::postImageUpload($request['image']);
     		$postimg = new PostImage;
     		$postimg->post_id = $post['id'];
         $postimg->name = $img;
         $postimg->description = $request['image_caption'];
     		$postimg->save();
-    	  }  
-          }
-    	if($post['success'])
-    	{
+       });
     		flash('post added successfully')->success();
         $name = str_replace(' ', '-', strtolower(Auth::user()->name));
     		return redirect($name.'/my-post/'.Auth::user()->id);
-    	}else{
+    	}catch(Exception $e){
     		flash('Something went wrong, post not added successfully. Please try again')->error();
     		return redirect()->back();
     	}

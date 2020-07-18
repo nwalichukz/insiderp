@@ -16,7 +16,7 @@
                 </div>
                 
                      <div class="mb-3">
-                    <select name="category" class="modal-select">
+                    <select name="category" class="modal-select" required>
                         <option value="">Select Category</option>
                         @if(!empty($Helper->category()))
 									@foreach($Helper->category() as $cat)
@@ -58,7 +58,7 @@
                         {{ csrf_field() }}
                         <div class="">
                             <label for="attachment">Add image:</label>
-                            <input type="file" name="image[]" onchange="readURL(this);" id="images" multiple="true" class="p-1 bg-white text-black" />
+                            <input type="file" name="image" onchange="readURL(this);" id="images" multiple="true" class="p-1 bg-white text-black" required/>
                             <div id="image-holder" class="w-full"></div>
 
                         </div>

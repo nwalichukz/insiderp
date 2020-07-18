@@ -294,8 +294,8 @@ class PostController extends Controller
     */
     public static function getLatest(){
         return Post::where('status', 'active')
-                ->with(['postimage'])->orderBy('created_at', 'DESC')->limit(3)
-                ->simplePaginate(3);
+                ->with(['postimage'])->orderBy('created_at', 'DESC')->limit(3)->get();
+              //  ->simplePaginate(3);
         
     }
 
@@ -321,7 +321,7 @@ class PostController extends Controller
     */
     public static function getMoreLatest(){
         return Post::where('status', 'active')
-                ->with(['postimage'])->orderBy('created_at', 'DESC')/*->skip(3)->take(4)*/
+                ->with(['postimage'])->orderBy('created_at', 'DESC')->skip(3)->take(5)
                 ->get();
         
     }

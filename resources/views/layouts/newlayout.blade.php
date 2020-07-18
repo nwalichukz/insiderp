@@ -12,7 +12,8 @@
 		<meta property="og:description"
 			 content="{!!strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($trend->post, 30))))!!}">
     @else
-        <meta name="description" content="InsiderPerspective is the best you can get insider perspective of different topics.">
+        <meta name="description" content="InsiderPerspective is the best website providing great articles about 
+		businesses and  other interesting topics.">
     @endif
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>
@@ -136,7 +137,7 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="kf_logo">
-								<a href="{{url('/')}}" style="font-size:2em; color:#000; font-family:cursive; font-weight:bold;">
+								<a href="{{url('/')}}" style="font-size:2.5em; color:#000; font-family:cursive; font-weight:bold;">
 								InsiderPerspective
 								<img src="" alt=""></a>
 							</div>
