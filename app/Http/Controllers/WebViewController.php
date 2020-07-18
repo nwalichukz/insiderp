@@ -299,7 +299,7 @@ class WebViewController extends Controller
       // add post
     public function addPost(Request $request){
     	$this->validate($request,
-        [  'post'=>'required|min:50',
+        [  'post'=>'required',
            'category' => 'required',
            'image' => 'required',
            'title' => 'required|min:3'
@@ -318,10 +318,10 @@ class WebViewController extends Controller
         $name = str_replace(' ', '-', strtolower(Auth::user()->name));
     		return redirect($name.'/my-post/'.Auth::user()->id);
     	}catch(Exception $e){
-        return $e->getMessage();
+        // return $e->getMessage();
         flash('Something went wrong, post not added successfully. Please try again')->error();
        
-    		//return redirect()->back();
+    		return redirect()->back();
     	}
     }
 
