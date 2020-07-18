@@ -176,7 +176,7 @@
 								<li class="mega_menu"><a class="parat_bg" href="{{url('/category/Money/index')}}">Money</a>
 									
 								</li>
-								<li><a class="pinck_bg" href="{{url('/category/Career Guide/index')}}">Career Guide</a>
+								<li><a class="pinck_bg" href="{{url('/category/Business/index')}}">Business</a>
 									
 								</li>
 								
