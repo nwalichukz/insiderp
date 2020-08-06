@@ -31,7 +31,7 @@ Route::get('/load-comment', 'WebViewController@loadComment');
 //Route::get('/post-full-view/{id}/{title}', 'WebViewController@fullView');
 Route::post('/post-search', 'WebViewController@getSearchTerm');
 Route::get('/search/{search}', 'WebViewController@Makesearch')->name('search');
-Route::get('/{id}/{title}', 'WebViewController@fullView');
+
 Route::post('/register-user-any', 'WebViewController@registerUserModal');
 Route::get('/login', 'WebViewController@signin');
 
@@ -45,8 +45,9 @@ Route::get('/suspended-banned', 'WebViewController@suspendedBanned');
 Route::post('post-login', 'WebViewController@postLogin');
 Route::post('post-login-any', 'WebViewController@postLoginModal');
 Route::get('/{level}/{name}/get-general-post', 'WebViewController@generalPost');
-Route::get('dashboard/{admin}/{name}', 'WebViewController@userDashboard');
+Route::get('/dashboard/{admin}/{name}', 'WebViewController@userDashboard');
 Route::get('dashborad/user/{name}', 'WebViewController@userDashboard');
+Route::get('/{category?}/{id}/{title}', 'WebViewController@fullView');
 Route::any('/check-availability', 'WebViewController@checkAvailability');
 Route::post('/add-post', 'WebViewController@addPost');
 Route::any('/ajax-post-like', 'WebViewController@ajaxAddPostLike');

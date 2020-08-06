@@ -80,7 +80,7 @@
 													<img style="height:230px;" src='{{asset("/images/post/".$rl->postimage->name)}}' alt="">
 												</figure>
 												<div class="kf_blog_text">
-													<h6><a href="{{ url($rl->id.'/'.str_slug(strtolower($rl->title), '-')) }}">
+													<h6><a href="{{ url(str_slug(strtolower($rl->category), '-').'/'.$rl->id.'/'.str_slug(strtolower($rl->title), '-')) }}">
 													{{$Helper->get_title(title_case(strtolower($rl->title)), 30)}}</h6>
 													
 												</div>
@@ -93,13 +93,14 @@
 
 								<div class="kf_leave_comment">
 									<h3 class="comment_title">Leave A Reply</h3>
+
 									<form method="POST" action="{{url('/post-comment')}}">
 									<input type="hidden" name="post_id" id="postid" value="{{$trend->id}}">
 									   {{ csrf_field() }}
 									<div class="row">
 										<div class="col-md-6">
 											<div class="kf_commet_field">
-												<input placeholder="Your Name" name="name"  size="30" required>
+												<input onClick="preventDefault();" placeholder="Your Name" name="name"  size="30" required>
 											</div>
 										</div>
 										<div class="col-md-6">
@@ -119,6 +120,10 @@
 
 									</div>
 								</form>
+								<input type="text" name="name" placeholder="Your name">
+								<input type="radio" name="name" placeholder="Your name">
+								<input type="checkbox" name="name" placeholder="Your name">
+
 								</div>
 							</div>
 						</div>
@@ -167,7 +172,7 @@
 												<div class="kf_blog_modren_text">
 													<h6>{{$Helper->get_title(title_case(strtolower($cat->title)), 15)}}</h6>
 													<ul class="bit_meta meta_2 meta_4">
-														<li><a href="{{ url($cat->id.'/'.str_slug(strtolower($cat->title), '-')) }}">
+														<li><a href="{{ url(str_slug(strtolower($cat->category), '-').'/'.$cat->id.'/'.str_slug(strtolower($cat->title), '-')) }}">
 														@if(!empty($cat->guest_name))
 														<i class="fa fa-user"></i>
 														{{$cat->guest_name}}
@@ -183,7 +188,6 @@
 									</ul>
 								</div>
 								<!--KF SOCIAL LIST START-->
-							
 							
 								<!--Category Wrap End-->
 								

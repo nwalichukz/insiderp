@@ -18,7 +18,7 @@
                                 <figcaption class="bit_caption">
                                     <a class="theam_btn margin-bottom" href='{{ url("category/".$lead->category."/index")}}'>{{$lead->category}}</a>
                                     <h2>
-                                    <a href="{{ url($lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="text-md text-blue hover:underline hover:text-blue-dark">
+                                    <a href="{{ url(str_slug(strtolower($lead->category), '-').'/'.$lead->id.'/'.str_slug(strtolower($lead->title), '-')) }}" class="text-md text-blue hover:underline hover:text-blue-dark">
                                     {{$Helper->get_title(title_case(strtolower($lead->title)), 13)}}</a>
                                     </h2>
                                     <br/>
@@ -44,7 +44,7 @@
                                     <figcaption class="bit_caption">
                                         <a class="theam_btn margin-bottom" href="{{ url('category/'.$sl->category.'/index')}}">{{$sl->category}}</a>
                                         <h3>
-                                        <a href="{{ url($sl->id.'/'.str_slug(strtolower($sl->title), '-')) }}" class="text-md text-blue hover:underline hover:text-blue-dark">
+                                        <a href="{{ url(str_slug(strtolower($sl->category), '-').'/'.$sl->id.'/'.str_slug(strtolower($sl->title), '-')) }}" class="text-md text-blue hover:underline hover:text-blue-dark">
                                     {{$Helper->get_title(title_case(strtolower($sl->title)), 13)}}</a>
                                     
                                     </h3>
@@ -88,7 +88,7 @@
                             <figcaption class="bit_caption">
                                 <a class="theam_color" href="{{ url('category/'.$post->category.'/index')}}">{{$post->category}}</a>
                                 <h4>
-                                <a href="{{ url($post->id.'/'.str_slug(strtolower($post->title), '-')) }}" class="text-md text-blue hover:underline hover:text-blue-dark">
+                                <a href="{{ url(str_slug(strtolower($post->category), '-').'/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}" class="text-md text-blue hover:underline hover:text-blue-dark">
                                     {{$Helper->get_title(title_case(strtolower($post->title)), 13)}}</a>
                             </h4>
                             <br/>
@@ -147,13 +147,13 @@
                                 alt="post image" style="max-height:500px;">
                                     <a class="bf_busines theam_btn_medium" href="{{ url('category/'.$opindex->category.'/index')}}">{{$opindex->category}}</a>
                                     <ul class="bit_meta meta_2 meta_3">
-                                        <li><a href="{{ url($opindex->id.'/'.str_slug(strtolower($opindex->title), '-')) }}"><i class="fa fa-user"></i>{{$opindex->guest_name}}</a></li>
-                                        <li><a href="{{ url($opindex->id.'/'.str_slug(strtolower($opindex->title), '-')) }}"><i class="fa fa-calendar-check-o"></i>{{$opindex->created_at->diffForHumans()}}</a></li>
+                                        <li><a href="{{ url(str_slug(strtolower($opindex->category), '-').'/'.$opindex->id.'/'.str_slug(strtolower($opindex->title), '-')) }}"><i class="fa fa-user"></i>{{$opindex->guest_name}}</a></li>
+                                        <li><a href="{{ url(str_slug(strtolower($opindex->category), '-').'/'.$opindex->id.'/'.str_slug(strtolower($opindex->title), '-')) }}"><i class="fa fa-calendar-check-o"></i>{{$opindex->created_at->diffForHumans()}}</a></li>
                                       
                                     </ul>
                                 </figure>
                                 <div class="kf_blog_text">
-                                    <h4><a href="{{ url($opindex->id.'/'.str_slug(strtolower($opindex->title), '-')) }}">{{$Helper->get_title(title_case(strtolower($opindex->title)), 30)}}</a></h4>
+                                    <h4><a href="{{ url(str_slug(strtolower($opindex->category), '-').'/'.$opindex->id.'/'.str_slug(strtolower($opindex->title), '-')) }}">{{$Helper->get_title(title_case(strtolower($opindex->title)), 30)}}</a></h4>
                                     <p>{{strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($opindex->post, 40))))}}.</p>	
                                 </div>
                             </div>
@@ -171,7 +171,7 @@
                                                 <img src="{{asset('images/post/'.$Helper->postImageFirst($latest->id)->name)}}" alt="post image" style="max-height: 105px; max-width:100px;">
                                             </figure>
                                             <div class="kf_blog_modren_text">
-                                                <h6 style="font-size:1em;"><a  href="{{ url($latest->id.'/'.str_slug(strtolower($latest->title), '-')) }}">
+                                                <h6 style="font-size:1em;"><a  href="{{ url(str_slug(strtolower($latest->category), '-').'/'.$latest->id.'/'.str_slug(strtolower($latest->title), '-')) }}">
                                                 {{$Helper->get_title(title_case(strtolower($latest->title)), 16)}}
                                                 </a></h6>
                                                 <!--<ul class="bit_meta meta_2 meta_4">
@@ -208,7 +208,7 @@
                                      style="height:230px; max-width:250px;">
                                 </figure>
                                 <div class="kf_blog_text">
-                                    <h6><a href="{{ url($latest->id.'/'.str_slug(strtolower($bpost->title), '-')) }}">
+                                    <h6><a href="{{ url(str_slug(strtolower($bpost->category), '-').'/'.$bpost->id.'/'.str_slug(strtolower($bpost->title), '-')) }}">
                                       {{$Helper->get_title(title_case(strtolower($bpost->title)), 20)}}</a></h6>
                                     	
                                 </div>
@@ -270,7 +270,7 @@
                                                 <img src="{{asset('images/post/'.$Helper->postImageFirst($popular->id)->name)}}" alt="" style="max-height:180px; max-width:200px;"/>
                                             </figure>
                                             <div class="kf_tabs_text">
-                                                <a href="{{ url($popular->id.'/'.str_slug(strtolower($popular->title), '-')) }}"> </a>
+                                                <a href="{{ url(str_slug(strtolower($popular->category), '-').'/'.$popular->id.'/'.str_slug(strtolower($popular->title), '-')) }}"> </a>
                                                 <h6>{{$Helper->get_title(title_case(strtolower($popular->title)), 15)}}</h6>
                                             </div>
                                         </div>

@@ -21,13 +21,13 @@
 							</figure>
 							<div class="kf_news_text text_2">
 								
-								<h3><a href="{{ url($post->id.'/'.str_slug(strtolower($post->title), '-')) }}">{{$Helper->get_title(title_case(strtolower($post->title)), 20)}}</a></h3>
+								<h3><a href="{{ url(str_slug(strtolower($post->category), '-').'/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}">{{$Helper->get_title(title_case(strtolower($post->title)), 20)}}</a></h3>
 								<ul class="bit_meta meta_2 meta_5">
 									<!--<li><a href="#"><i class="fa fa-user"></i>John Throat</a></li>
 									<li><a href="#"><i class="fa fa-calendar-check-o"></i>3 Months</a></li>-->
 								</ul>
 								<p>{{strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($post->post, 40))))}}.</p>
-								<a class="theam_btn_large" href="{{ url($post->id.'/'.str_slug(strtolower($post->title), '-')) }}">See More</a>
+								<a class="theam_btn_large" href="{{ url(str_slug(strtolower($post->category), '-').'/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}">See More</a>
 							</div>
                         </div>
 						@endforeach

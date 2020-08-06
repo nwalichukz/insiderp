@@ -20,14 +20,14 @@
                         <div class="text-xs text-grey-dark mt-1">{{date('d F \'y \a\t h:i:a', strtotime($post->created_at))}}</div>
                         <hr>
                            <div class="flex -ml-1 mt-1">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{'www.insiderperspective.com/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{'www.insiderperspective.com/'.str_slug(strtolower($post->category), '-').'/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
                                            title="share this article on facebook" class="flex items-center mr-3">
                                             <img src="{{asset("images/avatar/facebook-posts.png")}}" class="twitter-facebook"
                                                  style="width:16px;">
                                             <span class="ml-1 text-sm">Share</span>
                                         </a>
 
-                                        <a href="https://twitter.com/home?status={{'www.insiderperspective.com/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
+                                        <a href="https://twitter.com/home?status={{'www.insiderperspective.com/'.str_slug(strtolower($post->category), '-').'/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
                                            title="share this article on twitter" style="width:16px;"
                                            class="flex items-center">
                                             <img src="{{asset("images/avatar/twitter-posts.png")}}" class="twitter-facebook">
@@ -72,7 +72,7 @@
             <div class="post-body mt-6 mb-3">
                 @if(!empty($Helper->postImageFirst($post->id)->name))
                     <div class="text-lg capitalize mb-3"><a
-                                href="{{url($post->id.'/'.str_slug(strtolower($post->title), '-'))}}"
+                                href="{{url(str_slug(strtolower($post->category), '-').'/'.$post->id.'/'.str_slug(strtolower($post->title), '-'))}}"
                                 class="text-blue-light hover:text-blue-dark hover:underline">{{title_case(strtolower($Helper->get_title($post->title, 19)))}}</a>
                     </div>
                     <div class="post-image mb-3"><img
@@ -80,15 +80,15 @@
                                 alt="post image" class="w-full"></div>
                     <div class="post-text overflow-x-auto">
                         <div class="text-lg">{!!ucfirst($Helper->get_words($post->post, 20))!!} </div>
-                        <a href="{{ url('/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
+                        <a href="{{ url(str_slug(strtolower($post->category), '-').'/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
                            title="click to read full details" class="text-blue"> more </a>
                     </div>
                 @else
                     <div class="post-text overflow-x-auto">
-                        <a href="{{ url($post->id.'/'.str_slug(strtolower($post->title), '-')) }}">
+                        <a href="{{ url(str_slug(strtolower($post->category), '-').'/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}">
                             <h4 class="text-blue-light hover:text-blue-dark hover:underline"> {{title_case($Helper->get_title($post->title, 19))}} </h4></a>
                         {!!ucfirst($Helper->get_words($post->post, 19))!!} <a
-                                href="{{ url($post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
+                                href="{{ url(str_slug(strtolower($post->category), '-').'/'.$post->id.'/'.str_slug(strtolower($post->title), '-')) }}"
                                 title="click to read full details"> more </a>
                     </div>
                 @endif
@@ -143,7 +143,7 @@
             <div class="comments bg-white">
                 <div class="px-4 py-3">
                     <!--Fb comments goes in here -->
-                    <div class="fb-comments" data-href="http://{{'www.insiderperspective.com/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
+                    <div class="fb-comments" data-href="http://{{'www.insiderperspective.com/'.str_slug(strtolower($post->category), '-').'/'.$post->id.'/'.str_slug(strtolower($post->title), '-')}}"
                      data-numposts='2' ></div>
                 </div>
             </div>

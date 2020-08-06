@@ -142,7 +142,7 @@
 								<img src="" alt=""></a>
 							</div>
 						</div>
-						<div class="col-md-8">
+						<!--<div class="col-md-8">
 							<div class="kf_banner_add overlay">
 								<div class="kf_add_text">
 									<h5>Best Business,<br>News Website</h5>
@@ -152,7 +152,7 @@
 									<span>Piece.</span>
 								</div>
 							</div>
-						</div>
+						</div>-->
 					</div>
 				</div>
 			</div>
@@ -258,10 +258,11 @@
 									</li>
 									<li>
 										<div class="widget_info_list">
-											<i class="fa fa-envelope"></i>
+										<i class="fa fa-envelope"></i>
 											<div class="widget_info_text">
-												<a href="#">askinsiderperspective@gmail.com</a>
-												<a href="#">info@insiderperspective.com</a>
+											
+												<a href="#">insiderperspective2@gmail.com</a>
+												
 											</div>
 										</div>
 									</li>

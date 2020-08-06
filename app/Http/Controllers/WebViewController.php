@@ -461,7 +461,7 @@ public function changePassword(Request $request)
           }
 
       // post full view
-      public function fullView($id)
+      public function fullView($category, $id)
       {  $category = CategoryController::getCategory(); 
         $trend = PostController::get($id);
         $gpost = PostController::getPost();
