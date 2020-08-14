@@ -30,9 +30,18 @@
 					</div>
 					<div class="row">
 						<div class="col-md-9">
-							<div class="kf_detail_list" style="font-size:2em;">
+						<style>
+						#post a:link{
+							color:blue;
+						}
+						#post>p>a:link{
+							color: blue;
+						}
+						
+						</style>
+							<div id="post" class="kf_detail_list" style="font-size:2em;">
 								{!!$trend->post!!}
-								
+			
 								
 										<br/><br/>
 								<div class="blog_meta_list">
@@ -53,13 +62,13 @@
 										<li>
 											<div class="comment_item">
 												<figure>
-													<img src="extra-images/comment.jpg" alt="">
+													<img style="border-radius:50%;" src="{{ asset('images/avatar/avatar.png')}}" alt="">
 												</figure>
 												<div class="comment_text">
 													<h4><a href="#">@if(!empty($comment->name)){{$comment->name}} @else 
 													{{ $Helper->commenter($comment->user_id)->name}} @endif</a></h4>
 													<p>{{$comment->comment}}</p>
-													<a class="replay" href="#"><i class="fa fa-reply"></i>Reply</a>
+													<a class="replay" href="#commentForm"><i class="fa fa-reply"></i>Reply</a>
 												</div>
 											</div>
 										</li>
@@ -94,24 +103,24 @@
 								<div class="kf_leave_comment">
 									<h3 class="comment_title">Leave A Reply</h3>
 
-									<form method="POST" action="{{url('/post-comment')}}">
+									<form id="commentForm" method="POST" action="{{url('/post-comment')}}">
 									<input type="hidden" name="post_id" id="postid" value="{{$trend->id}}">
 									   {{ csrf_field() }}
 									<div class="row">
 										<div class="col-md-6">
 											<div class="kf_commet_field">
-												<input onClick="preventDefault();" placeholder="Your Name" name="name"  size="30" required>
+												<input onClick="return false;" placeholder="Your Name" name="name"  size="30" required>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="kf_commet_field">
-												<input placeholder="Your Email (optional)" name="email" type="text">
+												<input onClick="return false;" placeholder="Your Email (optional)" name="email" type="text">
 											</div>
 										</div>
 									
 										<div class="col-md-12">
-											<div class="kf_textarea">
-												<textarea placeholder="Your Message" name="comment" required></textarea>
+											<div class="kf_textara">
+												<textarea onClick="return false;" placeholder="Your Message" name="comment"></textarea>
 
 												<p class="form-submit">
 												<input name="submit" type="submit" class="theam_btn_large theam_bg_color" value="Send Now"></p>
@@ -120,9 +129,7 @@
 
 									</div>
 								</form>
-								<input type="text" name="name" placeholder="Your name">
-								<input type="radio" name="name" placeholder="Your name">
-								<input type="checkbox" name="name" placeholder="Your name">
+								
 
 								</div>
 							</div>

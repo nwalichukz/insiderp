@@ -269,9 +269,9 @@
                                             <figure class="overlay"> 
                                                 <img src="{{asset('images/post/'.$Helper->postImageFirst($popular->id)->name)}}" alt="" style="max-height:180px; max-width:200px;"/>
                                             </figure>
-                                            <div class="kf_tabs_text">
-                                                <a href="{{ url(str_slug(strtolower($popular->category), '-').'/'.$popular->id.'/'.str_slug(strtolower($popular->title), '-')) }}"> </a>
-                                                <h6>{{$Helper->get_title(title_case(strtolower($popular->title)), 15)}}</h6>
+                                            <div class="kf_blog_text">
+                                            <h6> <a href="{{ url(str_slug(strtolower($popular->category), '-').'/'.$popular->id.'/'.str_slug(strtolower($popular->title), '-')) }}">
+                                                {{$Helper->get_title(title_case(strtolower($popular->title)), 15)}}</a></h6>
                                             </div>
                                         </div>
                                         @endforeach

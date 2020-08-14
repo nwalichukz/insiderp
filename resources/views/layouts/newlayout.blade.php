@@ -67,6 +67,16 @@
     <link href="{{ asset('assets/css/colors.css') }}" rel="stylesheet">
     <!-- style.css -->
     <link href="{{ asset('style.css') }}" rel="stylesheet">
+	<style>
+	p>a:link{
+		color:#1E90FF;
+	}
+
+	a:hover{
+		color:orange;
+	}
+	</style>
+	
   </head>
   <body>
     <!-- wrapper-->
@@ -261,7 +271,7 @@
 										<i class="fa fa-envelope"></i>
 											<div class="widget_info_text">
 											
-												<a href="#">insiderperspective2@gmail.com</a>
+												<a href="mailto:insiderperspective2@gmail.com">insiderperspective2@gmail.com</a>
 												
 											</div>
 										</div>
@@ -299,17 +309,17 @@
 								<p> </p>
 								<form method="post" action="{{url('/send-enquiry')}}" id="commentform" class="comment_form">
 									<div class="kf_commet_field">
-										<input placeholder="Your Email" name="email" type="text" value="" data-default="Name*" size="30" required>
+										<input placeholder="Your Email" onClick="return false;" name="email" type="text" value="" data-default="Name*" size="30" required>
 									</div>
 									{{ csrf_field() }}
 									<div class="kf_commet_field">
-										<input placeholder="Your Name" name="name" type="text" value="" data-default="Name*" size="30" required>
+										<input placeholder="Your Name" onClick="return false;" name="name" type="text" value="" data-default="Name*" size="30" required>
 									</div>
 									<div class="kf_commet_field">
-										<input placeholder="subject" name="subject" type="text" value="" data-default="Name*" size="30" required>
+										<input placeholder="subject" onClick="return false;" name="subject" type="text" value="" data-default="Name*" size="30" required>
 									</div>
 									<div class="kode_textarea">
-										<textarea placeholder="Your Message" name="message" required></textarea>
+										<textarea placeholder="Your Message" onClick="return false;" name="message" required></textarea>
 									</div>
 									<p class="form-submit"><input name="submit" type="submit" class="theam_btn_large theam_bg_color" value="Send Us"></p>
 								</form>
