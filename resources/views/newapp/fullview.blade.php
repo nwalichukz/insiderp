@@ -109,18 +109,18 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="kf_commet_field">
-												<input onclick="return false;" placeholder="Your Name" name="name"  size="30" required>
+												<input onclick="event.preventDefault();" placeholder="Your Name" name="name"  size="30" required>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="kf_commet_field">
-												<input onclick="return false;" placeholder="Your Email (optional)" name="email" type="text">
+												<input onclick="event.preventDefault();" placeholder="Your Email (optional)" name="email" type="text">
 											</div>
 										</div>
 									
 										<div class="col-md-12">
 											<div class="kf_textara">
-												<textarea onclick="return false;" placeholder="Your Message" name="comment" required></textarea>
+												<textarea onclick="event.preventDefault();" placeholder="Your Message" name="comment" required></textarea>
 
 												<p class="form-submit">
 												<input name="submit" type="submit" class="theam_btn_large theam_bg_color" value="Send Now"></p>
