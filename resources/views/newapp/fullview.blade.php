@@ -120,7 +120,7 @@
 									
 										<div class="col-md-12">
 											<div class="kf_textara">
-												<textarea onclick="return false;" placeholder="Your Message" name="comment"></textarea>
+												<textarea onclick="return false;" placeholder="Your Message" name="comment" required></textarea>
 
 												<p class="form-submit">
 												<input name="submit" type="submit" class="theam_btn_large theam_bg_color" value="Send Now"></p>
