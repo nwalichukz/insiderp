@@ -309,17 +309,17 @@
 								<p> </p>
 								<form method="post" action="{{url('/send-enquiry')}}" id="commentform" class="comment_form">
 									<div class="kf_commet_field">
-										<input placeholder="Your Email" onClick="return false;" name="email" type="text" value="" data-default="Name*" size="30" required>
+										<input placeholder="Your Email" onclick="return false;" name="email" type="text" value="" data-default="Name*" size="30" required>
 									</div>
 									{{ csrf_field() }}
 									<div class="kf_commet_field">
-										<input placeholder="Your Name" onClick="return false;" name="name" type="text" value="" data-default="Name*" size="30" required>
+										<input placeholder="Your Name" onclick="return false;" name="name" type="text" value="" data-default="Name*" size="30" required>
 									</div>
 									<div class="kf_commet_field">
-										<input placeholder="subject" onClick="return false;" name="subject" type="text" value="" data-default="Name*" size="30" required>
+										<input placeholder="subject" onclick="return false;" name="subject" type="text" value="" data-default="Name*" size="30" required>
 									</div>
 									<div class="kode_textarea">
-										<textarea placeholder="Your Message" onClick="return false;" name="message" required></textarea>
+										<textarea placeholder="Your Message" onclick="return false;" name="message" required></textarea>
 									</div>
 									<p class="form-submit"><input name="submit" type="submit" class="theam_btn_large theam_bg_color" value="Send Us"></p>
 								</form>

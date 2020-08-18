@@ -627,7 +627,8 @@ public function changePassword(Request $request)
           'message' => 'required',          
            ]);
        $delay = (new \Carbon\Carbon)->now()->addMinutes(2);
-      Mail::to('insiderperspective2@gmail.com')->later($delay, new contactMail($request['name'], $request['email'], $request['subject'], $request['message']));
+      Mail::to('insiderperspective2@gmail.com')->later($delay, new contactMail($request['name'], 
+      $request['email'], $request['subject'], $request['message']));
       return redirect('contact-sent');
     }
 

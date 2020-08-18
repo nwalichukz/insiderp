@@ -210,8 +210,6 @@ custom-thumbnail hover-logo hover-dark thumbnail-acute" itemscope itemtype="http
 </article>
 @endforeach
 
-
-
 </div>
 </div>
 </div>
@@ -219,76 +217,7 @@ custom-thumbnail hover-logo hover-dark thumbnail-acute" itemscope itemtype="http
 </div>
 </div>
 @endif
-<!--<div class="single-section single-component single-authorbox-section">
-<div class="container">
-<div class="fox-authorbox authorbox-simple">
-<div class="authorbox-inner">
-<div class="user-item-avatar authorbox-avatar avatar-circle">
-<a href="../author/author2/index.html">
-<img alt='' src='../wp-content/uploads/sites/23/2019/09/26010501877_94247f6c26_z-150x150.jpg' srcset='https://fox.withemes.com/times/wp-content/uploads/sites/23/2019/09/26010501877_94247f6c26_z-150x150.jpg 2x' class='avatar avatar-96 photo' height='96' width='96' />
-</a>
-</div>
-<div class="authorbox-text">
-<div class="fox-user-item authorbox-tab active authorbox-content" data-tab="author">
-<div class="user-item-body">
-<h3 class="user-item-name">
-<a href="../author/author2/index.html">Claire Payne</a>
-</h3>
-<div class="user-item-description">
-<p>Sunny day, sweepin' the clouds away. On my way to where the air is sweet. Can you tell me how to get, how to get to Sesame Street? Come and play, everything's A-OK.</p>
-</div>
-<div class="social-list user-item-social shape-circle style-plain">
-<ul>
-<li class="li-facebook">
-<a href="#" target="_blank" rel="alternate" title="Facebook">
-<i class="fab fa-facebook-square"></i>
-</a>
-</li>
-<li class="li-youtube">
-<a href="#" target="_blank" rel="alternate" title="YouTube">
-<i class="fab fa-youtube"></i>
-</a>
-</li>
-<li class="li-linkedin">
-<a href="#" target="_blank" rel="alternate" title="LinkedIn">
-<i class="fab fa-linkedin-in"></i>
-</a>
-</li>
-<li class="li-soundcloud">
-<a href="#" target="_blank" rel="alternate" title="SoundCloud">
-<i class="fab fa-soundcloud"></i>
-</a>
-</li>
-<li class="li-spotify">
-<a href="#" target="_blank" rel="alternate" title="Spotify">
-<i class="fab fa-spotify"></i>
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>-->
-<!--The beginning of comment section -->
-<!--
-<div class="single-section single-component single-comment-section">
-<div id="comments" class="comments-area single-section single-component">
-<div id="respond" class="comment-respond">
-<h3 id="reply-title" class="comment-reply-title single-heading"><i class="feather-edit-2"></i>Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3>
-<form action="#" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published.</p><p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Write your comment..."></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" value="" size="30" placeholder="Name" /></p>
-<p class="comment-form-email"><input id="email" name="email" type="email" value="" size="30" placeholder="Email" /></p>
-<p class="comment-form-url"><input id="url" name="url" type="url" value="" size="30" placeholder="Website" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='1409' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form> </div>
-</div>
-</div> -->
-<!-- The end of comment section -->
+
 </div>
 </div>
 </div>
