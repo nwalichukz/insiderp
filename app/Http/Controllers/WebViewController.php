@@ -795,8 +795,8 @@ public function changePassword(Request $request)
   *
   *
   */
-  public function addSeed(){
-    DB::table('categories')->insert([['name' => 'Opinion', 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
+  public function addSeed($category){
+    DB::table('categories')->insert([['name' => $category, 'created_at'=>Carbon::now(), 'updated_at' => Carbon::now(),],
                                           ]);
     return redirect('/');
   }

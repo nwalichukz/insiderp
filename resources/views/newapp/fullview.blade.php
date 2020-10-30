@@ -103,7 +103,7 @@
 								<div class="kf_leave_comment">
 									<h3 class="comment_title">Leave A Reply</h3>
 
-									<form id="commentForm" method="POST" action="{{url('/post-comment')}}">
+									<form method="POST" action="{{url('/post-comment')}}">
 									<input type="hidden" name="post_id" id="postid" value="{{$trend->id}}">
 									   {{ csrf_field() }}
 									<div class="row">

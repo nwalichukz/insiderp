@@ -76,7 +76,7 @@ Route::get('/trending-posts', 'WebViewController@latest');
 Route::post('/send-enquiry', 'WebViewController@sendContact');
 Route::get('/contact-sent', 'WebViewController@contactSent');
 Route::get('/account-success', 'WebViewController@accountSuccess');
-Route::get('/add-seed', 'WebViewController@addSeed');
+Route::get('/add-seed/{category}', 'WebViewController@addSeed');
 Route::get('/delete-seed', 'WebViewController@deleteSeed');
 Route::get('/get-add-post', 'WebViewController@postForm');
 Route::get('/get-add-user-img', 'WebViewController@getAddUserImg');

@@ -6,6 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" size="50x50" href="{{ asset('images/favicon/favicon.ico') }}">
+<link rel="apple-touch-icon" size="32x32" href="{{ asset('images/favicon/apple-touch-icon.png') }}">
+<link rel="apple-touch-icon" size="32x32" href="{{ asset('images/favicon/andriod-chrome.png') }}">
 	@if(!empty($pg))
         <meta name="description"
               content="{!!strip_tags(htmlspecialchars_decode(ucfirst($Helper->get_words($trend->post, 30))))!!}">
